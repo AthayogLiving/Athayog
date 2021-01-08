@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import GoogleFonts from "next-google-fonts";
 
 class RootDocument extends Document {
   static async getInitialProps(ctx) {
@@ -9,12 +10,8 @@ class RootDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
+        <GoogleFonts href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" />
+        <Head></Head>
         <body>
           <Main />
           <NextScript />
