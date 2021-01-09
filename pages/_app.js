@@ -1,9 +1,13 @@
 import "../styles/globals.css";
-import { ChakraProvider, theme } from "@chakra-ui/react";
+import { ChakraProvider, theme, localStorageManager } from "@chakra-ui/react";
 
 function App({ Component, pageProps }) {
   return (
-    <ChakraProvider resetCSS={true} colorModeManager theme={theme}>
+    <ChakraProvider
+      resetCSS={true}
+      colorModeManager={localStorageManager}
+      theme={theme}
+    >
       <Component {...pageProps} />
     </ChakraProvider>
   );
