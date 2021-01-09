@@ -23,8 +23,5 @@
     "react-hot-toast": "^1.0.1",
     "tailwindcss": "^2.0.2"
   },
-  "devDependencies": {
-    "stylelint-config-recommended": "^3.0.0",
-    "stylelint-config-standard": "^20.0.0"
-  }
+  "devDependencies": {}
 }
