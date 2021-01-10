@@ -5,7 +5,7 @@ const theme = {
      ...chakraTheme,
      fonts: {
           ...chakraTheme.fonts,
-          body: `Inter, sans-serif`
+          body: `Montserrat, sans-serif`
      },
      fontWeights: {
           normal: 400,
@@ -17,3 +17,5 @@ const theme = {
           athayog: {}
      }
 };
+
+export default theme;
