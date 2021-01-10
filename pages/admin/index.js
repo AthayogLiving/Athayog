@@ -29,7 +29,7 @@ const index = () => {
 
      const onLogin = ({ email, pass }) => {
           setLoading(true);
-          signinWithEmail(email, pass).catch((error) => {
+          signinWithEmail(email, pass, '/admin/dashboard').catch((error) => {
                setLoading(false);
                toast({
                     title: 'An error occurred.',
@@ -73,113 +73,105 @@ const index = () => {
                               onSubmit={handleSubmit((data) => onLogin(data))}
                               register={register}
                          >
-                              {!auth.user ? (
-                                   <>
-                                        <FormControl
-                                             id="admin_login"
-                                             isRequired={true}
-                                             isInvalid={
-                                                  errors.email &&
-                                                  errors.email.message
-                                             }
+                              <>
+                                   <FormControl
+                                        id="admin_login"
+                                        isRequired={true}
+                                        isInvalid={
+                                             errors.email &&
+                                             errors.email.message
+                                        }
+                                   >
+                                        <FormLabel>Email address</FormLabel>
+                                        <InputGroup>
+                                             <InputLeftElement
+                                                  pointerEvents="none"
+                                                  children={
+                                                       <AtSignIcon color="gray.300" />
+                                                  }
+                                             />
+                                             <Input
+                                                  variant="outline"
+                                                  type="text"
+                                                  bg="white"
+                                                  shadow="sm"
+                                                  autoFocus
+                                                  aria-label="Email Address"
+                                                  id="email"
+                                                  name="email"
+                                                  ref={register({
+                                                       required:
+                                                            'Please enter your email.'
+                                                  })}
+                                                  placeholder="name@athayog.com"
+                                             />
+                                             <FormErrorMessage>
+                                                  {errors.email &&
+                                                       errors.email.message}
+                                             </FormErrorMessage>
+                                        </InputGroup>
+                                   </FormControl>
+                                   <FormControl
+                                        isRequired={true}
+                                        isInvalid={
+                                             errors.pass && errors.pass.message
+                                        }
+                                   >
+                                        <FormLabel mt="8">Password</FormLabel>
+                                        <InputGroup>
+                                             <InputLeftElement
+                                                  pointerEvents="none"
+                                                  children={
+                                                       <UnlockIcon color="gray.300" />
+                                                  }
+                                             />
+                                             <Input
+                                                  variant="outline"
+                                                  type="password"
+                                                  bg="white"
+                                                  shadow="sm"
+                                                  aria-label="Password"
+                                                  name="pass"
+                                                  id="password"
+                                                  type="password"
+                                                  ref={register({
+                                                       required:
+                                                            'Please enter a password.'
+                                                  })}
+                                             />
+                                             <FormErrorMessage>
+                                                  {errors.pass &&
+                                                       errors.pass.message}
+                                             </FormErrorMessage>
+                                        </InputGroup>
+                                   </FormControl>
+                                   <Box mt={10}>
+                                        <Button
+                                             sizs="sm"
+                                             type="button"
+                                             width="full"
+                                             shadow="md"
+                                             type="submit"
+                                             loadingText="Submitting"
+                                             background="green.500"
+                                             _hover={{
+                                                  bg: 'green.400'
+                                             }}
+                                             color="white"
+                                             isLoading={loading}
+                                             fontWeight="medium"
+                                             mt={4}
+                                             h="50px"
+                                             fontSize="lg"
+                                             _active={{
+                                                  bg: 'gray.800',
+                                                  transform: 'scale(0.95)'
+                                             }}
                                         >
-                                             <FormLabel>
-                                                  Email address
-                                             </FormLabel>
-                                             <InputGroup>
-                                                  <InputLeftElement
-                                                       pointerEvents="none"
-                                                       children={
-                                                            <AtSignIcon color="gray.300" />
-                                                       }
-                                                  />
-                                                  <Input
-                                                       variant="outline"
-                                                       type="text"
-                                                       bg="white"
-                                                       shadow="sm"
-                                                       autoFocus
-                                                       aria-label="Email Address"
-                                                       id="email"
-                                                       name="email"
-                                                       ref={register({
-                                                            required:
-                                                                 'Please enter your email.'
-                                                       })}
-                                                       placeholder="name@athayog.com"
-                                                  />
-                                                  <FormErrorMessage>
-                                                       {errors.email &&
-                                                            errors.email
-                                                                 .message}
-                                                  </FormErrorMessage>
-                                             </InputGroup>
-                                        </FormControl>
-                                        <FormControl
-                                             isRequired={true}
-                                             isInvalid={
-                                                  errors.pass &&
-                                                  errors.pass.message
-                                             }
-                                        >
-                                             <FormLabel mt="8">
-                                                  Password
-                                             </FormLabel>
-                                             <InputGroup>
-                                                  <InputLeftElement
-                                                       pointerEvents="none"
-                                                       children={
-                                                            <UnlockIcon color="gray.300" />
-                                                       }
-                                                  />
-                                                  <Input
-                                                       variant="outline"
-                                                       type="password"
-                                                       bg="white"
-                                                       shadow="sm"
-                                                       aria-label="Password"
-                                                       name="pass"
-                                                       id="password"
-                                                       type="password"
-                                                       ref={register({
-                                                            required:
-                                                                 'Please enter a password.'
-                                                       })}
-                                                  />
-                                                  <FormErrorMessage>
-                                                       {errors.pass &&
-                                                            errors.pass.message}
-                                                  </FormErrorMessage>
-                                             </InputGroup>
-                                        </FormControl>
-                                        <Box mt={10}>
-                                             <Button
-                                                  sizs="sm"
-                                                  type="button"
-                                                  width="full"
-                                                  shadow="md"
-                                                  type="submit"
-                                                  loadingText="Submitting"
-                                                  background="purple.600"
-                                                  _hover={{
-                                                       bg: 'purple.500'
-                                                  }}
-                                                  color="white"
-                                                  isLoading={loading}
-                                                  fontWeight="medium"
-                                                  mt={4}
-                                                  h="50px"
-                                                  fontSize="lg"
-                                                  _active={{
-                                                       bg: 'gray.800',
-                                                       transform: 'scale(0.95)'
-                                                  }}
-                                             >
-                                                  Sign in
-                                             </Button>
-                                        </Box>
-                                   </>
-                              ) : null}
+                                             Sign in
+                                        </Button>
+                                   </Box>
+                              </>
                          </Box>
                     </Flex>
                </Box>

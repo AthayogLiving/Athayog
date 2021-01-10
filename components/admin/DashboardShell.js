@@ -1,4 +1,3 @@
-import { ChevronDownIcon } from '@chakra-ui/icons';
 import {
      Box,
      Flex,
@@ -33,9 +32,7 @@ function DashboardShell({ user, signout }) {
                          ></MenuButton>
                          <MenuList size="sm">
                               <MenuItem>Account</MenuItem>
-                              <MenuItem
-                                   onClick={() => signout('/admin/dashboard')}
-                              >
+                              <MenuItem onClick={() => signout('/admin')}>
                                    Logout
                               </MenuItem>
                          </MenuList>
