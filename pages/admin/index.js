@@ -18,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { AtSignIcon, UnlockIcon } from '@chakra-ui/icons';
 import Head from 'next/head';
-import BrandLogo from '../../public/logo.png';
+import BrandLogo from 'public/logo.png';
 
 const index = () => {
      const auth = useAuth();
@@ -49,7 +49,6 @@ const index = () => {
                     </Head>
                     <Flex as="main" direction="column" align="center" h="100vh">
                          <Box mb={10} mt={20}>
-                              {' '}
                               <Image
                                    boxSize="80px"
                                    objectFit="cover"
