@@ -1,6 +1,6 @@
-import '../styles/globals.css';
+import '@/styles/globals.css';
 import { ChakraProvider, theme, localStorageManager } from '@chakra-ui/react';
-import { AuthProvider } from '../lib/auth';
+import { AuthProvider } from '@/lib/auth';
 
 function App({ Component, pageProps }) {
      return (

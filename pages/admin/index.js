@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { auth } from 'firebase';
-import { useAuth } from '../../lib/auth';
+import { useAuth } from '@/lib/auth';
 import { Input, Stack, Button, ButtonGroup } from '@chakra-ui/react';
 
 const index = () => {
