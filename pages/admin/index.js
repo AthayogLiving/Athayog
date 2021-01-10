@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '@/lib/auth';
 import { useForm } from 'react-hook-form';
+import Image from 'next/image';
 import {
      Input,
      Button,
@@ -9,7 +10,6 @@ import {
      FormControl,
      Heading,
      FormLabel,
-     Image,
      InputGroup,
      useToast,
      InputLeftElement,
@@ -48,14 +48,18 @@ const index = () => {
                          <title>Athayog Admin</title>
                     </Head>
                     <Flex as="main" direction="column" align="center" h="100vh">
-                         <Image
-                              boxSize="80px"
-                              objectFit="cover"
-                              src={BrandLogo}
-                              alt="Brand Logo"
-                              mb={10}
-                              mt={20}
-                         />
+                         <Box mb={10} mt={20}>
+                              {' '}
+                              <Image
+                                   boxSize="80px"
+                                   objectFit="cover"
+                                   src={BrandLogo}
+                                   alt="Brand Logo"
+                                   width="80px"
+                                   height="80px"
+                              />
+                         </Box>
+
                          <Heading as="h3" size="lg" textAlign="center" mb={0}>
                               Sign in to your account
                          </Heading>
@@ -152,7 +156,6 @@ const index = () => {
                                              width="full"
                                              shadow="md"
                                              type="submit"
-                                             loadingText="Submitting"
                                              background="green.500"
                                              _hover={{
                                                   bg: 'green.400'
