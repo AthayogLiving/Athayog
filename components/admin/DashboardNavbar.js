@@ -34,15 +34,20 @@ function DashboardShell({ user, signout, loading }) {
           >
                <Box>
                     <Skeleton isLoaded={!loading}>
-                         <Text fontWeight="medium" fontSize="xl">
+                         <Text
+                              fontWeight="medium"
+                              fontSize="xl"
+                              display="inline-block"
+                         >
                               Hi
-                              <Text
-                                   display="inline-block"
-                                   fontWeight="bold"
-                                   ml={2}
-                              >
-                                   {user?.email}
-                              </Text>
+                         </Text>
+                         <Text
+                              display="inline-block"
+                              fontSize="xl"
+                              fontWeight="bold"
+                              ml={2}
+                         >
+                              {user?.email}
                          </Text>
                     </Skeleton>
                </Box>
@@ -50,7 +55,7 @@ function DashboardShell({ user, signout, loading }) {
                     <Text mr={5} color="gray.600" fontWeight="medium">
                          {DateTime.local().setLocale('en').toFormat('dd MMMM')}
                     </Text>
-                    <Menu isLazy={true}>
+                    <Menu isLazy={true} closeOnSelect={false}>
                          <MenuButton
                               size="sm"
                               name={user?.name}
