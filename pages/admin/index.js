@@ -50,7 +50,7 @@ const index = () => {
                     <Flex as="main" direction="column" align="center" h="100vh">
                          <Box mb={10} mt={20}>
                               <Image
-                                   boxSize="80px"
+                                  
                                    objectFit="cover"
                                    src={BrandLogo}
                                    alt="Brand Logo"
@@ -74,7 +74,7 @@ const index = () => {
                               mt="5"
                               as="form"
                               onSubmit={handleSubmit((data) => onLogin(data))}
-                              register={register}
+                             
                          >
                               <>
                                    <FormControl
