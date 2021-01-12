@@ -16,7 +16,8 @@ import {
      InputLeftElement,
      Text,
      FormErrorMessage,
-     Spinner
+     Spinner,
+     Link
 } from '@chakra-ui/react';
 import { AtSignIcon, UnlockIcon } from '@chakra-ui/icons';
 import Head from 'next/head';
@@ -76,13 +77,15 @@ const index = () => {
                               h="100vh"
                          >
                               <Box mb={10} mt={20}>
-                                   <Image
-                                        objectFit="cover"
-                                        src={BrandLogo}
-                                        alt="Brand Logo"
-                                        width="80px"
-                                        height="80px"
-                                   />
+                                   <Link href="/">
+                                        <Image
+                                             objectFit="cover"
+                                             src={BrandLogo}
+                                             alt="Brand Logo"
+                                             width="80px"
+                                             height="80px"
+                                        />
+                                   </Link>
                               </Box>
 
                               <Heading

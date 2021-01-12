@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
      Box,
      Flex,
@@ -11,13 +12,19 @@ import {
      HStack,
      Spacer,
      Skeleton,
-     Heading
+     Heading,
+     Spinner
 } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import React from 'react';
 import BrandLogo from 'public/logo.png';
 
 function DashboardShell({ user, signout, loading }) {
+     const [logout, setLogout] = useState(false);
+     const signOutAdmin = (redirect) => {
+          setLogout(true);
+          signout(redirect);
+     };
      return (
           <Flex
                justifyContent="column"
@@ -52,8 +59,18 @@ function DashboardShell({ user, signout, loading }) {
                          ></MenuButton>
                          <MenuList size="sm">
                               <MenuItem>Account</MenuItem>
-                              <MenuItem onClick={() => signout('/admin')}>
-                                   Logout
+                              <MenuItem onClick={() => signOutAdmin('/admin')}>
+                                   {logout ? (
+                                        <Spinner
+                                             color="red.500"
+                                             mr={2}
+                                             size="sm"
+                                        >
+                                             Logging Out
+                                        </Spinner>
+                                   ) : (
+                                        'Logout'
+                                   )}
                               </MenuItem>
                          </MenuList>
                     </Menu>
