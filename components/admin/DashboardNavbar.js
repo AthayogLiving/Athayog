@@ -29,13 +29,18 @@ function DashboardShell({ user, signout, loading }) {
           <Flex
                justifyContent="column"
                justifyContent="space-between"
-               padding="2rem"
+               padding="1.5rem 1.5rem"
                alignItems="center"
+               margin="2rem"
+               boxShadow="base"
+               p="6"
+               rounded="md"
+               bg="white"
           >
                <Box>
                     <Skeleton isLoaded={!loading}>
                          <Text
-                              fontWeight="medium"
+                              fontWeight="normal"
                               fontSize="xl"
                               display="inline-block"
                          >
@@ -44,7 +49,7 @@ function DashboardShell({ user, signout, loading }) {
                          <Text
                               display="inline-block"
                               fontSize="xl"
-                              fontWeight="bold"
+                              fontWeight="medium"
                               ml={2}
                          >
                               {user?.email}

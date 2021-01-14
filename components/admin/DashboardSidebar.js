@@ -1,23 +1,45 @@
-import { Box, Center, Flex, Spacer, Text } from '@chakra-ui/react';
+import {
+     Box,
+     Center,
+     Divider,
+     Flex,
+     Grid,
+     Spacer,
+     Text
+} from '@chakra-ui/react';
+import Image from 'next/image';
 
 function DashboardSidebar() {
      return (
           <Flex
                direction="column"
-               justifyContent="space-evenly"
+               justifyContent="flex-start"
                boxSize="border-box"
-               color="white"
+               color="black"
                alignItems="strech"
                py={10}
                pl={10}
+               h="100%"
+               bg="white"
+               boxShadow="md"
+               rounded="lg"
           >
-               <Text color="white" fontSize="xl" fontWeight="medium">
-                    Dashboard
+               <Text
+                    color="black"
+                    fontSize="xl"
+                    fontWeight="bold"
+                    cursor="pointer"
+               >
+                    Athayog Living
                </Text>
 
-               <Spacer />
-
-               <Text color="blue.100">User</Text>
+               <Grid templateRows="repeat(auto, 1fr)" gap={6} mt={10}>
+                    <Text>Dashboard</Text>
+                    <Text>Users</Text>
+                    <Text>Schedule</Text>
+                    <Text>Forms</Text>
+                    <Text>Images</Text>
+               </Grid>
           </Flex>
      );
 }

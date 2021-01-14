@@ -10,7 +10,7 @@ class RootDocument extends Document {
      render() {
           return (
                <Html>
-                    <GoogleFonts href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;1,100&display=swap" />
+                    <GoogleFonts href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" />
 
                     <Head />
                     <body>
