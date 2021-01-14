@@ -1,17 +1,7 @@
 import { useAuth } from '@/lib/auth';
 import { useState, useEffect } from 'react';
 import DashboardNavbar from '@/components/admin/DashboardNavbar';
-import {
-     Box,
-     Heading,
-     Stack,
-     Skeleton,
-     SkeletonCircle,
-     SkeletonText,
-     Flex,
-     Grid,
-     GridItem
-} from '@chakra-ui/react';
+import { Box, Grid, GridItem } from '@chakra-ui/react';
 import DashboardSidebar from '@/components/admin/DashboardSidebar';
 import DashboardMain from '@/components/admin/DashboardMain';
 

@@ -2,22 +2,15 @@ import { useState } from 'react';
 import {
      Box,
      Flex,
-     Button,
      Avatar,
      Menu,
      MenuButton,
      MenuList,
      MenuItem,
      Text,
-     HStack,
-     Spacer,
-     Skeleton,
-     Heading,
-     Spinner
+     Skeleton
 } from '@chakra-ui/react';
-import { DateTime } from 'luxon';
 import React from 'react';
-import BrandLogo from 'public/logo.png';
 
 function DashboardNavbar({ user, signout, loading }) {
      const [logout, setLogout] = useState(false);
