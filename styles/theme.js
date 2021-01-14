@@ -5,7 +5,7 @@ const theme = {
      ...chakraTheme,
      fonts: {
           ...chakraTheme.fonts,
-          body: `Roboto, sans-serif`
+          body: `Josefin Sans, sans-serif`
      },
      fontWeights: {
           normal: 400,

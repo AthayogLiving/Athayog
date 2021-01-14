@@ -19,7 +19,7 @@ import { DateTime } from 'luxon';
 import React from 'react';
 import BrandLogo from 'public/logo.png';
 
-function DashboardShell({ user, signout, loading }) {
+function DashboardNavbar({ user, signout, loading }) {
      const [logout, setLogout] = useState(false);
      const signOutAdmin = (redirect) => {
           setLogout(true);
@@ -29,37 +29,38 @@ function DashboardShell({ user, signout, loading }) {
           <Flex
                justifyContent="column"
                justifyContent="space-between"
-               padding="1.5rem 1.5rem"
+               padding="1rem"
                alignItems="center"
                margin="2rem"
-               boxShadow="base"
-               p="6"
+               boxShadow="sm"
                rounded="md"
                bg="white"
           >
-               <Box>
-                    <Skeleton isLoaded={!loading}>
+               <Skeleton isLoaded={!loading} w="100%" lineHeight={1.2}>
+                    <Flex
+                         direction="column"
+                         justifyContent="flex-end"
+                         width="100%"
+                    >
                          <Text
-                              fontWeight="normal"
-                              fontSize="xl"
+                              fontWeight="400"
+                              fontSize="md"
                               display="inline-block"
                          >
-                              Hi
+                              Hi Harsimran
                          </Text>
+
                          <Text
                               display="inline-block"
-                              fontSize="xl"
-                              fontWeight="medium"
-                              ml={2}
+                              fontSize="md"
+                              fontWeight="400"
+                              color="gray.500"
                          >
                               {user?.email}
                          </Text>
-                    </Skeleton>
-               </Box>
+                    </Flex>
+               </Skeleton>
                <Box d="flex" alignItems="center">
-                    <Text mr={5} color="gray.600" fontWeight="medium">
-                         {DateTime.local().setLocale('en').toFormat('dd MMMM')}
-                    </Text>
                     <Menu isLazy={true} closeOnSelect={false}>
                          <MenuButton
                               size="sm"
@@ -70,17 +71,7 @@ function DashboardShell({ user, signout, loading }) {
                          <MenuList size="sm">
                               <MenuItem>Account</MenuItem>
                               <MenuItem onClick={() => signOutAdmin('/admin')}>
-                                   {logout ? (
-                                        <Spinner
-                                             color="red.500"
-                                             mr={2}
-                                             size="sm"
-                                        >
-                                             Logging Out
-                                        </Spinner>
-                                   ) : (
-                                        'Logout'
-                                   )}
+                                   Logout
                               </MenuItem>
                          </MenuList>
                     </Menu>
@@ -89,4 +80,4 @@ function DashboardShell({ user, signout, loading }) {
      );
 }
 
-export default DashboardShell;
+export default DashboardNavbar;

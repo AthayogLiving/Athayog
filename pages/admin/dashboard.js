@@ -1,6 +1,6 @@
 import { useAuth } from '@/lib/auth';
 import { useState, useEffect } from 'react';
-import DashboardShell from '@/components/admin/DashboardNavbar';
+import DashboardNavbar from '@/components/admin/DashboardNavbar';
 import {
      Box,
      Heading,
@@ -13,6 +13,7 @@ import {
      GridItem
 } from '@chakra-ui/react';
 import DashboardSidebar from '@/components/admin/DashboardSidebar';
+import DashboardMain from '@/components/admin/DashboardMain';
 
 const dashboard = () => {
      const { user, signout, loading } = useAuth();
@@ -28,14 +29,14 @@ const dashboard = () => {
                          <DashboardSidebar />
                     </GridItem>
                     <GridItem colSpan={7} bg="gray.100" rowSpan={1}>
-                         <DashboardShell
+                         <DashboardNavbar
                               user={user}
                               signout={signout}
                               loading={loading}
                          />
                     </GridItem>
                     <GridItem colSpan={7} bg="gray.100" rowSpan={2}>
-                         <p>lorem*10</p>
+                         <DashboardMain />
                     </GridItem>
                </Grid>
           </Box>
