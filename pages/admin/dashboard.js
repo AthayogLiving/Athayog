@@ -25,7 +25,7 @@ const dashboard = () => {
                     templateRows="auto 1fr"
                     templateColumns="repeat(8, 1fr)"
                >
-                    <GridItem colSpan={1} rowSpan={3} bg="gray.100">
+                    <GridItem colSpan={1} rowSpan={3} bg="white">
                          <DashboardSidebar />
                     </GridItem>
                     <GridItem colSpan={7} bg="gray.100" rowSpan={1}>

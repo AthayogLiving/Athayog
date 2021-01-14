@@ -16,16 +16,20 @@ import {
      FaHome,
      FaUserCircle,
      FaCalendarAlt,
-     FaImage
+     FaImage,
+     FaRegSnowflake,
+     FaChalkboardTeacher,
+     FaBook,
+     FaCog
 } from 'react-icons/fa';
 
 function DashboardSidebar() {
      return (
           <Flex
                direction="column"
-               justifyContent="flex-start"
+               justifyContent="space-between"
                boxSize="border-box"
-               color="black"
+               color="white"
                alignItems="center"
                py={10}
                h="100%"
@@ -35,9 +39,9 @@ function DashboardSidebar() {
                width="100%"
           >
                <Text
-                    color="black"
+                    color="teal.700"
                     fontSize="xl"
-                    fontWeight="bold"
+                    fontWeight="500"
                     cursor="pointer"
                >
                     Athayog Living
@@ -47,14 +51,12 @@ function DashboardSidebar() {
                     direction="column"
                     width="100%"
                     spacing={6}
-                    mt={10}
                     align="center"
                     justifyContent="center"
                >
                     <Button
-                         bg="indigo.600"
-                         color="gray.200"
-                         variant="solid"
+                         colorScheme="teal"
+                         variant="ghost"
                          width="80%"
                          paddingLeft={6}
                          as="flex"
@@ -64,9 +66,8 @@ function DashboardSidebar() {
                          Dashboard
                     </Button>
                     <Button
-                         bg="white"
-                         variant="solid"
-                         color="gray.600"
+                         colorScheme="teal"
+                         variant="ghost"
                          width="80%"
                          paddingLeft={6}
                          as="flex"
@@ -76,10 +77,9 @@ function DashboardSidebar() {
                          Users
                     </Button>
                     <Button
-                         bg="white"
-                         variant="solid"
+                         variant="ghost"
                          width="80%"
-                         color="gray.600"
+                         colorScheme="teal"
                          paddingLeft={6}
                          as="flex"
                          justifyContent="flex-start"
@@ -88,10 +88,9 @@ function DashboardSidebar() {
                          Forms
                     </Button>
                     <Button
-                         bg="white"
-                         variant="solid"
+                         variant="ghost"
                          as="flex"
-                         color="gray.600"
+                         colorScheme="teal"
                          paddingLeft={6}
                          justifyContent="flex-start"
                          width="80%"
@@ -100,16 +99,57 @@ function DashboardSidebar() {
                          Schedule
                     </Button>
                     <Button
-                         bg="white"
-                         variant="solid"
+                         colorScheme="teal"
+                         variant="ghost"
                          width="80%"
-                         color="gray.600"
                          paddingLeft={6}
                          as="flex"
                          justifyContent="flex-start"
                          leftIcon={<FaImage size="1.1rem" />}
                     >
                          Images
+                    </Button>
+                    <Button
+                         colorScheme="teal"
+                         variant="ghost"
+                         width="80%"
+                         paddingLeft={6}
+                         as="flex"
+                         justifyContent="flex-start"
+                         leftIcon={<FaChalkboardTeacher size="1.1rem" />}
+                    >
+                         Classes
+                    </Button>
+                    <Button
+                         colorScheme="teal"
+                         variant="ghost"
+                         width="80%"
+                         paddingLeft={6}
+                         as="flex"
+                         justifyContent="flex-start"
+                         leftIcon={<FaBook size="1.1rem" />}
+                    >
+                         Courses
+                    </Button>
+               </Stack>
+
+               <Stack
+                    direction="column"
+                    width="100%"
+                    spacing={6}
+                    align="center"
+                    justifyContent="center"
+               >
+                    <Button
+                         colorScheme="teal"
+                         variant="ghost"
+                         width="80%"
+                         paddingLeft={6}
+                         as="flex"
+                         justifyContent="flex-start"
+                         leftIcon={<FaCog size="1.1rem" />}
+                    >
+                         Settings
                     </Button>
                </Stack>
           </Flex>
