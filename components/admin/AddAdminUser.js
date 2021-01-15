@@ -60,7 +60,7 @@ function AddAdminUser() {
           <Box
                bg="white"
                padding={6}
-               boxShadow="sm"
+               boxShadow="base"
                rounded="lg"
                width="fit-content"
           >
@@ -132,7 +132,7 @@ function AddAdminUser() {
                     </FormControl>
                     <Button
                          type="submit"
-                         colorScheme="green"
+                         colorScheme="teal"
                          isLoading={loading}
                     >
                          Create

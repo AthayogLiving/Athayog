@@ -35,7 +35,7 @@ function DashboardSidebar() {
                position="sticky"
           >
                <Text
-                    color="#2E3750"
+                    color="teal.800"
                     fontSize="lg"
                     fontWeight="600"
                     bg="white"
@@ -47,7 +47,7 @@ function DashboardSidebar() {
                     Athayog Admin
                </Text>
 
-               <Text color="black" fontSize="sm" pl={2} mb={2} ml={2}>
+               <Text color="teal.800" fontSize="sm" pl={2} mb={2} ml={2}>
                     Menu
                </Text>
                <Stack
@@ -60,14 +60,14 @@ function DashboardSidebar() {
                     mb={10}
                >
                     <Button
-                         color="#F5F8FE"
+                         color="teal.100"
                          variant="ghost"
                          width="100%"
                          fontSize="sm"
                          borderLeft="blue.800"
                          as="flex"
                          rounded="lg"
-                         bg="#101E85"
+                         bg="teal.500"
                          justifyContent="flex-start"
                          leftIcon={<FiHome />}
                     >
@@ -75,7 +75,7 @@ function DashboardSidebar() {
                     </Button>
                </Stack>
 
-               <Text color="#2E3750" fontSize="sm" pl={2} mb={2} ml={2}>
+               <Text color="teal.800" fontSize="sm" pl={2} mb={2} ml={2}>
                     Account
                </Text>
                <Stack
@@ -88,7 +88,7 @@ function DashboardSidebar() {
                     mb={10}
                >
                     <Button
-                         color="#2E3750"
+                         color="teal.800"
                          variant="ghost"
                          width="100%"
                          fontSize="sm"
@@ -104,7 +104,7 @@ function DashboardSidebar() {
                          width="100%"
                          fontSize="sm"
                          rounded="lg"
-                         color="#2E3750"
+                         color="teal.800"
                          as="flex"
                          justifyContent="flex-start"
                          leftIcon={<FiFileText />}
@@ -113,7 +113,7 @@ function DashboardSidebar() {
                     </Button>
                </Stack>
 
-               <Text color="#2E3750" fontSize="sm" pl={2} mb={2} ml={2}>
+               <Text color="teal.800" fontSize="sm" pl={2} mb={2} ml={2}>
                     Resources
                </Text>
                <Stack
@@ -128,7 +128,7 @@ function DashboardSidebar() {
                     <Button
                          variant="ghost"
                          as="flex"
-                         color="#2E3750"
+                         color="teal.800"
                          justifyContent="flex-start"
                          width="100%"
                          fontSize="sm"
@@ -138,7 +138,7 @@ function DashboardSidebar() {
                          Schedule
                     </Button>
                     <Button
-                         color="#2E3750"
+                         color="teal.800"
                          variant="ghost"
                          width="100%"
                          fontSize="sm"
@@ -150,7 +150,7 @@ function DashboardSidebar() {
                          Images
                     </Button>
                     <Button
-                         color="#2E3750"
+                         color="teal.800"
                          variant="ghost"
                          width="100%"
                          fontSize="sm"
@@ -162,7 +162,7 @@ function DashboardSidebar() {
                          Classes
                     </Button>
                     <Button
-                         color="#2E3750"
+                         color="teal.800"
                          variant="ghost"
                          width="100%"
                          fontSize="sm"

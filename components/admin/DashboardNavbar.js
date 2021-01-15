@@ -60,7 +60,7 @@ function DashboardNavbar({ user, signout, loading }) {
                               name={user?.name}
                               bg="blue.800"
                               as={Avatar}
-                              rounded="sm"
+                              rounded="lg"
                          ></MenuButton>
                          <MenuList size="sm">
                               <MenuItem>Account</MenuItem>
