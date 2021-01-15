@@ -27,6 +27,7 @@ function DashboardSidebar() {
                boxShadow="md"
                rounded="lg"
                width="100%"
+               position="sticky"
           >
                <Text
                     color="black"

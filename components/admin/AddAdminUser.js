@@ -3,15 +3,12 @@ import {
      Checkbox,
      CheckboxGroup,
      FormControl,
-     FormHelperText,
      FormLabel,
      Heading,
      Button,
      HStack,
      Input,
-     Select,
      Stack,
-     Text,
      useToast,
      FormErrorMessage
 } from '@chakra-ui/react';

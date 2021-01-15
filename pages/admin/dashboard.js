@@ -4,6 +4,7 @@ import DashboardNavbar from '@/components/admin/DashboardNavbar';
 import { Box, Grid, GridItem } from '@chakra-ui/react';
 import DashboardSidebar from '@/components/admin/DashboardSidebar';
 import DashboardMain from '@/components/admin/DashboardMain';
+import StickyBox from 'react-sticky-box';
 
 const dashboard = () => {
      const { user, signout, loading } = useAuth();
@@ -11,12 +12,14 @@ const dashboard = () => {
      return (
           <Box>
                <Grid
-                    h="100vh"
+                    h="100%"
                     templateRows="auto 1fr"
                     templateColumns="repeat(8, 1fr)"
                >
                     <GridItem colSpan={1} rowSpan={3} bg="white">
-                         <DashboardSidebar />
+                         <StickyBox style={{ height: '100vh' }}>
+                              <DashboardSidebar />
+                         </StickyBox>
                     </GridItem>
                     <GridItem colSpan={7} bg="gray.100" rowSpan={1}>
                          <DashboardNavbar
