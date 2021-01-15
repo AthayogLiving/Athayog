@@ -16,19 +16,19 @@ const dashboard = () => {
                     templateRows="auto 1fr"
                     templateColumns="repeat(8, 1fr)"
                >
-                    <GridItem colSpan={1} rowSpan={3} bg="white">
+                    <GridItem colSpan={1} rowSpan={3} bg="gray.100">
                          <StickyBox style={{ height: '100vh' }}>
                               <DashboardSidebar />
                          </StickyBox>
                     </GridItem>
-                    <GridItem colSpan={7} bg="gray.100" rowSpan={1}>
+                    <GridItem colSpan={7} rowSpan={1} bg="gray.100">
                          <DashboardNavbar
                               user={user}
                               signout={signout}
                               loading={loading}
                          />
                     </GridItem>
-                    <GridItem colSpan={7} bg="gray.100" rowSpan={2}>
+                    <GridItem colSpan={7} rowSpan={2} bg="gray.100">
                          <DashboardMain />
                     </GridItem>
                </Grid>

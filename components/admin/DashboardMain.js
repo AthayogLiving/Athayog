@@ -5,7 +5,7 @@ import UsersTable from '@/components/admin/UsersTable';
 
 function DashboardMain() {
      return (
-          <Box margin="2rem">
+          <Box margin="0 2rem">
                <AddAdminUser />
                <div style={{ height: '2rem' }}></div>
                <UsersTable />

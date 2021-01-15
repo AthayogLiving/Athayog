@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 
 import {
@@ -9,148 +9,169 @@ import {
      FaImage,
      FaChalkboardTeacher,
      FaBook,
-     FaCog
-} from 'react-icons/fa';
-import BrandLogo from 'public/logo.png';
+     FaCog,
+     FiHome,
+     FiUsers,
+     FiFileText,
+     FiCalendar,
+     FiImage,
+     FiMonitor,
+     FiBook
+} from 'react-icons/fi';
 
 function DashboardSidebar() {
      return (
           <Flex
                direction="column"
-               justifyContent="space-between"
+               justifyContent="flex-start"
                boxSize="border-box"
                color="white"
-               // alignItems="center"
+               alignItems="flex-start"
+               px={5}
                py={10}
                h="100%"
-               bg="white"
-               boxShadow="md"
-               rounded="lg"
+               bg="#fff"
                width="100%"
                position="sticky"
           >
                <Text
-                    color="black"
-                    fontSize="2xl"
-                    fontWeight="700"
+                    color="#2E3750"
+                    fontSize="lg"
+                    fontWeight="600"
                     bg="white"
                     cursor="pointer"
-                    paddingLeft={10}
+                    mb={10}
+                    textAlign="center"
+                    width="100%"
                >
-                    Athayog
+                    Athayog Admin
                </Text>
 
+               <Text color="black" fontSize="sm" pl={2} mb={2} ml={2}>
+                    Menu
+               </Text>
                <Stack
                     direction="column"
                     width="100%"
-                    spacing={6}
-                    align="center"
-                    justifyContent="center"
+                    spacing={2}
+                    align="flex-start"
+                    justifyContent="flex-start"
+                    fontWeight="500"
+                    mb={10}
                >
                     <Button
-                         color="gray.100"
+                         color="#F5F8FE"
                          variant="ghost"
-                         width="80%"
-                         paddingLeft={10}
-                         _hover={{ bg: 'gray.600' }}
-                         bg="gray.900"
+                         width="100%"
+                         fontSize="sm"
+                         borderLeft="blue.800"
                          as="flex"
+                         rounded="lg"
+                         bg="#101E85"
                          justifyContent="flex-start"
-                         leftIcon={<FaHome />}
+                         leftIcon={<FiHome />}
                     >
                          Dashboard
                     </Button>
+               </Stack>
+
+               <Text color="#2E3750" fontSize="sm" pl={2} mb={2} ml={2}>
+                    Account
+               </Text>
+               <Stack
+                    direction="column"
+                    width="100%"
+                    spacing={2}
+                    align="flex-start"
+                    justifyContent="flex-start"
+                    fontWeight="500"
+                    mb={10}
+               >
                     <Button
-                         color="black"
+                         color="#2E3750"
                          variant="ghost"
-                         width="80%"
-                         paddingLeft={10}
+                         width="100%"
+                         fontSize="sm"
+                         rounded="lg"
                          as="flex"
                          justifyContent="flex-start"
-                         leftIcon={<FaUserCircle />}
+                         leftIcon={<FiUsers />}
                     >
                          Users
                     </Button>
                     <Button
                          variant="ghost"
-                         width="80%"
-                         rounded="0"
-                         color="black"
-                         paddingLeft={10}
+                         width="100%"
+                         fontSize="sm"
+                         rounded="lg"
+                         color="#2E3750"
                          as="flex"
                          justifyContent="flex-start"
-                         leftIcon={<FaWpforms />}
+                         leftIcon={<FiFileText />}
                     >
                          Forms
                     </Button>
+               </Stack>
+
+               <Text color="#2E3750" fontSize="sm" pl={2} mb={2} ml={2}>
+                    Resources
+               </Text>
+               <Stack
+                    direction="column"
+                    width="100%"
+                    spacing={2}
+                    align="flex-start"
+                    justifyContent="flex-start"
+                    fontWeight="500"
+                    mb={10}
+               >
                     <Button
                          variant="ghost"
                          as="flex"
-                         color="black"
-                         paddingLeft={10}
+                         color="#2E3750"
                          justifyContent="flex-start"
-                         width="80%"
-                         rounded="0"
-                         leftIcon={<FaCalendarAlt />}
+                         width="100%"
+                         fontSize="sm"
+                         rounded="lg"
+                         leftIcon={<FiCalendar />}
                     >
                          Schedule
                     </Button>
                     <Button
-                         color="black"
+                         color="#2E3750"
                          variant="ghost"
-                         width="80%"
-                         rounded="0"
-                         paddingLeft={10}
+                         width="100%"
+                         fontSize="sm"
+                         rounded="lg"
                          as="flex"
                          justifyContent="flex-start"
-                         leftIcon={<FaImage />}
+                         leftIcon={<FiImage />}
                     >
                          Images
                     </Button>
                     <Button
-                         color="black"
+                         color="#2E3750"
                          variant="ghost"
-                         width="80%"
-                         rounded="0"
-                         paddingLeft={10}
+                         width="100%"
+                         fontSize="sm"
+                         rounded="lg"
                          as="flex"
                          justifyContent="flex-start"
-                         leftIcon={<FaChalkboardTeacher />}
+                         leftIcon={<FiMonitor />}
                     >
                          Classes
                     </Button>
                     <Button
-                         color="black"
+                         color="#2E3750"
                          variant="ghost"
-                         width="80%"
-                         rounded="0"
-                         paddingLeft={10}
+                         width="100%"
+                         fontSize="sm"
+                         rounded="lg"
                          as="flex"
                          justifyContent="flex-start"
-                         leftIcon={<FaBook />}
+                         leftIcon={<FiBook />}
                     >
                          Courses
-                    </Button>
-               </Stack>
-
-               <Stack
-                    direction="column"
-                    width="80%"
-                    spacing={6}
-                    align="center"
-                    justifyContent="center"
-               >
-                    <Button
-                         color="black"
-                         variant="ghost"
-                         width="80%"
-                         rounded="0"
-                         paddingLeft={10}
-                         as="flex"
-                         justifyContent="flex-start"
-                         leftIcon={<FaCog />}
-                    >
-                         Settings
                     </Button>
                </Stack>
           </Flex>

@@ -64,7 +64,7 @@ function AddAdminUser() {
                rounded="lg"
                width="fit-content"
           >
-               <Heading size="lg">Create a new admin user</Heading>
+               <Heading size="md">Create a new admin user</Heading>
                <Stack
                     spacing={8}
                     mt={5}
@@ -82,6 +82,7 @@ function AddAdminUser() {
                               type="text"
                               aria-label="name"
                               name="name"
+                              bg="white"
                               id="name"
                               placeholder="Your name"
                               ref={register({
