@@ -8,5 +8,5 @@ export default async (req, res) => {
           users.push({ id: doc.id, ...doc.data() });
      });
 
-     res.status(200).json(users);
+     res.status(200).json({ users });
 };

@@ -55,7 +55,7 @@ function DashboardSidebar() {
                          bg="gray.900"
                          as="flex"
                          justifyContent="flex-start"
-                         leftIcon={<FaHome size="1.1rem" />}
+                         leftIcon={<FaHome />}
                     >
                          Dashboard
                     </Button>
@@ -66,7 +66,7 @@ function DashboardSidebar() {
                          paddingLeft={10}
                          as="flex"
                          justifyContent="flex-start"
-                         leftIcon={<FaUserCircle size="1.1rem" />}
+                         leftIcon={<FaUserCircle />}
                     >
                          Users
                     </Button>
@@ -78,7 +78,7 @@ function DashboardSidebar() {
                          paddingLeft={10}
                          as="flex"
                          justifyContent="flex-start"
-                         leftIcon={<FaWpforms size="1.1rem" />}
+                         leftIcon={<FaWpforms />}
                     >
                          Forms
                     </Button>
@@ -90,7 +90,7 @@ function DashboardSidebar() {
                          justifyContent="flex-start"
                          width="80%"
                          rounded="0"
-                         leftIcon={<FaCalendarAlt size="1.1rem" />}
+                         leftIcon={<FaCalendarAlt />}
                     >
                          Schedule
                     </Button>
@@ -102,7 +102,7 @@ function DashboardSidebar() {
                          paddingLeft={10}
                          as="flex"
                          justifyContent="flex-start"
-                         leftIcon={<FaImage size="1.1rem" />}
+                         leftIcon={<FaImage />}
                     >
                          Images
                     </Button>
@@ -114,7 +114,7 @@ function DashboardSidebar() {
                          paddingLeft={10}
                          as="flex"
                          justifyContent="flex-start"
-                         leftIcon={<FaChalkboardTeacher size="1.1rem" />}
+                         leftIcon={<FaChalkboardTeacher />}
                     >
                          Classes
                     </Button>
@@ -126,7 +126,7 @@ function DashboardSidebar() {
                          paddingLeft={10}
                          as="flex"
                          justifyContent="flex-start"
-                         leftIcon={<FaBook size="1.1rem" />}
+                         leftIcon={<FaBook />}
                     >
                          Courses
                     </Button>
@@ -147,7 +147,7 @@ function DashboardSidebar() {
                          paddingLeft={10}
                          as="flex"
                          justifyContent="flex-start"
-                         leftIcon={<FaCog size="1.1rem" />}
+                         leftIcon={<FaCog />}
                     >
                          Settings
                     </Button>

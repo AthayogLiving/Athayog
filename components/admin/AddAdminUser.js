@@ -17,7 +17,7 @@ import {
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '@/lib/auth';
-
+import { mutate } from 'swr';
 import React, { useState } from 'react';
 
 function AddAdminUser() {
@@ -46,6 +46,7 @@ function AddAdminUser() {
                          duration: 9000,
                          isClosable: true
                     });
+                    mutate('/api/users');
                })
                .catch((error) => {
                     setLoading(false);
