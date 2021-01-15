@@ -26,7 +26,7 @@ function DashboardNavbar({ user, signout, loading }) {
                alignItems="center"
                margin="2rem"
                bg="#fff"
-               boxShadow="base"
+               boxShadow="sm"
                rounded="lg"
           >
                <Skeleton isLoaded={!loading} w="100%" lineHeight={1.2}>
@@ -58,9 +58,8 @@ function DashboardNavbar({ user, signout, loading }) {
                          <MenuButton
                               size="sm"
                               name={user?.name}
-                              bg="blue.800"
+                              bg="teal.800"
                               as={Avatar}
-                              rounded="lg"
                          ></MenuButton>
                          <MenuList size="sm">
                               <MenuItem>Account</MenuItem>

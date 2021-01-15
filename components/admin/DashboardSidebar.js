@@ -16,7 +16,8 @@ import {
      FiCalendar,
      FiImage,
      FiMonitor,
-     FiBook
+     FiBook,
+     FiTriangle
 } from 'react-icons/fi';
 
 function DashboardSidebar() {
@@ -34,18 +35,22 @@ function DashboardSidebar() {
                width="100%"
                position="sticky"
           >
-               <Text
+               <Flex
                     color="teal.800"
                     fontSize="lg"
-                    fontWeight="600"
+                    fontWeight="500"
                     bg="white"
                     cursor="pointer"
                     mb={10}
                     textAlign="center"
                     width="100%"
+                    d="flex"
+                    pl={4}
+                    alignItems="center"
                >
-                    Athayog Admin
-               </Text>
+                    <FiTriangle color="teal.800" />
+                    <Text ml={2}>Athayog</Text>
+               </Flex>
 
                <Text color="teal.800" fontSize="sm" pl={2} mb={2} ml={2}>
                     Menu
@@ -60,14 +65,12 @@ function DashboardSidebar() {
                     mb={10}
                >
                     <Button
-                         color="teal.100"
-                         variant="ghost"
                          width="100%"
                          fontSize="sm"
                          borderLeft="blue.800"
                          as="flex"
+                         colorScheme="teal"
                          rounded="lg"
-                         bg="teal.500"
                          justifyContent="flex-start"
                          leftIcon={<FiHome />}
                     >
@@ -88,7 +91,7 @@ function DashboardSidebar() {
                     mb={10}
                >
                     <Button
-                         color="teal.800"
+                         colorScheme="teal"
                          variant="ghost"
                          width="100%"
                          fontSize="sm"
@@ -104,7 +107,7 @@ function DashboardSidebar() {
                          width="100%"
                          fontSize="sm"
                          rounded="lg"
-                         color="teal.800"
+                         colorScheme="teal"
                          as="flex"
                          justifyContent="flex-start"
                          leftIcon={<FiFileText />}
@@ -128,7 +131,7 @@ function DashboardSidebar() {
                     <Button
                          variant="ghost"
                          as="flex"
-                         color="teal.800"
+                         colorScheme="teal"
                          justifyContent="flex-start"
                          width="100%"
                          fontSize="sm"
@@ -138,7 +141,7 @@ function DashboardSidebar() {
                          Schedule
                     </Button>
                     <Button
-                         color="teal.800"
+                         colorScheme="teal"
                          variant="ghost"
                          width="100%"
                          fontSize="sm"
@@ -150,7 +153,7 @@ function DashboardSidebar() {
                          Images
                     </Button>
                     <Button
-                         color="teal.800"
+                         colorScheme="teal"
                          variant="ghost"
                          width="100%"
                          fontSize="sm"
@@ -162,7 +165,7 @@ function DashboardSidebar() {
                          Classes
                     </Button>
                     <Button
-                         color="teal.800"
+                         colorScheme="teal"
                          variant="ghost"
                          width="100%"
                          fontSize="sm"

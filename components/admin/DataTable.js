@@ -1,4 +1,3 @@
-import React from 'react';
 import {
      Table,
      Thead,
@@ -7,25 +6,25 @@ import {
      Th,
      Td,
      TableCaption,
-     Skeleton,
      Box
 } from '@chakra-ui/react';
 
 const DataTable = ({ users }) => {
      return (
-          <Box>
-               <Table
-                    variant="simple"
-                    colorScheme="teal"
-                    bg="white"
-                    rounded="lg"
-                    boxShadow="base"
-               >
+          <Box
+               bg="white"
+               rounded="lg"
+               borderWidth="1px"
+               padding={2}
+               boxShadow="base"
+          >
+               <Table variant="simple">
                     <TableCaption>Users</TableCaption>
-                    <Thead bg="gray.50">
+                    <Thead>
                          <Tr>
                               <Th>Name</Th>
                               <Th>Email</Th>
+                              <Th>Acess Level</Th>
                          </Tr>
                     </Thead>
                     <Tbody>
@@ -33,6 +32,7 @@ const DataTable = ({ users }) => {
                               return (
                                    <Tr key={user.uid}>
                                         <Td>{user.id}</Td>
+                                        <Td>{user.email}</Td>
                                         <Td>{user.email}</Td>
                                    </Tr>
                               );
