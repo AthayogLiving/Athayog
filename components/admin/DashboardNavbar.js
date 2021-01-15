@@ -40,7 +40,7 @@ function DashboardNavbar({ user, signout, loading }) {
                               fontSize="md"
                               display="inline-block"
                          >
-                              Hi Harsimran
+                              {user?.displayName}
                          </Text>
 
                          <Text
