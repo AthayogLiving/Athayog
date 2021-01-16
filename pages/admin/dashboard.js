@@ -6,7 +6,7 @@ import DashboardSidebar from '@/components/admin/DashboardSidebar';
 import DashboardMain from '@/components/admin/DashboardMain';
 import StickyBox from 'react-sticky-box';
 
-const dashboard = () => {
+const dashboard = ({ children }) => {
      const { user, signout, loading } = useAuth();
 
      return (
@@ -29,7 +29,7 @@ const dashboard = () => {
                          />
                     </GridItem>
                     <GridItem colSpan={7} rowSpan={2} bg="gray.100">
-                         <DashboardMain />
+                         {children}
                     </GridItem>
                </Grid>
           </Box>

@@ -1,15 +1,8 @@
-import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Button, Flex, Stack, Text } from '@chakra-ui/react';
 
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import {
-     FaWpforms,
-     FaHome,
-     FaUserCircle,
-     FaCalendarAlt,
-     FaImage,
-     FaChalkboardTeacher,
-     FaBook,
-     FaCog,
      FiHome,
      FiUsers,
      FiFileText,
@@ -21,6 +14,8 @@ import {
 } from 'react-icons/fi';
 
 function DashboardSidebar() {
+     const router = useRouter();
+     console.log(router.pathname);
      return (
           <Flex
                direction="column"
@@ -64,18 +59,26 @@ function DashboardSidebar() {
                     fontWeight="500"
                     mb={10}
                >
-                    <Button
-                         width="100%"
-                         fontSize="sm"
-                         borderLeft="blue.800"
-                         as="flex"
-                         colorScheme="teal"
-                         rounded="lg"
-                         justifyContent="flex-start"
-                         leftIcon={<FiHome />}
-                    >
-                         Dashboard
-                    </Button>
+                    <Link href="dashboard" width="100%">
+                         <Button
+                              width="100%"
+                              fontSize="sm"
+                              borderLeft="blue.800"
+                              as="flex"
+                              variant="ghost"
+                              colorScheme="teal"
+                              isActive={
+                                   router.pathname == '/admin/dashboard'
+                                        ? true
+                                        : ''
+                              }
+                              rounded="lg"
+                              justifyContent="flex-start"
+                              leftIcon={<FiHome />}
+                         >
+                              Dashboard
+                         </Button>
+                    </Link>
                </Stack>
 
                <Text color="teal.800" fontSize="sm" pl={2} mb={2} ml={2}>
@@ -90,24 +93,33 @@ function DashboardSidebar() {
                     fontWeight="500"
                     mb={10}
                >
+                    <Link href="users" width="100%">
+                         <Button
+                              colorScheme="teal"
+                              variant="ghost"
+                              isActive={
+                                   router.pathname == '/admin/users' ? true : ''
+                              }
+                              width="100%"
+                              fontSize="sm"
+                              rounded="lg"
+                              as="flex"
+                              justifyContent="flex-start"
+                              leftIcon={<FiUsers />}
+                         >
+                              Users
+                         </Button>
+                    </Link>
+
                     <Button
-                         colorScheme="teal"
-                         variant="ghost"
+                         isActive={
+                              router.pathname == '/admin/forms' ? true : ''
+                         }
                          width="100%"
                          fontSize="sm"
                          rounded="lg"
-                         as="flex"
-                         justifyContent="flex-start"
-                         leftIcon={<FiUsers />}
-                    >
-                         Users
-                    </Button>
-                    <Button
-                         variant="ghost"
-                         width="100%"
-                         fontSize="sm"
-                         rounded="lg"
                          colorScheme="teal"
+                         variant="ghost"
                          as="flex"
                          justifyContent="flex-start"
                          leftIcon={<FiFileText />}
@@ -129,9 +141,12 @@ function DashboardSidebar() {
                     mb={10}
                >
                     <Button
-                         variant="ghost"
+                         isActive={
+                              router.pathname == '/admin/schedule' ? true : ''
+                         }
                          as="flex"
                          colorScheme="teal"
+                         variant="ghost"
                          justifyContent="flex-start"
                          width="100%"
                          fontSize="sm"
@@ -143,6 +158,9 @@ function DashboardSidebar() {
                     <Button
                          colorScheme="teal"
                          variant="ghost"
+                         isActive={
+                              router.pathname == '/admin/images' ? true : ''
+                         }
                          width="100%"
                          fontSize="sm"
                          rounded="lg"
@@ -155,6 +173,9 @@ function DashboardSidebar() {
                     <Button
                          colorScheme="teal"
                          variant="ghost"
+                         isActive={
+                              router.pathname == '/admin/classes' ? true : ''
+                         }
                          width="100%"
                          fontSize="sm"
                          rounded="lg"
@@ -167,6 +188,9 @@ function DashboardSidebar() {
                     <Button
                          colorScheme="teal"
                          variant="ghost"
+                         isActive={
+                              router.pathname == '/admin/courses' ? true : ''
+                         }
                          width="100%"
                          fontSize="sm"
                          rounded="lg"
