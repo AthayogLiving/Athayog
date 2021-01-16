@@ -145,12 +145,11 @@ const index = () => {
                                                        })}
                                                        placeholder="name@athayog.com"
                                                   />
-                                                  <FormErrorMessage>
-                                                       {errors.email &&
-                                                            errors.email
-                                                                 .message}
-                                                  </FormErrorMessage>
                                              </InputGroup>
+                                             <FormErrorMessage>
+                                                  {errors.email &&
+                                                       errors.email.message}
+                                             </FormErrorMessage>
                                         </FormControl>
                                         <FormControl
                                              isRequired={true}
@@ -183,11 +182,11 @@ const index = () => {
                                                                  'Please enter a password.'
                                                        })}
                                                   />
-                                                  <FormErrorMessage>
-                                                       {errors.pass &&
-                                                            errors.pass.message}
-                                                  </FormErrorMessage>
                                              </InputGroup>
+                                             <FormErrorMessage>
+                                                  {errors.pass &&
+                                                       errors.pass.message}
+                                             </FormErrorMessage>
                                         </FormControl>
                                         <Box mt={10}>
                                              <Button
