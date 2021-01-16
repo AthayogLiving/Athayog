@@ -110,22 +110,23 @@ function DashboardSidebar() {
                               Users
                          </Button>
                     </Link>
-
-                    <Button
-                         isActive={
-                              router.pathname == '/admin/forms' ? true : ''
-                         }
-                         width="100%"
-                         fontSize="sm"
-                         rounded="lg"
-                         colorScheme="teal"
-                         variant="ghost"
-                         as="flex"
-                         justifyContent="flex-start"
-                         leftIcon={<FiFileText />}
-                    >
-                         Forms
-                    </Button>
+                    <Link href="forms" width="100%">
+                         <Button
+                              isActive={
+                                   router.pathname == '/admin/forms' ? true : ''
+                              }
+                              width="100%"
+                              fontSize="sm"
+                              rounded="lg"
+                              colorScheme="teal"
+                              variant="ghost"
+                              as="flex"
+                              justifyContent="flex-start"
+                              leftIcon={<FiFileText />}
+                         >
+                              Forms
+                         </Button>
+                    </Link>
                </Stack>
 
                <Text color="teal.800" fontSize="sm" pl={2} mb={2} ml={2}>

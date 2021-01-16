@@ -1,10 +1,9 @@
 import { useAuth } from '@/lib/auth';
-import { useState, useEffect } from 'react';
 import DashboardNavbar from '@/components/admin/DashboardNavbar';
 import { Box, Grid, GridItem } from '@chakra-ui/react';
 import DashboardSidebar from '@/components/admin/DashboardSidebar';
-import DashboardMain from '@/components/admin/DashboardMain';
 import StickyBox from 'react-sticky-box';
+import DashboardMain from '@/components/admin/DashboardMain';
 
 const dashboard = ({ children }) => {
      const { user, signout, loading } = useAuth();
@@ -28,8 +27,8 @@ const dashboard = ({ children }) => {
                               loading={loading}
                          />
                     </GridItem>
-                    <GridItem colSpan={7} rowSpan={2} bg="gray.100">
-                         {children}
+                    <GridItem colSpan={7} rowSpan={2} bg="gray.100" px={8}>
+                         {children ? children : <DashboardMain />}
                     </GridItem>
                </Grid>
           </Box>

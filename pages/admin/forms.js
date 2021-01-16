@@ -1,13 +1,12 @@
-import UsersTable from '@/components/admin/UsersTable';
 import React from 'react';
 import Dashboard from './dashboard';
 
-const users = () => {
+const forms = () => {
      return (
           <Dashboard>
-               <UsersTable />
+               <h1>Forms</h1>
           </Dashboard>
      );
 };
 
-export default users;
+export default forms;
