@@ -14,7 +14,7 @@ import {
 
 function Sidebar() {
      const router = useRouter();
-     console.log(router.pathname);
+
      return (
           <Flex
                direction="column"
@@ -155,21 +155,26 @@ function Sidebar() {
                     >
                          Schedule
                     </Button>
-                    <Button
-                         colorScheme="teal"
-                         variant="ghost"
-                         isActive={
-                              router.pathname == '/admin/images' ? true : ''
-                         }
-                         width="100%"
-                         fontSize="sm"
-                         rounded="lg"
-                         as="flex"
-                         justifyContent="flex-start"
-                         leftIcon={<FiImage />}
-                    >
-                         Images
-                    </Button>
+                    <Link href="images" width="100%">
+                         <Button
+                              colorScheme="teal"
+                              variant="ghost"
+                              isActive={
+                                   router.pathname == '/admin/images'
+                                        ? true
+                                        : ''
+                              }
+                              width="100%"
+                              fontSize="sm"
+                              rounded="lg"
+                              as="flex"
+                              justifyContent="flex-start"
+                              leftIcon={<FiImage />}
+                         >
+                              Images
+                         </Button>
+                    </Link>
+
                     <Button
                          colorScheme="teal"
                          variant="ghost"
