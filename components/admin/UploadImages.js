@@ -3,7 +3,6 @@ import {
      Box,
      Button,
      FormControl,
-     Heading,
      Modal,
      ModalOverlay,
      ModalContent,
@@ -13,10 +12,10 @@ import {
      ModalCloseButton,
      useDisclosure,
      useToast,
-     Text,
      Image,
      Flex
 } from '@chakra-ui/react';
+import { mutate } from 'swr';
 
 import { uploadImageToStorage } from '@/lib/db';
 import { useForm } from 'react-hook-form';
@@ -32,7 +31,7 @@ const UploadImages = () => {
      const onSubmit = async (data, e) => {
           setUploading(true);
           const file = data.image[0];
-          await uploadImageToStorage('hero', file);
+          await uploadImageToStorage('gallery', file);
           setUploading(false);
 
           toast({
@@ -45,6 +44,7 @@ const UploadImages = () => {
 
           e.target.reset();
           setImage('');
+          mutate('/api/images');
      };
 
      const selectedImage = (e) => {
@@ -53,9 +53,10 @@ const UploadImages = () => {
      };
 
      return (
-          <Box padding={6} bg="white" rounded="lg" boxShadow="sm">
-               <Heading size="md">Images</Heading>
-               <Button onClick={onOpen}>Upload Image</Button>
+          <Box mt={5}>
+               <Button size="sm" onClick={onOpen}>
+                    Upload Image
+               </Button>
                <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent as="form" onSubmit={handleSubmit(onSubmit)}>
