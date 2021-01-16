@@ -9,8 +9,6 @@ function UsersTable() {
           return <SkeletonTable />;
      }
 
-     console.log(data);
-
      return (
           <>
                {data.users ? (
