@@ -1,5 +1,12 @@
-import firebase from 'firebase/firebase-storage';
+import { db } from '@/lib/firebase-admin';
 
 export default async (req, res) => {
-     res.status(200).json('hello');
+     const snapshot = await db.collection('images').get();
+     const images = [];
+
+     snapshot.forEach((doc) => {
+          images.push({ id: doc.id, ...doc.data() });
+     });
+
+     res.status(200).json({ images });
 };
