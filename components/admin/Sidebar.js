@@ -1,5 +1,4 @@
 import { Button, Flex, Stack, Text } from '@chakra-ui/react';
-
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
@@ -13,7 +12,7 @@ import {
      FiTriangle
 } from 'react-icons/fi';
 
-function DashboardSidebar() {
+function Sidebar() {
      const router = useRouter();
      console.log(router.pathname);
      return (
@@ -206,4 +205,4 @@ function DashboardSidebar() {
      );
 }
 
-export default DashboardSidebar;
+export default Sidebar;

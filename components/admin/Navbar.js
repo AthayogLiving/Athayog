@@ -10,9 +10,8 @@ import {
      Text,
      Skeleton
 } from '@chakra-ui/react';
-import React from 'react';
 
-function DashboardNavbar({ user, signout, loading }) {
+function Navbar({ user, signout, loading }) {
      const [logout, setLogout] = useState(false);
      const signOutAdmin = (redirect) => {
           setLogout(true);
@@ -73,4 +72,4 @@ function DashboardNavbar({ user, signout, loading }) {
      );
 }
 
-export default DashboardNavbar;
+export default Navbar;

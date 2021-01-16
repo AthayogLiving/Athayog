@@ -1,15 +1,19 @@
 import { useAuth } from '@/lib/auth';
-import DashboardNavbar from '@/components/admin/DashboardNavbar';
+import Navbar from '@/components/admin/Navbar';
 import { Box, Grid, GridItem } from '@chakra-ui/react';
-import DashboardSidebar from '@/components/admin/DashboardSidebar';
+import Sidebar from '@/components/admin/Sidebar';
 import StickyBox from 'react-sticky-box';
-import DashboardMain from '@/components/admin/DashboardMain';
+import Home from '@/components/admin/Home';
+import Head from 'next/head';
 
 const dashboard = ({ children }) => {
      const { user, signout, loading } = useAuth();
 
      return (
           <Box>
+               <Head>
+                    <title>Athayog Dashboard</title>
+               </Head>
                <Grid
                     h="100%"
                     templateRows="auto 1fr"
@@ -17,18 +21,18 @@ const dashboard = ({ children }) => {
                >
                     <GridItem colSpan={1} rowSpan={3}>
                          <StickyBox style={{ height: '100vh' }}>
-                              <DashboardSidebar />
+                              <Sidebar />
                          </StickyBox>
                     </GridItem>
                     <GridItem colSpan={7} rowSpan={1} bg="gray.100">
-                         <DashboardNavbar
+                         <Navbar
                               user={user}
                               signout={signout}
                               loading={loading}
                          />
                     </GridItem>
                     <GridItem colSpan={7} rowSpan={2} bg="gray.100" px={8}>
-                         {children ? children : <DashboardMain />}
+                         {children ? children : <Home />}
                     </GridItem>
                </Grid>
           </Box>
