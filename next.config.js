@@ -1,8 +1,6 @@
 const withImages = require('next-images');
-module.exports = withImages();
-
-module.exports = {
+module.exports = withImages({
      images: {
           domains: ['firebasestorage.googleapis.com']
      }
-};
+});
