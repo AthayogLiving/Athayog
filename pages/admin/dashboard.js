@@ -1,6 +1,13 @@
 import { useAuth } from '@/lib/auth';
 import Navbar from '@/components/admin/Navbar';
-import { Box, Grid, GridItem } from '@chakra-ui/react';
+import {
+     Box,
+     Button,
+     Grid,
+     GridItem,
+     useColorMode,
+     useColorModeValue
+} from '@chakra-ui/react';
 import Sidebar from '@/components/admin/Sidebar';
 import StickyBox from 'react-sticky-box';
 import Home from '@/components/admin/Home';
@@ -8,6 +15,8 @@ import Head from 'next/head';
 
 const dashboard = ({ children }) => {
      const { user, signout, loading } = useAuth();
+     const bg = useColorModeValue('gray.100', 'gray.700');
+     const color = useColorModeValue('gray.100', 'gray.700');
 
      return (
           <Box>
@@ -24,14 +33,14 @@ const dashboard = ({ children }) => {
                               <Sidebar />
                          </StickyBox>
                     </GridItem>
-                    <GridItem colSpan={7} rowSpan={1} bg="gray.100">
+                    <GridItem colSpan={7} rowSpan={1} bg={bg}>
                          <Navbar
                               user={user}
                               signout={signout}
                               loading={loading}
                          />
                     </GridItem>
-                    <GridItem colSpan={7} rowSpan={2} bg="gray.100" px={8}>
+                    <GridItem colSpan={7} rowSpan={2} bg={bg} px={8}>
                          {children ? children : <Home />}
                     </GridItem>
                </Grid>

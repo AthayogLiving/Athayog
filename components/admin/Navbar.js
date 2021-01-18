@@ -8,11 +8,19 @@ import {
      MenuList,
      MenuItem,
      Text,
-     Skeleton
+     Skeleton,
+     useColorMode,
+     Button,
+     useColorModeValue
 } from '@chakra-ui/react';
+import { FiMoon, FiSun } from 'react-icons/fi';
 
 function Navbar({ user, signout, loading }) {
      const [logout, setLogout] = useState(false);
+     const { colorMode, toggleColorMode } = useColorMode();
+     const bg = useColorModeValue('white', 'gray.800');
+     const color = useColorModeValue('white', 'gray.800');
+
      const signOutAdmin = (redirect) => {
           setLogout(true);
           signout(redirect);
@@ -24,7 +32,7 @@ function Navbar({ user, signout, loading }) {
                padding="1rem"
                alignItems="center"
                margin="2rem"
-               bg="#fff"
+               bg={bg}
                boxShadow="sm"
                rounded="lg"
           >
@@ -52,12 +60,14 @@ function Navbar({ user, signout, loading }) {
                          </Text>
                     </Flex>
                </Skeleton>
-               <Box d="flex" alignItems="center" bg="white">
+               <Box d="flex" alignItems="center" bg={bg}>
+                    <Button onClick={toggleColorMode} mr={5} size="sm">
+                         {colorMode === 'light' ? <FiMoon /> : <FiSun />}
+                    </Button>
                     <Menu isLazy={true} closeOnSelect={false}>
                          <MenuButton
                               size="sm"
                               name={user?.name}
-                              bg="teal.800"
                               as={Avatar}
                          ></MenuButton>
                          <MenuList size="sm">

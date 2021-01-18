@@ -1,5 +1,5 @@
 import React from 'react';
-import { chakra, theme as chakraTheme } from '@chakra-ui/react';
+import { chakra, theme as chakraTheme, extendTheme } from '@chakra-ui/react';
 
 const theme = {
      ...chakraTheme,
@@ -31,7 +31,9 @@ const theme = {
                800: '#2c004e',
                900: '#11001e'
           }
-     }
+     },
+     initialColorMode: 'light',
+     useSystemColorMode: false
 };
 
 export default theme;

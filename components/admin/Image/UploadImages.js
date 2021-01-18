@@ -31,7 +31,7 @@ const UploadImages = () => {
      const onSubmit = async (data, e) => {
           setUploading(true);
           const file = data.image[0];
-          await uploadImageToStorage('gallery', file);
+          await uploadImageToStorage('gallery', file, true);
           setUploading(false);
 
           toast({
@@ -60,16 +60,17 @@ const UploadImages = () => {
                <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent as="form" onSubmit={handleSubmit(onSubmit)}>
-                         <ModalHeader>Upload Image</ModalHeader>
+                         <ModalHeader fontSize="md" fontWeight="bold">
+                              Upload Image
+                         </ModalHeader>
                          <ModalCloseButton />
                          <ModalBody>
-                              Select an image to upload.
                               {image ? (
                                    <Image
                                         src={image}
                                         height="400px"
                                         width="400px"
-                                        mt={5}
+                                        mt={2}
                                         rounded="lg"
                                    />
                               ) : (
@@ -79,7 +80,7 @@ const UploadImages = () => {
                                         border="1px"
                                         borderColor="gray.200"
                                         rounded="lg"
-                                        mt={5}
+                                        mt={2}
                                    >
                                         <Flex
                                              justifyContent="center"
@@ -106,6 +107,7 @@ const UploadImages = () => {
                                    colorScheme="teal"
                                    mr={3}
                                    onClick={onClose}
+                                   size="sm"
                               >
                                    Close
                               </Button>
@@ -113,6 +115,7 @@ const UploadImages = () => {
                                    isLoading={uploading}
                                    loadingText="Uploading"
                                    type="submit"
+                                   size="sm"
                               >
                                    Upload
                               </Button>

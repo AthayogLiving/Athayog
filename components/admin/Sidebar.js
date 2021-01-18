@@ -1,4 +1,4 @@
-import { Button, Flex, Stack, Text } from '@chakra-ui/react';
+import { Button, Flex, Stack, Text, useColorModeValue } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
@@ -8,45 +8,46 @@ import {
      FiCalendar,
      FiImage,
      FiMonitor,
-     FiBook,
-     FiTriangle
+     FiBook
 } from 'react-icons/fi';
 
 function Sidebar() {
      const router = useRouter();
+     const bg = useColorModeValue('white', 'gray.800');
+     const color = useColorModeValue('gray.800', 'gray.200');
 
      return (
           <Flex
                direction="column"
                justifyContent="flex-start"
                boxSize="border-box"
-               color="white"
+               color={color}
                alignItems="flex-start"
                px={5}
                py={10}
                h="100%"
-               bg="#fff"
+               bg={bg}
                width="100%"
                position="sticky"
           >
                <Flex
-                    color="teal.800"
+                    color={color}
                     fontSize="lg"
                     fontWeight="500"
-                    bg="white"
+                    bg={bg}
                     cursor="pointer"
                     mb={10}
                     textAlign="center"
                     width="100%"
                     d="flex"
-                    pl={4}
+                    // pl={4}
+                    justifyContent="center"
                     alignItems="center"
                >
-                    <FiTriangle color="teal.800" />
-                    <Text ml={2}>Athayog</Text>
+                    <Text>Athayog</Text>
                </Flex>
 
-               <Text color="teal.800" fontSize="sm" pl={2} mb={2} ml={2}>
+               <Text color={color} fontSize="sm" pl={2} mb={2} ml={2}>
                     Menu
                </Text>
                <Stack
@@ -80,7 +81,7 @@ function Sidebar() {
                     </Link>
                </Stack>
 
-               <Text color="teal.800" fontSize="sm" pl={2} mb={2} ml={2}>
+               <Text color={color} fontSize="sm" pl={2} mb={2} ml={2}>
                     Account
                </Text>
                <Stack
@@ -128,7 +129,7 @@ function Sidebar() {
                     </Link>
                </Stack>
 
-               <Text color="teal.800" fontSize="sm" pl={2} mb={2} ml={2}>
+               <Text color={color} fontSize="sm" pl={2} mb={2} ml={2}>
                     Resources
                </Text>
                <Stack
