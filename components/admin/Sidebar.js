@@ -14,7 +14,7 @@ import {
 function Sidebar() {
      const router = useRouter();
      const bg = useColorModeValue('white', 'gray.800');
-     const color = useColorModeValue('gray.800', 'gray.200');
+     const color = useColorModeValue('black', 'gray.100');
 
      return (
           <Flex
@@ -47,7 +47,14 @@ function Sidebar() {
                     <Text>Athayog</Text>
                </Flex>
 
-               <Text color={color} fontSize="sm" pl={2} mb={2} ml={2}>
+               <Text
+                    color={color}
+                    fontSize="sm"
+                    fontWeight="bold"
+                    pl={2}
+                    mb={2}
+                    ml={2}
+               >
                     Menu
                </Text>
                <Stack
@@ -63,7 +70,6 @@ function Sidebar() {
                          <Button
                               width="100%"
                               fontSize="sm"
-                              borderLeft="blue.800"
                               d="flex"
                               variant="ghost"
                               colorScheme="teal"
@@ -72,16 +78,23 @@ function Sidebar() {
                                         ? true
                                         : ''
                               }
+                              leftIcon={<FiHome />}
                               rounded="lg"
                               justifyContent="flex-start"
-                              leftIcon={<FiHome />}
                          >
                               Dashboard
                          </Button>
                     </Link>
                </Stack>
 
-               <Text color={color} fontSize="sm" pl={2} mb={2} ml={2}>
+               <Text
+                    color={color}
+                    fontWeight="bold"
+                    fontSize="sm"
+                    pl={2}
+                    mb={2}
+                    ml={2}
+               >
                     Account
                </Text>
                <Stack
@@ -129,7 +142,14 @@ function Sidebar() {
                     </Link>
                </Stack>
 
-               <Text color={color} fontSize="sm" pl={2} mb={2} ml={2}>
+               <Text
+                    color={color}
+                    fontWeight="bold"
+                    fontSize="sm"
+                    pl={2}
+                    mb={2}
+                    ml={2}
+               >
                     Resources
                </Text>
                <Stack
