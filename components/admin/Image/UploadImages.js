@@ -13,7 +13,8 @@ import {
      useDisclosure,
      useToast,
      Image,
-     Flex
+     Flex,
+     Select
 } from '@chakra-ui/react';
 import { mutate } from 'swr';
 
@@ -21,17 +22,21 @@ import { uploadImageToStorage } from '@/lib/db';
 import { useForm } from 'react-hook-form';
 import { FiImage } from 'react-icons/fi';
 
-const UploadImages = () => {
+const UploadImages = ({ imageType }) => {
      const toast = useToast();
      const { register, handleSubmit } = useForm();
      const { isOpen, onOpen, onClose } = useDisclosure();
      const [uploading, setUploading] = useState(false);
      const [image, setImage] = useState();
 
+     const Capitalize = (str) => {
+          return str.charAt(0).toUpperCase() + str.slice(1);
+     };
+
      const onSubmit = async (data, e) => {
           setUploading(true);
           const file = data.image[0];
-          await uploadImageToStorage('gallery', file, true);
+          await uploadImageToStorage(imageType, file, true);
           setUploading(false);
 
           toast({
@@ -61,7 +66,8 @@ const UploadImages = () => {
                     <ModalOverlay />
                     <ModalContent as="form" onSubmit={handleSubmit(onSubmit)}>
                          <ModalHeader fontSize="md" fontWeight="bold">
-                              Upload Image
+                              Upload Image To{' '}
+                              {Capitalize(imageType.replace('_', ' '))}
                          </ModalHeader>
                          <ModalCloseButton />
                          <ModalBody>

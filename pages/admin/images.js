@@ -4,38 +4,76 @@ import {
      Box,
      Divider,
      Heading,
-     Select,
-     useColorModeValue
+     useColorModeValue,
+     Tabs,
+     TabList,
+     TabPanels,
+     Tab,
+     TabPanel
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import Dashboard from './dashboard';
 const images = () => {
-     const [imageType, setImageType] = useState('gallery');
+     const imageCategories = [
+          'carousel',
+          'athayog_space',
+          'about_us',
+          'shikshana_pada',
+          'chikitsa',
+          'online',
+          'sessions'
+     ];
+     const [imageType, setImageType] = useState(imageCategories[0]);
      const bg = useColorModeValue('white', 'gray.800');
      const color = useColorModeValue('teal', 'gray.700');
-     const handleChange = (e) => {
-          setImageType(e.target.value);
+
+     const handleTabChange = (value) => {
+          setImageType(imageCategories[value]);
+          console.log(imageType);
+     };
+
+     const Capitalize = (str) => {
+          return str.charAt(0).toUpperCase() + str.slice(1);
      };
      return (
           <Dashboard>
                <Box bg={bg} padding={6} rounded="lg" boxShadow="sm">
-                    <Heading size="md">Images</Heading>
-                    <Select
+                    {/* <Heading size="md">Images</Heading> */}
+                    <Tabs
+                         colorScheme="blue"
                          mt={2}
+                         onChange={handleTabChange}
+                         isLazy={true}
                          size="sm"
-                         variant="outline"
-                         rounded="lg"
-                         width="fit-content"
-                         defaultValue="gallery"
-                         onChange={handleChange}
+                         // border="1px"
+                         // borderColor="gray.100"
+                         // padding={3}
+                         // rounded="lg"
                     >
-                         <option value="gallery">Gallery</option>
-                         <option value="hero">Hero</option>
-                         <option value="space">Space</option>
-                    </Select>
-                    <ImageGrid imageType={imageType} />
+                         <TabList>
+                              {imageCategories.map((category) => {
+                                   return (
+                                        <Tab>
+                                             {Capitalize(
+                                                  category.replace('_', ' ')
+                                             )}
+                                        </Tab>
+                                   );
+                              })}
+                         </TabList>
+                         <TabPanels>
+                              {imageCategories.map((category) => {
+                                   return (
+                                        <TabPanel>
+                                             <ImageGrid imageType={category} />
+                                        </TabPanel>
+                                   );
+                              })}
+                         </TabPanels>
+                    </Tabs>
+
                     <Divider />
-                    <UploadImages />
+                    <UploadImages imageType={imageType} />
                </Box>
           </Dashboard>
      );

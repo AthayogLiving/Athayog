@@ -14,7 +14,9 @@ import {
      Badge,
      Stack,
      Center,
-     Text
+     Text,
+     Spinner,
+     useColorModeValue
 } from '@chakra-ui/react';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
@@ -32,6 +34,8 @@ const ImageGrid = ({ imageType }) => {
      const { data, error } = useSWR(`/api/images/${imageType}`, fetcher, {
           refreshInterval: 500
      });
+
+     const borderColor = useColorModeValue('gray.100', 'gray.700');
 
      const toast = useToast();
      const [isOpen, setIsOpen] = useState(false);
@@ -94,26 +98,28 @@ const ImageGrid = ({ imageType }) => {
 
      if (error)
           return (
-               <Center height="250px">
+               <Center height="350px">
                     <FiFrown />
                     <Text ml={2}> Something Happend Try Again!</Text>
                </Center>
           );
 
      if (!data) {
-          return <Skeleton my={5} height="250px" width="250px"></Skeleton>;
+          return (
+               <Center height="350px">
+                    <Spinner />
+               </Center>
+          );
      }
 
      if (data.images.length <= 0) {
           return (
-               <Center height="250px">
+               <Center height="350px">
                     <FiFrown />
                     <Text ml={2}> No Images Found. Upload one!</Text>
                </Center>
           );
      }
-
-     console.log(data.images);
 
      return (
           <Box>
@@ -127,7 +133,7 @@ const ImageGrid = ({ imageType }) => {
                                         flexDirection="column"
                                         alignItems="stretch"
                                         border="1px"
-                                        borderColor="gray.200"
+                                        borderColor={borderColor}
                                         rounded="lg"
                                         overflow="hidden"
                                         maxW="sm"
