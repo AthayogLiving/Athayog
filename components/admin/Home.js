@@ -8,7 +8,7 @@ function Home() {
      const { data } = useSWR('/api/users', fetcher);
      if (!data) {
           return (
-               <Stack as="flex" direction="row" spacing={5} width="100%">
+               <Stack d="flex" direction="row" spacing={5} width="100%">
                     <Skeleton
                          padding={5}
                          boxShadow="base"
@@ -22,9 +22,15 @@ function Home() {
           );
      }
      return (
-          <Stack as="flex" direction="row" spacing={5} width="100%">
+          <Stack d="flex" direction="row" spacing={5} width="100%">
                {data.users ? (
-                    <Box padding={7} boxShadow="base" bg="white" rounded="lg">
+                    <Box
+                         padding={7}
+                         boxShadow="base"
+                         bg="white"
+                         rounded="lg"
+                         key={data.users.id}
+                    >
                          <Flex alignItems="center" justifyContent="flex-start">
                               <Box bg="blue.100" padding={5} rounded="full">
                                    <FiUsers size="1.2rem" />

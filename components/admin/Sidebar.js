@@ -64,7 +64,7 @@ function Sidebar() {
                               width="100%"
                               fontSize="sm"
                               borderLeft="blue.800"
-                              as="flex"
+                              d="flex"
                               variant="ghost"
                               colorScheme="teal"
                               isActive={
@@ -103,7 +103,7 @@ function Sidebar() {
                               width="100%"
                               fontSize="sm"
                               rounded="lg"
-                              as="flex"
+                              d="flex"
                               justifyContent="flex-start"
                               leftIcon={<FiUsers />}
                          >
@@ -120,7 +120,7 @@ function Sidebar() {
                               rounded="lg"
                               colorScheme="teal"
                               variant="ghost"
-                              as="flex"
+                              d="flex"
                               justifyContent="flex-start"
                               leftIcon={<FiFileText />}
                          >
@@ -145,7 +145,7 @@ function Sidebar() {
                          isActive={
                               router.pathname == '/admin/schedule' ? true : ''
                          }
-                         as="flex"
+                         d="flex"
                          colorScheme="teal"
                          variant="ghost"
                          justifyContent="flex-start"
@@ -168,29 +168,33 @@ function Sidebar() {
                               width="100%"
                               fontSize="sm"
                               rounded="lg"
-                              as="flex"
+                              d="flex"
                               justifyContent="flex-start"
                               leftIcon={<FiImage />}
                          >
                               Images
                          </Button>
                     </Link>
+                    <Link href="classes" width="100%">
+                         <Button
+                              colorScheme="teal"
+                              variant="ghost"
+                              isActive={
+                                   router.pathname == '/admin/classes'
+                                        ? true
+                                        : ''
+                              }
+                              width="100%"
+                              fontSize="sm"
+                              rounded="lg"
+                              d="flex"
+                              justifyContent="flex-start"
+                              leftIcon={<FiMonitor />}
+                         >
+                              Classes
+                         </Button>
+                    </Link>
 
-                    <Button
-                         colorScheme="teal"
-                         variant="ghost"
-                         isActive={
-                              router.pathname == '/admin/classes' ? true : ''
-                         }
-                         width="100%"
-                         fontSize="sm"
-                         rounded="lg"
-                         as="flex"
-                         justifyContent="flex-start"
-                         leftIcon={<FiMonitor />}
-                    >
-                         Classes
-                    </Button>
                     <Button
                          colorScheme="teal"
                          variant="ghost"
@@ -200,7 +204,7 @@ function Sidebar() {
                          width="100%"
                          fontSize="sm"
                          rounded="lg"
-                         as="flex"
+                         d="flex"
                          justifyContent="flex-start"
                          leftIcon={<FiBook />}
                     >

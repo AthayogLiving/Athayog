@@ -36,12 +36,13 @@ function Navbar({ user, signout, loading }) {
                boxShadow="sm"
                rounded="lg"
           >
-               <Skeleton isLoaded={!loading} w="100%" lineHeight={1.2}>
-                    <Flex
-                         direction="column"
-                         justifyContent="flex-end"
-                         width="fit-content"
-                    >
+               <Flex
+                    direction="column"
+                    justifyContent="flex-end"
+                    width="fit-content"
+                    lineHeight={1.2}
+               >
+                    <Skeleton isLoaded={!loading}>
                          <Text
                               fontWeight="400"
                               fontSize="sm"
@@ -49,7 +50,9 @@ function Navbar({ user, signout, loading }) {
                          >
                               Hi Harsimran
                          </Text>
+                    </Skeleton>
 
+                    <Skeleton isLoaded={!loading}>
                          <Text
                               display="inline-block"
                               fontSize="sm"
@@ -58,8 +61,9 @@ function Navbar({ user, signout, loading }) {
                          >
                               {user?.email}
                          </Text>
-                    </Flex>
-               </Skeleton>
+                    </Skeleton>
+               </Flex>
+
                <Box d="flex" alignItems="center" bg={bg}>
                     <Button onClick={toggleColorMode} mr={5} size="sm">
                          {colorMode === 'light' ? <FiMoon /> : <FiSun />}

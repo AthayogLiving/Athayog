@@ -35,7 +35,7 @@ const ImageGrid = ({ imageType }) => {
           refreshInterval: 500
      });
 
-     const borderColor = useColorModeValue('gray.100', 'gray.700');
+     const borderColor = useColorModeValue('gray.200', 'gray.700');
 
      const toast = useToast();
      const [isOpen, setIsOpen] = useState(false);
@@ -140,6 +140,7 @@ const ImageGrid = ({ imageType }) => {
                                    >
                                         <Image
                                              src={image.imageUrl}
+                                             key={image.id}
                                              height="250px"
                                              width="250px"
                                              objectFit="cover"
@@ -198,7 +199,6 @@ const ImageGrid = ({ imageType }) => {
                                                                       ? isActiveLoading.status
                                                                       : false
                                                             }
-                                                            loadingText="Unpublishing"
                                                             leftIcon={
                                                                  <FiCornerRightDown />
                                                             }
@@ -225,7 +225,6 @@ const ImageGrid = ({ imageType }) => {
                                                                       ? isActiveLoading.status
                                                                       : false
                                                             }
-                                                            loadingText="Publishing"
                                                             leftIcon={
                                                                  <FiCornerRightUp />
                                                             }
