@@ -38,17 +38,12 @@ const images = () => {
      return (
           <Dashboard>
                <Box bg={bg} padding={6} rounded="lg" boxShadow="sm">
-                    {/* <Heading size="md">Images</Heading> */}
                     <Tabs
                          colorScheme="blue"
                          mt={2}
                          onChange={handleTabChange}
                          isLazy={true}
                          size="sm"
-                         // border="1px"
-                         // borderColor="gray.100"
-                         // padding={3}
-                         // rounded="lg"
                     >
                          <TabList>
                               {imageCategories.map((category) => {

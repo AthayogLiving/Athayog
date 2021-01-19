@@ -1,7 +1,17 @@
-import { Box, Flex, Image, forwardRef, Text, HStack } from '@chakra-ui/react';
+import {
+     Box,
+     Flex,
+     Image,
+     forwardRef,
+     Text,
+     HStack,
+     Spinner
+} from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { motion, isValidMotionProp, AnimatePresence } from 'framer-motion';
+import useSWR from 'swr';
+import fetcher from '@/utils/fetcher';
 
 const sliderImages = [
      {
@@ -19,10 +29,36 @@ const sliderImages = [
 ];
 
 function Hero() {
-     const [current, setCurrent] = useState(0);
-     const length = sliderImages.length;
+     const { data, error } = useSWR(`/api/images/carousel`, fetcher, {
+          refreshInterval: 500
+     });
 
-     if (!Array.isArray(sliderImages) || sliderImages.length <= 0) {
+     if (error)
+          return (
+               <>
+                    <Text ml={2}> Something Happend Try Again!</Text>
+               </>
+          );
+
+     if (!data) {
+          return (
+               <>
+                    <Spinner />
+               </>
+          );
+     }
+
+     if (data.images.length <= 0) {
+          return (
+               <>
+                    <Text ml={2}> No Images Found. Upload one!</Text>
+               </>
+          );
+     }
+     const [current, setCurrent] = useState(0);
+     const length = data.images.length;
+
+     if (!Array.isArray(data.images) || data.images.length <= 0) {
           return null;
      }
 
@@ -57,27 +93,29 @@ function Hero() {
                     onClick={previousSlide}
                     position="absolute"
                     top="50%"
-                    left="10px"
+                    background="rgba(255,255,255,0.5)"
+                    left="50px"
                     color="black"
+                    rounded="full"
+                    padding={1}
                     zIndex={2}
                >
-                    <IoIosArrowBack size="3rem" cursor="pointer" />
+                    <IoIosArrowBack size="1.2rem" cursor="pointer" />
                </Box>
 
-               {sliderImages.map((slide, index) => {
+               {data.images.map((slide, index) => {
                     return (
                          <>
                               {index === current && (
                                    <AnimatePresence key={index}>
                                         <MotionBox
-                                             initial={{ opacity: 0, y: 0 }}
+                                             initial={{ opacity: 0 }}
                                              animate={{ opacity: 1 }}
                                              exit={{ opacity: 0 }}
-                                             transition={{ duration: 1 }}
-                                             exit={{ opacity: 0 }}
-                                             bgImage={`url(${slide.image})`}
+                                             bgImage={`linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.5)),url(${slide.imageUrl})`}
                                              backgroundPosition="center"
                                              backgroundRepeat="no-repeat"
+                                             backgroundSize="cover"
                                              height="100vh"
                                              width="100%"
                                         ></MotionBox>
@@ -87,17 +125,19 @@ function Hero() {
                     );
                })}
                <HStack position="absolute" bottom={5} zIndex={2}>
-                    {sliderImages.map((slide, index) => {
+                    {data.images.map((slide, index) => {
                          return (
                               <Box
                                    height={4}
                                    width={4}
                                    background={
                                         index === current
-                                             ? 'primaryGreen'
-                                             : 'white'
+                                             ? 'white'
+                                             : 'primaryGray'
                                    }
+                                   onClick={() => setCurrent(index)}
                                    rounded="full"
+                                   cursor="pointer"
                               ></Box>
                          );
                     })}
@@ -105,14 +145,16 @@ function Hero() {
 
                <Box
                     onClick={nextSlide}
-                    size={10}
                     position="absolute"
                     top="50%"
-                    right="10px"
+                    right="50px"
+                    background="rgba(255,255,255,0.5)"
+                    rounded="full"
                     color="black"
+                    padding={1}
                     zIndex={2}
                >
-                    <IoIosArrowForward size="3rem" cursor="pointer" />
+                    <IoIosArrowForward size="1.5rem" cursor="pointer" />
                </Box>
           </Flex>
      );
