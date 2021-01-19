@@ -6,8 +6,10 @@ import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import defaultCarousel from '../../public/defaultCarousel.png';
 
-const Hero = () => {
-     const { data, error } = useSWR(`/api/images/carousel`, fetcher);
+const Hero = ({ images }) => {
+     const { data, error } = useSWR(`/api/images/carousel`, fetcher, {
+          initialData: images
+     });
      const [current, setCurrent] = useState(0);
 
      if (error)
@@ -151,5 +153,10 @@ const Hero = () => {
           </Flex>
      );
 };
+
+export async function getStaticProps() {
+     const posts = await fetcher('/api/images/carousel');
+     return { props: { images } };
+}
 
 export default Hero;
