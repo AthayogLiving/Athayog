@@ -14,8 +14,6 @@ import {
      MenuList,
      Text
 } from '@chakra-ui/react';
-import Image from 'next/image';
-import BrandLogo from 'public/logo.png';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
 const Navbar = () => {
