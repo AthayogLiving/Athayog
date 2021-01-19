@@ -32,7 +32,7 @@ const Navbar = () => {
                bg={scrollY > 100 ? 'rgba(243, 243, 245, 0.9)' : 'primaryWhite'}
                position="fixed"
                transition="ease-in-out"
-               zIndex={10}
+               zIndex={3}
                width="100%"
           >
                <Flex
