@@ -18,7 +18,13 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 
 const Navbar = () => {
      return (
-          <Center boxShadow="md" bg="primaryWhite">
+          <Center
+               boxShadow="md"
+               bg="primaryWhite"
+               position="fixed"
+               zIndex={2}
+               width="100%"
+          >
                <Flex
                     width="80vw"
                     alignItems="center"
