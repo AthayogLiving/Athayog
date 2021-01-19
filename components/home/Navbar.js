@@ -1,28 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
      Avatar,
      Button,
-     ButtonGroup,
      Center,
      Flex,
      Heading,
      HStack,
      Menu,
      MenuButton,
-     MenuDivider,
      MenuItem,
-     MenuList,
-     Text
+     MenuList
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
 const Navbar = () => {
+     const [scrollY, setScrollY] = useState(0);
+     const [scrollBg, setScrollBg] = useState('primaryWhite');
+     //  useEffect(function onFirstMount() {
+     //       function onScroll() {
+     //            setScrollY(window.scrollY);
+     //            if (window.scrollY > 100) {
+     //                 setScrollBg('rgba(243, 243, 245, 0.9)');
+     //            }
+     //       }
+
+     //       window.addEventListener('scroll', onScroll);
+     //  }, []);
      return (
           <Center
                boxShadow="md"
-               bg="primaryWhite"
+               bg={scrollY > 100 ? 'rgba(243, 243, 245, 0.9)' : 'primaryWhite'}
                position="fixed"
-               zIndex={2}
+               transition="ease-in-out"
+               zIndex={10}
                width="100%"
           >
                <Flex
@@ -41,7 +51,7 @@ const Navbar = () => {
                          </Heading>
 
                          <HStack
-                              ml="6rem"
+                              ml="5rem"
                               variant="ghost"
                               spacing="6"
                               size="sm"
@@ -51,21 +61,21 @@ const Navbar = () => {
                               <Button
                                    fontWeight="normal"
                                    fontSize="md"
-                                   bg="primaryWhite"
+                                   bg={scrollBg}
                               >
                                    Home
                               </Button>
                               <Button
                                    fontWeight="normal"
                                    fontSize="md"
-                                   bg="primaryWhite"
+                                   bg={scrollBg}
                               >
                                    Lorem
                               </Button>
                               <Button
                                    fontWeight="normal"
                                    fontSize="md"
-                                   bg="primaryWhite"
+                                   bg={scrollBg}
                               >
                                    Lorem
                               </Button>

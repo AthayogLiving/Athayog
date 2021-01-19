@@ -1,61 +1,53 @@
-import {
-     Box,
-     Flex,
-     Image,
-     forwardRef,
-     Text,
-     HStack,
-     Spinner
-} from '@chakra-ui/react';
+import { Box, Flex, forwardRef, Text, HStack, Spinner } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { motion, isValidMotionProp, AnimatePresence } from 'framer-motion';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
+import defaultCarousel from '../../public/defaultCarousel.png';
 
-const sliderImages = [
-     {
-          image: 'https://via.placeholder.com/1920'
-     },
-     {
-          image: 'https://via.placeholder.com/1921'
-     },
-     {
-          image: 'https://via.placeholder.com/1922'
-     },
-     {
-          image: 'https://via.placeholder.com/1923'
-     }
-];
-
-function Hero() {
-     const { data, error } = useSWR(`/api/images/carousel`, fetcher, {
-          refreshInterval: 500
-     });
+const Hero = () => {
+     const { data, error } = useSWR(`/api/images/carousel`, fetcher);
+     const [current, setCurrent] = useState(0);
 
      if (error)
           return (
-               <>
-                    <Text ml={2}> Something Happend Try Again!</Text>
-               </>
+               <Box
+                    bgImage={`linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.5)),url(${defaultCarousel})`}
+                    backgroundPosition="center"
+                    backgroundRepeat="no-repeat"
+                    backgroundSize="cover"
+                    height="100vh"
+                    width="100%"
+               ></Box>
           );
 
      if (!data) {
           return (
-               <>
-                    <Spinner />
-               </>
+               <Box
+                    bgImage={`linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.5)),url(${defaultCarousel})`}
+                    backgroundPosition="center"
+                    backgroundRepeat="no-repeat"
+                    backgroundSize="cover"
+                    height="100vh"
+                    width="100%"
+               ></Box>
           );
      }
 
      if (data.images.length <= 0) {
           return (
-               <>
-                    <Text ml={2}> No Images Found. Upload one!</Text>
-               </>
+               <Box
+                    bgImage={`linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.5)),url(${defaultCarousel})`}
+                    backgroundPosition="center"
+                    backgroundRepeat="no-repeat"
+                    backgroundSize="cover"
+                    height="100vh"
+                    width="100%"
+               ></Box>
           );
      }
-     const [current, setCurrent] = useState(0);
+
      const length = data.images.length;
 
      if (!Array.isArray(data.images) || data.images.length <= 0) {
@@ -73,7 +65,6 @@ function Hero() {
      const MotionBox = motion.custom(
           forwardRef((props, ref) => {
                const chakraProps = Object.fromEntries(
-                    // do not pass framer props to DOM element
                     Object.entries(props).filter(
                          ([key]) => !isValidMotionProp(key)
                     )
@@ -90,10 +81,10 @@ function Hero() {
                alignItems="center"
           >
                <Box
-                    onClick={previousSlide}
+                    onClick={() => previousSlide()}
                     position="absolute"
                     top="50%"
-                    background="rgba(255,255,255,0.5)"
+                    bg="primaryWhite"
                     left="50px"
                     color="black"
                     rounded="full"
@@ -107,7 +98,7 @@ function Hero() {
                     return (
                          <>
                               {index === current && (
-                                   <AnimatePresence key={index}>
+                                   <AnimatePresence key={slide.id}>
                                         <MotionBox
                                              initial={{ opacity: 0 }}
                                              animate={{ opacity: 1 }}
@@ -130,6 +121,7 @@ function Hero() {
                               <Box
                                    height={4}
                                    width={4}
+                                   key={index}
                                    background={
                                         index === current
                                              ? 'white'
@@ -144,7 +136,7 @@ function Hero() {
                </HStack>
 
                <Box
-                    onClick={nextSlide}
+                    onClick={() => nextSlide()}
                     position="absolute"
                     top="50%"
                     right="50px"
@@ -158,6 +150,6 @@ function Hero() {
                </Box>
           </Flex>
      );
-}
+};
 
 export default Hero;
