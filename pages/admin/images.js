@@ -3,7 +3,6 @@ import UploadImages from '@/components/admin/Image/UploadImages';
 import {
      Box,
      Divider,
-     Heading,
      useColorModeValue,
      Tabs,
      TabList,
@@ -29,7 +28,6 @@ const images = () => {
 
      const handleTabChange = (value) => {
           setImageType(imageCategories[value]);
-          console.log(imageType);
      };
 
      const Capitalize = (str) => {

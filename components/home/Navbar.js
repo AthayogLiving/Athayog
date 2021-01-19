@@ -92,10 +92,18 @@ const Navbar = () => {
                                    Actions
                               </MenuButton>
                               <MenuList bg="aygreen.100">
-                                   <MenuItem>Download</MenuItem>
-                                   <MenuItem>Create a Copy</MenuItem>
-                                   <MenuItem>Mark as Draft</MenuItem>
-                                   <MenuItem>Delete</MenuItem>
+                                   <MenuItem _hover={{ bg: 'aygreen.50' }}>
+                                        Download
+                                   </MenuItem>
+                                   <MenuItem _hover={{ bg: 'aygreen.50' }}>
+                                        Create a Copy
+                                   </MenuItem>
+                                   <MenuItem _hover={{ bg: 'aygreen.50' }}>
+                                        Mark as Draft
+                                   </MenuItem>
+                                   <MenuItem _hover={{ bg: 'aygreen.50' }}>
+                                        Delete
+                                   </MenuItem>
                               </MenuList>
                          </Menu>
                     </Flex>

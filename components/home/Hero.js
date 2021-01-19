@@ -50,9 +50,11 @@ const Hero = ({ images }) => {
           );
      }
 
-     const length = data.images.length;
-
-     if (!Array.isArray(data.images) || data.images.length <= 0) {
+     const carouselImages = data.images.filter((image) => {
+          return image.isActive == true;
+     });
+     const length = carouselImages.length;
+     if (!Array.isArray(carouselImages) || carouselImages.length <= 0) {
           return null;
      }
 
@@ -82,24 +84,26 @@ const Hero = ({ images }) => {
                justifyContent="center"
                alignItems="center"
           >
-               <Box
-                    onClick={() => previousSlide()}
-                    position="absolute"
-                    top="50%"
-                    bg="primaryWhite"
-                    left="50px"
-                    color="black"
-                    rounded="full"
-                    padding={1}
-                    zIndex={2}
-               >
-                    <IoIosArrowBack size="1.2rem" cursor="pointer" />
-               </Box>
+               {carouselImages.length > 1 ? (
+                    <Box
+                         onClick={() => previousSlide()}
+                         position="absolute"
+                         top="50%"
+                         background="rgba(255,255,255,0.5)"
+                         left="50px"
+                         color="black"
+                         rounded="full"
+                         padding={1}
+                         zIndex={2}
+                    >
+                         <IoIosArrowBack size="1.5rem" cursor="pointer" />
+                    </Box>
+               ) : null}
 
-               {data.images.map((slide, index) => {
+               {carouselImages.map((slide, index) => {
                     return (
                          <>
-                              {index === current && (
+                              {index === current && slide.isActive ? (
                                    <AnimatePresence key={slide.id}>
                                         <MotionBox
                                              initial={{ opacity: 0 }}
@@ -113,43 +117,46 @@ const Hero = ({ images }) => {
                                              width="100%"
                                         ></MotionBox>
                                    </AnimatePresence>
-                              )}
+                              ) : null}
                          </>
                     );
                })}
                <HStack position="absolute" bottom={5} zIndex={2}>
-                    {data.images.map((slide, index) => {
-                         return (
-                              <Box
-                                   height={4}
-                                   width={4}
-                                   key={index}
-                                   background={
-                                        index === current
-                                             ? 'white'
-                                             : 'primaryGray'
-                                   }
-                                   onClick={() => setCurrent(index)}
-                                   rounded="full"
-                                   cursor="pointer"
-                              ></Box>
-                         );
-                    })}
+                    {carouselImages.length > 1
+                         ? carouselImages.map((slide, index) => {
+                                return (
+                                     <Box
+                                          height={4}
+                                          width={4}
+                                          key={index}
+                                          background={
+                                               index === current
+                                                    ? 'white'
+                                                    : 'primaryGray'
+                                          }
+                                          onClick={() => setCurrent(index)}
+                                          rounded="full"
+                                          cursor="pointer"
+                                     ></Box>
+                                );
+                           })
+                         : null}
                </HStack>
-
-               <Box
-                    onClick={() => nextSlide()}
-                    position="absolute"
-                    top="50%"
-                    right="50px"
-                    background="rgba(255,255,255,0.5)"
-                    rounded="full"
-                    color="black"
-                    padding={1}
-                    zIndex={2}
-               >
-                    <IoIosArrowForward size="1.5rem" cursor="pointer" />
-               </Box>
+               {carouselImages.length > 1 ? (
+                    <Box
+                         onClick={() => nextSlide()}
+                         position="absolute"
+                         top="50%"
+                         right="50px"
+                         background="rgba(255,255,255,0.5)"
+                         rounded="full"
+                         color="black"
+                         padding={1}
+                         zIndex={2}
+                    >
+                         <IoIosArrowForward size="1.5rem" cursor="pointer" />
+                    </Box>
+               ) : null}
           </Flex>
      );
 };

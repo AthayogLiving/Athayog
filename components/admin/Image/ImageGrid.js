@@ -82,7 +82,6 @@ const ImageGrid = ({ imageType }) => {
 
      const changePublishStatus = async (imageId, status) => {
           setIsActiveLoading({ imageId: imageId, status: true });
-          console.log(isActiveLoading);
           await updateImageStatus(imageId, !status);
           setIsActiveLoading({ imageId: imageId, status: false });
           toast({
