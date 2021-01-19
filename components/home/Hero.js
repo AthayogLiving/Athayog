@@ -5,6 +5,7 @@ import { motion, isValidMotionProp, AnimatePresence } from 'framer-motion';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import defaultCarousel from '../../public/defaultCarousel.png';
+import Image from 'next/image';
 
 const Hero = ({ images }) => {
      const { data, error } = useSWR(`/api/images/carousel`, fetcher, {
@@ -102,23 +103,26 @@ const Hero = ({ images }) => {
 
                {carouselImages.map((slide, index) => {
                     return (
-                         <>
+                         <React.Fragment key={slide.id}>
                               {index === current && slide.isActive ? (
-                                   <AnimatePresence key={slide.id}>
+                                   <AnimatePresence>
                                         <MotionBox
                                              initial={{ opacity: 0 }}
                                              animate={{ opacity: 1 }}
                                              exit={{ opacity: 0 }}
-                                             bgImage={`linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.5)),url(${slide.imageUrl})`}
-                                             backgroundPosition="center"
-                                             backgroundRepeat="no-repeat"
-                                             backgroundSize="cover"
-                                             height="100vh"
-                                             width="100%"
-                                        ></MotionBox>
+                                        >
+                                             <Image
+                                                  layout="fill"
+                                                  objectFit="cover"
+                                                  key={slide.id}
+                                                  className="object-center object-cover pointer-events-none"
+                                                  src={slide.imageUrl}
+                                                  alt={slide.imageName}
+                                             />
+                                        </MotionBox>
                                    </AnimatePresence>
                               ) : null}
-                         </>
+                         </React.Fragment>
                     );
                })}
                <HStack position="absolute" bottom={5} zIndex={2}>
@@ -128,7 +132,7 @@ const Hero = ({ images }) => {
                                      <Box
                                           height={4}
                                           width={4}
-                                          key={index}
+                                          key={slide.id}
                                           background={
                                                index === current
                                                     ? 'white'
