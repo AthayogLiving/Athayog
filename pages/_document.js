@@ -12,8 +12,11 @@ class RootDocument extends Document {
      render() {
           return (
                <Html>
-                    <GoogleFonts href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;700&display=swap" />
-
+                    {/* <GoogleFonts href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;500;600;700&display=swap" /> */}
+                    <link
+                         rel="stylesheet"
+                         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;500;600;700&display=swap"
+                    />
                     <Head />
                     <body>
                          <ColorModeScript

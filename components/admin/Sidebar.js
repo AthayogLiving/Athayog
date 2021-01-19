@@ -40,7 +40,6 @@ function Sidebar() {
                     textAlign="center"
                     width="100%"
                     d="flex"
-                    // pl={4}
                     justifyContent="center"
                     alignItems="center"
                >

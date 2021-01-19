@@ -1,11 +1,5 @@
-import { Link } from '@chakra-ui/react';
+import Navbar from '@/components/home/Navbar';
+
 export default function Home() {
-     return (
-          <>
-               <div>
-                    <h1>Hello Athayog</h1>
-                    <Link href="/admin">Admin</Link>
-               </div>
-          </>
-     );
+     return <Navbar></Navbar>;
 }

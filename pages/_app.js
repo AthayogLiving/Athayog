@@ -1,4 +1,3 @@
-import '@/styles/globals.css';
 import { ChakraProvider, localStorageManager } from '@chakra-ui/react';
 import { AuthProvider } from '@/lib/auth';
 import theme from '@/styles/theme.js';
