@@ -26,8 +26,8 @@ const Enquiry = () => {
                          fontSize="md"
                          rounded="md"
                          mt={10}
-                         px={8}
-                         py={4}
+                         px={10}
+                         py={5}
                     >
                          Enquiry
                     </Button>

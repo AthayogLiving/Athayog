@@ -8,16 +8,16 @@ import Enquiry from '@/components/home/Enquiry';
 import Footer from '@/components/shared/Footer';
 
 export default function Home() {
-     return (
-          <>
-               <Navbar />
-               <Hero />
-               <Offerings />
-               <Gallery />
-               <Schedule />
-               <Faq />
-               <Enquiry />
-               <Footer />
-          </>
-     );
+    return (
+        <>
+            <Navbar />
+            <Hero />
+            <Offerings />
+            <Gallery />
+            <Schedule />
+            <Faq />
+            <Enquiry />
+            <Footer />
+        </>
+    );
 }
