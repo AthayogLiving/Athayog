@@ -5,6 +5,7 @@ const theme = {
      fonts: {
           ...chakraTheme.fonts,
           html: `Josefin Sans`,
+          heading: `Josefin Sans`,
           body: `Josefin Sans,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"`
      },
      fontWeights: {
