@@ -28,6 +28,7 @@ const Faq = ({ faq }) => {
     if (!data) {
         return <Skeleton>Loading..</Skeleton>;
     }
+
     return (
         <Box height="100vh" bg="#f9f9f9">
             <Flex
