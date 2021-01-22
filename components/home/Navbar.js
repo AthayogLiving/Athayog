@@ -46,7 +46,6 @@ const Navbar = () => {
                     width="80vw"
                     alignItems="center"
                     justifyContent="space-between"
-                    // py={4}
                 >
                     <Flex alignItems="center">
                         <Heading
@@ -114,7 +113,7 @@ const Navbar = () => {
                                 bg="primaryWhite"
                                 rightIcon={<ChevronDownIcon />}
                             >
-                                Actions
+                                More
                             </MenuButton>
                             <MenuList bg="aygreen.100">
                                 <MenuItem _hover={{ bg: 'aygreen.50' }}>

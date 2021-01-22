@@ -57,7 +57,7 @@ const Space = () => {
             <Information pageData={pageData} />
             <Classes classes={pageData.classes} />
             <Pricing classes={pageData.classes} />
-            <Register />
+            <Register registerTo={pageData.name.toLocaleLowerCase()} />
         </motion.div>
     );
 };

@@ -2,7 +2,7 @@ import { Box, Button, Flex, Heading } from '@chakra-ui/react';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
-const Register = () => {
+const Register = ({ registerTo }) => {
     return (
         <Box height="sm" bg="white">
             <Flex
@@ -19,7 +19,7 @@ const Register = () => {
                 >
                     Register Now.
                 </Heading>
-                <Link href="register">
+                <Link href={`register/${registerTo}`}>
                     <Button
                         bg="aygreen.100"
                         color="primaryDarkGray"
