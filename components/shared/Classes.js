@@ -1,6 +1,7 @@
 import { Box, Flex, Grid, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
+import { motion } from 'framer-motion';
 
 const Classes = ({ classes }) => {
     return (
@@ -18,7 +19,15 @@ const Classes = ({ classes }) => {
                 alignItems="center"
                 width="80vw"
             >
-                <Heading fontWeight="normal">Classes</Heading>
+                <motion.h1
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    layoutId="title"
+                >
+                    {' '}
+                    <Heading fontWeight="normal">Classes</Heading>
+                </motion.h1>
+
                 <Text fontWeight="light" mt={4}>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Illo nulla quasi commodi quas aperiam voluptatum accusantium

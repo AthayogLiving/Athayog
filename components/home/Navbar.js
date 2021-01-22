@@ -21,21 +21,24 @@ const Navbar = () => {
     const [scrollY, setScrollY] = useState(0);
 
     const [scrollBg, setScrollBg] = useState('primaryWhite');
-    //  useEffect(function onFirstMount() {
-    //       function onScroll() {
-    //            setScrollY(window.scrollY);
-    //            if (window.scrollY > 100) {
-    //                 setScrollBg('rgba(243, 243, 245, 0.9)');
-    //            }
-    //       }
+    useEffect(function onFirstMount() {
+        function onScroll() {
+            setScrollY(window.scrollY);
+            if (window.scrollY > 100) {
+                setScrollBg('rgba(243, 243, 245, 0.9)');
+            }
+        }
 
-    //       window.addEventListener('scroll', onScroll);
-    //  }, []);
+        window.addEventListener('scroll', onScroll);
+    }, []);
     return (
         <>
             <Center
                 boxShadow="md"
-                bg={scrollY > 100 ? 'rgba(243, 243, 245, 0.9)' : 'primaryWhite'}
+                bg={scrollY > 100 ? 'rgb(216 ,216, 216 ,0.8)' : 'primaryWhite'}
+                transition="linear"
+                transform="initial"
+                style={{ backdropFilter: 'blur(5px)' }}
                 position="fixed"
                 transition="ease-in-out"
                 zIndex={3}
@@ -68,7 +71,13 @@ const Navbar = () => {
                                 <Button
                                     fontWeight="normal"
                                     fontSize="md"
-                                    bg={scrollBg}
+                                    bg="transparent"
+                                    variant="ghost"
+                                    _active={{
+                                        bg: 'aygreen.100',
+                                        transform: 'scale(0.98)',
+                                        borderColor: '#bec3c9'
+                                    }}
                                     isActive={
                                         router.pathname == '/' ? true : ''
                                     }
@@ -81,7 +90,13 @@ const Navbar = () => {
                                 <Button
                                     fontWeight="normal"
                                     fontSize="md"
-                                    bg={scrollBg}
+                                    variant="ghost"
+                                    bg="transparent"
+                                    _active={{
+                                        bg: 'aygreen.100',
+                                        transform: 'scale(0.98)',
+                                        borderColor: '#bec3c9'
+                                    }}
                                     isActive={
                                         router.pathname == '/chikitsa'
                                             ? true
@@ -95,7 +110,13 @@ const Navbar = () => {
                                 <Button
                                     fontWeight="normal"
                                     fontSize="md"
-                                    bg={scrollBg}
+                                    bg="transparent"
+                                    _active={{
+                                        bg: 'aygreen.100',
+                                        transform: 'scale(0.98)',
+                                        borderColor: '#bec3c9'
+                                    }}
+                                    variant="ghost"
                                     isActive={
                                         router.pathname == '/space' ? true : ''
                                     }

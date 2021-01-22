@@ -1,8 +1,38 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { Box, Divider, Flex, Heading, Skeleton, Text } from '@chakra-ui/react';
+import {
+    Box,
+    Divider,
+    Flex,
+    Heading,
+    Skeleton,
+    Text,
+    forwardRef
+} from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import { motion, isValidMotionProp } from 'framer-motion';
+
+let easing = [0.175, 0.85, 0.42, 0.96];
+
+const textVariants = {
+    exit: { y: -100, opacity: 0, transition: { duration: 0.5, ease: easing } },
+    enter: {
+        y: 0,
+        opacity: 1,
+        transition: { delay: 0.1, duration: 0.5, ease: easing }
+    }
+};
+
+const MotionBox = motion.custom(
+    forwardRef((props, ref) => {
+        const chakraProps = Object.fromEntries(
+            // do not pass framer props to DOM element
+            Object.entries(props).filter(([key]) => !isValidMotionProp(key))
+        );
+        return <Box ref={ref} {...chakraProps} />;
+    })
+);
 
 const Hero = (props) => {
     const { name, heroImage } = props.pageData;
@@ -24,7 +54,15 @@ const Hero = (props) => {
                 width="100%"
                 zIndex={1}
             ></Box>
-            <Box zIndex={2} position="absolute" bottom="5%">
+            <MotionBox
+                zIndex={2}
+                position="absolute"
+                bottom="5%"
+                variants={textVariants}
+                initial="exit"
+                animate="enter"
+                exit="exit"
+            >
                 <Heading fontSize="5xl" color="white" fontWeight="medium">
                     <Text d="inline-block" mr={4} fontWeight="light">
                         ATHAYOG
@@ -45,7 +83,7 @@ const Hero = (props) => {
                     margin="1rem auto 0 auto"
                     width="100%"
                 />
-            </Box>
+            </MotionBox>
 
             <Image
                 layout="fill"
