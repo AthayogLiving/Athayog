@@ -3,6 +3,9 @@ import { AuthProvider } from '@/lib/auth';
 import theme from '@/styles/theme.js';
 import Navbar from '@/components/home/Navbar';
 import { useRouter } from 'next/router';
+import Footer from '@/components/shared/Footer';
+import { AnimatePresence } from 'framer-motion';
+import '@/styles/globals.css';
 
 function App({ Component, pageProps }) {
     const router = useRouter();
@@ -14,8 +17,10 @@ function App({ Component, pageProps }) {
                 theme={theme}
             >
                 {router.pathname.match('/admin') ? null : <Navbar />}
-
-                <Component {...pageProps} />
+                <AnimatePresence exitBeforeEnter>
+                    <Component {...pageProps} />
+                </AnimatePresence>
+                {router.pathname.match('/admin') ? null : <Footer />}
             </ChakraProvider>
         </AuthProvider>
     );
