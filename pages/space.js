@@ -7,6 +7,7 @@ import athayogSpace from 'public/athayogSpace.jpg';
 import Information from '@/components/shared/Information';
 import Classes from '@/components/shared/Classes';
 import Pricing from '@/components/shared/Pricing';
+import Register from '@/components/shared/Register';
 
 const Space = () => {
     const pageData = {
@@ -56,6 +57,7 @@ const Space = () => {
             <Information pageData={pageData} />
             <Classes classes={pageData.classes} />
             <Pricing classes={pageData.classes} />
+            <Register />
         </motion.div>
     );
 };

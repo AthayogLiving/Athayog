@@ -6,6 +6,7 @@ import athayogChikitsa from 'public/athayogChikitsa.jpeg';
 import Information from '@/components/shared/Information';
 import Classes from '@/components/shared/Classes';
 import Pricing from '@/components/shared/Pricing';
+import Register from '@/components/shared/Register';
 
 const Chikitsa = () => {
     const pageData = {
@@ -55,6 +56,7 @@ const Chikitsa = () => {
             <Information pageData={pageData} />
             <Classes classes={pageData.classes} />
             <Pricing classes={pageData.classes} />
+            <Register />
         </motion.div>
     );
 };
