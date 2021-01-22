@@ -42,7 +42,7 @@ const Register = () => {
                 flexDirection="column"
             >
                 <Heading fontWeight="normal" fontSize="4xl">
-                    Register For {capitalizeFirstLetter(form)}
+                    Register For {form ? capitalizeFirstLetter(form) : ''}
                 </Heading>
                 <Box
                     bg="white"
