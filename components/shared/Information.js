@@ -17,7 +17,6 @@ const Information = (props) => {
     const { name, whatis } = props.pageData;
     return (
         <Flex
-            // height="100vh"
             margin="auto"
             padding="5rem 0"
             justifyContent="center"
