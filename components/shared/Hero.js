@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
-import athayogSpace from 'public/athayogSpace.jpg';
+
 import { Box, Divider, Flex, Heading, Text } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
 const Hero = (props) => {
-    const { name } = props.pageData;
+    const { name, heroImage } = props.pageData;
 
     return (
         <Flex
@@ -49,7 +49,7 @@ const Hero = (props) => {
                 priority={true}
                 key="1"
                 className="object-center object-cover pointer-events-none"
-                src={athayogSpace}
+                src={heroImage}
                 alt="space"
             />
         </Flex>

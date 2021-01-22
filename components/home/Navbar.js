@@ -14,9 +14,12 @@ import {
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
+    const router = useRouter();
     const [scrollY, setScrollY] = useState(0);
+
     const [scrollBg, setScrollBg] = useState('primaryWhite');
     //  useEffect(function onFirstMount() {
     //       function onScroll() {
@@ -67,28 +70,40 @@ const Navbar = () => {
                                     fontWeight="normal"
                                     fontSize="md"
                                     bg={scrollBg}
+                                    isActive={
+                                        router.pathname == '/' ? true : ''
+                                    }
                                 >
                                     Home
                                 </Button>
                             </Link>
 
-                            <Link href="chikitsa">
+                            <Link href="/chikitsa">
                                 <Button
                                     fontWeight="normal"
                                     fontSize="md"
                                     bg={scrollBg}
+                                    isActive={
+                                        router.pathname == '/chikitsa'
+                                            ? true
+                                            : ''
+                                    }
                                 >
-                                    Lorem
+                                    Chikitsa
                                 </Button>
                             </Link>
-
-                            <Button
-                                fontWeight="normal"
-                                fontSize="md"
-                                bg={scrollBg}
-                            >
-                                Lorem
-                            </Button>
+                            <Link href="space">
+                                <Button
+                                    fontWeight="normal"
+                                    fontSize="md"
+                                    bg={scrollBg}
+                                    isActive={
+                                        router.pathname == '/space' ? true : ''
+                                    }
+                                >
+                                    Space
+                                </Button>
+                            </Link>
                         </HStack>
                         <Menu matchWidth={true}>
                             <MenuButton
