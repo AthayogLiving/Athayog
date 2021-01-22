@@ -12,6 +12,7 @@ export default function Home() {
             exit={{ opacity: 0 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            duration="400"
         >
             <Hero />
             <Offerings />

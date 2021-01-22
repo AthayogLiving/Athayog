@@ -134,7 +134,7 @@ const Navbar = () => {
                                 bg="primaryWhite"
                                 rightIcon={<ChevronDownIcon />}
                             >
-                                More
+                                Classes
                             </MenuButton>
                             <MenuList bg="aygreen.100">
                                 <Link href="/shikshana">
@@ -143,17 +143,16 @@ const Navbar = () => {
                                     </MenuItem>
                                 </Link>
 
-                                <Link href="/online">
+                                <Link href="/classes/online" as="online">
                                     <MenuItem _hover={{ bg: 'aygreen.50' }}>
                                         Online
                                     </MenuItem>
                                 </Link>
-                                <MenuItem _hover={{ bg: 'aygreen.50' }}>
-                                    Mark as Draft
-                                </MenuItem>
-                                <MenuItem _hover={{ bg: 'aygreen.50' }}>
-                                    Delete
-                                </MenuItem>
+                                <Link href="/classes/personal" as="personal">
+                                    <MenuItem _hover={{ bg: 'aygreen.50' }}>
+                                        Personal
+                                    </MenuItem>
+                                </Link>
                             </MenuList>
                         </Menu>
                     </Flex>

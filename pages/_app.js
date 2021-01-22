@@ -6,9 +6,11 @@ import { useRouter } from 'next/router';
 import Footer from '@/components/shared/Footer';
 import { AnimatePresence } from 'framer-motion';
 import '@/styles/globals.css';
+import NextNprogress from 'nextjs-progressbar';
 
 function App({ Component, pageProps }) {
     const router = useRouter();
+
     return (
         <AuthProvider>
             <ChakraProvider
@@ -18,6 +20,7 @@ function App({ Component, pageProps }) {
             >
                 {router.pathname.match('/admin') ? null : <Navbar />}
                 <AnimatePresence exitBeforeEnter>
+                    <NextNprogress color="#84986D" height="5px" />
                     <Component {...pageProps} />
                 </AnimatePresence>
                 {router.pathname.match('/admin') ? null : <Footer />}
