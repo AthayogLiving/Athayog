@@ -146,7 +146,6 @@ const Navbar = () => {
                     </Flex>
                 </Flex>
             </Center>
-            <Box height="4.5rem"></Box>
         </>
     );
 };
