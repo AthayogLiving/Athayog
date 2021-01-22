@@ -1,4 +1,12 @@
-import { Box, Flex, forwardRef, Text, HStack, Spinner } from '@chakra-ui/react';
+import {
+    Box,
+    Flex,
+    forwardRef,
+    Text,
+    HStack,
+    Spinner,
+    Skeleton
+} from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { motion, isValidMotionProp, AnimatePresence } from 'framer-motion';
@@ -13,42 +21,14 @@ const Hero = ({ images }) => {
     });
     const [current, setCurrent] = useState(0);
 
-    if (error)
-        return (
-            <Box
-                bgImage={`linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.5)),url(${defaultCarousel})`}
-                backgroundPosition="center"
-                backgroundRepeat="no-repeat"
-                backgroundSize="cover"
-                height="100vh"
-                width="100%"
-            ></Box>
-        );
+    if (error) return <Skeleton height="100vh"></Skeleton>;
 
     if (!data) {
-        return (
-            <Box
-                bgImage={`linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.5)),url(${defaultCarousel})`}
-                backgroundPosition="center"
-                backgroundRepeat="no-repeat"
-                backgroundSize="cover"
-                height="100vh"
-                width="100%"
-            ></Box>
-        );
+        return <Skeleton height="100vh"></Skeleton>;
     }
 
     if (data.images.length <= 0) {
-        return (
-            <Box
-                bgImage={`linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,0.5)),url(${defaultCarousel})`}
-                backgroundPosition="center"
-                backgroundRepeat="no-repeat"
-                backgroundSize="cover"
-                height="100vh"
-                width="100%"
-            ></Box>
-        );
+        return <Skeleton height="100vh"></Skeleton>;
     }
 
     const carouselImages = data.images.filter((image) => {

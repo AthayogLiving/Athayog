@@ -1,10 +1,8 @@
 import { Box, Flex, Grid, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react';
+import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 
 const Classes = ({ classes }) => {
-    const capitalizeFirstLetter = (string) => {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    };
     return (
         <Flex
             margin="auto"

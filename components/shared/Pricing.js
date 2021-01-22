@@ -8,11 +8,9 @@ import {
     SimpleGrid,
     Text
 } from '@chakra-ui/react';
+import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 
 const Pricing = ({ classes }) => {
-    const capitalizeFirstLetter = (string) => {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    };
     return (
         <Flex
             margin="auto"

@@ -1,11 +1,20 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { Box, Divider, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Divider, Flex, Heading, Skeleton, Text } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
 const Hero = (props) => {
     const { name, heroImage } = props.pageData;
+
+    if (!heroImage) {
+        return (
+            <Skeleton height="100vh">
+                <div>contents wrapped</div>
+                <div>won't be visible</div>
+            </Skeleton>
+        );
+    }
 
     return (
         <Flex

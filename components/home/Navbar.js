@@ -116,12 +116,17 @@ const Navbar = () => {
                                 More
                             </MenuButton>
                             <MenuList bg="aygreen.100">
-                                <MenuItem _hover={{ bg: 'aygreen.50' }}>
-                                    Download
-                                </MenuItem>
-                                <MenuItem _hover={{ bg: 'aygreen.50' }}>
-                                    Create a Copy
-                                </MenuItem>
+                                <Link href="/shikshana">
+                                    <MenuItem _hover={{ bg: 'aygreen.50' }}>
+                                        Shikshana
+                                    </MenuItem>
+                                </Link>
+
+                                <Link href="/online">
+                                    <MenuItem _hover={{ bg: 'aygreen.50' }}>
+                                        Online
+                                    </MenuItem>
+                                </Link>
                                 <MenuItem _hover={{ bg: 'aygreen.50' }}>
                                     Mark as Draft
                                 </MenuItem>
