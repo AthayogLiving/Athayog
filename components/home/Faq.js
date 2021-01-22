@@ -29,6 +29,8 @@ const Faq = ({ faq }) => {
         return <Skeleton>Loading..</Skeleton>;
     }
 
+    console.log(data);
+
     return (
         <Box height="100vh" bg="#f9f9f9">
             <Flex
@@ -85,29 +87,23 @@ const Faq = ({ faq }) => {
                                                 borderColor="gray.100"
                                                 rounded="lg"
                                             >
-                                                {faqs.questions.map((quest) => {
-                                                    return (
-                                                        <AccordionItem>
-                                                            <AccordionButton>
-                                                                <Box
-                                                                    flex="1"
-                                                                    textAlign="left"
-                                                                >
-                                                                    {
-                                                                        quest.question
-                                                                    }
-                                                                </Box>
-                                                                <AccordionIcon />
-                                                            </AccordionButton>
-                                                            <AccordionPanel
-                                                                pb={4}
-                                                                bg="aygreen.50"
-                                                            >
-                                                                {quest.answer}
-                                                            </AccordionPanel>
-                                                        </AccordionItem>
-                                                    );
-                                                })}
+                                                <AccordionItem>
+                                                    <AccordionButton>
+                                                        <Box
+                                                            flex="1"
+                                                            textAlign="left"
+                                                        >
+                                                            {faqs.question}
+                                                        </Box>
+                                                        <AccordionIcon />
+                                                    </AccordionButton>
+                                                    <AccordionPanel
+                                                        pb={4}
+                                                        bg="aygreen.50"
+                                                    >
+                                                        {faqs.answer}
+                                                    </AccordionPanel>
+                                                </AccordionItem>
                                             </Accordion>
                                         </TabPanel>
                                     );

@@ -12,6 +12,7 @@ import {
     MenuList
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import Link from 'next/link';
 
 const Navbar = () => {
     const [scrollY, setScrollY] = useState(0);
@@ -59,12 +60,26 @@ const Navbar = () => {
                         color="primaryBlack"
                         mr="1rem"
                     >
-                        <Button fontWeight="normal" fontSize="md" bg={scrollBg}>
-                            Home
-                        </Button>
-                        <Button fontWeight="normal" fontSize="md" bg={scrollBg}>
-                            Lorem
-                        </Button>
+                        <Link href="/">
+                            <Button
+                                fontWeight="normal"
+                                fontSize="md"
+                                bg={scrollBg}
+                            >
+                                Home
+                            </Button>
+                        </Link>
+
+                        <Link href="chikitsa">
+                            <Button
+                                fontWeight="normal"
+                                fontSize="md"
+                                bg={scrollBg}
+                            >
+                                Lorem
+                            </Button>
+                        </Link>
+
                         <Button fontWeight="normal" fontSize="md" bg={scrollBg}>
                             Lorem
                         </Button>
