@@ -8,12 +8,7 @@ const Hero = (props) => {
     const { name, heroImage } = props.pageData;
 
     if (!heroImage) {
-        return (
-            <Skeleton height="100vh">
-                <div>contents wrapped</div>
-                <div>won't be visible</div>
-            </Skeleton>
-        );
+        return <Skeleton height="100vh"></Skeleton>;
     }
 
     return (
@@ -29,7 +24,7 @@ const Hero = (props) => {
                 width="100%"
                 zIndex={1}
             ></Box>
-            <Box zIndex={2} position="absolute" bottom="0%">
+            <Box zIndex={2} position="absolute" bottom="5%">
                 <Heading fontSize="5xl" color="white" fontWeight="medium">
                     <Text d="inline-block" mr={4} fontWeight="light">
                         ATHAYOG
