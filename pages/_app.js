@@ -20,7 +20,7 @@ function App({ Component, pageProps }) {
             >
                 {router.pathname.match('/admin') ? null : <Navbar />}
                 <AnimatePresence exitBeforeEnter>
-                    <NextNprogress color="#84986D" height="5px" />
+                    <NextNprogress color="#84986D" />
                     <Component {...pageProps} />
                 </AnimatePresence>
                 {router.pathname.match('/admin') ? null : <Footer />}

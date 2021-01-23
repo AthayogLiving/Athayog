@@ -18,24 +18,25 @@ import { useRouter } from 'next/router';
 
 const Navbar = () => {
     const router = useRouter();
-    const [scrollY, setScrollY] = useState(0);
+    // const [scrollY, setScrollY] = useState(0);
 
-    const [scrollBg, setScrollBg] = useState('primaryWhite');
-    useEffect(function onFirstMount() {
-        function onScroll() {
-            setScrollY(window.scrollY);
-            if (window.scrollY > 100) {
-                setScrollBg('rgba(243, 243, 245, 0.9)');
-            }
-        }
+    // const [scrollBg, setScrollBg] = useState('primaryWhite');
+    // useEffect(function onFirstMount() {
+    //     function onScroll() {
+    //         setScrollY(window.scrollY);
+    //         if (window.scrollY > 100) {
+    //             setScrollBg('rgba(243, 243, 245, 0.9)');
+    //         }
+    //     }
 
-        window.addEventListener('scroll', onScroll);
-    }, []);
+    //     window.addEventListener('scroll', onScroll);
+    // }, []);
     return (
         <>
             <Center
                 boxShadow="md"
-                bg={scrollY > 100 ? 'rgb(216 ,216, 216 ,0.8)' : 'primaryWhite'}
+                // bg={scrollY > 100 ? 'rgb(216 ,216, 216 ,0.8)' : 'primaryWhite'}
+                bg="primaryWhite"
                 transition="linear"
                 transform="initial"
                 style={{ backdropFilter: 'blur(5px)' }}
@@ -43,7 +44,7 @@ const Navbar = () => {
                 transition="ease-in-out"
                 zIndex={3}
                 width="100%"
-                height="4.5rem"
+                height={{ base: '4rem', md: '4rem', lg: '4rem' }}
             >
                 <Flex
                     width="80vw"
