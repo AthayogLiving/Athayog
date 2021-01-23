@@ -4,12 +4,12 @@ import React from 'react';
 import Dashboard from './dashboard';
 
 const users = () => {
-     return (
-          <Dashboard>
-               <UsersTable />
-               <AddAdminUser />
-          </Dashboard>
-     );
+    return (
+        <Dashboard>
+            {/* <UsersTable /> */}
+            <AddAdminUser />
+        </Dashboard>
+    );
 };
 
 export default users;
