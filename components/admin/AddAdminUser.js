@@ -13,43 +13,54 @@ import {
     FormErrorMessage
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
-import { useAuth } from '@/lib/auth';
 import { mutate } from 'swr';
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function AddAdminUser() {
     const toast = useToast();
-    const { createAdminUserWithEmail } = useAuth();
+    // const { createAdminUserWithEmail } = useAuth();
     const [loading, setLoading] = useState(false);
     const { handleSubmit, register, errors } = useForm();
 
     const onUserCreation = ({ email, password, name }) => {
         setLoading(true);
-        const data = {
-            name: name
-        };
-        createAdminUserWithEmail(email, password, name)
-            .then((response) => {
-                setLoading(false);
-                toast({
-                    title: 'Account created.',
-                    description: "We've created your account for you.",
-                    status: 'success',
-                    duration: 9000,
-                    isClosable: true
-                });
-                mutate('/api/users');
+
+        axios
+            .post('https://localhost:3000/api/admin/user', {
+                email,
+                password,
+                name
             })
-            .catch((error) => {
-                setLoading(false);
-                toast({
-                    title: 'An error occurred.',
-                    description: error.message,
-                    status: 'error',
-                    duration: 5000,
-                    isClosable: true
-                });
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
             });
+
+        // createAdminUserWithEmail(email, password, name)
+        //     .then((response) => {
+        //         setLoading(false);
+        //         toast({
+        //             title: 'Account created.',
+        //             description: "We've created your account for you.",
+        //             status: 'success',
+        //             duration: 9000,
+        //             isClosable: true
+        //         });
+        //         mutate('/api/users');
+        //     })
+        //     .catch((error) => {
+        //         setLoading(false);
+        //         toast({
+        //             title: 'An error occurred.',
+        //             description: error.message,
+        //             status: 'error',
+        //             duration: 5000,
+        //             isClosable: true
+        //         });
+        //     });
     };
     return (
         <Box

@@ -83,23 +83,21 @@ const Hero = ({ images }) => {
                 return (
                     <React.Fragment key={slide.id}>
                         {index === current && slide.isActive ? (
-                            <AnimatePresence>
-                                <MotionBox
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                >
-                                    <Image
-                                        layout="fill"
-                                        objectFit="cover"
-                                        priority={true}
-                                        key={slide.id}
-                                        className="object-center object-cover pointer-events-none"
-                                        src={slide.imageUrl}
-                                        alt={slide.imageName}
-                                    />
-                                </MotionBox>
-                            </AnimatePresence>
+                            <MotionBox
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                            >
+                                <Image
+                                    layout="fill"
+                                    objectFit="cover"
+                                    priority={true}
+                                    key={slide.id}
+                                    className="object-center object-cover pointer-events-none"
+                                    src={slide.imageUrl}
+                                    alt={slide.imageName}
+                                />
+                            </MotionBox>
                         ) : null}
                     </React.Fragment>
                 );

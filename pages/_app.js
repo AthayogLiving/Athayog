@@ -19,7 +19,7 @@ function App({ Component, pageProps }) {
                 theme={theme}
             >
                 {router.pathname.match('/admin') ? null : <Navbar />}
-                <AnimatePresence exitBeforeEnter>
+                <AnimatePresence exitBeforeEnter key="main">
                     <NextNprogress color="#84986D" />
                     <Component {...pageProps} />
                 </AnimatePresence>
