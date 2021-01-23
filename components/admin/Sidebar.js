@@ -202,20 +202,23 @@ function Sidebar() {
                         Classes
                     </Button>
                 </Link>
-
-                <Button
-                    colorScheme="teal"
-                    variant="ghost"
-                    isActive={router.pathname == '/admin/courses' ? true : ''}
-                    width="100%"
-                    fontSize="sm"
-                    rounded="lg"
-                    d="flex"
-                    justifyContent="flex-start"
-                    leftIcon={<FiBook />}
-                >
-                    Courses
-                </Button>
+                <Link href="/admin/courses" width="100%">
+                    <Button
+                        colorScheme="teal"
+                        variant="ghost"
+                        isActive={
+                            router.pathname == '/admin/courses' ? true : ''
+                        }
+                        width="100%"
+                        fontSize="sm"
+                        rounded="lg"
+                        d="flex"
+                        justifyContent="flex-start"
+                        leftIcon={<FiBook />}
+                    >
+                        Courses
+                    </Button>
+                </Link>
 
                 <Link href="/admin/faq" width="100%">
                     <Button

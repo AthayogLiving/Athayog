@@ -87,7 +87,7 @@ const Navbar = () => {
                                 </Button>
                             </Link>
 
-                            <Link href="/chikitsa">
+                            <Link href="/courses/chikitsa" as="chikitsa">
                                 <Button
                                     fontWeight="normal"
                                     fontSize="md"
@@ -107,7 +107,7 @@ const Navbar = () => {
                                     Chikitsa
                                 </Button>
                             </Link>
-                            <Link href="space">
+                            <Link href="/space">
                                 <Button
                                     fontWeight="normal"
                                     fontSize="md"
@@ -138,18 +138,18 @@ const Navbar = () => {
                                 Classes
                             </MenuButton>
                             <MenuList bg="aygreen.100">
-                                <Link href="/shikshana">
+                                <Link href="/courses/shikshana" as="shikshana">
                                     <MenuItem _hover={{ bg: 'aygreen.50' }}>
                                         Shikshana
                                     </MenuItem>
                                 </Link>
 
-                                <Link href="/classes/online" as="online">
+                                <Link href="/courses/online" as="online">
                                     <MenuItem _hover={{ bg: 'aygreen.50' }}>
                                         Online
                                     </MenuItem>
                                 </Link>
-                                <Link href="/classes/personal" as="personal">
+                                <Link href="/courses/personal" as="personal">
                                     <MenuItem _hover={{ bg: 'aygreen.50' }}>
                                         Personal
                                     </MenuItem>

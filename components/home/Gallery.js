@@ -96,7 +96,7 @@ const Gallery = ({ images }) => {
                     </Box>
                     {carouselImages.map((slide, index) => {
                         return (
-                            <React.Fragment>
+                            <React.Fragment key={slide.id}>
                                 {index === 0 ? (
                                     <GridItem
                                         rowSpan={2}
