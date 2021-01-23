@@ -19,7 +19,7 @@ import React, { useState } from 'react';
 
 function AddAdminUser() {
     const toast = useToast();
-    const { createUserWithEmail } = useAuth();
+    const { createAdminUserWithEmail } = useAuth();
     const [loading, setLoading] = useState(false);
     const { handleSubmit, register, errors } = useForm();
 
@@ -28,7 +28,7 @@ function AddAdminUser() {
         const data = {
             name: name
         };
-        createUserWithEmail(email, password, data)
+        createAdminUserWithEmail(email, password, name)
             .then((response) => {
                 setLoading(false);
                 toast({
