@@ -43,8 +43,8 @@ function AddAdminUser() {
                 });
                 reset();
                 const { uid, email, displayName } = response.data;
-                const { lastSignInTime } = response.data.metadata;
-                updateAdmin({ uid, email, displayName, lastSignInTime });
+
+                updateAdmin({ uid, email, displayName });
                 mutate('/api/users');
             })
             .catch(function (error) {
@@ -69,7 +69,8 @@ function AddAdminUser() {
         <Box
             bg="white"
             padding={6}
-            boxShadow="base"
+            border="1px"
+            borderColor="gray.200"
             rounded="lg"
             width="fit-content"
         >
