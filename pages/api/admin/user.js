@@ -25,7 +25,7 @@ export default async function handler(req, res) {
             })
             .then((userRecord) => {
                 // See the UserRecord reference doc for the contents of userRecord.
-                response = userRecord.uid;
+                response = userRecord;
             })
             .catch((error) => {
                 response = error;

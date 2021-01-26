@@ -14,23 +14,23 @@ import {
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { mutate } from 'swr';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { createAdminUser } from '@/lib/db';
 
 function AddAdminUser() {
     const toast = useToast();
-    // const { createAdminUserWithEmail } = useAuth();
     const [loading, setLoading] = useState(false);
-    const { handleSubmit, register, errors } = useForm();
+    const { handleSubmit, register, errors, reset } = useForm();
 
-    const onUserCreation = ({ email, password, name }) => {
+    const onUserCreation = ({ email, password, displayName }) => {
         setLoading(true);
 
         axios
             .post('http://localhost:3000/api/admin/user', {
                 email,
                 password,
-                name
+                displayName
             })
             .then(function (response) {
                 setLoading(false);
@@ -41,11 +41,15 @@ function AddAdminUser() {
                     duration: 9000,
                     isClosable: true
                 });
+                reset();
+                const { uid, email, displayName } = response.data;
+                const { lastSignInTime } = response.data.metadata;
+                updateAdmin({ uid, email, displayName, lastSignInTime });
                 mutate('/api/users');
             })
             .catch(function (error) {
-                console.log(error);
                 setLoading(false);
+
                 toast({
                     title: 'An error occurred.',
                     description: error.message,
@@ -53,8 +57,14 @@ function AddAdminUser() {
                     duration: 5000,
                     isClosable: true
                 });
+                reset();
             });
     };
+
+    const updateAdmin = async (data) => {
+        await createAdminUser(data);
+    };
+
     return (
         <Box
             bg="white"
@@ -80,7 +90,7 @@ function AddAdminUser() {
                     <Input
                         type="text"
                         aria-label="name"
-                        name="name"
+                        name="displayName"
                         bg="white"
                         id="name"
                         placeholder="Your name"
@@ -116,18 +126,6 @@ function AddAdminUser() {
                             required: 'Please enter a password.'
                         })}
                     />
-                </FormControl>
-                <FormControl>
-                    <FormLabel>Access Level</FormLabel>
-                    <CheckboxGroup
-                        colorScheme="green"
-                        defaultValue={['naruto', 'kakashi']}
-                    >
-                        <HStack>
-                            <Checkbox value="read">Read</Checkbox>
-                            <Checkbox value="write">Write</Checkbox>
-                        </HStack>
-                    </CheckboxGroup>
                 </FormControl>
                 <Button type="submit" colorScheme="teal" isLoading={loading}>
                     Create
