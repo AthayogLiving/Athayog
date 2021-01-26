@@ -8,15 +8,18 @@ import {
     TabList,
     TabPanels,
     Tab,
-    TabPanel
+    TabPanel,
+    useColorModeValue
 } from '@chakra-ui/react';
 import React from 'react';
 import Dashboard from './dashboard';
 
 const users = () => {
+    const bg = useColorModeValue('white', 'gray.800');
+    const color = useColorModeValue('white', 'gray.800');
     return (
         <Dashboard>
-            <Tabs bg="white" padding={5} rounded="lg" boxShadow="base">
+            <Tabs bg={bg} padding={5} rounded="lg" boxShadow="base">
                 <TabList>
                     <Tab>Users</Tab>
                     <Tab>Admin Users</Tab>

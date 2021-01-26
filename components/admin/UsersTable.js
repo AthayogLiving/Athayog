@@ -8,7 +8,10 @@ function UsersTable({ userType }) {
     const { user } = useAuth();
     const { data } = useSWR(
         user ? [`/api/${userType}`, user.token] : null,
-        fetcher
+        fetcher,
+        {
+            refreshInterval: 500
+        }
     );
 
     if (!data) {
