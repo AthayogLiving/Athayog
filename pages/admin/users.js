@@ -1,5 +1,5 @@
-import AddAdminUser from '@/components/admin/AddAdminUser';
-import UsersTable from '@/components/admin/UsersTable';
+import AddAdminUser from '@/components/admin/users/AddAdminUser';
+import UsersTable from '@/components/admin/users/UsersTable';
 import {
     Box,
     Flex,

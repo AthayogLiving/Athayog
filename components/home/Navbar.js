@@ -15,22 +15,15 @@ import {
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useAuth } from '@/lib/auth';
 
 const Navbar = () => {
+    const { user, signout, loading } = useAuth();
     const router = useRouter();
-    // const [scrollY, setScrollY] = useState(0);
 
-    // const [scrollBg, setScrollBg] = useState('primaryWhite');
-    // useEffect(function onFirstMount() {
-    //     function onScroll() {
-    //         setScrollY(window.scrollY);
-    //         if (window.scrollY > 100) {
-    //             setScrollBg('rgba(243, 243, 245, 0.9)');
-    //         }
-    //     }
-
-    //     window.addEventListener('scroll', onScroll);
-    // }, []);
+    const signOut = (redirect) => {
+        signout(redirect);
+    };
     return (
         <>
             <Center
@@ -171,18 +164,35 @@ const Navbar = () => {
                         >
                             Free Trial
                         </Button>
-
-                        <Menu>
-                            <MenuButton
-                                as={Avatar}
+                        {user ? (
+                            <Menu>
+                                <MenuButton
+                                    as={Avatar}
+                                    size="sm"
+                                    fontSize="md"
+                                ></MenuButton>
+                                <MenuList fontSize="md" bg="aygreen.100">
+                                    <MenuItem>Account</MenuItem>
+                                    <MenuItem onClick={() => signOut('/')}>
+                                        Logout
+                                    </MenuItem>
+                                </MenuList>
+                            </Menu>
+                        ) : (
+                            <Button
+                                bg="aygray.100"
+                                color="primaryDarkGray"
+                                variant="solid"
                                 size="sm"
                                 fontSize="md"
-                            ></MenuButton>
-                            <MenuList fontSize="md" bg="aygreen.100">
-                                <MenuItem>Account</MenuItem>
-                                <MenuItem>Log out</MenuItem>
-                            </MenuList>
-                        </Menu>
+                                mr={5}
+                                rounded="md"
+                                px={8}
+                                py={4}
+                            >
+                                Sign In
+                            </Button>
+                        )}
                     </Flex>
                 </Flex>
             </Center>

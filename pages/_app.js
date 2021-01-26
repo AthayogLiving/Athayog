@@ -7,6 +7,7 @@ import Footer from '@/components/shared/Footer';
 import { AnimatePresence } from 'framer-motion';
 import '@/styles/globals.css';
 import NextNprogress from 'nextjs-progressbar';
+import { useEffect } from 'react';
 
 function App({ Component, pageProps }) {
     const router = useRouter();
@@ -20,7 +21,7 @@ function App({ Component, pageProps }) {
             >
                 {router.pathname.match('/admin') ? null : <Navbar />}
                 {/* <AnimatePresence exitBeforeEnter key="main"> */}
-                <NextNprogress color="#84986D" />
+                <NextNprogress color="black" />
                 <Component {...pageProps} />
                 {/* </AnimatePresence> */}
                 {router.pathname.match('/admin') ? null : <Footer />}

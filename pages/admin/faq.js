@@ -71,8 +71,6 @@ const faq = () => {
         categoryList.push(category.category);
     });
 
-    console.log(categoryList);
-
     return (
         <Dashboard>
             <Box bg={bg} padding={6} rounded="lg" boxShadow="sm">

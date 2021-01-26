@@ -23,6 +23,7 @@ import { AtSignIcon, UnlockIcon } from '@chakra-ui/icons';
 import Head from 'next/head';
 import BrandLogo from 'public/logo.png';
 import Router from 'next/router';
+import { checkUserType } from '@/lib/db';
 
 const index = () => {
     const toast = useToast();
@@ -38,7 +39,7 @@ const index = () => {
         }
     }, [loginLoad]);
 
-    const onLogin = ({ email, pass }) => {
+    const onLogin = async ({ email, pass }) => {
         setLoading(true);
         signinWithEmail(email, pass, '/admin/dashboard').catch((error) => {
             setLoading(false);

@@ -12,17 +12,30 @@ import Sidebar from '@/components/admin/Sidebar';
 import StickyBox from 'react-sticky-box';
 import Home from '@/components/admin/Home';
 import Head from 'next/head';
+import { Router, useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const dashboard = ({ children }) => {
     const { user, signout, loading } = useAuth();
+    const router = useRouter();
     const bg = useColorModeValue('gray.100', 'gray.700');
     const color = useColorModeValue('gray.100', 'gray.700');
+    // console.log(user);
+
+    if (!user) {
+        return <Box>Loading....</Box>;
+    }
+
+    if (!user?.admin) {
+        router.push('/');
+    }
 
     return (
         <Box>
             <Head>
                 <title>Athayog Dashboard</title>
             </Head>
+            <Box width="100%" bg="teal.600" height="10px"></Box>
             <Grid
                 h="100%"
                 templateRows="auto 1fr"

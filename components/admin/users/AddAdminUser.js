@@ -19,7 +19,8 @@ import {
     ModalHeader,
     ModalFooter,
     ModalBody,
-    ModalCloseButton
+    ModalCloseButton,
+    Select
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { mutate } from 'swr';
@@ -59,7 +60,7 @@ function AddAdminUser() {
                 reset();
                 const { uid, email, displayName } = response.data;
 
-                updateAdmin({ uid, email, displayName });
+                updateAdmin({ uid, email, displayName, access: false });
                 mutate([`/api/admin/users`, user.token]);
             })
             .catch(function (error) {

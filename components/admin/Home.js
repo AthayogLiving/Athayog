@@ -51,13 +51,14 @@ function Home() {
             ) : null}
             {Array(3)
                 .fill()
-                .map((data) => {
+                .map((data, index) => {
                     return (
                         <Box
                             padding={7}
                             boxShadow="base"
                             bg="white"
                             rounded="lg"
+                            key={index}
                             lineHeight={0.8}
                         >
                             <Flex

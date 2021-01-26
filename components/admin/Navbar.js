@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import Link from 'next/link';
 
 function Navbar({ user, signout, loading }) {
     const [logout, setLogout] = useState(false);
@@ -97,7 +98,10 @@ function Navbar({ user, signout, loading }) {
                         Profile
                     </MenuButton>
                     <MenuList size="sm">
-                        <MenuItem>Account</MenuItem>
+                        <Link href="/admin/account">
+                            <MenuItem>Account</MenuItem>
+                        </Link>
+
                         <MenuItem onClick={() => signOutAdmin('/admin')}>
                             Logout
                         </MenuItem>
