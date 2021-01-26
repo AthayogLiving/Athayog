@@ -3,13 +3,18 @@ import fetcher from '@/utils/fetcher';
 import SkeletonTable from '@/components/shared/SkeletonTable';
 import DataTable from '@/components/admin/DataTable';
 import { Box } from '@chakra-ui/react';
+import { useAuth } from '@/lib/auth';
 function UsersTable({ userType }) {
-    const { data } = useSWR(`/api/${userType}`, fetcher);
+    const { user } = useAuth();
+    const { data } = useSWR(
+        user ? [`/api/${userType}`, user.token] : null,
+        fetcher
+    );
 
     if (!data) {
         return <SkeletonTable />;
     }
-    console.log(data);
+
     return (
         <>
             {data.users ? (

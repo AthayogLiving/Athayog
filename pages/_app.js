@@ -19,10 +19,10 @@ function App({ Component, pageProps }) {
                 theme={theme}
             >
                 {router.pathname.match('/admin') ? null : <Navbar />}
-                <AnimatePresence exitBeforeEnter key="main">
-                    <NextNprogress color="#84986D" />
-                    <Component {...pageProps} />
-                </AnimatePresence>
+                {/* <AnimatePresence exitBeforeEnter key="main"> */}
+                <NextNprogress color="#84986D" />
+                <Component {...pageProps} />
+                {/* </AnimatePresence> */}
                 {router.pathname.match('/admin') ? null : <Footer />}
             </ChakraProvider>
         </AuthProvider>

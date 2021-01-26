@@ -1,7 +1,6 @@
-import { auth } from '@/lib/firebase-admin';
 import Cors from 'cors';
 import initMiddleware from '@/lib/cors-middleware';
-import { db } from '@/lib/firebase-admin';
+import { db, auth } from '@/lib/firebase-admin';
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -35,13 +34,20 @@ export default async function handler(req, res) {
                 });
             break;
         case 'GET':
+            const token = req.headers.token;
+            await auth
+                .verifyIdToken(token)
+                .then((decodedToken) => {})
+                .catch((error) => {
+                    res.status(200).json(error);
+                });
+
             const snapshot = await db.collection('adminUsers').get();
             const users = [];
-
             snapshot.forEach((doc) => {
                 users.push({ id: doc.id, ...doc.data() });
+                res.status(200).json({ users });
             });
-            res.status(200).json({ users });
             break;
         default:
             break;

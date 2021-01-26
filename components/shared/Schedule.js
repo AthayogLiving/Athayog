@@ -103,8 +103,6 @@ const tableData = {
     ]
 };
 
-console.log(tableData);
-
 const Schedule = () => {
     return (
         <Flex

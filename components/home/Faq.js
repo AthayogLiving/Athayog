@@ -29,8 +29,6 @@ const Faq = ({ faq }) => {
         return <Skeleton>Loading..</Skeleton>;
     }
 
-    console.log(data);
-
     return (
         <Box height="100vh" bg="#f9f9f9">
             <Flex

@@ -37,7 +37,6 @@ const AddFaq = ({ category }) => {
             ]
         };
         await createFaq(faqData);
-        console.log('done');
     };
 
     return (
