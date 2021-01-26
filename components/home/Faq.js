@@ -117,7 +117,7 @@ const Faq = ({ faq }) => {
 
 export async function getStaticProps() {
     const faq = await fetcher('/api/faq');
-    return { props: { faq } };
+    return { props: { faq }, revalidate: 1 };
 }
 
 export default Faq;

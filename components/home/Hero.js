@@ -144,7 +144,7 @@ const Hero = ({ images }) => {
 
 export async function getStaticProps() {
     const posts = await fetcher('/api/images/carousel');
-    return { props: { images } };
+    return { props: { images }, revalidate: 1 };
 }
 
 export default Hero;
