@@ -15,8 +15,6 @@ const cors = initMiddleware(
 export default async function handler(req, res) {
     // Run cors
     await cors(req, res);
-
-    let response = '';
     switch (req.method) {
         case 'POST':
             await auth
@@ -24,30 +22,32 @@ export default async function handler(req, res) {
                     ...req.body
                 })
                 .then((userRecord) => {
-                    // See the UserRecord reference doc for the contents of userRecord.
-                    response = userRecord;
-                    res.status(200).json(response);
+                    return res.status(200).json(userRecord);
                 })
                 .catch((error) => {
-                    response = error;
-                    res.status(200).json(response);
+                    return res.status(200).json(error);
                 });
             break;
         case 'GET':
             const token = req.headers.token;
-            await auth
-                .verifyIdToken(token)
-                .then((decodedToken) => {})
-                .catch((error) => {
-                    res.status(200).json(error);
-                });
+            if (token) {
+                await auth
+                    .verifyIdToken(token)
+                    .then((decodedToken) => {})
+                    .catch((error) => {
+                        return res.status(200).json(error);
+                    });
 
-            const snapshot = await db.collection('adminUsers').get();
-            const users = [];
-            snapshot.forEach((doc) => {
-                users.push({ id: doc.id, ...doc.data() });
-                res.status(200).json({ users });
-            });
+                const snapshot = await db.collection('adminUsers').get();
+                const users = [];
+                snapshot.forEach((doc) => {
+                    users.push({ id: doc.id, ...doc.data() });
+                });
+                return res.status(200).json({ users });
+            } else {
+                return res.status(401).json({ message: 'Unauthorized Acess' });
+            }
+
             break;
         default:
             break;

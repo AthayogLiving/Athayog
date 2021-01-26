@@ -17,9 +17,11 @@ import { mutate } from 'swr';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { createAdminUser } from '@/lib/db';
+import { useAuth } from '@/lib/auth';
 
 function AddAdminUser() {
     const toast = useToast();
+    const { user } = useAuth();
     const [loading, setLoading] = useState(false);
     const { handleSubmit, register, errors, reset } = useForm();
 
@@ -27,7 +29,7 @@ function AddAdminUser() {
         setLoading(true);
 
         axios
-            .post('http://localhost:3000/api/admin/user', {
+            .post('http://localhost:3000/api/admin/users', {
                 email,
                 password,
                 displayName
@@ -45,7 +47,7 @@ function AddAdminUser() {
                 const { uid, email, displayName } = response.data;
 
                 updateAdmin({ uid, email, displayName });
-                mutate('/api/users');
+                mutate([`/api/users`, user.token]);
             })
             .catch(function (error) {
                 setLoading(false);
