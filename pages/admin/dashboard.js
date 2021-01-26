@@ -3,6 +3,7 @@ import Navbar from '@/components/admin/Navbar';
 import {
     Box,
     Button,
+    Center,
     Grid,
     GridItem,
     useColorMode,
@@ -20,20 +21,20 @@ const dashboard = ({ children }) => {
     const router = useRouter();
     const bg = useColorModeValue('gray.100', 'gray.700');
     const color = useColorModeValue('gray.100', 'gray.700');
-    // console.log(user);
-
-    if (!user) {
-        return <Box>Loading....</Box>;
-    }
-
-    if (!user?.admin) {
-        router.push('/');
-    }
 
     return (
         <Box>
             <Head>
                 <title>Athayog Dashboard</title>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                              if (!document.cookie && !document.cookie.includes('athayog-auth')) {
+                                   window.location.href = "/"
+                              }
+                         `
+                    }}
+                />
             </Head>
             <Box width="100%" bg="teal.600" height="10px"></Box>
             <Grid
