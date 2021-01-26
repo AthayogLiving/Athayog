@@ -27,40 +27,33 @@ function AddAdminUser() {
         setLoading(true);
 
         axios
-            .post('https://localhost:3000/api/admin/user', {
+            .post('http://localhost:3000/api/admin/user', {
                 email,
                 password,
                 name
             })
             .then(function (response) {
-                console.log(response);
+                setLoading(false);
+                toast({
+                    title: 'Account created.',
+                    description: "We've created your account for you.",
+                    status: 'success',
+                    duration: 9000,
+                    isClosable: true
+                });
+                mutate('/api/users');
             })
             .catch(function (error) {
                 console.log(error);
+                setLoading(false);
+                toast({
+                    title: 'An error occurred.',
+                    description: error.message,
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true
+                });
             });
-
-        // createAdminUserWithEmail(email, password, name)
-        //     .then((response) => {
-        //         setLoading(false);
-        //         toast({
-        //             title: 'Account created.',
-        //             description: "We've created your account for you.",
-        //             status: 'success',
-        //             duration: 9000,
-        //             isClosable: true
-        //         });
-        //         mutate('/api/users');
-        //     })
-        //     .catch((error) => {
-        //         setLoading(false);
-        //         toast({
-        //             title: 'An error occurred.',
-        //             description: error.message,
-        //             status: 'error',
-        //             duration: 5000,
-        //             isClosable: true
-        //         });
-        //     });
     };
     return (
         <Box
