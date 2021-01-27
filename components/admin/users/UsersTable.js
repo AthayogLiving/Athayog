@@ -24,6 +24,7 @@ import axios from 'axios';
 import { updateAdminUser } from '@/lib/db/admin-users';
 function UsersTable({ userType }) {
      const [status, changeStatus] = useState(true);
+     const [admin, changeAdmin] = useState(false);
      const toast = useToast();
      const bg = useColorModeValue('white', 'gray.800');
      const color = useColorModeValue('white', 'gray.800');
@@ -36,7 +37,7 @@ function UsersTable({ userType }) {
           }
      );
 
-     const handleAccess = async (id, status, name) => {
+     const handleAdminAccess = async (id, name, admin) => {
           changeStatus(false);
 
           const roleType = {
@@ -48,7 +49,7 @@ function UsersTable({ userType }) {
           await axios({
                method: 'post',
                url: '/api/admin/set-admin',
-               data: { token: user.token, role: 0 }
+               data: { token: user.token, role: 0, admin: !admin }
           })
                .then(function (response) {
                     toast({
@@ -68,60 +69,26 @@ function UsersTable({ userType }) {
                          isClosable: true
                     });
                });
-
-          changeStatus(true);
-     };
-
-     const changeAccess = async (id, status, name, role, admin) => {
-          changeStatus(false);
-
-          const roleType = ['Admin', 'Manager', 'Worker', 'Not Assigned'];
-
-          await axios({
-               method: 'put',
-               url: '/api/admin/set-admin',
-               data: { token: user.token, role: 0, admin: admin }
-          })
-               .then(function (response) {
-                    console.log(response);
-                    toast({
-                         title: 'Made sdf.',
-                         description: `${name} has given admin privileges`,
-                         status: 'success',
-                         duration: 9000,
-                         isClosable: true
-                    });
-               })
-               .catch(function (error) {
-                    toast({
-                         title: 'An error occurred.',
-                         description: 'Email not verified',
-                         status: 'error',
-                         duration: 5000,
-                         isClosable: true
-                    });
-               });
-
+          await updateAdmin(id, true, 0, roleType[0]);
           changeStatus(true);
      };
 
      const updateAdmin = async (userId, admin, role, roleName) => {
-          user = {
+          const user = {
                admin,
                metadata: {
                     role,
                     roleName
                }
           };
-          const response = await updateAdminUser(userId, ...user);
-          console.log('Fone', response);
+
+          console.log(userId, user);
+          updateAdminUser(userId, user);
      };
 
      if (!data) {
           return <SkeletonTable />;
      }
-
-     console.log(userType, data);
 
      return (
           <>
@@ -144,8 +111,12 @@ function UsersTable({ userType }) {
                                         <Tr>
                                              <Th>Name</Th>
                                              <Th>Email</Th>
-                                             <Th>Account Access</Th>
-                                             <Th>Role Type</Th>
+                                             {userType === 'users' ? null : (
+                                                  <>
+                                                       <Th>Account Access</Th>
+                                                       <Th>Role</Th>
+                                                  </>
+                                             )}
                                         </Tr>
                                    </Thead>
                                    <Tbody>
@@ -156,38 +127,39 @@ function UsersTable({ userType }) {
                                                             {user.displayName}
                                                        </Td>
                                                        <Td>{user.email}</Td>
-                                                       <Td>
-                                                            <Switch
-                                                                 id="access"
-                                                                 colorScheme="green"
-                                                                 isDisabled={
-                                                                      !status
-                                                                 }
-                                                                 defaultChecked={
-                                                                      user.admin
-                                                                 }
-                                                                 onChange={(
-                                                                      e
-                                                                 ) =>
-                                                                      handleAccess(
-                                                                           user.id,
-                                                                           user.admin,
-                                                                           user.displayName
-                                                                      )
-                                                                 }
-                                                            />
-                                                       </Td>
-                                                       <Td>
-                                                            <ButtonGroup size="sm">
-                                                                 <Button colorScheme="green">
+                                                       {userType ===
+                                                       'users' ? null : (
+                                                            <>
+                                                                 <Td>
+                                                                      <Switch
+                                                                           id="access"
+                                                                           colorScheme="green"
+                                                                           isDisabled={
+                                                                                !status
+                                                                           }
+                                                                           defaultChecked={
+                                                                                user.admin
+                                                                           }
+                                                                           onChange={(
+                                                                                e
+                                                                           ) =>
+                                                                                handleAdminAccess(
+                                                                                     user.id,
+                                                                                     user.displayName,
+                                                                                     user.admin
+                                                                                )
+                                                                           }
+                                                                      />
+                                                                 </Td>
+                                                                 <Td>
                                                                       {
                                                                            user
                                                                                 .metadata
                                                                                 ?.roleName
                                                                       }
-                                                                 </Button>
-                                                            </ButtonGroup>
-                                                       </Td>
+                                                                 </Td>
+                                                            </>
+                                                       )}
                                                   </Tr>
                                              );
                                         })}

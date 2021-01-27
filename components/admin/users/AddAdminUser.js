@@ -61,7 +61,7 @@ function AddAdminUser() {
                          admin: false,
                          metadata: {
                               role: 4,
-                              roleName: 'role not given'
+                              roleName: 'Role not assigned'
                          }
                     });
                     mutate([`/api/admin/users`, user.token]);
