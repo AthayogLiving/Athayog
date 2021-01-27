@@ -65,7 +65,7 @@ const Register = () => {
                                         <FormLabel>First Name</FormLabel>
                                         <Input
                                              type="email"
-                                             value={user.name}
+                                             value={user?.name}
                                              disabled
                                         />
                                    </FormControl>
@@ -99,7 +99,7 @@ const Register = () => {
                                         <FormLabel>Email</FormLabel>
                                         <Input
                                              type="email"
-                                             value={user.email}
+                                             value={user?.email}
                                              disabled
                                         />
                                    </FormControl>
