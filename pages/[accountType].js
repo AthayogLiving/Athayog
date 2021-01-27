@@ -26,7 +26,11 @@ const Account = () => {
      return (
           <>
                <Head>
-                    <title>{capitalizeFirstLetter(accountType)}</title>
+                    <title>
+                         {accountType
+                              ? capitalizeFirstLetter(accountType)
+                              : 'Account'}
+                    </title>
                     <script
                          dangerouslySetInnerHTML={{
                               __html: `
