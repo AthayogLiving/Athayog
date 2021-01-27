@@ -1,4 +1,4 @@
-import { getImageLinkFromFirebase } from '@/lib/db-admin';
+import { getImageLinkFromFirebase } from '@/lib/db/db-admin';
 
 export default async (req, res) => {
      const imageType = req.query.imageType;

@@ -36,7 +36,7 @@ const dashboard = ({ children }) => {
                     }}
                 />
             </Head>
-            <Box width="100%" bg="teal.600" height="10px"></Box>
+            <Box width="100%" bg="gray.200" height="10px"></Box>
             <Grid
                 h="100%"
                 templateRows="auto 1fr"
