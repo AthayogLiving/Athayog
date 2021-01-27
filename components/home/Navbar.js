@@ -201,7 +201,10 @@ const Navbar = () => {
                                              fontSize="md"
                                              bg="aygreen.100"
                                         >
-                                             <MenuItem>Account</MenuItem>
+                                             <Link href="/account">
+                                                  <MenuItem>Account</MenuItem>
+                                             </Link>
+
                                              <MenuItem
                                                   onClick={() => signOut('/')}
                                              >
