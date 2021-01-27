@@ -1,4 +1,4 @@
-import useSWR from 'swr';
+import useSWR, { mutate } from 'swr';
 import fetcher from '@/utils/fetcher';
 import SkeletonTable from '@/components/shared/SkeletonTable';
 import {
@@ -24,7 +24,7 @@ import axios from 'axios';
 import { updateAdminUser } from '@/lib/db/admin-users';
 function UsersTable({ userType }) {
      const [status, changeStatus] = useState(true);
-     const [admin, changeAdmin] = useState(false);
+     const [adminChange, changeAdmin] = useState(false);
      const toast = useToast();
      const bg = useColorModeValue('white', 'gray.800');
      const color = useColorModeValue('white', 'gray.800');
@@ -33,34 +33,38 @@ function UsersTable({ userType }) {
           user ? [`/api/${userType}`, user.token] : null,
           fetcher,
           {
-               refreshInterval: 500
+               refreshInterval: 100
           }
      );
 
      const handleAdminAccess = async (id, name, admin) => {
           changeStatus(false);
-
+          console.log('Admin', admin);
           const roleType = {
-               0: 'Admin',
-               1: 'Manager',
-               2: 'Worker'
+               0: 'admin',
+               1: 'manager',
+               2: 'worker'
           };
 
           await axios({
                method: 'post',
                url: '/api/admin/set-admin',
-               data: { token: user.token, role: 0, admin: !admin }
+               data: { token: user.token, role: 0, admin: !admin, id: id }
           })
                .then(function (response) {
+                    changeAdmin(true);
                     toast({
-                         title: 'Made Manager.',
-                         description: `${name} has given admin privileges`,
-                         status: 'success',
+                         title: `${admin ? 'Removed' : 'Gave'} Access.`,
+                         description: `${name} has ${
+                              admin ? 'taken away the' : 'given'
+                         } admin privileges`,
+                         status: `${admin ? 'warning' : 'success'}`,
                          duration: 9000,
                          isClosable: true
                     });
                })
                .catch(function (error) {
+                    changeAdmin(false);
                     toast({
                          title: 'An error occurred.',
                          description: 'Email not verified',
@@ -69,21 +73,10 @@ function UsersTable({ userType }) {
                          isClosable: true
                     });
                });
-          await updateAdmin(id, true, 0, roleType[0]);
+
+          mutate([`/api/admin/users`, user.token]);
+
           changeStatus(true);
-     };
-
-     const updateAdmin = async (userId, admin, role, roleName) => {
-          const user = {
-               admin,
-               metadata: {
-                    role,
-                    roleName
-               }
-          };
-
-          console.log(userId, user);
-          updateAdminUser(userId, user);
      };
 
      if (!data) {

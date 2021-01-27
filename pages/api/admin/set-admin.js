@@ -1,6 +1,7 @@
 import Cors from 'cors';
 import initMiddleware from '@/lib/cors-middleware';
 import { auth } from '@/lib/firebase-admin';
+import { updateAdminUser } from '@/lib/db/admin-users';
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -19,6 +20,7 @@ export default async function handler(req, res) {
      const token = req.body.token;
      const role = req.body.role;
      const admin = req.body.admin;
+     const id = req.body.id;
      if (req.method === 'POST') {
           auth.verifyIdToken(token).then((claims) => {
                if (
@@ -33,6 +35,14 @@ export default async function handler(req, res) {
                          role: role
                     }).then(function (user) {
                          // Tell client to refresh token on user.
+                         const data = {
+                              admin,
+                              metadata: {
+                                   role,
+                                   roleName: 'admin'
+                              }
+                         };
+                         updateAdminUser(id, data);
                          return res.status(200).json({
                               message: 'Successfully given admin privilages'
                          });
