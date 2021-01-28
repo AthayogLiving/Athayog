@@ -21,7 +21,7 @@ import {
 } from '@chakra-ui/react';
 import { AtSignIcon, UnlockIcon } from '@chakra-ui/icons';
 import Head from 'next/head';
-import BrandLogo from 'public/favicon/logo.png';
+import BrandLogo from 'public/favicons/logo.png';
 import Router from 'next/router';
 // import { checkUserType } from '@/lib/db';
 
