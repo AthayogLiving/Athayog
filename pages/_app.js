@@ -8,26 +8,29 @@ import { AnimatePresence } from 'framer-motion';
 import '@/styles/globals.css';
 import NextNprogress from 'nextjs-progressbar';
 import { useEffect } from 'react';
+import SEO from '../next-seo.config';
+import { DefaultSeo } from 'next-seo';
 
 function App({ Component, pageProps }) {
-    const router = useRouter();
+     const router = useRouter();
 
-    return (
-        <AuthProvider>
-            <ChakraProvider
-                resetCSS={true}
-                colorModeManager={localStorageManager}
-                theme={theme}
-            >
-                {router.pathname.match('/admin') ? null : <Navbar />}
-                {/* <AnimatePresence exitBeforeEnter key="main"> */}
-                <NextNprogress color="black" />
-                <Component {...pageProps} />
-                {/* </AnimatePresence> */}
-                {router.pathname.match('/admin') ? null : <Footer />}
-            </ChakraProvider>
-        </AuthProvider>
-    );
+     return (
+          <AuthProvider>
+               <ChakraProvider
+                    resetCSS={true}
+                    colorModeManager={localStorageManager}
+                    theme={theme}
+               >
+                    <DefaultSeo {...SEO} />
+                    {router.pathname.match('/admin') ? null : <Navbar />}
+                    {/* <AnimatePresence exitBeforeEnter key="main"> */}
+                    <NextNprogress color="black" />
+                    <Component {...pageProps} />
+                    {/* </AnimatePresence> */}
+                    {router.pathname.match('/admin') ? null : <Footer />}
+               </ChakraProvider>
+          </AuthProvider>
+     );
 }
 
 export default App;
