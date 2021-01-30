@@ -20,6 +20,7 @@ import { useRouter } from 'next/router';
 import { useAuth } from '@/lib/auth';
 import { FiFacebook } from 'react-icons/fi';
 import { AiOutlineUser } from 'react-icons/ai';
+import { MotionButton } from '../shared/MotionElements';
 
 const Navbar = () => {
      const { user, signout, loading } = useAuth();
@@ -69,16 +70,23 @@ const Navbar = () => {
                                    mr="1rem"
                               >
                                    <Link href="/">
-                                        <Button
+                                        <MotionButton
                                              fontWeight="normal"
                                              fontSize="md"
                                              bg="transparent"
                                              variant="ghost"
+                                             _hover={{
+                                                  bg: 'aygreen.100'
+                                             }}
                                              _active={{
                                                   bg: 'aygreen.100',
-                                                  transform: 'scale(0.98)',
+
                                                   borderColor: '#bec3c9'
                                              }}
+                                             whileHover={{
+                                                  transition: { duration: 1 }
+                                             }}
+                                             whileTap={{ scale: 0.9 }}
                                              isActive={
                                                   router.pathname == '/'
                                                        ? true
@@ -86,7 +94,7 @@ const Navbar = () => {
                                              }
                                         >
                                              Home
-                                        </Button>
+                                        </MotionButton>
                                    </Link>
 
                                    <Link href="/about" as="about">
@@ -180,28 +188,31 @@ const Navbar = () => {
                                    variant="ghost"
                                    spacing="6"
                                    size="sm"
+                                   ml={2}
                                    color="primaryBlack"
                                    mr="1rem"
                               >
                                    <Link href="/contact">
-                                        <Button
+                                        <MotionButton
                                              fontWeight="normal"
                                              fontSize="md"
                                              bg="transparent"
                                              variant="ghost"
+                                             _hover={{
+                                                  bg: 'aygreen.100'
+                                             }}
                                              _active={{
                                                   bg: 'aygreen.100',
-                                                  transform: 'scale(0.98)',
+
                                                   borderColor: '#bec3c9'
                                              }}
-                                             isActive={
-                                                  router.pathname == '/contact'
-                                                       ? true
-                                                       : ''
-                                             }
+                                             whileHover={{
+                                                  transition: { duration: 1 }
+                                             }}
+                                             whileTap={{ scale: 0.9 }}
                                         >
                                              Contact
-                                        </Button>
+                                        </MotionButton>
                                    </Link>
 
                                    <Link href="/about" as="about">

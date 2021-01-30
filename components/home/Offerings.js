@@ -6,6 +6,11 @@ import { offeringsData } from '@/components/home/ContentData';
 import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
 import { MotionBox } from '../shared/MotionElements';
+import athayogChikitsa from 'public/athayogChikitsa.jpeg';
+import athayogPersonal from 'public/athayogPersonal.jpg';
+import athayogShikshana from 'public/athayogShikshana.jpg';
+import athayogSpace from 'public/athayogSpace.jpg';
+import athayogOnline from 'public/athayogOnline.jpg';
 
 const Offerings = () => {
      return (
@@ -32,11 +37,7 @@ const Offerings = () => {
                     >
                          {offeringsData.offering.map((offer, index) => {
                               return (
-                                   <Link
-                                        href={offer.link}
-                                        as={offer.linkAs}
-                                        key={uuidv4()}
-                                   >
+                                   <Link href={offer.link} key={uuidv4()}>
                                         <Flex
                                              direction="column"
                                              justifyContent="center"
@@ -57,7 +58,7 @@ const Offerings = () => {
                                                   whileTap={{ scale: 0.9 }}
                                              >
                                                   <Image
-                                                       src={defaultCarousel}
+                                                       src={athayogSpace}
                                                        layout="responsive"
                                                        objectFit="cover"
                                                        height="200px"
@@ -75,6 +76,7 @@ const Offerings = () => {
                                                   mt={5}
                                                   px="5"
                                                   color="primaryDarkGray"
+                                                  textAlign="center"
                                              >
                                                   {offer.information}
                                              </Text>
