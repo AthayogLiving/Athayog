@@ -49,13 +49,16 @@ const Navbar = () => {
                          justifyContent="space-between"
                     >
                          <Flex alignItems="center">
-                              <Heading
-                                   color="primaryGreen"
-                                   fontSize="2xl"
-                                   fontWeight="normal"
-                              >
-                                   Atha Yog
-                              </Heading>
+                              <Link href="/">
+                                   <Heading
+                                        color="primaryGreen"
+                                        fontSize="2xl"
+                                        fontWeight="normal"
+                                        cursor="pointer"
+                                   >
+                                        Atha Yog
+                                   </Heading>
+                              </Link>
 
                               <HStack
                                    ml="5rem"
@@ -86,7 +89,7 @@ const Navbar = () => {
                                         </Button>
                                    </Link>
 
-                                   <Link href="/courses/chikitsa" as="chikitsa">
+                                   <Link href="/about" as="about">
                                         <Button
                                              fontWeight="normal"
                                              fontSize="md"
@@ -98,32 +101,12 @@ const Navbar = () => {
                                                   borderColor: '#bec3c9'
                                              }}
                                              isActive={
-                                                  router.pathname == '/chikitsa'
+                                                  router.pathname == '/about'
                                                        ? true
                                                        : ''
                                              }
                                         >
-                                             Chikitsa
-                                        </Button>
-                                   </Link>
-                                   <Link href="/space">
-                                        <Button
-                                             fontWeight="normal"
-                                             fontSize="md"
-                                             bg="transparent"
-                                             _active={{
-                                                  bg: 'aygreen.100',
-                                                  transform: 'scale(0.98)',
-                                                  borderColor: '#bec3c9'
-                                             }}
-                                             variant="ghost"
-                                             isActive={
-                                                  router.pathname == '/space'
-                                                       ? true
-                                                       : ''
-                                             }
-                                        >
-                                             Space
+                                             About
                                         </Button>
                                    </Link>
                               </HStack>
@@ -136,42 +119,112 @@ const Navbar = () => {
                                         bg="primaryWhite"
                                         rightIcon={<ChevronDownIcon />}
                                    >
-                                        Classes
+                                        Offerings
                                    </MenuButton>
                                    <MenuList bg="aygreen.100">
                                         <Link
-                                             href="/courses/shikshana"
+                                             href="/offerings/space"
+                                             as="space"
+                                        >
+                                             <MenuItem
+                                                  _hover={{ bg: 'aygreen.50' }}
+                                             >
+                                                  AthaYog Space
+                                             </MenuItem>
+                                        </Link>
+
+                                        <Link
+                                             href="/offerings/shikshana"
                                              as="shikshana"
                                         >
                                              <MenuItem
                                                   _hover={{ bg: 'aygreen.50' }}
                                              >
-                                                  Shikshana
+                                                  AthaYog Shikshana Pada
                                              </MenuItem>
                                         </Link>
-
                                         <Link
-                                             href="/courses/online"
+                                             href="/offerings/online"
                                              as="online"
                                         >
                                              <MenuItem
                                                   _hover={{ bg: 'aygreen.50' }}
                                              >
-                                                  Online
+                                                  AthaYog Online
                                              </MenuItem>
                                         </Link>
                                         <Link
-                                             href="/courses/personal"
+                                             href="/offerings/personal"
                                              as="personal"
                                         >
                                              <MenuItem
                                                   _hover={{ bg: 'aygreen.50' }}
                                              >
-                                                  Personal
+                                                  AthaYog Personal
+                                             </MenuItem>
+                                        </Link>
+                                        <Link
+                                             href="/offerings/workshops"
+                                             as="workshops"
+                                        >
+                                             <MenuItem
+                                                  _hover={{ bg: 'aygreen.50' }}
+                                             >
+                                                  AthaYog Workshops
                                              </MenuItem>
                                         </Link>
                                    </MenuList>
                               </Menu>
+
+                              <HStack
+                                   variant="ghost"
+                                   spacing="6"
+                                   size="sm"
+                                   color="primaryBlack"
+                                   mr="1rem"
+                              >
+                                   <Link href="/contact">
+                                        <Button
+                                             fontWeight="normal"
+                                             fontSize="md"
+                                             bg="transparent"
+                                             variant="ghost"
+                                             _active={{
+                                                  bg: 'aygreen.100',
+                                                  transform: 'scale(0.98)',
+                                                  borderColor: '#bec3c9'
+                                             }}
+                                             isActive={
+                                                  router.pathname == '/contact'
+                                                       ? true
+                                                       : ''
+                                             }
+                                        >
+                                             Contact
+                                        </Button>
+                                   </Link>
+
+                                   <Link href="/about" as="about">
+                                        <Button
+                                             fontWeight="normal"
+                                             fontSize="md"
+                                             variant="ghost"
+                                             bg="transparent"
+                                             _active={{
+                                                  bg: 'aygreen.100',
+                                                  transform: 'scale(0.98)',
+                                                  borderColor: '#bec3c9'
+                                             }}
+                                             isActive={
+                                                  router.pathname == '/about'
+                                                       ? true
+                                                       : ''
+                                             }
+                                        >
+                                             Enquire
+                                        </Button>
+                                   </Link>
+                              </HStack>
                          </Flex>
                          <Flex>
                               <Button

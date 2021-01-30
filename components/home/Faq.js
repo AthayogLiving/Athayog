@@ -35,15 +35,23 @@ const Faq = () => {
                               mt={10}
                               width="50vw"
                               bg="white"
-                              padding={5}
+                              padding={10}
                               rounded="lg"
                               boxShadow="base"
                          >
-                              <Accordion width="100%">
+                              <Accordion
+                                   width="100%"
+                                   border="1px"
+                                   borderColor="gray.100"
+                              >
                                    {faq.map((data) => {
                                         return (
                                              <AccordionItem>
-                                                  <AccordionButton>
+                                                  <AccordionButton
+                                                       _expanded={{
+                                                            bg: 'aygreen.100'
+                                                       }}
+                                                  >
                                                        <Box
                                                             flex="1"
                                                             textAlign="left"
@@ -52,7 +60,10 @@ const Faq = () => {
                                                        </Box>
                                                        <AccordionIcon />
                                                   </AccordionButton>
-                                                  <AccordionPanel pb={4}>
+                                                  <AccordionPanel
+                                                       pb={4}
+                                                       bg="aygreen.50"
+                                                  >
                                                        {data.answer}
                                                   </AccordionPanel>
                                              </AccordionItem>

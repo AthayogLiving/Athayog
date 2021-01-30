@@ -4,82 +4,71 @@ import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import { motion } from 'framer-motion';
 
 const Classes = ({ classes }) => {
-    return (
-        <Flex
-            margin="auto"
-            padding="5rem 0"
-            justifyContent="center"
-            alignItems="center"
-            width="100vw"
-            bg="white"
-        >
-            <Flex
-                justifyContent="center"
-                direction="column"
-                alignItems="center"
-                width="80vw"
-            >
-                <motion.h1
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    layoutId="title"
-                >
-                    {' '}
-                    <Heading fontWeight="normal">Classes</Heading>
-                </motion.h1>
+     return (
+          <Flex
+               margin="auto"
+               padding="5rem 0"
+               justifyContent="center"
+               alignItems="center"
+               width="100vw"
+               bg="white"
+          >
+               <Flex
+                    justifyContent="center"
+                    direction="column"
+                    alignItems="center"
+                    width="80vw"
+               >
+                    <motion.h1
+                         initial={{ scale: 0.8, opacity: 0 }}
+                         animate={{ scale: 1, opacity: 1 }}
+                         layoutId="title"
+                    >
+                         <Heading fontWeight="normal">Classes</Heading>
+                    </motion.h1>
 
-                <Text fontWeight="light" mt={4}>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Illo nulla quasi commodi quas aperiam voluptatum accusantium
-                    repellendus repudiandae ex numquam odio officiis, tenetur in
-                    magnam iure, ipsum modi labore neque. Ullam, tempora
-                    consequuntur repellat dolor sit sint dolorem, eos ex eum id
-                    minima nemo saepe veritatis consectetur magni. Voluptatum
-                    necessitatibus magnam nisi rerum aperiam sequi pariatur
-                    natus? Ducimus, explicabo velit! Nam illo dicta
-                    reprehenderit, aliquid exercitationem cumque quasi vitae
-                    placeat nisi perspiciatis? Qui iusto tempora eum ipsa saepe
-                    fuga provident ducimus incidunt sunt facilis? Recusandae
-                    odio facilis error quibusdam veritatis?
-                </Text>
-
-                <SimpleGrid
-                    minChildWidth="400px"
-                    spacing="20px"
-                    width="100%"
-                    mt={10}
-                >
-                    {classes.map((data, index) => {
-                        return (
-                            <Box
-                                bg={
-                                    index % 2 == 0
-                                        ? 'aygreen.100'
-                                        : 'aygreen.200'
-                                }
-                                height="auto"
-                                rounded="lg"
-                                padding={10}
-                                textAlign="center"
-                                key={index}
-                            >
-                                <Heading fontSize="3xl" fontWeight="normal">
-                                    {capitalizeFirstLetter(data.className)}
-                                </Heading>
-                                <Text
-                                    mt={5}
-                                    fontWeight="light"
-                                    textAlign="justify"
-                                >
-                                    {data.classInfo}
-                                </Text>
-                            </Box>
-                        );
-                    })}
-                </SimpleGrid>
-            </Flex>
-        </Flex>
-    );
+                    <SimpleGrid
+                         minChildWidth="400px"
+                         spacing="20px"
+                         width="100%"
+                         mt={10}
+                    >
+                         {classes.map((data, index) => {
+                              return (
+                                   <Box
+                                        bg={
+                                             index % 2 == 0
+                                                  ? 'aygreen.100'
+                                                  : 'aygreen.200'
+                                        }
+                                        height="auto"
+                                        rounded="lg"
+                                        padding={10}
+                                        textAlign="center"
+                                        key={index}
+                                   >
+                                        <Heading
+                                             fontSize="3xl"
+                                             fontWeight="normal"
+                                        >
+                                             {capitalizeFirstLetter(
+                                                  data.className
+                                             )}
+                                        </Heading>
+                                        <Text
+                                             mt={5}
+                                             fontWeight="light"
+                                             textAlign="justify"
+                                        >
+                                             {data.classInfo}
+                                        </Text>
+                                   </Box>
+                              );
+                         })}
+                    </SimpleGrid>
+               </Flex>
+          </Flex>
+     );
 };
 
 export default Classes;
