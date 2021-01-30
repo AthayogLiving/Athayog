@@ -5,6 +5,7 @@ import defaultCarousel from '../../public/defaultCarousel.png';
 import { offeringsData } from '@/components/home/ContentData';
 import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
+import { MotionBox } from '../shared/MotionElements';
 
 const Offerings = () => {
      return (
@@ -43,13 +44,17 @@ const Offerings = () => {
                                              width="sm"
                                              cursor="pointer"
                                         >
-                                             <Box
+                                             <MotionBox
                                                   rounded="full"
                                                   height="200px"
                                                   width="200px"
                                                   overflow="hidden"
                                                   border="5px dotted"
                                                   borderColor="primaryGreen"
+                                                  whileHover={{
+                                                       scale: 1.1
+                                                  }}
+                                                  whileTap={{ scale: 0.9 }}
                                              >
                                                   <Image
                                                        src={defaultCarousel}
@@ -58,7 +63,7 @@ const Offerings = () => {
                                                        height="200px"
                                                        width="200px"
                                                   />
-                                             </Box>
+                                             </MotionBox>
                                              <Text
                                                   mt={10}
                                                   fontSize="lg"
