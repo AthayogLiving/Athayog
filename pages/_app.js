@@ -10,6 +10,7 @@ import NextNprogress from 'nextjs-progressbar';
 import { useEffect } from 'react';
 import SEO from '../next-seo.config';
 import { DefaultSeo } from 'next-seo';
+import { v4 as uuidv4 } from 'uuid';
 
 function App({ Component, pageProps }) {
      const router = useRouter();
@@ -22,11 +23,11 @@ function App({ Component, pageProps }) {
                     theme={theme}
                >
                     <DefaultSeo {...SEO} />
-                    {router.pathname.match('/admin') ? null : <Navbar />}
-                    {/* <AnimatePresence exitBeforeEnter key="main"> */}
                     <NextNprogress color="green" />
-                    <Component {...pageProps} />
-                    {/* </AnimatePresence> */}
+                    {router.pathname.match('/admin') ? null : <Navbar />}
+                    <AnimatePresence exitBeforeEnter key={uuidv4()}>
+                         <Component {...pageProps} />
+                    </AnimatePresence>
                     {router.pathname.match('/admin') ? null : <Footer />}
                </ChakraProvider>
           </AuthProvider>

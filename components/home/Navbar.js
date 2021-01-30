@@ -266,7 +266,10 @@ const Navbar = () => {
                                         </MenuList>
                                    </Menu>
                               ) : (
-                                   <Link href="/[signup]" as="/signup">
+                                   <Link
+                                        href="/account/[signup]"
+                                        as="/account/signup"
+                                   >
                                         <Button
                                              bg="aygray.100"
                                              color="primaryDarkGray"
