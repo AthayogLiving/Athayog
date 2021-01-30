@@ -24,7 +24,7 @@ function App({ Component, pageProps }) {
                     <DefaultSeo {...SEO} />
                     {router.pathname.match('/admin') ? null : <Navbar />}
                     {/* <AnimatePresence exitBeforeEnter key="main"> */}
-                    <NextNprogress color="black" />
+                    <NextNprogress color="green" />
                     <Component {...pageProps} />
                     {/* </AnimatePresence> */}
                     {router.pathname.match('/admin') ? null : <Footer />}
