@@ -10,8 +10,11 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { Faqs } from '@/components/home/ContentData';
+import { v4 as uuidv4 } from 'uuid';
+
 const Faq = () => {
      const { faq } = Faqs;
+
      return (
           <Box height="100%" bg="#f9f9f9">
                <Flex
@@ -44,9 +47,9 @@ const Faq = () => {
                                    border="1px"
                                    borderColor="gray.100"
                               >
-                                   {faq.map((data) => {
+                                   {faq.map((data, index) => {
                                         return (
-                                             <AccordionItem>
+                                             <AccordionItem key={uuidv4()}>
                                                   <AccordionButton
                                                        _expanded={{
                                                             bg: 'aygreen.100'

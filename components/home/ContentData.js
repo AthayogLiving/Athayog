@@ -3,27 +3,37 @@ export const offeringsData = {
           {
                name: 'Space',
                information:
-                    'Elevate your Yogic practice by instilling transformation with a strong hold on your lifestyle.'
+                    'Elevate your Yogic practice by instilling transformation with a strong hold on your lifestyle.',
+               link: '/offerings/space',
+               linkAs: 'space'
           },
           {
                name: 'Shikshana Pada',
                information:
-                    'Upskill yourself with certificate programs and teachers’ training courses.'
+                    'Upskill yourself with certificate programs and teachers’ training courses.',
+               link: '/offerings/shiksha',
+               linkAs: 'shiksha'
           },
           {
-               name: 'Shikshana Pada',
+               name: 'Online',
                information:
-                    'Continue your Yoga practice at a steady pace from the comfort of your own space.'
+                    'Continue your Yoga practice at a steady pace from the comfort of your own space.',
+               link: '/offerings/online',
+               linkAs: 'online'
           },
           {
                name: 'Personal',
                information:
-                    'Engage in one-on-one, personalized Yoga sessions without any distractions.'
+                    'Engage in one-on-one, personalized Yoga sessions without any distractions.',
+               link: '/offerings/personal',
+               linkAs: 'personal'
           },
           {
                name: 'Workshops',
                information:
-                    ' Deepen your Yogic knowledge and gain a more comprehensive insight on Yoga.'
+                    ' Deepen your Yogic knowledge and gain a more comprehensive insight on Yoga.',
+               link: '/offerings/workshop',
+               linkAs: 'workshop'
           }
      ]
 };

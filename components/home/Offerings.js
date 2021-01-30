@@ -3,6 +3,8 @@ import Image from 'next/image';
 import React from 'react';
 import defaultCarousel from '../../public/defaultCarousel.png';
 import { offeringsData } from '@/components/home/ContentData';
+import Link from 'next/link';
+import { v4 as uuidv4 } from 'uuid';
 
 const Offerings = () => {
      return (
@@ -29,44 +31,50 @@ const Offerings = () => {
                     >
                          {offeringsData.offering.map((offer, index) => {
                               return (
-                                   <Flex
-                                        direction="column"
-                                        justifyContent="center"
-                                        alignItems="center"
-                                        width="sm"
-                                        key={index}
+                                   <Link
+                                        href={offer.link}
+                                        as={offer.linkAs}
+                                        key={uuidv4()}
                                    >
-                                        <Box
-                                             rounded="full"
-                                             height="200px"
-                                             width="200px"
-                                             overflow="hidden"
-                                             border="5px dotted"
-                                             borderColor="primaryGreen"
+                                        <Flex
+                                             direction="column"
+                                             justifyContent="center"
+                                             alignItems="center"
+                                             width="sm"
+                                             cursor="pointer"
                                         >
-                                             <Image
-                                                  src={defaultCarousel}
-                                                  layout="responsive"
-                                                  objectFit="cover"
+                                             <Box
+                                                  rounded="full"
                                                   height="200px"
                                                   width="200px"
-                                             />
-                                        </Box>
-                                        <Text
-                                             mt={10}
-                                             fontSize="lg"
-                                             color="primaryDarkGray"
-                                        >
-                                             Athayog {offer.name}
-                                        </Text>
-                                        <Text
-                                             mt={5}
-                                             px="5"
-                                             color="primaryDarkGray"
-                                        >
-                                             {offer.information}
-                                        </Text>
-                                   </Flex>
+                                                  overflow="hidden"
+                                                  border="5px dotted"
+                                                  borderColor="primaryGreen"
+                                             >
+                                                  <Image
+                                                       src={defaultCarousel}
+                                                       layout="responsive"
+                                                       objectFit="cover"
+                                                       height="200px"
+                                                       width="200px"
+                                                  />
+                                             </Box>
+                                             <Text
+                                                  mt={10}
+                                                  fontSize="lg"
+                                                  color="primaryDarkGray"
+                                             >
+                                                  Athayog {offer.name}
+                                             </Text>
+                                             <Text
+                                                  mt={5}
+                                                  px="5"
+                                                  color="primaryDarkGray"
+                                             >
+                                                  {offer.information}
+                                             </Text>
+                                        </Flex>
+                                   </Link>
                               );
                          })}
                     </Flex>
