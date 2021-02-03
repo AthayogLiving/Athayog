@@ -200,62 +200,6 @@ function Sidebar() {
                               Images
                          </Button>
                     </Link>
-                    <Link href="/admin/classes" width="100%">
-                         <Button
-                              colorScheme="teal"
-                              variant="ghost"
-                              isActive={
-                                   router.pathname == '/admin/classes'
-                                        ? true
-                                        : ''
-                              }
-                              width="100%"
-                              fontSize="sm"
-                              rounded="lg"
-                              d="flex"
-                              justifyContent="flex-start"
-                              leftIcon={<FiMonitor />}
-                         >
-                              Classes
-                         </Button>
-                    </Link>
-                    <Link href="/admin/courses" width="100%">
-                         <Button
-                              colorScheme="teal"
-                              variant="ghost"
-                              isActive={
-                                   router.pathname == '/admin/courses'
-                                        ? true
-                                        : ''
-                              }
-                              width="100%"
-                              fontSize="sm"
-                              rounded="lg"
-                              d="flex"
-                              justifyContent="flex-start"
-                              leftIcon={<FiBook />}
-                         >
-                              Courses
-                         </Button>
-                    </Link>
-
-                    <Link href="/admin/faq" width="100%">
-                         <Button
-                              colorScheme="teal"
-                              variant="ghost"
-                              isActive={
-                                   router.pathname == '/admin/faq' ? true : ''
-                              }
-                              width="100%"
-                              fontSize="sm"
-                              rounded="lg"
-                              d="flex"
-                              justifyContent="flex-start"
-                              leftIcon={<AiOutlineQuestionCircle />}
-                         >
-                              Faq
-                         </Button>
-                    </Link>
                </Stack>
           </Flex>
      );
