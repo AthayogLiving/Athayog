@@ -192,29 +192,6 @@ const Navbar = () => {
                                    color="primaryBlack"
                                    mr="1rem"
                               >
-                                   <Link href="/contact">
-                                        <MotionButton
-                                             fontWeight="normal"
-                                             fontSize="md"
-                                             bg="transparent"
-                                             variant="ghost"
-                                             _hover={{
-                                                  bg: 'aygreen.100'
-                                             }}
-                                             _active={{
-                                                  bg: 'aygreen.100',
-
-                                                  borderColor: '#bec3c9'
-                                             }}
-                                             whileHover={{
-                                                  transition: { duration: 1 }
-                                             }}
-                                             whileTap={{ scale: 0.9 }}
-                                        >
-                                             Contact
-                                        </MotionButton>
-                                   </Link>
-
                                    <Link href="/about" as="about">
                                         <Button
                                              fontWeight="normal"
