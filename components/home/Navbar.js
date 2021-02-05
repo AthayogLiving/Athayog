@@ -191,28 +191,7 @@ const Navbar = () => {
                                    ml={2}
                                    color="primaryBlack"
                                    mr="1rem"
-                              >
-                                   <Link href="/about" as="about">
-                                        <Button
-                                             fontWeight="normal"
-                                             fontSize="md"
-                                             variant="ghost"
-                                             bg="transparent"
-                                             _active={{
-                                                  bg: 'aygreen.100',
-                                                  transform: 'scale(0.98)',
-                                                  borderColor: '#bec3c9'
-                                             }}
-                                             isActive={
-                                                  router.pathname == '/about'
-                                                       ? true
-                                                       : ''
-                                             }
-                                        >
-                                             Enquire
-                                        </Button>
-                                   </Link>
-                              </HStack>
+                              ></HStack>
                          </Flex>
                          <Flex>
                               <Button

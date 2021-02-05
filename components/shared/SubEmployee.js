@@ -2,17 +2,17 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import React from 'react';
 
-const Employee = ({ name, image, info, designation }) => {
+const SubEmployee = ({ name, image, info, designation }) => {
      return (
           <Flex
                justifyContent="space-around"
                alignItems="center"
-               width="60vw"
-               flexDirection="row"
+               width="md"
+               flexDirection="column"
                mt={20}
                mb={20}
           >
-               <Box width="20%">
+               <Box>
                     <Box
                          rounded="full"
                          height="300px"
@@ -29,12 +29,21 @@ const Employee = ({ name, image, info, designation }) => {
                     </Box>
                </Box>
 
-               <Box width="50%">
-                    <Text color="aygreen.600" fontWeight="bold" fontSize="3xl">
+               <Box>
+                    <Text
+                         color="aygreen.600"
+                         fontWeight="bold"
+                         fontSize="3xl"
+                         textAlign="center"
+                         mt={5}
+                    >
                          {name}
                     </Text>
-                    <Text color="aygreen.500">{designation}</Text>
+                    <Text textAlign="center" color="aygreen.500">
+                         {designation}
+                    </Text>
                     <br />
+
                     {info.split('\n').map((i) => {
                          return (
                               <Text whiteSpace="pre-wrap" fontWeight="normal">
@@ -47,4 +56,4 @@ const Employee = ({ name, image, info, designation }) => {
      );
 };
 
-export default Employee;
+export default SubEmployee;

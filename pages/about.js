@@ -1,11 +1,16 @@
+import { profileData, EmployeeData } from '@/components/home/ContentData';
 import Employee from '@/components/shared/Employee';
 import Hero from '@/components/shared/Hero';
-import { Box, Flex, Heading } from '@chakra-ui/react';
+import SubEmployee from '@/components/shared/SubEmployee';
+import { Box, Divider, Flex, Heading } from '@chakra-ui/react';
 import Image from 'next/image';
 import athayogOnline from 'public/athayogOnline.jpg';
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const About = () => {
+     const { profiles } = profileData;
+     const { employees } = EmployeeData;
      return (
           <>
                <Flex
@@ -35,7 +40,27 @@ const About = () => {
                     <Heading textAlign="center" fontWeight="normal">
                          Who we are?
                     </Heading>
-                    <Employee />
+                    {profiles.map((data) => {
+                         return <Employee {...data} />;
+                    })}
+               </Flex>
+               <Divider width="80%" margin="auto" />
+               <Flex
+                    margin="auto"
+                    padding="5rem 10rem"
+                    justifyContent="center"
+                    flexWrap="wrap"
+                    alignItems="start"
+                    bg="#fbfbfb"
+                    direction="row"
+               >
+                    {employees.map((data) => {
+                         return (
+                              <Box flex="1 1 150px">
+                                   <SubEmployee {...data} />
+                              </Box>
+                         );
+                    })}
                </Flex>
           </>
      );
