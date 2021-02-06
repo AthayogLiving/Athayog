@@ -39,7 +39,7 @@ function UsersTable({ userType }) {
 
      const handleAdminAccess = async (id, name, admin) => {
           changeStatus(false);
-          console.log('Admin', admin);
+
           const roleType = {
                0: 'admin',
                1: 'manager',

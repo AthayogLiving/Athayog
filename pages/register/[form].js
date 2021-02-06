@@ -30,7 +30,6 @@ import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import { useAuth } from '@/lib/auth';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import MOCK_DATA from './MOCK_DATA.json';
 
 const Register = () => {
      const router = useRouter();

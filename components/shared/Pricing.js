@@ -14,7 +14,7 @@ const Pricing = ({ pricing }) => {
      if (!pricing) {
           return null;
      }
-     console.log('pricing', pricing);
+
      if (pricing === 'Contact For More') {
           return (
                <Flex

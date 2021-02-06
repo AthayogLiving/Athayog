@@ -10,7 +10,12 @@ import {
      Box,
      Button,
      useColorModeValue,
-     Badge
+     Badge,
+     ButtonGroup,
+     Text,
+     Flex,
+     FormControl,
+     Select
 } from '@chakra-ui/react';
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
 import {
@@ -26,13 +31,14 @@ import GlobalFilter from './Filters/GlobalFilter';
 import ColumnFilter from './Filters/ColumnFilter';
 import SelectColumnFilter from './Filters/SelectColumnFilter';
 import NumberFilter from './Filters/NumberFilter';
+import { IoMdArrowRoundBack, IoMdArrowRoundForward } from 'react-icons/io';
+import { ImBackward2, ImForward2 } from 'react-icons/im';
 
 export const Conditions = ({ values }) => {
      // Loop through the array and create a badge-like component instead of a comma-separated string
      return (
           <>
                {values.map((conditions, idx) => {
-                    console.log('Data', conditions);
                     return (
                          <Badge
                               className="badge"
@@ -50,7 +56,6 @@ export const Conditions = ({ values }) => {
 
 const FormsData = ({ forms }) => {
      const data = useMemo(() => forms, []);
-     console.log(forms);
 
      const columns = useMemo(
           () => [
@@ -96,7 +101,7 @@ const FormsData = ({ forms }) => {
                     Cell: ({ cell: { value } }) => (
                          <Conditions values={value} />
                     ),
-                    Filter: ColumnFilter,
+                    Filter: SelectColumnFilter,
                     filter: 'array'
                },
 
@@ -114,17 +119,33 @@ const FormsData = ({ forms }) => {
           getTableProps,
           getTableBodyProps,
           headerGroups,
-          rows,
+          page,
           prepareRow,
           state,
-
+          nextPage,
+          canNextPage,
+          canPreviousPage,
+          previousPage,
+          pageOptions,
+          gotoPage,
+          setPageSize,
+          pageSize,
           setGlobalFilter,
           ...setAllFilters
-     } = useTable({ columns, data }, useFilters, useGlobalFilter, useSortBy);
+     } = useTable(
+          { columns, data },
+          useFilters,
+          useGlobalFilter,
+          useSortBy,
+          usePagination
+     );
 
      const { globalFilter } = state;
+     const { pageIndex } = state;
 
      const bg = useColorModeValue('white', 'gray.800');
+
+     console.log(forms[0].createdAt);
 
      return (
           <>
@@ -132,6 +153,8 @@ const FormsData = ({ forms }) => {
                     filter={globalFilter}
                     setFilter={setGlobalFilter}
                />
+
+               {/* <Box>Showing Date Between {forms[0].createdAt}</Box> */}
 
                <Table
                     {...getTableProps()}
@@ -175,7 +198,7 @@ const FormsData = ({ forms }) => {
                          ))}
                     </Thead>
                     <Tbody {...getTableBodyProps()}>
-                         {rows.map((row) => {
+                         {page.map((row) => {
                               prepareRow(row);
                               return (
                                    <Tr {...row.getRowProps()}>
@@ -192,6 +215,66 @@ const FormsData = ({ forms }) => {
                          })}
                     </Tbody>
                </Table>
+               <Flex
+                    bg={bg}
+                    padding="1rem 1rem"
+                    mt={2}
+                    width="100%"
+                    rounded="lg"
+                    mb={5}
+                    alignItems="center"
+                    boxShadow="base"
+                    justifyContent="space-between"
+               >
+                    <ButtonGroup size="sm" colorScheme="teal">
+                         <Button
+                              onClick={() => gotoPage(0)}
+                              disabled={!canPreviousPage}
+                              leftIcon={<ImBackward2 />}
+                         >
+                              First
+                         </Button>
+                         <Button
+                              onClick={() => previousPage()}
+                              disabled={!canPreviousPage}
+                              leftIcon={<IoMdArrowRoundBack />}
+                         >
+                              Previous
+                         </Button>
+                         <Button
+                              onClick={() => nextPage()}
+                              disabled={!canNextPage}
+                              leftIcon={<IoMdArrowRoundForward />}
+                         >
+                              Next
+                         </Button>
+                         <Button
+                              onClick={() => gotoPage(pageOptions.length - 1)}
+                              disabled={!canNextPage}
+                              leftIcon={<ImForward2 />}
+                         >
+                              Last
+                         </Button>
+                    </ButtonGroup>
+
+                    <Select
+                         value={pageSize}
+                         width="xsm"
+                         size="sm"
+                         rounded="md"
+                         onChange={(e) => setPageSize(Number(e.target.value))}
+                    >
+                         {[10, 25, 50].map((pageSize) => (
+                              <option key={pageSize} value={pageSize}>
+                                   Show {pageSize}
+                              </option>
+                         ))}
+                    </Select>
+
+                    <Text>
+                         Page {pageIndex + 1} of {pageOptions.length}
+                    </Text>
+               </Flex>
           </>
      );
 };

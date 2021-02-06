@@ -5,7 +5,7 @@ import FormsData from '@/components/admin/table/FormsData';
 import { Box, Text } from '@chakra-ui/react';
 
 const forms = () => {
-     const { data, error } = useSWR(`/api/forms/online`, fetcher);
+     const { data, error } = useSWR(`/api/forms/2`, fetcher);
 
      if (!data) {
           return null;

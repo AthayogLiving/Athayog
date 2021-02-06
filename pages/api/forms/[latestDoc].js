@@ -47,15 +47,13 @@ export default async function handler(req, res) {
           });
      }
      if (req.method === 'GET') {
-          const formType = req.query.formType;
-          console.log(formType);
-          if (!formType) {
-               return res.status(400).json({ Message: 'form Type not passed' });
-          }
+          const latestDoc = req.query.latestDoc;
+
           const snapshot = await db
                .collection('forms')
                .orderBy('createdAt', 'desc')
-               .limit(10)
+               .startAfter(latestDoc || 0)
+
                .get();
           const submissions = [];
 

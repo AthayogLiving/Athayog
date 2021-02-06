@@ -32,7 +32,7 @@ function Navbar({ user, signout, loading }) {
                     alignItems="center"
                     margin="2rem"
                     bg={bg}
-                    boxshadow="base"
+                    boxShadow="base"
                     rounded="lg"
                >
                     <Flex
@@ -61,7 +61,7 @@ function Navbar({ user, signout, loading }) {
                alignItems="center"
                margin="2rem"
                bg={bg}
-               boxshadow="base"
+               boxShadow="base"
                rounded="lg"
           >
                <Flex
