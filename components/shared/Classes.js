@@ -55,13 +55,19 @@ const Classes = ({ classes }) => {
                                                   data.className
                                              )}
                                         </Heading>
-                                        <Text
-                                             mt={5}
-                                             fontWeight="light"
-                                             textAlign="justify"
-                                        >
-                                             {data.classInfo}
-                                        </Text>
+
+                                        {data.classInfo.split('\n').map((i) => {
+                                             return (
+                                                  <Text
+                                                       mt={5}
+                                                       fontWeight="light"
+                                                       textAlign="justify"
+                                                       whiteSpace="pre-wrap"
+                                                  >
+                                                       {i}{' '}
+                                                  </Text>
+                                             );
+                                        })}
                                    </Box>
                               );
                          })}

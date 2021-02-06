@@ -10,7 +10,10 @@ import {
 } from '@chakra-ui/react';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 
-const Pricing = ({ classes }) => {
+const Pricing = ({ pricing }) => {
+     if (!pricing) {
+          return null;
+     }
      return (
           <Flex
                margin="auto"
@@ -34,7 +37,7 @@ const Pricing = ({ classes }) => {
                          width="100%"
                          mt={10}
                     >
-                         {classes.map((data, index) => {
+                         {pricing.map((data, index) => {
                               return (
                                    <Box
                                         bg="aygreen.100"
@@ -54,7 +57,7 @@ const Pricing = ({ classes }) => {
                                                   textAlign="left"
                                              >
                                                   {capitalizeFirstLetter(
-                                                       data.className
+                                                       data.courseName
                                                   )}
                                              </Heading>
                                              <Text
@@ -62,7 +65,7 @@ const Pricing = ({ classes }) => {
                                                   fontWeight="light"
                                                   textAlign="left"
                                              >
-                                                  {data.classInfo}
+                                                  {data.description}
                                              </Text>
                                         </Box>
                                         <Box>
@@ -72,10 +75,10 @@ const Pricing = ({ classes }) => {
                                                   mt={5}
                                              >
                                                   <Text fontSize="xl">
-                                                       Duration
+                                                       {data.duration}
                                                   </Text>
                                                   <Text fontSize="3xl">
-                                                       $400
+                                                       ₹ {data.price}
                                                   </Text>
                                              </Flex>
                                              <Button

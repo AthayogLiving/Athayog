@@ -13,22 +13,23 @@ import {
 import React from 'react';
 import { IoMdCheckmarkCircle } from 'react-icons/io';
 
-const Information = (props) => {
+const InformationSplit = (props) => {
      const { name, whatis, secondBlock, description } = props.pageData;
      return (
           <Flex
                margin="auto"
                padding="5rem 0"
-               justifyContent="center"
+               justifyContent="space-evenly"
                alignItems="center"
                width="100vw"
                bg="primaryWhite"
+               direction="row"
           >
                <Flex
                     justifyContent="center"
                     direction="column"
                     alignItems="center"
-                    width="80vw"
+                    width="40%"
                >
                     <>
                          <Heading fontWeight="normal">
@@ -43,8 +44,25 @@ const Information = (props) => {
                          </Flex>
                     </>
                </Flex>
+               <Flex
+                    justifyContent="center"
+                    direction="column"
+                    alignItems="center"
+                    width="40%"
+               >
+                    <>
+                         <Heading fontWeight="normal">{secondBlock}</Heading>
+                         <Flex padding="2rem 0" justifyContent="space-between">
+                              <Box>
+                                   <Text fontWeight="light" textAlign="left">
+                                        {description}
+                                   </Text>
+                              </Box>
+                         </Flex>
+                    </>
+               </Flex>
           </Flex>
      );
 };
 
-export default Information;
+export default InformationSplit;

@@ -7,12 +7,15 @@ import Information from '@/components/shared/Information';
 import Classes from '@/components/shared/Classes';
 import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
+import InformationSplit from '@/components/shared/InformationSplit';
 
-const Workshop = () => {
+const Workshops = () => {
      const pageData = {
-          name: 'Workshop',
+          name: 'Workshops',
           heroImage: athayogChikitsa,
-          whatis: `In audio, a mastering studio is a facility specialised in audio mastering. Tasks may include but not be limited to audio restoration, corrective and tone-shaping EQ, dynamic control, stereo or 5.1 surround editing, vinyl and tape transfers, vinyl cutting, and CD compilation. Depending on the quality of the original mix, the mastering engineer's role can change from small corrections to improving the overall sound of a mix drastically. Typically studios contain a combination of high-end analogue equipment with low-noise circuitry and digital hardware and plug-ins. Some may contain tape machines and vinyl lathes. They may also contain full-range monitoring systems and be acoustically tuned to provide an accurate reproduction of the sound information contained in the original medium. The mastering engineer must prepare the file for its intended destination, which may be radio, CD, vinyl or digital distribution.In video production, a mastering studio is a facility specialized in the post-production of video recordings. Tasks may include but not be limited to: video editing, colour grading correction, mixing, DVD authoring and audio mastering. The mastering engineer must prepare the file for its intended destination, which may be broadcast, DVD or digital distribution`,
+          whatis: `Experience a profound approach to Yogic knowledge and living. Explore the deeper, subtler and more authentic aspects of Yoga as we share our collective wisdom on specialized and focussed topics in the Yogic realm.`,
+          secondBlock: `What you get`,
+          description: `Workshop of the Week is a 75-minute workshop that we organize weekly, covering individual subjects to give you a more insightful perspective on the subtleties of the Yogic cosmos.\nWorkshop of the Month is a 10-hour series of 4 workshops in a month, branching out into broader Yogic themes, stemming from time-honoured wisdom.`,
           classes: [
                {
                     className: 'universal harmony',
@@ -44,6 +47,20 @@ const Workshop = () => {
                     classInfo:
                          'A 75 minute practice that combines elements of Hatha and Vinyasa , starting with ground rituals, moving on to surya namaskar and a sequence of classical asana postures, conforming to a more energetic and fluid vinyasa style. Explore transitional movements and transcend all physical limitations.'
                }
+          ],
+          pricing: [
+               {
+                    courseName: 'Workshop of the week',
+                    description: `Workshop of the week`,
+                    duration: `1 Workshop`,
+                    price: 999
+               },
+               {
+                    courseName: 'Workshop of the month',
+                    description: `Workshop of the month`,
+                    duration: `4 Workshops`,
+                    price: 3999
+               }
           ]
      };
      return (
@@ -53,12 +70,12 @@ const Workshop = () => {
                animate={{ opacity: 1 }}
           >
                <Hero pageData={pageData} />
-               <Information pageData={pageData} />
-               <Classes classes={pageData.classes} />
-               <Pricing classes={pageData.classes} />
+               <InformationSplit pageData={pageData} />
+
+               <Pricing pricing={pageData.pricing} />
                <Register registerTo={pageData.name.toLocaleLowerCase()} />
           </motion.div>
      );
 };
 
-export default Workshop;
+export default Workshops;
