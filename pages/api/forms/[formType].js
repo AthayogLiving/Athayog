@@ -1,6 +1,7 @@
 import Cors from 'cors';
 import initMiddleware from '@/lib/cors-middleware';
 import { registerForm } from '@/lib/db/forms';
+import { db } from '@/lib/firebase-admin';
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -16,21 +17,19 @@ export default async function handler(req, res) {
      // Run cors
      await cors(req, res);
 
-     console.log(req.body);
-     const {
-          name,
-          email,
-          phone,
-          gender,
-          experience,
-          style,
-          course,
-          referral,
-          conditions,
-          type
-     } = req.body;
-
      if (req.method === 'POST') {
+          const {
+               name,
+               email,
+               phone,
+               gender,
+               experience,
+               style,
+               course,
+               referral,
+               conditions,
+               type
+          } = req.body;
           await registerForm(
                name,
                email,
@@ -46,5 +45,24 @@ export default async function handler(req, res) {
           return res.status(200).json({
                message: 'Updated Form'
           });
+     }
+     if (req.method === 'GET') {
+          const formType = req.query.formType;
+          console.log(formType);
+          if (!formType) {
+               return res.status(400).json({ Message: 'form Type not passed' });
+          }
+          const snapshot = await db
+               .collection('forms')
+               .orderBy('createdAt', 'desc')
+               .limit(10)
+               .get();
+          const submissions = [];
+
+          snapshot.forEach((doc) => {
+               submissions.push({ id: doc.id, ...doc.data() });
+          });
+
+          res.status(200).json({ submissions });
      }
 }

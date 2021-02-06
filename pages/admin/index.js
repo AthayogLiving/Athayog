@@ -146,7 +146,7 @@ const index = () => {
                                                        variant="outline"
                                                        type="text"
                                                        bg="white"
-                                                       shadow="sm"
+                                                       shadow="base"
                                                        autoFocus
                                                        aria-label="Email Address"
                                                        id="email"
@@ -184,7 +184,7 @@ const index = () => {
                                                        variant="outline"
                                                        type="password"
                                                        bg="white"
-                                                       shadow="sm"
+                                                       shadow="base"
                                                        aria-label="Password"
                                                        name="pass"
                                                        id="password"

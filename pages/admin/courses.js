@@ -4,15 +4,15 @@ import React from 'react';
 import Dashboard from './dashboard';
 
 function courses() {
-    const bg = useColorModeValue('white', 'gray.800');
-    const color = useColorModeValue('teal', 'gray.700');
-    return (
-        <Dashboard>
-            <Box bg={bg} padding={6} rounded="lg" boxShadow="sm">
-                <ShowClasses />
-            </Box>
-        </Dashboard>
-    );
+     const bg = useColorModeValue('white', 'gray.800');
+     const color = useColorModeValue('teal', 'gray.700');
+     return (
+          <Dashboard>
+               <Box bg={bg} padding={6} rounded="lg" boxshadow="base">
+                    <ShowClasses />
+               </Box>
+          </Dashboard>
+     );
 }
 
 export default courses;

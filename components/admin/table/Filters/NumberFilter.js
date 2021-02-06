@@ -1,0 +1,24 @@
+import { Box, Input, useColorModeValue } from '@chakra-ui/react';
+import React from 'react';
+
+const NumberFilter = ({ column }) => {
+     const { filterValue, setFilter } = column;
+     const bg = useColorModeValue('white', 'gray.700');
+     const border = useColorModeValue('gray.300', 'gray.600');
+     return (
+          <Box bg="white" mt="3" rounded="base">
+               <Input
+                    value={filterValue || ''}
+                    size="sm"
+                    borderColor={border}
+                    bg={bg}
+                    type="tel"
+                    onChange={(e) => setFilter(e.target.value)}
+                    placeholder="Type to search"
+                    rounded="base"
+               />
+          </Box>
+     );
+};
+
+export default NumberFilter;

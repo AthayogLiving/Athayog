@@ -27,7 +27,7 @@ const faq = () => {
      if (error)
           return (
                <Dashboard>
-                    <Box bg={bg} padding={6} rounded="lg" boxShadow="sm">
+                    <Box bg={bg} padding={6} rounded="lg" boxshadow="base">
                          <Tabs>
                               <TabList>
                                    <Skeleton>Loading..</Skeleton>
@@ -45,7 +45,7 @@ const faq = () => {
      if (!data) {
           return (
                <Dashboard>
-                    <Box bg={bg} padding={6} rounded="lg" boxShadow="sm">
+                    <Box bg={bg} padding={6} rounded="lg" boxshadow="base">
                          <Tabs>
                               <TabList>
                                    <Skeleton>Loading..</Skeleton>
@@ -71,7 +71,7 @@ const faq = () => {
 
      return (
           <Dashboard>
-               <Box bg={bg} padding={6} rounded="lg" boxShadow="sm">
+               <Box bg={bg} padding={6} rounded="lg" boxshadow="base">
                     <Tabs
                          colorScheme="blue"
                          mt={2}

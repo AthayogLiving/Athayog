@@ -35,7 +35,7 @@ const images = () => {
      };
      return (
           <Dashboard>
-               <Box bg={bg} padding={6} rounded="lg" boxShadow="sm">
+               <Box bg={bg} padding={6} rounded="lg" boxshadow="base">
                     <Tabs
                          colorScheme="blue"
                          mt={2}

@@ -21,7 +21,7 @@ const account = () => {
           return (
                <Dashboard>
                     <Skeleton>
-                         <Box bg={bg} padding={6} rounded="lg" boxShadow="sm">
+                         <Box bg={bg} padding={6} rounded="lg" boxshadow="base">
                               <Flex>
                                    <Avatar size="2xl" />
                               </Flex>
@@ -33,7 +33,13 @@ const account = () => {
 
      return (
           <Dashboard>
-               <Box bg={bg} padding={6} rounded="lg" boxShadow="sm" width="md">
+               <Box
+                    bg={bg}
+                    padding={6}
+                    rounded="lg"
+                    boxshadow="base"
+                    width="md"
+               >
                     <Flex direction="column">
                          <Avatar size="lg" name={user?.name} />
                          <Heading size="md" fontWeight="normal" mt={5}>

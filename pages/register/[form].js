@@ -30,6 +30,7 @@ import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import { useAuth } from '@/lib/auth';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import MOCK_DATA from './MOCK_DATA.json';
 
 const Register = () => {
      const router = useRouter();
@@ -39,6 +40,10 @@ const Register = () => {
      const { data } = useCheckboxGroup();
      const { handleSubmit, register, errors, reset } = useForm();
      const toast = useToast();
+
+     if (!form) {
+          return <Box>Loading...</Box>;
+     }
 
      const onSubmit = async ({
           name,
@@ -60,10 +65,11 @@ const Register = () => {
                     gender,
                     experience,
                     style,
-                    course,
+                    course: capitalizeFirstLetter(form),
+
                     referral,
                     conditions,
-                    type: form
+                    type: capitalizeFirstLetter(form)
                })
                .then(function (response) {
                     setLoading(false);
@@ -116,7 +122,7 @@ const Register = () => {
                          padding={8}
                          width="50vw"
                          as="form"
-                         boxShadow="sm"
+                         boxshadow="base"
                          onSubmit={handleSubmit((data) => onSubmit(data))}
                     >
                          <Stack spacing={5}>
@@ -181,11 +187,11 @@ const Register = () => {
                                                        'Please select your gender.'
                                              })}
                                         >
-                                             <option value="male">Male</option>
-                                             <option value="female">
+                                             <option value="Male">Male</option>
+                                             <option value="Female">
                                                   Female
                                              </option>
-                                             <option value="other">
+                                             <option value="Other">
                                                   Other
                                              </option>
                                         </Select>
@@ -239,26 +245,29 @@ const Register = () => {
                                                   'Please select your course.'
                                         })}
                                         name="course"
+                                        isReadOnly
+                                        value={capitalizeFirstLetter(form)}
+                                        disabled
                                    >
-                                        <option value="space">
+                                        <option value="Space">
                                              AthaYog Space
                                         </option>
-                                        <option value="shikshana pada">
+                                        <option value="Shikshana Pada">
                                              AthaYog Shikshana Pada
                                         </option>
-                                        <option value="chikitsa">
+                                        <option value="Chikitsa">
                                              AthaYog Chikitsa
                                         </option>
-                                        <option value="online">
+                                        <option value="Online">
                                              AthaYog Online
                                         </option>
-                                        <option value="personal">
+                                        <option value="Personal">
                                              AthaYog Personal
                                         </option>
-                                        <option value="workshops">
+                                        <option value="Workshops">
                                              AthaYog Workshops
                                         </option>
-                                        <option value="onsite">
+                                        <option value="Onsite">
                                              AthaYog Onsite
                                         </option>
                                    </Select>
