@@ -22,7 +22,7 @@ import {
      Toast,
      useToast
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import NavbarHelper from '@/components/shared/NavbarHelper';
@@ -35,6 +35,7 @@ const Register = () => {
      const router = useRouter();
      const { form } = router.query;
      const { user } = useAuth();
+     const [loading, setLoading] = useState(false);
      const { data } = useCheckboxGroup();
      const { handleSubmit, register, errors, reset } = useForm();
      const toast = useToast();
@@ -50,6 +51,7 @@ const Register = () => {
           referral,
           conditions
      }) => {
+          setLoading(true);
           await axios
                .post(`/api/forms/${form}`, {
                     name,
@@ -64,8 +66,8 @@ const Register = () => {
                     type: form
                })
                .then(function (response) {
-                    // setLoading(false);
-                    // onClose();
+                    setLoading(false);
+                    router.push('/');
                     toast({
                          title: 'Account created.',
                          description: "We've created your account for you.",
@@ -74,11 +76,9 @@ const Register = () => {
                          isClosable: true
                     });
                     reset();
-                    // router.push('/');
                })
                .catch(function (error) {
-                    // setLoading(false);
-
+                    setLoading(false);
                     toast({
                          title: 'An error occurred.',
                          description: error.message,
@@ -136,6 +136,10 @@ const Register = () => {
                                                        'Please enter your name.'
                                              })}
                                         />
+                                        <FormErrorMessage>
+                                             {errors.name &&
+                                                  errors.name.message}
+                                        </FormErrorMessage>
                                    </FormControl>
                                    <FormControl id="phone">
                                         <FormLabel>Phone Number</FormLabel>
@@ -147,6 +151,10 @@ const Register = () => {
                                                        'Please enter your number.'
                                              })}
                                         />
+                                        <FormErrorMessage>
+                                             {errors.phone &&
+                                                  errors.phone.message}
+                                        </FormErrorMessage>
                                    </FormControl>
                                    <FormControl id="email">
                                         <FormLabel>Email</FormLabel>
@@ -158,6 +166,10 @@ const Register = () => {
                                                        'Please enter your email.'
                                              })}
                                         />
+                                        <FormErrorMessage>
+                                             {errors.email &&
+                                                  errors.email.message}
+                                        </FormErrorMessage>
                                    </FormControl>
                                    <FormControl id="gender">
                                         <FormLabel>Gender</FormLabel>
@@ -177,6 +189,10 @@ const Register = () => {
                                                   Other
                                              </option>
                                         </Select>
+                                        <FormErrorMessage>
+                                             {errors.gender &&
+                                                  errors.gender.message}
+                                        </FormErrorMessage>
                                    </FormControl>
                               </SimpleGrid>
                               <FormControl id="experience">
@@ -190,6 +206,10 @@ const Register = () => {
                                                   'Please fill your yoga experience.'
                                         })}
                                    />
+                                   <FormErrorMessage>
+                                        {errors.experience &&
+                                             errors.experience.message}
+                                   </FormErrorMessage>
                               </FormControl>
                               <FormControl id="style">
                                    <FormLabel>Style of yoga</FormLabel>
@@ -200,6 +220,9 @@ const Register = () => {
                                                   'Please fill your style of yoga.'
                                         })}
                                    />
+                                   <FormErrorMessage>
+                                        {errors.style && errors.style.message}
+                                   </FormErrorMessage>
                               </FormControl>
                               <Divider
                                    variant="dashed"
@@ -239,6 +262,9 @@ const Register = () => {
                                              AthaYog Onsite
                                         </option>
                                    </Select>
+                                   <FormErrorMessage>
+                                        {errors.course && errors.course.message}
+                                   </FormErrorMessage>
                               </FormControl>
                               <FormControl id="conditions">
                                    <FormLabel>
@@ -285,6 +311,10 @@ const Register = () => {
                                              </Checkbox>
                                         </HStack>
                                    </CheckboxGroup>
+                                   <FormErrorMessage>
+                                        {errors.conditions &&
+                                             errors.conditions.message}
+                                   </FormErrorMessage>
                               </FormControl>
 
                               <SimpleGrid
@@ -335,16 +365,20 @@ const Register = () => {
                                                   </Radio>
                                              </Stack>
                                         </RadioGroup>
+                                        <FormErrorMessage>
+                                             {errors.referral &&
+                                                  errors.referral.message}
+                                        </FormErrorMessage>
                                    </FormControl>
                               </SimpleGrid>
                          </Stack>
                          <Button
                               colorScheme="aygreen"
-                              width="10rem"
                               mt={10}
-                              d="block"
                               ml="auto"
                               type="submit"
+                              isLoading={loading}
+                              loadingText="Submitting"
                          >
                               Regiser
                          </Button>
