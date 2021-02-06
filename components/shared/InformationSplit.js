@@ -20,7 +20,7 @@ const InformationSplit = (props) => {
                margin="auto"
                padding="5rem 0"
                justifyContent="space-evenly"
-               alignItems="center"
+               alignItems="start"
                width="100vw"
                bg="primaryWhite"
                direction="row"

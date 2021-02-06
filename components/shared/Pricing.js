@@ -14,6 +14,35 @@ const Pricing = ({ pricing }) => {
      if (!pricing) {
           return null;
      }
+     console.log('pricing', pricing);
+     if (pricing === 'Contact For More') {
+          return (
+               <Flex
+                    margin="auto"
+                    padding="5rem 0"
+                    justifyContent="center"
+                    alignItems="center"
+                    width="100vw"
+                    bg="#fbfbfb"
+               >
+                    <Flex
+                         justifyContent="center"
+                         direction="column"
+                         alignItems="center"
+                         width="60vw"
+                    >
+                         <Heading
+                              fontWeight="normal"
+                              fontSize="xl"
+                              fontStyle="italic"
+                         >
+                              Contact us for more information on customized
+                              plans.
+                         </Heading>
+                    </Flex>
+               </Flex>
+          );
+     }
      return (
           <Flex
                margin="auto"
