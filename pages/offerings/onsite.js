@@ -3,10 +3,8 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import athayogShikshana from 'public/athayogShikshana.jpg';
 import Information from '@/components/shared/Information';
-import Classes from '@/components/shared/Classes';
 import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
-import InformationSplit from '@/components/shared/InformationSplit';
 
 const Onsite = () => {
      const pageData = {

@@ -1,8 +1,6 @@
 import Hero from '@/components/shared/Hero';
-import { Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import React from 'react';
-
 import athayogSpace from 'public/athayogSpace.jpg';
 import Information from '@/components/shared/Information';
 import Classes from '@/components/shared/Classes';

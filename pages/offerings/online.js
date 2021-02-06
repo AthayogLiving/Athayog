@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import athayogOnline from 'public/athayogOnline.jpg';
 import Information from '@/components/shared/Information';
-import Classes from '@/components/shared/Classes';
 import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
 
@@ -36,7 +35,6 @@ const Online = () => {
           >
                <Hero pageData={pageData} />
                <Information pageData={pageData} />
-
                <Pricing pricing={pageData.pricing} />
                <Register registerTo={pageData.name.toLocaleLowerCase()} />
           </motion.div>

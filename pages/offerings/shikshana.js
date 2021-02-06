@@ -2,8 +2,6 @@ import Hero from '@/components/shared/Hero';
 import { motion } from 'framer-motion';
 import React from 'react';
 import athayogShikshana from 'public/athayogShikshana.jpg';
-import Information from '@/components/shared/Information';
-import Classes from '@/components/shared/Classes';
 import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
 import InformationSplit from '@/components/shared/InformationSplit';
@@ -32,7 +30,6 @@ const Shikshana = () => {
           >
                <Hero pageData={pageData} />
                <InformationSplit pageData={pageData} />
-
                <Pricing pricing={pageData.pricing} />
                <Register registerTo={pageData.name.toLocaleLowerCase()} />
           </motion.div>
