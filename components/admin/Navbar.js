@@ -33,6 +33,7 @@ function Navbar({ user, signout, loading }) {
                     margin="2rem"
                     bg={bg}
                     boxShadow="base"
+                    height="4rem"
                     rounded="lg"
                >
                     <Flex

@@ -24,6 +24,7 @@ function Sidebar() {
                boxSize="border-box"
                color={color}
                alignItems="flex-start"
+               boxShadow="base"
                px={5}
                py={10}
                h="100%"

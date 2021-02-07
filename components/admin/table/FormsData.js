@@ -25,6 +25,10 @@ import SelectColumnFilter from './Filters/SelectColumnFilter';
 import NumberFilter from './Filters/NumberFilter';
 import { IoMdArrowRoundBack, IoMdArrowRoundForward } from 'react-icons/io';
 import { ImBackward2, ImForward2 } from 'react-icons/im';
+import { RiLoader3Fill } from 'react-icons/ri';
+import firebase from '@/lib/firebase';
+import { FirebaseToDate } from '@/components/helper/FirebaseToDate';
+const firestore = firebase.firestore();
 
 export const Conditions = ({ values }) => {
      // Loop through the array and create a badge-like component instead of a comma-separated string
@@ -33,6 +37,7 @@ export const Conditions = ({ values }) => {
                {values.map((conditions, idx) => {
                     return (
                          <Badge
+                              key={idx}
                               className="badge"
                               mr={2}
                               colorScheme="teal"
@@ -46,7 +51,12 @@ export const Conditions = ({ values }) => {
      );
 };
 
-const FormsData = ({ forms }) => {
+export const DateCreated = ({ values }) => {
+     // Loop through the array and create a badge-like component instead of a comma-separated string
+     return <>{FirebaseToDate(values)}</>;
+};
+
+const FormsData = ({ forms, latestDoc, setDocs }) => {
      const data = useMemo(() => forms, []);
 
      const columns = useMemo(
@@ -102,6 +112,15 @@ const FormsData = ({ forms }) => {
                     accessor: 'type',
                     Filter: SelectColumnFilter,
                     filter: 'includes'
+               },
+               {
+                    Header: 'Submitted',
+                    accessor: 'createdAt',
+                    Cell: ({ cell: { value } }) => (
+                         <DateCreated values={value} />
+                    ),
+                    Filter: ColumnFilter,
+                    disableFilters: true
                }
           ],
           []
@@ -132,6 +151,13 @@ const FormsData = ({ forms }) => {
 
      const { pageIndex } = state;
 
+     console.log(forms[forms.length - 1]);
+     console.log('Child', latestDoc);
+
+     const loadMoreDoc = () => {
+          setDocs(forms[forms.length - 1]);
+     };
+
      const bg = useColorModeValue('white', 'gray.800');
 
      return (
@@ -144,6 +170,7 @@ const FormsData = ({ forms }) => {
                     shadow="base"
                     rounded="lg"
                     padding={5}
+                    mt={3}
                     colorScheme="green"
                >
                     <Thead>
@@ -208,7 +235,7 @@ const FormsData = ({ forms }) => {
                     boxShadow="base"
                     justifyContent="space-between"
                >
-                    <ButtonGroup size="sm" colorScheme="teal">
+                    <ButtonGroup size="sm" colorScheme="blue">
                          <Button
                               onClick={() => gotoPage(0)}
                               disabled={!canPreviousPage}
@@ -236,6 +263,13 @@ const FormsData = ({ forms }) => {
                               leftIcon={<ImForward2 />}
                          >
                               Last
+                         </Button>
+                         <Button
+                              onClick={() => loadMoreDoc()}
+                              disabled={canNextPage}
+                              leftIcon={<RiLoader3Fill />}
+                         >
+                              Load More
                          </Button>
                     </ButtonGroup>
 
