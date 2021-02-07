@@ -14,20 +14,12 @@ import {
      ButtonGroup,
      Text,
      Flex,
-     FormControl,
      Select
 } from '@chakra-ui/react';
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
-import {
-     useTable,
-     useSortBy,
-     useGlobalFilter,
-     useFilters,
-     usePagination
-} from 'react-table';
+import { useTable, useSortBy, useFilters, usePagination } from 'react-table';
 import { useMemo } from 'react';
 
-import GlobalFilter from './Filters/GlobalFilter';
 import ColumnFilter from './Filters/ColumnFilter';
 import SelectColumnFilter from './Filters/SelectColumnFilter';
 import NumberFilter from './Filters/NumberFilter';
@@ -129,31 +121,21 @@ const FormsData = ({ forms }) => {
           pageOptions,
           gotoPage,
           setPageSize,
-          pageSize,
-          setGlobalFilter,
-          ...setAllFilters
+          pageSize
      } = useTable(
           { columns, data },
           useFilters,
-          useGlobalFilter,
+
           useSortBy,
           usePagination
      );
 
-     const { globalFilter } = state;
      const { pageIndex } = state;
 
      const bg = useColorModeValue('white', 'gray.800');
 
-     console.log(forms[0].createdAt);
-
      return (
           <>
-               <GlobalFilter
-                    filter={globalFilter}
-                    setFilter={setGlobalFilter}
-               />
-
                {/* <Box>Showing Date Between {forms[0].createdAt}</Box> */}
 
                <Table
