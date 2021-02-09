@@ -18,21 +18,18 @@ export default async function handler(req, res) {
      await cors(req, res);
 
      if (req.method === 'POST') {
-          const { firstName, lastName, email, phone, details, type } = req.body;
-          await enquiryForm(firstName, lastName, email, phone, details, type);
+          const { name, email, phone, details, type } = req.body;
+          await enquiryForm(name, email, phone, details, type);
           return res.status(200).json({
                message: 'Updated Form'
           });
      }
      if (req.method === 'GET') {
           const latestDoc = req.query.latestDoc;
-          console.log(latestDoc);
 
           const snapshot = await db
-               .collection('forms')
+               .collection('enquiryForms')
                .orderBy('createdAt', 'desc')
-               .where('type', '==', 'enquiry')
-               .startAfter(latestDoc || 0)
                .limit(20)
                .get();
           const submissions = [];

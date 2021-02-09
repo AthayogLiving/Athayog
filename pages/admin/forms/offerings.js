@@ -29,9 +29,6 @@ const offerings = () => {
           );
      }
 
-     console.log('Parent', latestDoc.id);
-     console.log('Parent', data);
-
      const handleForm = (form) => {
           setForm(form);
      };

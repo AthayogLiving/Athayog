@@ -44,10 +44,10 @@ const EnquiryModal = () => {
      }) => {
           console.log('ran', firstName, lastName, email, phone, details);
           setLoading(true);
+          const fullName = firstName + ' ' + lastName;
           await axios
                .post(`/api/forms/enquiry`, {
-                    firstName,
-                    lastName,
+                    name: fullName,
                     email,
                     phone,
                     details,
