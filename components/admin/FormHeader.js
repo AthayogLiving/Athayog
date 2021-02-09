@@ -11,13 +11,7 @@ function FormHeader({ siteLink }) {
      const bg = useColorModeValue('white', 'gray.800');
 
      return (
-          <Breadcrumb
-               separator="/"
-               bg={bg}
-               padding={3}
-               rounded="lg"
-               boxShadow="base"
-          >
+          <Breadcrumb bg={bg} padding={3} rounded="lg" boxShadow="base">
                <BreadcrumbItem>
                     <Link href="/admin/forms">
                          <BreadcrumbLink href="#">Forms</BreadcrumbLink>

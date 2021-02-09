@@ -17,6 +17,7 @@ import Image from 'next/image';
 import { MotionBox } from '../shared/MotionElements';
 
 const Hero = ({ images }) => {
+     console.log('Static Props', images);
      const { data, error } = useSWR(`/api/images/carousel`, fetcher, {
           initialData: images
      });
