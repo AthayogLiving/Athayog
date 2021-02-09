@@ -5,21 +5,22 @@ import Offerings from '@/components/home/Offerings';
 import Schedule from '@/components/shared/Schedule';
 import Enquiry from '@/components/home/Enquiry';
 import { motion } from 'framer-motion';
+import ScrollToTop from '@/components/shared/ScrollToTop';
 
 export default function Home() {
-    return (
-        <motion.div
-            exit={{ opacity: 0 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            duration="400"
-        >
-            <Hero />
-            <Offerings />
-            <Gallery />
-            <Schedule />
-            <Faq />
-            <Enquiry />
-        </motion.div>
-    );
+     return (
+          <motion.div
+               exit={{ opacity: 0 }}
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               duration="400"
+          >
+               <Hero />
+               <Offerings />
+               <Gallery />
+               <Schedule />
+               <Faq />
+               <Enquiry />
+          </motion.div>
+     );
 }

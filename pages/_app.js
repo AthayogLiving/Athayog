@@ -17,6 +17,7 @@ import SEO from '../next-seo.config';
 import { DefaultSeo } from 'next-seo';
 import { v4 as uuidv4 } from 'uuid';
 import { css, Global } from '@emotion/react';
+import ScrollToTop from '@/components/shared/ScrollToTop';
 
 const GlobalStyle = ({ children }) => {
      return (
@@ -61,6 +62,7 @@ function App({ Component, pageProps }) {
                     {router.pathname.match('/admin') ? null : <Navbar />}
                     <AnimatePresence exitBeforeEnter key={uuidv4()}>
                          <Component {...pageProps} />
+                         <ScrollToTop />
                     </AnimatePresence>
                     {router.pathname.match('/admin') ? null : <Footer />}
                </AuthProvider>
