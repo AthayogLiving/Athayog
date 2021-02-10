@@ -1,5 +1,6 @@
 import { forwardRef, Box, Button } from '@chakra-ui/react';
 import { motion, isValidMotionProp } from 'framer-motion';
+import Image from 'next/image';
 
 // 1. Create a custom motion component from Box
 export const MotionBox = motion.custom(

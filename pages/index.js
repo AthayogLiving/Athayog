@@ -6,6 +6,7 @@ import Schedule from '@/components/shared/Schedule';
 import Enquiry from '@/components/home/Enquiry';
 import { motion } from 'framer-motion';
 import ScrollToTop from '@/components/shared/ScrollToTop';
+import Testimonials from '@/components/shared/Testimonials';
 
 export default function Home() {
      return (
@@ -19,6 +20,7 @@ export default function Home() {
                <Offerings />
                <Gallery />
                <Schedule />
+               <Testimonials />
                <Faq />
                <Enquiry />
           </motion.div>
