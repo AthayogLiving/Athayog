@@ -18,6 +18,7 @@ import Login from '@/components/home/Login';
 import Singup from '@/components/home/Singup';
 import Head from 'next/head';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
+import LoginOtp from '@/components/home/LoginOtp';
 
 const Account = () => {
      const router = useRouter();
@@ -55,7 +56,13 @@ const Account = () => {
                               boxShadow="base"
                               padding={10}
                          >
-                              {accountType === 'login' ? <Login /> : <Singup />}
+                              {accountType === 'login' ? (
+                                   <Login />
+                              ) : accountType === 'otp' ? (
+                                   <LoginOtp />
+                              ) : (
+                                   <Singup />
+                              )}
                          </Box>
                     </Flex>
                </Box>

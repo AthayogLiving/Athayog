@@ -8,11 +8,7 @@ import AliceCarousel from 'react-alice-carousel';
 
 const Stars = ({ totalStars, totalFilled }) =>
      [...Array(totalStars).keys()].map((key) => (
-          <AiFillStar
-               fontSize="1.1rem"
-               key={key}
-               isFilled={key < totalFilled}
-          />
+          <AiFillStar fontSize="1.1rem" key={key} />
      ));
 
 const Testimonials = ({ testimonials }) => {

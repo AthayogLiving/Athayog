@@ -1,5 +1,6 @@
 import {
      Button,
+     Divider,
      FormControl,
      FormErrorMessage,
      FormLabel,
@@ -8,6 +9,7 @@ import {
      Stack,
      Text,
      toast,
+     useDisclosure,
      useToast
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
@@ -15,13 +17,18 @@ import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { useAuth } from '@/lib/auth';
 import Router, { useRouter } from 'next/router';
+import firebase from '@/lib/firebase';
+import { AnimatePresence } from 'framer-motion';
+import { MotionStack } from '../shared/MotionElements';
 
 const Login = () => {
      const { handleSubmit, register, errors, reset } = useForm();
      const { signinWithEmail } = useAuth();
+
      const [loading, setLoading] = useState(false);
      const toast = useToast();
      const router = useRouter();
+
      const onUserLogin = async ({ email, password }) => {
           setLoading(true);
           await signinWithEmail(email, password, '/').catch((error) => {
@@ -36,6 +43,7 @@ const Login = () => {
                reset();
           });
      };
+
      return (
           <>
                <Heading
@@ -46,11 +54,13 @@ const Login = () => {
                >
                     Log In
                </Heading>
-               <Stack
+
+               <MotionStack
                     spacing={8}
                     mt={5}
                     width="sm"
                     as="form"
+                    exit={{ y: -1000 }}
                     onSubmit={handleSubmit((data) => onUserLogin(data))}
                >
                     <FormControl isRequired>
@@ -93,6 +103,23 @@ const Login = () => {
                          }}
                     >
                          Login
+                    </Button>
+               </MotionStack>
+
+               <Stack spacing={8} mt={5} width="sm">
+                    <Divider color="black" />
+                    <Button
+                         type="submit"
+                         colorScheme="aygray"
+                         id="sign-in-button"
+                         width="100%"
+                         onClick={(e) => router.push('/account/otp')}
+                         isLoading={loading}
+                         _active={{
+                              transform: 'scale(0.95)'
+                         }}
+                    >
+                         Login Via Phone
                     </Button>
                     <Link href="signup">
                          <Text textAlign="center" cursor="pointer">
