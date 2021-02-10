@@ -71,6 +71,8 @@ const LoginOtp = () => {
                          duration: 5000,
                          isClosable: true
                     });
+
+                    grecaptcha.reset(window.recaptchaWidgetId);
                });
      };
 
