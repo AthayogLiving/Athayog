@@ -18,7 +18,7 @@ export default async function handler(req, res) {
      // Run cors
      await cors(req, res);
      if (req.method === 'GET') {
-          const snapshot = await db.collection('testimonials').limit(4).get();
+          const snapshot = await db.collection('testimonials').limit(5).get();
           const testimonials = [];
 
           snapshot.forEach((doc) => {

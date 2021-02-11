@@ -156,14 +156,14 @@ const AddTestimonials = () => {
                                         <RadioGroup>
                                              <Stack direction="row">
                                                   <Radio
-                                                       value="true"
+                                                       value={true}
                                                        name="active"
                                                        ref={register}
                                                   >
                                                        Yes
                                                   </Radio>
                                                   <Radio
-                                                       value="false"
+                                                       value={false}
                                                        name="active"
                                                        ref={register}
                                                   >

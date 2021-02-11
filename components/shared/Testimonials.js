@@ -12,7 +12,7 @@ const Stars = ({ totalStars, totalFilled }) =>
      ));
 
 const Testimonials = ({ testimonials }) => {
-     const { data, error } = useSWR(`/api/testimonials`, fetcher, {
+     const { data, error } = useSWR(`/api/testimonials/active`, fetcher, {
           initialData: testimonials
      });
      if (error) return <Skeleton height="100vh"></Skeleton>;

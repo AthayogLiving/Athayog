@@ -18,13 +18,16 @@ import {
      FormControl,
      Switch,
      FormLabel,
-     Text
+     Text,
+     toast,
+     useToast
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import useSWR from 'swr';
 
 const ShowTestimonials = () => {
      const [status, setStatus] = useState(false);
+     const toast = useToast();
      const { data, error } = useSWR(`/api/testimonials`, fetcher);
      if (error)
           return (
@@ -51,12 +54,29 @@ const ShowTestimonials = () => {
 
      const onPublicChange = async (id, isAvailaible) => {
           setStatus(true);
-          await updateTestimonialsStatus(id, !isAvailaible);
+          await updateTestimonialsStatus(id, !isAvailaible).catch((error) => {
+               toast({
+                    title: 'An error occurred.',
+                    description: error.message,
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true
+               });
+               setStatus(false);
+               return;
+          });
+          toast({
+               title: 'Status Updated.',
+               description: "We've updated the live status.",
+               status: 'success',
+               duration: 9000,
+               isClosable: true
+          });
           setStatus(false);
      };
 
      return (
-          <Table variant="striped" colorScheme="teal">
+          <Table variant="simple" colorScheme="teal">
                <TableCaption>Testimonials</TableCaption>
                <Thead>
                     <Tr>
