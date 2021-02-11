@@ -8,15 +8,16 @@ import Image from 'next/image';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import SwiperCore, { Navigation, Pagination } from 'swiper';
+import SwiperCore, { Navigation, Pagination, EffectFade } from 'swiper';
 
 // Import Swiper styles
 
 import 'swiper/swiper-bundle.css';
-SwiperCore.use([Navigation, Pagination]);
+
+SwiperCore.use([Navigation, Pagination, EffectFade]);
 
 const Gallery = ({ images }) => {
-     const { data, error } = useSWR(`/api/images/carousel`, fetcher, {
+     const { data, error } = useSWR(`/api/images/athayog_space`, fetcher, {
           initialData: images
      });
      if (error) return <Skeleton height="100vh"></Skeleton>;
@@ -31,7 +32,7 @@ const Gallery = ({ images }) => {
                     Gallery
                </Heading>
                <Swiper
-                    spaceBetween={50}
+                    spaceBetween={20}
                     EffectFade={true}
                     navigation
                     pagination
@@ -42,7 +43,15 @@ const Gallery = ({ images }) => {
                     {data.images.map((data) => {
                          return (
                               <SwiperSlide>
-                                   <img src={data.imageUrl} />
+                                   <Box rounded="lg" overflow="hidden">
+                                        <Image
+                                             layout="responsive"
+                                             height="300px"
+                                             width="500px"
+                                             objectFit="cover"
+                                             src={data.imageUrl}
+                                        />
+                                   </Box>
                               </SwiperSlide>
                          );
                     })}
