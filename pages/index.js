@@ -5,9 +5,7 @@ import Offerings from '@/components/home/Offerings';
 import Schedule from '@/components/shared/Schedule';
 import Enquiry from '@/components/home/Enquiry';
 import { motion } from 'framer-motion';
-import ScrollToTop from '@/components/shared/ScrollToTop';
 import Testimonials from '@/components/shared/Testimonials';
-import Gallery2 from '@/components/home/Gallery2';
 
 export default function Home() {
      return (
@@ -20,7 +18,7 @@ export default function Home() {
                <Hero />
                <Offerings />
 
-               <Gallery2 />
+               <Gallery />
                <Schedule />
                <Testimonials />
                <Faq />
