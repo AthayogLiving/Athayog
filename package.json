@@ -37,6 +37,8 @@
         "react-icons": "^4.1.0",
         "react-sticky-box": "^0.9.3",
         "react-table": "^7.6.3",
+        "sass": "^1.32.7",
+        "swiper": "^6.4.11",
         "swr": "^0.4.0",
         "tailwindcss": "^2.0.2",
         "uuid": "^8.3.2",
