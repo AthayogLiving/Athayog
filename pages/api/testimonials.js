@@ -1,12 +1,38 @@
+import Cors from 'cors';
+import initMiddleware from '@/lib/cors-middleware';
+import { registerForm } from '@/lib/db/forms';
 import { db } from '@/lib/firebase-admin';
+import { createTestimonial } from '@/lib/db/testimonials';
 
-export default async (req, res) => {
-     const snapshot = await db.collection('testimonials').limit(4).get();
-     const testimonials = [];
+// Initialize the cors middleware
+const cors = initMiddleware(
+     // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
+     Cors({
+          // Only allow requests with GET, POST and OPTIONS
+          methods: ['GET', 'POST', 'OPTIONS'],
+          origin: true
+     })
+);
 
-     snapshot.forEach((doc) => {
-          testimonials.push({ id: doc.id, ...doc.data() });
-     });
+export default async function handler(req, res) {
+     // Run cors
+     await cors(req, res);
+     if (req.method === 'GET') {
+          const snapshot = await db.collection('testimonials').limit(4).get();
+          const testimonials = [];
 
-     res.status(200).json({ testimonials });
-};
+          snapshot.forEach((doc) => {
+               testimonials.push({ id: doc.id, ...doc.data() });
+          });
+
+          res.status(200).json({ testimonials });
+     }
+
+     if (req.method === 'POST') {
+          const { name, review, rating, active } = req.body;
+          await createTestimonial(name, review, rating, active);
+          return res.status(200).json({
+               message: 'Updated Form'
+          });
+     }
+}
