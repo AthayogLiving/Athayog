@@ -93,9 +93,6 @@ const EnquiryData = ({ forms, latestDoc, setDocs }) => {
 
      const { pageIndex } = state;
 
-     console.log(forms[forms.length - 1]);
-     console.log('Child', latestDoc);
-
      const loadMoreDoc = () => {
           setDocs(forms[forms.length - 1]);
      };

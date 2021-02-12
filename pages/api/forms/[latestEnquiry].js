@@ -16,41 +16,14 @@ const cors = initMiddleware(
 export default async function handler(req, res) {
      // Run cors
      await cors(req, res);
+     const latestDoc = req.query.latestEnquiry;
 
-     if (req.method === 'POST') {
-          const {
-               name,
-               email,
-               phone,
-               gender,
-               experience,
-               style,
-               course,
-               referral,
-               conditions,
-               type
-          } = req.body;
-          await registerForm(
-               name,
-               email,
-               phone,
-               gender,
-               experience,
-               style,
-               course,
-               referral,
-               conditions,
-               type
-          );
-          return res.status(200).json({
-               message: 'Updated Form'
-          });
-     }
      if (req.method === 'GET') {
           const snapshot = await db
-               .collection('forms')
+               .collection('enquiryForms')
                .orderBy('createdAt', 'desc')
-               .limit(20)
+               .startAfter(latestDoc)
+               .limit(40)
                .get();
           const submissions = [];
 

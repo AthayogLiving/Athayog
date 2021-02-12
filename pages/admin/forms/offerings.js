@@ -9,7 +9,11 @@ import FormHeader from '@/components/admin/FormHeader';
 const offerings = () => {
      const [latestDoc, setLatestDoc] = useState(0);
      const [form, setForm] = useState();
-     const { data, error } = useSWR(`/api/forms/offerings`, fetcher);
+
+     const { data, error } =
+          latestDoc != 0 && latestDoc != undefined
+               ? useSWR(`/api/forms/${latestDoc}`, fetcher)
+               : useSWR(`/api/forms/offerings`, fetcher);
 
      const bg = useColorModeValue('white', 'gray.800');
 
@@ -32,6 +36,7 @@ const offerings = () => {
      const handleForm = (form) => {
           setForm(form);
      };
+
      return (
           <Dashboard>
                <FormHeader siteLink="Offerings" />

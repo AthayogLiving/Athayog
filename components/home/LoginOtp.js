@@ -105,7 +105,6 @@ const LoginOtp = () => {
                          isClosable: true
                     });
                });
-          console.log(confirmationResult);
      };
 
      return (

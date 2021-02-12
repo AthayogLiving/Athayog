@@ -27,7 +27,6 @@ const enquiry = () => {
           );
      }
 
-     console.log(data);
      return (
           <Dashboard>
                <FormHeader siteLink="Enquiry" />

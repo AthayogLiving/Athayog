@@ -37,8 +37,6 @@ const AddTestimonials = () => {
      const onCreation = ({ name, review, rating, active }) => {
           setLoading(true);
 
-          console.log(name, review, rating, active);
-
           axios.post('/api/testimonials', {
                name,
                review,
