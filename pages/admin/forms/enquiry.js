@@ -7,7 +7,10 @@ import Dashboard from '../dashboard';
 import { Grid, Spinner, useColorModeValue } from '@chakra-ui/react';
 
 const enquiry = () => {
-     const { data, error } = useSWR(`/api/forms/enquiry`, fetcher);
+     const { data, error } =
+          latestDoc != 0 && latestDoc != undefined
+               ? useSWR(`/api/forms/${latestDoc}?type=enquiryForms`, fetcher)
+               : useSWR(`/api/forms/enquiry`, fetcher);
 
      const bg = useColorModeValue('white', 'gray.800');
 
@@ -30,7 +33,11 @@ const enquiry = () => {
      return (
           <Dashboard>
                <FormHeader siteLink="Enquiry" />
-               <EnquiryData forms={data.submissions} />
+               <EnquiryData
+                    forms={data.submissions}
+                    latestDoc={latestDoc}
+                    setDocs={setLatestDoc}
+               />
           </Dashboard>
      );
 };

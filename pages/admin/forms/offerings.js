@@ -12,7 +12,7 @@ const offerings = () => {
 
      const { data, error } =
           latestDoc != 0 && latestDoc != undefined
-               ? useSWR(`/api/forms/${latestDoc}`, fetcher)
+               ? useSWR(`/api/forms/${latestDoc}?type=forms`, fetcher)
                : useSWR(`/api/forms/offerings`, fetcher);
 
      const bg = useColorModeValue('white', 'gray.800');

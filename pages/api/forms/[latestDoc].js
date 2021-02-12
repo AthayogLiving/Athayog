@@ -16,11 +16,12 @@ const cors = initMiddleware(
 export default async function handler(req, res) {
      // Run cors
      await cors(req, res);
-     const latestDoc = req.query.latestEnquiry;
-
+     const latestDoc = req.query.latestDoc;
+     const type = req.query.type;
+     console.log(type, latestDoc);
      if (req.method === 'GET') {
           const snapshot = await db
-               .collection('enquiryForms')
+               .collection(type)
                .orderBy('createdAt', 'desc')
                .startAfter(latestDoc)
                .limit(40)

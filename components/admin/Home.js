@@ -30,71 +30,7 @@ function Home() {
                </Grid>
           );
      }
-     return (
-          <Stack d="flex" direction="row" spacing={5} width="100%">
-               {data.users ? (
-                    <Box
-                         padding={7}
-                         boxShadow="base"
-                         bg="white"
-                         rounded="lg"
-                         key={data.users.id}
-                    >
-                         <Flex alignItems="center" justifyContent="flex-start">
-                              <Box bg="blue.100" padding={5} rounded="full">
-                                   <FiUsers size="1.2rem" />
-                              </Box>
-
-                              <Box ml={8} lineHeight={0.8}>
-                                   <Heading size="lg">
-                                        {data.users ? data.users.length : '0'}
-                                   </Heading>
-                                   <Text color="gray.500" fontSize="sm">
-                                        Total Users
-                                   </Text>
-                              </Box>
-                         </Flex>
-                    </Box>
-               ) : null}
-               {Array(3)
-                    .fill()
-                    .map((data, index) => {
-                         return (
-                              <Box
-                                   padding={7}
-                                   boxShadow="base"
-                                   bg="white"
-                                   rounded="lg"
-                                   key={index}
-                                   lineHeight={0.8}
-                              >
-                                   <Flex
-                                        alignItems="center"
-                                        justifyContent="flex-start"
-                                   >
-                                        <Box
-                                             bg="purple.100"
-                                             padding={5}
-                                             rounded="full"
-                                        >
-                                             <FiFileText size="1.2rem" />
-                                        </Box>
-
-                                        <Box ml={8}>
-                                             <Heading size="lg">2023</Heading>
-                                             <Text
-                                                  color="gray.500"
-                                                  fontSize="sm"
-                                             >
-                                                  Forms Registered
-                                             </Text>
-                                        </Box>
-                                   </Flex>
-                              </Box>
-                         );
-                    })}
-          </Stack>
-     );
+     return <Stack d="flex" direction="row" spacing={5} width="100%"></Stack>;
 }
 
 export default Home;
