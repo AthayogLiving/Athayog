@@ -54,7 +54,7 @@ const Testimonials = ({ testimonials }) => {
 
      return (
           <Flex
-               bg="aygreen.400"
+               bg="primaryGreen"
                justifyContent="center"
                alignItems="center"
                height="md"
