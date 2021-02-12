@@ -75,7 +75,13 @@ const ScheduleData = () => {
      }
 
      return (
-          <Table {...getTableProps()} bg={bg} rounded="lg" padding={5}>
+          <Table
+               {...getTableProps()}
+               bg={bg}
+               rounded="lg"
+               padding={5}
+               boxShadow="base"
+          >
                <Thead>
                     {headerGroups.map((headerGroup) => (
                          <Tr {...headerGroup.getHeaderGroupProps()}>

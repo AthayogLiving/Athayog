@@ -9,7 +9,7 @@ import FormHeader from '@/components/admin/FormHeader';
 const offerings = () => {
      const [latestDoc, setLatestDoc] = useState(0);
      const [form, setForm] = useState();
-     const { data, error } = useSWR(`/api/forms/${latestDoc}`, fetcher);
+     const { data, error } = useSWR(`/api/forms/offerings`, fetcher);
 
      const bg = useColorModeValue('white', 'gray.800');
 

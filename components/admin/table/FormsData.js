@@ -264,13 +264,13 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
                          >
                               Last
                          </Button>
-                         <Button
+                         {/* <Button
                               onClick={() => loadMoreDoc()}
                               disabled={canNextPage}
                               leftIcon={<RiLoader3Fill />}
                          >
                               Load More
-                         </Button>
+                         </Button> */}
                     </ButtonGroup>
 
                     <Select

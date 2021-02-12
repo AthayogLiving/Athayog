@@ -62,7 +62,9 @@ function App({ Component, pageProps }) {
                     {router.pathname.match('/admin') ? null : <Navbar />}
                     <AnimatePresence exitBeforeEnter key={uuidv4()}>
                          <Component {...pageProps} />
-                         <ScrollToTop key={uuidv4()} />
+                         {router.pathname.match('/admin') ? null : (
+                              <ScrollToTop key={uuidv4()} />
+                         )}
                     </AnimatePresence>
                     {router.pathname.match('/admin') ? null : <Footer />}
                </AuthProvider>

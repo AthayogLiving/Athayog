@@ -47,14 +47,10 @@ export default async function handler(req, res) {
           });
      }
      if (req.method === 'GET') {
-          const latestDoc = req.query.latestDoc;
-          console.log(latestDoc);
-
           const snapshot = await db
                .collection('forms')
                .orderBy('createdAt', 'desc')
-               .startAfter(latestDoc || 0)
-               .limit(20)
+               .limit(40)
                .get();
           const submissions = [];
 

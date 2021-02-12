@@ -1,19 +1,18 @@
 import Dashboard from '../dashboard';
 
 import {
-     Box,
-     Button,
-     ButtonGroup,
-     Flex,
-     Grid,
-     Spinner,
-     useColorModeValue
+     useColorModeValue,
+     Table,
+     Thead,
+     Tbody,
+     Tr,
+     Th,
+     Td,
+     Text
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import FormHeader from '@/components/admin/FormHeader';
 import Link from 'next/link';
-import { MdQuestionAnswer, MdLocalOffer } from 'react-icons/md';
-import { FaWpforms } from 'react-icons/fa';
 
 const forms = () => {
      const [latestDoc, setLatestDoc] = useState(0);
@@ -24,27 +23,54 @@ const forms = () => {
           <Dashboard>
                <FormHeader siteLink="" />
 
-               <Flex mt={3}>
-                    <ButtonGroup variant="solid" colorScheme="blue">
-                         <Link href="forms/enquiry">
-                              <Button
-                                   boxShadow="base"
-                                   leftIcon={<MdQuestionAnswer />}
-                              >
-                                   Enquiry
-                              </Button>
-                         </Link>
-
-                         <Link href="forms/offerings">
-                              <Button
-                                   boxShadow="base"
-                                   leftIcon={<MdLocalOffer />}
-                              >
-                                   Offerings
-                              </Button>
-                         </Link>
-                    </ButtonGroup>
-               </Flex>
+               <Table
+                    variant="simple"
+                    bg={bg}
+                    mt={3}
+                    boxShadow="base"
+                    rounded="lg"
+               >
+                    <Thead>
+                         <Tr>
+                              <Th>Form Type</Th>
+                              <Th>Action</Th>
+                         </Tr>
+                    </Thead>
+                    <Tbody>
+                         <Tr>
+                              <Td>
+                                   <Text>Enquiry</Text>
+                              </Td>
+                              <Td>
+                                   <Link href="forms/enquiry">
+                                        <a
+                                             style={{
+                                                  textDecoration: 'underline'
+                                             }}
+                                        >
+                                             Open
+                                        </a>
+                                   </Link>
+                              </Td>
+                         </Tr>
+                         <Tr>
+                              <Td>
+                                   <Text>Offerings</Text>
+                              </Td>
+                              <Td>
+                                   <Link href="forms/offerings">
+                                        <a
+                                             style={{
+                                                  textDecoration: 'underline'
+                                             }}
+                                        >
+                                             Open
+                                        </a>
+                                   </Link>
+                              </Td>
+                         </Tr>
+                    </Tbody>
+               </Table>
           </Dashboard>
      );
 };
