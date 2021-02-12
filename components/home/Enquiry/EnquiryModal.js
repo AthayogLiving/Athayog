@@ -42,7 +42,6 @@ const EnquiryModal = () => {
           phone,
           details
      }) => {
-          console.log('ran', firstName, lastName, email, phone, details);
           setLoading(true);
           const fullName = firstName + ' ' + lastName;
           await axios

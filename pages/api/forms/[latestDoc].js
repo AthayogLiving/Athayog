@@ -18,7 +18,6 @@ export default async function handler(req, res) {
      await cors(req, res);
      const latestDoc = req.query.latestDoc;
      const type = req.query.type;
-     console.log(type, latestDoc);
      if (req.method === 'GET') {
           const snapshot = await db
                .collection(type)
