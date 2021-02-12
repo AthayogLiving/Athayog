@@ -16,8 +16,8 @@ import 'swiper/swiper-bundle.css';
 
 SwiperCore.use([Navigation, Pagination, EffectFade]);
 
-const Gallery = ({ images }) => {
-     const { data, error } = useSWR(`/api/images/athayog_space`, fetcher, {
+const HeroCarousel = ({ images }) => {
+     const { data, error } = useSWR(`/api/images/carousel`, fetcher, {
           initialData: images
      });
      if (error) return <Skeleton height="100vh"></Skeleton>;
@@ -27,8 +27,8 @@ const Gallery = ({ images }) => {
      }
 
      const params = {
-          slidesPerView: 3,
-          spaceBetween: 30,
+          slidesPerView: 1,
+
           pagination: {
                el: '.swiper-pagination',
                clickable: true
@@ -44,26 +44,19 @@ const Gallery = ({ images }) => {
      };
 
      return (
-          <Box padding="5rem" height="100%" margin="auto" bg="gray.200">
-               <Heading fontWeight="normal" textAlign="center" mb={10}>
-                    Gallery
-               </Heading>
-               <Swiper {...params}>
-                    {data.images.map((data) => {
-                         return (
-                              <Box rounded="lg" overflow="hidden">
-                                   <Image
-                                        layout="responsive"
-                                        height="150px"
-                                        width="300px"
-                                        objectFit="cover"
-                                        src={data.imageUrl}
-                                   />
-                              </Box>
-                         );
-                    })}
-               </Swiper>
-          </Box>
+          <Swiper {...params}>
+               {data.images.map((data) => {
+                    return (
+                         <Box height="100vh">
+                              <Image
+                                   layout="fill"
+                                   objectFit="cover"
+                                   src={data.imageUrl}
+                              />
+                         </Box>
+                    );
+               })}
+          </Swiper>
      );
 };
 
@@ -72,4 +65,4 @@ export async function getStaticProps(context) {
      return { props: { images }, revalidate: 1 };
 }
 
-export default Gallery;
+export default HeroCarousel;
