@@ -1,20 +1,10 @@
 import fetcher from '@/utils/fetcher';
 import { Box, Heading, Skeleton } from '@chakra-ui/react';
 import React from 'react';
-
 import useSWR from 'swr';
-
 import Image from 'next/image';
-// Import Swiper React components
 import Swiper from 'react-id-swiper';
-
-import SwiperCore, { Navigation, Pagination, EffectFade } from 'swiper';
-
-// Import Swiper styles
-
 import 'swiper/swiper-bundle.css';
-
-SwiperCore.use([Navigation, Pagination, EffectFade]);
 
 const HeroCarousel = ({ images }) => {
      const { data, error } = useSWR(`/api/images/carousel`, fetcher, {

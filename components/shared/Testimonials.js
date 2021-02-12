@@ -1,10 +1,11 @@
 import fetcher from '@/utils/fetcher';
-import { Box, Button, Flex, Heading, Skeleton, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, Skeleton, Text } from '@chakra-ui/react';
 import React from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import useSWR from 'swr';
-import AliceCarousel from 'react-alice-carousel';
+import Swiper from 'react-id-swiper';
+import 'swiper/swiper-bundle.css';
 
 const Stars = ({ totalStars, totalFilled }) =>
      [...Array(totalStars).keys()].map((key) => (
@@ -24,44 +25,80 @@ const Testimonials = ({ testimonials }) => {
      const handleDragStart = (e) => e.preventDefault();
      const items = [];
 
-     data.testimonials.map((data) => {
-          items.push(
-               <Box onDragStart={handleDragStart}>
-                    <Flex justifyContent="center">
-                         <Stars totalStars={data.stars} totalFilled={5} />
-                    </Flex>
+     const params = {
+          slidesPerView: 1,
+          ContainerEl: 'section',
+          WrapperEl: 'section',
+          autoplay: {
+               delay: 2500,
+               disableOnInteraction: false
+          },
 
-                    <Text fontSize="md" mt={5}>
-                         {data.review}
-                    </Text>
-                    <Text fontSize="2xl" fontWeight="medium" mt={5}>
-                         {data.name}
-                    </Text>
-               </Box>
-          );
-     });
+          navigation: {
+               nextEl: '.swiper-button-next',
+               prevEl: '.swiper-button-prev'
+          },
+          renderPrevButton: () => (
+               <IoIosArrowBack
+                    className="swiper-button-prev"
+                    style={{ color: 'white' }}
+               />
+          ),
+          renderNextButton: () => (
+               <IoIosArrowForward
+                    className="swiper-button-next"
+                    style={{ color: 'white' }}
+               />
+          )
+     };
 
      return (
-          <Flex bg="aygreen.400" justifyContent="center">
-               <Box width="6xl" height="100%" padding={10}>
+          <Flex
+               bg="aygreen.400"
+               justifyContent="center"
+               alignItems="center"
+               height="md"
+          >
+               <Box width="60vw" padding={10}>
                     <Heading
                          textAlign="center"
                          color="white"
                          fontWeight="normal"
                     >
                          Testimonials
-                         <Flex mt={5} justifyContent="center">
-                              <AliceCarousel
-                                   autoPlay
-                                   autoPlayStrategy="none"
-                                   autoPlayInterval={8000}
-                                   animationDuration={1000}
-                                   disableButtonsControls
-                                   infinite
-                                   mouseTracking
-                                   items={items}
-                              />
-                         </Flex>
+                         <Box
+                              mt={10}
+                              justifyContent="center"
+                              alignItems="center"
+                         >
+                              <Swiper {...params}>
+                                   {data.testimonials.map((data) => {
+                                        return (
+                                             <Box padding="0 5rem">
+                                                  <Flex justifyContent="center">
+                                                       <Stars
+                                                            totalStars={
+                                                                 data.stars
+                                                            }
+                                                            totalFilled={5}
+                                                       />
+                                                  </Flex>
+
+                                                  <Text fontSize="md" mt={5}>
+                                                       {data.review}
+                                                  </Text>
+                                                  <Text
+                                                       fontSize="2xl"
+                                                       fontWeight="medium"
+                                                       mt={5}
+                                                  >
+                                                       {data.name}
+                                                  </Text>
+                                             </Box>
+                                        );
+                                   })}
+                              </Swiper>
+                         </Box>
                     </Heading>
                </Box>
           </Flex>
