@@ -25,7 +25,7 @@ export default function Home() {
                <Faq />
                <Enquiry />
                <WhatsAppWidget
-                    phoneNumber="+917890574459"
+                    phoneNumber="+919611771434"
                     companyName="Athayog"
                />
           </motion.div>
