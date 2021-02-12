@@ -6,6 +6,8 @@ import Enquiry from '@/components/home/Enquiry';
 import { motion } from 'framer-motion';
 import Testimonials from '@/components/shared/Testimonials';
 import HeroCarousel from '@/components/home/HeroCarousel';
+import WhatsAppWidget from 'react-whatsapp-widget';
+import 'react-whatsapp-widget/dist/index.css';
 
 export default function Home() {
      return (
@@ -22,6 +24,10 @@ export default function Home() {
                <Testimonials />
                <Faq />
                <Enquiry />
+               <WhatsAppWidget
+                    phoneNumber="+917890574459"
+                    companyName="Athayog"
+               />
           </motion.div>
      );
 }
