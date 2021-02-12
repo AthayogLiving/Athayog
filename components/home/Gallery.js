@@ -6,7 +6,7 @@ import useSWR from 'swr';
 
 import Image from 'next/image';
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import Swiper from 'react-id-swiper';
 
 import SwiperCore, { Navigation, Pagination, EffectFade } from 'swiper';
 
@@ -26,33 +26,40 @@ const Gallery = ({ images }) => {
           return <Skeleton height="100vh"></Skeleton>;
      }
 
+     const params = {
+          slidesPerView: 3,
+          spaceBetween: 30,
+          pagination: {
+               el: '.swiper-pagination',
+               clickable: true
+          },
+          autoplay: {
+               delay: 2500,
+               disableOnInteraction: false
+          },
+          navigation: {
+               nextEl: '.swiper-button-next',
+               prevEl: '.swiper-button-prev'
+          }
+     };
+
      return (
-          <Box padding={10} height="100%" margin="auto">
+          <Box padding="5rem" height="100%" margin="auto" bg="gray.200">
                <Heading fontWeight="normal" textAlign="center" mb={10}>
                     Gallery
                </Heading>
-               <Swiper
-                    spaceBetween={20}
-                    EffectFade={true}
-                    navigation
-                    pagination
-                    slidesPerView={3}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
-               >
+               <Swiper {...params}>
                     {data.images.map((data) => {
                          return (
-                              <SwiperSlide>
-                                   <Box rounded="lg" overflow="hidden">
-                                        <Image
-                                             layout="responsive"
-                                             height="300px"
-                                             width="500px"
-                                             objectFit="cover"
-                                             src={data.imageUrl}
-                                        />
-                                   </Box>
-                              </SwiperSlide>
+                              <Box rounded="lg" overflow="hidden">
+                                   <Image
+                                        layout="responsive"
+                                        height="150px"
+                                        width="300px"
+                                        objectFit="cover"
+                                        src={data.imageUrl}
+                                   />
+                              </Box>
                          );
                     })}
                </Swiper>
