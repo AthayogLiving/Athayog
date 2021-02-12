@@ -34,10 +34,10 @@ export const Conditions = ({ values }) => {
      // Loop through the array and create a badge-like component instead of a comma-separated string
      return (
           <>
-               {values.map((conditions, idx) => {
+               {values.map((conditions, idx, index) => {
                     return (
                          <Badge
-                              key={idx}
+                              key={index}
                               className="badge"
                               mr={2}
                               colorScheme="teal"
@@ -277,8 +277,12 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
                          rounded="md"
                          onChange={(e) => setPageSize(Number(e.target.value))}
                     >
-                         {[10, 25, 50].map((pageSize) => (
-                              <option key={pageSize} value={pageSize}>
+                         {[10, 25, 50].map((pageSize, index) => (
+                              <option
+                                   key={pageSize}
+                                   value={pageSize}
+                                   key={index}
+                              >
                                    Show {pageSize}
                               </option>
                          ))}
