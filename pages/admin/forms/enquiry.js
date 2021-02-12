@@ -1,6 +1,6 @@
 import FormHeader from '@/components/admin/FormHeader';
 import EnquiryData from '@/components/admin/table/EnquiryData';
-import React from 'react';
+import React, { useState } from 'react';
 import fetcher from '@/utils/fetcher';
 import useSWR from 'swr';
 import Dashboard from '../dashboard';
