@@ -7,6 +7,7 @@ import Dashboard from '../dashboard';
 import { Grid, Spinner, useColorModeValue } from '@chakra-ui/react';
 
 const enquiry = () => {
+     const [latestDoc, setLatestDoc] = useState(0);
      const { data, error } =
           latestDoc != 0 && latestDoc != undefined
                ? useSWR(`/api/forms/${latestDoc}?type=enquiryForms`, fetcher)
