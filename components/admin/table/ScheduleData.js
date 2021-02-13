@@ -1,3 +1,4 @@
+import fetcher from '@/utils/fetcher';
 import {
      Thead,
      Table,
@@ -15,12 +16,18 @@ import {
      AlertDialogFooter,
      AlertDialogHeader,
      AlertDialogContent,
-     AlertDialogOverlay
+     AlertDialogOverlay,
+     Grid,
+     toast,
+     useToast,
+     Spinner
 } from '@chakra-ui/react';
+import axios from 'axios';
 
 import React from 'react';
 // import styled from 'styled-components';
 import { useTable, usePagination } from 'react-table';
+import useSWR, { mutate } from 'swr';
 
 // Create an editable cell renderer
 const EditableCell = ({
@@ -59,6 +66,7 @@ function ScheduleData({ columns, data, updateMyData, skipPageReset }) {
      // For this example, we're using pagination to illustrate how to stop
      // the current page from resetting when our data changes
      // Otherwise, nothing is different here.
+
      const {
           getTableProps,
           getTableBodyProps,
@@ -144,6 +152,54 @@ function ScheduleData({ columns, data, updateMyData, skipPageReset }) {
 }
 
 function App() {
+     const toast = useToast();
+     const { data: apiData, error } = useSWR(`/api/schedule/general`, fetcher);
+
+     if (!apiData) {
+          return (
+               <Grid>
+                    <Spinner />
+               </Grid>
+          );
+     }
+
+     if (apiData) {
+          console.log(apiData);
+     }
+
+     const updateSchedule = async () => {
+          await axios
+               .post('/api/schedule/generalSchedule', {
+                    data: {
+                         ...data
+                    }
+               })
+               .then(function (response) {
+                    // setLoading(false);
+
+                    toast({
+                         title: 'Schedule Updated.',
+                         description: "We've updated the schedule for you.",
+                         status: 'success',
+                         duration: 9000,
+                         isClosable: true
+                    });
+
+                    mutate(`/api/schedule/generalSchedule`);
+               })
+               .catch(function (error) {
+                    // setLoading(false);
+
+                    toast({
+                         title: 'An error occurred.',
+                         description: error.message,
+                         status: 'error',
+                         duration: 5000,
+                         isClosable: true
+                    });
+                    // reset();
+               });
+     };
      const columns = React.useMemo(
           () => [
                {
@@ -182,42 +238,7 @@ function App() {
           []
      );
 
-     const forms = {
-          submissions: [
-               {
-                    time: '8:30 AM - 10:50 AM',
-                    monday: 'Something',
-                    tuesday: 'Another',
-                    wednesday: 'Lather',
-                    thursday: 'Kaska',
-                    friday: 'Lophit',
-                    saturday: 'Rewwedw',
-                    sunday: 'Unsdaj'
-               },
-               {
-                    time: '10:50 AM - 2:00 PM',
-                    monday: 'Something',
-                    tuesday: 'Another',
-                    wednesday: 'Lather',
-                    thursday: 'Kaska',
-                    friday: 'Lophit',
-                    saturday: 'Rewwedw',
-                    sunday: 'Unsdaj'
-               },
-               {
-                    time: '2:00 AM - 4:00 PM',
-                    monday: 'Something',
-                    tuesday: 'Another',
-                    wednesday: 'Lather',
-                    thursday: 'Kaska',
-                    friday: 'Lophit',
-                    saturday: 'Rewwedw',
-                    sunday: 'Unsdaj'
-               }
-          ]
-     };
-
-     const [data, setData] = React.useState(() => forms.submissions);
+     const [data, setData] = React.useState(() => apiData.schedule);
      const [originalData] = React.useState(data);
      const [skipPageReset, setSkipPageReset] = React.useState(false);
 
@@ -261,8 +282,6 @@ function App() {
      const onClose = () => setIsOpen(false);
      const cancelRef = React.useRef();
 
-     const updateData = () => [console.log(data)];
-
      return (
           <>
                <ScheduleData
@@ -272,19 +291,11 @@ function App() {
                     skipPageReset={skipPageReset}
                />
 
-               <ButtonGroup size="sm">
-                    <Button
-                         mt={5}
-                         onClick={() => setIsOpen(true)}
-                         colorScheme="red"
-                    >
+               <ButtonGroup size="sm" mt={5}>
+                    <Button onClick={() => setIsOpen(true)} colorScheme="red">
                          Reset
                     </Button>
-                    <Button
-                         mt={5}
-                         onClick={() => updateData()}
-                         colorScheme="teal"
-                    >
+                    <Button onClick={() => updateSchedule()} colorScheme="teal">
                          Submit
                     </Button>
                </ButtonGroup>
