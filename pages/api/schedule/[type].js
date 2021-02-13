@@ -2,7 +2,7 @@ import { getSchedule } from '@/lib/db/db-admin';
 
 import Cors from 'cors';
 import initMiddleware from '@/lib/cors-middleware';
-import { createSchedule } from '@/lib/db/schedule';
+import { updateSchedule } from '@/lib/db/schedule';
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
      if (req.method === 'POST') {
           const { data } = req.body;
           await data.map((individual) => {
-               createSchedule('generalSchedule', individual);
+               updateSchedule('generalSchedule', individual);
           });
 
           return res.status(200).json({

@@ -9,101 +9,29 @@ import {
      TableCaption,
      Box,
      Flex,
-     Heading
+     Heading,
+     Grid,
+     Text
 } from '@chakra-ui/react';
+import useSWR from 'swr';
+import fetcher from '@/utils/fetcher';
 
-const tableData = {
-     week: [
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday',
-          'Saturday',
-          'Sunday'
-     ],
-     shedules: [
-          {
-               day: 'Moday',
-               times: [
-                    '5:30 am - 6:30 am',
-                    'Something',
-                    'Something',
-                    'Something',
-                    'Something',
-                    'Something'
-               ]
-          },
-          {
-               day: 'Moday',
-               times: [
-                    '5:30 am - 6:30 am',
-                    'Something',
-                    'Something',
-                    'Something',
-                    'Something',
-                    'Something'
-               ]
-          },
-          {
-               day: 'Moday',
-               times: [
-                    '5:30 am - 6:30 am',
-                    'Something',
-                    'Something',
-                    'Something',
-                    'Something',
-                    'Something'
-               ]
-          },
-          {
-               day: 'Moday',
-               times: [
-                    '5:30 am - 6:30 am',
-                    'Something',
-                    'Something',
-                    'Something',
-                    'Something',
-                    'Something'
-               ]
-          },
-          {
-               day: 'Moday',
-               times: [
-                    '5:30 am - 6:30 am',
-                    'Something',
-                    'Something',
-                    'Something',
-                    'Something',
-                    'Something'
-               ]
-          },
-          {
-               day: 'Moday',
-               times: [
-                    '5:30 am - 6:30 am',
-                    'Something',
-                    'Something',
-                    'Something',
-                    'Something',
-                    'Something'
-               ]
-          },
-          {
-               day: 'Moday',
-               times: [
-                    '5:30 am - 6:30 am',
-                    'Something',
-                    'Something',
-                    'Something',
-                    'Something',
-                    'Something'
-               ]
-          }
-     ]
-};
+const Schedule = ({ schedule }) => {
+     const { data, error } = useSWR(`/api/schedule/Generalschedule`, fetcher, {
+          initialData: schedule
+     });
 
-const Schedule = () => {
+     if (error) {
+          return (
+               <Grid placeItems="center">
+                    <Text>Something Happened Try Again</Text>
+               </Grid>
+          );
+     }
+
+     if (!data) {
+          return null;
+     }
      return (
           <Flex
                margin="auto"
@@ -120,83 +48,56 @@ const Schedule = () => {
                     width="60vw"
                >
                     <Heading fontWeight="normal">Schedule</Heading>
-                    <Table variant="striped" colorScheme="aygreen" mt={10}>
+                    <Table
+                         variant="striped"
+                         colorScheme="whatsapp"
+                         mt={10}
+                         boxShadow="base"
+                         rounded="lg"
+                         overflow="hidden"
+                    >
                          <Thead>
                               <Tr>
-                                   {tableData.week.map((data, index) => {
-                                        return <Th key={index}>{data}</Th>;
-                                   })}
+                                   <Th bg="secondaryGreen">Time</Th>
+                                   <Th bg="secondaryGreen">Monday</Th>
+                                   <Th bg="secondaryGreen">Tuesday</Th>
+                                   <Th bg="secondaryGreen">Wednesday</Th>
+                                   <Th bg="secondaryGreen">Thursday</Th>
+                                   <Th bg="secondaryGreen">Friday</Th>
+                                   <Th bg="secondaryGreen">Saturday</Th>
+                                   <Th bg="secondaryGreen">Sunday</Th>
                               </Tr>
                          </Thead>
                          <Tbody>
-                              <Tr>
-                                   <Td>5:30 am - 6:30 am</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                              </Tr>
-                              <Tr>
-                                   <Td>5:30 am - 6:30 am</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                              </Tr>
-                              <Tr>
-                                   <Td>5:30 am - 6:30 am</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                              </Tr>
-                              <Tr>
-                                   <Td>5:30 am - 6:30 am</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                              </Tr>
-                              <Tr>
-                                   <Td>5:30 am - 6:30 am</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                              </Tr>
-                              <Tr>
-                                   <Td>5:30 am - 6:30 am</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                              </Tr>
-                              <Tr>
-                                   <Td>5:30 am - 6:30 am</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                                   <Td>Something</Td>
-                              </Tr>
+                              {data.schedule.map((individual) => {
+                                   return (
+                                        <Tr>
+                                             <Td
+                                                  width="200px"
+                                                  fontWeight="medium"
+                                             >
+                                                  {individual.time}
+                                             </Td>
+                                             <Td>{individual.monday}</Td>
+                                             <Td>{individual.tuesday}</Td>
+                                             <Td>{individual.wednesday}</Td>
+                                             <Td>{individual.thursday}</Td>
+                                             <Td>{individual.friday}</Td>
+                                             <Td>{individual.saturday}</Td>
+                                             <Td>{individual.sunday}</Td>
+                                        </Tr>
+                                   );
+                              })}
                          </Tbody>
                     </Table>
                </Flex>
           </Flex>
      );
 };
+
+export async function getStaticProps(context) {
+     const schedule = await fetcher('/api/schedule/Generalschedule');
+     return { props: { schedule }, revalidate: 1 };
+}
 
 export default Schedule;

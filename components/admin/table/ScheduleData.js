@@ -21,7 +21,8 @@ import {
      Grid,
      toast,
      useToast,
-     Spinner
+     Spinner,
+     Flex
 } from '@chakra-ui/react';
 import axios from 'axios';
 
@@ -29,6 +30,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 // import styled from 'styled-components';
 import { useTable, usePagination } from 'react-table';
 import { mutate } from 'swr';
+import AddSchedule from './AddSchedule';
 
 // Create an editable cell renderer
 const EditableCell = ({
@@ -152,8 +154,9 @@ function Schedule({ columns, data, updateMyData, skipPageReset }) {
      );
 }
 
-const ScheduleData = ({ schedule }) => {
+const ScheduleData = ({ schedule, type }) => {
      const [data, setData] = useState(() => schedule);
+     const [loading, setLoading] = useState(false);
      const [originalData] = useState(data);
      const toast = useToast();
      const [isOpen, setIsOpen] = useState(false);
@@ -248,12 +251,13 @@ const ScheduleData = ({ schedule }) => {
      };
 
      const updateSchedule = async () => {
+          setLoading(true);
           await axios
-               .post('/api/schedule/generalSchedule', {
+               .post(`/api/schedule/${type}`, {
                     data
                })
                .then(function (response) {
-                    // setLoading(false);
+                    setLoading(false);
 
                     toast({
                          title: 'Schedule Updated.',
@@ -266,7 +270,7 @@ const ScheduleData = ({ schedule }) => {
                     mutate(`/api/schedule/generalSchedule`);
                })
                .catch(function (error) {
-                    // setLoading(false);
+                    setLoading(false);
 
                     toast({
                          title: 'An error occurred.',
@@ -275,7 +279,6 @@ const ScheduleData = ({ schedule }) => {
                          duration: 5000,
                          isClosable: true
                     });
-                    // reset();
                });
      };
 
@@ -288,14 +291,23 @@ const ScheduleData = ({ schedule }) => {
                     skipPageReset={skipPageReset}
                />
 
-               <ButtonGroup size="sm" mt={5}>
-                    <Button onClick={() => setIsOpen(true)} colorScheme="red">
-                         Reset
-                    </Button>
-                    <Button onClick={() => updateSchedule()} colorScheme="teal">
-                         Submit
-                    </Button>
-               </ButtonGroup>
+               <Flex justify="space-between" alignItems="center" mt={5}>
+                    <ButtonGroup size="sm">
+                         <Button
+                              onClick={() => setIsOpen(true)}
+                              colorScheme="red"
+                         >
+                              Reset
+                         </Button>
+                         <Button
+                              onClick={() => updateSchedule()}
+                              colorScheme="teal"
+                              isLoading={loading}
+                         >
+                              Submit
+                         </Button>
+                    </ButtonGroup>
+               </Flex>
 
                <AlertDialog
                     isOpen={isOpen}

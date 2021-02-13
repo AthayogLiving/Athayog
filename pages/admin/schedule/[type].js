@@ -6,6 +6,7 @@ import { Router, useRouter } from 'next/router';
 import ScheduleHeader from '@/components/admin/ScheduleHeader';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
+import AddSchedule from '@/components/admin/table/AddSchedule';
 
 const type = () => {
      const router = useRouter();
@@ -51,7 +52,16 @@ const type = () => {
                          boxShadow="base"
                          mt={3}
                     >
-                         <ScheduleData schedule={data.schedule} />
+                         <ScheduleData schedule={data.schedule} type={type} />
+                    </Box>
+                    <Box
+                         bg={bg}
+                         rounded="lg"
+                         padding={5}
+                         boxShadow="base"
+                         mt={3}
+                    >
+                         <AddSchedule type={type} />
                     </Box>
                </Dashboard>
           </>
