@@ -1,3 +1,4 @@
+import { FirebaseToDate } from '@/components/helper/FirebaseToDate';
 import fetcher from '@/utils/fetcher';
 import {
      Thead,
@@ -24,10 +25,10 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 
-import React from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 // import styled from 'styled-components';
 import { useTable, usePagination } from 'react-table';
-import useSWR, { mutate } from 'swr';
+import { mutate } from 'swr';
 
 // Create an editable cell renderer
 const EditableCell = ({
@@ -62,7 +63,7 @@ const defaultColumn = {
 };
 
 // Be sure to pass our updateMyData and the skipPageReset option
-function ScheduleData({ columns, data, updateMyData, skipPageReset }) {
+function Schedule({ columns, data, updateMyData, skipPageReset }) {
      // For this example, we're using pagination to illustrate how to stop
      // the current page from resetting when our data changes
      // Otherwise, nothing is different here.
@@ -103,7 +104,7 @@ function ScheduleData({ columns, data, updateMyData, skipPageReset }) {
      // Render the UI for your table
      return (
           <>
-               <Table {...getTableProps()}>
+               <Table {...getTableProps()} size="sm" colorScheme="cyan">
                     <Thead>
                          {headerGroups.map((headerGroup) => (
                               <Tr {...headerGroup.getHeaderGroupProps()}>
@@ -151,56 +152,16 @@ function ScheduleData({ columns, data, updateMyData, skipPageReset }) {
      );
 }
 
-function App() {
+const ScheduleData = ({ schedule }) => {
+     const [data, setData] = useState(() => schedule);
+     const [originalData] = useState(data);
      const toast = useToast();
-     const { data: apiData, error } = useSWR(`/api/schedule/general`, fetcher);
+     const [isOpen, setIsOpen] = useState(false);
+     const onClose = () => setIsOpen(false);
+     const cancelRef = useRef();
+     const [skipPageReset, setSkipPageReset] = useState(false);
 
-     if (!apiData) {
-          return (
-               <Grid>
-                    <Spinner />
-               </Grid>
-          );
-     }
-
-     if (apiData) {
-          console.log(apiData);
-     }
-
-     const updateSchedule = async () => {
-          await axios
-               .post('/api/schedule/generalSchedule', {
-                    data: {
-                         ...data
-                    }
-               })
-               .then(function (response) {
-                    // setLoading(false);
-
-                    toast({
-                         title: 'Schedule Updated.',
-                         description: "We've updated the schedule for you.",
-                         status: 'success',
-                         duration: 9000,
-                         isClosable: true
-                    });
-
-                    mutate(`/api/schedule/generalSchedule`);
-               })
-               .catch(function (error) {
-                    // setLoading(false);
-
-                    toast({
-                         title: 'An error occurred.',
-                         description: error.message,
-                         status: 'error',
-                         duration: 5000,
-                         isClosable: true
-                    });
-                    // reset();
-               });
-     };
-     const columns = React.useMemo(
+     const columns = useMemo(
           () => [
                {
                     Header: 'Time',
@@ -233,14 +194,17 @@ function App() {
                {
                     Header: 'Sunday',
                     accessor: 'sunday'
+               },
+               {
+                    Header: 'Updated',
+                    accessor: 'createdAt',
+                    Cell: ({ cell: { value } }) => (
+                         <DateCreated values={value} />
+                    )
                }
           ],
           []
      );
-
-     const [data, setData] = React.useState(() => apiData.schedule);
-     const [originalData] = React.useState(data);
-     const [skipPageReset, setSkipPageReset] = React.useState(false);
 
      // We need to keep the table from resetting the pageIndex when we
      // Update data. So we can keep track of that flag with a ref.
@@ -267,7 +231,7 @@ function App() {
      // After data chagnes, we turn the flag back off
      // so that if data actually changes when we're not
      // editing it, the page is reset
-     React.useEffect(() => {
+     useEffect(() => {
           setSkipPageReset(false);
      }, [data]);
 
@@ -278,13 +242,46 @@ function App() {
           setData(originalData);
      };
 
-     const [isOpen, setIsOpen] = React.useState(false);
-     const onClose = () => setIsOpen(false);
-     const cancelRef = React.useRef();
+     const DateCreated = ({ values }) => {
+          // Loop through the array and create a badge-like component instead of a comma-separated string
+          return <>{FirebaseToDate(values)}</>;
+     };
+
+     const updateSchedule = async () => {
+          await axios
+               .post('/api/schedule/generalSchedule', {
+                    data
+               })
+               .then(function (response) {
+                    // setLoading(false);
+
+                    toast({
+                         title: 'Schedule Updated.',
+                         description: "We've updated the schedule for you.",
+                         status: 'success',
+                         duration: 9000,
+                         isClosable: true
+                    });
+
+                    mutate(`/api/schedule/generalSchedule`);
+               })
+               .catch(function (error) {
+                    // setLoading(false);
+
+                    toast({
+                         title: 'An error occurred.',
+                         description: error.message,
+                         status: 'error',
+                         duration: 5000,
+                         isClosable: true
+                    });
+                    // reset();
+               });
+     };
 
      return (
           <>
-               <ScheduleData
+               <Schedule
                     columns={columns}
                     data={data}
                     updateMyData={updateMyData}
@@ -337,6 +334,6 @@ function App() {
                </AlertDialog>
           </>
      );
-}
+};
 
-export default App;
+export default ScheduleData;
