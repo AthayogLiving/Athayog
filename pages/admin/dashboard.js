@@ -39,21 +39,21 @@ const dashboard = ({ children }) => {
                <Grid
                     h="100%"
                     templateRows="auto 1fr"
-                    templateColumns="repeat(8, 1fr)"
+                    templateColumns="repeat(10, 1fr)"
                >
                     <GridItem colSpan={1} rowSpan={3}>
                          <StickyBox style={{ height: '100vh' }}>
                               <Sidebar />
                          </StickyBox>
                     </GridItem>
-                    <GridItem colSpan={7} rowSpan={1} bg={bg}>
+                    <GridItem colSpan={9} rowSpan={1} bg={bg}>
                          <Navbar
                               user={user}
                               signout={signout}
                               loading={loading}
                          />
                     </GridItem>
-                    <GridItem colSpan={7} rowSpan={2} bg={bg} px={8}>
+                    <GridItem colSpan={9} rowSpan={2} bg={bg} px={8}>
                          {children ? children : <Home />}
                     </GridItem>
                </Grid>

@@ -53,12 +53,12 @@ const Schedule = ({ schedule }) => {
                >
                     <Heading fontWeight="normal">Schedule</Heading>
                     <Table
-                         variant="striped"
-                         colorScheme="whatsapp"
+                         variant="simple"
                          mt={10}
                          boxShadow="base"
                          rounded="lg"
                          overflow="hidden"
+                         size="md"
                     >
                          <Thead>
                               <Tr>
@@ -94,18 +94,21 @@ const Schedule = ({ schedule }) => {
                                                   <Td
                                                        width="200px"
                                                        fontWeight="medium"
+                                                       bg="aygreen.50"
                                                   >
                                                        {fromHours}:{fromMinutes}{' '}
                                                        {fromPeriod} - {toHours}:
                                                        {toMinutes} {toPeriod}
                                                   </Td>
-                                                  <Td>{monday}</Td>
-                                                  <Td>{tuesday}</Td>
-                                                  <Td>{wednesday}</Td>
-                                                  <Td>{thursday}</Td>
-                                                  <Td>{friday}</Td>
-                                                  <Td>{saturday}</Td>
-                                                  <Td>{sunday}</Td>
+                                                  <Td bg="white">{monday}</Td>
+                                                  <Td bg="white">{tuesday}</Td>
+                                                  <Td bg="white">
+                                                       {wednesday}
+                                                  </Td>
+                                                  <Td bg="white">{thursday}</Td>
+                                                  <Td bg="white">{friday}</Td>
+                                                  <Td bg="white">{saturday}</Td>
+                                                  <Td bg="white">{sunday}</Td>
                                              </Tr>
                                         );
                                    }

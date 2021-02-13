@@ -1,5 +1,6 @@
 import { FirebaseToDate } from '@/components/helper/FirebaseToDate';
-import fetcher from '@/utils/fetcher';
+
+import SelectColumnFilter from './Filters/SelectColumnFilter';
 import {
      Thead,
      Table,
@@ -22,7 +23,13 @@ import {
      toast,
      useToast,
      Spinner,
-     Flex
+     Flex,
+     Select,
+     NumberInput,
+     NumberInputField,
+     NumberInputStepper,
+     NumberIncrementStepper,
+     NumberDecrementStepper
 } from '@chakra-ui/react';
 import axios from 'axios';
 
@@ -56,7 +63,91 @@ const EditableCell = ({
           setValue(initialValue);
      }, [initialValue]);
 
-     return <Input value={value} onChange={onChange} onBlur={onBlur} />;
+     const minutes = [];
+     const hours = [
+          '00',
+          '01',
+          '02',
+          '03',
+          '04',
+          '05',
+          '06',
+          '07',
+          '08',
+          '09',
+          '10',
+          '11',
+          '12'
+     ];
+
+     for (let i = 0; i < 60; i++) {
+          if (i < 10) {
+               i = i + '0';
+          }
+          minutes.push(i);
+     }
+     console.log(id);
+     if (id == 'fromHours' || id == 'toHours') {
+          return (
+               <Select
+                    value={value}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    width="70px"
+                    size="sm"
+                    rouned="lg"
+               >
+                    <option value={initialValue}>{initialValue}</option>
+                    {hours.map((number) => {
+                         return <option value={number}>{number}</option>;
+                    })}
+               </Select>
+          );
+     } else if (id == 'fromMinutes' || id == 'toMinutes') {
+          return (
+               <Select
+                    value={value}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    width="70px"
+                    size="sm"
+                    rouned="lg"
+               >
+                    <option value={initialValue}>{initialValue}</option>
+                    {minutes.map((number) => {
+                         return <option value={number}>{number}</option>;
+                    })}
+               </Select>
+          );
+     } else if (id == 'toPeriod' || id == 'fromPeriod') {
+          return (
+               <Select
+                    value={value}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    width="70px"
+                    size="sm"
+                    rouned="lg"
+               >
+                    <option value={initialValue}>{initialValue}</option>
+                    {initialValue == 'am' ? (
+                         <option value="pm">pm</option>
+                    ) : (
+                         <option value="am">am</option>
+                    )}
+               </Select>
+          );
+     } else {
+          return (
+               <Input
+                    value={value}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    size="sm"
+                    rouned="lg"
+               />
+          );
+     }
 };
 
 // Set our editable cell renderer as the default Cell renderer
@@ -106,7 +197,7 @@ function Schedule({ columns, data, updateMyData, skipPageReset }) {
      // Render the UI for your table
      return (
           <>
-               <Table {...getTableProps()} size="sm" colorScheme="cyan">
+               <Table {...getTableProps()} size="sm" variant="simple">
                     <Thead>
                          {headerGroups.map((headerGroup) => (
                               <Tr {...headerGroup.getHeaderGroupProps()}>
@@ -167,57 +258,66 @@ const ScheduleData = ({ schedule, type }) => {
      const columns = useMemo(
           () => [
                {
-                    Header: 'From Hour',
-                    accessor: 'fromHours',
-                    type: 'number'
+                    Header: 'Time',
+                    columns: [
+                         {
+                              Header: 'From Hour',
+                              accessor: 'fromHours'
+                         },
+                         {
+                              Header: 'From Minutes',
+                              accessor: 'fromMinutes'
+                         },
+                         {
+                              Header: 'Period',
+                              accessor: 'fromPeriod'
+                         },
+                         {
+                              Header: 'To Hour',
+                              accessor: 'toHours'
+                         },
+                         {
+                              Header: 'To Minutes',
+                              accessor: 'toMinutes'
+                         }
+                    ]
                },
                {
-                    Header: 'From Minutes',
-                    accessor: 'fromMinutes'
-               },
-               {
-                    Header: 'Period',
-                    accessor: 'fromPeriod'
-               },
-               {
-                    Header: 'To Hour',
-                    accessor: 'toHours'
-               },
-               {
-                    Header: 'To Minutes',
-                    accessor: 'toMinutes'
-               },
-               {
-                    Header: 'Period',
-                    accessor: 'toPeriod'
-               },
-               {
-                    Header: 'Monday',
-                    accessor: 'monday'
-               },
-               {
-                    Header: 'Tuesday',
-                    accessor: 'tuesday'
-               },
-               {
-                    Header: 'Wednesday',
-                    accessor: 'wednesday'
-               },
-               {
-                    Header: 'Thurday',
-                    accessor: 'thursday'
-               },
-               {
-                    Header: 'Friday',
-                    accessor: 'friday'
-               },
-               {
-                    Header: 'Saturday',
-                    accessor: 'saturday'
-               },
-               {
-                    Header: 'Sunday',
-                    accessor: 'sunday'
+                    Header: 'Schedule',
+                    columns: [
+                         {
+                              Header: 'Period',
+                              accessor: 'toPeriod'
+                         },
+                         {
+                              Header: 'Monday',
+                              accessor: 'monday'
+                         },
+                         {
+                              Header: 'Tuesday',
+                              accessor: 'tuesday'
+                         },
+                         {
+                              Header: 'Wednesday',
+                              accessor: 'wednesday'
+                         },
+                         {
+                              Header: 'Thurday',
+                              accessor: 'thursday'
+                         },
+                         {
+                              Header: 'Friday',
+                              accessor: 'friday'
+                         },
+                         {
+                              Header: 'Saturday',
+                              accessor: 'saturday'
+                         },
+                         {
+                              Header: 'Sunday',
+                              accessor: 'sunday'
+                         }
+                    ]
                }
           ],
           []
@@ -268,7 +368,7 @@ const ScheduleData = ({ schedule, type }) => {
           setLoading(true);
 
           await axios
-               .post(`/api/schedule/${type}`, {
+               .post(`/api/schedule/${type}Schedule`, {
                     data
                })
                .then(function (response) {
@@ -282,7 +382,7 @@ const ScheduleData = ({ schedule, type }) => {
                          isClosable: true
                     });
 
-                    mutate(`/api/schedule/generalSchedule`);
+                    mutate(`/api/schedule/${type}Schedule`);
                })
                .catch(function (error) {
                     setLoading(false);

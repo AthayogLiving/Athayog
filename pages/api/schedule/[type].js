@@ -27,8 +27,11 @@ export default async function handler(req, res) {
 
      if (req.method === 'POST') {
           const { data } = req.body;
+
+          const type = req.query.type;
+
           await data.map((individual) => {
-               updateSchedule('generalSchedule', individual);
+               updateSchedule(type, individual);
           });
 
           return res.status(200).json({

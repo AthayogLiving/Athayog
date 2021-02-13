@@ -24,11 +24,12 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useForm } from 'react-hook-form';
 import { createSchedule } from '@/lib/db/schedule';
+import { mutate } from 'swr';
 
 const AddSchedule = ({ type }) => {
      const [loading, setLoading] = useState(false);
      const toast = useToast();
-     const { handleSubmit, register, errors } = useForm();
+     const { handleSubmit, register, errors, reset } = useForm();
      const entries = [
           'Monday',
           'Tuesday',
@@ -62,18 +63,15 @@ const AddSchedule = ({ type }) => {
           minutes.push(i);
      }
 
-     const [value, onChange] = useState(['10:00', '11:00']);
-
      const converToFull = (time, minutes, period) => {
           const fullDate =
-               period == 'pm'
+               period == 'pm' && time > 12
                     ? Number(time) + 12 + ':' + minutes + ':' + '00'
                     : time + ':' + minutes + ':' + '00';
           return new Date('1970-01-01T' + fullDate);
      };
 
      const onCreateSchedule = async (data) => {
-          console.log(data);
           const {
                fromHours,
                fromMinutes,
@@ -123,6 +121,7 @@ const AddSchedule = ({ type }) => {
                          isClosable: true
                     });
                     setLoading(false);
+                    reset();
                     return;
                }
           );
@@ -134,6 +133,8 @@ const AddSchedule = ({ type }) => {
                duration: 9000,
                isClosable: true
           });
+          mutate(`api/schedule/${type}Schedule`);
+          reset();
      };
      return (
           <Box
