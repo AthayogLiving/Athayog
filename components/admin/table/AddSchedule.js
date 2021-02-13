@@ -14,7 +14,10 @@ import {
      FormErrorMessage,
      FormControl,
      toast,
-     useToast
+     useToast,
+     Select,
+     FormLabel,
+     Flex
 } from '@chakra-ui/react';
 
 import React, { useState } from 'react';
@@ -27,7 +30,6 @@ const AddSchedule = ({ type }) => {
      const toast = useToast();
      const { handleSubmit, register, errors } = useForm();
      const entries = [
-          'Time',
           'Monday',
           'Tuesday',
           'Wednesday',
@@ -36,22 +38,94 @@ const AddSchedule = ({ type }) => {
           'Saturday',
           'Sunday'
      ];
+     const minutes = [];
+     const hours = [
+          '00',
+          '01',
+          '02',
+          '03',
+          '04',
+          '05',
+          '06',
+          '07',
+          '08',
+          '09',
+          '10',
+          '11',
+          '12'
+     ];
 
-     console.log(type);
+     for (let i = 0; i < 60; i++) {
+          if (i < 10) {
+               i = i + '0';
+          }
+          minutes.push(i);
+     }
+
+     const [value, onChange] = useState(['10:00', '11:00']);
+
+     const converToFull = (time, minutes, period) => {
+          const fullDate =
+               period == 'pm'
+                    ? Number(time) + 12 + ':' + minutes + ':' + '00'
+                    : time + ':' + minutes + ':' + '00';
+          return new Date('1970-01-01T' + fullDate);
+     };
 
      const onCreateSchedule = async (data) => {
+          console.log(data);
+          const {
+               fromHours,
+               fromMinutes,
+               fromPeriod,
+               toHours,
+               toMinutes,
+               toPeriod,
+               monday,
+               tuesday,
+               wednesday,
+               thursday,
+               friday,
+               saturday,
+               sunday
+          } = data;
+          const firebaseTimeTrack = converToFull(
+               fromHours,
+               fromMinutes,
+               fromPeriod
+          );
+          const updatedData = {
+               fromHours,
+               fromMinutes,
+               fromPeriod,
+               toHours,
+               toMinutes,
+               toPeriod,
+               firebaseTimeTrack,
+               monday,
+               tuesday,
+               wednesday,
+               thursday,
+               friday,
+               saturday,
+               sunday
+          };
+
+          console.log(updatedData);
           setLoading(true);
-          await createSchedule(type + 'Schedule', data).catch((error) => {
-               toast({
-                    title: 'Something Happend',
-                    description: error.message,
-                    status: 'error',
-                    duration: 9000,
-                    isClosable: true
-               });
-               setLoading(false);
-               return;
-          });
+          await createSchedule(type + 'Schedule', updatedData).catch(
+               (error) => {
+                    toast({
+                         title: 'Something Happend',
+                         description: error.message,
+                         status: 'error',
+                         duration: 9000,
+                         isClosable: true
+                    });
+                    setLoading(false);
+                    return;
+               }
+          );
           setLoading(false);
           toast({
                title: 'New Schedule Created',
@@ -66,40 +140,98 @@ const AddSchedule = ({ type }) => {
                onSubmit={handleSubmit((data) => onCreateSchedule(data))}
                as="form"
           >
-               <Table size="sm" colorScheme="whatsapp">
-                    <Thead>
-                         <Tr>
-                              {entries.map((data) => {
-                                   return <Th key={uuidv4()}>{data}</Th>;
-                              })}
-                         </Tr>
-                    </Thead>
-                    <Tbody>
-                         <Tr>
-                              {entries.map((data) => {
-                                   return (
-                                        <Td key={uuidv4()}>
-                                             <FormControl id={data}>
-                                                  <Input
-                                                       type="text"
-                                                       name={data.toLocaleLowerCase()}
-                                                       aria-label={data}
-                                                       ref={register({
-                                                            required:
-                                                                 'Please enter the value.'
-                                                       })}
-                                                  />
-                                                  <FormErrorMessage>
-                                                       {errors.data &&
-                                                            errors.data.message}
-                                                  </FormErrorMessage>
-                                             </FormControl>
-                                        </Td>
-                                   );
-                              })}
-                         </Tr>
-                    </Tbody>
-               </Table>
+               <Flex justify="flex-start">
+                    <FormControl>
+                         <FormLabel>From Time</FormLabel>
+                         <HStack width="sm">
+                              <Select
+                                   name="fromHours"
+                                   ref={register({
+                                        required: 'Please select from hours.'
+                                   })}
+                              >
+                                   {hours.map((number) => (
+                                        <option value={number}>{number}</option>
+                                   ))}
+                              </Select>
+                              <Select
+                                   name="fromMinutes"
+                                   ref={register({
+                                        required: 'Please select from minutes.'
+                                   })}
+                              >
+                                   {minutes.map((number) => (
+                                        <option value={number}>{number}</option>
+                                   ))}
+                              </Select>
+                              <Select
+                                   name="fromPeriod"
+                                   ref={register({
+                                        required: 'Please select am or pm.'
+                                   })}
+                              >
+                                   <option value="am">AM</option>
+                                   <option value="pm">PM</option>
+                              </Select>
+                         </HStack>
+                    </FormControl>
+                    <FormControl>
+                         <FormLabel>To Time</FormLabel>
+                         <HStack width="sm">
+                              <Select
+                                   name="toHours"
+                                   ref={register({
+                                        required: 'Please select a from hour.'
+                                   })}
+                              >
+                                   {hours.map((number) => (
+                                        <option value={number}>{number}</option>
+                                   ))}
+                              </Select>
+                              <Select
+                                   name="toMinutes"
+                                   ref={register({
+                                        required: 'Please select from minute.'
+                                   })}
+                              >
+                                   {minutes.map((number) => (
+                                        <option value={number}>{number}</option>
+                                   ))}
+                              </Select>
+                              <Select
+                                   name="toPeriod"
+                                   ref={register({
+                                        required: 'Please select am or pm.'
+                                   })}
+                              >
+                                   <option value="am">AM</option>
+                                   <option value="pm">PM</option>
+                              </Select>
+                         </HStack>
+                    </FormControl>
+               </Flex>
+
+               <HStack mt={3}>
+                    {entries.map((data) => {
+                         return (
+                              <FormControl id={data}>
+                                   <FormLabel>{data}</FormLabel>
+                                   <Input
+                                        type="text"
+                                        name={data.toLocaleLowerCase()}
+                                        aria-label={data}
+                                        ref={register({
+                                             required: 'Please enter the value.'
+                                        })}
+                                   />
+                                   <FormErrorMessage>
+                                        {errors.data && errors.data.message}
+                                   </FormErrorMessage>
+                              </FormControl>
+                         );
+                    })}
+               </HStack>
+
                <Button
                     size="sm"
                     colorScheme="green"

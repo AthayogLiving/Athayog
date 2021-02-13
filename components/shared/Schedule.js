@@ -32,6 +32,10 @@ const Schedule = ({ schedule }) => {
      if (!data) {
           return null;
      }
+
+     const getHumanDate = (hours, minutes, period) => {
+          return (hours + ':' + minutes + ' ' + period).toString();
+     };
      return (
           <Flex
                margin="auto"
@@ -69,25 +73,43 @@ const Schedule = ({ schedule }) => {
                               </Tr>
                          </Thead>
                          <Tbody>
-                              {data.schedule.map((individual) => {
-                                   return (
-                                        <Tr>
-                                             <Td
-                                                  width="200px"
-                                                  fontWeight="medium"
-                                             >
-                                                  {individual.time}
-                                             </Td>
-                                             <Td>{individual.monday}</Td>
-                                             <Td>{individual.tuesday}</Td>
-                                             <Td>{individual.wednesday}</Td>
-                                             <Td>{individual.thursday}</Td>
-                                             <Td>{individual.friday}</Td>
-                                             <Td>{individual.saturday}</Td>
-                                             <Td>{individual.sunday}</Td>
-                                        </Tr>
-                                   );
-                              })}
+                              {data.schedule.map(
+                                   ({
+                                        fromHours,
+                                        fromMinutes,
+                                        fromPeriod,
+                                        toHours,
+                                        toMinutes,
+                                        toPeriod,
+                                        monday,
+                                        tuesday,
+                                        wednesday,
+                                        thursday,
+                                        friday,
+                                        saturday,
+                                        sunday
+                                   } = data) => {
+                                        return (
+                                             <Tr>
+                                                  <Td
+                                                       width="200px"
+                                                       fontWeight="medium"
+                                                  >
+                                                       {fromHours}:{fromMinutes}{' '}
+                                                       {fromPeriod} - {toHours}:
+                                                       {toMinutes} {toPeriod}
+                                                  </Td>
+                                                  <Td>{monday}</Td>
+                                                  <Td>{tuesday}</Td>
+                                                  <Td>{wednesday}</Td>
+                                                  <Td>{thursday}</Td>
+                                                  <Td>{friday}</Td>
+                                                  <Td>{saturday}</Td>
+                                                  <Td>{sunday}</Td>
+                                             </Tr>
+                                        );
+                                   }
+                              )}
                          </Tbody>
                     </Table>
                </Flex>

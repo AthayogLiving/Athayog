@@ -167,8 +167,29 @@ const ScheduleData = ({ schedule, type }) => {
      const columns = useMemo(
           () => [
                {
-                    Header: 'Time',
-                    accessor: 'time' // accessor is the "key" in the data
+                    Header: 'From Hour',
+                    accessor: 'fromHours',
+                    type: 'number'
+               },
+               {
+                    Header: 'From Minutes',
+                    accessor: 'fromMinutes'
+               },
+               {
+                    Header: 'Period',
+                    accessor: 'fromPeriod'
+               },
+               {
+                    Header: 'To Hour',
+                    accessor: 'toHours'
+               },
+               {
+                    Header: 'To Minutes',
+                    accessor: 'toMinutes'
+               },
+               {
+                    Header: 'Period',
+                    accessor: 'toPeriod'
                },
                {
                     Header: 'Monday',
@@ -197,13 +218,6 @@ const ScheduleData = ({ schedule, type }) => {
                {
                     Header: 'Sunday',
                     accessor: 'sunday'
-               },
-               {
-                    Header: 'Updated',
-                    accessor: 'createdAt',
-                    Cell: ({ cell: { value } }) => (
-                         <DateCreated values={value} />
-                    )
                }
           ],
           []
@@ -252,6 +266,7 @@ const ScheduleData = ({ schedule, type }) => {
 
      const updateSchedule = async () => {
           setLoading(true);
+
           await axios
                .post(`/api/schedule/${type}`, {
                     data
