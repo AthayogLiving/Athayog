@@ -17,9 +17,10 @@ import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 
 const Schedule = ({ schedule }) => {
-     const { data, error } = useSWR(`/api/schedule/Generalschedule`, fetcher, {
-          initialData: schedule
-     });
+     const { data, error } = useSWR(
+          `/api/schedule/${schedule}Schedule`,
+          fetcher
+     );
 
      if (error) {
           return (
@@ -32,6 +33,8 @@ const Schedule = ({ schedule }) => {
      if (!data) {
           return null;
      }
+
+     console.log(data);
 
      const getHumanDate = (hours, minutes, period) => {
           return (hours + ':' + minutes + ' ' + period).toString();
@@ -121,7 +124,9 @@ const Schedule = ({ schedule }) => {
 };
 
 export async function getStaticProps(context) {
-     const schedule = await fetcher('/api/schedule/Generalschedule');
+     console.log('Context', context);
+
+     const schedule = await fetcher('/api/schedule/generalSchedule');
      return { props: { schedule }, revalidate: 1 };
 }
 

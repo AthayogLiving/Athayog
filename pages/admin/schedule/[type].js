@@ -106,6 +106,7 @@ const type = () => {
                          padding={5}
                          boxShadow="base"
                          mt={3}
+                         mb={5}
                     >
                          <AddSchedule type={type} />
                     </Box>

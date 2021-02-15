@@ -20,7 +20,7 @@ export default function Home() {
                <HeroCarousel />
                <Offerings />
                <Gallery />
-               <Schedule />
+               <Schedule schedule="general" />
                <Testimonials />
                <Faq />
                <Enquiry />

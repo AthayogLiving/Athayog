@@ -17,7 +17,8 @@ import {
      useToast,
      Select,
      FormLabel,
-     Flex
+     Flex,
+     Heading
 } from '@chakra-ui/react';
 
 import React, { useState } from 'react';
@@ -141,7 +142,10 @@ const AddSchedule = ({ type }) => {
                onSubmit={handleSubmit((data) => onCreateSchedule(data))}
                as="form"
           >
-               <Flex justify="flex-start">
+               <Heading fontSize="xl" fontWeight="medium">
+                    Create Schedule
+               </Heading>
+               <Flex justify="flex-start" mt={3}>
                     <FormControl>
                          <FormLabel>From Time</FormLabel>
                          <HStack width="sm">

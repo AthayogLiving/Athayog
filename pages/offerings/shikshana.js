@@ -5,6 +5,7 @@ import athayogShikshana from 'public/athayogShikshana.jpg';
 import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
 import InformationSplit from '@/components/shared/InformationSplit';
+import Schedule from '@/components/shared/Schedule';
 
 const Shikshana = () => {
      const pageData = {
@@ -31,6 +32,7 @@ const Shikshana = () => {
                <Hero pageData={pageData} />
                <InformationSplit pageData={pageData} />
                <Pricing pricing={pageData.pricing} />
+               <Schedule schedule="shikhshana" />
                <Register registerTo={pageData.name.toLocaleLowerCase()} />
           </motion.div>
      );

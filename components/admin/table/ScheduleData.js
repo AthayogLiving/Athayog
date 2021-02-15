@@ -11,7 +11,6 @@ import {
      chakra,
      Input,
      Button,
-     Divider,
      ButtonGroup,
      AlertDialog,
      AlertDialogBody,
@@ -19,17 +18,9 @@ import {
      AlertDialogHeader,
      AlertDialogContent,
      AlertDialogOverlay,
-     Grid,
-     toast,
      useToast,
-     Spinner,
      Flex,
-     Select,
-     NumberInput,
-     NumberInputField,
-     NumberInputStepper,
-     NumberIncrementStepper,
-     NumberDecrementStepper
+     Select
 } from '@chakra-ui/react';
 import axios from 'axios';
 
@@ -37,7 +28,6 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 // import styled from 'styled-components';
 import { useTable, usePagination } from 'react-table';
 import { mutate } from 'swr';
-import AddSchedule from './AddSchedule';
 
 // Create an editable cell renderer
 const EditableCell = ({
