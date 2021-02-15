@@ -76,7 +76,7 @@ const EditableCell = ({
           }
           minutes.push(i);
      }
-     console.log(id);
+
      if (id == 'fromHours' || id == 'toHours') {
           return (
                <Select

@@ -58,7 +58,7 @@ const HeroCarousel = ({ images }) => {
           <Swiper {...params}>
                {data.images.map((data) => {
                     return (
-                         <Box height="100vh">
+                         <Box height="100vh" key={data.id}>
                               <Image
                                    layout="fill"
                                    objectFit="cover"

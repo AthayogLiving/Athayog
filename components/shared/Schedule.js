@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
+import ScheduleMobile from './ScheduleMobile';
 
 const Schedule = ({ schedule }) => {
      const { data, error } = useSWR(
@@ -34,15 +35,13 @@ const Schedule = ({ schedule }) => {
           return null;
      }
 
-     console.log(data);
-
      const getHumanDate = (hours, minutes, period) => {
           return (hours + ':' + minutes + ' ' + period).toString();
      };
      return (
           <Flex
                margin="auto"
-               padding="5rem 0"
+               padding={{ base: '2rem 0', md: '3rem 0', lg: '5rem 0' }}
                justifyContent="center"
                alignItems="center"
                width="100vw"
@@ -52,80 +51,113 @@ const Schedule = ({ schedule }) => {
                     justifyContent="center"
                     direction="column"
                     alignItems="center"
-                    width="60vw"
+                    width={{ base: '95%', md: '90%', lg: '80%' }}
                >
-                    <Heading fontWeight="normal">Schedule</Heading>
-                    <Table
-                         variant="simple"
-                         mt={10}
-                         boxShadow="base"
-                         rounded="lg"
-                         overflow="hidden"
-                         size="md"
+                    <Heading
+                         fontWeight="normal"
+                         fontSize={{ base: '2xl', md: '3xl' }}
                     >
-                         <Thead>
-                              <Tr>
-                                   <Th bg="secondaryGreen">Time</Th>
-                                   <Th bg="secondaryGreen">Monday</Th>
-                                   <Th bg="secondaryGreen">Tuesday</Th>
-                                   <Th bg="secondaryGreen">Wednesday</Th>
-                                   <Th bg="secondaryGreen">Thursday</Th>
-                                   <Th bg="secondaryGreen">Friday</Th>
-                                   <Th bg="secondaryGreen">Saturday</Th>
-                                   <Th bg="secondaryGreen">Sunday</Th>
-                              </Tr>
-                         </Thead>
-                         <Tbody>
-                              {data.schedule.map(
-                                   ({
-                                        fromHours,
-                                        fromMinutes,
-                                        fromPeriod,
-                                        toHours,
-                                        toMinutes,
-                                        toPeriod,
-                                        monday,
-                                        tuesday,
-                                        wednesday,
-                                        thursday,
-                                        friday,
-                                        saturday,
-                                        sunday
-                                   } = data) => {
-                                        return (
-                                             <Tr>
-                                                  <Td
-                                                       width="200px"
-                                                       fontWeight="medium"
-                                                       bg="aygreen.50"
-                                                  >
-                                                       {fromHours}:{fromMinutes}{' '}
-                                                       {fromPeriod} - {toHours}:
-                                                       {toMinutes} {toPeriod}
-                                                  </Td>
-                                                  <Td bg="white">{monday}</Td>
-                                                  <Td bg="white">{tuesday}</Td>
-                                                  <Td bg="white">
-                                                       {wednesday}
-                                                  </Td>
-                                                  <Td bg="white">{thursday}</Td>
-                                                  <Td bg="white">{friday}</Td>
-                                                  <Td bg="white">{saturday}</Td>
-                                                  <Td bg="white">{sunday}</Td>
-                                             </Tr>
-                                        );
-                                   }
-                              )}
-                         </Tbody>
-                    </Table>
+                         Schedule
+                    </Heading>
+                    <Box
+                         display={{ base: 'block', md: 'block', lg: 'none' }}
+                         mt={{ base: '5', md: '10' }}
+                    >
+                         {' '}
+                         <ScheduleMobile schedule={data.schedule} />
+                    </Box>
+
+                    <Box
+                         overflowX="auto"
+                         width="100%"
+                         display={{ base: 'none', md: 'none', lg: 'block' }}
+                    >
+                         <Table
+                              variant="simple"
+                              mt={10}
+                              boxShadow="base"
+                              rounded="lg"
+                              overflow="hidden"
+                              size="md"
+                         >
+                              <Thead>
+                                   <Tr>
+                                        <Th bg="secondaryGreen">Time</Th>
+                                        <Th bg="secondaryGreen">Monday</Th>
+                                        <Th bg="secondaryGreen">Tuesday</Th>
+                                        <Th bg="secondaryGreen">Wednesday</Th>
+                                        <Th bg="secondaryGreen">Thursday</Th>
+                                        <Th bg="secondaryGreen">Friday</Th>
+                                        <Th bg="secondaryGreen">Saturday</Th>
+                                        <Th bg="secondaryGreen">Sunday</Th>
+                                   </Tr>
+                              </Thead>
+                              <Tbody>
+                                   {data.schedule.map(
+                                        ({
+                                             id,
+                                             fromHours,
+                                             fromMinutes,
+                                             fromPeriod,
+                                             toHours,
+                                             toMinutes,
+                                             toPeriod,
+                                             monday,
+                                             tuesday,
+                                             wednesday,
+                                             thursday,
+                                             friday,
+                                             saturday,
+                                             sunday
+                                        } = data) => {
+                                             return (
+                                                  <Tr key={id}>
+                                                       <Td
+                                                            width="200px"
+                                                            fontWeight="medium"
+                                                            bg="aygreen.50"
+                                                       >
+                                                            {fromHours}:
+                                                            {fromMinutes}{' '}
+                                                            {fromPeriod} -{' '}
+                                                            {toHours}:
+                                                            {toMinutes}{' '}
+                                                            {toPeriod}
+                                                       </Td>
+                                                       <Td bg="white">
+                                                            {monday}
+                                                       </Td>
+                                                       <Td bg="white">
+                                                            {tuesday}
+                                                       </Td>
+                                                       <Td bg="white">
+                                                            {wednesday}
+                                                       </Td>
+                                                       <Td bg="white">
+                                                            {thursday}
+                                                       </Td>
+                                                       <Td bg="white">
+                                                            {friday}
+                                                       </Td>
+                                                       <Td bg="white">
+                                                            {saturday}
+                                                       </Td>
+                                                       <Td bg="white">
+                                                            {sunday}
+                                                       </Td>
+                                                  </Tr>
+                                             );
+                                        }
+                                   )}
+                              </Tbody>
+                         </Table>
+                    </Box>
                </Flex>
           </Flex>
      );
 };
 
 export async function getStaticProps(context) {
-     console.log('Context', context);
-
      const schedule = await fetcher('/api/schedule/generalSchedule');
      return { props: { schedule }, revalidate: 1 };
 }

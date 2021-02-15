@@ -21,6 +21,8 @@ import { useAuth } from '@/lib/auth';
 import { FiFacebook } from 'react-icons/fi';
 import { AiOutlineUser } from 'react-icons/ai';
 import { MotionButton } from '../shared/MotionElements';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import NavbarMobile from './NavabarMobile/NavbarMobile';
 
 const Navbar = () => {
      const { user, signout, loading } = useAuth();
@@ -33,7 +35,6 @@ const Navbar = () => {
           <>
                <Center
                     boxShadow="md"
-                    // bg={scrollY > 100 ? 'rgb(216 ,216, 216 ,0.8)' : 'primaryWhite'}
                     bg="primaryWhite"
                     transition="linear"
                     transform="initial"
@@ -45,9 +46,9 @@ const Navbar = () => {
                     height={{ base: '4rem', md: '4rem', lg: '4rem' }}
                >
                     <Flex
-                         width="80vw"
                          alignItems="center"
                          justifyContent="space-between"
+                         minWidth="80%"
                     >
                          <Flex alignItems="center">
                               <Link href="/">
@@ -63,10 +64,16 @@ const Navbar = () => {
 
                               <HStack
                                    ml="5rem"
+                                   ml={{ base: '3rem', md: '3rem', lg: '5rem' }}
                                    variant="ghost"
                                    spacing="6"
                                    size="sm"
                                    color="primaryBlack"
+                                   display={{
+                                        base: 'none',
+                                        md: 'none',
+                                        lg: 'block'
+                                   }}
                                    mr="1rem"
                               >
                                    <Link href="/">
@@ -125,6 +132,11 @@ const Navbar = () => {
                                         variat="ghost"
                                         fontSize="md"
                                         bg="primaryWhite"
+                                        display={{
+                                             base: 'none',
+                                             md: 'none',
+                                             lg: 'block'
+                                        }}
                                         rightIcon={<ChevronDownIcon />}
                                    >
                                         Offerings
@@ -193,7 +205,20 @@ const Navbar = () => {
                                    mr="1rem"
                               ></HStack>
                          </Flex>
-                         <Flex>
+
+                         <Flex
+                              display={{
+                                   base: 'flex',
+                                   md: 'flex',
+                                   lg: 'none'
+                              }}
+                         >
+                              <NavbarMobile />
+                         </Flex>
+
+                         <Flex
+                              display={{ base: 'none', md: 'none', lg: 'flex' }}
+                         >
                               <Button
                                    bg="aygreen.100"
                                    color="primaryDarkGray"
@@ -243,7 +268,6 @@ const Navbar = () => {
                                              variant="solid"
                                              size="sm"
                                              fontSize="md"
-                                             mr={5}
                                              rounded="md"
                                              px={8}
                                              py={4}

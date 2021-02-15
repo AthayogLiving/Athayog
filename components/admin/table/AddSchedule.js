@@ -110,7 +110,6 @@ const AddSchedule = ({ type }) => {
                sunday
           };
 
-          console.log(updatedData);
           setLoading(true);
           await createSchedule(type + 'Schedule', updatedData).catch(
                (error) => {

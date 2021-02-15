@@ -13,6 +13,7 @@ import SwiperCore, { Navigation, Pagination, EffectFade } from 'swiper';
 // Import Swiper styles
 
 import 'swiper/swiper-bundle.css';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 SwiperCore.use([Navigation, Pagination, EffectFade]);
 
@@ -40,18 +41,58 @@ const Gallery = ({ images }) => {
           navigation: {
                nextEl: '.swiper-button-next',
                prevEl: '.swiper-button-prev'
+          },
+          renderPrevButton: () => (
+               <IoIosArrowBack
+                    className="swiper-button-prev"
+                    style={{ color: 'black' }}
+               />
+          ),
+          renderNextButton: () => (
+               <IoIosArrowForward
+                    className="swiper-button-next"
+                    style={{ color: 'black' }}
+               />
+          ),
+          breakpoints: {
+               1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 30
+               },
+               768: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+               },
+               640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+               },
+               320: {
+                    slidesPerView: 1,
+                    spaceBetween: 10
+               }
           }
      };
 
      return (
-          <Box padding="5rem" height="100%" margin="auto" bg="gray.200">
-               <Heading fontWeight="normal" textAlign="center" mb={10}>
+          <Box
+               padding={{ base: '1rem', md: '2rem', lg: '5rem' }}
+               height="100%"
+               margin="auto"
+               bg="gray.200"
+          >
+               <Heading
+                    fontWeight="normal"
+                    textAlign="center"
+                    fontSize={{ base: '2xl', md: '3xl' }}
+                    mb={{ base: '2', md: '5', lg: '10' }}
+               >
                     Gallery
                </Heading>
                <Swiper {...params}>
                     {data.images.map((data) => {
                          return (
-                              <Box rounded="lg" overflow="hidden">
+                              <Box rounded="lg" overflow="hidden" key={data.id}>
                                    <Image
                                         layout="responsive"
                                         height="150px"

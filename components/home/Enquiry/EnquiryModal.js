@@ -84,12 +84,12 @@ const EnquiryModal = () => {
                     color="primaryDarkGray"
                     onClick={onOpen}
                     variant="solid"
-                    size="sm"
-                    fontSize="md"
+                    fontSize={{ base: 'sm', md: 'md' }}
+                    px={{ base: '3rem', md: 'md' }}
+                    py={{ base: '0.5rem', md: 'md' }}
+                    size={{ base: 'sm', md: 'md' }}
                     rounded="md"
-                    mt={10}
-                    px={10}
-                    py={5}
+                    mt={{ base: '5', md: '10' }}
                     whileHover={{
                          scale: 1.2,
                          transition: { duration: 1 }

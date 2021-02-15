@@ -28,6 +28,7 @@ const Faq = () => {
                          <Heading
                               textAlign="center"
                               fontWeight="normal"
+                              fontSize={{ base: '2xl', md: '3xl' }}
                               color="primaryDarkGray"
                          >
                               Faq
@@ -35,10 +36,10 @@ const Faq = () => {
                          <Flex
                               justifyContent="space-around"
                               alignItems="flex-start"
-                              mt={10}
-                              width="50vw"
+                              mt={{ base: '5', md: '8', lg: '10' }}
+                              width={{ base: '95vw', md: '80vw', lg: '60vw' }}
                               bg="white"
-                              padding={10}
+                              padding={{ base: '5', md: '8', lg: '10' }}
                               rounded="lg"
                               boxShadow="base"
                          >
@@ -64,7 +65,11 @@ const Faq = () => {
                                                        <AccordionIcon />
                                                   </AccordionButton>
                                                   <AccordionPanel
-                                                       pb={4}
+                                                       pb={{
+                                                            base: '2',
+                                                            md: '3',
+                                                            lg: '4'
+                                                       }}
                                                        bg="aygreen.50"
                                                   >
                                                        {data.answer}

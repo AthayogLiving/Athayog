@@ -57,24 +57,37 @@ const Testimonials = ({ testimonials }) => {
                bg="primaryGreen"
                justifyContent="center"
                alignItems="center"
-               height="md"
+               height={{ base: 'sm', md: 'md', lg: 'md' }}
           >
-               <Box width="60vw" padding={10}>
+               <Box
+                    width={{ base: '100vw', md: '80vw', lg: '60vw' }}
+                    padding={{ base: '2', md: '5', lg: '10' }}
+               >
                     <Heading
                          textAlign="center"
                          color="white"
                          fontWeight="normal"
+                         fontSize={{ base: '2xl', md: '3xl' }}
                     >
                          Testimonials
                          <Box
                               mt={10}
                               justifyContent="center"
                               alignItems="center"
+                              width="100%"
                          >
                               <Swiper {...params}>
                                    {data.testimonials.map((data) => {
                                         return (
-                                             <Box padding="0 5rem">
+                                             <Box
+                                                  padding={{
+                                                       base: '0 1rem',
+                                                       md: '0 2rem',
+                                                       lg: '0 5rem'
+                                                  }}
+                                                  key={data.id}
+                                                  width="100%"
+                                             >
                                                   <Flex justifyContent="center">
                                                        <Stars
                                                             totalStars={
@@ -84,13 +97,22 @@ const Testimonials = ({ testimonials }) => {
                                                        />
                                                   </Flex>
 
-                                                  <Text fontSize="md" mt={5}>
+                                                  <Text
+                                                       fontSize="md"
+                                                       mt={5}
+                                                       fontSize={{
+                                                            base: 'sm'
+                                                       }}
+                                                  >
                                                        {data.review}
                                                   </Text>
                                                   <Text
                                                        fontSize="2xl"
                                                        fontWeight="medium"
                                                        mt={5}
+                                                       fontSize={{
+                                                            base: 'md'
+                                                       }}
                                                   >
                                                        {data.name}
                                                   </Text>
