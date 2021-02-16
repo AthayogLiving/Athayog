@@ -16,7 +16,10 @@ import { useAuth } from '@/lib/auth';
 
 function Home() {
      const { user } = useAuth();
-     const { data } = useSWR(user ? [`/api/users`, user.token] : null, fetcher);
+     const { data } = useSWR(
+          user ? [`/api/user/details`, user.token] : null,
+          fetcher
+     );
      if (!data) {
           return (
                <Grid placeItems="center" mt={10}>

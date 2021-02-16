@@ -142,10 +142,7 @@ const Navbar = () => {
                                         Offerings
                                    </MenuButton>
                                    <MenuList bg="aygreen.100">
-                                        <Link
-                                             href="/offerings/space"
-                                             as="space"
-                                        >
+                                        <Link href="/offerings/space">
                                              <MenuItem
                                                   _hover={{ bg: 'aygreen.50' }}
                                              >
@@ -153,40 +150,28 @@ const Navbar = () => {
                                              </MenuItem>
                                         </Link>
 
-                                        <Link
-                                             href="/offerings/shikshana"
-                                             as="shikshana"
-                                        >
+                                        <Link href="/offerings/shikshana">
                                              <MenuItem
                                                   _hover={{ bg: 'aygreen.50' }}
                                              >
                                                   AthaYog Shikshana Pada
                                              </MenuItem>
                                         </Link>
-                                        <Link
-                                             href="/offerings/online"
-                                             as="online"
-                                        >
+                                        <Link href="/offerings/online">
                                              <MenuItem
                                                   _hover={{ bg: 'aygreen.50' }}
                                              >
                                                   AthaYog Online
                                              </MenuItem>
                                         </Link>
-                                        <Link
-                                             href="/offerings/personal"
-                                             as="personal"
-                                        >
+                                        <Link href="/offerings/personal">
                                              <MenuItem
                                                   _hover={{ bg: 'aygreen.50' }}
                                              >
                                                   AthaYog Personal
                                              </MenuItem>
                                         </Link>
-                                        <Link
-                                             href="/offerings/workshops"
-                                             as="workshops"
-                                        >
+                                        <Link href="/offerings/workshops">
                                              <MenuItem
                                                   _hover={{ bg: 'aygreen.50' }}
                                              >

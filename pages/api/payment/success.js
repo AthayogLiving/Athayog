@@ -1,6 +1,6 @@
 import Cors from 'cors';
 import initMiddleware from '@/lib/cors-middleware';
-const Razorpay = require('razorpay');
+import { updatePaymentDetails } from '@/lib/db/users';
 const crypto = require('crypto');
 
 // Initialize the cors middleware
@@ -24,7 +24,12 @@ export default async function handler(req, res) {
                     orderCreationId,
                     razorpayPaymentId,
                     razorpayOrderId,
-                    razorpaySignature
+                    razorpaySignature,
+                    uid,
+                    price,
+                    duration,
+                    description,
+                    name
                } = req.body;
 
                // Creating our own digest
@@ -48,6 +53,17 @@ export default async function handler(req, res) {
 
                // THE PAYMENT IS LEGIT & VERIFIED
                // YOU CAN SAVE THE DETAILS IN YOUR DATABASE IF YOU WANT
+
+               const paymentDetails = {
+                    razorpayOrderId,
+                    price,
+                    duration,
+                    description,
+                    name,
+                    uid
+               };
+
+               await updatePaymentDetails(razorpayPaymentId, paymentDetails);
 
                res.json({
                     msg: 'success',

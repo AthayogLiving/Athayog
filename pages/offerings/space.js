@@ -43,30 +43,35 @@ const Space = () => {
                     courseName: 'INITIATION',
                     description: `Experience A Free 2-DAY TRIAL`,
                     duration: `2 Day Trial`,
+                    durationNum: 2,
                     price: 0
                },
                {
                     courseName: 'CONTEMPLATION',
                     description: `Register For 30 Days`,
                     duration: `30 Days`,
+                    durationNum: 30,
                     price: 1999
                },
                {
                     courseName: 'DETERMINATION',
                     description: `Register For 90 Days`,
                     duration: `90 Days`,
+                    durationNum: 90,
                     price: 4999
                },
                {
                     courseName: 'EVOLUTION',
                     description: `Register For 180 Days`,
                     duration: `180 Days`,
+                    durationNum: 180,
                     price: 9999
                },
                {
                     courseName: 'TRANSFORMATION',
                     description: `Register For 360 Days`,
                     duration: `360 Days`,
+                    durationNum: 360,
                     price: 11999
                }
           ]

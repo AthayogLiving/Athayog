@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
      Box,
      Button,
@@ -18,13 +18,18 @@ import { useRouter } from 'next/router';
 
 const Pricing = ({ pricing }) => {
      const { user, signout, loading } = useAuth();
+     const [allPayment, setAllPayment] = useState({});
+     const [buttonId, setButtonId] = useState('');
+     const [loadingPayment, setLoading] = useState(['', false]);
      const router = useRouter();
      const toast = useToast();
      if (!pricing) {
           return null;
      }
 
-     const handleUserPayment = (price, duration, description, courseName) => {
+     const handleUserPayment = (id, price, duration, description, name) => {
+          setLoading([id, true]);
+          setButtonId(id);
           if (!user) {
                toast({
                     title: 'Login First',
@@ -34,9 +39,18 @@ const Pricing = ({ pricing }) => {
                     duration: 5000,
                     isClosable: true
                });
+               setLoading([id, false]);
+
                router.push('/account/login');
           }
-          displayRazorpay(price, duration, description, courseName);
+          setAllPayment({
+               price,
+               duration,
+               description,
+               name
+          });
+
+          displayRazorpay(id, price, duration, description, name);
      };
 
      const loadScript = (src) => {
@@ -52,18 +66,20 @@ const Pricing = ({ pricing }) => {
                document.body.appendChild(script);
           });
      };
-     const displayRazorpay = async (
-          price,
-          duration,
-          description,
-          courseName
-     ) => {
+     const displayRazorpay = async (id, price, duration, description, name) => {
           const res = await loadScript(
                'https://checkout.razorpay.com/v1/checkout.js'
           );
 
           if (!res) {
-               alert('Razorpay SDK failed to load. Are you online?');
+               toast({
+                    title: 'Error',
+                    description:
+                         'Something happend on our side :(. Please try again',
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true
+               });
                return;
           }
 
@@ -76,7 +92,14 @@ const Pricing = ({ pricing }) => {
           );
 
           if (!result) {
-               alert('Server error. Are you online?');
+               toast({
+                    title: 'Error',
+                    description: 'Are you online?',
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true
+               });
+               setLoading([id, false]);
                return;
           }
 
@@ -88,7 +111,7 @@ const Pricing = ({ pricing }) => {
                amount: amount.toString(),
                currency: currency,
                name: 'Athayog Living.',
-               description: courseName,
+               description: name,
                image: { logo },
                order_id: order_id,
                handler: async function (response) {
@@ -96,15 +119,39 @@ const Pricing = ({ pricing }) => {
                          orderCreationId: order_id,
                          razorpayPaymentId: response.razorpay_payment_id,
                          razorpayOrderId: response.razorpay_order_id,
-                         razorpaySignature: response.razorpay_signature
+                         razorpaySignature: response.razorpay_signature,
+                         uid: user.uid,
+                         price,
+                         duration,
+                         description,
+                         name
                     };
 
-                    const result = await axios.post(
-                         'http://localhost:3000/api/payment/success',
-                         data
-                    );
-
-                    alert(result.data.msg);
+                    const result = await axios
+                         .post(
+                              'http://localhost:3000/api/payment/success',
+                              data
+                         )
+                         .then((result) => {
+                              toast({
+                                   title: 'Payment Successfull',
+                                   description: `Your payment for ${allPayment.name} is successfull`,
+                                   status: 'success',
+                                   duration: 5000,
+                                   isClosable: true
+                              });
+                              setLoading([id, false]);
+                         })
+                         .catch((error) => {
+                              toast({
+                                   title: 'Error',
+                                   description: error.message,
+                                   status: 'error',
+                                   duration: 5000,
+                                   isClosable: true
+                              });
+                              setLoading([id, false]);
+                         });
                },
                prefill: {
                     name: user?.name,
@@ -190,7 +237,11 @@ const Pricing = ({ pricing }) => {
                          {pricing.map((data, index) => {
                               return (
                                    <Box
-                                        bg="aygreen.100"
+                                        bg={
+                                             index % 2 == 0
+                                                  ? '#DFF6E4'
+                                                  : '#D5FFE2'
+                                        }
                                         height="auto"
                                         rounded="lg"
                                         padding={{
@@ -257,16 +308,20 @@ const Pricing = ({ pricing }) => {
                                                   </Text>
                                              </Flex>
                                              <Button
-                                                  bg="aygreen.200"
+                                                  bg="#DBE6CF"
                                                   width="8rem"
                                                   size="sm"
                                                   mt={4}
+                                                  isLoading={
+                                                       buttonId === data.id
+                                                  }
                                                   onClick={() =>
                                                        handleUserPayment(
+                                                            data.id,
                                                             data.price,
-                                                            data.duration,
+                                                            data.durationNum,
                                                             data.description,
-                                                            data.courseName
+                                                            data.courseName.toLowerCase()
                                                        )
                                                   }
                                              >

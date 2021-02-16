@@ -28,16 +28,16 @@ const Classes = ({ classes }) => {
                          animate={{ scale: 1, opacity: 1 }}
                          layoutId="title"
                     >
-                         <Heading
+                         <Text
                               fontWeight="normal"
                               fontSize={{
                                    base: '3xl',
                                    md: '4xl',
-                                   lg: '5xl'
+                                   lg: '4xl'
                               }}
                          >
                               Classes
-                         </Heading>
+                         </Text>
                     </motion.h1>
 
                     <SimpleGrid
@@ -68,36 +68,39 @@ const Classes = ({ classes }) => {
                                         textAlign="center"
                                         key={index}
                                    >
-                                        <Heading
+                                        <Text
                                              fontSize={{
                                                   base: 'xl',
                                                   md: '2xl',
-                                                  lg: '3xl'
+                                                  lg: '2xl'
                                              }}
                                              fontWeight="normal"
                                         >
                                              {capitalizeFirstLetter(
                                                   data.className
                                              )}
-                                        </Heading>
+                                        </Text>
 
-                                        {data.classInfo.split('\n').map((i) => {
-                                             return (
-                                                  <Text
-                                                       mt={5}
-                                                       fontWeight="light"
-                                                       textAlign="justify"
-                                                       whiteSpace="pre-wrap"
-                                                       fontSize={{
-                                                            base: 'base',
-                                                            md: 'md',
-                                                            lg: 'lg'
-                                                       }}
-                                                  >
-                                                       {i}{' '}
-                                                  </Text>
-                                             );
-                                        })}
+                                        {data.classInfo
+                                             .split('\n')
+                                             .map((i, index) => {
+                                                  return (
+                                                       <Text
+                                                            mt={5}
+                                                            fontWeight="light"
+                                                            textAlign="justify"
+                                                            whiteSpace="pre-wrap"
+                                                            key={index}
+                                                            fontSize={{
+                                                                 base: 'base',
+                                                                 md: 'md',
+                                                                 lg: 'lg'
+                                                            }}
+                                                       >
+                                                            {i}{' '}
+                                                       </Text>
+                                                  );
+                                             })}
                                    </Box>
                               );
                          })}
