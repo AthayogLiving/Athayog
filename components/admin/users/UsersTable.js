@@ -22,6 +22,7 @@ import { useAuth } from '@/lib/auth';
 import { useState } from 'react';
 import axios from 'axios';
 import { updateAdminUser } from '@/lib/db/admin-users';
+import Link from 'next/link';
 function UsersTable({ userType }) {
      const [status, changeStatus] = useState(true);
      const [adminChange, changeAdmin] = useState(false);
@@ -110,6 +111,11 @@ function UsersTable({ userType }) {
                                                        <Th>Role</Th>
                                                   </>
                                              )}
+                                             {userType === 'users' ? (
+                                                  <>
+                                                       <Th>Subscriptions</Th>
+                                                  </>
+                                             ) : null}
                                         </Tr>
                                    </Thead>
                                    <Tbody>
@@ -117,7 +123,9 @@ function UsersTable({ userType }) {
                                              return (
                                                   <Tr key={user.uid}>
                                                        <Td>
-                                                            {user.displayName}
+                                                            {user.name
+                                                                 ? user.name
+                                                                 : user.displayName}
                                                        </Td>
                                                        <Td>{user.email}</Td>
                                                        {userType ===
@@ -153,6 +161,30 @@ function UsersTable({ userType }) {
                                                                  </Td>
                                                             </>
                                                        )}
+                                                       {userType === 'users' ? (
+                                                            <>
+                                                                 {user.razorpayPaymentId ? (
+                                                                      <Td>
+                                                                           <Link href="/">
+                                                                                <Badge
+                                                                                     bg="green.200"
+                                                                                     rounded="lg"
+                                                                                     _hover="green.800"
+                                                                                     cursor="pointer"
+                                                                                >
+                                                                                     Check
+                                                                                     Subscriptions
+                                                                                </Badge>
+                                                                           </Link>
+                                                                      </Td>
+                                                                 ) : (
+                                                                      <Td>
+                                                                           No
+                                                                           Subscriptions
+                                                                      </Td>
+                                                                 )}
+                                                            </>
+                                                       ) : null}
                                                   </Tr>
                                              );
                                         })}
