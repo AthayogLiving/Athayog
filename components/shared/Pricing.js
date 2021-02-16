@@ -6,14 +6,123 @@ import {
      Grid,
      Heading,
      SimpleGrid,
-     Text
+     Text,
+     toast,
+     useToast
 } from '@chakra-ui/react';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
+import axios from 'axios';
+import { logo } from 'public/og.png';
+import { useAuth } from '@/lib/auth';
+import { useRouter } from 'next/router';
 
 const Pricing = ({ pricing }) => {
+     const { user, signout, loading } = useAuth();
+     const router = useRouter();
+     const toast = useToast();
      if (!pricing) {
           return null;
      }
+
+     const handleUserPayment = (price, duration, description, courseName) => {
+          if (!user) {
+               toast({
+                    title: 'Login First',
+                    description:
+                         'Create or Login to your account to continue payment',
+                    status: 'warning',
+                    duration: 5000,
+                    isClosable: true
+               });
+               router.push('/account/login');
+          }
+          displayRazorpay(price, duration, description, courseName);
+     };
+
+     const loadScript = (src) => {
+          return new Promise((resolve) => {
+               const script = document.createElement('script');
+               script.src = src;
+               script.onload = () => {
+                    resolve(true);
+               };
+               script.onerror = () => {
+                    resolve(false);
+               };
+               document.body.appendChild(script);
+          });
+     };
+     const displayRazorpay = async (
+          price,
+          duration,
+          description,
+          courseName
+     ) => {
+          const res = await loadScript(
+               'https://checkout.razorpay.com/v1/checkout.js'
+          );
+
+          if (!res) {
+               alert('Razorpay SDK failed to load. Are you online?');
+               return;
+          }
+
+          // creating a new order
+          const result = await axios.post(
+               'http://localhost:3000/api/payment/orders',
+               {
+                    amount: price * 100
+               }
+          );
+
+          if (!result) {
+               alert('Server error. Are you online?');
+               return;
+          }
+
+          // Getting the order details back
+          const { amount, id: order_id, currency } = result.data;
+
+          const options = {
+               key: 'rzp_test_zlJ8m8btntTqEu', // Enter the Key ID generated from the Dashboard
+               amount: amount.toString(),
+               currency: currency,
+               name: 'Athayog Living.',
+               description: courseName,
+               image: { logo },
+               order_id: order_id,
+               handler: async function (response) {
+                    const data = {
+                         orderCreationId: order_id,
+                         razorpayPaymentId: response.razorpay_payment_id,
+                         razorpayOrderId: response.razorpay_order_id,
+                         razorpaySignature: response.razorpay_signature
+                    };
+
+                    const result = await axios.post(
+                         'http://localhost:3000/api/payment/success',
+                         data
+                    );
+
+                    alert(result.data.msg);
+               },
+               prefill: {
+                    name: user?.name,
+                    email: user?.email,
+                    contact: ''
+               },
+               notes: {
+                    address:
+                         'AthayogLiving 307, Sunrise Arcade,Devasandra Main Road,Kodigehalli K R Puram,Bangalore- 560036'
+               },
+               theme: {
+                    color: '#ADDCBC'
+               }
+          };
+
+          const paymentObject = new window.Razorpay(options);
+          paymentObject.open();
+     };
 
      if (pricing === 'Contact For More') {
           return (
@@ -152,6 +261,14 @@ const Pricing = ({ pricing }) => {
                                                   width="8rem"
                                                   size="sm"
                                                   mt={4}
+                                                  onClick={() =>
+                                                       handleUserPayment(
+                                                            data.price,
+                                                            data.duration,
+                                                            data.description,
+                                                            data.courseName
+                                                       )
+                                                  }
                                              >
                                                   Register
                                              </Button>
