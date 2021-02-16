@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 const Register = ({ registerTo }) => {
      return (
-          <Box height="sm" bg="white">
+          <Box height={{ base: '15rem', md: '20rem', lg: 'sm' }} bg="white">
                <Flex
                     alignItems="center"
                     justifyContent="center"

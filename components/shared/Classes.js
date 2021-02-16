@@ -7,28 +7,45 @@ const Classes = ({ classes }) => {
      return (
           <Flex
                margin="auto"
-               padding="5rem 0"
+               padding={{
+                    base: '2rem 0',
+                    md: '3rem 0',
+                    lg: '5rem 0'
+               }}
                justifyContent="center"
                alignItems="center"
-               width="100vw"
+               width="100%"
                bg="white"
           >
                <Flex
                     justifyContent="center"
                     direction="column"
                     alignItems="center"
-                    width="80vw"
+                    width={{ base: '90%', md: '85%', lg: '80%' }}
                >
                     <motion.h1
                          initial={{ scale: 0.8, opacity: 0 }}
                          animate={{ scale: 1, opacity: 1 }}
                          layoutId="title"
                     >
-                         <Heading fontWeight="normal">Classes</Heading>
+                         <Heading
+                              fontWeight="normal"
+                              fontSize={{
+                                   base: '3xl',
+                                   md: '4xl',
+                                   lg: '5xl'
+                              }}
+                         >
+                              Classes
+                         </Heading>
                     </motion.h1>
 
                     <SimpleGrid
-                         minChildWidth="400px"
+                         minChildWidth={{
+                              base: '250px',
+                              md: '400px',
+                              lg: '400px'
+                         }}
                          spacing="20px"
                          width="100%"
                          mt={10}
@@ -43,12 +60,20 @@ const Classes = ({ classes }) => {
                                         }
                                         height="auto"
                                         rounded="lg"
-                                        padding={10}
+                                        padding={{
+                                             base: '6',
+                                             md: '8',
+                                             lg: '10'
+                                        }}
                                         textAlign="center"
                                         key={index}
                                    >
                                         <Heading
-                                             fontSize="3xl"
+                                             fontSize={{
+                                                  base: 'xl',
+                                                  md: '2xl',
+                                                  lg: '3xl'
+                                             }}
                                              fontWeight="normal"
                                         >
                                              {capitalizeFirstLetter(
@@ -63,6 +88,11 @@ const Classes = ({ classes }) => {
                                                        fontWeight="light"
                                                        textAlign="justify"
                                                        whiteSpace="pre-wrap"
+                                                       fontSize={{
+                                                            base: 'base',
+                                                            md: 'md',
+                                                            lg: 'lg'
+                                                       }}
                                                   >
                                                        {i}{' '}
                                                   </Text>

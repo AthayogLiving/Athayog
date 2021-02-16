@@ -19,7 +19,11 @@ const Pricing = ({ pricing }) => {
           return (
                <Flex
                     margin="auto"
-                    padding="5rem 0"
+                    padding={{
+                         base: '2rem 0',
+                         md: '3rem 0',
+                         lg: '5rem 0'
+                    }}
                     justifyContent="center"
                     alignItems="center"
                     width="100vw"
@@ -29,7 +33,7 @@ const Pricing = ({ pricing }) => {
                          justifyContent="center"
                          direction="column"
                          alignItems="center"
-                         width="60vw"
+                         width="60%"
                     >
                          <Heading
                               fontWeight="normal"
@@ -46,7 +50,11 @@ const Pricing = ({ pricing }) => {
      return (
           <Flex
                margin="auto"
-               padding="5rem 0"
+               padding={{
+                    base: '2rem 0',
+                    md: '3rem 0',
+                    lg: '5rem 0'
+               }}
                justifyContent="center"
                alignItems="center"
                width="100vw"
@@ -56,12 +64,16 @@ const Pricing = ({ pricing }) => {
                     justifyContent="center"
                     direction="column"
                     alignItems="center"
-                    width="60vw"
+                    width={{ base: '90%', md: '75%', lg: '70%' }}
                >
                     <Heading fontWeight="normal">Pricing</Heading>
 
                     <SimpleGrid
-                         minChildWidth="300px"
+                         minChildWidth={{
+                              base: '250px',
+                              md: '300px',
+                              lg: '350px'
+                         }}
                          spacing="20px"
                          width="100%"
                          mt={10}
@@ -72,7 +84,11 @@ const Pricing = ({ pricing }) => {
                                         bg="aygreen.100"
                                         height="auto"
                                         rounded="lg"
-                                        padding={8}
+                                        padding={{
+                                             base: '6',
+                                             md: '8',
+                                             lg: '8'
+                                        }}
                                         textAlign="center"
                                         d="flex"
                                         flexDirection="column"
@@ -81,7 +97,11 @@ const Pricing = ({ pricing }) => {
                                    >
                                         <Box>
                                              <Heading
-                                                  fontSize="2xl"
+                                                  fontSize={{
+                                                       base: 'xl',
+                                                       md: 'xl',
+                                                       lg: '2xl'
+                                                  }}
                                                   fontWeight="normal"
                                                   textAlign="left"
                                              >
@@ -93,6 +113,11 @@ const Pricing = ({ pricing }) => {
                                                   mt={5}
                                                   fontWeight="light"
                                                   textAlign="left"
+                                                  fontSize={{
+                                                       base: 'base',
+                                                       md: 'md',
+                                                       lg: 'lg'
+                                                  }}
                                              >
                                                   {data.description}
                                              </Text>
@@ -103,10 +128,22 @@ const Pricing = ({ pricing }) => {
                                                   align="center"
                                                   mt={5}
                                              >
-                                                  <Text fontSize="xl">
+                                                  <Text
+                                                       fontSize={{
+                                                            base: 'md',
+                                                            md: 'lg',
+                                                            lg: 'xl'
+                                                       }}
+                                                  >
                                                        {data.duration}
                                                   </Text>
-                                                  <Text fontSize="3xl">
+                                                  <Text
+                                                       fontSize={{
+                                                            base: 'xl',
+                                                            md: '2xl',
+                                                            lg: '3xl'
+                                                       }}
+                                                  >
                                                        ₹ {data.price}
                                                   </Text>
                                              </Flex>

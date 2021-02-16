@@ -40,7 +40,7 @@ export const offeringsData = {
                name: 'Workshops',
                information:
                     ' Deepen your Yogic knowledge and gain a more comprehensive insight on Yoga.',
-               link: '/offerings/workshop',
+               link: '/offerings/workshops',
                image: 'public/athayogOnline.jpg'
           }
      ]

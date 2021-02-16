@@ -5,19 +5,21 @@ import React from 'react';
 const Employee = ({ name, image, info, designation }) => {
      return (
           <Flex
-               justifyContent="space-around"
-               alignItems="center"
-               width="60vw"
-               flexDirection="row"
-               mt={20}
-               mb={20}
+               justifyContent="center"
+               alignItems={{ base: 'center', md: 'start', lg: 'start' }}
+               width="100%"
+               padding={5}
+               flexDirection={{ base: 'column', md: 'row', lg: 'row' }}
+               mt={{ base: 2, md: 10, lg: 10 }}
+               mt={{ base: 2, md: 10, lg: 10 }}
           >
-               <Box width="20%">
+               <Box>
                     <Box
                          rounded="full"
-                         height="300px"
-                         width="300px"
+                         height={{ base: '250px', md: '300px', lg: '300px' }}
+                         width={{ base: '250px', md: '300px', lg: '300px' }}
                          overflow="hidden"
+                         mr={{ base: '0', md: '10', lg: '10' }}
                     >
                          <Image
                               src={image}
@@ -29,11 +31,24 @@ const Employee = ({ name, image, info, designation }) => {
                     </Box>
                </Box>
 
-               <Box width="50%">
-                    <Text color="aygreen.600" fontWeight="bold" fontSize="3xl">
+               <Box
+                    maxW={{ base: '100%', md: '50%', lg: '50%' }}
+                    mt={{ base: '10', md: '0', lg: '0' }}
+               >
+                    <Text
+                         color="aygreen.600"
+                         fontWeight="bold"
+                         fontSize="3xl"
+                         textAlign={{ base: 'center', md: 'left', lg: 'left' }}
+                    >
                          {name}
                     </Text>
-                    <Text color="aygreen.500">{designation}</Text>
+                    <Text
+                         textAlign={{ base: 'center', md: 'left', lg: 'left' }}
+                         color="aygreen.500"
+                    >
+                         {designation}
+                    </Text>
                     <br />
                     {info.split('\n').map((i) => {
                          return (

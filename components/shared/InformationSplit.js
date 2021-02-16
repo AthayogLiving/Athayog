@@ -18,26 +18,49 @@ const InformationSplit = (props) => {
      return (
           <Flex
                margin="auto"
-               padding="5rem 0"
+               padding={{
+                    base: '2rem',
+                    md: '3rem 0',
+                    lg: '5rem 0'
+               }}
                justifyContent="space-evenly"
                alignItems="start"
                width="100vw"
                bg="primaryWhite"
-               direction="row"
+               direction={{ base: 'column', md: 'row', lg: 'row' }}
           >
                <Flex
                     justifyContent="center"
-                    direction="column"
                     alignItems="center"
-                    width="40%"
+                    width={{ base: '100%', md: '40%', lg: '40%' }}
+                    direction="column"
                >
                     <>
-                         <Heading fontWeight="normal">
+                         <Heading
+                              fontWeight="normal"
+                              textAlign="center"
+                              fontSize={{
+                                   base: '1.5rem',
+                                   md: '2rem',
+                                   lg: '2.5rem'
+                              }}
+                         >
                               What is AthaYog {name}
                          </Heading>
                          <Flex padding="2rem 0" justifyContent="space-between">
                               <Box>
-                                   <Text fontWeight="light" textAlign="left">
+                                   <Text
+                                        fontWeight="light"
+                                        fontSize={{
+                                             base: '1rem',
+                                             md: '1rem',
+                                             lg: '1.2rem'
+                                        }}
+                                        textAlign={{
+                                             base: 'center',
+                                             md: 'left'
+                                        }}
+                                   >
                                         {whatis}
                                    </Text>
                               </Box>
@@ -48,13 +71,34 @@ const InformationSplit = (props) => {
                     justifyContent="center"
                     direction="column"
                     alignItems="center"
-                    width="40%"
+                    width={{ base: '100%', md: '40%', lg: '40%' }}
                >
                     <>
-                         <Heading fontWeight="normal">{secondBlock}</Heading>
+                         <Heading
+                              fontWeight="normal"
+                              textAlign="center"
+                              fontSize={{
+                                   base: '1.5rem',
+                                   md: '2rem',
+                                   lg: '2.5rem'
+                              }}
+                         >
+                              {secondBlock}
+                         </Heading>
                          <Flex padding="2rem 0" justifyContent="space-between">
                               <Box>
-                                   <Text fontWeight="light" textAlign="left">
+                                   <Text
+                                        fontWeight="light"
+                                        fontSize={{
+                                             base: '1rem',
+                                             md: '1rem',
+                                             lg: '1.2rem'
+                                        }}
+                                        textAlign={{
+                                             base: 'center',
+                                             md: 'left'
+                                        }}
+                                   >
                                         {description}
                                    </Text>
                               </Box>

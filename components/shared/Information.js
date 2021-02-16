@@ -18,7 +18,11 @@ const Information = (props) => {
      return (
           <Flex
                margin="auto"
-               padding="5rem 0"
+               padding={{
+                    base: '2rem 0',
+                    md: '3rem 0',
+                    lg: '5rem 0'
+               }}
                justifyContent="center"
                alignItems="center"
                width="100vw"
@@ -31,12 +35,34 @@ const Information = (props) => {
                     width="80vw"
                >
                     <>
-                         <Heading fontWeight="normal">
+                         <Heading
+                              fontWeight="normal"
+                              fontSize={{
+                                   base: '1.5rem',
+                                   md: '2rem',
+                                   lg: '2.5rem'
+                              }}
+                         >
                               What is AthaYog {name}
                          </Heading>
-                         <Flex padding="2rem 0" justifyContent="space-between">
+                         <Flex
+                              padding={{
+                                   base: '1rem 0',
+                                   md: '1rem 0',
+                                   lg: '2rem 0'
+                              }}
+                              justifyContent="space-between"
+                         >
                               <Box>
-                                   <Text fontWeight="light" textAlign="left">
+                                   <Text
+                                        fontWeight="light"
+                                        textAlign="left"
+                                        fontSize={{
+                                             base: '1rem',
+                                             md: '1rem',
+                                             lg: '1.2rem'
+                                        }}
+                                   >
                                         {whatis}
                                    </Text>
                               </Box>

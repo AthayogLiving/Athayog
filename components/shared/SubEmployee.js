@@ -7,16 +7,14 @@ const SubEmployee = ({ name, image, info, designation }) => {
           <Flex
                justifyContent="space-around"
                alignItems="center"
-               width="md"
+               width="100%"
                flexDirection="column"
-               mt={20}
-               mb={20}
           >
                <Box>
                     <Box
                          rounded="full"
-                         height="300px"
-                         width="300px"
+                         height={{ base: '250px', md: '300px', lg: '300px' }}
+                         width={{ base: '250px', md: '300px', lg: '300px' }}
                          overflow="hidden"
                     >
                          <Image

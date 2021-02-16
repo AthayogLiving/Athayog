@@ -54,7 +54,12 @@ const Hero = (props) => {
                     animate="enter"
                     exit="exit"
                >
-                    <Heading fontSize="5xl" color="white" fontWeight="medium">
+                    <Heading
+                         fontSize={{ base: '2xl', md: '3xl', lg: '5xl' }}
+                         color="white"
+                         fontWeight="medium"
+                         textAlign="center"
+                    >
                          <Text d="inline-block" mr={4} fontWeight="light">
                               ATHAYOG
                          </Text>
@@ -64,13 +69,13 @@ const Hero = (props) => {
                          width="80%"
                          m="auto"
                          height="2px"
-                         mt={3}
+                         mt={{ base: '1', md: '2', lg: '3' }}
                          bg="#fff"
                          border="none"
                     />
                     <ChevronDownIcon
                          color="white"
-                         fontSize="3rem"
+                         fontSize={{ base: '1.5rem', md: '2rem', lg: '3rem' }}
                          margin="1rem auto 0 auto"
                          width="100%"
                     />

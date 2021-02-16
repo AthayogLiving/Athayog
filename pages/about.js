@@ -4,7 +4,7 @@ import Employee from '@/components/shared/Employee';
 import Hero from '@/components/shared/Hero';
 import Information from '@/components/shared/Information';
 import SubEmployee from '@/components/shared/SubEmployee';
-import { Box, Divider, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Divider, Flex, Grid, Heading, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import athayogOnline from 'public/athayogOnline.jpg';
 import React from 'react';
@@ -23,7 +23,7 @@ const About = () => {
                <Hero pageData={pageData} />
                <Flex
                     margin="auto"
-                    padding="5rem 0"
+                    padding={{ base: '2rem 0', md: '3rem 0', lg: '5rem 0' }}
                     justifyContent="center"
                     alignItems="center"
                     width="60vw"
@@ -50,14 +50,26 @@ const About = () => {
 
                <Flex
                     margin="auto"
-                    padding="5rem 0"
+                    padding={{ base: '2rem 0', md: '3rem 0', lg: '5rem 0' }}
                     justifyContent="center"
                     alignItems="center"
                     bg="primaryWhite"
+                    width="100%"
                     direction="column"
                >
-                    <Box width="60vw" textAlign="center">
-                         <Heading>WHAT WE DO</Heading>
+                    <Box
+                         width={{ base: '90%', md: '80%', lg: '60%' }}
+                         textAlign="center"
+                    >
+                         <Heading
+                              fontSize={{
+                                   base: '1.5rem',
+                                   md: '2rem',
+                                   lg: '2.2rem'
+                              }}
+                         >
+                              WHAT WE DO
+                         </Heading>
                          <Text mt={10} fontWeight="light">
                               At AthaYog Living, we educate and illuminate you
                               with a clear direction by sharing transformational
@@ -71,13 +83,17 @@ const About = () => {
 
                <Flex
                     margin="auto"
-                    padding="5rem 0"
+                    padding={{ base: '2rem 0', md: '3rem 0', lg: '5rem 0' }}
                     justifyContent="center"
                     alignItems="center"
                     bg="white"
+                    width="100%"
                     direction="column"
                >
-                    <Box width="60vw" textAlign="center">
+                    <Box
+                         width={{ base: '90%', md: '80%', lg: '60%' }}
+                         textAlign="center"
+                    >
                          <Heading>WHY US?</Heading>
                          <Text mt={10} fontWeight="light">
                               When you register with us, we offer free
@@ -92,10 +108,11 @@ const About = () => {
 
                <Flex
                     margin="auto"
-                    padding="5rem 0"
+                    padding={{ base: '2rem 0', md: '3rem 0', lg: '5rem 0' }}
                     justifyContent="center"
                     alignItems="center"
                     bg="#fbfbfb"
+                    width="100%"
                     direction="column"
                >
                     <Heading
@@ -105,7 +122,11 @@ const About = () => {
                     >
                          Meet our team
                     </Heading>
-                    <Text mt={10} width="60vw" fontWeight="light">
+                    <Text
+                         mt={10}
+                         width={{ base: '90%', md: '80%', lg: '60%' }}
+                         fontWeight="light"
+                    >
                          Our team is a diverse group of young, energetic and
                          dynamic individuals; our journeys stitched together,
                          interweaving on the quest for true Yogic knowledge. A
@@ -117,23 +138,31 @@ const About = () => {
                     })}
                </Flex>
                <Divider width="80%" margin="auto" />
-               <Flex
+               <Grid
                     margin="auto"
-                    padding="5rem 10rem"
+                    padding={{
+                         base: '2rem',
+                         md: '3rem 5rem',
+                         lg: '5rem 10rem'
+                    }}
+                    gridTemplateColumns={{
+                         base: 'repeat(auto-fit, minmax(220px, 1fr))',
+                         md: 'repeat(auto-fit, minmax(300px, 1fr))',
+                         lg: 'repeat(auto-fit, minmax(500px, 1fr))'
+                    }}
                     justifyContent="center"
-                    flexWrap="wrap"
+                    gridGap="6rem"
                     alignItems="start"
                     bg="#fbfbfb"
-                    direction="row"
                >
                     {employees.map((data) => {
                          return (
-                              <Box flex="1 1 150px">
+                              <Box>
                                    <SubEmployee {...data} />
                               </Box>
                          );
                     })}
-               </Flex>
+               </Grid>
                <Enquiry />
           </>
      );
