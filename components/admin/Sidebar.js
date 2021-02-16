@@ -11,7 +11,7 @@ import {
      FiBook
 } from 'react-icons/fi';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
-import { VscFeedback } from 'react-icons/vsc';
+import { VscFeedback, VscPreview } from 'react-icons/vsc';
 
 function Sidebar() {
      const router = useRouter();
@@ -219,6 +219,25 @@ function Sidebar() {
                               leftIcon={<VscFeedback />}
                          >
                               Testimonials
+                         </Button>
+                    </Link>
+                    <Link href="/admin/offerings" width="100%">
+                         <Button
+                              colorScheme="teal"
+                              variant="ghost"
+                              isActive={
+                                   router.pathname == '/admin/testimonials'
+                                        ? true
+                                        : ''
+                              }
+                              width="100%"
+                              fontSize="sm"
+                              rounded="lg"
+                              d="flex"
+                              justifyContent="flex-start"
+                              leftIcon={<VscPreview />}
+                         >
+                              Offerings
                          </Button>
                     </Link>
                </Stack>
