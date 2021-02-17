@@ -6,8 +6,24 @@ import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
 import InformationSplit from '@/components/shared/InformationSplit';
 import Schedule from '@/components/shared/Schedule';
+import fetcher from '@/utils/fetcher';
+import useSWR from 'swr';
+import { Skeleton } from '@chakra-ui/react';
 
-const Shikshana = () => {
+const Shikshana = ({ offers }) => {
+     const { data, error } = useSWR(
+          `http://localhost:3000/api/offerings/shikshana`,
+          fetcher,
+          {
+               initialData: offers
+          }
+     );
+     if (error) return <Skeleton height="100vh"></Skeleton>;
+
+     if (!data) {
+          return <Skeleton height="100vh"></Skeleton>;
+     }
+
      const pageData = {
           name: 'Shikshana Pada',
           heroImage: athayogShikshana,
@@ -23,6 +39,22 @@ const Shikshana = () => {
                }
           ]
      };
+
+     const apiPricing = [];
+     data.offers.map((data) => {
+          apiPricing.push({
+               id: data.id,
+               courseName: data.name,
+               description: data.description,
+               duration: data.isTrial
+                    ? data.days + ' Trial'
+                    : data.days == 0
+                    ? 'No Duration'
+                    : data.days + ' Days',
+               durationNum: data.days,
+               price: data.price
+          });
+     });
      return (
           <motion.div
                exit={{ opacity: 0 }}
@@ -31,11 +63,18 @@ const Shikshana = () => {
           >
                <Hero pageData={pageData} />
                <InformationSplit pageData={pageData} />
-               <Pricing pricing={pageData.pricing} />
+               <Pricing pricing={apiPricing} />
                <Schedule schedule="shikhshana" />
                <Register registerTo={pageData.name.toLocaleLowerCase()} />
           </motion.div>
      );
 };
+
+export async function getStaticProps(context) {
+     const offers = await fetcher(
+          'http://localhost:3000/api/offerings/shikshana'
+     );
+     return { props: { offers }, revalidate: 1 };
+}
 
 export default Shikshana;

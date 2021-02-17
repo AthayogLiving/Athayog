@@ -24,7 +24,6 @@ const Space = ({ offers }) => {
           return <Skeleton height="100vh"></Skeleton>;
      }
 
-     console.log(data);
      const pageData = {
           name: 'Space',
           heroImage: athayogSpace,
@@ -59,16 +58,18 @@ const Space = ({ offers }) => {
 
      const apiPricing = [];
      data.offers.map((data) => {
-          apiPricing.push({
-               id: data.id,
-               courseName: data.name,
-               description: data.description,
-               duration: data.isTrial
-                    ? data.days + ' Trial'
-                    : data.days + ' Days',
-               durationNum: data.days,
-               price: data.price
-          });
+          if (data.isActive) {
+               apiPricing.push({
+                    id: data.id,
+                    courseName: data.name,
+                    description: data.description,
+                    duration: data.isTrial
+                         ? data.days + ' Days Trial'
+                         : data.days + ' Days',
+                    durationNum: data.days,
+                    price: data.price
+               });
+          }
      });
      return (
           <motion.div

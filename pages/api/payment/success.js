@@ -33,8 +33,6 @@ export default async function handler(req, res) {
                     name
                } = req.body;
 
-               console.log(courseId);
-
                // Creating our own digest
                // The format should be like this:
                // digest = hmac_sha256(orderCreationId + "|" + razorpayPaymentId, secret);

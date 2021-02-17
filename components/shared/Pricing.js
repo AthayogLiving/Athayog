@@ -19,7 +19,6 @@ import { updatePaymentDetails } from '@/lib/db/users';
 
 const Pricing = ({ pricing }) => {
      const { user, signout, loading } = useAuth();
-
      const [buttonId, setButtonId] = useState('');
      const [loadingPayment, setLoading] = useState(['', false]);
      const router = useRouter();
@@ -340,7 +339,7 @@ const Pricing = ({ pricing }) => {
                                                        )
                                                   }
                                              >
-                                                  Register
+                                                  Purchase
                                              </Button>
                                         </Box>
                                    </Box>

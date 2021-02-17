@@ -1,3 +1,4 @@
+import OfferringsHeader from '@/components/admin/OfferingsHeader';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import {
      Box,
@@ -14,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import React from 'react';
-import Dashboard from './dashboard';
+import Dashboard from '../dashboard';
 
 const offerings = () => {
      const bg = useColorModeValue('white', 'gray.800');
@@ -23,18 +24,12 @@ const offerings = () => {
           'shikshana',
           'online',
           'personal',
-          'workshops',
-          'chikitsa',
-          'online'
+          'workshops'
      ];
 
      return (
           <Dashboard>
-               <Box bg={bg} padding={6} rounded="lg" boxShadow="base">
-                    <Heading size="md" fontWeight="medium">
-                         Offerings
-                    </Heading>
-               </Box>
+               <OfferringsHeader siteLink="" />
                <Table
                     variant="simple"
                     mt={5}

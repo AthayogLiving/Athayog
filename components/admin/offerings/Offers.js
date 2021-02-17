@@ -1,4 +1,4 @@
-import { deleteOffering } from '@/lib/db/offerings';
+import { deleteOffering, updateOfferingActiveState } from '@/lib/db/offerings';
 import fetcher from '@/utils/fetcher';
 import {
      Box,
@@ -28,12 +28,14 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import useSWR from 'swr';
+import EditOfferings from './EditOfferings';
 
 const Offers = ({ offerType }) => {
      const { data, error } = useSWR(`/api/offerings/${offerType}`, fetcher, {
           refreshInterval: 500
      });
      const [isOpen, setIsOpen] = useState(false);
+     const [isLive, setIsLive] = useState(false);
      const onClose = () => setIsOpen(false);
      const [loading, setLoading] = useState(false);
      const cancelRef = React.useRef();
@@ -48,7 +50,7 @@ const Offers = ({ offerType }) => {
 
      if (!data) {
           return (
-               <Grid height="350px">
+               <Grid height="350px" placeItems="center">
                     <Spinner />
                </Grid>
           );
@@ -61,6 +63,34 @@ const Offers = ({ offerType }) => {
                </Grid>
           );
      }
+
+     const updateActiveState = async (id, state) => {
+          setIsLive(true);
+          await updateOfferingActiveState(id, !state)
+               .then((response) => {
+                    toast({
+                         title: `Offer Is Now ${!state ? 'Live' : 'Offline'}`,
+                         description:
+                              "We've have updated the offerings and it's live.",
+                         status: 'success',
+                         duration: 9000,
+                         isClosable: true
+                    });
+                    setLoading(false);
+                    setIsLive(false);
+               })
+               .catch((error) => {
+                    toast({
+                         title: 'Something Happend',
+                         description: error.message,
+                         status: 'error',
+                         duration: 9000,
+                         isClosable: true
+                    });
+                    setLoading(false);
+                    setIsLive(false);
+               });
+     };
 
      const deleteOffer = async (id) => {
           setLoading(true);
@@ -121,17 +151,23 @@ const Offers = ({ offerType }) => {
                                                   <Td>{days}</Td>
                                                   <Td>{price}</Td>
                                                   <Td>
-                                                       <Badge
+                                                       <Switch
                                                             colorScheme={
                                                                  isActive
                                                                       ? 'teal'
                                                                       : 'red'
                                                             }
-                                                       >
-                                                            {isActive
-                                                                 ? 'Active'
-                                                                 : 'Not Active'}
-                                                       </Badge>
+                                                            defaultChecked={
+                                                                 isActive
+                                                            }
+                                                            isDisabled={isLive}
+                                                            onChange={() =>
+                                                                 updateActiveState(
+                                                                      id,
+                                                                      isActive
+                                                                 )
+                                                            }
+                                                       />
                                                   </Td>
                                                   <Td>
                                                        <Badge
@@ -148,9 +184,24 @@ const Offers = ({ offerType }) => {
                                                   </Td>
                                                   <Td>
                                                        <ButtonGroup size="sm">
-                                                            <Button colorScheme="blue">
-                                                                 Edit
-                                                            </Button>
+                                                            <EditOfferings
+                                                                 type={
+                                                                      offerType
+                                                                 }
+                                                                 ogName={name}
+                                                                 ogDescription={
+                                                                      description
+                                                                 }
+                                                                 ogDays={days}
+                                                                 ogPrice={price}
+                                                                 ogIsActive={
+                                                                      isActive
+                                                                 }
+                                                                 ogIsTrial={
+                                                                      isTrial
+                                                                 }
+                                                                 id={id}
+                                                            />
                                                             <Button
                                                                  colorScheme="red"
                                                                  onClick={() =>
