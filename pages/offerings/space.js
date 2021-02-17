@@ -6,8 +6,25 @@ import Information from '@/components/shared/Information';
 import Classes from '@/components/shared/Classes';
 import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
+import { Skeleton } from '@chakra-ui/react';
+import fetcher from '@/utils/fetcher';
+import useSWR from 'swr';
 
-const Space = () => {
+const Space = ({ offers }) => {
+     const { data, error } = useSWR(
+          `http://localhost:3000/api/offerings/space`,
+          fetcher,
+          {
+               initialData: offers
+          }
+     );
+     if (error) return <Skeleton height="100vh"></Skeleton>;
+
+     if (!data) {
+          return <Skeleton height="100vh"></Skeleton>;
+     }
+
+     console.log(data);
      const pageData = {
           name: 'Space',
           heroImage: athayogSpace,
@@ -37,45 +54,22 @@ const Space = () => {
                     className: 'Little Star',
                     classInfo: `This class works on empowering and nurturing young minds to instill the focus and awareness required to grow as individuals with the right guidance to gain composure.\nA 60-minute class open to age groups between 7-14 years.`
                }
-          ],
-          pricing: [
-               {
-                    courseName: 'INITIATION',
-                    description: `Experience A Free 2-DAY TRIAL`,
-                    duration: `2 Day Trial`,
-                    durationNum: 2,
-                    price: 0
-               },
-               {
-                    courseName: 'CONTEMPLATION',
-                    description: `Register For 30 Days`,
-                    duration: `30 Days`,
-                    durationNum: 30,
-                    price: 1999
-               },
-               {
-                    courseName: 'DETERMINATION',
-                    description: `Register For 90 Days`,
-                    duration: `90 Days`,
-                    durationNum: 90,
-                    price: 4999
-               },
-               {
-                    courseName: 'EVOLUTION',
-                    description: `Register For 180 Days`,
-                    duration: `180 Days`,
-                    durationNum: 180,
-                    price: 9999
-               },
-               {
-                    courseName: 'TRANSFORMATION',
-                    description: `Register For 360 Days`,
-                    duration: `360 Days`,
-                    durationNum: 360,
-                    price: 11999
-               }
           ]
      };
+
+     const apiPricing = [];
+     data.offers.map((data) => {
+          apiPricing.push({
+               id: data.id,
+               courseName: data.name,
+               description: data.description,
+               duration: data.isTrial
+                    ? data.days + ' Trial'
+                    : data.days + ' Days',
+               durationNum: data.days,
+               price: data.price
+          });
+     });
      return (
           <motion.div
                exit={{ opacity: 0 }}
@@ -85,10 +79,15 @@ const Space = () => {
                <Hero pageData={pageData} />
                <Information pageData={pageData} />
                <Classes classes={pageData.classes} />
-               <Pricing pricing={pageData.pricing} />
+               <Pricing pricing={apiPricing} />
                <Register registerTo={pageData.name.toLocaleLowerCase()} />
           </motion.div>
      );
 };
+
+export async function getStaticProps(context) {
+     const offers = await fetcher('http://localhost:3000/api/offerings/space');
+     return { props: { offers }, revalidate: 1 };
+}
 
 export default Space;

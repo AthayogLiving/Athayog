@@ -15,10 +15,11 @@ import axios from 'axios';
 import { logo } from 'public/og.png';
 import { useAuth } from '@/lib/auth';
 import { useRouter } from 'next/router';
+import { updatePaymentDetails } from '@/lib/db/users';
 
 const Pricing = ({ pricing }) => {
      const { user, signout, loading } = useAuth();
-     const [allPayment, setAllPayment] = useState({});
+
      const [buttonId, setButtonId] = useState('');
      const [loadingPayment, setLoading] = useState(['', false]);
      const router = useRouter();
@@ -27,9 +28,15 @@ const Pricing = ({ pricing }) => {
           return null;
      }
 
-     const handleUserPayment = (id, price, duration, description, name) => {
-          setLoading([id, true]);
-          setButtonId(id);
+     const handleUserPayment = async (
+          price,
+          duration,
+          description,
+          name,
+          courseId,
+          isTrial
+     ) => {
+          setButtonId(courseId);
           if (!user) {
                toast({
                     title: 'Login First',
@@ -39,18 +46,16 @@ const Pricing = ({ pricing }) => {
                     duration: 5000,
                     isClosable: true
                });
-               setLoading([id, false]);
+               setButtonId('');
 
                router.push('/account/login');
           }
-          setAllPayment({
-               price,
-               duration,
-               description,
-               name
-          });
 
-          displayRazorpay(id, price, duration, description, name);
+          if (isTrial) {
+               // await updatePaymentDetails(razorpayPaymentId, paymentDetails);
+               return;
+          }
+          displayRazorpay(price, duration, description, name, courseId);
      };
 
      const loadScript = (src) => {
@@ -66,7 +71,13 @@ const Pricing = ({ pricing }) => {
                document.body.appendChild(script);
           });
      };
-     const displayRazorpay = async (id, price, duration, description, name) => {
+     const displayRazorpay = async (
+          price,
+          duration,
+          description,
+          name,
+          courseId
+     ) => {
           const res = await loadScript(
                'https://checkout.razorpay.com/v1/checkout.js'
           );
@@ -80,6 +91,7 @@ const Pricing = ({ pricing }) => {
                     duration: 5000,
                     isClosable: true
                });
+               setButtonId('');
                return;
           }
 
@@ -99,7 +111,8 @@ const Pricing = ({ pricing }) => {
                     duration: 5000,
                     isClosable: true
                });
-               setLoading([id, false]);
+               setButtonId('');
+
                return;
           }
 
@@ -120,6 +133,7 @@ const Pricing = ({ pricing }) => {
                          razorpayPaymentId: response.razorpay_payment_id,
                          razorpayOrderId: response.razorpay_order_id,
                          razorpaySignature: response.razorpay_signature,
+                         courseId,
                          uid: user.uid,
                          price,
                          duration,
@@ -135,12 +149,12 @@ const Pricing = ({ pricing }) => {
                          .then((result) => {
                               toast({
                                    title: 'Payment Successfull',
-                                   description: `Your payment for ${allPayment.name} is successfull`,
+                                   description: `Your payment for ${name} is successfull`,
                                    status: 'success',
                                    duration: 5000,
                                    isClosable: true
                               });
-                              setLoading([id, false]);
+                              setButtonId('');
                          })
                          .catch((error) => {
                               toast({
@@ -150,7 +164,7 @@ const Pricing = ({ pricing }) => {
                                    duration: 5000,
                                    isClosable: true
                               });
-                              setLoading([id, false]);
+                              setButtonId('');
                          });
                },
                prefill: {
@@ -252,7 +266,7 @@ const Pricing = ({ pricing }) => {
                                         textAlign="center"
                                         d="flex"
                                         flexDirection="column"
-                                        key={index}
+                                        key={data.id}
                                         justifyContent="space-between"
                                    >
                                         <Box>
@@ -317,11 +331,12 @@ const Pricing = ({ pricing }) => {
                                                   }
                                                   onClick={() =>
                                                        handleUserPayment(
-                                                            data.id,
                                                             data.price,
                                                             data.durationNum,
                                                             data.description,
-                                                            data.courseName.toLowerCase()
+                                                            data.courseName.toLowerCase(),
+                                                            data.id,
+                                                            data.isTrial
                                                        )
                                                   }
                                              >

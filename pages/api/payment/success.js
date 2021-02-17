@@ -25,12 +25,15 @@ export default async function handler(req, res) {
                     razorpayPaymentId,
                     razorpayOrderId,
                     razorpaySignature,
+                    courseId,
                     uid,
                     price,
                     duration,
                     description,
                     name
                } = req.body;
+
+               console.log(courseId);
 
                // Creating our own digest
                // The format should be like this:
@@ -60,7 +63,8 @@ export default async function handler(req, res) {
                     duration,
                     description,
                     name,
-                    uid
+                    uid,
+                    courseId
                };
 
                await updatePaymentDetails(razorpayPaymentId, paymentDetails);
