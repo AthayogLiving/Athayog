@@ -8,7 +8,8 @@ import {
      TabList,
      TabPanels,
      Tab,
-     TabPanel
+     TabPanel,
+     Select
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import Dashboard from './dashboard';
@@ -30,12 +31,30 @@ const images = () => {
           setImageType(imageCategories[value]);
      };
 
+     const [totalImages, setTotalImage] = useState(0);
+
      const Capitalize = (str) => {
           return str.charAt(0).toUpperCase() + str.slice(1);
      };
+
+     const [mobileImage, setMobileImage] = useState('desktop');
+
+     const handleMobileImage = (e) => {
+          setMobileImage(e.target.value);
+     };
+
+     console.log('Totlal Images', totalImages);
      return (
           <Dashboard>
                <Box bg={bg} padding={6} rounded="lg" boxShadow="base">
+                    <Select
+                         size="sm"
+                         width="xs"
+                         onChange={(e) => handleMobileImage(e)}
+                    >
+                         <option value="desktop">Desktop</option>
+                         <option value="mobile">Mobile</option>
+                    </Select>
                     <Tabs
                          colorScheme="blue"
                          mt={2}
@@ -58,7 +77,11 @@ const images = () => {
                               {imageCategories.map((category) => {
                                    return (
                                         <TabPanel>
-                                             <ImageGrid imageType={category} />
+                                             <ImageGrid
+                                                  imageType={category}
+                                                  isMobile={mobileImage}
+                                                  setTotalImage={setTotalImage}
+                                             />
                                         </TabPanel>
                                    );
                               })}
@@ -66,7 +89,10 @@ const images = () => {
                     </Tabs>
 
                     <Divider />
-                    <UploadImages imageType={imageType} />
+                    <UploadImages
+                         imageType={imageType}
+                         isMobile={mobileImage}
+                    />
                </Box>
           </Dashboard>
      );

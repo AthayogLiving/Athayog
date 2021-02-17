@@ -31,19 +31,43 @@ import {
 import { useAuth } from '@/lib/auth';
 import { deleteImage, updateImageStatus } from '@/lib/db/images';
 
-const ImageGrid = ({ imageType }) => {
+const ImageGrid = ({ imageType, setTotalImage, isMobile }) => {
      // Authenticated User
      const { user } = useAuth();
      //  ----------------------
 
      //  API Data
-     const { data, error } = useSWR(
-          user ? [`/api/images/${imageType}`, user.token] : null,
-          fetcher,
-          {
-               refreshInterval: 500
-          }
-     );
+
+     const { data, error } =
+          isMobile === 'mobile'
+               ? useSWR(
+                      user
+                           ? [
+                                  `/api/images/${imageType}?mobile=true`,
+                                  user.token
+                             ]
+                           : null,
+                      fetcher,
+                      {
+                           refreshInterval: 500
+                      }
+                 )
+               : useSWR(
+                      user
+                           ? [
+                                  `/api/images/${imageType}${
+                                       isMobile === 'mobile'
+                                            ? '?mobile=true'
+                                            : ''
+                                  }`,
+                                  user.token
+                             ]
+                           : null,
+                      fetcher,
+                      {
+                           refreshInterval: 500
+                      }
+                 );
      //  ----------------------
 
      //  Global Colors
@@ -83,7 +107,7 @@ const ImageGrid = ({ imageType }) => {
      const deleteImageFirestore = async () => {
           setIsLoading(true);
           const { imageId, imageType, imageName } = selectedImage;
-          await deleteImage(imageId, imageType, imageName);
+          await deleteImage(imageId, imageType, imageName, isMobile);
           setIsLoading(false);
           setIsOpen(false);
           toast({
@@ -97,7 +121,7 @@ const ImageGrid = ({ imageType }) => {
 
      const changePublishStatus = async (imageId, status) => {
           setIsActiveLoading({ imageId: imageId, status: true });
-          await updateImageStatus(imageId, !status);
+          await updateImageStatus(imageId, !status, isMobile);
           setIsActiveLoading({ imageId: imageId, status: false });
           toast({
                title: `Image ${!status ? 'Published' : 'Unpublished'}.`,
@@ -136,6 +160,8 @@ const ImageGrid = ({ imageType }) => {
                </Center>
           );
      }
+
+     setTotalImage(data.images.length);
      //  ----------------------
 
      return (

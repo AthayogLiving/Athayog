@@ -24,7 +24,7 @@ import { FiImage } from 'react-icons/fi';
 import { useAuth } from '@/lib/auth';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 
-const UploadImages = ({ imageType }) => {
+const UploadImages = ({ imageType, isMobile }) => {
      const toast = useToast();
      const { user } = useAuth();
      const { register, handleSubmit } = useForm();
@@ -35,7 +35,12 @@ const UploadImages = ({ imageType }) => {
      const onSubmit = async (data, e) => {
           setUploading(true);
           const file = data.image[0];
-          await uploadImageToStorage(imageType, file, true);
+          await uploadImageToStorage(
+               imageType,
+               file,
+               true,
+               isMobile === 'desktop' ? false : true
+          );
           setUploading(false);
 
           toast({
