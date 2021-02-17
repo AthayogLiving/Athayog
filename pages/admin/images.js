@@ -49,6 +49,8 @@ const images = () => {
                <Box bg={bg} padding={6} rounded="lg" boxShadow="base">
                     <Select
                          size="sm"
+                         rouned="lg"
+                         name="deviceType"
                          width="xs"
                          onChange={(e) => handleMobileImage(e)}
                     >
