@@ -178,6 +178,20 @@ const Navbar = () => {
                                                   AthaYog Workshops
                                              </MenuItem>
                                         </Link>
+                                        <Link href="/offerings/chikitsa">
+                                             <MenuItem
+                                                  _hover={{ bg: 'aygreen.50' }}
+                                             >
+                                                  AthaYog Chikitsa
+                                             </MenuItem>
+                                        </Link>
+                                        <Link href="/offerings/onsite">
+                                             <MenuItem
+                                                  _hover={{ bg: 'aygreen.50' }}
+                                             >
+                                                  AthaYog Onsite
+                                             </MenuItem>
+                                        </Link>
                                    </MenuList>
                               </Menu>
 

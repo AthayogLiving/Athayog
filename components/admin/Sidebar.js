@@ -226,7 +226,7 @@ function Sidebar() {
                               colorScheme="teal"
                               variant="ghost"
                               isActive={
-                                   router.pathname == '/admin/testimonials'
+                                   router.pathname.match('/admin/offerings')
                                         ? true
                                         : ''
                               }
