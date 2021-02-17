@@ -1,22 +1,21 @@
 import fetcher from '@/utils/fetcher';
-import {
-     Box,
-     chakra,
-     ChakraProvider,
-     Heading,
-     Skeleton
-} from '@chakra-ui/react';
+import { Box, Skeleton } from '@chakra-ui/react';
 import React from 'react';
 import useSWR from 'swr';
 import Image from 'next/image';
 import Swiper from 'react-id-swiper';
 import 'swiper/swiper-bundle.css';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { isMobile } from 'react-device-detect';
 
 const HeroCarousel = ({ images }) => {
-     const { data, error } = useSWR(`/api/images/carousel`, fetcher, {
-          initialData: images
-     });
+     const { data, error } = isMobile
+          ? useSWR(`/api/images/carousel?mobile=true`, fetcher, {
+                 initialData: images
+            })
+          : useSWR(`/api/images/carousel`, fetcher, {
+                 initialData: images
+            });
      if (error) return <Skeleton height="100vh"></Skeleton>;
 
      if (!data) {
@@ -72,7 +71,9 @@ const HeroCarousel = ({ images }) => {
 };
 
 export async function getStaticProps(context) {
-     const images = await fetcher('/api/images/carousel');
+     const images = isMobile
+          ? await fetcher('/api/images/carousel?mobile=true')
+          : await fetcher('/api/images/carousel');
      return { props: { images }, revalidate: 1 };
 }
 
