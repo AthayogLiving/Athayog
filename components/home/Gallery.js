@@ -18,7 +18,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 SwiperCore.use([Navigation, Pagination, EffectFade]);
 
 const Gallery = ({ images }) => {
-     const { data, error } = useSWR(`/api/images/athayog_space`, fetcher, {
+     const { data, error } = useSWR(`/api/images/gallery`, fetcher, {
           initialData: images
      });
      if (error) return <Skeleton height="100vh"></Skeleton>;
@@ -27,8 +27,37 @@ const Gallery = ({ images }) => {
           return <Skeleton height="100vh"></Skeleton>;
      }
 
+     if (data.images.length === 0) {
+          return null;
+     }
+
+     const totalImages = data.images.length;
+
+     let sliderPerView = 3;
+     let xl = 4;
+     let md = 3;
+     let sm = 2;
+     let vs = 1;
+
+     if (totalImages == 2) {
+          sliderPerView = 2;
+          xl = 2;
+          md = 2;
+          (sm = 1), (vs = 1);
+     } else if (totalImages == 1) {
+          sliderPerView = 1;
+          xl = 1;
+          md = 1;
+          (sm = 1), (vs = 1);
+     } else {
+          sliderPerView = 3;
+          xl = 3;
+          md = 3;
+          (sm = 2), (vs = 1);
+     }
+
      const params = {
-          slidesPerView: 3,
+          slidesPerView: sliderPerView,
           spaceBetween: 30,
           pagination: {
                el: '.swiper-pagination',
@@ -56,19 +85,19 @@ const Gallery = ({ images }) => {
           ),
           breakpoints: {
                1024: {
-                    slidesPerView: 4,
+                    slidesPerView: xl,
                     spaceBetween: 30
                },
                768: {
-                    slidesPerView: 3,
+                    slidesPerView: md,
                     spaceBetween: 30
                },
                640: {
-                    slidesPerView: 2,
+                    slidesPerView: sm,
                     spaceBetween: 20
                },
                320: {
-                    slidesPerView: 1,
+                    slidesPerView: vs,
                     spaceBetween: 10
                }
           }
@@ -109,7 +138,7 @@ const Gallery = ({ images }) => {
 };
 
 export async function getStaticProps(context) {
-     const images = await fetcher('/api/images/carousel');
+     const images = await fetcher('/api/images/gallery');
      return { props: { images }, revalidate: 1 };
 }
 

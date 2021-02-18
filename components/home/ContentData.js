@@ -5,6 +5,11 @@ import kavitha from 'public/kavitha.jpeg';
 import anjali from 'public/anjali.jpg';
 import swathi from 'public/swathi.jpg';
 import deepak from 'public/deepak.jpg';
+import athayogSpace from 'public/athayogSpace.jpg';
+import athayogOnline from 'public/athayogOnline.jpg';
+import athayogShikshana from 'public/athayogShikshana.jpg';
+import athayogPersonal from 'public/athayogPersonal.jpeg';
+import athayogWorkshop from 'public/athayogWorkshop.jpg';
 
 export const offeringsData = {
      offering: [
@@ -13,35 +18,35 @@ export const offeringsData = {
                information:
                     'Elevate your Yogic practice by instilling transformation with a strong hold on your lifestyle.',
                link: '/offerings/space',
-               image: 'athayogOnline'
+               image: athayogSpace
           },
           {
                name: 'Shikshana Pada',
                information:
                     'Upskill yourself with certificate programs and teachers’ training courses.',
                link: '/offerings/shikshana',
-               image: 'public/athayogOnline.jpg'
+               image: athayogShikshana
           },
           {
                name: 'Online',
                information:
                     'Continue your Yoga practice at a steady pace from the comfort of your own space.',
                link: '/offerings/online',
-               image: 'public/athayogOnline.jpg'
+               image: athayogOnline
           },
           {
                name: 'Personal',
                information:
                     'Engage in one-on-one, personalized Yoga sessions without any distractions.',
                link: '/offerings/personal',
-               image: 'public/athayogOnline.jpg'
+               image: athayogPersonal
           },
           {
                name: 'Workshops',
                information:
                     ' Deepen your Yogic knowledge and gain a more comprehensive insight on Yoga.',
                link: '/offerings/workshops',
-               image: 'public/athayogOnline.jpg'
+               image: athayogWorkshop
           }
      ]
 };

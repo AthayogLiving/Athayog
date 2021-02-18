@@ -114,7 +114,6 @@ const Login = () => {
                          id="sign-in-button"
                          width="100%"
                          onClick={(e) => router.push('/account/otp')}
-                         isLoading={loading}
                          _active={{
                               transform: 'scale(0.95)'
                          }}

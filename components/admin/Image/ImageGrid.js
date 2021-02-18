@@ -31,7 +31,7 @@ import {
 import { useAuth } from '@/lib/auth';
 import { deleteImage, updateImageStatus } from '@/lib/db/images';
 
-const ImageGrid = ({ imageType, setTotalImage, isMobile }) => {
+const ImageGrid = ({ imageType, isMobile }) => {
      // Authenticated User
      const { user } = useAuth();
      //  ----------------------
@@ -107,16 +107,29 @@ const ImageGrid = ({ imageType, setTotalImage, isMobile }) => {
      const deleteImageFirestore = async () => {
           setIsLoading(true);
           const { imageId, imageType, imageName } = selectedImage;
-          await deleteImage(imageId, imageType, imageName, isMobile);
+
+          await deleteImage(imageId, imageType, imageName, isMobile)
+               .then((response) => {
+                    toast({
+                         title: 'Image Deleted.',
+                         description:
+                              "We've have deleted the image from storage.",
+                         status: 'success',
+                         duration: 9000,
+                         isClosable: true
+                    });
+               })
+               .catch((error) => {
+                    toast({
+                         title: 'Something Happend.',
+                         description: errror.message,
+                         status: 'danger',
+                         duration: 9000,
+                         isClosable: true
+                    });
+               });
           setIsLoading(false);
           setIsOpen(false);
-          toast({
-               title: 'Image Deleted.',
-               description: "We've have deleted the image from storage.",
-               status: 'success',
-               duration: 9000,
-               isClosable: true
-          });
      };
 
      const changePublishStatus = async (imageId, status) => {
@@ -160,9 +173,6 @@ const ImageGrid = ({ imageType, setTotalImage, isMobile }) => {
                </Center>
           );
      }
-
-     setTotalImage(data.images.length);
-     //  ----------------------
 
      return (
           <Box>

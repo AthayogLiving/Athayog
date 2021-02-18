@@ -48,6 +48,8 @@ const Pricing = ({ pricing }) => {
                setButtonId('');
 
                router.push('/account/login');
+
+               return;
           }
 
           if (isTrial) {
@@ -95,12 +97,9 @@ const Pricing = ({ pricing }) => {
           }
 
           // creating a new order
-          const result = await axios.post(
-               'http://localhost:3000/api/payment/orders',
-               {
-                    amount: price * 100
-               }
-          );
+          const result = await axios.post('/api/payment/orders', {
+               amount: price * 100
+          });
 
           if (!result) {
                toast({
@@ -141,10 +140,7 @@ const Pricing = ({ pricing }) => {
                     };
 
                     const result = await axios
-                         .post(
-                              'http://localhost:3000/api/payment/success',
-                              data
-                         )
+                         .post('/api/payment/success', data)
                          .then((result) => {
                               toast({
                                    title: 'Payment Successfull',

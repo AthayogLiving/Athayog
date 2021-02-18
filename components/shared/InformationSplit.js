@@ -42,7 +42,7 @@ const InformationSplit = (props) => {
                               fontSize={{
                                    base: '1.5rem',
                                    md: '2rem',
-                                   lg: '2.5rem'
+                                   lg: '2rem'
                               }}
                          >
                               What is AthaYog {name}
@@ -54,7 +54,7 @@ const InformationSplit = (props) => {
                                         fontSize={{
                                              base: '1rem',
                                              md: '1rem',
-                                             lg: '1.2rem'
+                                             lg: '1rem'
                                         }}
                                         textAlign={{
                                              base: 'center',
@@ -80,7 +80,7 @@ const InformationSplit = (props) => {
                               fontSize={{
                                    base: '1.5rem',
                                    md: '2rem',
-                                   lg: '2.5rem'
+                                   lg: '2rem'
                               }}
                          >
                               {secondBlock}
@@ -92,7 +92,7 @@ const InformationSplit = (props) => {
                                         fontSize={{
                                              base: '1rem',
                                              md: '1rem',
-                                             lg: '1.2rem'
+                                             lg: '1rem'
                                         }}
                                         textAlign={{
                                              base: 'center',

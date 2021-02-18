@@ -6,12 +6,9 @@ import { offeringsData } from '@/components/home/ContentData';
 import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
 import { MotionBox } from '../shared/MotionElements';
-import athayogChikitsa from 'public/athayogChikitsa.jpeg';
-import athayogPersonal from 'public/athayogPersonal.jpg';
-import athayogShikshana from 'public/athayogShikshana.jpg';
-import athayogSpace from 'public/athayogSpace.jpg';
-import athayogOnline from 'public/athayogOnline.jpg';
 
+import athayogSpace from 'public/athayogSpace.jpg';
+import { data } from 'autoprefixer';
 const Offerings = () => {
      return (
           <Box height="100%" bg="primaryWhite" width="100%">
@@ -64,7 +61,7 @@ const Offerings = () => {
                                                        whileTap={{ scale: 0.9 }}
                                                   >
                                                        <Image
-                                                            src={athayogSpace}
+                                                            src={offer.image}
                                                             layout="responsive"
                                                             objectFit="cover"
                                                             height="150px"

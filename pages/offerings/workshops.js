@@ -2,7 +2,7 @@ import Hero from '@/components/shared/Hero';
 import { Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import React from 'react';
-import athayogChikitsa from 'public/athayogChikitsa.jpeg';
+import athayogWorkshop from 'public/athayogWorkshop.jpg';
 import Information from '@/components/shared/Information';
 import Classes from '@/components/shared/Classes';
 import Pricing from '@/components/shared/Pricing';
@@ -12,7 +12,7 @@ import InformationSplit from '@/components/shared/InformationSplit';
 const Workshops = () => {
      const pageData = {
           name: 'Workshops',
-          heroImage: athayogChikitsa,
+          heroImage: athayogWorkshop,
           whatis: `Experience a profound approach to Yogic knowledge and living. Explore the deeper, subtler and more authentic aspects of Yoga as we share our collective wisdom on specialized and focussed topics in the Yogic realm.`,
           secondBlock: `What you get`,
           description: `Workshop of the Week is a 75-minute workshop that we organize weekly, covering individual subjects to give you a more insightful perspective on the subtleties of the Yogic cosmos.\nWorkshop of the Month is a 10-hour series of 4 workshops in a month, branching out into broader Yogic themes, stemming from time-honoured wisdom.`,

@@ -45,7 +45,7 @@ const Schedule = ({ schedule }) => {
                justifyContent="center"
                alignItems="center"
                width="100vw"
-               bg="#fbfbfb"
+               bg="primaryWhite"
           >
                <Flex
                     justifyContent="center"
@@ -71,15 +71,11 @@ const Schedule = ({ schedule }) => {
                          overflowX="auto"
                          width="100%"
                          display={{ base: 'none', md: 'none', lg: 'block' }}
+                         boxShadow="base"
+                         rounded="lg"
+                         mt={10}
                     >
-                         <Table
-                              variant="simple"
-                              mt={10}
-                              boxShadow="base"
-                              rounded="lg"
-                              overflow="hidden"
-                              size="md"
-                         >
+                         <Table variant="simple" size="md">
                               <Thead>
                                    <Tr>
                                         <Th bg="secondaryGreen">Time</Th>

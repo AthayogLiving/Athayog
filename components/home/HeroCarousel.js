@@ -53,9 +53,17 @@ const HeroCarousel = ({ images }) => {
           )
      };
 
+     const activeCarousel = [];
+
+     data.images.map((data) => {
+          if (data.isActive) {
+               activeCarousel.push(data);
+          }
+     });
+
      return (
           <Swiper {...params}>
-               {data.images.map((data) => {
+               {activeCarousel.map((data) => {
                     return (
                          <Box height="100vh" key={data.id}>
                               <Image

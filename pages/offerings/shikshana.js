@@ -11,13 +11,9 @@ import useSWR from 'swr';
 import { Skeleton } from '@chakra-ui/react';
 
 const Shikshana = ({ offers }) => {
-     const { data, error } = useSWR(
-          `http://localhost:3000/api/offerings/shikshana`,
-          fetcher,
-          {
-               initialData: offers
-          }
-     );
+     const { data, error } = useSWR(`/api/offerings/shikshana`, fetcher, {
+          initialData: offers
+     });
      if (error) return <Skeleton height="100vh"></Skeleton>;
 
      if (!data) {
@@ -69,12 +65,5 @@ const Shikshana = ({ offers }) => {
           </motion.div>
      );
 };
-
-export async function getStaticProps(context) {
-     const offers = await fetcher(
-          'http://localhost:3000/api/offerings/shikshana'
-     );
-     return { props: { offers }, revalidate: 1 };
-}
 
 export default Shikshana;

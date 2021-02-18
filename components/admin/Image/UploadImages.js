@@ -14,7 +14,8 @@ import {
      useToast,
      Image,
      Flex,
-     Select
+     Select,
+     Text
 } from '@chakra-ui/react';
 import { mutate } from 'swr';
 
@@ -24,7 +25,7 @@ import { FiImage } from 'react-icons/fi';
 import { useAuth } from '@/lib/auth';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 
-const UploadImages = ({ imageType, isMobile }) => {
+const UploadImages = ({ imageType, isMobile, isDisabled }) => {
      const toast = useToast();
      const { user } = useAuth();
      const { register, handleSubmit } = useForm();
@@ -63,9 +64,12 @@ const UploadImages = ({ imageType, isMobile }) => {
 
      return (
           <Box mt={5}>
-               <Button size="sm" onClick={onOpen}>
+               <Button size="sm" onClick={onOpen} disabled={isDisabled}>
                     Upload Image
                </Button>
+               <Text mt={3} textColor="#555" fontSize="0.8rem">
+                    *Note You can only upload upto 8 Images at a time
+               </Text>
                <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent as="form" onSubmit={handleSubmit(onSubmit)}>

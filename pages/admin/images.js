@@ -16,14 +16,17 @@ import Dashboard from './dashboard';
 const images = () => {
      const imageCategories = [
           'carousel',
-          'athayog_space',
-          'about_us',
-          'shikshana_pada',
-          'chikitsa',
-          'online',
-          'sessions'
+          'gallery'
+          // 'space',
+          // 'shikshana',
+          // 'online',
+          // 'personal',
+          // 'workshops',
+          // 'chikitsa',
+          // 'onsite'
      ];
      const [imageType, setImageType] = useState(imageCategories[0]);
+
      const bg = useColorModeValue('white', 'gray.800');
      const color = useColorModeValue('teal', 'gray.700');
 
@@ -43,20 +46,26 @@ const images = () => {
           setMobileImage(e.target.value);
      };
 
-     console.log('Totlal Images', totalImages);
+     let isDisabled = false;
+
      return (
           <Dashboard>
                <Box bg={bg} padding={6} rounded="lg" boxShadow="base">
-                    <Select
-                         size="sm"
-                         rouned="lg"
-                         name="deviceType"
-                         width="xs"
-                         onChange={(e) => handleMobileImage(e)}
-                    >
-                         <option value="desktop">Desktop</option>
-                         <option value="mobile">Mobile</option>
-                    </Select>
+                    {imageType === 'carousel' ? (
+                         <Select
+                              size="sm"
+                              rouned="lg"
+                              name="deviceType"
+                              width="xs"
+                              onChange={(e) => handleMobileImage(e)}
+                         >
+                              <option value="desktop">Desktop</option>
+                              <option value="mobile">Mobile</option>
+                         </Select>
+                    ) : (
+                         <Box height={2}></Box>
+                    )}
+
                     <Tabs
                          colorScheme="blue"
                          mt={2}
@@ -65,9 +74,9 @@ const images = () => {
                          size="sm"
                     >
                          <TabList>
-                              {imageCategories.map((category) => {
+                              {imageCategories.map((category, index) => {
                                    return (
-                                        <Tab>
+                                        <Tab key={index}>
                                              {Capitalize(
                                                   category.replace('_', ' ')
                                              )}
@@ -76,13 +85,12 @@ const images = () => {
                               })}
                          </TabList>
                          <TabPanels>
-                              {imageCategories.map((category) => {
+                              {imageCategories.map((category, index) => {
                                    return (
-                                        <TabPanel>
+                                        <TabPanel key={index}>
                                              <ImageGrid
                                                   imageType={category}
                                                   isMobile={mobileImage}
-                                                  setTotalImage={setTotalImage}
                                              />
                                         </TabPanel>
                                    );
@@ -94,6 +102,7 @@ const images = () => {
                     <UploadImages
                          imageType={imageType}
                          isMobile={mobileImage}
+                         isDisabled={isDisabled}
                     />
                </Box>
           </Dashboard>
