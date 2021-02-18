@@ -10,7 +10,6 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import Dashboard from './dashboard';
-import { DateTime } from 'luxon';
 
 const account = () => {
      const { user } = useAuth();
