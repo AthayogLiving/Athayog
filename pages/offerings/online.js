@@ -5,28 +5,46 @@ import athayogOnline from 'public/athayogOnline.jpg';
 import Information from '@/components/shared/Information';
 import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
+import { getOffer } from '@/lib/db/offerings';
+export async function getStaticProps(context) {
+     const { offers } = await getOffer('online');
 
-const Online = () => {
+     if (!offers) {
+          return {
+               notFound: true
+          };
+     }
+     return {
+          props: {
+               offers: JSON.parse(JSON.stringify(offers)),
+               notFound: false
+          },
+          revalidate: 1
+     };
+}
+
+const Online = ({ offers, notFound }) => {
      const pageData = {
           name: 'Online',
           heroImage: athayogOnline,
-          whatis: `You may be looking to keep your practice going at a steady pace but are unsure about stepping out in the midst of the pandemic. With AthaYog Online, you can continue from the comfort of your own space.`,
-          pricing: [
-               {
-                    courseName:
-                         'Online Group class* (*Subject to number of students)',
-                    description: `Number of students : Minimum 5 and Maximum 10.`,
-                    duration: `1 month, 5 sessions a week`,
-                    price: 1500
-               },
-               {
-                    courseName: 'Online Personal class',
-                    description: `Number of students: 1`,
-                    duration: `12 sessions`,
-                    price: 5999
-               }
-          ]
+          whatis: `You may be looking to keep your practice going at a steady pace but are unsure about stepping out in the midst of the pandemic. With AthaYog Online, you can continue from the comfort of your own space.`
      };
+
+     const apiPricing = [];
+     offers.map((data) => {
+          if (data.isActive) {
+               apiPricing.push({
+                    id: data.id,
+                    courseName: data.name,
+                    description: data.description,
+                    duration: data.isTrial
+                         ? data.days + ' Days Trial'
+                         : data.days + ' Days',
+                    durationNum: data.days,
+                    price: data.price
+               });
+          }
+     });
      return (
           <motion.div
                exit={{ opacity: 0 }}
@@ -35,7 +53,9 @@ const Online = () => {
           >
                <Hero pageData={pageData} />
                <Information pageData={pageData} />
-               <Pricing pricing={pageData.pricing} />
+               {notFound || offers.length == 0 ? null : (
+                    <Pricing pricing={apiPricing} />
+               )}
                <Register registerTo={pageData.name.toLocaleLowerCase()} />
           </motion.div>
      );

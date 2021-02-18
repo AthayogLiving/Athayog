@@ -6,20 +6,26 @@ import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
 import InformationSplit from '@/components/shared/InformationSplit';
 import Schedule from '@/components/shared/Schedule';
-import fetcher from '@/utils/fetcher';
-import useSWR from 'swr';
-import { Skeleton } from '@chakra-ui/react';
+import { getOffer } from '@/lib/db/offerings';
 
-const Shikshana = ({ offers }) => {
-     const { data, error } = useSWR(`/api/offerings/shikshana`, fetcher, {
-          initialData: offers
-     });
-     if (error) return <Skeleton height="100vh"></Skeleton>;
+export async function getStaticProps(context) {
+     const { offers } = await getOffer('shikshana');
 
-     if (!data) {
-          return <Skeleton height="100vh"></Skeleton>;
+     if (!offers) {
+          return {
+               notFound: true
+          };
      }
+     return {
+          props: {
+               offers: JSON.parse(JSON.stringify(offers)),
+               notFound: false
+          },
+          revalidate: 1
+     };
+}
 
+const Shikshana = ({ offers, notFound }) => {
      const pageData = {
           name: 'Shikshana Pada',
           heroImage: athayogShikshana,
@@ -37,7 +43,7 @@ const Shikshana = ({ offers }) => {
      };
 
      const apiPricing = [];
-     data.offers.map((data) => {
+     offers.map((data) => {
           apiPricing.push({
                id: data.id,
                courseName: data.name,
@@ -51,6 +57,7 @@ const Shikshana = ({ offers }) => {
                price: data.price
           });
      });
+
      return (
           <motion.div
                exit={{ opacity: 0 }}

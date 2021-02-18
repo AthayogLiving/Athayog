@@ -6,20 +6,27 @@ import Information from '@/components/shared/Information';
 import Classes from '@/components/shared/Classes';
 import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
-import { Skeleton } from '@chakra-ui/react';
-import fetcher from '@/utils/fetcher';
-import useSWR from 'swr';
+import { getOffer } from '@/lib/db/offerings';
 
-const Space = ({ offers }) => {
-     const { data, error } = useSWR(`/api/offerings/space`, fetcher, {
-          initialData: offers
-     });
-     if (error) return <Skeleton height="100vh"></Skeleton>;
+export async function getStaticProps(context) {
+     const { offers } = await getOffer('space');
 
-     if (!data) {
-          return <Skeleton height="100vh"></Skeleton>;
+     if (!offers) {
+          return {
+               notFound: true
+          };
      }
 
+     return {
+          props: {
+               offers: JSON.parse(JSON.stringify(offers)),
+               notFound: false
+          },
+          revalidate: 1
+     };
+}
+
+const Space = ({ offers, notFound }) => {
      const pageData = {
           name: 'Space',
           heroImage: athayogSpace,
@@ -53,7 +60,7 @@ const Space = ({ offers }) => {
      };
 
      const apiPricing = [];
-     data.offers.map((data) => {
+     offers.map((data) => {
           if (data.isActive) {
                apiPricing.push({
                     id: data.id,
@@ -76,7 +83,9 @@ const Space = ({ offers }) => {
                <Hero pageData={pageData} />
                <Information pageData={pageData} />
                <Classes classes={pageData.classes} />
-               <Pricing pricing={apiPricing} />
+               {notFound || offers.length == 0 ? null : (
+                    <Pricing pricing={apiPricing} />
+               )}
                <Register registerTo={pageData.name.toLocaleLowerCase()} />
           </motion.div>
      );
