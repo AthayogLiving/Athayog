@@ -31,6 +31,7 @@ import { useAuth } from '@/lib/auth';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
+import { updatePaymentDetails } from '@/lib/db/users';
 
 const Register = () => {
      const router = useRouter();
@@ -79,7 +80,7 @@ const Register = () => {
                })
                .then(function (response) {
                     setLoading(false);
-                    // router.push('/');
+
                     toast({
                          title:
                               'Details Updated. Redirecting To Payment Gateway ',
