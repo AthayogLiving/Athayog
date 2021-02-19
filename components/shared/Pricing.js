@@ -16,6 +16,7 @@ import { logo } from 'public/og.png';
 import { useAuth } from '@/lib/auth';
 import { useRouter } from 'next/router';
 import { updatePaymentDetails } from '@/lib/db/users';
+import { v4 as uuidv4 } from 'uuid';
 
 const Pricing = ({ pricing }) => {
      const { user, signout, loading } = useAuth();
@@ -99,7 +100,7 @@ const Pricing = ({ pricing }) => {
                     currency: 'INR',
                     accept_partial: false,
                     expire_by: 1691097057,
-                    reference_id: '12123111',
+                    reference_id: uuidv4(),
                     description: 'Payment for policy no #23456',
                     customer: {
                          name: 'Harsim Kumar',
@@ -114,7 +115,8 @@ const Pricing = ({ pricing }) => {
                     notes: {
                          policy_name: 'Jeevan Bima'
                     },
-                    callback_url: 'https://example-callback-url.com/',
+                    callback_url:
+                         'https://7f50e1d3510c.ngrok.io/api/payment/callback',
                     callback_method: 'get'
                }
           });
