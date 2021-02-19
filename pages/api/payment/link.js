@@ -27,11 +27,10 @@ export default async function handler(req, res) {
                     }
                })
                .then((response) => {
-                    console.log(response.data);
                     res.status(200).json(response.data);
                })
                .catch((error) => {
-                    console.log('Error', error.message);
+                    res.status(400)('Error', error.message);
                });
      }
 }

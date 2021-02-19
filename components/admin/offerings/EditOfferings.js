@@ -55,7 +55,7 @@ const EditOfferings = ({
 
      const onCreateOffering = async ({ name, description, days, price }) => {
           setLoading(true);
-          console.log(id, name, description, days, price, trial, type);
+
           await updateOffering(id, name, description, days, price, trial, type)
                .then((response) => {
                     toast({

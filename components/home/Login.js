@@ -19,6 +19,7 @@ import { useAuth } from '@/lib/auth';
 import Router, { useRouter } from 'next/router';
 import firebase from '@/lib/firebase';
 import { AnimatePresence } from 'framer-motion';
+import cookie from 'js-cookie';
 import { MotionStack } from '../shared/MotionElements';
 
 const Login = () => {
@@ -28,10 +29,14 @@ const Login = () => {
      const [loading, setLoading] = useState(false);
      const toast = useToast();
      const router = useRouter();
+     const routeCookie = cookie.get('routeTo');
+
+     const isRoute =
+          routeCookie == '' || routeCookie == undefined ? '/' : routeCookie;
 
      const onUserLogin = async ({ email, password }) => {
           setLoading(true);
-          await signinWithEmail(email, password, '/').catch((error) => {
+          await signinWithEmail(email, password, isRoute).catch((error) => {
                setLoading(false);
                toast({
                     title: 'An error occurred.',

@@ -11,11 +11,9 @@ import {
      useToast
 } from '@chakra-ui/react';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
-import axios from 'axios';
 import { useAuth } from '@/lib/auth';
 import { useRouter } from 'next/router';
-import { v4 as uuidv4 } from 'uuid';
-import Link from 'next/link';
+import cookie from 'js-cookie';
 
 const Pricing = ({ pricing, registerTo }) => {
      const { user, signout, loading } = useAuth();
@@ -47,16 +45,26 @@ const Pricing = ({ pricing, registerTo }) => {
                });
                setButtonId('');
 
+               cookie.set('routeTo', `/offerings/${registerTo}`, {
+                    expires: 1
+               });
+
                router.push('/account/login');
 
                return;
           }
 
-          if (isTrial) {
-               // await updatePaymentDetails(razorpayPaymentId, paymentDetails);
-               return;
-          }
-          // displayRazorpay(price, duration, description, name, courseId);
+          router.push({
+               pathname: `/register/${registerTo}`,
+               query: {
+                    price: price,
+                    duration: duration,
+                    description: description,
+                    courseName: name,
+                    courseId: courseId,
+                    isTrial: isTrial
+               }
+          });
      };
 
      if (pricing === 'Contact For More') {
@@ -195,32 +203,28 @@ const Pricing = ({ pricing, registerTo }) => {
                                                        ₹ {data.price}
                                                   </Text>
                                              </Flex>
-                                             <Link
-                                                  href={{
-                                                       pathname: `/register/${registerTo}`,
-                                                       query: {
-                                                            price: data.price,
-                                                            duration:
-                                                                 data.duration,
-                                                            description:
-                                                                 data.description,
-                                                            courseName: data.courseName.toLowerCase(),
-                                                            courseId: data.id
-                                                       }
-                                                  }}
+
+                                             <Button
+                                                  bg="#DBE6CF"
+                                                  width="8rem"
+                                                  size="sm"
+                                                  mt={4}
+                                                  onClick={() =>
+                                                       handleUserPayment(
+                                                            data.price,
+                                                            data.duration,
+                                                            data.description,
+                                                            data.name,
+                                                            data.id,
+                                                            data.isTrial
+                                                       )
+                                                  }
+                                                  isLoading={
+                                                       buttonId === data.id
+                                                  }
                                              >
-                                                  <Button
-                                                       bg="#DBE6CF"
-                                                       width="8rem"
-                                                       size="sm"
-                                                       mt={4}
-                                                       isLoading={
-                                                            buttonId === data.id
-                                                       }
-                                                  >
-                                                       Register
-                                                  </Button>
-                                             </Link>
+                                                  Register
+                                             </Button>
                                         </Box>
                                    </Box>
                               );
