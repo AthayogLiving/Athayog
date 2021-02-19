@@ -214,7 +214,7 @@ const Pricing = ({ pricing, registerTo }) => {
                                                             data.price,
                                                             data.duration,
                                                             data.description,
-                                                            data.name,
+                                                            data.courseName,
                                                             data.id,
                                                             data.isTrial
                                                        )
