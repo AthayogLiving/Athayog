@@ -2,6 +2,7 @@ import { useAuth } from '@/lib/auth';
 import {
      Avatar,
      Box,
+     chakra,
      Divider,
      Flex,
      Grid,
@@ -15,11 +16,15 @@ import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import Head from 'next/head';
+import { FirebaseToDate } from '@/components/helper/FirebaseToDate';
+import { compareDesc, compareAsc, parseISO } from 'date-fns';
+import firebase from '@/lib/firebase';
+const firestore = firebase.firestore();
 
 const Account = () => {
      const { user } = useAuth();
      const { data, error } = useSWR(
-          user ? [`/api/user/${user.uid}`, user.token] : null,
+          user ? [`/api/user/purchases/${user.uid}`, user.token] : null,
           fetcher
      );
 
@@ -102,37 +107,79 @@ const Account = () => {
                               alignItems="center"
                               spacing="2"
                          >
-                              <Avatar size="xl" />
+                              <Avatar size="xl" name={user?.name} />
                               <Heading fontWeight="primaryDark">
                                    {user?.name}
                               </Heading>
-                              <Text>Student</Text>
+                              <Text textColor="gray.500"> {user?.email}</Text>
                          </Stack>
-                         <Box
-                              bg="white"
-                              boxShadow="base"
-                              rounded="lg"
-                              padding={5}
-                         >
-                              {user?.email}
-
-                              <Divider />
-                              <Grid gridTemplateColumns="repeat(auto-fit,(250px,1fr))">
-                                   {data.information.map((data) => {
+                         {data?.purchases.length !== 0 ? (
+                              <Flex
+                                   direction="column"
+                                   justifyContent="center"
+                                   alignItems="center"
+                              >
+                                   <Heading fontSize="2xl">
+                                        Courses Purchased
+                                   </Heading>
+                                   {data.purchases.map((data) => {
                                         return (
-                                             <Grid key={data.id}>
-                                                  <Box>
-                                                       Course Name: {data.name}
-                                                  </Box>
-                                                  <Box>
-                                                       Duration: {data.duration}
-                                                  </Box>
-                                                  <Box>Price: {data.price}</Box>
-                                             </Grid>
+                                             <Box
+                                                  bg="white"
+                                                  boxShadow="base"
+                                                  rounded="lg"
+                                                  padding={5}
+                                                  mt={3}
+                                             >
+                                                  <Grid key={data.id}>
+                                                       <Text>
+                                                            Course Name: {'\t'}
+                                                            <chakra.span fontWeight="medium">
+                                                                 {
+                                                                      data.courseName
+                                                                 }
+                                                            </chakra.span>
+                                                       </Text>
+                                                       <Box>
+                                                            Duration:{'\t'}
+                                                            <chakra.span fontWeight="medium">
+                                                                 {data.duration}
+                                                            </chakra.span>
+                                                       </Box>
+                                                       <Box>
+                                                            Price:
+                                                            <chakra.span fontWeight="medium">
+                                                                 {'\t'}
+                                                                 &#8377;
+                                                                 {data.price}
+                                                            </chakra.span>
+                                                       </Box>
+                                                       <Box>
+                                                            Status:
+                                                            <chakra.span fontWeight="medium">
+                                                                 {'\t'}
+                                                                 {data.status}
+                                                            </chakra.span>
+                                                       </Box>
+                                                  </Grid>
+                                             </Box>
                                         );
                                    })}
-                              </Grid>
-                         </Box>
+                              </Flex>
+                         ) : (
+                              <Flex
+                                   direction="column"
+                                   justifyContent="center"
+                                   alignItems="center"
+                              >
+                                   <Heading fontSize="2xl" fontWeight="normal">
+                                        No Courses Purchased :(
+                                   </Heading>
+                                   <chakra.span>
+                                        Please check our offerings
+                                   </chakra.span>
+                              </Flex>
+                         )}
                     </Flex>
                </Flex>
           </>

@@ -14,6 +14,8 @@ import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import { useAuth } from '@/lib/auth';
 import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
+import useSWR from 'swr';
+import fetcher from '@/utils/fetcher';
 
 const Pricing = ({ pricing, registerTo }) => {
      const { user, signout, loading } = useAuth();
@@ -24,6 +26,22 @@ const Pricing = ({ pricing, registerTo }) => {
      if (!pricing) {
           return null;
      }
+
+     const { data, error } = useSWR(
+          user ? [`/api/user/purchases/${user.uid}`, user.token] : null,
+          fetcher
+     );
+
+     if (user && !data) {
+     }
+     let coursePurchased = [];
+     if (data) {
+          data.purchases.map((each) => {
+               coursePurchased.push(each.id);
+          });
+     }
+
+     console.log(coursePurchased);
 
      const handleUserPayment = async (
           price,
@@ -209,6 +227,10 @@ const Pricing = ({ pricing, registerTo }) => {
                                                   width="8rem"
                                                   size="sm"
                                                   mt={4}
+                                                  isDisabled={coursePurchased.find(
+                                                       (element) =>
+                                                            element == data.id
+                                                  )}
                                                   onClick={() =>
                                                        handleUserPayment(
                                                             data.price,
@@ -223,7 +245,15 @@ const Pricing = ({ pricing, registerTo }) => {
                                                        buttonId === data.id
                                                   }
                                              >
-                                                  Register
+                                                  {user
+                                                       ? coursePurchased.find(
+                                                              (element) =>
+                                                                   element ==
+                                                                   data.id
+                                                         ) !== undefined
+                                                            ? 'Purchased'
+                                                            : 'Register'
+                                                       : 'Register'}
                                              </Button>
                                         </Box>
                                    </Box>
