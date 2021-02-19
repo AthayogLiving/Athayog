@@ -79,26 +79,44 @@ const Pricing = ({ pricing }) => {
           name,
           courseId
      ) => {
-          const res = await loadScript(
-               'https://checkout.razorpay.com/v1/checkout.js'
-          );
-
-          if (!res) {
-               toast({
-                    title: 'Error',
-                    description:
-                         'Something happend on our side :(. Please try again',
-                    status: 'error',
-                    duration: 5000,
-                    isClosable: true
-               });
-               setButtonId('');
-               return;
-          }
+          // if (!res) {
+          //      toast({
+          //           title: 'Error',
+          //           description:
+          //                'Something happend on our side :(. Please try again',
+          //           status: 'error',
+          //           duration: 5000,
+          //           isClosable: true
+          //      });
+          //      setButtonId('');
+          //      return;
+          // }
 
           // creating a new order
-          const result = await axios.post('/api/payment/orders', {
-               amount: price * 100
+          const result = await axios.post('/api/payment/link', {
+               data: {
+                    amount: 1000,
+                    currency: 'INR',
+                    accept_partial: false,
+                    expire_by: 1691097057,
+                    reference_id: '12123111',
+                    description: 'Payment for policy no #23456',
+                    customer: {
+                         name: 'Harsim Kumar',
+                         contact: '+919999999999',
+                         email: 'gaurav.kumar@example.com'
+                    },
+                    notify: {
+                         sms: true,
+                         email: true
+                    },
+                    reminder_enable: true,
+                    notes: {
+                         policy_name: 'Jeevan Bima'
+                    },
+                    callback_url: 'https://example-callback-url.com/',
+                    callback_method: 'get'
+               }
           });
 
           if (!result) {
@@ -114,70 +132,11 @@ const Pricing = ({ pricing }) => {
                return;
           }
 
-          // Getting the order details back
-          const { amount, id: order_id, currency } = result.data;
+          console.log(result.data);
 
-          const options = {
-               key: 'rzp_test_zlJ8m8btntTqEu', // Enter the Key ID generated from the Dashboard
-               amount: amount.toString(),
-               currency: currency,
-               name: 'Athayog Living.',
-               description: name,
-               image: { logo },
-               order_id: order_id,
-               handler: async function (response) {
-                    const data = {
-                         orderCreationId: order_id,
-                         razorpayPaymentId: response.razorpay_payment_id,
-                         razorpayOrderId: response.razorpay_order_id,
-                         razorpaySignature: response.razorpay_signature,
-                         courseId,
-                         uid: user.uid,
-                         price,
-                         duration,
-                         description,
-                         name
-                    };
-
-                    const result = await axios
-                         .post('/api/payment/success', data)
-                         .then((result) => {
-                              toast({
-                                   title: 'Payment Successfull',
-                                   description: `Your payment for ${name} is successfull`,
-                                   status: 'success',
-                                   duration: 5000,
-                                   isClosable: true
-                              });
-                              setButtonId('');
-                         })
-                         .catch((error) => {
-                              toast({
-                                   title: 'Error',
-                                   description: error.message,
-                                   status: 'error',
-                                   duration: 5000,
-                                   isClosable: true
-                              });
-                              setButtonId('');
-                         });
-               },
-               prefill: {
-                    name: user?.name,
-                    email: user?.email,
-                    contact: ''
-               },
-               notes: {
-                    address:
-                         'AthayogLiving 307, Sunrise Arcade,Devasandra Main Road,Kodigehalli K R Puram,Bangalore- 560036'
-               },
-               theme: {
-                    color: '#ADDCBC'
-               }
-          };
-
-          const paymentObject = new window.Razorpay(options);
-          paymentObject.open();
+          const { short_url } = result.data;
+          console.log('Short', short_url);
+          router.push(short_url);
      };
 
      if (pricing === 'Contact For More') {
