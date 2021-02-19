@@ -63,7 +63,7 @@ const Workshops = ({ offers, notFound }) => {
                {notFound || offers.length == 0 ? null : (
                     <Pricing pricing={apiPricing} />
                )}
-               <Register registerTo={pageData.name.toLocaleLowerCase()} />
+               {/* <Register registerTo={pageData.name.toLocaleLowerCase()} /> */}
           </motion.div>
      );
 };

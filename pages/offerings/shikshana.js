@@ -68,7 +68,7 @@ const Shikshana = ({ offers, notFound }) => {
                <InformationSplit pageData={pageData} />
                <Pricing pricing={apiPricing} />
                <Schedule schedule="shikhshana" />
-               <Register registerTo={pageData.name.toLocaleLowerCase()} />
+               {/* <Register registerTo={pageData.name.toLocaleLowerCase()} /> */}
           </motion.div>
      );
 };

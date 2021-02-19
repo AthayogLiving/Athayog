@@ -84,9 +84,12 @@ const Space = ({ offers, notFound }) => {
                <Information pageData={pageData} />
                <Classes classes={pageData.classes} />
                {notFound || offers.length == 0 ? null : (
-                    <Pricing pricing={apiPricing} />
+                    <Pricing
+                         registerTo={pageData.name.toLocaleLowerCase()}
+                         pricing={apiPricing}
+                    />
                )}
-               <Register registerTo={pageData.name.toLocaleLowerCase()} />
+               {/* <Register registerTo={pageData.name.toLocaleLowerCase()} /> */}
           </motion.div>
      );
 };

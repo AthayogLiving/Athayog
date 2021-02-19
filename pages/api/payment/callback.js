@@ -1,5 +1,6 @@
 import Cors from 'cors';
 import initMiddleware from '@/lib/cors-middleware';
+import { updatePaymentDetails } from '@/lib/db/users';
 let crypto = require('crypto');
 
 // Initialize the cors middleware
@@ -46,6 +47,15 @@ export default async function handler(req, res) {
                          .status(400)
                          .json({ msg: 'Transaction not legit!' });
                }
+
+               const paymentDetails = {
+                    razorpayPaymentId: razorpay_payment_id,
+                    razorpayPaymentLink: razorpay_payment_link_id,
+                    razorpayPaymentLinkReference: razorpay_payment_link_reference_id,
+                    razorpayPaymentLinkStatus: razorpay_payment_link_status
+               };
+
+               //    updatePaymentDetails(razorpay_payment_id, paymentDetails);
 
                res.json({
                     msg: 'success',

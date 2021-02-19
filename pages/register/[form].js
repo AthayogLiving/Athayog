@@ -30,10 +30,18 @@ import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import { useAuth } from '@/lib/auth';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 const Register = () => {
      const router = useRouter();
-     const { form } = router.query;
+     const {
+          form,
+          price,
+          duration,
+          description,
+          courseName,
+          courseId
+     } = router.query;
      const { user } = useAuth();
      const [loading, setLoading] = useState(false);
      const { data } = useCheckboxGroup();
@@ -57,7 +65,7 @@ const Register = () => {
      }) => {
           setLoading(true);
           await axios
-               .post(`/api/forms/${form}`, {
+               .post(`/api/forms/offerings`, {
                     name,
                     email,
                     phone,
@@ -65,22 +73,24 @@ const Register = () => {
                     experience,
                     style,
                     course: capitalizeFirstLetter(form),
-
                     referral,
                     conditions,
                     type: capitalizeFirstLetter(form)
                })
                .then(function (response) {
                     setLoading(false);
-                    router.push('/');
+                    // router.push('/');
                     toast({
-                         title: 'Account created.',
-                         description: "We've created your account for you.",
+                         title:
+                              'Details Updated. Redirecting To Payment Gateway ',
+                         description: "We've updated your details.",
                          status: 'success',
                          duration: 9000,
                          isClosable: true
                     });
                     reset();
+
+                    createCheckout(name, email, phone);
                })
                .catch(function (error) {
                     setLoading(false);
@@ -93,6 +103,51 @@ const Register = () => {
                     });
                     reset();
                });
+     };
+
+     const createCheckout = async (name, email, phone) => {
+          const result = await axios.post('/api/payment/link', {
+               data: {
+                    amount: price * 100,
+                    currency: 'INR',
+                    accept_partial: false,
+                    expire_by: 1691097057,
+                    reference_id: uuidv4(),
+                    description: 'Payment for ' + courseName,
+                    customer_id: user.uid,
+                    customer: {
+                         name: name,
+                         contact: phone,
+                         email: email
+                    },
+                    notify: {
+                         sms: true,
+                         email: true
+                    },
+                    reminder_enable: true,
+                    notes: {
+                         courseName: courseName
+                    },
+                    callback_url:
+                         'http://7f50e1d3510c.ngrok.io/payment/callback',
+                    callback_method: 'get'
+               }
+          });
+
+          if (!result) {
+               toast({
+                    title: 'Error',
+                    description: 'Are you online?',
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true
+               });
+               setButtonId('');
+
+               return;
+          }
+          const { short_url } = result.data;
+          router.push(short_url);
      };
 
      return (
@@ -388,7 +443,7 @@ const Register = () => {
                               isLoading={loading}
                               loadingText="Submitting"
                          >
-                              Regiser
+                              Register
                          </Button>
                     </Box>
                </Flex>

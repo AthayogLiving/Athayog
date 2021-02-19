@@ -12,13 +12,12 @@ import {
 } from '@chakra-ui/react';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import axios from 'axios';
-import { logo } from 'public/og.png';
 import { useAuth } from '@/lib/auth';
 import { useRouter } from 'next/router';
-import { updatePaymentDetails } from '@/lib/db/users';
 import { v4 as uuidv4 } from 'uuid';
+import Link from 'next/link';
 
-const Pricing = ({ pricing }) => {
+const Pricing = ({ pricing, registerTo }) => {
      const { user, signout, loading } = useAuth();
      const [buttonId, setButtonId] = useState('');
      const [loadingPayment, setLoading] = useState(['', false]);
@@ -57,88 +56,7 @@ const Pricing = ({ pricing }) => {
                // await updatePaymentDetails(razorpayPaymentId, paymentDetails);
                return;
           }
-          displayRazorpay(price, duration, description, name, courseId);
-     };
-
-     const loadScript = (src) => {
-          return new Promise((resolve) => {
-               const script = document.createElement('script');
-               script.src = src;
-               script.onload = () => {
-                    resolve(true);
-               };
-               script.onerror = () => {
-                    resolve(false);
-               };
-               document.body.appendChild(script);
-          });
-     };
-     const displayRazorpay = async (
-          price,
-          duration,
-          description,
-          name,
-          courseId
-     ) => {
-          // if (!res) {
-          //      toast({
-          //           title: 'Error',
-          //           description:
-          //                'Something happend on our side :(. Please try again',
-          //           status: 'error',
-          //           duration: 5000,
-          //           isClosable: true
-          //      });
-          //      setButtonId('');
-          //      return;
-          // }
-
-          // creating a new order
-          const result = await axios.post('/api/payment/link', {
-               data: {
-                    amount: 1000,
-                    currency: 'INR',
-                    accept_partial: false,
-                    expire_by: 1691097057,
-                    reference_id: uuidv4(),
-                    description: 'Payment for policy no #23456',
-                    customer: {
-                         name: 'Harsim Kumar',
-                         contact: '+919999999999',
-                         email: 'gaurav.kumar@example.com'
-                    },
-                    notify: {
-                         sms: true,
-                         email: true
-                    },
-                    reminder_enable: true,
-                    notes: {
-                         policy_name: 'Jeevan Bima'
-                    },
-                    callback_url:
-                         'https://7f50e1d3510c.ngrok.io/api/payment/callback',
-                    callback_method: 'get'
-               }
-          });
-
-          if (!result) {
-               toast({
-                    title: 'Error',
-                    description: 'Are you online?',
-                    status: 'error',
-                    duration: 5000,
-                    isClosable: true
-               });
-               setButtonId('');
-
-               return;
-          }
-
-          console.log(result.data);
-
-          const { short_url } = result.data;
-          console.log('Short', short_url);
-          router.push(short_url);
+          // displayRazorpay(price, duration, description, name, courseId);
      };
 
      if (pricing === 'Contact For More') {
@@ -277,27 +195,32 @@ const Pricing = ({ pricing }) => {
                                                        ₹ {data.price}
                                                   </Text>
                                              </Flex>
-                                             <Button
-                                                  bg="#DBE6CF"
-                                                  width="8rem"
-                                                  size="sm"
-                                                  mt={4}
-                                                  isLoading={
-                                                       buttonId === data.id
-                                                  }
-                                                  onClick={() =>
-                                                       handleUserPayment(
-                                                            data.price,
-                                                            data.durationNum,
-                                                            data.description,
-                                                            data.courseName.toLowerCase(),
-                                                            data.id,
-                                                            data.isTrial
-                                                       )
-                                                  }
+                                             <Link
+                                                  href={{
+                                                       pathname: `/register/${registerTo}`,
+                                                       query: {
+                                                            price: data.price,
+                                                            duration:
+                                                                 data.duration,
+                                                            description:
+                                                                 data.description,
+                                                            courseName: data.courseName.toLowerCase(),
+                                                            courseId: data.id
+                                                       }
+                                                  }}
                                              >
-                                                  Purchase
-                                             </Button>
+                                                  <Button
+                                                       bg="#DBE6CF"
+                                                       width="8rem"
+                                                       size="sm"
+                                                       mt={4}
+                                                       isLoading={
+                                                            buttonId === data.id
+                                                       }
+                                                  >
+                                                       Register
+                                                  </Button>
+                                             </Link>
                                         </Box>
                                    </Box>
                               );
