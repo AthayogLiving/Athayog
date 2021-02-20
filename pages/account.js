@@ -19,6 +19,7 @@ import Head from 'next/head';
 import { FirebaseToDate } from '@/components/helper/FirebaseToDate';
 import { compareDesc, compareAsc, parseISO } from 'date-fns';
 import firebase from '@/lib/firebase';
+import HomeLayout from '@/components/layout/HomeLayout';
 const firestore = firebase.firestore();
 
 const Account = () => {
@@ -187,3 +188,4 @@ const Account = () => {
 };
 
 export default Account;
+Account.Layout = HomeLayout;

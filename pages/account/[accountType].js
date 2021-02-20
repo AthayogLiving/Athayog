@@ -1,15 +1,4 @@
-import {
-     Box,
-     Button,
-     Flex,
-     FormControl,
-     FormErrorMessage,
-     FormLabel,
-     Heading,
-     Input,
-     Stack,
-     Text
-} from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 
 import React from 'react';
 
@@ -19,6 +8,7 @@ import Singup from '@/components/home/Singup';
 import Head from 'next/head';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import LoginOtp from '@/components/home/LoginOtp';
+import HomeLayout from '@/components/layout/HomeLayout';
 
 const Account = () => {
      const router = useRouter();
@@ -71,3 +61,4 @@ const Account = () => {
 };
 
 export default Account;
+Account.Layout = HomeLayout;

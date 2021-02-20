@@ -5,6 +5,7 @@ import athayogOnsite from 'public/athayogOnsite.jpeg';
 import Information from '@/components/shared/Information';
 import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
+import HomeLayout from '@/components/layout/HomeLayout';
 
 const Onsite = () => {
      const pageData = {
@@ -36,3 +37,4 @@ const Onsite = () => {
 };
 
 export default Onsite;
+Online.Layout = HomeLayout;

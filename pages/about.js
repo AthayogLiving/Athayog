@@ -1,5 +1,6 @@
 import { profileData, EmployeeData } from '@/components/home/ContentData';
 import Enquiry from '@/components/home/Enquiry';
+import HomeLayout from '@/components/layout/HomeLayout';
 import Employee from '@/components/shared/Employee';
 import Hero from '@/components/shared/Hero';
 import Information from '@/components/shared/Information';
@@ -169,3 +170,4 @@ const About = () => {
 };
 
 export default About;
+About.Layout = HomeLayout;

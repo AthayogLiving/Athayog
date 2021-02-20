@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useAuth } from '@/lib/auth';
 import { useRouter } from 'next/router';
 import { v4 as uuidv4 } from 'uuid';
+import HomeLayout from '@/components/layout/HomeLayout';
 
 const complete = () => {
      const router = useRouter();
@@ -59,3 +60,4 @@ const complete = () => {
 };
 
 export default complete;
+complete.Layout = HomeLayout;

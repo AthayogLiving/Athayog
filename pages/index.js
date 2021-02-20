@@ -8,6 +8,7 @@ import Testimonials from '@/components/shared/Testimonials';
 import HeroCarousel from '@/components/home/HeroCarousel';
 import WhatsAppWidget from 'react-whatsapp-widget';
 import 'react-whatsapp-widget/dist/index.css';
+import HomeLayout from '@/components/layout/HomeLayout';
 
 export default function Home() {
      return (
@@ -31,3 +32,5 @@ export default function Home() {
           </motion.div>
      );
 }
+
+Home.Layout = HomeLayout;

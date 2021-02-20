@@ -6,6 +6,7 @@ import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
 import InformationSplit from '@/components/shared/InformationSplit';
 import { getOffer } from '@/lib/db/offerings';
+import HomeLayout from '@/components/layout/HomeLayout';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('personal');
@@ -65,3 +66,4 @@ const Personal = ({ offers, notFound }) => {
 };
 
 export default Personal;
+Personal.Layout = HomeLayout;

@@ -7,6 +7,7 @@ import Register from '@/components/shared/Register';
 import InformationSplit from '@/components/shared/InformationSplit';
 import Schedule from '@/components/shared/Schedule';
 import { getOffer } from '@/lib/db/offerings';
+import HomeLayout from '@/components/layout/HomeLayout';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('shikshana');
@@ -74,3 +75,4 @@ const Shikshana = ({ offers, notFound }) => {
 };
 
 export default Shikshana;
+Shikshana.Layout = HomeLayout;

@@ -7,6 +7,7 @@ import Classes from '@/components/shared/Classes';
 import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
 import { getOffer } from '@/lib/db/offerings';
+import HomeLayout from '@/components/layout/HomeLayout';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('space');
@@ -95,3 +96,4 @@ const Space = ({ offers, notFound }) => {
 };
 
 export default Space;
+Space.Layout = HomeLayout;

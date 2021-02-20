@@ -6,6 +6,7 @@ import { updatePaymentSession } from '@/lib/db/payment';
 import { useAuth } from '@/lib/auth';
 import Success from '@/components/home/Payment/Success';
 import Failure from '@/components/home/Payment/Failure';
+import HomeLayout from '@/components/layout/HomeLayout';
 
 const callback = () => {
      const { user, signout, loading } = useAuth();
@@ -63,3 +64,4 @@ const callback = () => {
 };
 
 export default callback;
+callback.Layout = HomeLayout;

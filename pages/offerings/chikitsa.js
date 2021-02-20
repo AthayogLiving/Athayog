@@ -5,6 +5,7 @@ import athayogChikitsa from 'public/athayogChikitsa.jpg';
 import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
 import InformationSplit from '@/components/shared/InformationSplit';
+import HomeLayout from '@/components/layout/HomeLayout';
 
 const Chikitsa = () => {
      const pageData = {
@@ -30,3 +31,4 @@ const Chikitsa = () => {
 };
 
 export default Chikitsa;
+Chikitsa.Layout = HomeLayout;

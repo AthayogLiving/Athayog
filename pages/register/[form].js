@@ -37,6 +37,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { updatePaymentDetails } from '@/lib/db/users';
 import { createPaymentSession } from '@/lib/db/payment';
 import cookie from 'js-cookie';
+import HomeLayout from '@/components/layout/HomeLayout';
 
 const Register = () => {
      const router = useRouter();
@@ -499,3 +500,4 @@ const Register = () => {
 };
 
 export default Register;
+Register.Layout = HomeLayout;
