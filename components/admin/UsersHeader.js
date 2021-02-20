@@ -8,14 +8,14 @@ import {
 import Link from 'next/link';
 import { capitalizeFirstLetter } from '../helper/Capitalize';
 
-function UsersHeader({ siteLink }) {
+function UsersHeader({ siteLink, defaultName }) {
      const bg = useColorModeValue('white', 'gray.800');
 
      return (
           <Breadcrumb bg={bg} padding={3} rounded="lg" boxShadow="base">
                <BreadcrumbItem>
-                    <Link href="/admin/users">
-                         <BreadcrumbLink href="#">Users</BreadcrumbLink>
+                    <Link href="/admin/customers">
+                         <BreadcrumbLink href="#">{defaultName}</BreadcrumbLink>
                     </Link>
                </BreadcrumbItem>
 

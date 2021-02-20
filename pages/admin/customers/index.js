@@ -43,7 +43,7 @@ const users = () => {
 
      return (
           <>
-               <UsersHeader siteLink="" />
+               <UsersHeader siteLink="" defaultName="Customers" />
                <UsersTable users={data.users} />
           </>
      );

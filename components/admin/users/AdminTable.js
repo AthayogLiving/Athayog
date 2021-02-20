@@ -23,23 +23,17 @@ import { useState } from 'react';
 import axios from 'axios';
 import { updateAdminUser } from '@/lib/db/admin-users';
 import Link from 'next/link';
-import { withLayout } from '@/components/Layout';
-function UsersTable() {
+
+import DashboardLayout from '@/components/layout/DashboardLayout';
+function AdminTable({ admin }) {
      const [status, changeStatus] = useState(true);
      const [adminChange, changeAdmin] = useState(false);
      const toast = useToast();
      const bg = useColorModeValue('white', 'gray.800');
      const color = useColorModeValue('white', 'gray.800');
      const { user } = useAuth();
-     const { data } = useSWR(
-          user ? [`/api/adminUsers`, user.token] : null,
-          fetcher,
-          {
-               refreshInterval: 100
-          }
-     );
 
-     const handleAdminAccess = async (id, name, admin) => {
+     const handleAdminAccess = async (id, name, permission) => {
           changeStatus(false);
 
           const roleType = {
@@ -51,16 +45,16 @@ function UsersTable() {
           await axios({
                method: 'post',
                url: '/api/admin/set-admin',
-               data: { token: user.token, role: 0, admin: !admin, id: id }
+               data: { token: user.token, role: 0, admin: !permission, id: id }
           })
                .then(function (response) {
                     changeAdmin(true);
                     toast({
-                         title: `${admin ? 'Removed' : 'Gave'} Access.`,
+                         title: `${permission ? 'Removed' : 'Gave'} Access.`,
                          description: `${name} has ${
-                              admin ? 'taken away the' : 'given'
+                              permission ? 'taken away the' : 'given'
                          } admin privileges`,
-                         status: `${admin ? 'warning' : 'success'}`,
+                         status: `${permission ? 'warning' : 'success'}`,
                          duration: 9000,
                          isClosable: true
                     });
@@ -81,125 +75,62 @@ function UsersTable() {
           changeStatus(true);
      };
 
-     if (!data) {
-          return <SkeletonTable />;
-     }
-
      return (
           <>
-               {data.users ? (
-                    <>
-                         <Box
-                              bg={bg}
-                              rounded="lg"
-                              borderWidth="1px"
-                              padding={2}
-                              width="100%"
-                         >
-                              <Table variant="simple">
-                                   <TableCaption>
-                                        {userType === 'users'
-                                             ? 'Users'
-                                             : 'Admin Users'}
-                                   </TableCaption>
-                                   <Thead>
-                                        <Tr>
-                                             <Th>Name</Th>
-                                             <Th>Email</Th>
-                                             {userType === 'users' ? null : (
-                                                  <>
-                                                       <Th>Account Access</Th>
-                                                       <Th>Role</Th>
-                                                  </>
-                                             )}
-                                             {userType === 'users' ? (
-                                                  <>
-                                                       <Th>Subscriptions</Th>
-                                                  </>
-                                             ) : null}
+               <Box
+                    bg={bg}
+                    rounded="lg"
+                    borderWidth="1px"
+                    padding={2}
+                    boxShadow="base"
+                    width="100%"
+                    mt={3}
+               >
+                    <Table variant="simple">
+                         <TableCaption>Admin Users</TableCaption>
+                         <Thead>
+                              <Tr>
+                                   <Th>Name</Th>
+                                   <Th>Email</Th>
+
+                                   <Th>Account Access</Th>
+                                   <Th>Role</Th>
+                              </Tr>
+                         </Thead>
+                         <Tbody>
+                              {admin.map((user) => {
+                                   return (
+                                        <Tr key={user.uid}>
+                                             <Td>{user.displayName}</Td>
+                                             <Td>{user.email}</Td>
+
+                                             <Td>
+                                                  <Switch
+                                                       id="access"
+                                                       colorScheme="green"
+                                                       isDisabled={!status}
+                                                       defaultChecked={
+                                                            user.admin
+                                                       }
+                                                       onChange={(e) =>
+                                                            handleAdminAccess(
+                                                                 user.id,
+                                                                 user.displayName,
+                                                                 user.admin
+                                                            )
+                                                       }
+                                                  />
+                                             </Td>
+                                             <Td>{user.metadata?.roleName}</Td>
                                         </Tr>
-                                   </Thead>
-                                   <Tbody>
-                                        {data.users.map((user) => {
-                                             return (
-                                                  <Tr key={user.uid}>
-                                                       <Td>
-                                                            {user.name
-                                                                 ? user.name
-                                                                 : user.displayName}
-                                                       </Td>
-                                                       <Td>{user.email}</Td>
-                                                       {userType ===
-                                                       'users' ? null : (
-                                                            <>
-                                                                 <Td>
-                                                                      <Switch
-                                                                           id="access"
-                                                                           colorScheme="green"
-                                                                           isDisabled={
-                                                                                !status
-                                                                           }
-                                                                           defaultChecked={
-                                                                                user.admin
-                                                                           }
-                                                                           onChange={(
-                                                                                e
-                                                                           ) =>
-                                                                                handleAdminAccess(
-                                                                                     user.id,
-                                                                                     user.displayName,
-                                                                                     user.admin
-                                                                                )
-                                                                           }
-                                                                      />
-                                                                 </Td>
-                                                                 <Td>
-                                                                      {
-                                                                           user
-                                                                                .metadata
-                                                                                ?.roleName
-                                                                      }
-                                                                 </Td>
-                                                            </>
-                                                       )}
-                                                       {userType === 'users' ? (
-                                                            <>
-                                                                 {user.referenceId ? (
-                                                                      <Td>
-                                                                           <Link href="/">
-                                                                                <Badge
-                                                                                     bg="green.200"
-                                                                                     rounded="lg"
-                                                                                     _hover="green.800"
-                                                                                     cursor="pointer"
-                                                                                >
-                                                                                     Check
-                                                                                     Subscriptions
-                                                                                </Badge>
-                                                                           </Link>
-                                                                      </Td>
-                                                                 ) : (
-                                                                      <Td>
-                                                                           No
-                                                                           Subscriptions
-                                                                      </Td>
-                                                                 )}
-                                                            </>
-                                                       ) : null}
-                                                  </Tr>
-                                             );
-                                        })}
-                                   </Tbody>
-                              </Table>
-                         </Box>
-                    </>
-               ) : (
-                    <>
-                         <h1>No Users</h1>
-                    </>
-               )}
+                                   );
+                              })}
+                         </Tbody>
+                    </Table>
+               </Box>
           </>
      );
 }
 
-export default withLayout(UsersTable);
+export default AdminTable;
+AdminTable.Layout = DashboardLayout;

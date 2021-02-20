@@ -62,7 +62,7 @@ const userId = () => {
 
      return (
           <>
-               <UsersHeader siteLink={customer.name} />
+               <UsersHeader siteLink={customer.name} defaultName="Customers" />
                <Box bg={bg} padding={6} rounded="lg" boxShadow="base" mt={3}>
                     <Box>
                          <Text fontWeight="medium">

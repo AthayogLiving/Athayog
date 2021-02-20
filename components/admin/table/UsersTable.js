@@ -42,7 +42,7 @@ export const UserLink = ({ values, index }) => {
                     key={index}
                     className="badge"
                     mr={2}
-                    href={`/admin/users/${values}`}
+                    href={`/admin/customers/${values}`}
                     colorScheme="teal"
                     rounded="full"
                >

@@ -7,8 +7,7 @@ import {
      FiFileText,
      FiCalendar,
      FiImage,
-     FiMonitor,
-     FiBook
+     FiGithub
 } from 'react-icons/fi';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 import { VscFeedback, VscPreview } from 'react-icons/vsc';
@@ -108,6 +107,25 @@ function Sidebar() {
                     fontWeight="500"
                     mb={10}
                >
+                    <Link href="/admin/customers" width="100%">
+                         <Button
+                              colorScheme="teal"
+                              variant="ghost"
+                              isActive={
+                                   router.pathname == '/admin/customers'
+                                        ? true
+                                        : ''
+                              }
+                              width="100%"
+                              fontSize="sm"
+                              rounded="lg"
+                              d="flex"
+                              justifyContent="flex-start"
+                              leftIcon={<FiUsers />}
+                         >
+                              Customers
+                         </Button>
+                    </Link>
                     <Link href="/admin/users" width="100%">
                          <Button
                               colorScheme="teal"
@@ -120,9 +138,9 @@ function Sidebar() {
                               rounded="lg"
                               d="flex"
                               justifyContent="flex-start"
-                              leftIcon={<FiUsers />}
+                              leftIcon={<FiGithub />}
                          >
-                              Users
+                              Admins
                          </Button>
                     </Link>
                     <Link href="/admin/forms" width="100%">
