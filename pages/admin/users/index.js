@@ -5,6 +5,7 @@ import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import { Grid, Spinner, Text } from '@chakra-ui/react';
+import UsersHeader from '@/components/admin/UsersHeader';
 
 const users = () => {
      const { user } = useAuth();
@@ -40,7 +41,12 @@ const users = () => {
           );
      }
 
-     return <UsersTable users={data.users} />;
+     return (
+          <>
+               <UsersHeader siteLink="" />
+               <UsersTable users={data.users} />
+          </>
+     );
 };
 
 export default users;

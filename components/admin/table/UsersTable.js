@@ -31,25 +31,26 @@ import { FirebaseToDate } from '@/components/helper/FirebaseToDate';
 import useSWR from 'swr';
 import { useAuth } from '@/lib/auth';
 import fetcher from '@/utils/fetcher';
+import Link from 'next/link';
 const firestore = firebase.firestore();
 
-export const Conditions = ({ values }) => {
+export const UserLink = ({ values, index }) => {
      // Loop through the array and create a badge-like component instead of a comma-separated string
      return (
           <>
-               {values.map((conditions, idx, index) => {
-                    return (
-                         <Badge
-                              key={index}
-                              className="badge"
-                              mr={2}
-                              colorScheme="teal"
-                              rounded="full"
-                         >
-                              {conditions}
-                         </Badge>
-                    );
-               })}
+               <Link
+                    key={index}
+                    className="badge"
+                    mr={2}
+                    href={`/admin/users/${values}`}
+                    colorScheme="teal"
+                    rounded="full"
+               >
+                    <Button colorScheme="teal" size="sm">
+                         {' '}
+                         Check User
+                    </Button>
+               </Link>
           </>
      );
 };
@@ -67,6 +68,7 @@ const UsersTable = ({ users, latestDoc, setDocs }) => {
                {
                     Header: 'Name',
                     accessor: 'name',
+
                     Filter: ColumnFilter
                },
                {
@@ -77,6 +79,12 @@ const UsersTable = ({ users, latestDoc, setDocs }) => {
                {
                     Header: 'Reference ID',
                     accessor: 'referenceId',
+                    Filter: ColumnFilter
+               },
+               {
+                    Header: 'Actions',
+                    accessor: 'id',
+                    Cell: ({ cell: { value } }) => <UserLink values={value} />,
                     Filter: ColumnFilter
                }
           ],
