@@ -163,7 +163,7 @@ function UsersTable({ userType }) {
                                                        )}
                                                        {userType === 'users' ? (
                                                             <>
-                                                                 {user.razorpayPaymentId ? (
+                                                                 {user.referenceId ? (
                                                                       <Td>
                                                                            <Link href="/">
                                                                                 <Badge
