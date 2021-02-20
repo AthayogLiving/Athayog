@@ -5,6 +5,7 @@ export default async (req, res) => {
 
      if (token) {
           const uid = req.query.uid;
+
           await auth
                .verifyIdToken(token)
                .then((decodedToken) => {})
@@ -12,15 +13,18 @@ export default async (req, res) => {
                     return res.status(200).json(error);
                });
 
-          const information = [];
-          const snapshot = await db
-               .collection('payments')
-               .where('uid', '==', uid)
-               .get();
-          snapshot.forEach((doc) => {
-               information.push({ id: doc.id, ...doc.data() });
+          const payment = [];
+          const ref = db.collection('users').doc(uid);
+          const userData = await ref.get();
+          const payments = await ref.collection('payments').get();
+
+          const user = { id: userData.id, ...userData.data() };
+
+          payments.forEach((doc) => {
+               payment.push({ id: doc.id, ...doc.data() });
           });
-          return res.status(200).json({ information });
+
+          return res.status(200).json({ user, payment });
      } else {
           return res.status(401).json({ message: 'Unauthorized Access' });
      }

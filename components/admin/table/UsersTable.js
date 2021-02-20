@@ -59,7 +59,7 @@ export const DateCreated = ({ values }) => {
      return <>{FirebaseToDate(values)}</>;
 };
 
-const UsersData = ({ users, latestDoc, setDocs }) => {
+const UsersTable = ({ users, latestDoc, setDocs }) => {
      const data = useMemo(() => users, []);
 
      const columns = useMemo(
@@ -77,8 +77,7 @@ const UsersData = ({ users, latestDoc, setDocs }) => {
                {
                     Header: 'Reference ID',
                     accessor: 'referenceId',
-                    Filter: NumberFilter,
-                    filter: 'number'
+                    Filter: ColumnFilter
                }
           ],
           []
@@ -248,4 +247,4 @@ const UsersData = ({ users, latestDoc, setDocs }) => {
      );
 };
 
-export default UsersData;
+export default UsersTable;

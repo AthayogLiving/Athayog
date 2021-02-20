@@ -1,4 +1,4 @@
-import { Box, Input, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Input, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 
 const ColumnFilter = ({ column }) => {
