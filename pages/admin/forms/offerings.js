@@ -5,6 +5,7 @@ import FormsData from '@/components/admin/table/FormsData';
 import { Box, Flex, Grid, Spinner, useColorModeValue } from '@chakra-ui/react';
 import { useState } from 'react';
 import FormHeader from '@/components/admin/FormHeader';
+import DashboardLayout from '@/components/layout/DashboardLayout';
 
 const offerings = () => {
      const [latestDoc, setLatestDoc] = useState(0);
@@ -19,17 +20,15 @@ const offerings = () => {
 
      if (!data) {
           return (
-               <Dashboard>
-                    <Grid placeItems="center" mt={10}>
-                         <Spinner
-                              thickness="4px"
-                              speed="0.65s"
-                              emptyColor="gray.200"
-                              color="blue.500"
-                              size="xl"
-                         />
-                    </Grid>
-               </Dashboard>
+               <Grid placeItems="center" mt={10}>
+                    <Spinner
+                         thickness="4px"
+                         speed="0.65s"
+                         emptyColor="gray.200"
+                         color="blue.500"
+                         size="xl"
+                    />
+               </Grid>
           );
      }
 
@@ -38,7 +37,7 @@ const offerings = () => {
      };
 
      return (
-          <Dashboard>
+          <>
                <FormHeader siteLink="Offerings" />
 
                <FormsData
@@ -46,8 +45,9 @@ const offerings = () => {
                     latestDoc={latestDoc}
                     setDocs={setLatestDoc}
                />
-          </Dashboard>
+          </>
      );
 };
 
 export default offerings;
+offerings.Layout = DashboardLayout;

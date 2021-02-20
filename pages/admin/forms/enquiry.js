@@ -3,8 +3,8 @@ import EnquiryData from '@/components/admin/table/EnquiryData';
 import React, { useState } from 'react';
 import fetcher from '@/utils/fetcher';
 import useSWR from 'swr';
-import Dashboard from '../dashboard';
 import { Grid, Spinner, useColorModeValue } from '@chakra-ui/react';
+import DashboardLayout from '@/components/layout/DashboardLayout';
 
 const enquiry = () => {
      const [latestDoc, setLatestDoc] = useState(0);
@@ -17,30 +17,29 @@ const enquiry = () => {
 
      if (!data) {
           return (
-               <Dashboard>
-                    <Grid placeItems="center" mt={10}>
-                         <Spinner
-                              thickness="4px"
-                              speed="0.65s"
-                              emptyColor="gray.200"
-                              color="blue.500"
-                              size="xl"
-                         />
-                    </Grid>
-               </Dashboard>
+               <Grid placeItems="center" mt={10}>
+                    <Spinner
+                         thickness="4px"
+                         speed="0.65s"
+                         emptyColor="gray.200"
+                         color="blue.500"
+                         size="xl"
+                    />
+               </Grid>
           );
      }
 
      return (
-          <Dashboard>
+          <>
                <FormHeader siteLink="Enquiry" />
                <EnquiryData
                     forms={data.submissions}
                     latestDoc={latestDoc}
                     setDocs={setLatestDoc}
                />
-          </Dashboard>
+          </>
      );
 };
 
 export default enquiry;
+enquiry.Layout = DashboardLayout;

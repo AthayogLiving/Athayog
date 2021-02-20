@@ -1,3 +1,4 @@
+import DashboardLayout from '@/components/layout/DashboardLayout';
 import { useAuth } from '@/lib/auth';
 import {
      Avatar,
@@ -9,7 +10,6 @@ import {
      useColorModeValue
 } from '@chakra-ui/react';
 import React from 'react';
-import Dashboard from './dashboard';
 
 const account = () => {
      const { user } = useAuth();
@@ -31,26 +31,19 @@ const account = () => {
      }
 
      return (
-          <Dashboard>
-               <Box
-                    bg={bg}
-                    padding={6}
-                    rounded="lg"
-                    boxshadow="base"
-                    width="md"
-               >
-                    <Flex direction="column">
-                         <Avatar size="lg" name={user?.name} />
-                         <Heading size="md" fontWeight="normal" mt={5}>
-                              {user?.name}
-                         </Heading>
-                         <Text color="aygray.500">{user?.email}</Text>
-                         <Text color="aygray.500">{user?.creationTime}</Text>
-                         <Text color="aygray.500">{user?.lastSignInTime}</Text>
-                    </Flex>
-               </Box>
-          </Dashboard>
+          <Box bg={bg} padding={6} rounded="lg" boxshadow="base" width="md">
+               <Flex direction="column">
+                    <Avatar size="lg" name={user?.name} />
+                    <Heading size="md" fontWeight="normal" mt={5}>
+                         {user?.name}
+                    </Heading>
+                    <Text color="aygray.500">{user?.email}</Text>
+                    <Text color="aygray.500">{user?.creationTime}</Text>
+                    <Text color="aygray.500">{user?.lastSignInTime}</Text>
+               </Flex>
+          </Box>
      );
 };
 
 export default account;
+account.Layout = DashboardLayout;

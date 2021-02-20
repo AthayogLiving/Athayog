@@ -1,9 +1,6 @@
 import ScheduleHeader from '@/components/admin/ScheduleHeader';
+import DashboardLayout from '@/components/layout/DashboardLayout';
 import {
-     Box,
-     Button,
-     ButtonGroup,
-     Divider,
      Table,
      Tbody,
      Text,
@@ -14,16 +11,13 @@ import {
      useColorModeValue
 } from '@chakra-ui/react';
 import Link from 'next/link';
-
 import React from 'react';
-
-import Dashboard from '../dashboard';
 const schedule = () => {
      const bg = useColorModeValue('white', 'gray.800');
      const color = useColorModeValue('teal', 'gray.700');
 
      return (
-          <Dashboard>
+          <>
                <ScheduleHeader siteLink="" />
 
                <Table
@@ -107,8 +101,9 @@ const schedule = () => {
                          </Tr>
                     </Tbody>
                </Table>
-          </Dashboard>
+          </>
      );
 };
 
 export default schedule;
+schedule.Layout = DashboardLayout;

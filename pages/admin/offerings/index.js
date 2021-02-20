@@ -1,5 +1,6 @@
 import OfferringsHeader from '@/components/admin/OfferingsHeader';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
+import DashboardLayout from '@/components/layout/DashboardLayout';
 import {
      Box,
      useColorModeValue,
@@ -15,7 +16,6 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import React from 'react';
-import Dashboard from '../dashboard';
 
 const offerings = () => {
      const bg = useColorModeValue('white', 'gray.800');
@@ -28,7 +28,7 @@ const offerings = () => {
      ];
 
      return (
-          <Dashboard>
+          <>
                <OfferringsHeader siteLink="" />
                <Table
                     variant="simple"
@@ -70,8 +70,9 @@ const offerings = () => {
                          })}
                     </Tbody>
                </Table>
-          </Dashboard>
+          </>
      );
 };
 
 export default offerings;
+offerings.Layout = DashboardLayout;

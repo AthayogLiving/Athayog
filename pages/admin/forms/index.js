@@ -1,5 +1,3 @@
-import Dashboard from '../dashboard';
-
 import {
      useColorModeValue,
      Table,
@@ -13,6 +11,7 @@ import {
 import { useState } from 'react';
 import FormHeader from '@/components/admin/FormHeader';
 import Link from 'next/link';
+import DashboardLayout from '@/components/layout/DashboardLayout';
 
 const forms = () => {
      const [latestDoc, setLatestDoc] = useState(0);
@@ -20,7 +19,7 @@ const forms = () => {
      const bg = useColorModeValue('white', 'gray.800');
 
      return (
-          <Dashboard>
+          <>
                <FormHeader siteLink="" />
 
                <Table
@@ -71,8 +70,9 @@ const forms = () => {
                          </Tr>
                     </Tbody>
                </Table>
-          </Dashboard>
+          </>
      );
 };
 
 export default forms;
+forms.Layout = DashboardLayout;

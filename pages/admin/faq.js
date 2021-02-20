@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Dashboard from './dashboard';
+
 import fetcher from '@/utils/fetcher';
 import useSWR from 'swr';
 import { Button, ButtonGroup, Flex, Text } from '@chakra-ui/react';
@@ -18,6 +18,7 @@ import {
      Skeleton
 } from '@chakra-ui/react';
 import AddFaq from '@/components/admin/modals/AddFaq';
+import DashboardLayout from '@/components/layout/DashboardLayout';
 const faq = () => {
      const { data, error } = useSWR(`/api/faq`, fetcher);
      const bg = useColorModeValue('white', 'gray.800');
@@ -26,7 +27,7 @@ const faq = () => {
 
      if (error)
           return (
-               <Dashboard>
+               <>
                     <Box bg={bg} padding={6} rounded="lg" boxshadow="base">
                          <Tabs>
                               <TabList>
@@ -39,12 +40,12 @@ const faq = () => {
                               </TabPanels>
                          </Tabs>
                     </Box>
-               </Dashboard>
+               </>
           );
 
      if (!data) {
           return (
-               <Dashboard>
+               <>
                     <Box bg={bg} padding={6} rounded="lg" boxshadow="base">
                          <Tabs>
                               <TabList>
@@ -57,7 +58,7 @@ const faq = () => {
                               </TabPanels>
                          </Tabs>
                     </Box>
-               </Dashboard>
+               </>
           );
      }
 
@@ -70,7 +71,7 @@ const faq = () => {
      });
 
      return (
-          <Dashboard>
+          <>
                <Box bg={bg} padding={6} rounded="lg" boxshadow="base">
                     <Tabs
                          colorScheme="blue"
@@ -154,8 +155,9 @@ const faq = () => {
                     <Divider />
                     <AddFaq category={categoryList} />
                </Box>
-          </Dashboard>
+          </>
      );
 };
 
 export default faq;
+faq.Layout = DashboardLayout;

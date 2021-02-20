@@ -1,5 +1,6 @@
 import ImageGrid from '@/components/admin/Image/ImageGrid';
 import UploadImages from '@/components/admin/Image/UploadImages';
+import DashboardLayout from '@/components/layout/DashboardLayout';
 import {
      Box,
      Divider,
@@ -12,7 +13,7 @@ import {
      Select
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import Dashboard from './dashboard';
+
 const images = () => {
      const imageCategories = [
           'carousel',
@@ -49,7 +50,7 @@ const images = () => {
      let isDisabled = false;
 
      return (
-          <Dashboard>
+          <>
                <Box bg={bg} padding={6} rounded="lg" boxShadow="base">
                     {imageType === 'carousel' ? (
                          <Select
@@ -105,8 +106,9 @@ const images = () => {
                          isDisabled={isDisabled}
                     />
                </Box>
-          </Dashboard>
+          </>
      );
 };
 
 export default images;
+images.Layout = DashboardLayout;

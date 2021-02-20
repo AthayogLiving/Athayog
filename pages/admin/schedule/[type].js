@@ -1,6 +1,5 @@
 import React from 'react';
 import ScheduleData from '@/components/admin/table/ScheduleData';
-import Dashboard from '../dashboard';
 import {
      Box,
      Button,
@@ -15,6 +14,7 @@ import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import AddSchedule from '@/components/admin/table/AddSchedule';
 import Link from 'next/link';
+import DashboardLayout from '@/components/layout/DashboardLayout';
 
 const type = () => {
      const router = useRouter();
@@ -26,18 +26,18 @@ const type = () => {
 
      if (error) {
           return (
-               <Dashboard>
+               <>
                     <ScheduleHeader siteLink={type} />
                     <Grid placeItems="center" mt={5}>
                          <Text>Something Happened Try Again</Text>
                     </Grid>
-               </Dashboard>
+               </>
           );
      }
 
      if (!data) {
           return (
-               <Dashboard>
+               <>
                     <ScheduleHeader siteLink={type} />
                     <Grid placeItems="center" mt={5}>
                          <Spinner
@@ -48,13 +48,13 @@ const type = () => {
                               size="xl"
                          />
                     </Grid>
-               </Dashboard>
+               </>
           );
      }
 
      if (data.schedule.length === 0) {
           return (
-               <Dashboard>
+               <>
                     <ScheduleHeader siteLink={type} />
                     <Grid placeItems="center" mt={5}>
                          <Box>
@@ -83,36 +83,29 @@ const type = () => {
                               </Box>
                          </Box>
                     </Grid>
-               </Dashboard>
+               </>
           );
      }
 
      return (
           <>
-               <Dashboard>
-                    <ScheduleHeader siteLink={type} />
-                    <Box
-                         bg={bg}
-                         rounded="lg"
-                         padding={5}
-                         boxShadow="base"
-                         mt={3}
-                    >
-                         <ScheduleData schedule={data.schedule} type={type} />
-                    </Box>
-                    <Box
-                         bg={bg}
-                         rounded="lg"
-                         padding={5}
-                         boxShadow="base"
-                         mt={3}
-                         mb={5}
-                    >
-                         <AddSchedule type={type} />
-                    </Box>
-               </Dashboard>
+               <ScheduleHeader siteLink={type} />
+               <Box bg={bg} rounded="lg" padding={5} boxShadow="base" mt={3}>
+                    <ScheduleData schedule={data.schedule} type={type} />
+               </Box>
+               <Box
+                    bg={bg}
+                    rounded="lg"
+                    padding={5}
+                    boxShadow="base"
+                    mt={3}
+                    mb={5}
+               >
+                    <AddSchedule type={type} />
+               </Box>
           </>
      );
 };
 
 export default type;
+type.Layout = DashboardLayout;
