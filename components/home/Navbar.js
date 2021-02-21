@@ -23,6 +23,7 @@ import { MotionBox, MotionButton } from '../shared/MotionElements';
 import { HiMenu, HiOutlineX } from 'react-icons/hi';
 import useScrollBlock from '@/components/helper/scrollBlock';
 import { motion, useCycle } from 'framer-motion';
+import { isMobile } from 'react-device-detect';
 
 const Navbar = () => {
      const { user, signout, loading } = useAuth();
@@ -319,6 +320,7 @@ const Navbar = () => {
                     position="fixed"
                     variants={navStyle}
                     className="navbarMobile"
+                    display="none"
                     animate={open ? 'open' : 'closed'}
                >
                     <Flex justifyContent="right">
