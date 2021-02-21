@@ -19,7 +19,7 @@ import {
      HStack,
      Checkbox,
      useCheckboxGroup,
-     Toast,
+     toast,
      useToast,
      Spinner,
      Grid,
@@ -33,10 +33,8 @@ import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import { useAuth } from '@/lib/auth';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
-import { updatePaymentDetails } from '@/lib/db/users';
-import { createPaymentSession } from '@/lib/db/payment';
-import cookie from 'js-cookie';
+
+import { logo } from 'public/og.png';
 import HomeLayout from '@/components/layout/HomeLayout';
 
 const Register = () => {
@@ -50,7 +48,11 @@ const Register = () => {
      const toast = useToast();
 
      if (!form) {
-          return <Box>Loading...</Box>;
+          return (
+               <Grid height="100vh" placeItems="center ">
+                    <Spinner />
+               </Grid>
+          );
      }
 
      const onSubmit = async ({
@@ -60,97 +62,148 @@ const Register = () => {
           gender,
           experience,
           style,
-          course,
           referral,
           conditions
      }) => {
           setLoading(true);
-          await axios
-               .post(`/api/forms/offerings`, {
-                    name,
-                    email,
-                    phone,
-                    gender,
-                    experience,
-                    style,
-                    course: capitalizeFirstLetter(form),
-                    referral,
-                    conditions,
-                    type: capitalizeFirstLetter(form)
-               })
-               .then(function (response) {
-                    setLoading(false);
-                    reset();
-                    setPaymentLoader(true);
-                    createCheckout(name, email, phone);
-               })
-               .catch(function (error) {
-                    setLoading(false);
-                    toast({
-                         title: 'An error occurred.',
-                         description: error.message,
-                         status: 'error',
-                         duration: 5000,
-                         isClosable: true
-                    });
-                    reset();
-               });
+          await createCheckout(
+               name,
+               email,
+               phone,
+               gender,
+               experience,
+               style,
+               referral,
+               conditions
+          );
+          console.log('Wait till payment');
      };
 
-     const createCheckout = async (name, email, phone) => {
-          const result = await axios.post('/api/payment/link', {
-               data: {
-                    amount: price * 100,
-                    currency: 'INR',
-                    accept_partial: false,
-                    expire_by: 1691097057,
-                    reference_id: uuidv4(),
-                    description: 'Payment for ' + courseName,
-                    customer_id: user.uid,
-                    customer: {
-                         name: name,
-                         contact: phone,
-                         email: email
-                    },
-                    notify: {
-                         sms: false,
-                         email: false
-                    },
-                    reminder_enable: true,
-                    notes: {
-                         courseName: courseName
-                    },
-                    callback_url: `http://701af535c7bd.ngrok.io/payment/callback?userId=${user.uid}&courseId=${courseId}&courseName=${courseName}`,
-                    callback_method: 'get'
-               }
+     function loadScript(src) {
+          return new Promise((resolve) => {
+               const script = document.createElement('script');
+               script.src = src;
+               script.onload = () => {
+                    resolve(true);
+               };
+               script.onerror = () => {
+                    resolve(false);
+               };
+               document.body.appendChild(script);
           });
+     }
 
-          if (!result) {
+     const createCheckout = async ({
+          name,
+          email,
+          phone,
+          gender,
+          experience,
+          style,
+          referral,
+          conditions
+     }) => {
+          const res = await loadScript(
+               'https://checkout.razorpay.com/v1/checkout.js'
+          );
+
+          if (!res) {
                toast({
-                    title: 'Error',
-                    description: 'Are you online?',
+                    title: 'Are you online?.',
+                    description: 'Razorpay SDK failed to load. Are you online?',
                     status: 'error',
                     duration: 5000,
                     isClosable: true
                });
-               setButtonId('');
-               setPaymentLoader(false);
                return;
           }
-          const { short_url, reference_id } = result.data;
 
-          await createPaymentSession(
-               user.uid,
-               courseId,
-               courseName,
-               duration,
-               price,
-               reference_id,
-               short_url
-          );
+          const result = await axios.post('/api/payment/orders', {
+               amount: 5000,
+               receipt: courseId
+          });
 
-          cookie.set('userId', user.id);
-          router.push(short_url);
+          if (!result) {
+               toast({
+                    title: 'Are you online?.',
+                    description: 'An error occured',
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true
+               });
+               return;
+          }
+
+          const { id: order_id } = result.data;
+          const options = {
+               key: process.env.RAZORPAY_KEY_ID,
+               amount: price * 100,
+               currency: 'INR',
+               name: courseName,
+               description: duration,
+               image: { logo },
+               order_id: order_id,
+               handler: async function (response) {
+                    const data = {
+                         orderCreationId: order_id,
+                         razorpayPaymentId: response.razorpay_payment_id,
+                         razorpayOrderId: response.razorpay_order_id,
+                         razorpaySignature: response.razorpay_signature
+                    };
+
+                    await axios
+                         .post(`/api/forms/offerings`, {
+                              name,
+                              email,
+                              phone,
+                              gender,
+                              experience,
+                              style,
+                              course: capitalizeFirstLetter(form),
+                              referral,
+                              conditions,
+                              type: capitalizeFirstLetter(form)
+                         })
+                         .then(function (response) {
+                              setLoading(false);
+                              reset();
+                              router.push(
+                                   `/payment/success?razorpayPaymentId=${data.razorpayPaymentId}&razorpayOrderId=${data.razorpayOrderId}&courseName=${courseName}`
+                              );
+                         })
+                         .catch(function (error) {
+                              setLoading(false);
+                              toast({
+                                   title: 'An error occurred.',
+                                   description: error.message,
+                                   status: 'error',
+                                   duration: 5000,
+                                   isClosable: true
+                              });
+                              reset();
+                         });
+               },
+               prefill: {
+                    name: name,
+                    email: email,
+                    contact: phone
+               },
+               notes: {
+                    userId: user.uid,
+                    courseId: courseId,
+                    courseName: courseName,
+                    duration: duration,
+                    price: price,
+                    address:
+                         '307, Athayog living, Sun Rise Arcade, Devasandra Main Rd, Kodigehalli, Krishnarajapura, Bengaluru, Karnataka 560036'
+               },
+               theme: {
+                    color: '#84986D'
+               }
+          };
+
+          const paymentObject = new window.Razorpay(options);
+          paymentObject.open();
      };
 
      return (
@@ -182,7 +235,9 @@ const Register = () => {
                               width={{ base: '95%', md: '80%', lg: '65%' }}
                               as="form"
                               boxshadow="base"
-                              onSubmit={handleSubmit((data) => onSubmit(data))}
+                              onSubmit={handleSubmit((data) =>
+                                   createCheckout(data)
+                              )}
                          >
                               <Stack spacing={5}>
                                    <SimpleGrid

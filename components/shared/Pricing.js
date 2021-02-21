@@ -41,8 +41,6 @@ const Pricing = ({ pricing, registerTo }) => {
           });
      }
 
-     console.log(coursePurchased);
-
      const handleUserPayment = async (
           price,
           duration,
@@ -234,7 +232,7 @@ const Pricing = ({ pricing, registerTo }) => {
                                                   onClick={() =>
                                                        handleUserPayment(
                                                             data.price,
-                                                            data.duration,
+                                                            data.durationNum,
                                                             data.description,
                                                             data.courseName,
                                                             data.id,
