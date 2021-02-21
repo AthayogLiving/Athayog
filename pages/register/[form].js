@@ -47,7 +47,7 @@ const Register = () => {
      const { handleSubmit, register, errors, reset } = useForm();
      const toast = useToast();
 
-     if (!form) {
+     if (!form && !price && !duration && !courseName && !courseId && !user) {
           return (
                <Grid height="100vh" placeItems="center ">
                     <Spinner />
@@ -55,29 +55,28 @@ const Register = () => {
           );
      }
 
-     const onSubmit = async ({
-          name,
-          email,
-          phone,
-          gender,
-          experience,
-          style,
-          referral,
-          conditions
-     }) => {
-          setLoading(true);
-          await createCheckout(
-               name,
-               email,
-               phone,
-               gender,
-               experience,
-               style,
-               referral,
-               conditions
-          );
-          console.log('Wait till payment');
+     let ogData = {};
+
+     const getOffer = async () => {
+          await axios
+               .get(`/api/offerings/offer/${courseId}`)
+               .then((response) => {
+                    ogData = response.data;
+                    console.log(response.data);
+               });
      };
+
+     getOffer();
+
+     if (!ogData) {
+          return (
+               <Grid height="100vh" placeItems="center ">
+                    <Spinner />
+               </Grid>
+          );
+     }
+
+     console.log('ofData', ogData);
 
      function loadScript(src) {
           return new Promise((resolve) => {
@@ -103,6 +102,7 @@ const Register = () => {
           referral,
           conditions
      }) => {
+          setLoading(true);
           const res = await loadScript(
                'https://checkout.razorpay.com/v1/checkout.js'
           );
@@ -115,12 +115,13 @@ const Register = () => {
                     duration: 5000,
                     isClosable: true
                });
+               setLoading(false);
                return;
           }
 
           const result = await axios.post('/api/payment/orders', {
-               amount: 5000,
-               receipt: courseId
+               amount: ogData.price * 100,
+               receipt: ogData.id
           });
 
           if (!result) {
@@ -131,16 +132,18 @@ const Register = () => {
                     duration: 5000,
                     isClosable: true
                });
+               setLoading(false);
                return;
           }
 
           const { id: order_id } = result.data;
+
           const options = {
                key: process.env.RAZORPAY_KEY_ID,
-               amount: price * 100,
+               amount: ogData.price * 100,
                currency: 'INR',
-               name: courseName,
-               description: duration,
+               name: ogData.name,
+               description: ogData.days,
                image: { logo },
                order_id: order_id,
                handler: async function (response) {
@@ -165,7 +168,6 @@ const Register = () => {
                               type: capitalizeFirstLetter(form)
                          })
                          .then(function (response) {
-                              setLoading(false);
                               reset();
                               router.push(
                                    `/payment/success?razorpayPaymentId=${data.razorpayPaymentId}&razorpayOrderId=${data.razorpayOrderId}&courseName=${courseName}`
@@ -180,6 +182,7 @@ const Register = () => {
                                    duration: 5000,
                                    isClosable: true
                               });
+                              setLoading(false);
                               reset();
                          });
                },
@@ -190,10 +193,10 @@ const Register = () => {
                },
                notes: {
                     userId: user.uid,
-                    courseId: courseId,
-                    courseName: courseName,
-                    duration: duration,
-                    price: price,
+                    courseId: ogData.id,
+                    courseName: ogData.name,
+                    duration: ogData.days,
+                    price: ogData.price,
                     address:
                          '307, Athayog living, Sun Rise Arcade, Devasandra Main Rd, Kodigehalli, Krishnarajapura, Bengaluru, Karnataka 560036'
                },

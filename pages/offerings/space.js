@@ -76,7 +76,6 @@ const Space = ({ offers, notFound }) => {
           }
      });
 
-     console.log(apiPricing);
      return (
           <motion.div
                exit={{ opacity: 0 }}

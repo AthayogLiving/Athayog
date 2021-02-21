@@ -215,77 +215,14 @@ const userId = () => {
                                                        bg={color}
                                                        padding={3}
                                                   >
-                                                       Payment Reference Id
+                                                       Order Id
                                                   </Box>
                                                   <Box
                                                        textAlign="center"
                                                        fontWeight="normal"
                                                        padding={3}
                                                   >
-                                                       {data.referenceId}
-                                                  </Box>{' '}
-                                             </Box>
-                                             <Box
-                                                  fontWeight="medium"
-                                                  border="1px"
-                                                  borderColor="gray.200"
-                                                  rounded="lg"
-                                                  mt={2}
-                                                  overflow="hidden"
-                                                  w="100%"
-                                             >
-                                                  <Box
-                                                       textAlign="center"
-                                                       bg={color}
-                                                       padding={3}
-                                                  >
-                                                       Payment URL
-                                                  </Box>
-                                                  <Box
-                                                       textAlign="center"
-                                                       fontWeight="normal"
-                                                       padding={3}
-                                                  >
-                                                       <a
-                                                            href={data.shortUrl}
-                                                            target="_blank"
-                                                       >
-                                                            {data.shortUrl}
-                                                       </a>
-                                                  </Box>{' '}
-                                             </Box>
-                                             <Box
-                                                  fontWeight="medium"
-                                                  border="1px"
-                                                  borderColor="gray.200"
-                                                  rounded="lg"
-                                                  mt={2}
-                                                  overflow="hidden"
-                                                  w="100%"
-                                             >
-                                                  <Box
-                                                       textAlign="center"
-                                                       bg={color}
-                                                       padding={3}
-                                                  >
-                                                       Payment Status
-                                                  </Box>
-                                                  <Box
-                                                       textAlign="center"
-                                                       fontWeight="normal"
-                                                       padding={3}
-                                                  >
-                                                       <Badge
-                                                            fontWeight="medium"
-                                                            colorScheme={
-                                                                 data.status ===
-                                                                 'paid'
-                                                                      ? 'green'
-                                                                      : 'orange'
-                                                            }
-                                                       >
-                                                            {data.status}
-                                                       </Badge>
+                                                       {data.orderId}
                                                   </Box>{' '}
                                              </Box>
                                         </Grid>

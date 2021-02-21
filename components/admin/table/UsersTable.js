@@ -77,8 +77,8 @@ const UsersTable = ({ users, latestDoc, setDocs }) => {
                     Filter: ColumnFilter
                },
                {
-                    Header: 'Reference ID',
-                    accessor: 'referenceId',
+                    Header: 'Order ID',
+                    accessor: 'orderId',
                     Filter: ColumnFilter
                },
                {

@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
      if (req.method === 'POST') {
           const { amount, receipt } = req.body;
-          console.log(amount, receipt);
+
           try {
                const instance = new Razorpay({
                     key_id: process.env.RAZORPAY_KEY_ID,
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
                });
 
                const options = {
-                    amount: amount, // amount in smallest currency unit
+                    amount: Number(amount), // amount in smallest currency unit
                     currency: 'INR',
                     receipt: `receipt_order_${receipt}`
                };
