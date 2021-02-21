@@ -18,15 +18,13 @@ const account = () => {
 
      if (!user) {
           return (
-               <Dashboard>
-                    <Skeleton>
-                         <Box bg={bg} padding={6} rounded="lg" boxshadow="base">
-                              <Flex>
-                                   <Avatar size="2xl" />
-                              </Flex>
-                         </Box>
-                    </Skeleton>
-               </Dashboard>
+               <Skeleton>
+                    <Box bg={bg} padding={6} rounded="lg" boxshadow="base">
+                         <Flex>
+                              <Avatar size="2xl" />
+                         </Flex>
+                    </Box>
+               </Skeleton>
           );
      }
 

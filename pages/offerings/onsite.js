@@ -37,4 +37,4 @@ const Onsite = () => {
 };
 
 export default Onsite;
-Online.Layout = HomeLayout;
+Onsite.Layout = HomeLayout;

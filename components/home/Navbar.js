@@ -21,7 +21,6 @@ import { useAuth } from '@/lib/auth';
 import { AiOutlineUser } from 'react-icons/ai';
 import { MotionBox, MotionButton } from '../shared/MotionElements';
 import { HiMenu, HiOutlineX } from 'react-icons/hi';
-import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 import useScrollBlock from '@/components/helper/scrollBlock';
 import { motion, useCycle } from 'framer-motion';
 
