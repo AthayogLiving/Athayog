@@ -28,6 +28,7 @@ export default function Home() {
                <WhatsAppWidget
                     phoneNumber="+919611771434"
                     companyName="Athayog"
+                    style={{ zIndex: 10 }}
                />
           </motion.div>
      );

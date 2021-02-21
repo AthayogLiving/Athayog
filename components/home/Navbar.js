@@ -1,40 +1,72 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
      Avatar,
-     Box,
      Button,
      Center,
      Flex,
      Heading,
      HStack,
-     Icon,
-     IconButton,
      Menu,
      MenuButton,
      MenuItem,
-     MenuList
+     MenuList,
+     VStack,
+     useDisclosure
 } from '@chakra-ui/react';
-import { ChevronDownIcon, HamburgerIcon } from '@chakra-ui/icons';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/lib/auth';
-import { FiFacebook } from 'react-icons/fi';
+
 import { AiOutlineUser } from 'react-icons/ai';
-import { MotionButton } from '../shared/MotionElements';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import NavbarMobile from './NavabarMobile/NavbarMobile';
+import { MotionBox, MotionButton } from '../shared/MotionElements';
+import { HiMenu, HiOutlineX } from 'react-icons/hi';
+import { disablePageScroll, enablePageScroll } from 'scroll-lock';
+import useScrollBlock from '@/components/helper/scrollBlock';
+import { motion, useCycle } from 'framer-motion';
 
 const Navbar = () => {
      const { user, signout, loading } = useAuth();
      const router = useRouter();
 
+     const [blockScroll, allowScroll] = useScrollBlock();
+
+     const [open, onOpen] = useCycle(false, true);
+
+     const onHamburgerOpen = () => {
+          onOpen(!open);
+          open ? blockScroll() : allowScroll();
+     };
+
      const signOut = (redirect) => {
           signout(redirect);
      };
+
+     const navStyle = {
+          open: {
+               display: 'block',
+               opacity: 1,
+               visibility: 'visible',
+               transition: {
+                    staggerChildren: 0.17,
+                    delayChildren: 0.2
+               }
+          },
+          closed: {
+               display: 'none',
+               opacity: 0,
+               transition: {
+                    staggerChildren: 0.05,
+                    staggerDirection: -1,
+                    when: 'afterChildren'
+               }
+          }
+     };
+
      return (
           <>
                <Center
-                    boxShadow="md"
+                    boxShadow={open ? 'none' : 'md'}
                     bg="primaryWhite"
                     transition="linear"
                     transform="initial"
@@ -53,7 +85,7 @@ const Navbar = () => {
                          <Flex alignItems="center">
                               <Link href="/">
                                    <Heading
-                                        color="primaryGreen"
+                                        color={open ? 'white' : 'primaryGreen'}
                                         fontSize="2xl"
                                         fontWeight="normal"
                                         cursor="pointer"
@@ -212,7 +244,7 @@ const Navbar = () => {
                                    lg: 'none'
                               }}
                          >
-                              <NavbarMobile />
+                              <HiMenu onClick={() => onHamburgerOpen()} />
                          </Flex>
 
                          <Flex
@@ -278,6 +310,281 @@ const Navbar = () => {
                          </Flex>
                     </Flex>
                </Center>
+
+               <MotionBox
+                    height="100vh"
+                    bg="#8AB08D"
+                    width="100vw"
+                    padding="3rem 3rem"
+                    zIndex={10000}
+                    position="fixed"
+                    variants={navStyle}
+                    className="navbarMobile"
+                    animate={open ? 'open' : 'closed'}
+               >
+                    <Flex justifyContent="right">
+                         <HiOutlineX onClick={() => onHamburgerOpen()} />
+                    </Flex>
+
+                    <Flex
+                         justifyContent="space-between"
+                         direction="column"
+                         height="100%"
+                    >
+                         <Flex alignItems="center" direction="column">
+                              <VStack
+                                   variant="ghost"
+                                   spacing="6"
+                                   size="sm"
+                                   w="100%"
+                                   mt={10}
+                                   alignItems="center"
+                                   color="white"
+                              >
+                                   <Link href="/">
+                                        <MotionButton
+                                             fontWeight="normal"
+                                             fontSize="md"
+                                             width="100%"
+                                             variant="ghost"
+                                             color="white"
+                                             colorScheme="aygreen"
+                                             onClick={() => onHamburgerOpen()}
+                                             whileHover={{
+                                                  transition: {
+                                                       duration: 1
+                                                  }
+                                             }}
+                                             _active={{
+                                                  color: 'black',
+                                                  bg: 'aygreen.100'
+                                             }}
+                                             whileTap={{ scale: 0.9 }}
+                                             isActive={
+                                                  router.pathname == '/'
+                                                       ? true
+                                                       : ''
+                                             }
+                                        >
+                                             Home
+                                        </MotionButton>
+                                   </Link>
+
+                                   <Link href="/about" as="about">
+                                        <Button
+                                             fontWeight="normal"
+                                             fontSize="md"
+                                             color="white"
+                                             onClick={() => onHamburgerOpen()}
+                                             width="100%"
+                                             variant="ghost"
+                                             _active={{
+                                                  color: 'black',
+                                                  bg: 'aygreen.100'
+                                             }}
+                                             colorScheme="aygreen"
+                                             isActive={
+                                                  router.pathname == '/about'
+                                                       ? true
+                                                       : ''
+                                             }
+                                        >
+                                             About
+                                        </Button>
+                                   </Link>
+                              </VStack>
+
+                              <Menu matchWidth={true} fixed={true}>
+                                   <MenuButton
+                                        as={Button}
+                                        fontWeight="normal"
+                                        width="100%"
+                                        color="white"
+                                        variant="ghost"
+                                        colorScheme="aygreen"
+                                        fontSize="md"
+                                        boxShadow="none"
+                                        iconSpacing={-5}
+                                        _active={{
+                                             color: 'black',
+                                             bg: 'aygreen.100'
+                                        }}
+                                        mt={6}
+                                        rightIcon={<ChevronDownIcon />}
+                                   >
+                                        Offerings
+                                   </MenuButton>
+                                   <MenuList
+                                        bg="#8AB08D"
+                                        borderColor="transparent"
+                                        textAlign="center"
+                                        boxShadow="none"
+                                   >
+                                        <Link href="/offerings/space">
+                                             <MenuItem
+                                                  display="block"
+                                                  textAlign="center"
+                                                  rounded="lg"
+                                                  onClick={() =>
+                                                       onHamburgerOpen()
+                                                  }
+                                             >
+                                                  AthaYog Space
+                                             </MenuItem>
+                                        </Link>
+
+                                        <Link href="/offerings/shikshana">
+                                             <MenuItem
+                                                  display="block"
+                                                  textAlign="center"
+                                                  onClick={() =>
+                                                       onHamburgerOpen()
+                                                  }
+                                             >
+                                                  AthaYog Shikshana Pada
+                                             </MenuItem>
+                                        </Link>
+                                        <Link href="/offerings/online">
+                                             <MenuItem
+                                                  display="block"
+                                                  textAlign="center"
+                                                  onClick={() =>
+                                                       onHamburgerOpen()
+                                                  }
+                                             >
+                                                  AthaYog Online
+                                             </MenuItem>
+                                        </Link>
+                                        <Link href="/offerings/personal">
+                                             <MenuItem
+                                                  display="block"
+                                                  textAlign="center"
+                                                  onClick={() =>
+                                                       onHamburgerOpen()
+                                                  }
+                                             >
+                                                  AthaYog Personal
+                                             </MenuItem>
+                                        </Link>
+                                        <Link href="/offerings/workshops">
+                                             <MenuItem
+                                                  display="block"
+                                                  onClick={() =>
+                                                       onHamburgerOpen()
+                                                  }
+                                                  textAlign="center"
+                                             >
+                                                  AthaYog Workshops
+                                             </MenuItem>
+                                        </Link>
+                                        <Link href="/offerings/chikitsa">
+                                             <MenuItem
+                                                  display="block"
+                                                  textAlign="center"
+                                                  onClick={() =>
+                                                       onHamburgerOpen()
+                                                  }
+                                             >
+                                                  AthaYog Chikitsa
+                                             </MenuItem>
+                                        </Link>
+                                        <Link href="/offerings/onsite">
+                                             <MenuItem
+                                                  onClick={() =>
+                                                       onHamburgerOpen()
+                                                  }
+                                                  display="block"
+                                                  textAlign="center"
+                                             >
+                                                  AthaYog Onsite
+                                             </MenuItem>
+                                        </Link>
+                                   </MenuList>
+                              </Menu>
+
+                              <HStack
+                                   variant="ghost"
+                                   spacing="6"
+                                   size="sm"
+                                   ml={2}
+                                   color="primaryBlack"
+                                   mr="1rem"
+                              ></HStack>
+                         </Flex>
+                         <Flex
+                              direction="row"
+                              justifyContent="center"
+                              alignItems="center"
+                         >
+                              {' '}
+                              {user ? (
+                                   <Menu matchWidth={true} fixed={true}>
+                                        <MenuButton
+                                             as={Button}
+                                             fontWeight="normal"
+                                             width="100%"
+                                             color="white"
+                                             variant="ghost"
+                                             colorScheme="aygreen"
+                                             fontSize="md"
+                                             boxShadow="none"
+                                             _active={{
+                                                  bg: 'transparent'
+                                             }}
+                                             style={{
+                                                  paddingLeft: '0.5rem'
+                                             }}
+                                        >
+                                             {user?.name}
+                                        </MenuButton>
+                                        <MenuList
+                                             borderColor="transparent"
+                                             textAlign="center"
+                                             boxShadow="none"
+                                             fontSize="md"
+                                             bg="aygreen.100"
+                                             width="100%"
+                                        >
+                                             <Link href="/account">
+                                                  <MenuItem
+                                                       display="block"
+                                                       textAlign="center"
+                                                  >
+                                                       Account
+                                                  </MenuItem>
+                                             </Link>
+
+                                             <MenuItem
+                                                  display="block"
+                                                  textAlign="center"
+                                                  onClick={() => signOut('/')}
+                                             >
+                                                  Logout
+                                             </MenuItem>
+                                        </MenuList>
+                                   </Menu>
+                              ) : (
+                                   <Link
+                                        href="/account/[signup]"
+                                        as="/account/signup"
+                                   >
+                                        <Button
+                                             bg="aygray.100"
+                                             color="primaryDarkGray"
+                                             variant="solid"
+                                             size="sm"
+                                             fontSize="md"
+                                             rounded="md"
+                                             px={8}
+                                             py={4}
+                                        >
+                                             Sign In
+                                        </Button>
+                                   </Link>
+                              )}
+                         </Flex>
+                    </Flex>
+               </MotionBox>
           </>
      );
 };

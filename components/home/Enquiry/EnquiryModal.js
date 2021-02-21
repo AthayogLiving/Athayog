@@ -103,7 +103,7 @@ const EnquiryModal = () => {
                     onClose={onClose}
                     size="3xl"
                     bg="primaryWhite"
-                    blockScrollOnMount={false}
+                    blockScrollOnMount={true}
                >
                     <ModalOverlay />
                     <ModalContent
