@@ -107,8 +107,8 @@ const ImageGrid = ({ imageType, isMobile }) => {
      const deleteImageFirestore = async () => {
           setIsLoading(true);
           const { imageId, imageType, imageName } = selectedImage;
-
-          await deleteImage(imageId, imageType, imageName, isMobile)
+          const checkMobile = isMobile === 'mobile' ? true : false;
+          await deleteImage(imageId, imageType, imageName, checkMobile)
                .then((response) => {
                     toast({
                          title: 'Image Deleted.',
@@ -133,8 +133,9 @@ const ImageGrid = ({ imageType, isMobile }) => {
      };
 
      const changePublishStatus = async (imageId, status) => {
+          const checkMobile = isMobile === 'mobile' ? true : false;
           setIsActiveLoading({ imageId: imageId, status: true });
-          await updateImageStatus(imageId, !status, isMobile);
+          await updateImageStatus(imageId, !status, checkMobile);
           setIsActiveLoading({ imageId: imageId, status: false });
           toast({
                title: `Image ${!status ? 'Published' : 'Unpublished'}.`,

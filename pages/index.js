@@ -11,14 +11,16 @@ import 'react-whatsapp-widget/dist/index.css';
 import HomeLayout from '@/components/layout/HomeLayout';
 import { getImageLinkFromFirebaseHome } from '@/lib/db/db-admin';
 
-export async function getServerSideProps(context) {
+export async function getStaticProps() {
      const firebaseImages = await getImageLinkFromFirebaseHome(
           'carousel',
           false
      );
+
      const images = JSON.parse(JSON.stringify(firebaseImages));
      return {
-          props: { images } // will be passed to the page component as props
+          props: { images },
+          revalidate: 1
      };
 }
 
