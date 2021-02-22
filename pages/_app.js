@@ -7,7 +7,7 @@ import { AuthProvider } from '@/lib/auth';
 import theme from '@/styles/theme.js';
 import { AnimatePresence } from 'framer-motion';
 import '@/styles/globals.css';
-import NextNprogress from 'nextjs-progressbar';
+
 import Head from 'next/head';
 import SEO from '../next-seo.config';
 import { DefaultSeo } from 'next-seo';
@@ -53,7 +53,6 @@ function App({ Component, pageProps }) {
                <AuthProvider>
                     <DefaultSeo {...SEO} />
                     <GlobalStyle />
-                    <NextNprogress color="green" />
 
                     <AnimatePresence exitBeforeEnter>
                          <Layout>
