@@ -9,21 +9,23 @@ import HeroCarousel from '@/components/home/HeroCarousel';
 import WhatsAppWidget from 'react-whatsapp-widget';
 import 'react-whatsapp-widget/dist/index.css';
 import HomeLayout from '@/components/layout/HomeLayout';
-import { getImages } from '@/lib/db/db-admin';
+import { getImages, getGalleryImages } from '@/lib/db/db-admin';
 
 export async function getStaticProps() {
      const reqCarousel = await getImages('carousel', false);
      const reqCarouselMobile = await getImages('carousel', true);
+     const reqGallery = await getGalleryImages();
 
      const carousel = JSON.parse(JSON.stringify(reqCarousel));
      const carouselMobile = JSON.parse(JSON.stringify(reqCarouselMobile));
+     const gallery = JSON.parse(JSON.stringify(reqGallery));
      return {
-          props: { carousel, carouselMobile },
+          props: { carousel, carouselMobile, gallery },
           revalidate: 60
      };
 }
 
-export default function Home({ carousel, carouselMobile }) {
+export default function Home({ carousel, carouselMobile, gallery }) {
      return (
           <motion.div
                exit={{ opacity: 0 }}
@@ -33,7 +35,7 @@ export default function Home({ carousel, carouselMobile }) {
           >
                <HeroCarousel images={carousel} imagesMobile={carouselMobile} />
                <Offerings />
-               <Gallery />
+               <Gallery images={gallery} />
                <Schedule schedule="general" />
                <Testimonials />
                <Faq />

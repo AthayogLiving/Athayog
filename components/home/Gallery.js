@@ -126,9 +126,4 @@ const Gallery = ({ images }) => {
      );
 };
 
-export async function getStaticProps(context) {
-     const images = await fetcher('/api/images/gallery');
-     return { props: { images }, revalidate: 1 };
-}
-
 export default Gallery;
