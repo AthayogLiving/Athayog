@@ -19,7 +19,7 @@ export async function getStaticProps() {
      const carouselMobile = JSON.parse(JSON.stringify(reqCarouselMobile));
      return {
           props: { carousel, carouselMobile },
-          revalidate: 1
+          revalidate: 60
      };
 }
 

@@ -15,17 +15,7 @@ import {
 import { useState } from 'react';
 
 const images = () => {
-     const imageCategories = [
-          'carousel',
-          'gallery'
-          // 'space',
-          // 'shikshana',
-          // 'online',
-          // 'personal',
-          // 'workshops',
-          // 'chikitsa',
-          // 'onsite'
-     ];
+     const imageCategories = ['carousel', 'gallery'];
      const [imageType, setImageType] = useState(imageCategories[0]);
 
      const bg = useColorModeValue('white', 'gray.800');

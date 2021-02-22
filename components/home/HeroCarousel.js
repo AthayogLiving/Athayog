@@ -22,6 +22,10 @@ const HeroCarousel = ({ images, imagesMobile }) => {
           return <Skeleton height="100vh"></Skeleton>;
      }
 
+     if (data.images.length === 0) {
+          return <Skeleton height="100vh"></Skeleton>;
+     }
+
      const params = {
           slidesPerView: 1,
           loop: true,
