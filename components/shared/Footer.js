@@ -35,17 +35,38 @@ const Footer = () => {
                >
                     <Stack spacing={4} color="aygreen.100">
                          <Text color="white">Site Links</Text>
-                         <Text cursor="pointer">About</Text>
-                         <Text cursor="pointer">Enquire</Text>
-                         <Text cursor="pointer">Register </Text>
+                         <Link href="/">
+                              <Text cursor="pointer">Home</Text>
+                         </Link>
+                         <Link href="/about">
+                              <Text cursor="pointer">About</Text>
+                         </Link>
                     </Stack>
                     <Stack spacing={4} color="aygreen.100">
                          <Text color="white">Offerings</Text>
-                         <Text cursor="pointer">AthaYog Workshops</Text>
-                         <Text cursor="pointer">AthaYog Shikshana Pada</Text>
-                         <Text cursor="pointer">AthaYog Space </Text>
-                         <Text cursor="pointer">AthaYog Online </Text>
-                         <Text cursor="pointer">AthaYog Personal</Text>
+                         <Link href="/offerings/workshops">
+                              <Text cursor="pointer">AthaYog Workshops</Text>
+                         </Link>
+                         <Link href="/offerings/shikshana">
+                              <Text cursor="pointer">
+                                   AthaYog Shikshana Pada
+                              </Text>
+                         </Link>
+                         <Link href="/offerings/space">
+                              <Text cursor="pointer">AthaYog Space </Text>
+                         </Link>
+                         <Link href="/offerings/online">
+                              <Text cursor="pointer">AthaYog Online </Text>
+                         </Link>
+                         <Link href="/offerings/personal">
+                              <Text cursor="pointer">AthaYog Personal</Text>
+                         </Link>
+                         <Link href="/offerings/onsite">
+                              <Text cursor="pointer">AthaYog Onsite</Text>
+                         </Link>
+                         <Link href="/offerings/chikitsa">
+                              <Text cursor="pointer">AthaYog Chikitsa</Text>
+                         </Link>
                     </Stack>
 
                     <Stack spacing={4} color="aygreen.100">

@@ -54,16 +54,16 @@ const Login = () => {
                <Heading
                     textAlign="center"
                     fontWeight="normal"
-                    fontSize="4xl"
+                    fontSize={['2xl', '2xl', '4xl']}
                     color="primaryDarkGray"
                >
                     Log In
                </Heading>
 
                <MotionStack
-                    spacing={8}
+                    spacing={{ base: 5, md: 8, lg: 8 }}
                     mt={5}
-                    width="sm"
+                    width={{ base: '100%', md: 'sm', lg: 'sm' }}
                     as="form"
                     exit={{ y: -1000 }}
                     onSubmit={handleSubmit((data) => onUserLogin(data))}
@@ -111,7 +111,11 @@ const Login = () => {
                     </Button>
                </MotionStack>
 
-               <Stack spacing={8} mt={5} width="sm">
+               <Stack
+                    spacing={{ base: 5, md: 8, lg: 8 }}
+                    mt={5}
+                    width={{ base: '100%', md: 'sm', lg: 'sm' }}
+               >
                     <Divider color="black" />
                     <Button
                          type="submit"

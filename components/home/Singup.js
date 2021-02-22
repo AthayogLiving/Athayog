@@ -54,15 +54,15 @@ const Singup = () => {
                <Heading
                     textAlign="center"
                     fontWeight="normal"
-                    fontSize="4xl"
+                    fontSize={['2xl', '2xl', '4xl']}
                     color="primaryDarkGray"
                >
                     Sing In
                </Heading>
                <Stack
-                    spacing={8}
+                    spacing={{ base: 5, md: 8, lg: 8 }}
                     mt={5}
-                    width="sm"
+                    width={{ base: '100%', md: 'sm', lg: 'sm' }}
                     as="form"
                     onSubmit={handleSubmit((data) => onUserCreation(data))}
                >

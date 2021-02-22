@@ -9,6 +9,7 @@ import Head from 'next/head';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import LoginOtp from '@/components/home/LoginOtp';
 import HomeLayout from '@/components/layout/HomeLayout';
+import NavbarHelper from '@/components/shared/NavbarHelper';
 
 const Account = () => {
      const router = useRouter();
@@ -32,6 +33,7 @@ const Account = () => {
                          }}
                     />
                </Head>{' '}
+               <NavbarHelper />
                <Box height="100vh" bg="primaryWhite">
                     <Flex
                          alignItems="center"
@@ -44,7 +46,14 @@ const Account = () => {
                               bg="white"
                               rounded="lg"
                               boxShadow="base"
+                              marginTop={{
+                                   base: 0,
+                                   md: '-10rem',
+                                   lg: '-10rem'
+                              }}
                               padding={10}
+                              height={{ base: '100vh', md: 'auto', lg: 'auto' }}
+                              width={{ base: '100%', md: 'auto', lg: 'auto' }}
                          >
                               {accountType === 'login' ? (
                                    <Login />
