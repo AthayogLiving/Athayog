@@ -8,10 +8,10 @@ import 'swiper/swiper-bundle.css';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { isMobile } from 'react-device-detect';
 
-const HeroCarousel = ({ images }) => {
+const HeroCarousel = ({ images, imagesMobile }) => {
      const { data, error } = isMobile
           ? useSWR(`/api/images/carousel?mobile=true`, fetcher, {
-                 initialData: images
+                 initialData: imagesMobile
             })
           : useSWR(`/api/images/carousel`, fetcher, {
                  initialData: images

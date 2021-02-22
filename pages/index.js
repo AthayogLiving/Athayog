@@ -9,22 +9,21 @@ import HeroCarousel from '@/components/home/HeroCarousel';
 import WhatsAppWidget from 'react-whatsapp-widget';
 import 'react-whatsapp-widget/dist/index.css';
 import HomeLayout from '@/components/layout/HomeLayout';
-import { getImageLinkFromFirebaseHome } from '@/lib/db/db-admin';
+import { getImages } from '@/lib/db/db-admin';
 
 export async function getStaticProps() {
-     const firebaseImages = await getImageLinkFromFirebaseHome(
-          'carousel',
-          false
-     );
+     const reqCarousel = await getImages('carousel', false);
+     const reqCarouselMobile = await getImages('carousel', true);
 
-     const images = JSON.parse(JSON.stringify(firebaseImages));
+     const carousel = JSON.parse(JSON.stringify(reqCarousel));
+     const carouselMobile = JSON.parse(JSON.stringify(reqCarouselMobile));
      return {
-          props: { images },
+          props: { carousel, carouselMobile },
           revalidate: 1
      };
 }
 
-export default function Home({ images }) {
+export default function Home({ carousel, carouselMobile }) {
      return (
           <motion.div
                exit={{ opacity: 0 }}
@@ -32,7 +31,7 @@ export default function Home({ images }) {
                animate={{ opacity: 1 }}
                duration="400"
           >
-               <HeroCarousel images={images} />
+               <HeroCarousel images={carousel} imagesMobile={carouselMobile} />
                <Offerings />
                <Gallery />
                <Schedule schedule="general" />

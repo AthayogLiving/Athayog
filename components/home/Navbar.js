@@ -35,7 +35,7 @@ const Navbar = () => {
 
      const onHamburgerOpen = () => {
           onOpen(!open);
-          open ? blockScroll() : allowScroll();
+          !open ? blockScroll() : allowScroll();
      };
 
      const signOut = (redirect) => {
