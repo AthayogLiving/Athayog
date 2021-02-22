@@ -117,10 +117,12 @@ const index = () => {
                                                   autoFocus
                                                   aria-label="Email Address"
                                                   id="email"
+                                                  match
                                                   name="email"
                                                   ref={register({
                                                        required:
-                                                            'Please enter your email.'
+                                                            'Please enter your email.',
+                                                       pattern: /^[a-zA-Z0-9+_.-]+@athayogliving.com/
                                                   })}
                                                   placeholder="name@athayog.com"
                                              />

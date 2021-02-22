@@ -10,10 +10,6 @@ import {
 import Sidebar from '@/components/admin/Sidebar';
 import StickyBox from 'react-sticky-box';
 import Home from '@/components/admin/Home';
-import Head from 'next/head';
-import cookie from 'js-cookie';
-import { Router, useRouter } from 'next/router';
-import { useEffect } from 'react';
 
 const DashboardLayout = ({ children }) => {
      const { user, signout, loading } = useAuth();
@@ -28,6 +24,11 @@ const DashboardLayout = ({ children }) => {
           );
      }
 
+     if (user.isAdmin === false) {
+          <Grid height="500px" placeItems="center">
+               <Spinner />;
+          </Grid>;
+     }
      return (
           <>
                <Box>
