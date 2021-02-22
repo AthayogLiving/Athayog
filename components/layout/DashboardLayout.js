@@ -1,6 +1,12 @@
 import { useAuth } from '@/lib/auth';
 import Navbar from '@/components/admin/Navbar';
-import { Box, Grid, GridItem, useColorModeValue } from '@chakra-ui/react';
+import {
+     Box,
+     Grid,
+     GridItem,
+     Spinner,
+     useColorModeValue
+} from '@chakra-ui/react';
 import Sidebar from '@/components/admin/Sidebar';
 import StickyBox from 'react-sticky-box';
 import Home from '@/components/admin/Home';
@@ -13,17 +19,13 @@ const DashboardLayout = ({ children }) => {
      const { user, signout, loading } = useAuth();
      const bg = useColorModeValue('gray.100', 'gray.700');
      const color = useColorModeValue('gray.100', 'gray.700');
-     const router = useRouter();
-     const authCookie = cookie.get('athayog-auth-admin');
-
-     useEffect(() => {
-          if (!authCookie) {
-               router.push('/');
-          }
-     }, [authCookie]);
 
      if (!user) {
-          router.push('/');
+          return (
+               <Grid height="500px" placeItems="center">
+                    <Spinner />;
+               </Grid>
+          );
      }
 
      return (

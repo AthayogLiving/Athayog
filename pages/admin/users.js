@@ -6,6 +6,7 @@ import DashboardLayout from '@/components/layout/DashboardLayout';
 import { Grid, Spinner, Text } from '@chakra-ui/react';
 import UsersHeader from '@/components/admin/UsersHeader';
 import AdminTable from '@/components/admin/users/AdminTable';
+import { isDate } from 'date-fns';
 
 const users = () => {
      const { user } = useAuth();
@@ -17,6 +18,7 @@ const users = () => {
                refreshInterval: 100
           }
      );
+
      if (error) {
           return (
                <Grid placeItems="center" height="250px">
