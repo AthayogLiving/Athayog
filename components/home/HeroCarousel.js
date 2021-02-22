@@ -84,11 +84,4 @@ const HeroCarousel = ({ images }) => {
      );
 };
 
-export async function getStaticProps(context) {
-     const images = isMobile
-          ? await fetcher('/api/images/carousel?mobile=true')
-          : await fetcher('/api/images/carousel');
-     return { props: { images }, revalidate: 1 };
-}
-
 export default HeroCarousel;
