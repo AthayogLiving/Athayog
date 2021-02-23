@@ -103,6 +103,7 @@ const DashboardLayout = ({ children }) => {
                               minH="100vh"
                               bg={bg}
                               px={8}
+                              mb={5}
                          >
                               {children ? children : <Home />}
                          </GridItem>

@@ -20,14 +20,17 @@ import {
      FormLabel,
      Text,
      toast,
-     useToast
+     useToast,
+     Flex
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import useSWR from 'swr';
 
 const ShowTestimonials = () => {
      const [status, setStatus] = useState(false);
      const toast = useToast();
+     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
      const { data, error } = useSWR(`/api/testimonials`, fetcher);
      if (error)
           return (
@@ -76,28 +79,51 @@ const ShowTestimonials = () => {
      };
 
      return (
-          <Table variant="simple" colorScheme="teal">
-               <TableCaption>Testimonials</TableCaption>
-               <Thead>
-                    <Tr>
-                         <Th>Name</Th>
-                         <Th>Review</Th>
-                         <Th>Rating</Th>
-                         <Th>Public</Th>
-                    </Tr>
-               </Thead>
-               <Tbody>
-                    {data.testimonials.map((data) => {
-                         return (
-                              <Tr key={data.id}>
-                                   <Td>{data.name}</Td>
-                                   <Td>{data.review}</Td>
-                                   <Td isNumeric>{data.stars}/5</Td>
-                                   <Td>
-                                        <FormControl
-                                             display="flex"
+          <>
+               {isTabletOrMobile ? (
+                    <>
+                         {' '}
+                         {data.testimonials.map((data) => {
+                              return (
+                                   <Box
+                                        padding={3}
+                                        mb={5}
+                                        key={data.id}
+                                        borderBottom="1px solid #ddd"
+                                   >
+                                        <Flex
                                              alignItems="center"
+                                             justifyContent="space-between"
+                                             mb={2}
                                         >
+                                             <Text>Name:</Text>
+                                             <Text>{data.name}</Text>
+                                        </Flex>
+                                        <Flex
+                                             alignItems="center"
+                                             justifyContent="space-between"
+                                             flexWrap="wrap"
+                                             mb={2}
+                                        >
+                                             <Text>Review:</Text>
+                                             <Text>{data.review}</Text>
+                                        </Flex>
+                                        <Flex
+                                             alignItems="center"
+                                             justifyContent="space-between"
+                                             mb={2}
+                                        >
+                                             <Text>Rating:</Text>
+                                             <Text>{data.stars}/5</Text>
+                                        </Flex>
+                                        <Flex
+                                             alignItems="center"
+                                             justifyContent="space-between"
+                                             w="100%"
+                                             mb={2}
+                                        >
+                                             <Text>Is Active:</Text>
+
                                              <Switch
                                                   id="email-alerts"
                                                   isDisabled={status}
@@ -109,13 +135,56 @@ const ShowTestimonials = () => {
                                                   }
                                                   defaultChecked={data.isActive}
                                              />
-                                        </FormControl>
-                                   </Td>
+                                        </Flex>
+                                   </Box>
+                              );
+                         })}
+                    </>
+               ) : (
+                    <Table variant="simple" colorScheme="teal">
+                         <TableCaption>Testimonials</TableCaption>
+                         <Thead>
+                              <Tr>
+                                   <Th>Name</Th>
+                                   <Th>Review</Th>
+                                   <Th>Rating</Th>
+                                   <Th>Public</Th>
                               </Tr>
-                         );
-                    })}
-               </Tbody>
-          </Table>
+                         </Thead>
+                         <Tbody>
+                              {data.testimonials.map((data) => {
+                                   return (
+                                        <Tr key={data.id}>
+                                             <Td>{data.name}</Td>
+                                             <Td>{data.review}</Td>
+                                             <Td isNumeric>{data.stars}/5</Td>
+                                             <Td>
+                                                  <FormControl
+                                                       display="flex"
+                                                       alignItems="center"
+                                                  >
+                                                       <Switch
+                                                            id="email-alerts"
+                                                            isDisabled={status}
+                                                            onChange={(e) =>
+                                                                 onPublicChange(
+                                                                      data.id,
+                                                                      data.isActive
+                                                                 )
+                                                            }
+                                                            defaultChecked={
+                                                                 data.isActive
+                                                            }
+                                                       />
+                                                  </FormControl>
+                                             </Td>
+                                        </Tr>
+                                   );
+                              })}
+                         </Tbody>
+                    </Table>
+               )}
+          </>
      );
 };
 

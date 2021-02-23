@@ -7,7 +7,7 @@ import React from 'react';
 const testimonials = () => {
      const bg = useColorModeValue('white', 'gray.800');
      return (
-          <Box bg={bg} padding={6} rounded="lg" boxShadow="base">
+          <Box bg={bg} padding={6} rounded="lg" boxShadow="base" mb={3}>
                <ShowTestimonials />
                <AddTestimonials />
           </Box>
