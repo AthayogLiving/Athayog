@@ -112,7 +112,7 @@ const LoginOtp = () => {
                <Heading
                     textAlign="center"
                     fontWeight="normal"
-                    fontSize="4xl"
+                    fontSize={['2xl', '2xl', '4xl']}
                     color="primaryDarkGray"
                >
                     Log In OTP
@@ -121,9 +121,9 @@ const LoginOtp = () => {
                {!useOtp ? (
                     <>
                          <MotionStack
-                              spacing={8}
+                              spacing={{ base: 5, md: 8, lg: 8 }}
                               mt={5}
-                              width="sm"
+                              width={{ base: '100%', md: 'sm', lg: 'sm' }}
                               exit={{ y: -1000, opacity: 1 }}
                               as="form"
                               onSubmit={handleSubmit((data) =>
@@ -190,7 +190,11 @@ const LoginOtp = () => {
                               </Button>
                          </MotionStack>
 
-                         <Stack spacing={8} mt={5} width="sm">
+                         <Stack
+                              spacing={{ base: 5, md: 8, lg: 8 }}
+                              mt={5}
+                              width={{ base: '100%', md: 'sm', lg: 'sm' }}
+                         >
                               <Divider />
                               <Button
                                    type="submit"
@@ -213,9 +217,9 @@ const LoginOtp = () => {
                     </>
                ) : (
                     <MotionStack
-                         spacing={8}
+                         spacing={{ base: 5, md: 8, lg: 8 }}
                          mt={5}
-                         width="sm"
+                         width={{ base: '100%', md: 'sm', lg: 'sm' }}
                          exit={{ y: -1000, opacity: 1 }}
                          as="form"
                          onSubmit={handleSubmit((data) => onOTPSubmit(data))}
