@@ -10,6 +10,7 @@ import {
 import Sidebar from '@/components/admin/Sidebar';
 import StickyBox from 'react-sticky-box';
 import Home from '@/components/admin/Home';
+import { useRouter } from 'next/router';
 
 const DashboardLayout = ({ children }) => {
      const { user, signout, loading } = useAuth();
@@ -24,10 +25,14 @@ const DashboardLayout = ({ children }) => {
           );
      }
 
-     if (user.isAdmin === false) {
-          <Grid height="500px" placeItems="center">
-               <Spinner />;
-          </Grid>;
+     if (user.admin === false) {
+          const router = useRouter();
+          router.push('/');
+          return (
+               <Grid height="500px" placeItems="center">
+                    <Spinner />;
+               </Grid>
+          );
      }
      return (
           <>
