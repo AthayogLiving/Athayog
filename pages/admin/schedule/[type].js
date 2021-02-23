@@ -15,6 +15,7 @@ import fetcher from '@/utils/fetcher';
 import AddSchedule from '@/components/admin/table/AddSchedule';
 import Link from 'next/link';
 import DashboardLayout from '@/components/layout/DashboardLayout';
+import { isMobile } from 'react-device-detect';
 
 const type = () => {
      const router = useRouter();
@@ -23,6 +24,14 @@ const type = () => {
      const { data, error } = useSWR(`/api/schedule/${type}Schedule`, fetcher, {
           refreshInterval: 100
      });
+
+     if (isMobile) {
+          return (
+               <Grid height="200px" placeItems="center">
+                    <Text>Please use desktop to view data :)</Text>
+               </Grid>
+          );
+     }
 
      if (error) {
           return (

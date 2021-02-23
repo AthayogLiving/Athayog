@@ -42,12 +42,25 @@ const DashboardLayout = ({ children }) => {
                          templateRows="auto 1fr"
                          templateColumns="repeat(10, 1fr)"
                     >
-                         <GridItem colSpan={1} rowSpan={3}>
-                              <StickyBox style={{ height: '100vh' }}>
+                         <GridItem
+                              colSpan={{ base: 10, md: 1, lg: 1 }}
+                              rowSpan={{ base: 1, md: 3, lg: 3 }}
+                         >
+                              <StickyBox
+                                   style={{
+                                        base: '5rem',
+                                        md: '100vh',
+                                        lg: '100vh'
+                                   }}
+                              >
                                    <Sidebar />
                               </StickyBox>
                          </GridItem>
-                         <GridItem colSpan={9} rowSpan={1} bg={bg}>
+                         <GridItem
+                              colSpan={{ base: 10, md: 9, lg: 9 }}
+                              rowSpan={1}
+                              bg={bg}
+                         >
                               <Navbar
                                    user={user}
                                    signout={signout}

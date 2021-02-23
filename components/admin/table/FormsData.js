@@ -14,7 +14,8 @@ import {
      ButtonGroup,
      Text,
      Flex,
-     Select
+     Select,
+     Grid
 } from '@chakra-ui/react';
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
 import { useTable, useSortBy, useFilters, usePagination } from 'react-table';
@@ -28,6 +29,8 @@ import { ImBackward2, ImForward2 } from 'react-icons/im';
 import { RiLoader3Fill } from 'react-icons/ri';
 import firebase from '@/lib/firebase';
 import { FirebaseToDate } from '@/components/helper/FirebaseToDate';
+import styled from 'styled-components';
+import { isMobile } from 'react-device-detect';
 const firestore = firebase.firestore();
 
 export const Conditions = ({ values }) => {
@@ -126,6 +129,52 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
           []
      );
 
+     const Styles = styled.div`
+          /* This is required to make the table full-width */
+          display: block;
+          max-width: 100%;
+          /* This will make the table scrollable when it gets too small */
+          .tableWrap {
+               display: block;
+               max-width: 100%;
+               overflow-x: scroll;
+               overflow-y: hidden;
+               border-bottom: 1px solid #ddd;
+          }
+          table {
+               /* Make sure the inner table is always as wide as needed */
+               width: 100%;
+               border-spacing: 0;
+               tr {
+                    :last-child {
+                         td {
+                              border-bottom: 0;
+                         }
+                    }
+               }
+               th,
+               td {
+                    margin: 0;
+                    padding: 0.5rem;
+                    border-bottom: 1px solid #ddd;
+                    border-right: 1px solid #ddd;
+                    /* The secret sauce */
+                    /* Each cell should grow equally */
+                    width: 1%;
+                    /* But "collapsed" cells should be as small as possible */
+                    &.collapse {
+                         width: 0.0000000001%;
+                    }
+                    :last-child {
+                         border-right: 0;
+                    }
+               }
+          }
+          .pagination {
+               padding: 0.5rem;
+          }
+     `;
+
      const {
           getTableProps,
           getTableBodyProps,
@@ -160,67 +209,83 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
      return (
           <>
                {/* <Box>Showing Date Between {forms[0].createdAt}</Box> */}
-
-               <Table
-                    {...getTableProps()}
-                    bg={bg}
-                    shadow="base"
-                    rounded="lg"
-                    padding={5}
-                    mt={3}
-                    colorScheme="green"
-               >
-                    <Thead>
-                         {headerGroups.map((headerGroup) => (
-                              <Tr {...headerGroup.getHeaderGroupProps()}>
-                                   {headerGroup.headers.map((column) => (
-                                        <>
-                                             <Th {...column.getHeaderProps()}>
-                                                  {column.render('Header')}
-                                                  <chakra.span pl="4">
-                                                       {column.isSorted ? (
-                                                            column.isSortedDesc ? (
-                                                                 <TriangleDownIcon aria-label="sorted descending" />
-                                                            ) : (
-                                                                 <TriangleUpIcon aria-label="sorted ascending" />
-                                                            )
-                                                       ) : null}
-                                                  </chakra.span>
-                                                  <div>
-                                                       {column.canFilter ? (
-                                                            column.render(
-                                                                 'Filter'
-                                                            )
-                                                       ) : (
-                                                            <Box mt="1">
-                                                                 <Input visibility="hidden" />
-                                                            </Box>
-                                                       )}
-                                                  </div>
-                                             </Th>
-                                        </>
+               <Styles>
+                    <div className="tableWrap">
+                         <Table
+                              {...getTableProps()}
+                              bg={bg}
+                              shadow="base"
+                              rounded="lg"
+                              padding={5}
+                              mt={3}
+                              colorScheme="green"
+                         >
+                              <Thead>
+                                   {headerGroups.map((headerGroup) => (
+                                        <Tr
+                                             {...headerGroup.getHeaderGroupProps()}
+                                        >
+                                             {headerGroup.headers.map(
+                                                  (column) => (
+                                                       <>
+                                                            <Th
+                                                                 {...column.getHeaderProps()}
+                                                            >
+                                                                 {column.render(
+                                                                      'Header'
+                                                                 )}
+                                                                 <chakra.span pl="4">
+                                                                      {column.isSorted ? (
+                                                                           column.isSortedDesc ? (
+                                                                                <TriangleDownIcon aria-label="sorted descending" />
+                                                                           ) : (
+                                                                                <TriangleUpIcon aria-label="sorted ascending" />
+                                                                           )
+                                                                      ) : null}
+                                                                 </chakra.span>
+                                                                 <div>
+                                                                      {column.canFilter ? (
+                                                                           column.render(
+                                                                                'Filter'
+                                                                           )
+                                                                      ) : (
+                                                                           <Box mt="1">
+                                                                                <Input visibility="hidden" />
+                                                                           </Box>
+                                                                      )}
+                                                                 </div>
+                                                            </Th>
+                                                       </>
+                                                  )
+                                             )}
+                                        </Tr>
                                    ))}
-                              </Tr>
-                         ))}
-                    </Thead>
-                    <Tbody {...getTableBodyProps()}>
-                         {page.map((row) => {
-                              prepareRow(row);
-                              return (
-                                   <Tr {...row.getRowProps()}>
-                                        {row.cells.map((cell) => (
-                                             <Td
-                                                  {...cell.getCellProps()}
-                                                  isNumeric={cell.column}
-                                             >
-                                                  {cell.render('Cell')}
-                                             </Td>
-                                        ))}
-                                   </Tr>
-                              );
-                         })}
-                    </Tbody>
-               </Table>
+                              </Thead>
+                              <Tbody {...getTableBodyProps()} className="tbody">
+                                   {page.map((row) => {
+                                        prepareRow(row);
+                                        return (
+                                             <Tr {...row.getRowProps()}>
+                                                  {row.cells.map((cell) => (
+                                                       <Td
+                                                            {...cell.getCellProps()}
+                                                            isNumeric={
+                                                                 cell.column
+                                                            }
+                                                       >
+                                                            {cell.render(
+                                                                 'Cell'
+                                                            )}
+                                                       </Td>
+                                                  ))}
+                                             </Tr>
+                                        );
+                                   })}
+                              </Tbody>
+                         </Table>
+                    </div>
+               </Styles>
+
                <Flex
                     bg={bg}
                     padding="1rem 1rem"

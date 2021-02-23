@@ -17,7 +17,7 @@ const ScheduleMobile = ({ schedule }) => {
                variant="soft-rounded"
                colorScheme="aygreen"
                boxShadow="base"
-               padding={{ base: '0rem', md: '2', lg: '2' }}
+               padding={{ base: '2rem', md: '2', lg: '2' }}
                bg="gray.50"
                fontSize={{ base: 'sm', md: 'lg', lg: 'lg' }}
           >
