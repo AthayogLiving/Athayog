@@ -61,9 +61,9 @@ const Workshops = ({ offers, notFound }) => {
           >
                <Hero pageData={pageData} />
                <InformationSplit pageData={pageData} />
-               {notFound || offers.length == 0 ? null : (
-                    <Pricing pricing={apiPricing} />
-               )}
+
+               <Pricing pricing={apiPricing} />
+
                {/* <Register registerTo={pageData.name.toLocaleLowerCase()} /> */}
           </motion.div>
      );

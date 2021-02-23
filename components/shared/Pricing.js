@@ -17,26 +17,53 @@ import cookie from 'js-cookie';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 
-const Pricing = ({ pricing, registerTo }) => {
+const Pricing = ({ pricing, registerTo, toRegister }) => {
      const { user, signout, loading } = useAuth();
      const [buttonId, setButtonId] = useState('');
      const [loadingPayment, setLoading] = useState(['', false]);
      const router = useRouter();
      const toast = useToast();
-     if (!pricing) {
-          return null;
-     }
 
      const { data, error } = useSWR(
           user ? [`/api/user/purchases/${user.uid}`, user.token] : null,
           fetcher
      );
 
-     if (user && !data) {
+     if (pricing.length === 0) {
+          return (
+               <Flex
+                    margin="auto"
+                    padding={{
+                         base: '2rem 0',
+                         md: '3rem 0',
+                         lg: '5rem 0'
+                    }}
+                    justifyContent="center"
+                    alignItems="center"
+                    width="100vw"
+                    bg="#fbfbfb"
+               >
+                    <Flex
+                         justifyContent="center"
+                         direction="column"
+                         alignItems="center"
+                         width="60%"
+                    >
+                         <Heading
+                              fontWeight="normal"
+                              fontSize="xl"
+                              fontStyle="italic"
+                         >
+                              Plans coming soon :)
+                         </Heading>
+                    </Flex>
+               </Flex>
+          );
      }
+
      let coursePurchased = [];
      if (data) {
-          data.purchases.map((each) => {
+          data?.purchases?.map((each) => {
                coursePurchased.push(each.id);
           });
      }
@@ -216,43 +243,48 @@ const Pricing = ({ pricing, registerTo }) => {
                                                             lg: '3xl'
                                                        }}
                                                   >
-                                                       ₹ {data.price}
+                                                       {toRegister !== false
+                                                            ? '₹'
+                                                            : null}{' '}
+                                                       {data.price}
                                                   </Text>
                                              </Flex>
-
-                                             <Button
-                                                  bg="#DBE6CF"
-                                                  width="8rem"
-                                                  size="sm"
-                                                  mt={4}
-                                                  isDisabled={coursePurchased.find(
-                                                       (element) =>
-                                                            element == data.id
-                                                  )}
-                                                  onClick={() =>
-                                                       handleUserPayment(
-                                                            data.price,
-                                                            data.durationNum,
-                                                            data.description,
-                                                            data.courseName,
-                                                            data.id,
-                                                            data.isTrial
-                                                       )
-                                                  }
-                                                  isLoading={
-                                                       buttonId === data.id
-                                                  }
-                                             >
-                                                  {user
-                                                       ? coursePurchased.find(
-                                                              (element) =>
-                                                                   element ==
-                                                                   data.id
-                                                         ) !== undefined
-                                                            ? 'Purchased'
-                                                            : 'Register'
-                                                       : 'Register'}
-                                             </Button>
+                                             {toRegister !== false ? (
+                                                  <Button
+                                                       bg="#DBE6CF"
+                                                       width="8rem"
+                                                       size="sm"
+                                                       mt={4}
+                                                       isDisabled={coursePurchased.find(
+                                                            (element) =>
+                                                                 element ==
+                                                                 data.id
+                                                       )}
+                                                       onClick={() =>
+                                                            handleUserPayment(
+                                                                 data.price,
+                                                                 data.durationNum,
+                                                                 data.description,
+                                                                 data.courseName,
+                                                                 data.id,
+                                                                 data.isTrial
+                                                            )
+                                                       }
+                                                       isLoading={
+                                                            buttonId === data.id
+                                                       }
+                                                  >
+                                                       {user
+                                                            ? coursePurchased.find(
+                                                                   (element) =>
+                                                                        element ==
+                                                                        data.id
+                                                              ) !== undefined
+                                                                 ? 'Purchased'
+                                                                 : 'Register'
+                                                            : 'Register'}
+                                                  </Button>
+                                             ) : null}
                                         </Box>
                                    </Box>
                               );

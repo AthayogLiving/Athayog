@@ -24,11 +24,7 @@ const Schedule = ({ schedule }) => {
      );
 
      if (error) {
-          return (
-               <Grid placeItems="center">
-                    <Text>Something Happened Try Again</Text>
-               </Grid>
-          );
+          return null;
      }
 
      if (!data) {
@@ -38,6 +34,10 @@ const Schedule = ({ schedule }) => {
      const getHumanDate = (hours, minutes, period) => {
           return (hours + ':' + minutes + ' ' + period).toString();
      };
+
+     if (data.schedule.length === 0) {
+          return null;
+     }
      return (
           <Flex
                margin="auto"

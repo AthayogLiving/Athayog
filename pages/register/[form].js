@@ -26,7 +26,7 @@ import {
      Text
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import NavbarHelper from '@/components/shared/NavbarHelper';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
@@ -40,6 +40,9 @@ import HomeLayout from '@/components/layout/HomeLayout';
 const Register = () => {
      const router = useRouter();
      const { form, price, duration, courseName, courseId } = router.query;
+     Router.events.on('routeChangeComplete', () => {
+          window.scrollTo(0, 0);
+     });
      const { user } = useAuth();
      const [loading, setLoading] = useState(false);
      const [paymentLoader, setPaymentLoader] = useState(false);
@@ -47,7 +50,15 @@ const Register = () => {
      const { handleSubmit, register, errors, reset } = useForm();
      const toast = useToast();
 
-     if (!form && !price && !duration && !courseName && !courseId && !user) {
+     if (!form && !price && !duration && !courseName && !courseId) {
+          return (
+               <Grid height="100vh" placeItems="center ">
+                    <Spinner />
+               </Grid>
+          );
+     }
+
+     if (!user) {
           return (
                <Grid height="100vh" placeItems="center ">
                     <Spinner />
@@ -62,7 +73,6 @@ const Register = () => {
                .get(`/api/offerings/offer/${courseId}`)
                .then((response) => {
                     ogData = response.data;
-                    console.log(response.data);
                });
      };
 
@@ -75,8 +85,6 @@ const Register = () => {
                </Grid>
           );
      }
-
-     console.log('ofData', ogData);
 
      function loadScript(src) {
           return new Promise((resolve) => {
@@ -93,7 +101,7 @@ const Register = () => {
           });
      }
 
-     const createCheckout = async ({
+     const submitForm = async ({
           name,
           email,
           phone,
@@ -104,6 +112,19 @@ const Register = () => {
           conditions
      }) => {
           setLoading(true);
+          if (form == 'onsite' || form == 'chikitsa') {
+               submitWithoutPayment({
+                    name,
+                    email,
+                    phone,
+                    gender,
+                    experience,
+                    style,
+                    referral,
+                    conditions
+               });
+               return;
+          }
           const res = await loadScript(
                'https://checkout.razorpay.com/v1/checkout.js'
           );
@@ -187,6 +208,11 @@ const Register = () => {
                               reset();
                          });
                },
+               modal: {
+                    ondismiss: function () {
+                         setLoading(false);
+                    }
+               },
                prefill: {
                     name: name,
                     email: email,
@@ -208,6 +234,55 @@ const Register = () => {
 
           const paymentObject = new window.Razorpay(options);
           paymentObject.open();
+     };
+
+     const submitWithoutPayment = async ({
+          name,
+          email,
+          phone,
+          gender,
+          experience,
+          style,
+          referral,
+          conditions
+     }) => {
+          setLoading(true);
+          await axios
+               .post(`/api/forms/offerings`, {
+                    name,
+                    email,
+                    phone,
+                    gender,
+                    experience,
+                    style,
+                    course: capitalizeFirstLetter(form),
+                    referral,
+                    conditions,
+                    type: capitalizeFirstLetter(form)
+               })
+               .then(function (response) {
+                    reset();
+                    toast({
+                         title: 'Successfully Submitted.',
+                         description: 'We will reach back to you soon :)',
+                         status: 'success',
+                         duration: 5000,
+                         isClosable: true
+                    });
+                    router.push('/');
+               })
+               .catch(function (error) {
+                    setLoading(false);
+                    toast({
+                         title: 'An error occurred.',
+                         description: error.message,
+                         status: 'error',
+                         duration: 5000,
+                         isClosable: true
+                    });
+                    setLoading(false);
+                    reset();
+               });
      };
 
      return (
@@ -240,7 +315,7 @@ const Register = () => {
                               as="form"
                               boxshadow="base"
                               onSubmit={handleSubmit((data) =>
-                                   createCheckout(data)
+                                   submitForm(data)
                               )}
                          >
                               <Stack spacing={5}>
@@ -257,7 +332,7 @@ const Register = () => {
                                              <FormLabel>Full Name</FormLabel>
                                              <Input
                                                   type="name"
-                                                  value={user?.name}
+                                                  value={user.name}
                                                   readOnly
                                                   name="name"
                                                   ref={register({
@@ -275,6 +350,8 @@ const Register = () => {
                                              <Input
                                                   type="number"
                                                   name="phone"
+                                                  readOnly
+                                                  value={user.phone}
                                                   ref={register({
                                                        required:
                                                             'Please enter your number.'
@@ -290,7 +367,7 @@ const Register = () => {
                                              <Input
                                                   type="email"
                                                   name="email"
-                                                  value={user?.email}
+                                                  value={user.email}
                                                   readOnly
                                                   ref={register({
                                                        required:

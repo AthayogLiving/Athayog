@@ -54,10 +54,7 @@ const Online = ({ offers, notFound }) => {
           >
                <Hero pageData={pageData} />
                <Information pageData={pageData} />
-               {notFound || offers.length == 0 ? null : (
-                    <Pricing pricing={apiPricing} />
-               )}
-               {/* <Register registerTo={pageData.name.toLocaleLowerCase()} /> */}
+               <Pricing pricing={apiPricing} />
           </motion.div>
      );
 };

@@ -57,10 +57,7 @@ const Personal = ({ offers, notFound }) => {
           >
                <Hero pageData={pageData} />
                <InformationSplit pageData={pageData} />
-               {notFound || offers.length == 0 ? null : (
-                    <Pricing pricing={apiPricing} />
-               )}
-               {/* <Register registerTo={pageData.name.toLocaleLowerCase()} /> */}
+               <Pricing pricing={apiPricing} />
           </motion.div>
      );
 };
