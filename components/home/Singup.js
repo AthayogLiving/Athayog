@@ -22,10 +22,15 @@ const Singup = () => {
      const [loading, setLoading] = useState(false);
      const toast = useToast();
      const router = useRouter();
-     const onUserCreation = async ({ displayName, email, password }) => {
+     const onUserCreation = async ({ displayName, email, password, phone }) => {
           setLoading(true);
-          await createUserWithEmailAndPassword(email, password, displayName)
-               .then(() => {
+          await createUserWithEmailAndPassword(
+               email,
+               password,
+               displayName,
+               phone
+          )
+               .then((response) => {
                     toast({
                          title: 'Account created.',
                          description: "We've created your account for you.",
@@ -39,9 +44,9 @@ const Singup = () => {
                })
                .catch((error) => {
                     toast({
-                         title: error,
+                         title: error.code,
                          description: error.message,
-                         status: 'danger',
+                         status: 'error',
                          duration: 9000,
                          isClosable: true
                     });
@@ -100,6 +105,19 @@ const Singup = () => {
                          />
                     </FormControl>
                     <FormControl isRequired>
+                         <FormLabel>Phone Number</FormLabel>
+                         <Input
+                              type="phone"
+                              aria-label="phone"
+                              name="phone"
+                              id="phone"
+                              placeholder=""
+                              ref={register({
+                                   required: 'Please enter a phone.'
+                              })}
+                         />
+                    </FormControl>
+                    <FormControl isRequired>
                          <FormLabel>Password</FormLabel>
                          <Input
                               type="password"
@@ -128,6 +146,7 @@ const Singup = () => {
                          </Text>
                     </Link>
                </Stack>
+               <div id="recapctha-box"></div>
           </>
      );
 };
