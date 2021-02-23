@@ -54,25 +54,35 @@ const Login = () => {
      const forgotPassword = async () => {
           const emailAddress = getValues('email');
 
-          auth.sendPasswordResetEmail(emailAddress)
-               .then(function () {
-                    toast({
-                         title: 'Email Sent',
-                         description: 'Password reset email sent',
-                         status: 'success',
-                         duration: 5000,
-                         isClosable: true
+          if (emailAddress !== '') {
+               auth.sendPasswordResetEmail(emailAddress)
+                    .then(function () {
+                         toast({
+                              title: 'Email Sent',
+                              description: 'Password reset email sent',
+                              status: 'success',
+                              duration: 5000,
+                              isClosable: true
+                         });
+                    })
+                    .catch(function (error) {
+                         toast({
+                              title: 'An error occurred.',
+                              description: error.message,
+                              status: 'error',
+                              duration: 5000,
+                              isClosable: true
+                         });
                     });
-               })
-               .catch(function (error) {
-                    toast({
-                         title: 'An error occurred.',
-                         description: error.message,
-                         status: 'error',
-                         duration: 5000,
-                         isClosable: true
-                    });
+          } else {
+               toast({
+                    title: 'An error occurred.',
+                    description: 'Please enter the email field',
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true
                });
+          }
      };
 
      return (
@@ -106,6 +116,9 @@ const Login = () => {
                                    required: 'Please enter a password.'
                               })}
                          />
+                         <FormErrorMessage>
+                              {errors.email && errors.email.message}
+                         </FormErrorMessage>
                     </FormControl>
                     <FormControl isRequired>
                          <FormLabel>Password</FormLabel>
@@ -118,6 +131,9 @@ const Login = () => {
                                    required: 'Please enter a password.'
                               })}
                          />
+                         <FormErrorMessage>
+                              {errors.password && errors.password.message}
+                         </FormErrorMessage>
 
                          <Text
                               cursor="pointer"
