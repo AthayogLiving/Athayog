@@ -13,19 +13,24 @@ import {
      useColorModeValue,
      ButtonGroup,
      Button,
+     Text,
      Badge,
      Switch,
      toast,
-     useToast
+     useToast,
+     Flex
 } from '@chakra-ui/react';
 import { useAuth } from '@/lib/auth';
 import { useState } from 'react';
 import axios from 'axios';
 import { updateAdminUser } from '@/lib/db/admin-users';
 import Link from 'next/link';
+import { useMediaQuery } from 'react-responsive';
 
 import DashboardLayout from '@/components/layout/DashboardLayout';
 function AdminTable({ admin }) {
+     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+     const customAdminMobile = useMediaQuery({ query: '(max-width:600px)' });
      const [status, changeStatus] = useState(true);
      const [adminChange, changeAdmin] = useState(false);
      const toast = useToast();
@@ -86,25 +91,40 @@ function AdminTable({ admin }) {
                     width="100%"
                     mt={3}
                >
-                    <Table variant="simple">
-                         <TableCaption>Admin Users</TableCaption>
-                         <Thead>
-                              <Tr>
-                                   <Th>Name</Th>
-                                   <Th>Email</Th>
-
-                                   <Th>Account Access</Th>
-                                   <Th>Role</Th>
-                              </Tr>
-                         </Thead>
-                         <Tbody>
+                    {customAdminMobile ? (
+                         <>
+                              {' '}
                               {admin.map((user) => {
                                    return (
-                                        <Tr key={user.uid}>
-                                             <Td>{user.displayName}</Td>
-                                             <Td>{user.email}</Td>
-
-                                             <Td>
+                                        <Box
+                                             key={user.uid}
+                                             padding={3}
+                                             fontSize="sm"
+                                        >
+                                             <Flex
+                                                  alignItems="center"
+                                                  justifyContent="space-between"
+                                                  mb={2}
+                                             >
+                                                  <Text>Name:</Text>
+                                                  <Text>
+                                                       {user.displayName}
+                                                  </Text>
+                                             </Flex>
+                                             <Flex
+                                                  alignItems="center"
+                                                  justifyContent="space-between"
+                                                  flexWrap="wrap"
+                                                  mb={2}
+                                             >
+                                                  <Text>Email:</Text>
+                                                  <Text>{user.email}</Text>
+                                             </Flex>
+                                             <Flex
+                                                  alignItems="center"
+                                                  justifyContent="space-between"
+                                                  mb={2}
+                                             >
                                                   <Switch
                                                        id="access"
                                                        colorScheme="green"
@@ -120,13 +140,69 @@ function AdminTable({ admin }) {
                                                             )
                                                        }
                                                   />
-                                             </Td>
-                                             <Td>{user.metadata?.roleName}</Td>
-                                        </Tr>
+                                             </Flex>
+                                             <Flex
+                                                  alignItems="center"
+                                                  justifyContent="space-between"
+                                                  mb={2}
+                                             >
+                                                  <Text>Role Name:</Text>
+                                                  <Text>
+                                                       {user.metadata?.roleName}
+                                                  </Text>
+                                             </Flex>
+                                        </Box>
                                    );
-                              })}
-                         </Tbody>
-                    </Table>
+                              })}{' '}
+                         </>
+                    ) : (
+                         <Table
+                              variant="simple"
+                              size={isTabletOrMobile ? 'sm' : 'lg'}
+                         >
+                              <TableCaption>Admin Users</TableCaption>
+                              <Thead>
+                                   <Tr>
+                                        <Th>Name</Th>
+                                        <Th>Email</Th>
+
+                                        <Th>Account Access</Th>
+                                        <Th>Role</Th>
+                                   </Tr>
+                              </Thead>
+                              <Tbody>
+                                   {admin.map((user) => {
+                                        return (
+                                             <Tr key={user.uid}>
+                                                  <Td>{user.displayName}</Td>
+                                                  <Td>{user.email}</Td>
+
+                                                  <Td>
+                                                       <Switch
+                                                            id="access"
+                                                            colorScheme="green"
+                                                            isDisabled={!status}
+                                                            defaultChecked={
+                                                                 user.admin
+                                                            }
+                                                            onChange={(e) =>
+                                                                 handleAdminAccess(
+                                                                      user.id,
+                                                                      user.displayName,
+                                                                      user.admin
+                                                                 )
+                                                            }
+                                                       />
+                                                  </Td>
+                                                  <Td>
+                                                       {user.metadata?.roleName}
+                                                  </Td>
+                                             </Tr>
+                                        );
+                                   })}
+                              </Tbody>
+                         </Table>
+                    )}
                </Box>
           </>
      );

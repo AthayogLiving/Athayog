@@ -10,9 +10,11 @@ import {
      Tr,
      useColorModeValue
 } from '@chakra-ui/react';
+import { useMediaQuery } from 'react-responsive';
 import Link from 'next/link';
 import React from 'react';
 const schedule = () => {
+     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
      const bg = useColorModeValue('white', 'gray.800');
      const color = useColorModeValue('teal', 'gray.700');
 
