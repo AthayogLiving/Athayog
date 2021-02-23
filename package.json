@@ -5,7 +5,7 @@
      "proxy": "https://cat-fact.herokuapp.com/facts",
      "scripts": {
           "dev": "next dev",
-          "build": "next build",
+          "build": "next build && node sitemap.js",
           "start": "next start",
           "ngrok": "ngrok http 3000",
           "sitemap": "node sitemap.js"
