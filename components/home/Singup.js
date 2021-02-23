@@ -147,6 +147,7 @@ const Singup = () => {
           setPhone(phone);
           onPhoneSignInSubmit(phone, countryCode);
      };
+
      return (
           <>
                <Heading

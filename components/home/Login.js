@@ -17,19 +17,21 @@ import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { useAuth } from '@/lib/auth';
 import Router, { useRouter } from 'next/router';
+
 import firebase from '@/lib/firebase';
 import { AnimatePresence } from 'framer-motion';
 import cookie from 'js-cookie';
 import { MotionStack } from '../shared/MotionElements';
 
 const Login = () => {
-     const { handleSubmit, register, errors, reset } = useForm();
+     const { handleSubmit, register, errors, reset, getValues } = useForm();
      const { signinWithEmail } = useAuth();
-
+     const auth = firebase.auth();
      const [loading, setLoading] = useState(false);
      const toast = useToast();
      const router = useRouter();
      const routeCookie = cookie.get('routeTo');
+     const [email, setEmail] = useState('');
 
      const isRoute =
           routeCookie == '' || routeCookie == undefined ? '/' : routeCookie;
@@ -47,6 +49,30 @@ const Login = () => {
                });
                reset();
           });
+     };
+
+     const forgotPassword = async () => {
+          const emailAddress = getValues('email');
+
+          auth.sendPasswordResetEmail(emailAddress)
+               .then(function () {
+                    toast({
+                         title: 'Email Sent',
+                         description: 'Password reset email sent',
+                         status: 'success',
+                         duration: 5000,
+                         isClosable: true
+                    });
+               })
+               .catch(function (error) {
+                    toast({
+                         title: 'An error occurred.',
+                         description: error.message,
+                         status: 'error',
+                         duration: 5000,
+                         isClosable: true
+                    });
+               });
      };
 
      return (
@@ -92,11 +118,15 @@ const Login = () => {
                                    required: 'Please enter a password.'
                               })}
                          />
-                         <Link href="/">
-                              <Text cursor="pointer" mt={2} color="aygreen.500">
-                                   Forgot your password?
-                              </Text>
-                         </Link>
+
+                         <Text
+                              cursor="pointer"
+                              mt={2}
+                              color="aygreen.500"
+                              onClick={() => forgotPassword()}
+                         >
+                              Forgot your password?
+                         </Text>
                     </FormControl>
 
                     <Button
