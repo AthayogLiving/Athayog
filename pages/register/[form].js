@@ -298,10 +298,21 @@ const Register = () => {
                          alignItems="center"
                          height="100%"
                          bg="primaryWhite"
-                         padding="5rem 0"
+                         padding={{
+                              base: '2rem 0',
+                              md: '3rem 0',
+                              lg: '5rem 0'
+                         }}
                          flexDirection="column"
                     >
-                         <Heading fontWeight="normal" fontSize="4xl">
+                         <Heading
+                              fontWeight="normal"
+                              fontSize={{
+                                   base: '2xl',
+                                   md: '2xl',
+                                   lg: '4xl'
+                              }}
+                         >
                               Register For{' '}
                               {form ? capitalizeFirstLetter(form) : ''}
                          </Heading>
@@ -309,9 +320,9 @@ const Register = () => {
                               bg="white"
                               rounded="lg"
                               textAlign="center"
-                              mt={10}
+                              mt={{ base: 2, md: 5, lg: 10 }}
                               padding={8}
-                              width={{ base: '95%', md: '80%', lg: '65%' }}
+                              width={{ base: '95%', md: '90%', lg: '75%' }}
                               as="form"
                               boxshadow="base"
                               onSubmit={handleSubmit((data) =>
@@ -495,8 +506,12 @@ const Register = () => {
                                              ]}
                                              name="conditions"
                                         >
-                                             <HStack
-                                                  direction={['column', 'row']}
+                                             <Stack
+                                                  direction={{
+                                                       base: 'column',
+                                                       md: 'column',
+                                                       lg: 'row'
+                                                  }}
                                              >
                                                   <Checkbox
                                                        value="Spine/Joint"
@@ -526,7 +541,7 @@ const Register = () => {
                                                   >
                                                        Others
                                                   </Checkbox>
-                                             </HStack>
+                                             </Stack>
                                         </CheckboxGroup>
                                         <FormErrorMessage>
                                              {errors.conditions &&
@@ -544,7 +559,13 @@ const Register = () => {
                                                   How did you hear about us?
                                              </FormLabel>
                                              <RadioGroup>
-                                                  <Stack direction="row">
+                                                  <Stack
+                                                       direction={{
+                                                            base: 'column',
+                                                            md: 'column',
+                                                            lg: 'row'
+                                                       }}
+                                                  >
                                                        <Radio
                                                             value="Google"
                                                             name="referral"
