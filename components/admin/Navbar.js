@@ -16,8 +16,10 @@ import {
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
+import { useAuth } from '@/lib/auth';
 
-function Navbar({ user, signout, loading }) {
+function Navbar({ isTabletOrMobile }) {
+     const { user, signout, loading } = useAuth();
      const [logout, setLogout] = useState(false);
      const { colorMode, toggleColorMode } = useColorMode();
      const bg = useColorModeValue('white', 'gray.800');
@@ -60,7 +62,7 @@ function Navbar({ user, signout, loading }) {
                justifyContent="space-between"
                padding="1rem"
                alignItems="center"
-               margin="2rem"
+               margin={isTabletOrMobile ? '0 2rem 2rem 2rem' : '2rem'}
                bg={bg}
                boxShadow="base"
                rounded="lg"
@@ -86,28 +88,31 @@ function Navbar({ user, signout, loading }) {
                </Flex>
 
                <Box d="flex" alignItems="center" bg={bg}>
-                    <Button onClick={toggleColorMode} mr={5} size="sm">
+                    <Button
+                         onClick={toggleColorMode}
+                         mr={{ base: '0', md: 5, lg: 5 }}
+                         size="sm"
+                    >
                          {colorMode === 'light' ? <FiMoon /> : <FiSun />}
                     </Button>
-                    <Menu isLazy={true} closeOnSelect={false}>
-                         <MenuButton
-                              size="sm"
-                              as={Button}
-                              name={user?.name}
-                              rightIcon={<ChevronDownIcon />}
-                         >
-                              Profile
-                         </MenuButton>
-                         <MenuList size="sm">
-                              <Link href="/admin/account">
-                                   <MenuItem>Account</MenuItem>
-                              </Link>
+                    {isTabletOrMobile ? null : (
+                         <Menu isLazy={true} closeOnSelect={false}>
+                              <MenuButton size="sm">
+                                   <Avatar name={user?.name} size="sm" />
+                              </MenuButton>
+                              <MenuList size="sm">
+                                   <Link href="/admin/account">
+                                        <MenuItem>Account</MenuItem>
+                                   </Link>
 
-                              <MenuItem onClick={() => signOutAdmin('/admin')}>
-                                   Logout
-                              </MenuItem>
-                         </MenuList>
-                    </Menu>
+                                   <MenuItem
+                                        onClick={() => signOutAdmin('/admin')}
+                                   >
+                                        Logout
+                                   </MenuItem>
+                              </MenuList>
+                         </Menu>
+                    )}
                </Box>
           </Flex>
      );

@@ -265,14 +265,12 @@ const Navbar = () => {
                               </Button>
                               {user ? (
                                    <Menu>
-                                        <MenuButton
-                                             as={Avatar}
-                                             bg="aygreen.500"
-                                             size="sm"
-                                             fontSize="md"
-                                             icon={<AiOutlineUser />}
-                                             style={{ paddingLeft: '0.5rem' }}
-                                        ></MenuButton>
+                                        <MenuButton size="sm">
+                                             <Avatar
+                                                  name={user?.name}
+                                                  size="sm"
+                                             />
+                                        </MenuButton>
                                         <MenuList
                                              fontSize="md"
                                              bg="aygreen.100"

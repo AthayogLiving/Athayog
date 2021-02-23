@@ -11,11 +11,37 @@ import Sidebar from '@/components/admin/Sidebar';
 import StickyBox from 'react-sticky-box';
 import Home from '@/components/admin/Home';
 import { useRouter } from 'next/router';
+import { useEffect, useRef } from 'react';
+import { isMobile } from 'react-device-detect';
+import SidebarMobile from '../admin/SidebarMobile';
+import { useMediaQuery } from 'react-responsive';
 
 const DashboardLayout = ({ children }) => {
      const { user, signout, loading } = useAuth();
+
      const bg = useColorModeValue('gray.100', 'gray.700');
      const color = useColorModeValue('gray.100', 'gray.700');
+
+     const router = useRouter();
+
+     const isDesktopOrLaptop = useMediaQuery({
+          query: '(min-device-width: 1224px)'
+     });
+     const isBigScreen = useMediaQuery({
+          query: '(min-device-width: 1824px)'
+     });
+     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+     const isTabletOrMobileDevice = useMediaQuery({
+          query: '(max-device-width: 1224px)'
+     });
+     const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
+     const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
+
+     useEffect(() => {
+          if (!(user || loading)) {
+               router.push('/');
+          }
+     }, [user, loading]);
 
      if (!user) {
           return (
@@ -34,6 +60,7 @@ const DashboardLayout = ({ children }) => {
                </Grid>
           );
      }
+
      return (
           <>
                <Box>
@@ -43,31 +70,40 @@ const DashboardLayout = ({ children }) => {
                          templateColumns="repeat(10, 1fr)"
                     >
                          <GridItem
-                              colSpan={{ base: 10, md: 1, lg: 1 }}
-                              rowSpan={{ base: 1, md: 3, lg: 3 }}
+                              colSpan={isTabletOrMobile ? 10 : 1}
+                              rowSpan={isTabletOrMobile ? 1 : 3}
+                              width={{ base: '100%' }}
                          >
-                              <StickyBox
-                                   style={{
-                                        base: '5rem',
-                                        md: '100vh',
-                                        lg: '100vh'
-                                   }}
-                              >
-                                   <Sidebar />
-                              </StickyBox>
+                              {isTabletOrMobile ? (
+                                   <SidebarMobile />
+                              ) : (
+                                   <StickyBox
+                                        style={{ height: '100vh' }}
+                                        display={{
+                                             base: 'none',
+                                             md: 'none',
+                                             lg: 'block'
+                                        }}
+                                   >
+                                        <Sidebar />
+                                   </StickyBox>
+                              )}
                          </GridItem>
                          <GridItem
-                              colSpan={{ base: 10, md: 9, lg: 9 }}
-                              rowSpan={1}
+                              colSpan={isTabletOrMobile ? 10 : 9}
+                              rowSpan={isTabletOrMobile ? 1 : 1}
                               bg={bg}
+                              width={{ base: '100%' }}
                          >
-                              <Navbar
-                                   user={user}
-                                   signout={signout}
-                                   loading={loading}
-                              />
+                              <Navbar isTabletOrMobile={isTabletOrMobile} />
                          </GridItem>
-                         <GridItem colSpan={9} rowSpan={2} bg={bg} px={8}>
+                         <GridItem
+                              colSpan={isTabletOrMobile ? 10 : 9}
+                              rowSpan={isTabletOrMobile ? 1 : 2}
+                              minH="100vh"
+                              bg={bg}
+                              px={8}
+                         >
                               {children ? children : <Home />}
                          </GridItem>
                     </Grid>

@@ -24,13 +24,16 @@ import {
      AlertDialogContent,
      AlertDialogOverlay,
      Text,
-     useToast
+     useToast,
+     Flex
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import useSWR from 'swr';
 import EditOfferings from './EditOfferings';
+import { useMediaQuery } from 'react-responsive';
 
 const Offers = ({ offerType }) => {
+     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
      const { data, error } = useSWR(`/api/offerings/${offerType}`, fetcher, {
           refreshInterval: 500
      });
@@ -120,172 +123,270 @@ const Offers = ({ offerType }) => {
      };
      return (
           <>
-               <Box>
-                    <Table variant="simple">
-                         <Thead>
-                              <Tr>
-                                   <Th>Name</Th>
-                                   <Th>Description</Th>
-                                   <Th>Days</Th>
-                                   <Th>Price</Th>
-                                   <Th>Is Active</Th>
-                                   <Th>Is Trial</Th>
-                                   <Th>Action</Th>
-                              </Tr>
-                         </Thead>
-                         <Tbody>
-                              {data?.offers?.map(
-                                   ({
-                                        name,
-                                        price,
-                                        days,
-                                        isActive,
-                                        description,
-                                        isTrial,
-                                        id
-                                   }) => {
-                                        return (
-                                             <Tr key={id}>
-                                                  <Td>{name}</Td>
-                                                  <Td>{description}</Td>
-                                                  <Td>{days}</Td>
-                                                  <Td>{price}</Td>
-                                                  <Td>
-                                                       <Switch
-                                                            colorScheme={
+               {isTabletOrMobile ? (
+                    <Box>
+                         {data?.offers?.map(
+                              ({
+                                   name,
+                                   price,
+                                   days,
+                                   isActive,
+                                   description,
+                                   isTrial,
+                                   id
+                              }) => {
+                                   return (
+                                        <Box
+                                             padding={3}
+                                             index={id}
+                                             mb={5}
+                                             borderBottom="1px solid #ddd"
+                                        >
+                                             <Flex
+                                                  alignItems="center"
+                                                  justifyContent="space-between"
+                                                  mb={2}
+                                             >
+                                                  <Text>Name:</Text>
+                                                  <Text>{name}</Text>
+                                             </Flex>
+                                             <Flex
+                                                  alignItems="center"
+                                                  justifyContent="space-between"
+                                                  flexWrap="wrap"
+                                                  mb={2}
+                                             >
+                                                  <Text>Description:</Text>
+                                                  <Text>{description}</Text>
+                                             </Flex>
+                                             <Flex
+                                                  alignItems="center"
+                                                  justifyContent="space-between"
+                                                  mb={2}
+                                             >
+                                                  <Text>Price:</Text>
+                                                  <Text>{price}</Text>
+                                             </Flex>
+                                             <Flex
+                                                  alignItems="center"
+                                                  justifyContent="space-between"
+                                                  mb={2}
+                                             >
+                                                  <Text>Days:</Text>
+                                                  <Text>{days}</Text>
+                                             </Flex>
+                                             <Flex
+                                                  alignItems="center"
+                                                  justifyContent="space-between"
+                                                  mb={2}
+                                             >
+                                                  <Text>is Active</Text>
+                                                  <Switch
+                                                       colorScheme={
+                                                            isActive
+                                                                 ? 'teal'
+                                                                 : 'red'
+                                                       }
+                                                       defaultChecked={isActive}
+                                                       isDisabled={isLive}
+                                                       onChange={() =>
+                                                            updateActiveState(
+                                                                 id,
                                                                  isActive
-                                                                      ? 'teal'
-                                                                      : 'red'
-                                                            }
-                                                            defaultChecked={
-                                                                 isActive
-                                                            }
-                                                            isDisabled={isLive}
-                                                            onChange={() =>
-                                                                 updateActiveState(
-                                                                      id,
+                                                            )
+                                                       }
+                                                  />
+                                             </Flex>
+                                             <Flex
+                                                  alignItems="center"
+                                                  justifyContent="space-between"
+                                                  mb={2}
+                                             >
+                                                  <Text>Is Trial</Text>
+                                                  <Badge
+                                                       colorScheme={
+                                                            isTrial
+                                                                 ? 'teal'
+                                                                 : 'yellow'
+                                                       }
+                                                  >
+                                                       {isTrial ? 'Yes' : 'No'}
+                                                  </Badge>
+                                             </Flex>
+                                             <ButtonGroup size="sm">
+                                                  <EditOfferings
+                                                       type={offerType}
+                                                       ogName={name}
+                                                       ogDescription={
+                                                            description
+                                                       }
+                                                       ogDays={days}
+                                                       ogPrice={price}
+                                                       ogIsActive={isActive}
+                                                       ogIsTrial={isTrial}
+                                                       id={id}
+                                                  />
+                                                  <Button
+                                                       colorScheme="red"
+                                                       onClick={() =>
+                                                            setIsOpen(true)
+                                                       }
+                                                  >
+                                                       Delete
+                                                  </Button>
+                                             </ButtonGroup>
+                                        </Box>
+                                   );
+                              }
+                         )}
+                    </Box>
+               ) : (
+                    <Box>
+                         <Table variant="simple">
+                              <Thead>
+                                   <Tr>
+                                        <Th>Name</Th>
+                                        <Th>Description</Th>
+                                        <Th>Days</Th>
+                                        <Th>Price</Th>
+                                        <Th>Is Active</Th>
+                                        <Th>Is Trial</Th>
+                                        <Th>Action</Th>
+                                   </Tr>
+                              </Thead>
+                              <Tbody>
+                                   {data?.offers?.map(
+                                        ({
+                                             name,
+                                             price,
+                                             days,
+                                             isActive,
+                                             description,
+                                             isTrial,
+                                             id
+                                        }) => {
+                                             return (
+                                                  <Tr key={id}>
+                                                       <Td>{name}</Td>
+                                                       <Td>{description}</Td>
+                                                       <Td>{days}</Td>
+                                                       <Td>{price}</Td>
+                                                       <Td>
+                                                            <Switch
+                                                                 colorScheme={
                                                                       isActive
-                                                                 )
-                                                            }
-                                                       />
-                                                  </Td>
-                                                  <Td>
-                                                       <Badge
-                                                            colorScheme={
-                                                                 isTrial
-                                                                      ? 'teal'
-                                                                      : 'yellow'
-                                                            }
-                                                       >
-                                                            {isTrial
-                                                                 ? 'Yes'
-                                                                 : 'No'}
-                                                       </Badge>
-                                                  </Td>
-                                                  <Td>
-                                                       <ButtonGroup size="sm">
-                                                            <EditOfferings
-                                                                 type={
-                                                                      offerType
+                                                                           ? 'teal'
+                                                                           : 'red'
                                                                  }
-                                                                 ogName={name}
-                                                                 ogDescription={
-                                                                      description
-                                                                 }
-                                                                 ogDays={days}
-                                                                 ogPrice={price}
-                                                                 ogIsActive={
+                                                                 defaultChecked={
                                                                       isActive
                                                                  }
-                                                                 ogIsTrial={
-                                                                      isTrial
+                                                                 isDisabled={
+                                                                      isLive
                                                                  }
-                                                                 id={id}
-                                                            />
-                                                            <Button
-                                                                 colorScheme="red"
-                                                                 onClick={() =>
-                                                                      setIsOpen(
-                                                                           true
+                                                                 onChange={() =>
+                                                                      updateActiveState(
+                                                                           id,
+                                                                           isActive
                                                                       )
                                                                  }
-                                                            >
-                                                                 Delete
-                                                            </Button>
-                                                            <AlertDialog
-                                                                 isOpen={isOpen}
-                                                                 leastDestructiveRef={
-                                                                      cancelRef
-                                                                 }
-                                                                 onClose={
-                                                                      onClose
+                                                            />
+                                                       </Td>
+                                                       <Td>
+                                                            <Badge
+                                                                 colorScheme={
+                                                                      isTrial
+                                                                           ? 'teal'
+                                                                           : 'yellow'
                                                                  }
                                                             >
-                                                                 <AlertDialogOverlay>
-                                                                      <AlertDialogContent>
-                                                                           <AlertDialogHeader
-                                                                                fontSize="lg"
-                                                                                fontWeight="bold"
-                                                                           >
-                                                                                Delete
-                                                                                Offer
-                                                                           </AlertDialogHeader>
+                                                                 {isTrial
+                                                                      ? 'Yes'
+                                                                      : 'No'}
+                                                            </Badge>
+                                                       </Td>
+                                                       <Td>
+                                                            <ButtonGroup size="sm">
+                                                                 <EditOfferings
+                                                                      type={
+                                                                           offerType
+                                                                      }
+                                                                      ogName={
+                                                                           name
+                                                                      }
+                                                                      ogDescription={
+                                                                           description
+                                                                      }
+                                                                      ogDays={
+                                                                           days
+                                                                      }
+                                                                      ogPrice={
+                                                                           price
+                                                                      }
+                                                                      ogIsActive={
+                                                                           isActive
+                                                                      }
+                                                                      ogIsTrial={
+                                                                           isTrial
+                                                                      }
+                                                                      id={id}
+                                                                 />
+                                                                 <Button
+                                                                      colorScheme="red"
+                                                                      onClick={() =>
+                                                                           setIsOpen(
+                                                                                true
+                                                                           )
+                                                                      }
+                                                                 >
+                                                                      Delete
+                                                                 </Button>
+                                                            </ButtonGroup>
+                                                       </Td>
+                                                  </Tr>
+                                             );
+                                        }
+                                   )}
+                              </Tbody>
+                         </Table>
+                    </Box>
+               )}
+               <AlertDialog
+                    isOpen={isOpen}
+                    leastDestructiveRef={cancelRef}
+                    onClose={onClose}
+               >
+                    <AlertDialogOverlay>
+                         <AlertDialogContent>
+                              <AlertDialogHeader
+                                   fontSize="lg"
+                                   fontWeight="bold"
+                              >
+                                   Delete Offer
+                              </AlertDialogHeader>
 
-                                                                           <AlertDialogBody>
-                                                                                Are
-                                                                                you
-                                                                                sure?
-                                                                                You
-                                                                                can't
-                                                                                undo
-                                                                                this
-                                                                                action
-                                                                                afterwards.
-                                                                           </AlertDialogBody>
+                              <AlertDialogBody>
+                                   Are you sure? You can't undo this action
+                                   afterwards.
+                              </AlertDialogBody>
 
-                                                                           <AlertDialogFooter>
-                                                                                <Button
-                                                                                     ref={
-                                                                                          cancelRef
-                                                                                     }
-                                                                                     onClick={
-                                                                                          onClose
-                                                                                     }
-                                                                                >
-                                                                                     Cancel
-                                                                                </Button>
-                                                                                <Button
-                                                                                     colorScheme="red"
-                                                                                     onClick={
-                                                                                          onClose
-                                                                                     }
-                                                                                     isLoading={
-                                                                                          loading
-                                                                                     }
-                                                                                     ml={
-                                                                                          3
-                                                                                     }
-                                                                                     onClick={() =>
-                                                                                          deleteOffer(
-                                                                                               id
-                                                                                          )
-                                                                                     }
-                                                                                >
-                                                                                     Delete
-                                                                                </Button>
-                                                                           </AlertDialogFooter>
-                                                                      </AlertDialogContent>
-                                                                 </AlertDialogOverlay>
-                                                            </AlertDialog>
-                                                       </ButtonGroup>
-                                                  </Td>
-                                             </Tr>
-                                        );
-                                   }
-                              )}
-                         </Tbody>
-                    </Table>
-               </Box>
+                              <AlertDialogFooter>
+                                   <Button ref={cancelRef} onClick={onClose}>
+                                        Cancel
+                                   </Button>
+                                   <Button
+                                        colorScheme="red"
+                                        onClick={onClose}
+                                        isLoading={loading}
+                                        ml={3}
+                                        onClick={() => deleteOffer(id)}
+                                   >
+                                        Delete
+                                   </Button>
+                              </AlertDialogFooter>
+                         </AlertDialogContent>
+                    </AlertDialogOverlay>
+               </AlertDialog>
           </>
      );
 };

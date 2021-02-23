@@ -16,7 +16,9 @@ import {
      Center,
      Text,
      Spinner,
-     useColorModeValue
+     useColorModeValue,
+     Flex,
+     Grid
 } from '@chakra-ui/react';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
@@ -177,7 +179,18 @@ const ImageGrid = ({ imageType, isMobile }) => {
 
      return (
           <Box>
-               <HStack my={5} spacing="24px" width="100%">
+               <Grid
+                    my={5}
+                    gridGap={5}
+                    width="100%"
+                    flexWrap="wrap"
+                    templateColumns={{
+                         sm: 'repeat(auto-fit, minmax(200px,1fr))',
+                         base: 'repeat(auto-fit, minmax(250px,1fr))',
+                         md: 'repeat(auto-fit, minmax(250px,1fr))',
+                         lg: 'repeat(auto-fit, minmax(250px,1fr))'
+                    }}
+               >
                     {data.images.length > 0 ? (
                          data.images.map((image) => {
                               return (
@@ -190,7 +203,7 @@ const ImageGrid = ({ imageType, isMobile }) => {
                                         borderColor={borderColor}
                                         rounded="lg"
                                         overflow="hidden"
-                                        maxW="sm"
+                                        maxW="100%"
                                    >
                                         <Image
                                              src={image.imageUrl}
@@ -296,7 +309,7 @@ const ImageGrid = ({ imageType, isMobile }) => {
                               <Text>No Data</Text>
                          </>
                     )}
-               </HStack>
+               </Grid>
 
                <AlertDialog
                     isOpen={isOpen}

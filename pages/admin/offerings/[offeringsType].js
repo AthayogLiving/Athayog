@@ -14,7 +14,14 @@ const offeringsType = () => {
      return (
           <>
                <OfferringsHeader siteLink={offeringsType} />
-               <Box bg={bg} shadow="base" rounded="lg" padding={5} mt={3}>
+               <Box
+                    bg={bg}
+                    shadow="base"
+                    rounded="lg"
+                    padding={5}
+                    mt={3}
+                    mb={3}
+               >
                     <Offers offerType={offeringsType} />
                     <AddOfferings type={offeringsType} />
                </Box>

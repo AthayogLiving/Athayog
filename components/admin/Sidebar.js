@@ -161,45 +161,6 @@ function Sidebar() {
                          </Button>
                     </Link>
                </Stack>
-               <Text
-                    color={color}
-                    fontWeight="bold"
-                    fontSize="sm"
-                    pl={2}
-                    mb={2}
-                    ml={2}
-               >
-                    Payment
-               </Text>
-               <Stack
-                    direction="column"
-                    width="100%"
-                    spacing={2}
-                    align="flex-start"
-                    justifyContent="flex-start"
-                    fontWeight="500"
-                    mb={10}
-               >
-                    <Link href="/admin/payment" width="100%">
-                         <Button
-                              isActive={
-                                   router.pathname == '/admin/payment'
-                                        ? true
-                                        : ''
-                              }
-                              d="flex"
-                              colorScheme="teal"
-                              variant="ghost"
-                              justifyContent="flex-start"
-                              width="100%"
-                              fontSize="sm"
-                              rounded="lg"
-                              leftIcon={<FiCalendar />}
-                         >
-                              Payment
-                         </Button>
-                    </Link>
-               </Stack>
 
                <Text
                     color={color}
