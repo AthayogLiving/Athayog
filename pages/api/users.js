@@ -12,7 +12,11 @@ export default async (req, res) => {
                });
 
           const users = [];
-          const snapshot = await db.collection('users').get();
+          const snapshot = await db
+               .collection('users')
+               .orderBy('creationTime', 'desc')
+               .limit(20)
+               .get();
 
           snapshot.forEach((doc) => {
                users.push({ id: doc.id, ...doc.data() });

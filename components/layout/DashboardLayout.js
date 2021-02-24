@@ -46,7 +46,7 @@ const DashboardLayout = ({ children }) => {
      if (!user) {
           return (
                <Grid height="500px" placeItems="center">
-                    <Spinner />;
+                    <Spinner />
                </Grid>
           );
      }
@@ -56,7 +56,7 @@ const DashboardLayout = ({ children }) => {
           router.push('/');
           return (
                <Grid height="500px" placeItems="center">
-                    <Spinner />;
+                    <Spinner />
                </Grid>
           );
      }

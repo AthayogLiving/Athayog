@@ -111,7 +111,7 @@ const UsersTable = ({ users, latestDoc, setDocs }) => {
      const { pageIndex } = state;
 
      const loadMoreDoc = () => {
-          setDocs(forms[forms.length - 1]);
+          setDocs(users[users.length - 1]);
      };
 
      const bg = useColorModeValue('white', 'gray.800');
