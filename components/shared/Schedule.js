@@ -59,23 +59,19 @@ const Schedule = ({ schedule }) => {
                     >
                          Schedule
                     </Heading>
-                    <Box
-                         display={{ base: 'block', md: 'block', lg: 'none' }}
-                         mt={{ base: '5', md: '10' }}
-                    >
-                         {' '}
-                         <ScheduleMobile schedule={data.schedule} />
-                    </Box>
 
                     <Box
                          overflowX="auto"
                          width="100%"
-                         display={{ base: 'none', md: 'none', lg: 'block' }}
                          boxShadow="base"
                          rounded="lg"
                          mt={10}
                     >
-                         <Table variant="simple" size="md">
+                         <Table
+                              variant="simple"
+                              size="md"
+                              className="scheduleTable"
+                         >
                               <Thead>
                                    <Tr>
                                         <Th bg="secondaryGreen">Time</Th>
