@@ -74,6 +74,10 @@ const Account = () => {
           );
      }
 
+     if (data.purchases) {
+          console.log(data.purchases);
+     }
+
      return (
           <>
                <Head>
@@ -115,7 +119,7 @@ const Account = () => {
                               <Text textColor="gray.500"> {user?.email}</Text>
                          </Stack>
 
-                         {data?.purchases !== undefined ? (
+                         {data.purchases.length !== 0 ? (
                               <Flex
                                    direction="column"
                                    justifyContent="center"
@@ -124,7 +128,7 @@ const Account = () => {
                                    <Heading fontSize="2xl">
                                         Courses Purchased
                                    </Heading>
-                                   {data?.purchases?.map((data) => {
+                                   {data?.purchases.map((data) => {
                                         return (
                                              <Box
                                                   bg="white"

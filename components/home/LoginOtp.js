@@ -24,6 +24,7 @@ import { AnimatePresence } from 'framer-motion';
 import { MotionStack } from '../shared/MotionElements';
 import { CountryCode } from './ContentData';
 import { RiLoader2Line } from 'react-icons/ri';
+import { checkUserExistByPhone } from '@/lib/db/admin-users';
 
 const LoginOtp = () => {
      const { handleSubmit, register, errors, reset } = useForm();
@@ -47,9 +48,28 @@ const LoginOtp = () => {
           );
      };
 
+     const checkUserExist = async ({ phone, countryCode }) => {
+          const response = await checkUserExistByPhone(phone);
+          if (response.length === 0) {
+               toast({
+                    title: `Number doesn't exist`,
+                    description: `Phone number doesn't exist please create account first`,
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true
+               });
+               setUseOtp(false);
+               setLoading(false);
+               return;
+          } else {
+               onPhoneSignInSubmit({ phone, countryCode });
+          }
+     };
+
      const onPhoneSignInSubmit = ({ phone, countryCode }) => {
           // const phoneNumber = getPhoneNumberFromUserInput();
           const userPhone = countryCode + phone;
+
           initiateRecaptha();
 
           const appVerifier = window.recaptchaVerifier;
@@ -59,6 +79,7 @@ const LoginOtp = () => {
                .then((confirmationResult) => {
                     // SMS sent. Prompt user to type the code from the message, then sign the
                     // user in with confirmationResult.confirm(code).
+
                     window.confirmationResult = confirmationResult;
                     setUseOtp(true);
                     // setLoading(false);
@@ -127,7 +148,7 @@ const LoginOtp = () => {
                               exit={{ y: -1000, opacity: 1 }}
                               as="form"
                               onSubmit={handleSubmit((data) =>
-                                   onPhoneSignInSubmit(data)
+                                   checkUserExist(data)
                               )}
                          >
                               <FormControl isRequired>
