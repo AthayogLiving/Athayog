@@ -1,7 +1,7 @@
 import Cors from 'cors';
 import initMiddleware from '@/lib/cors-middleware';
 import { registerForm } from '@/lib/db/forms';
-import { db } from '@/lib/firebase-admin';
+import { db, auth } from '@/lib/firebase-admin';
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -17,21 +17,30 @@ export default async function handler(req, res) {
      // Run cors
      await cors(req, res);
      const latestDoc = req.query.latestUsers;
-     console.log('sd', latestDoc);
+     const token = req.headers.token;
 
-     if (req.method === 'GET') {
-          const snapshot = await db
-               .collection('users')
-               .orderBy('creationTime', 'desc')
-               .startAfter(latestDoc)
-               .limit(40)
-               .get();
-          const users = [];
+     if (token) {
+          await auth
+               .verifyIdToken(token)
+               .then((decodedToken) => {})
+               .catch((error) => {
+                    return res.status(200).json(error);
+               });
 
-          snapshot.forEach((doc) => {
-               users.push({ id: doc.id, ...doc.data() });
-          });
+          if (req.method === 'GET') {
+               const snapshot = await db
+                    .collection('users')
+                    .orderBy('creationTime', 'desc')
+                    .startAfter(latestDoc)
+                    .limit(40)
+                    .get();
+               const users = [];
 
-          res.status(200).json({ users });
+               snapshot.forEach((doc) => {
+                    users.push({ id: doc.id, ...doc.data() });
+               });
+
+               res.status(200).json({ users });
+          }
      }
 }
