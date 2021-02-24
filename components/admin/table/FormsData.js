@@ -30,7 +30,8 @@ import { RiLoader3Fill } from 'react-icons/ri';
 import firebase from '@/lib/firebase';
 import { FirebaseToDate } from '@/components/helper/FirebaseToDate';
 import styled from 'styled-components';
-import { isMobile } from 'react-device-detect';
+
+import { useMediaQuery } from 'react-responsive';
 const firestore = firebase.firestore();
 
 export const Conditions = ({ values }) => {
@@ -62,6 +63,9 @@ export const DateCreated = ({ values }) => {
 const FormsData = ({ forms, latestDoc, setDocs }) => {
      const data = useMemo(() => forms, []);
 
+     const isTabletOrMobile = useMediaQuery({
+          query: '(max-width: 1224px)'
+     });
      const columns = useMemo(
           () => [
                {
@@ -155,7 +159,7 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
                th,
                td {
                     margin: 0;
-                    padding: 0.5rem;
+                    padding: 1rem;
                     border-bottom: 1px solid #ddd;
                     border-right: 1px solid #ddd;
                     /* The secret sauce */
@@ -295,13 +299,16 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
                     mb={5}
                     alignItems="center"
                     boxShadow="base"
+                    flexWrap="wrap"
                     justifyContent="space-between"
+                    className="pagination"
                >
                     <ButtonGroup size="sm" colorScheme="blue">
                          <Button
                               onClick={() => gotoPage(0)}
                               disabled={!canPreviousPage}
                               leftIcon={<ImBackward2 />}
+                              m={1}
                          >
                               First
                          </Button>
@@ -309,6 +316,7 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
                               onClick={() => previousPage()}
                               disabled={!canPreviousPage}
                               leftIcon={<IoMdArrowRoundBack />}
+                              m={1}
                          >
                               Previous
                          </Button>
@@ -316,6 +324,7 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
                               onClick={() => nextPage()}
                               disabled={!canNextPage}
                               leftIcon={<IoMdArrowRoundForward />}
+                              m={1}
                          >
                               Next
                          </Button>
@@ -323,6 +332,7 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
                               onClick={() => gotoPage(pageOptions.length - 1)}
                               disabled={!canNextPage}
                               leftIcon={<ImForward2 />}
+                              m={1}
                          >
                               Last
                          </Button>
@@ -330,6 +340,7 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
                               onClick={() => loadMoreDoc()}
                               disabled={canNextPage}
                               leftIcon={<RiLoader3Fill />}
+                              m={1}
                          >
                               Load More
                          </Button>
@@ -341,6 +352,7 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
                          size="sm"
                          rounded="md"
                          onChange={(e) => setPageSize(Number(e.target.value))}
+                         m={1}
                     >
                          {[10, 25, 50].map((pageSize, index) => (
                               <option
@@ -353,7 +365,7 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
                          ))}
                     </Select>
 
-                    <Text>
+                    <Text m={1}>
                          Page {pageIndex + 1} of {pageOptions.length}
                     </Text>
                </Flex>

@@ -14,7 +14,9 @@ import {
      ButtonGroup,
      Text,
      Flex,
-     Select
+     Select,
+     Grid,
+     useColorMode
 } from '@chakra-ui/react';
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
 import { useTable, useSortBy, useFilters, usePagination } from 'react-table';
@@ -27,6 +29,8 @@ import { IoMdArrowRoundBack, IoMdArrowRoundForward } from 'react-icons/io';
 import { ImBackward2, ImForward2 } from 'react-icons/im';
 import { RiLoader3Fill } from 'react-icons/ri';
 import firebase from '@/lib/firebase';
+import { useMediaQuery } from 'react-responsive';
+import styled from 'styled-components';
 import { FirebaseToDate } from '@/components/helper/FirebaseToDate';
 const firestore = firebase.firestore();
 
@@ -36,7 +40,56 @@ export const DateCreated = ({ values }) => {
 };
 
 const EnquiryData = ({ forms, latestDoc, setDocs }) => {
+     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
      const data = useMemo(() => forms, []);
+     const bg = useColorModeValue('white', 'gray.800');
+     const color = useColorModeValue('gray.200', 'gray.700');
+
+     const Styles = styled.div`
+          /* This is required to make the table full-width */
+          display: block;
+          max-width: 100%;
+          /* This will make the table scrollable when it gets too small */
+          .tableWrap {
+               display: block;
+               max-width: 100%;
+               overflow-x: scroll;
+               overflow-y: hidden;
+               border-bottom: 1px solid #ddd;
+          }
+          table {
+               /* Make sure the inner table is always as wide as needed */
+               width: 100%;
+               border-spacing: 0;
+               tr {
+                    :last-child {
+                         td {
+                              border-bottom: 0;
+                         }
+                    }
+               }
+               th,
+               td {
+                    margin: 0;
+                    padding: 1rem;
+                    border-bottom: 1px solid #ddd;
+                    border-right: 1px solid #ddd;
+                    /* The secret sauce */
+                    /* Each cell should grow equally */
+                    width: 1%;
+                    /* But "collapsed" cells should be as small as possible */
+                    &.collapse {
+                         width: 0.0000000001%;
+                    }
+                    :last-child {
+                         border-right: 0;
+                    }
+               }
+          }
+          .pagination {
+               padding: 0.5rem;
+          }
+     `;
 
      const columns = useMemo(
           () => [
@@ -97,72 +150,80 @@ const EnquiryData = ({ forms, latestDoc, setDocs }) => {
           setDocs(forms[forms.length - 1]);
      };
 
-     const bg = useColorModeValue('white', 'gray.800');
-
+     // if (isTabletOrMobile) {
+     //      return (
+     //           <Grid placeItems="center" height="350px">
+     //                <Text>Please use a desktop to view data :)</Text>
+     //           </Grid>
+     //      );
+     // }
      return (
-          <>
+          <Styles>
                {/* <Box>Showing Date Between {forms[0].createdAt}</Box> */}
-
-               <Table
-                    {...getTableProps()}
-                    bg={bg}
-                    shadow="base"
-                    rounded="lg"
-                    padding={5}
-                    mt={3}
-                    colorScheme="green"
-               >
-                    <Thead>
-                         {headerGroups.map((headerGroup) => (
-                              <Tr {...headerGroup.getHeaderGroupProps()}>
-                                   {headerGroup.headers.map((column) => (
-                                        <>
-                                             <Th {...column.getHeaderProps()}>
-                                                  {column.render('Header')}
-                                                  <chakra.span pl="4">
-                                                       {column.isSorted ? (
-                                                            column.isSortedDesc ? (
-                                                                 <TriangleDownIcon aria-label="sorted descending" />
+               <Box className="tableWrap">
+                    <Table
+                         {...getTableProps()}
+                         bg={bg}
+                         shadow="base"
+                         rounded="lg"
+                         padding={5}
+                         mt={3}
+                         colorScheme="green"
+                    >
+                         <Thead>
+                              {headerGroups.map((headerGroup) => (
+                                   <Tr {...headerGroup.getHeaderGroupProps()}>
+                                        {headerGroup.headers.map((column) => (
+                                             <>
+                                                  <Th
+                                                       {...column.getHeaderProps()}
+                                                  >
+                                                       {column.render('Header')}
+                                                       <chakra.span pl="4">
+                                                            {column.isSorted ? (
+                                                                 column.isSortedDesc ? (
+                                                                      <TriangleDownIcon aria-label="sorted descending" />
+                                                                 ) : (
+                                                                      <TriangleUpIcon aria-label="sorted ascending" />
+                                                                 )
+                                                            ) : null}
+                                                       </chakra.span>
+                                                       <div>
+                                                            {column.canFilter ? (
+                                                                 column.render(
+                                                                      'Filter'
+                                                                 )
                                                             ) : (
-                                                                 <TriangleUpIcon aria-label="sorted ascending" />
-                                                            )
-                                                       ) : null}
-                                                  </chakra.span>
-                                                  <div>
-                                                       {column.canFilter ? (
-                                                            column.render(
-                                                                 'Filter'
-                                                            )
-                                                       ) : (
-                                                            <Box mt="1">
-                                                                 <Input visibility="hidden" />
-                                                            </Box>
-                                                       )}
-                                                  </div>
-                                             </Th>
-                                        </>
-                                   ))}
-                              </Tr>
-                         ))}
-                    </Thead>
-                    <Tbody {...getTableBodyProps()}>
-                         {page.map((row) => {
-                              prepareRow(row);
-                              return (
-                                   <Tr {...row.getRowProps()}>
-                                        {row.cells.map((cell) => (
-                                             <Td
-                                                  {...cell.getCellProps()}
-                                                  isNumeric={cell.column}
-                                             >
-                                                  {cell.render('Cell')}
-                                             </Td>
+                                                                 <Box mt="1">
+                                                                      <Input visibility="hidden" />
+                                                                 </Box>
+                                                            )}
+                                                       </div>
+                                                  </Th>
+                                             </>
                                         ))}
                                    </Tr>
-                              );
-                         })}
-                    </Tbody>
-               </Table>
+                              ))}
+                         </Thead>
+                         <Tbody {...getTableBodyProps()}>
+                              {page.map((row) => {
+                                   prepareRow(row);
+                                   return (
+                                        <Tr {...row.getRowProps()}>
+                                             {row.cells.map((cell) => (
+                                                  <Td
+                                                       {...cell.getCellProps()}
+                                                       isNumeric={cell.column}
+                                                  >
+                                                       {cell.render('Cell')}
+                                                  </Td>
+                                             ))}
+                                        </Tr>
+                                   );
+                              })}
+                         </Tbody>
+                    </Table>
+               </Box>
                <Flex
                     bg={bg}
                     padding="1rem 1rem"
@@ -172,13 +233,16 @@ const EnquiryData = ({ forms, latestDoc, setDocs }) => {
                     mb={5}
                     alignItems="center"
                     boxShadow="base"
+                    className="pagination"
+                    flexWrap="wrap"
                     justifyContent="space-between"
                >
-                    <ButtonGroup size="sm" colorScheme="blue">
+                    <ButtonGroup size="sm" colorScheme="blue" flexWrap="wrap">
                          <Button
                               onClick={() => gotoPage(0)}
                               disabled={!canPreviousPage}
                               leftIcon={<ImBackward2 />}
+                              margin={2}
                          >
                               First
                          </Button>
@@ -186,6 +250,7 @@ const EnquiryData = ({ forms, latestDoc, setDocs }) => {
                               onClick={() => previousPage()}
                               disabled={!canPreviousPage}
                               leftIcon={<IoMdArrowRoundBack />}
+                              margin={2}
                          >
                               Previous
                          </Button>
@@ -193,6 +258,7 @@ const EnquiryData = ({ forms, latestDoc, setDocs }) => {
                               onClick={() => nextPage()}
                               disabled={!canNextPage}
                               leftIcon={<IoMdArrowRoundForward />}
+                              margin={2}
                          >
                               Next
                          </Button>
@@ -200,6 +266,7 @@ const EnquiryData = ({ forms, latestDoc, setDocs }) => {
                               onClick={() => gotoPage(pageOptions.length - 1)}
                               disabled={!canNextPage}
                               leftIcon={<ImForward2 />}
+                              margin={2}
                          >
                               Last
                          </Button>
@@ -207,6 +274,7 @@ const EnquiryData = ({ forms, latestDoc, setDocs }) => {
                               onClick={() => loadMoreDoc()}
                               disabled={canNextPage}
                               leftIcon={<RiLoader3Fill />}
+                              margin={2}
                          >
                               Load More
                          </Button>
@@ -216,6 +284,7 @@ const EnquiryData = ({ forms, latestDoc, setDocs }) => {
                          value={pageSize}
                          width="xsm"
                          size="sm"
+                         margin={2}
                          rounded="md"
                          onChange={(e) => setPageSize(Number(e.target.value))}
                     >
@@ -226,11 +295,11 @@ const EnquiryData = ({ forms, latestDoc, setDocs }) => {
                          ))}
                     </Select>
 
-                    <Text>
+                    <Text margin={2}>
                          Page {pageIndex + 1} of {pageOptions.length}
                     </Text>
                </Flex>
-          </>
+          </Styles>
      );
 };
 

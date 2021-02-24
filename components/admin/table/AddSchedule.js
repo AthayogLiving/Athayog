@@ -1,15 +1,7 @@
 import {
      Box,
      HStack,
-     Table,
-     Thead,
-     Tbody,
-     Tfoot,
-     Tr,
-     Th,
      Input,
-     Td,
-     TableCaption,
      Button,
      FormErrorMessage,
      FormControl,
@@ -18,19 +10,27 @@ import {
      Select,
      FormLabel,
      Flex,
-     Heading
+     Heading,
+     Grid,
+     Text
 } from '@chakra-ui/react';
 
 import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+
 import { useForm } from 'react-hook-form';
 import { createSchedule } from '@/lib/db/schedule';
+import { useMediaQuery } from 'react-responsive';
 import { mutate } from 'swr';
 
 const AddSchedule = ({ type }) => {
      const [loading, setLoading] = useState(false);
+
      const toast = useToast();
      const { handleSubmit, register, errors, reset } = useForm();
+
+     const isTabletOrMobile = useMediaQuery({
+          query: '(max-width: 1224px)'
+     });
      const entries = [
           'Monday',
           'Tuesday',
@@ -136,6 +136,11 @@ const AddSchedule = ({ type }) => {
           mutate(`api/schedule/${type}Schedule`);
           reset();
      };
+
+     const isCustomerQuery = useMediaQuery({
+          query: '(max-width: 750px)'
+     });
+
      return (
           <Box
                onSubmit={handleSubmit((data) => onCreateSchedule(data))}
@@ -144,10 +149,10 @@ const AddSchedule = ({ type }) => {
                <Heading fontSize="xl" fontWeight="medium">
                     Create Schedule
                </Heading>
-               <Flex justify="flex-start" mt={3}>
+               <Flex justify="flex-start" mt={3} flexWrap="wrap  ">
                     <FormControl>
                          <FormLabel>From Time</FormLabel>
-                         <HStack width="sm">
+                         <HStack width={isCustomerQuery ? '100%' : 'sm'}>
                               <Select
                                    name="fromHours"
                                    ref={register({
@@ -181,7 +186,7 @@ const AddSchedule = ({ type }) => {
                     </FormControl>
                     <FormControl>
                          <FormLabel>To Time</FormLabel>
-                         <HStack width="sm">
+                         <HStack width={isCustomerQuery ? '100%' : 'sm'}>
                               <Select
                                    name="toHours"
                                    ref={register({
@@ -215,7 +220,10 @@ const AddSchedule = ({ type }) => {
                     </FormControl>
                </Flex>
 
-               <HStack mt={3}>
+               <HStack
+                    mt={3}
+                    flexDirection={isCustomerQuery ? 'column' : 'row'}
+               >
                     {entries.map((data) => {
                          return (
                               <FormControl id={data}>

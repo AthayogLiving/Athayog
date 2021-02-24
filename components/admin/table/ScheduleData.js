@@ -20,7 +20,11 @@ import {
      AlertDialogOverlay,
      useToast,
      Flex,
-     Select
+     Select,
+     Grid,
+     Text,
+     useColorModeValue,
+     Box
 } from '@chakra-ui/react';
 import axios from 'axios';
 
@@ -28,6 +32,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 // import styled from 'styled-components';
 import { useTable, usePagination } from 'react-table';
 import { mutate } from 'swr';
+import { useMediaQuery } from 'react-responsive';
+import styled from 'styled-components';
 
 // Create an editable cell renderer
 const EditableCell = ({
@@ -186,7 +192,7 @@ function Schedule({ columns, data, updateMyData, skipPageReset }) {
 
      // Render the UI for your table
      return (
-          <>
+          <Box className="tableWrap">
                <Table {...getTableProps()} size="sm" variant="simple">
                     <Thead>
                          {headerGroups.map((headerGroup) => (
@@ -231,7 +237,7 @@ function Schedule({ columns, data, updateMyData, skipPageReset }) {
                          })}
                     </Tbody>
                </Table>
-          </>
+          </Box>
      );
 }
 
@@ -244,6 +250,54 @@ const ScheduleData = ({ schedule, type }) => {
      const onClose = () => setIsOpen(false);
      const cancelRef = useRef();
      const [skipPageReset, setSkipPageReset] = useState(false);
+
+     const bg = useColorModeValue('white', 'gray.800');
+
+     const Styles = styled.div`
+          /* This is required to make the table full-width */
+          display: block;
+          max-width: 100%;
+          /* This will make the table scrollable when it gets too small */
+          .tableWrap {
+               display: block;
+               max-width: 100%;
+               overflow-x: scroll;
+               overflow-y: hidden;
+               border-bottom: 1px solid ${bg};
+          }
+          table {
+               /* Make sure the inner table is always as wide as needed */
+               width: 100%;
+               border-spacing: 0;
+               tr {
+                    :last-child {
+                         td {
+                              border-bottom: 0;
+                         }
+                    }
+               }
+               th,
+               td {
+                    margin: 0;
+                    padding: 1rem;
+                    border-bottom: 1px solid ${bg};
+                    border-right: 1px solid ${bg};
+                    /* The secret sauce */
+                    /* Each cell should grow equally */
+                    width: 1%;
+                    /* But "collapsed" cells should be as small as possible */
+                    &.collapse {
+                         width: 0.0000000001%;
+                    }
+                    :last-child {
+                         border-right: 0;
+                    }
+               }
+          }
+          .pagination {
+               padding: 0.5rem;
+          }
+     `;
 
      const columns = useMemo(
           () => [
@@ -388,7 +442,7 @@ const ScheduleData = ({ schedule, type }) => {
      };
 
      return (
-          <>
+          <Styles>
                <Schedule
                     columns={columns}
                     data={data}
@@ -449,7 +503,7 @@ const ScheduleData = ({ schedule, type }) => {
                          </AlertDialogContent>
                     </AlertDialogOverlay>
                </AlertDialog>
-          </>
+          </Styles>
      );
 };
 

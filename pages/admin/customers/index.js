@@ -10,7 +10,7 @@ import UsersHeader from '@/components/admin/UsersHeader';
 const users = () => {
      const [latestUsers, setLatestUser] = useState(0);
      const { user } = useAuth();
-     console.log(latestUsers);
+
      const { data, error } =
           latestUsers != 0 && latestUsers != undefined
                ? useSWR(
@@ -22,7 +22,7 @@ const users = () => {
                            refreshInterval: 100
                       }
                  )
-               : useSWR([`/api/users/`, user.token], fetcher);
+               : useSWR(user ? [`/api/users/`, user.token] : null, fetcher);
 
      if (error) {
           return (

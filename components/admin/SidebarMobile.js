@@ -29,7 +29,7 @@ const SidebarMobile = () => {
      const { user, signout, loading } = useAuth();
      const { isOpen, onOpen, onClose } = useDisclosure();
      const btnRef = useRef();
-     const bg = useColorModeValue('white', 'gray.700');
+     const bg = useColorModeValue('gray.100', 'gray.700');
      const color = useColorModeValue('gray.100', 'gray.700');
      Router.events.on('routeChangeStart', () => onClose());
      const router = useRouter();

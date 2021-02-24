@@ -2,9 +2,17 @@ import Dashboard from '../dashboard';
 import fetcher from '@/utils/fetcher';
 import useSWR from 'swr';
 import FormsData from '@/components/admin/table/FormsData';
-import { Box, Flex, Grid, Spinner, useColorModeValue } from '@chakra-ui/react';
+import {
+     Box,
+     Flex,
+     Grid,
+     Spinner,
+     Text,
+     useColorModeValue
+} from '@chakra-ui/react';
 import { useState } from 'react';
 import FormHeader from '@/components/admin/FormHeader';
+import { useMediaQuery } from 'react-responsive';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 
 const offerings = () => {

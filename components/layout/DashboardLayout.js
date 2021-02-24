@@ -30,6 +30,9 @@ const DashboardLayout = ({ children }) => {
      const isBigScreen = useMediaQuery({
           query: '(min-device-width: 1824px)'
      });
+     const isCustomerQuery = useMediaQuery({
+          query: '(max-width: 750px)'
+     });
      const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
      const isTabletOrMobileDevice = useMediaQuery({
           query: '(max-device-width: 1224px)'
@@ -77,14 +80,7 @@ const DashboardLayout = ({ children }) => {
                               {isTabletOrMobile ? (
                                    <SidebarMobile />
                               ) : (
-                                   <StickyBox
-                                        style={{ height: '100vh' }}
-                                        display={{
-                                             base: 'none',
-                                             md: 'none',
-                                             lg: 'block'
-                                        }}
-                                   >
+                                   <StickyBox style={{ height: '100vh' }}>
                                         <Sidebar />
                                    </StickyBox>
                               )}
@@ -103,6 +99,7 @@ const DashboardLayout = ({ children }) => {
                               minH="100vh"
                               bg={bg}
                               px={8}
+                              w="100%"
                               mb={5}
                          >
                               {children ? children : <Home />}
