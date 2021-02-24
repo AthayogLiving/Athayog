@@ -140,6 +140,7 @@ const Offers = ({ offerType }) => {
                                              padding={3}
                                              index={id}
                                              mb={5}
+                                             key={id}
                                              borderBottom="1px solid #ddd"
                                         >
                                              <Flex

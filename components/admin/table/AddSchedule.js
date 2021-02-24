@@ -159,8 +159,10 @@ const AddSchedule = ({ type }) => {
                                         required: 'Please select from hours.'
                                    })}
                               >
-                                   {hours.map((number) => (
-                                        <option value={number}>{number}</option>
+                                   {hours.map((number, index) => (
+                                        <option key={index} value={number}>
+                                             {number}
+                                        </option>
                                    ))}
                               </Select>
                               <Select
@@ -169,8 +171,10 @@ const AddSchedule = ({ type }) => {
                                         required: 'Please select from minutes.'
                                    })}
                               >
-                                   {minutes.map((number) => (
-                                        <option value={number}>{number}</option>
+                                   {minutes.map((number, index) => (
+                                        <option key={index} value={number}>
+                                             {number}
+                                        </option>
                                    ))}
                               </Select>
                               <Select
@@ -193,8 +197,10 @@ const AddSchedule = ({ type }) => {
                                         required: 'Please select a from hour.'
                                    })}
                               >
-                                   {hours.map((number) => (
-                                        <option value={number}>{number}</option>
+                                   {hours.map((number, index) => (
+                                        <option key={index} value={number}>
+                                             {number}
+                                        </option>
                                    ))}
                               </Select>
                               <Select
@@ -203,8 +209,10 @@ const AddSchedule = ({ type }) => {
                                         required: 'Please select from minute.'
                                    })}
                               >
-                                   {minutes.map((number) => (
-                                        <option value={number}>{number}</option>
+                                   {minutes.map((number, index) => (
+                                        <option key={index} value={number}>
+                                             {number}
+                                        </option>
                                    ))}
                               </Select>
                               <Select
@@ -224,9 +232,9 @@ const AddSchedule = ({ type }) => {
                     mt={3}
                     flexDirection={isCustomerQuery ? 'column' : 'row'}
                >
-                    {entries.map((data) => {
+                    {entries.map((data, index) => {
                          return (
-                              <FormControl id={data}>
+                              <FormControl id={data} key={index}>
                                    <FormLabel>{data}</FormLabel>
                                    <Input
                                         type="text"

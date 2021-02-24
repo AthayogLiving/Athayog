@@ -94,8 +94,12 @@ const EditableCell = ({
                     rouned="lg"
                >
                     <option value={initialValue}>{initialValue}</option>
-                    {hours.map((number) => {
-                         return <option value={number}>{number}</option>;
+                    {hours.map((number, index) => {
+                         return (
+                              <option key={index} value={number}>
+                                   {number}
+                              </option>
+                         );
                     })}
                </Select>
           );
@@ -110,8 +114,12 @@ const EditableCell = ({
                     rouned="lg"
                >
                     <option value={initialValue}>{initialValue}</option>
-                    {minutes.map((number) => {
-                         return <option value={number}>{number}</option>;
+                    {minutes.map((number, index) => {
+                         return (
+                              <option key={index} value={number}>
+                                   {number}
+                              </option>
+                         );
                     })}
                </Select>
           );
