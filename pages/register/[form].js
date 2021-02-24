@@ -112,7 +112,7 @@ const Register = () => {
           conditions
      }) => {
           setLoading(true);
-          if (form == 'onsite' || form == 'chikitsa') {
+          if (form == 'onsite' || form == 'chikitsa' || form == 'trial') {
                submitWithoutPayment({
                     name,
                     email,
@@ -485,6 +485,9 @@ const Register = () => {
                                              </option>
                                              <option value="Onsite">
                                                   AthaYog Onsite
+                                             </option>
+                                             <option value="Trial">
+                                                  Free Trial
                                              </option>
                                         </Select>
                                         <FormErrorMessage>

@@ -250,19 +250,22 @@ const Navbar = () => {
                          <Flex
                               display={{ base: 'none', md: 'none', lg: 'flex' }}
                          >
-                              <Button
-                                   bg="aygreen.100"
-                                   color="primaryDarkGray"
-                                   variant="solid"
-                                   size="sm"
-                                   fontSize="md"
-                                   mr={10}
-                                   rounded="md"
-                                   px={8}
-                                   py={4}
-                              >
-                                   Free Trial
-                              </Button>
+                              <Link href="/register/trial">
+                                   <Button
+                                        bg="aygreen.100"
+                                        color="primaryDarkGray"
+                                        variant="solid"
+                                        size="sm"
+                                        fontSize="md"
+                                        mr={10}
+                                        rounded="md"
+                                        px={8}
+                                        py={4}
+                                   >
+                                        Free Trial
+                                   </Button>
+                              </Link>
+
                               {user ? (
                                    <Menu>
                                         <MenuButton size="sm">
