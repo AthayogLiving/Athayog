@@ -19,6 +19,7 @@ export default async function handler(req, res) {
 
      if (req.method === 'POST') {
           const {
+               uid,
                name,
                email,
                phone,
@@ -31,6 +32,7 @@ export default async function handler(req, res) {
                type
           } = req.body;
           await registerForm(
+               uid,
                name,
                email,
                phone,

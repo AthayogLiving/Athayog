@@ -178,6 +178,7 @@ const Register = () => {
 
                     await axios
                          .post(`/api/forms/offerings`, {
+                              uid: user.uid,
                               name,
                               email,
                               phone,
@@ -249,6 +250,7 @@ const Register = () => {
           setLoading(true);
           await axios
                .post(`/api/forms/offerings`, {
+                    uid: user.uid,
                     name,
                     email,
                     phone,

@@ -117,7 +117,6 @@ const index = () => {
                                                   autoFocus
                                                   aria-label="Email Address"
                                                   id="email"
-                                                  match
                                                   name="email"
                                                   ref={register({
                                                        required:
