@@ -13,8 +13,7 @@ body {
 .scheduleTable td:first-child {
      position: -webkit-sticky;
      position: sticky;
-     background: primaryDark;
-     border-right: 1px solid #000;
+     /* border-right: 1px solid #ddd; */
      left: 0;
      z-index: 2;
      min-width: max-content;
@@ -22,8 +21,8 @@ body {
 .scheduleTable th:first-child {
      position: -webkit-sticky;
      position: sticky;
-
      left: 0;
+     background: #addcbc;
      z-index: 2;
      min-width: max-content;
 }

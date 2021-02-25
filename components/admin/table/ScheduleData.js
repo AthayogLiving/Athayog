@@ -271,7 +271,7 @@ const ScheduleData = ({ schedule, type }) => {
                max-width: 100%;
                overflow-x: scroll;
                overflow-y: hidden;
-               border-bottom: 1px solid ${bg};
+               border-bottom: 1px solid #ddd;
           }
           table {
                /* Make sure the inner table is always as wide as needed */
@@ -287,9 +287,9 @@ const ScheduleData = ({ schedule, type }) => {
                th,
                td {
                     margin: 0;
-                    padding: 1rem;
-                    border-bottom: 1px solid ${bg};
-                    border-right: 1px solid ${bg};
+                    padding: 0.5rem;
+                    border-bottom: 1px solid #ddd;
+                    border-right: 1px solid #ddd;
                     /* The secret sauce */
                     /* Each cell should grow equally */
                     width: 1%;
