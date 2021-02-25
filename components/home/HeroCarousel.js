@@ -22,10 +22,6 @@ const HeroCarousel = ({ images, imagesMobile }) => {
           return <Skeleton height="100vh"></Skeleton>;
      }
 
-     if (data.images.length === 0) {
-          return <Skeleton height="100vh"></Skeleton>;
-     }
-
      const params = {
           slidesPerView: 1,
           loop: true,
@@ -72,19 +68,21 @@ const HeroCarousel = ({ images, imagesMobile }) => {
      });
 
      return (
-          <Swiper {...params}>
-               {activeCarousel.map((data) => {
-                    return (
-                         <Box height="100vh" key={data.id}>
-                              <Image
-                                   layout="fill"
-                                   objectFit="cover"
-                                   src={data.imageUrl}
-                              />
-                         </Box>
-                    );
-               })}
-          </Swiper>
+          <Box height="100vh">
+               <Swiper {...params}>
+                    {activeCarousel.map((data) => {
+                         return (
+                              <Box key={data.id} height="100vh">
+                                   <Image
+                                        layout="fill"
+                                        objectFit="cover"
+                                        src={data.imageUrl}
+                                   />
+                              </Box>
+                         );
+                    })}
+               </Swiper>
+          </Box>
      );
 };
 

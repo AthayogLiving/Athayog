@@ -289,12 +289,7 @@ const Navbar = () => {
                     </Flex>
                </Center>
 
-               <Drawer
-                    isOpen={isOpen}
-                    placement="left"
-                    onClose={onClose}
-                    finalFocusRef={btnRef}
-               >
+               <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
                     <DrawerOverlay zIndex="12000">
                          <DrawerContent>
                               <DrawerCloseButton />
