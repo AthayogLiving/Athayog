@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
      Avatar,
      Button,
@@ -10,63 +10,37 @@ import {
      MenuButton,
      MenuItem,
      MenuList,
-     VStack,
-     useDisclosure
+     Drawer,
+     DrawerBody,
+     DrawerFooter,
+     DrawerHeader,
+     DrawerOverlay,
+     DrawerContent,
+     DrawerCloseButton,
+     useDisclosure,
+     VStack
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/lib/auth';
-
-import { AiOutlineUser } from 'react-icons/ai';
-import { MotionBox, MotionButton } from '../shared/MotionElements';
-import { HiMenu, HiOutlineX } from 'react-icons/hi';
-import useScrollBlock from '@/components/helper/scrollBlock';
-import { motion, useCycle } from 'framer-motion';
-import { isMobile } from 'react-device-detect';
+import { MotionButton } from '../shared/MotionElements';
+import { HiMenu } from 'react-icons/hi';
 
 const Navbar = () => {
      const { user, signout, loading } = useAuth();
      const router = useRouter();
-
-     const [blockScroll, allowScroll] = useScrollBlock();
-
-     const [open, onOpen] = useCycle(false, true);
-
-     const onHamburgerOpen = () => {
-          onOpen(!open);
-          !open ? blockScroll() : allowScroll();
-     };
+     const { isOpen, onOpen, onClose } = useDisclosure();
+     const btnRef = React.useRef();
 
      const signOut = (redirect) => {
           signout(redirect);
      };
 
-     const navStyle = {
-          open: {
-               display: 'block',
-               opacity: 1,
-               visibility: 'visible',
-               transition: {
-                    staggerChildren: 0.17,
-                    delayChildren: 0.2
-               }
-          },
-          closed: {
-               display: 'none',
-               opacity: 0,
-               transition: {
-                    staggerChildren: 0.05,
-                    staggerDirection: -1,
-                    when: 'afterChildren'
-               }
-          }
-     };
-
      return (
           <>
                <Center
-                    boxShadow={open ? 'none' : 'md'}
+                    boxShadow="md"
                     bg="primaryWhite"
                     transition="linear"
                     transform="initial"
@@ -82,11 +56,28 @@ const Navbar = () => {
                          justifyContent="space-between"
                          minWidth="80%"
                     >
+                         <Flex
+                              display={{
+                                   base: 'flex',
+                                   md: 'flex',
+                                   lg: 'none'
+                              }}
+                         >
+                              <HiMenu
+                                   fontSize="1.2rem"
+                                   ref={btnRef}
+                                   onClick={onOpen}
+                              />
+                         </Flex>
                          <Flex alignItems="center">
                               <Link href="/">
                                    <Heading
-                                        color={open ? 'white' : 'primaryGreen'}
-                                        fontSize="2xl"
+                                        color="primaryGreen"
+                                        fontSize={{
+                                             base: 'lg',
+                                             md: 'xl',
+                                             lg: '2xl'
+                                        }}
                                         fontWeight="normal"
                                         cursor="pointer"
                                    >
@@ -238,16 +229,6 @@ const Navbar = () => {
                          </Flex>
 
                          <Flex
-                              display={{
-                                   base: 'flex',
-                                   md: 'flex',
-                                   lg: 'none'
-                              }}
-                         >
-                              <HiMenu onClick={() => onHamburgerOpen()} />
-                         </Flex>
-
-                         <Flex
                               display={{ base: 'none', md: 'none', lg: 'flex' }}
                          >
                               <Link href="/register/trial">
@@ -312,281 +293,197 @@ const Navbar = () => {
                     </Flex>
                </Center>
 
-               <MotionBox
-                    height="100vh"
-                    bg="#8AB08D"
-                    width="100vw"
-                    padding="3rem 3rem"
-                    zIndex={10000}
-                    position="fixed"
-                    variants={navStyle}
-                    className="navbarMobile"
-                    display="none"
-                    animate={open ? 'open' : 'closed'}
+               <Drawer
+                    isOpen={isOpen}
+                    placement="left"
+                    onClose={onClose}
+                    finalFocusRef={btnRef}
                >
-                    <Flex justifyContent="right">
-                         <HiOutlineX onClick={() => onHamburgerOpen()} />
-                    </Flex>
+                    <DrawerOverlay zIndex="12000">
+                         <DrawerContent>
+                              <DrawerCloseButton />
+                              <DrawerHeader>Navigation</DrawerHeader>
 
-                    <Flex
-                         justifyContent="space-between"
-                         direction="column"
-                         height="100%"
-                    >
-                         <Flex alignItems="center" direction="column">
-                              <VStack
-                                   variant="ghost"
-                                   spacing="6"
-                                   size="sm"
-                                   w="100%"
-                                   mt={10}
-                                   alignItems="center"
-                                   color="white"
-                              >
-                                   <Link href="/">
-                                        <MotionButton
-                                             fontWeight="normal"
-                                             fontSize="md"
-                                             width="100%"
-                                             variant="ghost"
-                                             color="white"
-                                             colorScheme="aygreen"
-                                             onClick={() => onHamburgerOpen()}
-                                             whileHover={{
-                                                  transition: {
-                                                       duration: 1
+                              <DrawerBody>
+                                   <VStack spacing={5} align="stretch">
+                                        <Link href="/">
+                                             <Button
+                                                  isActive={
+                                                       router.pathname == '/'
+                                                            ? true
+                                                            : ''
                                                   }
-                                             }}
-                                             _active={{
-                                                  color: 'black',
-                                                  bg: 'aygreen.100'
-                                             }}
-                                             whileTap={{ scale: 0.9 }}
-                                             isActive={
-                                                  router.pathname == '/'
-                                                       ? true
-                                                       : ''
-                                             }
-                                        >
-                                             Home
-                                        </MotionButton>
-                                   </Link>
-
-                                   <Link href="/about" as="about">
-                                        <Button
-                                             fontWeight="normal"
-                                             fontSize="md"
-                                             color="white"
-                                             onClick={() => onHamburgerOpen()}
-                                             width="100%"
-                                             variant="ghost"
-                                             _active={{
-                                                  color: 'black',
-                                                  bg: 'aygreen.100'
-                                             }}
-                                             colorScheme="aygreen"
-                                             isActive={
-                                                  router.pathname == '/about'
-                                                       ? true
-                                                       : ''
-                                             }
-                                        >
-                                             About
-                                        </Button>
-                                   </Link>
-                              </VStack>
-
-                              <Menu matchWidth={true} fixed={true}>
-                                   <MenuButton
-                                        as={Button}
-                                        fontWeight="normal"
-                                        width="100%"
-                                        color="white"
-                                        variant="ghost"
-                                        colorScheme="aygreen"
-                                        fontSize="md"
-                                        boxShadow="none"
-                                        iconSpacing={-5}
-                                        _active={{
-                                             color: 'black',
-                                             bg: 'aygreen.100'
-                                        }}
-                                        mt={6}
-                                        rightIcon={<ChevronDownIcon />}
-                                   >
-                                        Offerings
-                                   </MenuButton>
-                                   <MenuList
-                                        bg="#8AB08D"
-                                        borderColor="transparent"
-                                        textAlign="center"
-                                        boxShadow="none"
-                                   >
-                                        <Link href="/offerings/space">
-                                             <MenuItem
-                                                  display="block"
-                                                  textAlign="center"
-                                                  rounded="lg"
-                                                  onClick={() =>
-                                                       onHamburgerOpen()
-                                                  }
+                                                  onClick={onClose}
+                                                  rounded="md"
+                                                  variant="ghost"
+                                                  colorScheme="aygreen"
+                                                  justifyContent="left"
                                              >
-                                                  AthaYog Space
-                                             </MenuItem>
+                                                  Home
+                                             </Button>
                                         </Link>
-
-                                        <Link href="/offerings/shikshana">
-                                             <MenuItem
-                                                  display="block"
-                                                  textAlign="center"
-                                                  onClick={() =>
-                                                       onHamburgerOpen()
+                                        <Link href="/about">
+                                             <Button
+                                                  onClick={onClose}
+                                                  isActive={
+                                                       router.pathname ==
+                                                       '/about'
+                                                            ? true
+                                                            : ''
                                                   }
+                                                  rounded="md"
+                                                  variant="ghost"
+                                                  colorScheme="aygreen"
+                                                  justifyContent="left"
                                              >
-                                                  AthaYog Shikshana Pada
-                                             </MenuItem>
+                                                  About Us
+                                             </Button>
+                                        </Link>
+                                        <Link href="/offerings/space">
+                                             <Button
+                                                  onClick={onClose}
+                                                  isActive={
+                                                       router.pathname ==
+                                                       '/offerings/space'
+                                                            ? true
+                                                            : ''
+                                                  }
+                                                  rounded="md"
+                                                  variant="ghost"
+                                                  colorScheme="aygreen"
+                                                  justifyContent="left"
+                                             >
+                                                  Athayog Space
+                                             </Button>
+                                        </Link>
+                                        <Link href="/offerings/shikshana">
+                                             <Button
+                                                  onClick={onClose}
+                                                  isActive={
+                                                       router.pathname ==
+                                                       '/offerings/shikshana'
+                                                            ? true
+                                                            : ''
+                                                  }
+                                                  rounded="md"
+                                                  variant="ghost"
+                                                  colorScheme="aygreen"
+                                                  justifyContent="left"
+                                             >
+                                                  Athayog Shikshana Pada
+                                             </Button>
                                         </Link>
                                         <Link href="/offerings/online">
-                                             <MenuItem
-                                                  display="block"
-                                                  textAlign="center"
-                                                  onClick={() =>
-                                                       onHamburgerOpen()
+                                             <Button
+                                                  onClick={onClose}
+                                                  isActive={
+                                                       router.pathname ==
+                                                       '/offerings/online'
+                                                            ? true
+                                                            : ''
                                                   }
+                                                  rounded="md"
+                                                  variant="ghost"
+                                                  colorScheme="aygreen"
+                                                  justifyContent="left"
                                              >
-                                                  AthaYog Online
-                                             </MenuItem>
+                                                  Athayog Online
+                                             </Button>
                                         </Link>
                                         <Link href="/offerings/personal">
-                                             <MenuItem
-                                                  display="block"
-                                                  textAlign="center"
-                                                  onClick={() =>
-                                                       onHamburgerOpen()
+                                             <Button
+                                                  onClick={onClose}
+                                                  isActive={
+                                                       router.pathname ==
+                                                       '/offerings/personal'
+                                                            ? true
+                                                            : ''
                                                   }
+                                                  rounded="md"
+                                                  variant="ghost"
+                                                  colorScheme="aygreen"
+                                                  justifyContent="left"
                                              >
-                                                  AthaYog Personal
-                                             </MenuItem>
+                                                  Athayog Personal
+                                             </Button>
                                         </Link>
                                         <Link href="/offerings/workshops">
-                                             <MenuItem
-                                                  display="block"
-                                                  onClick={() =>
-                                                       onHamburgerOpen()
+                                             <Button
+                                                  onClick={onClose}
+                                                  isActive={
+                                                       router.pathname ==
+                                                       '/offerings/workshops'
+                                                            ? true
+                                                            : ''
                                                   }
-                                                  textAlign="center"
+                                                  rounded="md"
+                                                  variant="ghost"
+                                                  colorScheme="aygreen"
+                                                  justifyContent="left"
                                              >
-                                                  AthaYog Workshops
-                                             </MenuItem>
+                                                  Athayog Workshops
+                                             </Button>
                                         </Link>
                                         <Link href="/offerings/chikitsa">
-                                             <MenuItem
-                                                  display="block"
-                                                  textAlign="center"
-                                                  onClick={() =>
-                                                       onHamburgerOpen()
+                                             <Button
+                                                  onClick={onClose}
+                                                  isActive={
+                                                       router.pathname ==
+                                                       '/offerings/chikitsa'
+                                                            ? true
+                                                            : ''
                                                   }
+                                                  rounded="md"
+                                                  variant="ghost"
+                                                  colorScheme="aygreen"
+                                                  justifyContent="left"
                                              >
-                                                  AthaYog Chikitsa
-                                             </MenuItem>
+                                                  Athayog Chikitsa
+                                             </Button>
                                         </Link>
                                         <Link href="/offerings/onsite">
-                                             <MenuItem
-                                                  onClick={() =>
-                                                       onHamburgerOpen()
+                                             <Button
+                                                  onClick={onClose}
+                                                  isActive={
+                                                       router.pathname ==
+                                                       '/offerings/onsite'
+                                                            ? true
+                                                            : ''
                                                   }
-                                                  display="block"
-                                                  textAlign="center"
+                                                  rounded="md"
+                                                  variant="ghost"
+                                                  colorScheme="aygreen"
+                                                  justifyContent="left"
                                              >
-                                                  AthaYog Onsite
-                                             </MenuItem>
+                                                  Athayog Onsite
+                                             </Button>
                                         </Link>
-                                   </MenuList>
-                              </Menu>
+                                   </VStack>
+                              </DrawerBody>
 
-                              <HStack
-                                   variant="ghost"
-                                   spacing="6"
-                                   size="sm"
-                                   ml={2}
-                                   color="primaryBlack"
-                                   mr="1rem"
-                              ></HStack>
-                         </Flex>
-                         <Flex
-                              direction="row"
-                              justifyContent="center"
-                              alignItems="center"
-                         >
-                              {' '}
-                              {user ? (
-                                   <Menu matchWidth={true} fixed={true}>
-                                        <MenuButton
-                                             as={Button}
-                                             fontWeight="normal"
-                                             width="100%"
-                                             color="white"
-                                             variant="ghost"
-                                             colorScheme="aygreen"
-                                             fontSize="md"
-                                             boxShadow="none"
-                                             _active={{
-                                                  bg: 'transparent'
-                                             }}
-                                             style={{
-                                                  paddingLeft: '0.5rem'
-                                             }}
-                                        >
-                                             {user?.name}
-                                        </MenuButton>
-                                        <MenuList
-                                             borderColor="transparent"
-                                             textAlign="center"
-                                             boxShadow="none"
-                                             fontSize="md"
-                                             bg="aygreen.100"
-                                             width="100%"
-                                        >
-                                             <Link href="/account">
-                                                  <MenuItem
-                                                       display="block"
-                                                       textAlign="center"
-                                                  >
-                                                       Account
-                                                  </MenuItem>
-                                             </Link>
-
-                                             <MenuItem
-                                                  display="block"
-                                                  textAlign="center"
-                                                  onClick={() => signOut('/')}
-                                             >
-                                                  Logout
-                                             </MenuItem>
-                                        </MenuList>
-                                   </Menu>
-                              ) : (
+                              <DrawerFooter>
+                                   <Button
+                                        variant="outline"
+                                        mr={3}
+                                        onClick={onClose}
+                                   >
+                                        Cancel
+                                   </Button>
                                    <Link
                                         href="/account/[signup]"
                                         as="/account/signup"
                                    >
                                         <Button
-                                             bg="aygray.100"
-                                             color="primaryDarkGray"
-                                             variant="solid"
-                                             size="sm"
-                                             fontSize="md"
-                                             rounded="md"
-                                             px={8}
-                                             py={4}
+                                             color="aygreen.500"
+                                             onClick={onClose}
                                         >
-                                             Sign In
+                                             Singup
                                         </Button>
                                    </Link>
-                              )}
-                         </Flex>
-                    </Flex>
-               </MotionBox>
+                              </DrawerFooter>
+                         </DrawerContent>
+                    </DrawerOverlay>
+               </Drawer>
           </>
      );
 };
