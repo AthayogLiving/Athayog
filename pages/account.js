@@ -98,7 +98,7 @@ const Account = () => {
                >
                     <Flex
                          justifyContent="space-around"
-                         direction="row"
+                         direction={{ base: 'column', md: 'row', lg: 'row' }}
                          alignItems="center"
                          width="60vw"
                     >
@@ -108,8 +108,22 @@ const Account = () => {
                               alignItems="center"
                               spacing="2"
                          >
-                              <Avatar size="xl" name={user?.name} />
-                              <Heading fontWeight="primaryDark">
+                              <Avatar
+                                   fontSize={{
+                                        base: 'lg',
+                                        md: 'xl',
+                                        lg: 'xl'
+                                   }}
+                                   name={user?.name}
+                              />
+                              <Heading
+                                   fontWeight="primaryDark"
+                                   fontSize={{
+                                        base: 'lg',
+                                        md: '2xl',
+                                        lg: '2xl'
+                                   }}
+                              >
                                    {user?.name}
                               </Heading>
                               <Text textColor="gray.500"> {user?.email}</Text>
@@ -120,8 +134,15 @@ const Account = () => {
                                    direction="column"
                                    justifyContent="center"
                                    alignItems="center"
+                                   mt={{ base: '2rem', md: '0', lg: '0' }}
                               >
-                                   <Heading fontSize="2xl">
+                                   <Heading
+                                        fontSize={{
+                                             base: 'lg',
+                                             md: '2xl',
+                                             lg: '2xl'
+                                        }}
+                                   >
                                         Courses Purchased
                                    </Heading>
                                    {data?.purchases.map((data) => {
@@ -131,6 +152,7 @@ const Account = () => {
                                                   boxShadow="base"
                                                   rounded="lg"
                                                   padding={5}
+                                                  key={data.id}
                                                   mt={3}
                                              >
                                                   <Grid key={data.id}>
@@ -173,8 +195,16 @@ const Account = () => {
                                    direction="column"
                                    justifyContent="center"
                                    alignItems="center"
+                                   mt={{ base: '2rem', md: '0', lg: '0' }}
                               >
-                                   <Heading fontSize="2xl" fontWeight="normal">
+                                   <Heading
+                                        fontSize={{
+                                             base: 'lg',
+                                             md: '2xl',
+                                             lg: '2xl'
+                                        }}
+                                        fontWeight="normal"
+                                   >
                                         No Courses Purchased :(
                                    </Heading>
                                    <chakra.span>

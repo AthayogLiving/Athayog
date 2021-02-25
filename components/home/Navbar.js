@@ -31,9 +31,9 @@ const Navbar = () => {
      const { user, signout, loading } = useAuth();
      const router = useRouter();
      const { isOpen, onOpen, onClose } = useDisclosure();
-     const btnRef = React.useRef();
 
      const signOut = (redirect) => {
+          onClose();
           signout(redirect);
      };
 
@@ -63,11 +63,7 @@ const Navbar = () => {
                                    lg: 'none'
                               }}
                          >
-                              <HiMenu
-                                   fontSize="1.2rem"
-                                   ref={btnRef}
-                                   onClick={onOpen}
-                              />
+                              <HiMenu fontSize="1.2rem" onClick={onOpen} />
                          </Flex>
                          <Flex alignItems="center">
                               <Link href="/">
@@ -469,17 +465,50 @@ const Navbar = () => {
                                    >
                                         Cancel
                                    </Button>
-                                   <Link
-                                        href="/account/[signup]"
-                                        as="/account/signup"
-                                   >
-                                        <Button
-                                             color="aygreen.500"
-                                             onClick={onClose}
+                                   {user ? (
+                                        <Menu>
+                                             <MenuButton size="sm">
+                                                  <Avatar
+                                                       name={user?.name}
+                                                       size="sm"
+                                                  />
+                                             </MenuButton>
+                                             <MenuList
+                                                  fontSize="md"
+                                                  bg="aygreen.100"
+                                             >
+                                                  <Link href="/account">
+                                                       <MenuItem
+                                                            onClick={onClose}
+                                                       >
+                                                            Account
+                                                       </MenuItem>
+                                                  </Link>
+
+                                                  <MenuItem
+                                                       onClick={() =>
+                                                            signOut('/')
+                                                       }
+                                                  >
+                                                       Logout
+                                                  </MenuItem>
+                                             </MenuList>
+                                        </Menu>
+                                   ) : (
+                                        <Link
+                                             href="/account/[signup]"
+                                             as="/account/signup"
                                         >
-                                             Singup
-                                        </Button>
-                                   </Link>
+                                             <Button
+                                                  colorScheme="aygreen"
+                                                  fontSize="md"
+                                                  rounded="md"
+                                                  onClick={onClose}
+                                             >
+                                                  Sign In
+                                             </Button>
+                                        </Link>
+                                   )}
                               </DrawerFooter>
                          </DrawerContent>
                     </DrawerOverlay>

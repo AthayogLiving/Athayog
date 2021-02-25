@@ -363,8 +363,7 @@ const Register = () => {
                                              <Input
                                                   type="number"
                                                   name="phone"
-                                                  readOnly
-                                                  value={user.phone}
+                                                  defaultValue={user.phone}
                                                   ref={register({
                                                        required:
                                                             'Please enter your number.'

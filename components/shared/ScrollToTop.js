@@ -28,13 +28,13 @@ const ScrollToTop = () => {
           <Box
                style={{
                     position: 'fixed',
-                    width: '100%',
+                    fontSize: '1.2rem',
                     bottom: '40px',
                     left: '40px',
                     alignItems: 'center',
                     height: '40px',
                     justifyContent: 'center',
-                    zIndex: '1000',
+                    zIndex: '10000',
                     cursor: 'pointer',
                     transition: 'opacity 0.4s',
                     opacity: '0.5'
