@@ -65,10 +65,7 @@ const Schedule = ({ schedule }) => {
           duration: [3, 'hour']
      });
 
-     const [todayWeek, setTodayWeek] = useState();
-
      const thisWeek = SetThisWeek();
-     console.log(thisWeek);
 
      if (error) {
           return null;
@@ -92,7 +89,15 @@ const Schedule = ({ schedule }) => {
           toMinutes,
           toPeriod
      ) => {
-          setTodayWeek(week);
+          if (name === '-' || name === undefined || name === '') {
+               return toast({
+                    title: `Sorry nothing on this Day`,
+                    description: 'This days program is not present',
+                    status: 'warning',
+                    duration: 9000,
+                    isClosable: true
+               });
+          }
 
           if (thisWeek[`${week}`] === 'yesterday') {
                return toast({

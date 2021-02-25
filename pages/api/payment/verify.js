@@ -36,14 +36,7 @@ export default async function handler(req, res) {
                }
 
                const entity = req.body.payload.payment.entity;
-               console.log(
-                    entity.notes.userId,
-                    entity.notes.courseId,
-                    entity.notes.courseName,
-                    entity.notes.duration,
-                    Number(entity.notes.price),
-                    entity.order_id
-               );
+
                await createPayment(
                     entity.notes.userId,
                     entity.notes.courseId,

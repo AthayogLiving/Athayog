@@ -74,10 +74,6 @@ const Account = () => {
           );
      }
 
-     if (data.purchases) {
-          console.log(data.purchases);
-     }
-
      return (
           <>
                <Head>
