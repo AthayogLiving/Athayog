@@ -1,13 +1,10 @@
 import { Box, Center, Flex, Grid, Heading, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import React from 'react';
-import defaultCarousel from '../../public/defaultCarousel.png';
 import { offeringsData } from '@/components/home/ContentData';
 import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
 import { MotionBox } from '../shared/MotionElements';
-import { getImage } from '@plaiceholder/next';
-import { getBase64 } from '@plaiceholder/base64';
 
 const Offerings = () => {
      return (
