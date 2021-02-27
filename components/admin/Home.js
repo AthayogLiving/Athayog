@@ -10,11 +10,15 @@ import {
      useColorModeValue,
      Grid,
      Text,
-     Spinner
+     Spinner,
+     Box,
+     Link as ChakraLink,
+     Flex
 } from '@chakra-ui/react';
 import { useAuth } from '@/lib/auth';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
+import Link from 'next/link';
 
 const Home = () => {
      const { user } = useAuth();
@@ -47,46 +51,50 @@ const Home = () => {
      }
 
      return (
-          <Stack
-               d="flex"
-               direction={['column', 'row']}
-               spacing={5}
-               width="100%"
-          >
-               <Stat
-                    bg={bg}
-                    width={{ base: '100%', md: 'md', lg: 'md' }}
-                    rounded="lg"
-                    padding={5}
-                    boxShadow="base"
+          <>
+               <Stack
+                    d="flex"
+                    direction={['column', 'row']}
+                    spacing={5}
+                    width="100%"
                >
-                    <StatLabel>User Signed Up</StatLabel>
-                    <StatNumber>{data?.usersAnalytics?.length}</StatNumber>
-                    <StatHelpText>Last 24 Hours</StatHelpText>
-               </Stat>
-               <Stat
-                    bg={bg}
-                    width={{ base: '100%', md: 'md', lg: 'md' }}
-                    rounded="lg"
-                    padding={5}
-                    boxShadow="base"
-               >
-                    <StatLabel>Forms Submitted</StatLabel>
-                    <StatNumber>{data?.formAnalytics?.length}</StatNumber>
-                    <StatHelpText>Last 24 Hours</StatHelpText>
-               </Stat>
-               <Stat
-                    bg={bg}
-                    width={{ base: '100%', md: 'md', lg: 'md' }}
-                    rounded="lg"
-                    padding={5}
-                    boxShadow="base"
-               >
-                    <StatLabel>Enquiry FormSubmitted</StatLabel>
-                    <StatNumber>{data?.enquiryAnalytics?.length}</StatNumber>
-                    <StatHelpText>Last 24 Hours</StatHelpText>
-               </Stat>
-          </Stack>
+                    <Stat
+                         bg={bg}
+                         width={{ base: '100%', md: 'md', lg: 'md' }}
+                         rounded="lg"
+                         padding={5}
+                         boxShadow="base"
+                    >
+                         <StatLabel>User Signed Up</StatLabel>
+                         <StatNumber>{data?.usersAnalytics?.length}</StatNumber>
+                         <StatHelpText>Last 24 Hours</StatHelpText>
+                    </Stat>
+                    <Stat
+                         bg={bg}
+                         width={{ base: '100%', md: 'md', lg: 'md' }}
+                         rounded="lg"
+                         padding={5}
+                         boxShadow="base"
+                    >
+                         <StatLabel>Form Submitted</StatLabel>
+                         <StatNumber>{data?.formAnalytics?.length}</StatNumber>
+                         <StatHelpText>Last 24 Hours</StatHelpText>
+                    </Stat>
+                    <Stat
+                         bg={bg}
+                         width={{ base: '100%', md: 'md', lg: 'md' }}
+                         rounded="lg"
+                         padding={5}
+                         boxShadow="base"
+                    >
+                         <StatLabel>Enquiry Form Submitted</StatLabel>
+                         <StatNumber>
+                              {data?.enquiryAnalytics?.length}
+                         </StatNumber>
+                         <StatHelpText>Last 24 Hours</StatHelpText>
+                    </Stat>
+               </Stack>
+          </>
      );
 };
 
