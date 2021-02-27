@@ -10,11 +10,12 @@ import '@/styles/globals.css';
 import Head from 'next/head';
 import SEO from '../next-seo.config';
 import { DefaultSeo } from 'next-seo';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { css, Global } from '@emotion/react';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { Router } from 'next/router';
+import firebase from '@/lib/firebase';
 
 NProgress.configure({
      showSpinner: false,
@@ -33,10 +34,6 @@ Router.events.on('routeChangeComplete', () => {
 Router.events.on('routeChangeError', () => {
      NProgress.done();
 });
-
-export function reportWebVitals(metric) {
-     console.log(metric);
-}
 
 const GlobalStyle = ({ children }) => {
      return (
@@ -67,6 +64,11 @@ const GlobalStyle = ({ children }) => {
 
 function App({ Component, pageProps }) {
      const Layout = Component.Layout ? Component.Layout : React.Fragment;
+
+     useEffect(() => {
+          const analytics = firebase.analytics();
+          analytics.logEvent('page_view');
+     }, []);
 
      return (
           <ChakraProvider

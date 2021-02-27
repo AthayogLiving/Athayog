@@ -46,10 +46,6 @@ const Home = () => {
           );
      }
 
-     if (data.usersAnalytics) {
-          console.log(data);
-     }
-
      return (
           <>
                <Stack
