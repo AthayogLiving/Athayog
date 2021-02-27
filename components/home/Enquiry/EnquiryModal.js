@@ -53,7 +53,6 @@ const EnquiryModal = () => {
                })
                .then(function (response) {
                     setLoading(false);
-                    router.push('/');
                     toast({
                          title: 'Request Submitted.',
                          description: 'We will get back to you.',
@@ -61,6 +60,7 @@ const EnquiryModal = () => {
                          duration: 9000,
                          isClosable: true
                     });
+                    onClose();
                     reset();
                })
                .catch(function (error) {
