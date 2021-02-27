@@ -1,6 +1,7 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const Employee = ({ name, image, info, designation }) => {
      return (
@@ -12,6 +13,7 @@ const Employee = ({ name, image, info, designation }) => {
                flexDirection={{ base: 'column', md: 'row', lg: 'row' }}
                mt={{ base: 2, md: 10, lg: 10 }}
                mt={{ base: 2, md: 10, lg: 10 }}
+               key={uuidv4()}
           >
                <Box>
                     <Box
@@ -50,9 +52,13 @@ const Employee = ({ name, image, info, designation }) => {
                          {designation}
                     </Text>
                     <br />
-                    {info.split('\n').map((i) => {
+                    {info.split('\n').map((i, index) => {
                          return (
-                              <Text whiteSpace="pre-wrap" fontWeight="normal">
+                              <Text
+                                   whiteSpace="pre-wrap"
+                                   fontWeight="normal"
+                                   key={index}
+                              >
                                    {i}
                               </Text>
                          );

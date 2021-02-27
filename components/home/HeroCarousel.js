@@ -33,8 +33,8 @@ const HeroCarousel = ({ images, imagesMobile }) => {
           },
           pagination: {
                el: '.swiper-pagination',
-               clickable: true,
-               type: 'fraction'
+               clickable: true
+               // type: 'fraction'
           },
           autoplay: {
                delay: 2500,
@@ -48,13 +48,13 @@ const HeroCarousel = ({ images, imagesMobile }) => {
           renderPrevButton: () => (
                <IoIosArrowBack
                     className="swiper-button-prev"
-                    style={{ color: 'black' }}
+                    style={{ color: 'white' }}
                />
           ),
           renderNextButton: () => (
                <IoIosArrowForward
                     className="swiper-button-next"
-                    style={{ color: 'black' }}
+                    style={{ color: 'white' }}
                />
           )
      };

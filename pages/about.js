@@ -6,6 +6,7 @@ import Hero from '@/components/shared/Hero';
 import Information from '@/components/shared/Information';
 import SubEmployee from '@/components/shared/SubEmployee';
 import { Box, Divider, Flex, Grid, Heading, Text } from '@chakra-ui/react';
+import { lastIndexOf } from 'next-pwa/cache';
 import Image from 'next/image';
 import athayogOnline from 'public/athayogOnline.jpg';
 import React from 'react';
@@ -134,8 +135,12 @@ const About = () => {
                          mutual faith in the institution of Yog, guides us onto
                          the path of truth and illuminates the way ahead.
                     </Text>
-                    {profiles.map((data) => {
-                         return <Employee {...data} />;
+                    {profiles.map((data, index) => {
+                         return (
+                              <React.Fragment key={index}>
+                                   <Employee {...data} />
+                              </React.Fragment>
+                         );
                     })}
                </Flex>
                <Divider width="80%" margin="auto" />
@@ -156,9 +161,9 @@ const About = () => {
                     alignItems="start"
                     bg="#fbfbfb"
                >
-                    {employees.map((data) => {
+                    {employees.map((data, index) => {
                          return (
-                              <Box>
+                              <Box key={index}>
                                    <SubEmployee {...data} />
                               </Box>
                          );

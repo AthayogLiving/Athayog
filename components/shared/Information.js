@@ -11,7 +11,6 @@ import {
      UnorderedList
 } from '@chakra-ui/react';
 import React from 'react';
-import { IoMdCheckmarkCircle } from 'react-icons/io';
 
 const Information = (props) => {
      const { name, whatis, secondBlock, description } = props.pageData;

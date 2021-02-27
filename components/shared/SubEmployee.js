@@ -42,9 +42,13 @@ const SubEmployee = ({ name, image, info, designation }) => {
                     </Text>
                     <br />
 
-                    {info.split('\n').map((i) => {
+                    {info.split('\n').map((i, index) => {
                          return (
-                              <Text whiteSpace="pre-wrap" fontWeight="normal">
+                              <Text
+                                   whiteSpace="pre-wrap"
+                                   fontWeight="normal"
+                                   key={index}
+                              >
                                    {i}
                               </Text>
                          );
