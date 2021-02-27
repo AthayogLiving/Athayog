@@ -34,6 +34,10 @@ Router.events.on('routeChangeError', () => {
      NProgress.done();
 });
 
+export function reportWebVitals(metric) {
+     console.log(metric);
+}
+
 const GlobalStyle = ({ children }) => {
      return (
           <>
