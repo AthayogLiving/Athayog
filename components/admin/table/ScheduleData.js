@@ -34,6 +34,7 @@ import { useTable, usePagination } from 'react-table';
 import { mutate } from 'swr';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
+import { Styles } from './Styles';
 
 // Create an editable cell renderer
 const EditableCell = ({
@@ -260,52 +261,6 @@ const ScheduleData = ({ schedule, type }) => {
      const [skipPageReset, setSkipPageReset] = useState(false);
 
      const bg = useColorModeValue('white', 'gray.800');
-
-     const Styles = styled.div`
-          /* This is required to make the table full-width */
-          display: block;
-          max-width: 100%;
-          /* This will make the table scrollable when it gets too small */
-          .tableWrap {
-               display: block;
-               max-width: 100%;
-               overflow-x: scroll;
-               overflow-y: hidden;
-               border-bottom: 1px solid #ddd;
-          }
-          table {
-               /* Make sure the inner table is always as wide as needed */
-               width: 100%;
-               border-spacing: 0;
-               tr {
-                    :last-child {
-                         td {
-                              border-bottom: 0;
-                         }
-                    }
-               }
-               th,
-               td {
-                    margin: 0;
-                    padding: 0.5rem;
-                    border-bottom: 1px solid #ddd;
-                    border-right: 1px solid #ddd;
-                    /* The secret sauce */
-                    /* Each cell should grow equally */
-                    width: 1%;
-                    /* But "collapsed" cells should be as small as possible */
-                    &.collapse {
-                         width: 0.0000000001%;
-                    }
-                    :last-child {
-                         border-right: 0;
-                    }
-               }
-          }
-          .pagination {
-               padding: 0.5rem;
-          }
-     `;
 
      const columns = useMemo(
           () => [

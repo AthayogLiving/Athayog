@@ -14,13 +14,11 @@ import {
      ButtonGroup,
      Text,
      Flex,
-     Select,
-     Grid
+     Select
 } from '@chakra-ui/react';
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
 import { useTable, useSortBy, useFilters, usePagination } from 'react-table';
-import { useMemo } from 'react';
-
+import React, { useMemo } from 'react';
 import ColumnFilter from './Filters/ColumnFilter';
 import SelectColumnFilter from './Filters/SelectColumnFilter';
 import NumberFilter from './Filters/NumberFilter';
@@ -29,19 +27,17 @@ import { ImBackward2, ImForward2 } from 'react-icons/im';
 import { RiLoader3Fill } from 'react-icons/ri';
 import firebase from '@/lib/firebase';
 import { FirebaseToDate } from '@/components/helper/FirebaseToDate';
-import styled from 'styled-components';
-
-import { useMediaQuery } from 'react-responsive';
-const firestore = firebase.firestore();
+import { v4 as uuidv4 } from 'uuid';
+import { Styles } from './Styles';
 
 export const Conditions = ({ values }) => {
      // Loop through the array and create a badge-like component instead of a comma-separated string
      return (
-          <>
-               {values.map((conditions, idx, index) => {
+          <React.Fragment key={uuidv4()}>
+               {values.map((conditions, idx) => {
                     return (
                          <Badge
-                              key={index}
+                              key={idx}
                               className="badge"
                               mr={2}
                               colorScheme="teal"
@@ -51,21 +47,22 @@ export const Conditions = ({ values }) => {
                          </Badge>
                     );
                })}
-          </>
+          </React.Fragment>
      );
 };
 
 export const DateCreated = ({ values }) => {
      // Loop through the array and create a badge-like component instead of a comma-separated string
-     return <>{FirebaseToDate(values)}</>;
+     return (
+          <React.Fragment key={uuidv4()}>
+               {FirebaseToDate(values)}
+          </React.Fragment>
+     );
 };
 
 const FormsData = ({ forms, latestDoc, setDocs }) => {
      const data = useMemo(() => forms, []);
 
-     const isTabletOrMobile = useMediaQuery({
-          query: '(max-width: 1224px)'
-     });
      const columns = useMemo(
           () => [
                {
@@ -124,7 +121,7 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
                     Header: 'Submitted',
                     accessor: 'createdAt',
                     Cell: ({ cell: { value } }) => (
-                         <DateCreated values={value} />
+                         <DateCreated values={value} key={uuidv4()} />
                     ),
                     Filter: ColumnFilter,
                     disableFilters: true
@@ -132,52 +129,6 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
           ],
           []
      );
-
-     const Styles = styled.div`
-          /* This is required to make the table full-width */
-          display: block;
-          max-width: 100%;
-          /* This will make the table scrollable when it gets too small */
-          .tableWrap {
-               display: block;
-               max-width: 100%;
-               overflow-x: scroll;
-               overflow-y: hidden;
-               border-bottom: 1px solid #ddd;
-          }
-          table {
-               /* Make sure the inner table is always as wide as needed */
-               width: 100%;
-               border-spacing: 0;
-               tr {
-                    :last-child {
-                         td {
-                              border-bottom: 0;
-                         }
-                    }
-               }
-               th,
-               td {
-                    margin: 0;
-                    padding: 1rem;
-                    border-bottom: 1px solid #ddd;
-                    border-right: 1px solid #ddd;
-                    /* The secret sauce */
-                    /* Each cell should grow equally */
-                    width: 1%;
-                    /* But "collapsed" cells should be as small as possible */
-                    &.collapse {
-                         width: 0.0000000001%;
-                    }
-                    :last-child {
-                         border-right: 0;
-                    }
-               }
-          }
-          .pagination {
-               padding: 0.5rem;
-          }
-     `;
 
      const {
           getTableProps,
@@ -194,13 +145,7 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
           gotoPage,
           setPageSize,
           pageSize
-     } = useTable(
-          { columns, data },
-          useFilters,
-
-          useSortBy,
-          usePagination
-     );
+     } = useTable({ columns, data }, useFilters, useSortBy, usePagination);
 
      const { pageIndex } = state;
 
@@ -211,85 +156,71 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
      const bg = useColorModeValue('white', 'gray.800');
 
      return (
-          <>
-               {/* <Box>Showing Date Between {forms[0].createdAt}</Box> */}
-               <Styles>
-                    <div className="tableWrap">
-                         <Table
-                              {...getTableProps()}
-                              bg={bg}
-                              shadow="base"
-                              rounded="lg"
-                              padding={5}
-                              mt={3}
-                              colorScheme="green"
-                         >
-                              <Thead>
-                                   {headerGroups.map((headerGroup) => (
-                                        <Tr
-                                             {...headerGroup.getHeaderGroupProps()}
-                                        >
-                                             {headerGroup.headers.map(
-                                                  (column) => (
-                                                       <>
-                                                            <Th
-                                                                 {...column.getHeaderProps()}
-                                                            >
-                                                                 {column.render(
-                                                                      'Header'
-                                                                 )}
-                                                                 <chakra.span pl="4">
-                                                                      {column.isSorted ? (
-                                                                           column.isSortedDesc ? (
-                                                                                <TriangleDownIcon aria-label="sorted descending" />
-                                                                           ) : (
-                                                                                <TriangleUpIcon aria-label="sorted ascending" />
-                                                                           )
-                                                                      ) : null}
-                                                                 </chakra.span>
-                                                                 <div>
-                                                                      {column.canFilter ? (
-                                                                           column.render(
-                                                                                'Filter'
-                                                                           )
-                                                                      ) : (
-                                                                           <Box mt="1">
-                                                                                <Input visibility="hidden" />
-                                                                           </Box>
-                                                                      )}
-                                                                 </div>
-                                                            </Th>
-                                                       </>
-                                                  )
-                                             )}
-                                        </Tr>
-                                   ))}
-                              </Thead>
-                              <Tbody {...getTableBodyProps()} className="tbody">
-                                   {page.map((row) => {
-                                        prepareRow(row);
-                                        return (
-                                             <Tr {...row.getRowProps()}>
-                                                  {row.cells.map((cell) => (
-                                                       <Td
-                                                            {...cell.getCellProps()}
-                                                            isNumeric={
-                                                                 cell.column
-                                                            }
-                                                       >
-                                                            {cell.render(
-                                                                 'Cell'
+          <Styles>
+               <div className="tableWrap">
+                    <Table
+                         {...getTableProps()}
+                         bg={bg}
+                         shadow="base"
+                         rounded="lg"
+                         padding={5}
+                         mt={3}
+                         colorScheme="green"
+                    >
+                         <Thead>
+                              {headerGroups.map((headerGroup) => (
+                                   <Tr {...headerGroup.getHeaderGroupProps()}>
+                                        {headerGroup.headers.map((column) => (
+                                             <>
+                                                  <Th
+                                                       {...column.getHeaderProps()}
+                                                  >
+                                                       {column.render('Header')}
+                                                       <chakra.span pl="4">
+                                                            {column.isSorted ? (
+                                                                 column.isSortedDesc ? (
+                                                                      <TriangleDownIcon aria-label="sorted descending" />
+                                                                 ) : (
+                                                                      <TriangleUpIcon aria-label="sorted ascending" />
+                                                                 )
+                                                            ) : null}
+                                                       </chakra.span>
+                                                       <div>
+                                                            {column.canFilter ? (
+                                                                 column.render(
+                                                                      'Filter'
+                                                                 )
+                                                            ) : (
+                                                                 <Box mt="1">
+                                                                      <Input visibility="hidden" />
+                                                                 </Box>
                                                             )}
-                                                       </Td>
-                                                  ))}
-                                             </Tr>
-                                        );
-                                   })}
-                              </Tbody>
-                         </Table>
-                    </div>
-               </Styles>
-
+                                                       </div>
+                                                  </Th>
+                                             </>
+                                        ))}
+                                   </Tr>
+                              ))}
+                         </Thead>
+                         <Tbody {...getTableBodyProps()} className="tbody">
+                              {page.map((row) => {
+                                   prepareRow(row);
+                                   return (
+                                        <Tr {...row.getRowProps()}>
+                                             {row.cells.map((cell) => (
+                                                  <Td
+                                                       {...cell.getCellProps()}
+                                                       isNumeric={cell.column}
+                                                  >
+                                                       {cell.render('Cell')}
+                                                  </Td>
+                                             ))}
+                                        </Tr>
+                                   );
+                              })}
+                         </Tbody>
+                    </Table>
+               </div>
                <Flex
                     bg={bg}
                     padding="1rem 1rem"
@@ -369,7 +300,7 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
                          Page {pageIndex + 1} of {pageOptions.length}
                     </Text>
                </Flex>
-          </>
+          </Styles>
      );
 };
 
