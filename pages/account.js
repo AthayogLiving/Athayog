@@ -176,8 +176,8 @@ const Account = () => {
                                                             Order ID:
                                                             <chakra.span fontWeight="medium">
                                                                  {'\t'}
-                                                                 &#8377;
-                                                                 {data.orderID}
+
+                                                                 {data.orderId}
                                                             </chakra.span>
                                                        </Box>
                                                   </Grid>

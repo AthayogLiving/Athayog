@@ -22,7 +22,7 @@ const success = () => {
      const router = useRouter();
      const { razorpayPaymentId, razorpayOrderId, courseName } = router.query;
 
-     if (!razorpayPaymentId) {
+     if (!razorpayPaymentId || !user) {
           return (
                <Grid height="100vh" placeItems="center">
                     <Grid placeItems="center">
@@ -32,10 +32,6 @@ const success = () => {
                </Grid>
           );
      }
-
-     // if (!user) {
-     //      router.push('/');
-     // }
 
      return (
           <>
