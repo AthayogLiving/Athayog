@@ -4,7 +4,6 @@ import React from 'react';
 import athayogOnline from 'public/athayogOnline.jpg';
 import Information from '@/components/shared/Information';
 import Pricing from '@/components/shared/Pricing';
-import Register from '@/components/shared/Register';
 import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';
 export async function getStaticProps(context) {

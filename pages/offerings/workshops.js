@@ -1,12 +1,8 @@
 import Hero from '@/components/shared/Hero';
-import { Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import React from 'react';
 import athayogWorkshop from 'public/athayogWorkshop.jpg';
-import Information from '@/components/shared/Information';
-import Classes from '@/components/shared/Classes';
 import Pricing from '@/components/shared/Pricing';
-import Register from '@/components/shared/Register';
 import InformationSplit from '@/components/shared/InformationSplit';
 import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';

@@ -3,14 +3,10 @@ import Enquiry from '@/components/home/Enquiry';
 import HomeLayout from '@/components/layout/HomeLayout';
 import Employee from '@/components/shared/Employee';
 import Hero from '@/components/shared/Hero';
-import Information from '@/components/shared/Information';
 import SubEmployee from '@/components/shared/SubEmployee';
 import { Box, Divider, Flex, Grid, Heading, Text } from '@chakra-ui/react';
-import { lastIndexOf } from 'next-pwa/cache';
-import Image from 'next/image';
 import athayogOnline from 'public/athayogOnline.jpg';
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 const About = () => {
      const { profiles } = profileData;

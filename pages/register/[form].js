@@ -5,7 +5,6 @@ import {
      FormControl,
      FormLabel,
      FormErrorMessage,
-     FormHelperText,
      SimpleGrid,
      Input,
      Textarea,
@@ -16,10 +15,8 @@ import {
      Radio,
      Button,
      CheckboxGroup,
-     HStack,
      Checkbox,
      useCheckboxGroup,
-     toast,
      useToast,
      Spinner,
      Grid,
@@ -33,16 +30,12 @@ import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import { useAuth } from '@/lib/auth';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-
 import { logo } from 'public/og.png';
 import HomeLayout from '@/components/layout/HomeLayout';
 
 const Register = () => {
      const router = useRouter();
      const { form, price, duration, courseName, courseId } = router.query;
-     Router.events.on('routeChangeComplete', () => {
-          window.scrollTo(0, 0);
-     });
      const { user } = useAuth();
      const [loading, setLoading] = useState(false);
      const [paymentLoader, setPaymentLoader] = useState(false);
@@ -191,10 +184,15 @@ const Register = () => {
                               type: capitalizeFirstLetter(form)
                          })
                          .then(function (response) {
+                              toast({
+                                   title: 'Payment Success',
+                                   description: `Payment for ${ogData.name} is successfull`,
+                                   status: 'success',
+                                   duration: 5000,
+                                   isClosable: true
+                              });
+                              window.location.href = '/';
                               reset();
-                              router.push(
-                                   `/payment/success?razorpayPaymentId=${data.razorpayPaymentId}&razorpayOrderId=${data.razorpayOrderId}&courseName=${courseName}`
-                              );
                          })
                          .catch(function (error) {
                               setLoading(false);

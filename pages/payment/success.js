@@ -4,7 +4,7 @@ import {
      Grid,
      Text,
      Heading,
-     HStack,
+     VStack,
      chakra,
      Spinner
 } from '@chakra-ui/react';
@@ -31,14 +31,14 @@ const success = () => {
           );
      }
 
-     if (!user) {
-          router.push('/');
-     }
+     // if (!user) {
+     //      router.push('/');
+     // }
 
      return (
           <Grid placeItems="center" height="100vh" bg="primaryWhite">
                <Box bg="white" boxShadow="base" rounded="lg" padding={5}>
-                    <HStack justify="space-around" spacing={2}>
+                    <VStack justify="space-around" spacing={2}>
                          <Image
                               height="300px"
                               width="300px"
@@ -74,7 +74,7 @@ const success = () => {
                                    </Text>
                               </Box>
                          </Box>
-                    </HStack>
+                    </VStack>
                </Box>
           </Grid>
      );

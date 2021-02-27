@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import athayogShikshana from 'public/athayogShikshana.jpg';
 import Pricing from '@/components/shared/Pricing';
-import Register from '@/components/shared/Register';
 import InformationSplit from '@/components/shared/InformationSplit';
 import Schedule from '@/components/shared/Schedule';
 import { getOffer } from '@/lib/db/offerings';
