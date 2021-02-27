@@ -71,10 +71,10 @@ const schedule = () => {
                          </Tr>
                          <Tr>
                               <Td>
-                                   <Text>Offerings</Text>
+                                   <Text>Online</Text>
                               </Td>
                               <Td>
-                                   <Link href="schedule/offerings">
+                                   <Link href="schedule/online">
                                         <a
                                              style={{
                                                   textDecoration: 'underline'

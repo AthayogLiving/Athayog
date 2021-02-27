@@ -123,6 +123,11 @@ const UsersTable = ({ users, setDocs }) => {
                     Filter: ColumnFilter
                },
                {
+                    Header: 'phone',
+                    accessor: 'phone',
+                    Filter: ColumnFilter
+               },
+               {
                     Header: 'Order ID',
                     accessor: 'orderId',
                     Filter: ColumnFilter
