@@ -27,6 +27,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useMediaQuery } from 'react-responsive';
 
 const EnquiryModal = () => {
      const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,6 +35,7 @@ const EnquiryModal = () => {
      const toast = useToast();
      const router = useRouter();
      const [loading, setLoading] = useState(false);
+     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
      const onSubmit = async ({
           firstName,
@@ -99,11 +101,12 @@ const EnquiryModal = () => {
                     Enquiry
                </MotionButton>
                <Modal
+                    isCentered
                     isOpen={isOpen}
                     onClose={onClose}
-                    size="3xl"
+                    size={isTabletOrMobile ? 'full' : '4xl'}
                     bg="primaryWhite"
-                    blockScrollOnMount={true}
+                    motionPreset="slideInBottom"
                >
                     <ModalOverlay />
                     <ModalContent
@@ -159,12 +162,13 @@ const EnquiryModal = () => {
                                              })}
                                         />
                                    </FormControl>
-                                   <FormControl id="email">
+                                   <FormControl>
                                         <InputGroup>
                                              <Select
                                                   variant="flushed"
                                                   mr={2}
                                                   width="5rem"
+                                                  name="phone"
                                              >
                                                   <option>+91</option>
                                              </Select>
@@ -206,7 +210,7 @@ const EnquiryModal = () => {
                                    mr="auto"
                                    mt={2}
                                    px={10}
-                                   loading={loading}
+                                   isLoading={loading}
                                    loadingText="Submitting"
                                    py={5}
                               >

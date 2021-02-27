@@ -3,7 +3,6 @@ import {
      Avatar,
      Box,
      chakra,
-     Divider,
      Flex,
      Grid,
      Heading,
@@ -11,16 +10,11 @@ import {
      Stack,
      Text
 } from '@chakra-ui/react';
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import Head from 'next/head';
-import { FirebaseToDate } from '@/components/helper/FirebaseToDate';
-import { compareDesc, compareAsc, parseISO } from 'date-fns';
-import firebase from '@/lib/firebase';
 import HomeLayout from '@/components/layout/HomeLayout';
-const firestore = firebase.firestore();
 
 const Account = () => {
      const { user } = useAuth();
@@ -176,13 +170,6 @@ const Account = () => {
                                                                  {'\t'}
                                                                  &#8377;
                                                                  {data.price}
-                                                            </chakra.span>
-                                                       </Box>
-                                                       <Box>
-                                                            Status:
-                                                            <chakra.span fontWeight="medium">
-                                                                 {'\t'}
-                                                                 {data.status}
                                                             </chakra.span>
                                                        </Box>
                                                   </Grid>
