@@ -38,7 +38,7 @@ const Register = () => {
      const { form, price, duration, courseName, courseId } = router.query;
      const { user } = useAuth();
      const [loading, setLoading] = useState(false);
-     const [paymentLoader, setPaymentLoader] = useState(false);
+     const [paymentLoader, setPaymentLoader] = useState(true);
      const { data } = useCheckboxGroup();
      const { handleSubmit, register, errors, reset } = useForm();
      const toast = useToast();
@@ -184,14 +184,7 @@ const Register = () => {
                               type: capitalizeFirstLetter(form)
                          })
                          .then(function (response) {
-                              toast({
-                                   title: 'Payment Success',
-                                   description: `Payment for ${ogData.name} is successfull`,
-                                   status: 'success',
-                                   duration: 5000,
-                                   isClosable: true
-                              });
-                              window.location.href = '/';
+                              window.location.href = `/payment/success?razorpayPaymentId=${data.razorpayPaymentId}&razorpayOrderId=${data.razorpayOrderId}&courseName=${courseName}`;
                               reset();
                          })
                          .catch(function (error) {
@@ -628,8 +621,8 @@ const Register = () => {
                {paymentLoader ? (
                     <Box
                          position="fixed"
-                         height="100%"
-                         width="100%"
+                         height="100vh"
+                         width="100wv"
                          zIndex="20"
                     >
                          <Grid
@@ -647,8 +640,7 @@ const Register = () => {
                                         size="xl"
                                    />
                                    <Text textColor="white" mt={3}>
-                                        Proceeding to payment gateway. Please
-                                        Wait
+                                        Redirecting... Please Wait...
                                    </Text>
                               </Grid>
                          </Grid>

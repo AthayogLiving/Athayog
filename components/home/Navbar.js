@@ -256,7 +256,9 @@ const Navbar = () => {
                                              bg="aygreen.100"
                                         >
                                              <Link href="/account">
-                                                  <MenuItem>Account</MenuItem>
+                                                  <MenuItem>
+                                                       My Account
+                                                  </MenuItem>
                                              </Link>
 
                                              <MenuItem

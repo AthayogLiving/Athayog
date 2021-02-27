@@ -172,6 +172,14 @@ const Account = () => {
                                                                  {data.price}
                                                             </chakra.span>
                                                        </Box>
+                                                       <Box>
+                                                            Order ID:
+                                                            <chakra.span fontWeight="medium">
+                                                                 {'\t'}
+                                                                 &#8377;
+                                                                 {data.orderID}
+                                                            </chakra.span>
+                                                       </Box>
                                                   </Grid>
                                              </Box>
                                         );
