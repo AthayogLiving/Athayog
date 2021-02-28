@@ -110,7 +110,6 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
                     Filter: SelectColumnFilter,
                     filter: 'array'
                },
-
                {
                     Header: 'type',
                     accessor: 'type',
