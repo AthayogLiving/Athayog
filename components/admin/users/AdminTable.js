@@ -82,15 +82,7 @@ function AdminTable({ admin }) {
 
      return (
           <>
-               <Box
-                    bg={bg}
-                    rounded="lg"
-                    borderWidth="1px"
-                    padding={2}
-                    boxShadow="base"
-                    width="100%"
-                    mt={3}
-               >
+               <Box>
                     {customAdminMobile ? (
                          <>
                               {' '}

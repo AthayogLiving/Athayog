@@ -39,7 +39,7 @@ function AddAdminUser() {
                email,
                password,
                displayName,
-               admin: false
+               admin: true
           })
                .then(function (response) {
                     setLoading(false);
@@ -58,10 +58,10 @@ function AddAdminUser() {
                          uid,
                          email,
                          displayName,
-                         admin: false,
+                         admin: true,
                          metadata: {
                               role: 4,
-                              roleName: 'Role not assigned'
+                              roleName: 'admin'
                          }
                     });
                     mutate([`/api/admin/users`, user.token]);
@@ -139,10 +139,10 @@ function AddAdminUser() {
                                              aria-label="email"
                                              name="email"
                                              id="email"
-                                             placeholder="something@athayog.com"
+                                             placeholder="something@athayogliving.com"
                                              ref={register({
                                                   required:
-                                                       'Please enter a password.'
+                                                       'Please enter a email.'
                                              })}
                                         />
                                    </FormControl>
@@ -155,9 +155,18 @@ function AddAdminUser() {
                                              id="password"
                                              ref={register({
                                                   required:
-                                                       'Please enter a password.'
+                                                       'Please enter a password.',
+                                                  minLength: {
+                                                       value: 6,
+                                                       message:
+                                                            'min length is 6'
+                                                  }
                                              })}
                                         />
+                                        <FormErrorMessage>
+                                             {errors.password &&
+                                                  errors.password.message}
+                                        </FormErrorMessage>
                                    </FormControl>
                               </Stack>
                          </ModalBody>
