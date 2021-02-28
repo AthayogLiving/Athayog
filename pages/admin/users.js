@@ -22,7 +22,7 @@ const users = () => {
      if (error) {
           return (
                <Grid placeItems="center" height="250px">
-                    <Text>Sorry somrthing happend :(</Text>
+                    <Text>Sorry something happend :(</Text>
                </Grid>
           );
      }
@@ -39,6 +39,7 @@ const users = () => {
           return (
                <Grid placeItems="center" height="250px">
                     <Text>Looks like there are no admin :|</Text>
+                    <AddAdminUser />
                </Grid>
           );
      }
