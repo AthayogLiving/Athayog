@@ -54,15 +54,17 @@ const DashboardLayout = ({ children }) => {
           );
      }
 
-     // if (user.admin === false) {
-     //      const router = useRouter();
-     //      router.push('/');
-     //      return (
-     //           <Grid height="500px" placeItems="center">
-     //                <Spinner />
-     //           </Grid>
-     //      );
-     // }
+     console.log(user);
+
+     if (user.admin === false) {
+          const router = useRouter();
+          router.push('/');
+          return (
+               <Grid height="500px" placeItems="center">
+                    <Spinner />
+               </Grid>
+          );
+     }
 
      return (
           <>
