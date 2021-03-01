@@ -1,17 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
 
-import {
-     Box,
-     Divider,
-     Flex,
-     Heading,
-     Skeleton,
-     Text,
-     forwardRef
-} from '@chakra-ui/react';
+import { Box, Divider, Flex, Heading, Skeleton, Text } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { motion, isValidMotionProp } from 'framer-motion';
+
 import { MotionBox } from './MotionElements';
 import NavbarHelper from './NavbarHelper';
 
@@ -96,6 +88,8 @@ const Hero = (props) => {
                          key="1"
                          className="object-center object-cover pointer-events-none"
                          src={heroImage}
+                         onLoad={console.log('oading')}
+                         onError={console.log('error')}
                          alt="space"
                     />
                </Flex>
