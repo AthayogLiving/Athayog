@@ -23,6 +23,7 @@ import { AtSignIcon, UnlockIcon } from '@chakra-ui/icons';
 import Head from 'next/head';
 import BrandLogo from 'public/favicons/logo.png';
 import Router from 'next/router';
+import DashboardLayout from '@/components/layout/DashboardLayout';
 // import { checkUserType } from '@/lib/db';
 
 const index = () => {

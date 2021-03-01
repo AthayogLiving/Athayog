@@ -14,8 +14,9 @@ import {
      useToast,
      Image,
      Flex,
-     Select,
-     Text
+     Input,
+     Text,
+     FormLabel
 } from '@chakra-ui/react';
 import { mutate } from 'swr';
 
@@ -36,22 +37,35 @@ const UploadImages = ({ imageType, isMobile, isDisabled }) => {
      const onSubmit = async (data, e) => {
           setUploading(true);
           const file = data.image[0];
+          console.log(data);
           await uploadImageToStorage(
                imageType,
+               data.alt,
                file,
                true,
                isMobile === 'desktop' ? false : true
-          );
+          )
+               .then((response) => {
+                    toast({
+                         title: 'Image uploaded.',
+                         description:
+                              "We've have uploaded the image to storage.",
+                         status: 'success',
+                         duration: 9000,
+                         isClosable: true
+                    });
+               })
+               .catch((error) => {
+                    toast({
+                         title: 'Error',
+                         description: error.message,
+                         status: 'error',
+                         duration: 5000,
+                         isClosable: true
+                    });
+               });
           setUploading(false);
-
-          toast({
-               title: 'Image uploaded.',
-               description: "We've have uploaded the image to storage.",
-               status: 'success',
-               duration: 9000,
-               isClosable: true
-          });
-
+          onClose();
           e.target.reset();
           setImage('');
           mutate([`/api/images`, user.token]);
@@ -107,6 +121,15 @@ const UploadImages = ({ imageType, isMobile, isDisabled }) => {
                                         </Flex>
                                    </Box>
                               )}
+                              <FormControl mt={5}>
+                                   <FormLabel>Alt Tag</FormLabel>
+                                   <Input
+                                        ref={register}
+                                        required
+                                        name="alt"
+                                        type="text"
+                                   />
+                              </FormControl>
                               <FormControl mt={5}>
                                    <input
                                         ref={register}

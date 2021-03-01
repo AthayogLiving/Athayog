@@ -37,39 +37,17 @@ const ImageGrid = ({ imageType, isMobile }) => {
      // Authenticated User
      const { user } = useAuth();
      //  ----------------------
-
+     const checkMobile = isMobile === 'mobile' ? true : false;
      //  API Data
 
-     const { data, error } =
-          isMobile === 'mobile'
-               ? useSWR(
-                      user
-                           ? [
-                                  `/api/images/${imageType}?mobile=true`,
-                                  user.token
-                             ]
-                           : null,
-                      fetcher,
-                      {
-                           refreshInterval: 500
-                      }
-                 )
-               : useSWR(
-                      user
-                           ? [
-                                  `/api/images/${imageType}${
-                                       isMobile === 'mobile'
-                                            ? '?mobile=true'
-                                            : ''
-                                  }`,
-                                  user.token
-                             ]
-                           : null,
-                      fetcher,
-                      {
-                           refreshInterval: 500
-                      }
-                 );
+     const { data, error } = useSWR(
+          user ? [`/api/images/${imageType}`, user.token] : null,
+          fetcher,
+          {
+               refreshInterval: 500
+          }
+     );
+
      //  ----------------------
 
      //  Global Colors
@@ -109,7 +87,7 @@ const ImageGrid = ({ imageType, isMobile }) => {
      const deleteImageFirestore = async () => {
           setIsLoading(true);
           const { imageId, imageType, imageName } = selectedImage;
-          const checkMobile = isMobile === 'mobile' ? true : false;
+
           await deleteImage(imageId, imageType, imageName, checkMobile)
                .then((response) => {
                     toast({
@@ -135,7 +113,6 @@ const ImageGrid = ({ imageType, isMobile }) => {
      };
 
      const changePublishStatus = async (imageId, status) => {
-          const checkMobile = isMobile === 'mobile' ? true : false;
           setIsActiveLoading({ imageId: imageId, status: true });
           await updateImageStatus(imageId, !status, checkMobile);
           setIsActiveLoading({ imageId: imageId, status: false });
@@ -185,14 +162,15 @@ const ImageGrid = ({ imageType, isMobile }) => {
                     width="100%"
                     flexWrap="wrap"
                     templateColumns={{
-                         sm: 'repeat(auto-fit, minmax(200px,1fr))',
-                         base: 'repeat(auto-fit, minmax(250px,1fr))',
-                         md: 'repeat(auto-fit, minmax(250px,1fr))',
-                         lg: 'repeat(auto-fit, minmax(250px,1fr))'
+                         sm: 'repeat(auto-fit, minmax(200px,300px))',
+                         base: 'repeat(auto-fit, minmax(250px,300px))',
+                         md: 'repeat(auto-fit, minmax(250px,300px))',
+                         lg: 'repeat(auto-fit, minmax(250px,300px))'
                     }}
                >
-                    {data.images.length > 0 ? (
-                         data.images.map((image) => {
+                    {data.images
+                         .filter((image) => image.isMobile === checkMobile)
+                         .map((image) => {
                               return (
                                    <Box
                                         key={image.id}
@@ -303,12 +281,7 @@ const ImageGrid = ({ imageType, isMobile }) => {
                                         </Box>
                                    </Box>
                               );
-                         })
-                    ) : (
-                         <>
-                              <Text>No Data</Text>
-                         </>
-                    )}
+                         })}
                </Grid>
 
                <AlertDialog

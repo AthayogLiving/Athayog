@@ -20,6 +20,10 @@ const Gallery = ({ images }) => {
           return <Skeleton height="100vh"></Skeleton>;
      }
 
+     if (data.images.length === 0) {
+          return null;
+     }
+
      const totalImages = data.images.length;
 
      let sliderPerView = 3;

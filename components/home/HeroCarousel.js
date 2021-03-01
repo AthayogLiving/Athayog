@@ -7,19 +7,29 @@ import Swiper from 'react-id-swiper';
 import 'swiper/swiper-bundle.css';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { isMobile } from 'react-device-detect';
+import athayogPersonal from 'public/athayogPersonal.jpeg';
 
-const HeroCarousel = ({ images, imagesMobile }) => {
-     const { data, error } = isMobile
-          ? useSWR(`/api/images/carousel?mobile=true`, fetcher, {
-                 initialData: imagesMobile
-            })
-          : useSWR(`/api/images/carousel`, fetcher, {
-                 initialData: images
-            });
+const HeroCarousel = ({ images }) => {
+     const { data, error } = useSWR(`/api/images/carousel`, fetcher, {
+          initialData: images
+     });
+
      if (error) return <Skeleton height="100vh"></Skeleton>;
 
      if (!data) {
           return <Skeleton height="100vh"></Skeleton>;
+     }
+
+     if (data.images.length === 0) {
+          return (
+               <Box height="100vh">
+                    <Image
+                         layout="fill"
+                         objectFit="cover"
+                         src={athayogPersonal}
+                    />
+               </Box>
+          );
      }
 
      const params = {
@@ -61,26 +71,27 @@ const HeroCarousel = ({ images, imagesMobile }) => {
 
      const activeCarousel = [];
 
-     data.images.map((data) => {
-          if (data.isActive) {
-               activeCarousel.push(data);
-          }
-     });
-
      return (
           <Box height="100vh">
                <Swiper {...params}>
-                    {activeCarousel.map((data) => {
-                         return (
-                              <Box key={data.id} height="100vh">
-                                   <Image
-                                        layout="fill"
-                                        objectFit="cover"
-                                        src={data.imageUrl}
-                                   />
-                              </Box>
-                         );
-                    })}
+                    {data.images
+                         .filter(
+                              (image) =>
+                                   image.isMobile === isMobile &&
+                                   image.isActive === true
+                         )
+                         .map((image) => {
+                              return (
+                                   <Box key={image.id} height="100vh">
+                                        <Image
+                                             layout="fill"
+                                             alt={image.alt}
+                                             objectFit="cover"
+                                             src={image.imageUrl}
+                                        />
+                                   </Box>
+                              );
+                         })}
                </Swiper>
           </Box>
      );
