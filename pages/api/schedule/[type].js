@@ -19,23 +19,31 @@ export default async function handler(req, res) {
      await cors(req, res);
 
      if (req.method === 'GET') {
-          const type = req.query.type;
-          const schedule = await getSchedule(type);
+          try {
+               const type = req.query.type;
+               const schedule = await getSchedule(type);
 
-          res.status(200).json({ schedule });
+               res.status(200).json({ schedule });
+          } catch (error) {
+               res.status(500).json(error);
+          }
      }
 
      if (req.method === 'POST') {
-          const { data } = req.body;
+          try {
+               const { data } = req.body;
 
-          const type = req.query.type;
+               const type = req.query.type;
 
-          await data.map((individual) => {
-               updateSchedule(type, individual);
-          });
+               await data.map((individual) => {
+                    updateSchedule(type, individual);
+               });
 
-          return res.status(200).json({
-               message: 'Updated Schedule'
-          });
+               return res.status(200).json({
+                    message: 'Updated Schedule'
+               });
+          } catch (error) {
+               return res.status(500).json(error);
+          }
      }
 }

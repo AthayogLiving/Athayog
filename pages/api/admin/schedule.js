@@ -17,14 +17,19 @@ export default async function handler(req, res) {
      await cors(req, res);
      switch (req.method) {
           case 'GET':
-               const snapshot = await db.collection('schedule').get();
-               const schedule = [];
+               try {
+                    const snapshot = await db.collection('schedule').get();
+                    const schedule = [];
 
-               snapshot.forEach((doc) => {
-                    schedule.push({ id: doc.id, ...doc.data() });
-               });
+                    snapshot.forEach((doc) => {
+                         schedule.push({ id: doc.id, ...doc.data() });
+                    });
 
-               res.status(200).json({ schedule });
+                    res.status(200).json({ schedule });
+               } catch (error) {
+                    res.status(500).json(error);
+               }
+
                break;
 
           default:
