@@ -108,6 +108,7 @@ const FormsData = ({ forms, latestDoc, setDocs }) => {
                          <Conditions values={value} />
                     ),
                     Filter: SelectColumnFilter,
+                    disableFilters: true,
                     filter: 'array'
                },
                {
