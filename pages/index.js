@@ -9,15 +9,12 @@ import HeroCarousel from '@/components/home/HeroCarousel';
 import WhatsAppWidget from 'react-whatsapp-widget';
 import 'react-whatsapp-widget/dist/index.css';
 import HomeLayout from '@/components/layout/HomeLayout';
-import { getImages, getGalleryImages } from '@/lib/db/db-admin';
+import { getImages } from '@/lib/db/db-admin';
 
 export async function getStaticProps() {
-     const reqCarousel = await getImages('carousel', false);
-
-     const reqGallery = await getGalleryImages();
-
+     const reqCarousel = await getImages('carousel');
+     const reqGallery = await getImages('gallery');
      const carousel = JSON.parse(JSON.stringify(reqCarousel));
-
      const gallery = JSON.parse(JSON.stringify(reqGallery));
      return {
           props: { carousel, gallery },
@@ -25,7 +22,7 @@ export async function getStaticProps() {
      };
 }
 
-export default function Home({ carousel, carouselMobile, gallery }) {
+export default function Home({ carousel, gallery }) {
      return (
           <motion.div
                exit={{ opacity: 0 }}

@@ -22,7 +22,7 @@ const textVariants = {
      enter: {
           y: 0,
           opacity: 1,
-          transition: { delay: 0.1, duration: 0.5, ease: easing }
+          transition: { duration: 0.5, ease: easing }
      }
 };
 

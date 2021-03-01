@@ -51,6 +51,9 @@ const Offerings = () => {
                                                        width="150px"
                                                        overflow="hidden"
                                                        border="5px dotted"
+                                                       exit={{ opacity: 0 }}
+                                                       initial={{ opacity: 0 }}
+                                                       animate={{ opacity: 1 }}
                                                        borderColor="primaryGreen"
                                                        whileHover={{
                                                             scale: 1.1
