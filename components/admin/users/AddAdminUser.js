@@ -142,7 +142,8 @@ function AddAdminUser() {
                                              placeholder="something@athayogliving.com"
                                              ref={register({
                                                   required:
-                                                       'Please enter a email.'
+                                                       'Please enter a email.',
+                                                  pattern: /^[a-zA-Z0-9+_.-]+@athayogliving.com/
                                              })}
                                         />
                                    </FormControl>

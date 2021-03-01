@@ -21,7 +21,16 @@ const users = () => {
 
      if (error) {
           return (
-               <Grid placeItems="center" height="250px">
+               <Grid
+                    placeItems="center"
+                    height="250px"
+                    bg={bg}
+                    rounded="lg"
+                    borderWidth="1px"
+                    padding={5}
+                    boxShadow="base"
+                    width="100%"
+               >
                     <Text>Sorry something happend :(</Text>
                </Grid>
           );
@@ -37,7 +46,16 @@ const users = () => {
 
      if (data.users.length === 0) {
           return (
-               <Grid placeItems="center" height="250px">
+               <Grid
+                    placeItems="center"
+                    height="250px"
+                    bg={bg}
+                    rounded="lg"
+                    borderWidth="1px"
+                    padding={5}
+                    boxShadow="base"
+                    width="100%"
+               >
                     <Text>Looks like there are no admin :|</Text>
                     <AddAdminUser />
                </Grid>
