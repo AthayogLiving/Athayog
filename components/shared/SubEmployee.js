@@ -1,8 +1,9 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/react';
+import { Avatar, Box, Flex, Heading, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import React from 'react';
+import ProfileFallback from 'public/ProfileFallback.svg';
 
-const SubEmployee = ({ name, image, info, designation }) => {
+const SubEmployee = ({ name, image, visible, info, designation }) => {
      return (
           <Flex
                justifyContent="space-around"
@@ -17,13 +18,29 @@ const SubEmployee = ({ name, image, info, designation }) => {
                          width={{ base: '250px', md: '300px', lg: '300px' }}
                          overflow="hidden"
                     >
-                         <Image
-                              src={image}
-                              height="300px"
-                              width="300px"
-                              objectFit="cover"
-                              layout="responsive"
-                         />
+                         {visible ? (
+                              <Image
+                                   src={image}
+                                   height="300px"
+                                   width="300px"
+                                   objectFit="cover"
+                                   layout="responsive"
+                              />
+                         ) : (
+                              <Avatar
+                                   height={{
+                                        base: '250px',
+                                        md: '300px',
+                                        lg: '300px'
+                                   }}
+                                   width={{
+                                        base: '250px',
+                                        md: '300px',
+                                        lg: '300px'
+                                   }}
+                                   src={ProfileFallback}
+                              />
+                         )}
                     </Box>
                </Box>
 
