@@ -1,6 +1,6 @@
 import Cors from 'cors';
 import initMiddleware from '@/lib/cors-middleware';
-import { auth } from '@/lib/firebase-admin';
+import { auth, db } from '@/lib/firebase-admin';
 import { updateAdminUser } from '@/lib/db/admin-users';
 
 // Initialize the cors middleware
@@ -42,16 +42,16 @@ export default async function handler(req, res) {
                                    roleName: 'admin'
                               }
                          };
-                         updateAdminUser(id, data);
-                         return res.status(200).json({
-                              message: 'Successfully given admin privilages'
-                         });
+                         db.collection('adminUsers').doc(id).update(data);
                     });
                } else {
                     return res
                          .status(422)
                          .json({ message: 'Unverified email' });
                }
+          });
+          return res.status(200).json({
+               message: 'Successfully given admin privilages'
           });
      }
 }
