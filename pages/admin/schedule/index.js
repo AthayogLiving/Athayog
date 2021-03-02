@@ -53,7 +53,7 @@ const schedule = () => {
                                    </Link>
                               </Td>
                          </Tr>
-                         <Tr>
+                         {/* <Tr>
                               <Td>
                                    <Text>Shikshana Pada</Text>
                               </Td>
@@ -68,7 +68,7 @@ const schedule = () => {
                                         </a>
                                    </Link>
                               </Td>
-                         </Tr>
+                         </Tr> */}
                          <Tr>
                               <Td>
                                    <Text>Online</Text>

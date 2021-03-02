@@ -4,7 +4,7 @@ import React from 'react';
 import athayogShikshana from 'public/athayogShikshana.jpg';
 import Pricing from '@/components/shared/Pricing';
 import InformationSplit from '@/components/shared/InformationSplit';
-import Schedule from '@/components/shared/Schedule';
+import ShikshanaTable from '@/components/shared/ShikshanaTable';
 import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';
 
@@ -66,8 +66,8 @@ const Shikshana = ({ offers, notFound }) => {
           >
                <Hero pageData={pageData} />
                <InformationSplit pageData={pageData} />
+               <ShikshanaTable />
                <Pricing pricing={apiPricing} />
-               <Schedule schedule="shikhshana" />
           </motion.div>
      );
 };
