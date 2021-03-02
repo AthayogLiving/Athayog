@@ -9,20 +9,23 @@ import HeroCarousel from '@/components/home/HeroCarousel';
 import WhatsAppWidget from 'react-whatsapp-widget';
 import 'react-whatsapp-widget/dist/index.css';
 import HomeLayout from '@/components/layout/HomeLayout';
-import { getImages } from '@/lib/db/db-admin';
+import { getImages, getTestimonials } from '@/lib/db/db-admin';
 
 export async function getStaticProps() {
      const reqCarousel = await getImages('carousel');
      const reqGallery = await getImages('gallery');
+     const reqTestimonials = await getTestimonials();
      const carousel = JSON.parse(JSON.stringify(reqCarousel));
      const gallery = JSON.parse(JSON.stringify(reqGallery));
+     const testimonials = JSON.parse(JSON.stringify(reqTestimonials));
+
      return {
-          props: { carousel, gallery },
+          props: { carousel, gallery, testimonials },
           revalidate: 60
      };
 }
 
-export default function Home({ carousel, gallery }) {
+export default function Home({ carousel, gallery, testimonials }) {
      return (
           <motion.div
                exit={{ opacity: 0 }}
@@ -34,7 +37,7 @@ export default function Home({ carousel, gallery }) {
                <Offerings />
                <Gallery images={gallery} />
                <Schedule schedule="general" />
-               <Testimonials />
+               <Testimonials testimonials={testimonials} />
                <Faq />
                <Enquiry />
                <WhatsAppWidget

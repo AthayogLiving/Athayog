@@ -52,9 +52,6 @@ const Testimonials = ({ testimonials }) => {
           )
      };
 
-     if (data.testimonials.length === 0) {
-          return null;
-     }
      return (
           <Flex
                bg="primaryGreen"
@@ -129,10 +126,5 @@ const Testimonials = ({ testimonials }) => {
           </Flex>
      );
 };
-
-export async function getStaticProps(context) {
-     const testimonials = await fetcher('/api/testimonials');
-     return { props: { testimonials }, revalidate: 1 };
-}
 
 export default Testimonials;
