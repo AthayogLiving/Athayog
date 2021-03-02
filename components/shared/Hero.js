@@ -88,8 +88,6 @@ const Hero = (props) => {
                          key="1"
                          className="object-center object-cover pointer-events-none"
                          src={heroImage}
-                         onLoad={console.log('oading')}
-                         onError={console.log('error')}
                          alt="space"
                     />
                </Flex>

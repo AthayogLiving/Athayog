@@ -14,10 +14,10 @@ const Gallery = ({ images }) => {
      const { data, error } = useSWR(`/api/images/gallery`, fetcher, {
           initialData: images
      });
-     if (error) return <Skeleton height="100vh"></Skeleton>;
+     if (error) return <Skeleton height="350px"></Skeleton>;
 
      if (!data) {
-          return <Skeleton height="100vh"></Skeleton>;
+          return <Skeleton height="350px"></Skeleton>;
      }
 
      if (data.images.length === 0) {

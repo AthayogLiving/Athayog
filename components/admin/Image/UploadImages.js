@@ -37,7 +37,6 @@ const UploadImages = ({ imageType, isMobile, isDisabled }) => {
      const onSubmit = async (data, e) => {
           setUploading(true);
           const file = data.image[0];
-          console.log(data);
           await uploadImageToStorage(
                imageType,
                data.alt,

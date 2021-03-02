@@ -52,6 +52,9 @@ const Testimonials = ({ testimonials }) => {
           )
      };
 
+     if (data.testimonials.length === 0) {
+          return null;
+     }
      return (
           <Flex
                bg="primaryGreen"

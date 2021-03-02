@@ -131,6 +131,9 @@ const Navbar = () => {
                                              fontSize="md"
                                              variant="ghost"
                                              bg="transparent"
+                                             _hover={{
+                                                  bg: 'aygreen.100'
+                                             }}
                                              _active={{
                                                   bg: 'aygreen.100',
                                                   transform: 'scale(0.98)',
@@ -153,6 +156,14 @@ const Navbar = () => {
                                         variat="ghost"
                                         fontSize="md"
                                         bg="primaryWhite"
+                                        _hover={{
+                                             bg: 'aygreen.100'
+                                        }}
+                                        _active={{
+                                             bg: 'aygreen.100',
+                                             transform: 'scale(0.98)',
+                                             borderColor: '#bec3c9'
+                                        }}
                                         display={{
                                              base: 'none',
                                              md: 'none',
