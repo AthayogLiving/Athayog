@@ -9,6 +9,7 @@ import {
      Grid
 } from '@chakra-ui/react';
 import { AiOutlineFacebook, AiOutlineInstagram } from 'react-icons/ai';
+import { HiOutlineLocationMarker } from 'react-icons/hi';
 import React from 'react';
 import Link from 'next/link';
 
@@ -93,6 +94,11 @@ const Footer = () => {
                                    <AiOutlineFacebook size="1.5rem" />
                               </ChakraLink>
                          </HStack>
+                         <Text>
+                              307, Athayog living, Sun Rise Arcade, Devasandra
+                              Main Road, Kodigehalli, Krishnarajapura,
+                              Bengaluru, Karnataka 560036
+                         </Text>
                     </Stack>
                     <Stack>
                          <iframe
