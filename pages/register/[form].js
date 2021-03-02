@@ -32,6 +32,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { logo } from 'public/og.png';
 import HomeLayout from '@/components/layout/HomeLayout';
+import { registerForm } from '@/lib/db/forms';
 
 const Register = () => {
      const router = useRouter();
@@ -169,25 +170,25 @@ const Register = () => {
                          razorpaySignature: response.razorpay_signature
                     };
 
-                    await axios
-                         .post(`/api/forms/offerings`, {
-                              uid: user.uid,
-                              name,
-                              email,
-                              phone,
-                              gender,
-                              experience,
-                              style,
-                              course: capitalizeFirstLetter(form),
-                              referral,
-                              conditions,
-                              type: capitalizeFirstLetter(form)
-                         })
-                         .then(function (response) {
-                              window.location.href = `/payment/success?razorpayPaymentId=${data.razorpayPaymentId}&razorpayOrderId=${data.razorpayOrderId}&courseName=${courseName}`;
+                    await registerForm(
+                         user.uid,
+                         name,
+                         email,
+                         phone,
+                         gender,
+                         experience,
+                         style,
+                         capitalizeFirstLetter(form),
+                         referral,
+                         conditions,
+                         capitalizeFirstLetter(form)
+                    )
+                         .then((response) => {
                               reset();
+                              window.location.href = `/payment/success?razorpayPaymentId=${data.razorpayPaymentId}&razorpayOrderId=${data.razorpayOrderId}&courseName=${courseName}`;
+                              router.push('/');
                          })
-                         .catch(function (error) {
+                         .catch((error) => {
                               setLoading(false);
                               toast({
                                    title: 'An error occurred.',
@@ -239,21 +240,20 @@ const Register = () => {
           conditions
      }) => {
           setLoading(true);
-          await axios
-               .post(`/api/forms/offerings`, {
-                    uid: user.uid,
-                    name,
-                    email,
-                    phone,
-                    gender,
-                    experience,
-                    style,
-                    course: capitalizeFirstLetter(form),
-                    referral,
-                    conditions,
-                    type: capitalizeFirstLetter(form)
-               })
-               .then(function (response) {
+          await registerForm(
+               user.uid,
+               name,
+               email,
+               phone,
+               gender,
+               experience,
+               style,
+               capitalizeFirstLetter(form),
+               referral,
+               conditions,
+               capitalizeFirstLetter(form)
+          )
+               .then((response) => {
                     reset();
                     toast({
                          title: 'Successfully Submitted.',
@@ -264,7 +264,7 @@ const Register = () => {
                     });
                     router.push('/');
                })
-               .catch(function (error) {
+               .catch((error) => {
                     setLoading(false);
                     toast({
                          title: 'An error occurred.',

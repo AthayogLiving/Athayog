@@ -57,25 +57,27 @@ const ShowTestimonials = () => {
 
      const onPublicChange = async (id, isAvailaible) => {
           setStatus(true);
-          await updateTestimonialsStatus(id, !isAvailaible).catch((error) => {
-               toast({
-                    title: 'An error occurred.',
-                    description: error.message,
-                    status: 'error',
-                    duration: 5000,
-                    isClosable: true
+          await updateTestimonialsStatus(id, !isAvailaible)
+               .then((response) => {
+                    setStatus(false);
+                    return toast({
+                         title: 'Status Updated.',
+                         description: "We've updated the live status.",
+                         status: 'success',
+                         duration: 9000,
+                         isClosable: true
+                    });
+               })
+               .catch((error) => {
+                    setStatus(false);
+                    return toast({
+                         title: 'An error occurred.',
+                         description: error.message,
+                         status: 'error',
+                         duration: 5000,
+                         isClosable: true
+                    });
                });
-               setStatus(false);
-               return;
-          });
-          toast({
-               title: 'Status Updated.',
-               description: "We've updated the live status.",
-               status: 'success',
-               duration: 9000,
-               isClosable: true
-          });
-          setStatus(false);
      };
 
      return (

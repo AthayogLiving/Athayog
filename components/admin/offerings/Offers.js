@@ -37,6 +37,7 @@ const Offers = ({ offerType }) => {
      const { data, error } = useSWR(`/api/offerings/${offerType}`, fetcher, {
           refreshInterval: 500
      });
+     const [delteId, setDeleteID] = useState('');
      const [isOpen, setIsOpen] = useState(false);
      const [isLive, setIsLive] = useState(false);
      const onClose = () => setIsOpen(false);
@@ -69,6 +70,7 @@ const Offers = ({ offerType }) => {
 
      const updateActiveState = async (id, state) => {
           setIsLive(true);
+
           await updateOfferingActiveState(id, !state)
                .then((response) => {
                     toast({
@@ -96,6 +98,7 @@ const Offers = ({ offerType }) => {
      };
 
      const deleteOffer = async (id) => {
+          console.log(id);
           setLoading(true);
           await deleteOffering(id)
                .then((response) => {
@@ -120,6 +123,11 @@ const Offers = ({ offerType }) => {
                     setIsOpen(false);
                     setLoading(false);
                });
+     };
+
+     const openModel = (id) => {
+          setIsOpen(true);
+          setDeleteID(id);
      };
      return (
           <>
@@ -335,8 +343,8 @@ const Offers = ({ offerType }) => {
                                                                  <Button
                                                                       colorScheme="red"
                                                                       onClick={() =>
-                                                                           setIsOpen(
-                                                                                true
+                                                                           openModel(
+                                                                                id
                                                                            )
                                                                       }
                                                                  >
@@ -380,7 +388,7 @@ const Offers = ({ offerType }) => {
                                         onClick={onClose}
                                         isLoading={loading}
                                         ml={3}
-                                        onClick={() => deleteOffer(id)}
+                                        onClick={() => deleteOffer(delteId)}
                                    >
                                         Delete
                                    </Button>
