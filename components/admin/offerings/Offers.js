@@ -98,7 +98,6 @@ const Offers = ({ offerType }) => {
      };
 
      const deleteOffer = async (id) => {
-          console.log(id);
           setLoading(true);
           await deleteOffering(id)
                .then((response) => {
