@@ -22,6 +22,14 @@ const Testimonials = ({ testimonials }) => {
           return <Skeleton height="100vh"></Skeleton>;
      }
 
+     const activeTestimonials = data.testimonials.filter(
+          (testi) => testi.isActive === true
+     );
+
+     if (activeTestimonials.length === 0) {
+          return null;
+     }
+
      const handleDragStart = (e) => e.preventDefault();
      const items = [];
 
@@ -77,7 +85,7 @@ const Testimonials = ({ testimonials }) => {
                               width="100%"
                          >
                               <Swiper {...params}>
-                                   {data.testimonials.map((data) => {
+                                   {activeTestimonials.map((data) => {
                                         return (
                                              <Box
                                                   padding={{

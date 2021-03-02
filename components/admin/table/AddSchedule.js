@@ -111,8 +111,20 @@ const AddSchedule = ({ type }) => {
           };
 
           setLoading(true);
-          await createSchedule(type + 'Schedule', updatedData).catch(
-               (error) => {
+          await createSchedule(type + 'Schedule', updatedData)
+               .then((response) => {
+                    setLoading(false);
+                    toast({
+                         title: 'New Schedule Created',
+                         description: "We've have updated the schedule table.",
+                         status: 'success',
+                         duration: 9000,
+                         isClosable: true
+                    });
+                    mutate(`api/schedule/${type}Schedule`);
+                    reset();
+               })
+               .catch((error) => {
                     toast({
                          title: 'Something Happend',
                          description: error.message,
@@ -123,18 +135,7 @@ const AddSchedule = ({ type }) => {
                     setLoading(false);
                     reset();
                     return;
-               }
-          );
-          setLoading(false);
-          toast({
-               title: 'New Schedule Created',
-               description: "We've have updated the schedule table.",
-               status: 'success',
-               duration: 9000,
-               isClosable: true
-          });
-          mutate(`api/schedule/${type}Schedule`);
-          reset();
+               });
      };
 
      const isCustomerQuery = useMediaQuery({

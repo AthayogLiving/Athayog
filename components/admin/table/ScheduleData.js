@@ -27,6 +27,7 @@ import {
      Box
 } from '@chakra-ui/react';
 import axios from 'axios';
+import { useAuth } from '@/lib/auth';
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 // import styled from 'styled-components';
@@ -35,6 +36,7 @@ import { mutate } from 'swr';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import { Styles } from './Styles';
+import { updateSchedule } from '@/lib/db/schedule';
 
 // Create an editable cell renderer
 const EditableCell = ({
@@ -259,7 +261,9 @@ const ScheduleData = ({ schedule, type }) => {
      const onClose = () => setIsOpen(false);
      const cancelRef = useRef();
      const [skipPageReset, setSkipPageReset] = useState(false);
+     const { user } = useAuth();
 
+     console.log(user);
      const bg = useColorModeValue('white', 'gray.800');
 
      const columns = useMemo(
@@ -371,37 +375,34 @@ const ScheduleData = ({ schedule, type }) => {
           return <>{FirebaseToDate(values)}</>;
      };
 
-     const updateSchedule = async () => {
+     const updateScheduleData = async () => {
           setLoading(true);
-
-          await axios
-               .post(`/api/schedule/${type}Schedule`, {
-                    data
-               })
-               .then(function (response) {
-                    setLoading(false);
-
-                    toast({
-                         title: 'Schedule Updated.',
-                         description: "We've updated the schedule for you.",
-                         status: 'success',
-                         duration: 9000,
-                         isClosable: true
-                    });
-
-                    mutate(`/api/schedule/${type}Schedule`);
-               })
-               .catch(function (error) {
-                    setLoading(false);
-
-                    toast({
-                         title: 'An error occurred.',
-                         description: error.message,
-                         status: 'error',
-                         duration: 5000,
-                         isClosable: true
-                    });
+          try {
+               await data.map((individual) => {
+                    updateSchedule(`${type}Schedule`, individual);
                });
+               setLoading(false);
+
+               toast({
+                    title: 'Schedule Updated.',
+                    description: "We've updated the schedule for you.",
+                    status: 'success',
+                    duration: 9000,
+                    isClosable: true
+               });
+
+               mutate(`/api/schedule/${type}Schedule`);
+          } catch (error) {
+               setLoading(false);
+
+               toast({
+                    title: 'An error occurred.',
+                    description: error.message,
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true
+               });
+          }
      };
 
      return (
@@ -422,7 +423,7 @@ const ScheduleData = ({ schedule, type }) => {
                               Reset
                          </Button>
                          <Button
-                              onClick={() => updateSchedule()}
+                              onClick={() => updateScheduleData()}
                               colorScheme="teal"
                               isLoading={loading}
                          >
