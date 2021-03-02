@@ -38,7 +38,7 @@ const AddOfferings = ({ type }) => {
      const [loading, setLoading] = useState(false);
      const toast = useToast();
 
-     const { handleSubmit, register, errors } = useForm();
+     const { handleSubmit, register, errors, reset } = useForm();
      const bg = useColorModeValue('white', 'gray.800');
 
      const setTrialChange = () => {
@@ -49,6 +49,8 @@ const AddOfferings = ({ type }) => {
           setLoading(true);
           await createOffering(name, description, days, price, trial, type)
                .then((response) => {
+                    onClose();
+                    reset();
                     toast({
                          title: 'Offer Created',
                          description:
@@ -60,6 +62,8 @@ const AddOfferings = ({ type }) => {
                     setLoading(false);
                })
                .catch((error) => {
+                    onClose();
+                    reset();
                     toast({
                          title: 'Something Happend',
                          description: error.message,

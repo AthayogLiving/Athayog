@@ -24,7 +24,13 @@ const Gallery = ({ images }) => {
           return null;
      }
 
-     const totalImages = data.images.length;
+     const activeImage = data.images.filter((image) => image.isActive === true);
+
+     if (activeImage.length === 0) {
+          return null;
+     }
+
+     const totalImages = activeImage.length;
 
      let sliderPerView = 3;
      let xl = 4;
@@ -112,15 +118,20 @@ const Gallery = ({ images }) => {
                     Gallery
                </Heading>
                <Swiper {...params}>
-                    {data.images.map((data) => {
+                    {activeImage.map((image) => {
                          return (
-                              <Box rounded="lg" overflow="hidden" key={data.id}>
+                              <Box
+                                   rounded="lg"
+                                   overflow="hidden"
+                                   key={image.id}
+                              >
                                    <Image
                                         layout="responsive"
                                         height="150px"
                                         width="300px"
                                         objectFit="cover"
-                                        src={data.imageUrl}
+                                        alt={image.alt}
+                                        src={image.imageUrl}
                                    />
                               </Box>
                          );
