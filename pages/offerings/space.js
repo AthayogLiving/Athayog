@@ -5,6 +5,7 @@ import athayogSpace from 'public/athayogSpace.jpg';
 import Information from '@/components/shared/Information';
 import Classes from '@/components/shared/Classes';
 import Pricing from '@/components/shared/Pricing';
+import IntensityTable from '@/components/shared/IntensityTable';
 import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';
 
@@ -84,6 +85,7 @@ const Space = ({ offers, notFound }) => {
                <Hero pageData={pageData} />
                <Information pageData={pageData} />
                <Classes classes={pageData.classes} />
+               <IntensityTable />
                <Pricing
                     registerTo={pageData.name.toLocaleLowerCase()}
                     pricing={apiPricing}
