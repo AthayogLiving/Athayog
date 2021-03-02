@@ -25,13 +25,15 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import useSWR from 'swr';
+import useSWR, { mutate } from 'swr';
 
 const ShowTestimonials = () => {
      const [status, setStatus] = useState(false);
      const toast = useToast();
      const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
-     const { data, error } = useSWR(`/api/testimonials`, fetcher);
+     const { data, error } = useSWR(`/api/testimonials`, fetcher, {
+          refreshInterval: 1
+     });
      if (error)
           return (
                <Grid placeItems="center" mt={10}>
@@ -60,6 +62,7 @@ const ShowTestimonials = () => {
           await updateTestimonialsStatus(id, !isAvailaible)
                .then((response) => {
                     setStatus(false);
+                    mutate([`/api/testimonials`, user.token]);
                     return toast({
                          title: 'Status Updated.',
                          description: "We've updated the live status.",

@@ -26,6 +26,7 @@ import { mutate } from 'swr';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '@/lib/auth';
+import { createTestimonial } from '@/lib/db/testimonials';
 const AddTestimonials = () => {
      const { user } = useAuth();
      const toast = useToast();
@@ -33,17 +34,13 @@ const AddTestimonials = () => {
      const { handleSubmit, register, errors, reset } = useForm();
      const bg = useColorModeValue('white', 'gray.800');
      const color = useColorModeValue('white', 'gray.800');
+     const [value, setValue] = React.useState('1');
      const { isOpen, onOpen, onClose } = useDisclosure();
-     const onCreation = ({ name, review, rating, active }) => {
+     const onCreation = async ({ name, review, rating }) => {
           setLoading(true);
 
-          axios.post('/api/testimonials', {
-               name,
-               review,
-               rating,
-               active
-          })
-               .then(function (response) {
+          await createTestimonial(name, review, rating, true)
+               .then((response) => {
                     setLoading(false);
                     onClose();
                     toast({
@@ -54,12 +51,10 @@ const AddTestimonials = () => {
                          isClosable: true
                     });
                     reset();
-
                     mutate([`/api/testimonials`, user.token]);
                })
-               .catch(function (error) {
+               .catch((error) => {
                     setLoading(false);
-
                     toast({
                          title: 'An error occurred.',
                          description: error.message,
@@ -148,27 +143,6 @@ const AddTestimonials = () => {
                                              <option value="4">4</option>
                                              <option value="5">5</option>
                                         </Select>
-                                   </FormControl>
-                                   <FormControl isRequired>
-                                        <FormLabel>Publish?</FormLabel>
-                                        <RadioGroup>
-                                             <Stack direction="row">
-                                                  <Radio
-                                                       value={true}
-                                                       name="active"
-                                                       ref={register}
-                                                  >
-                                                       Yes
-                                                  </Radio>
-                                                  <Radio
-                                                       value={false}
-                                                       name="active"
-                                                       ref={register}
-                                                  >
-                                                       No
-                                                  </Radio>
-                                             </Stack>
-                                        </RadioGroup>
                                    </FormControl>
                               </Stack>
                          </ModalBody>
