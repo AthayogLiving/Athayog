@@ -79,8 +79,7 @@ const EnquiryModal = () => {
      return (
           <>
                <MotionButton
-                    bg="aygreen.100"
-                    color="primaryDarkGray"
+                    colorScheme="aygreen"
                     onClick={onOpen}
                     variant="solid"
                     fontSize={{ base: 'sm', md: 'md' }}
@@ -89,10 +88,6 @@ const EnquiryModal = () => {
                     size={{ base: 'sm', md: 'md' }}
                     rounded="md"
                     mt={{ base: '5', md: '10' }}
-                    whileHover={{
-                         scale: 1.2,
-                         transition: { duration: 1 }
-                    }}
                     whileTap={{ scale: 0.9 }}
                >
                     Enquiry

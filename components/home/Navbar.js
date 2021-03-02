@@ -18,7 +18,8 @@ import {
      DrawerContent,
      DrawerCloseButton,
      useDisclosure,
-     VStack
+     VStack,
+     Text
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
@@ -67,18 +68,19 @@ const Navbar = () => {
                          </Flex>
                          <Flex alignItems="center">
                               <Link href="/">
-                                   <Heading
+                                   <Text
                                         color="primaryGreen"
                                         fontSize={{
-                                             base: 'lg',
-                                             md: 'xl',
-                                             lg: '2xl'
+                                             base: 'xl',
+                                             md: '2xl',
+                                             lg: '3xl'
                                         }}
                                         fontWeight="normal"
                                         cursor="pointer"
+                                        letterSpacing="-2.5px"
                                    >
                                         Atha Yog
-                                   </Heading>
+                                   </Text>
                               </Link>
 
                               <HStack
@@ -230,10 +232,13 @@ const Navbar = () => {
                               <Link href="/register/trial">
                                    <Button
                                         bg="aygreen.100"
-                                        color="primaryDarkGray"
+                                        _hover={{
+                                             bg: 'aygreen.200'
+                                        }}
                                         variant="solid"
                                         size="sm"
                                         fontSize="md"
+                                        color="gray.700"
                                         mr={10}
                                         rounded="md"
                                         px={8}
