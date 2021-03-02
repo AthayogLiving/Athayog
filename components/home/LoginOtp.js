@@ -32,6 +32,7 @@ const LoginOtp = () => {
      const [useOtp, setUseOtp] = useState(false);
      const [loading, setLoading] = useState(false);
      const [loadingOtp, setLoadingOtp] = useState(false);
+     const [phone, setPhone] = useState('');
      const toast = useToast();
      const router = useRouter();
 
@@ -49,21 +50,37 @@ const LoginOtp = () => {
      };
 
      const checkUserExist = async ({ phone, countryCode }) => {
-          const response = await checkUserExistByPhone(phone);
-          if (response.length === 0) {
-               toast({
-                    title: `Number doesn't exist`,
-                    description: `Phone number doesn't exist please create account first`,
-                    status: 'error',
-                    duration: 5000,
-                    isClosable: true
+          setLoading(true);
+          await checkUserExistByPhone(countryCode + phone)
+               .then((response) => {
+                    if (response.length === 0) {
+                         toast({
+                              title: `Number doesn't exist`,
+                              description: `Phone number doesn't exist please create account first`,
+                              status: 'error',
+                              duration: 5000,
+                              isClosable: true
+                         });
+                         setUseOtp(false);
+                         setLoading(false);
+                         return;
+                    } else {
+                         setPhone(countryCode + phone);
+                         onPhoneSignInSubmit({ phone, countryCode });
+                    }
+               })
+               .catch((error) => {
+                    toast({
+                         title: `Something Happend`,
+                         description: `Something Happend. Try Again`,
+                         status: 'error',
+                         duration: 5000,
+                         isClosable: true
+                    });
+                    setUseOtp(false);
+                    setLoading(false);
+                    return;
                });
-               setUseOtp(false);
-               setLoading(false);
-               return;
-          } else {
-               onPhoneSignInSubmit({ phone, countryCode });
-          }
      };
 
      const onPhoneSignInSubmit = ({ phone, countryCode }) => {
@@ -125,6 +142,34 @@ const LoginOtp = () => {
                          duration: 5000,
                          isClosable: true
                     });
+               });
+     };
+
+     const resendOtp = (e, phone) => {
+          e.preventDefault();
+          alert(phone);
+          const appVerifier = window.recaptchaVerifier;
+          firebase
+               .auth()
+               .signInWithPhoneNumber(phone, appVerifier)
+               .then((confirmationResult) => {
+                    // SMS sent. Prompt user to type the code from the message, then sign the
+                    // user in with confirmationResult.confirm(code).
+
+                    window.confirmationResult = confirmationResult;
+                    setUseOtp(true);
+                    // setLoading(false);
+               })
+               .catch((error) => {
+                    toast({
+                         title: 'An error occurred.',
+                         description: error.message,
+                         status: 'error',
+                         duration: 5000,
+                         isClosable: true
+                    });
+
+                    grecaptcha.reset(window.recaptchaWidgetId);
                });
      };
 
@@ -202,7 +247,6 @@ const LoginOtp = () => {
                                    colorScheme="aygreen"
                                    isLoading={loading}
                                    loadingText="Generating"
-                                   onClick={() => setLoading(true)}
                                    _active={{
                                         transform: 'scale(0.95)'
                                    }}
@@ -237,37 +281,41 @@ const LoginOtp = () => {
                          </Stack>
                     </>
                ) : (
-                    <MotionStack
-                         spacing={{ base: 5, md: 8, lg: 8 }}
-                         mt={5}
-                         width={{ base: '100%', md: 'sm', lg: 'sm' }}
-                         exit={{ y: -1000, opacity: 1 }}
-                         as="form"
-                         onSubmit={handleSubmit((data) => onOTPSubmit(data))}
-                    >
-                         <FormControl isRequired>
-                              <FormLabel>OTP</FormLabel>
-                              <Input
-                                   type="otp"
-                                   aria-label="otp"
-                                   name="otp"
-                                   id="otp"
-                                   ref={register({
-                                        required: 'Please enter your otp.'
-                                   })}
-                              />
-                         </FormControl>
-                         <Button
-                              type="submit"
-                              colorScheme="aygreen"
-                              isLoading={loadingOtp}
-                              _active={{
-                                   transform: 'scale(0.95)'
-                              }}
+                    <>
+                         <MotionStack
+                              spacing={{ base: 5, md: 8, lg: 8 }}
+                              mt={5}
+                              width={{ base: '100%', md: 'sm', lg: 'sm' }}
+                              exit={{ y: -1000, opacity: 1 }}
+                              as="form"
+                              onSubmit={handleSubmit((data) =>
+                                   onOTPSubmit(data)
+                              )}
                          >
-                              Submit OTP
-                         </Button>
-                    </MotionStack>
+                              <FormControl isRequired>
+                                   <FormLabel>OTP</FormLabel>
+                                   <Input
+                                        type="otp"
+                                        aria-label="otp"
+                                        name="otp"
+                                        id="otp"
+                                        ref={register({
+                                             required: 'Please enter your otp.'
+                                        })}
+                                   />
+                              </FormControl>
+                              <Button
+                                   type="submit"
+                                   colorScheme="aygreen"
+                                   isLoading={loadingOtp}
+                                   _active={{
+                                        transform: 'scale(0.95)'
+                                   }}
+                              >
+                                   Submit OTP
+                              </Button>
+                         </MotionStack>
+                    </>
                )}
 
                <div id="recapctha-box"></div>
