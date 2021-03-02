@@ -102,7 +102,7 @@ const ImageGrid = ({ imageType, isMobile }) => {
                .catch((error) => {
                     toast({
                          title: 'Something Happend.',
-                         description: errror.message,
+                         description: error.message,
                          status: 'danger',
                          duration: 9000,
                          isClosable: true

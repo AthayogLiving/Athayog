@@ -1,7 +1,6 @@
 import Cors from 'cors';
 import initMiddleware from '@/lib/cors-middleware';
-import { createPayment } from '@/lib/db/payment';
-
+import { createPayment } from '@/lib/db/db-admin';
 // Initialize the cors middleware
 const cors = initMiddleware(
      // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options

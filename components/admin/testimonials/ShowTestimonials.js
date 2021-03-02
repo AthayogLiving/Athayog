@@ -26,9 +26,11 @@ import {
 import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import useSWR, { mutate } from 'swr';
+import { useAuth } from '@/lib/auth';
 
 const ShowTestimonials = () => {
      const [status, setStatus] = useState(false);
+     const { user } = useAuth();
      const toast = useToast();
      const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
      const { data, error } = useSWR(`/api/testimonials`, fetcher, {
