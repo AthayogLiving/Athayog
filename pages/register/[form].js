@@ -32,7 +32,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { logo } from 'public/og.png';
 import HomeLayout from '@/components/layout/HomeLayout';
-import { registerForm } from '@/lib/db/forms';
+import { registerForm, registerFormFree } from '@/lib/db/forms';
 
 const Register = () => {
      const router = useRouter();
@@ -116,6 +116,25 @@ const Register = () => {
                     style,
                     referral,
                     conditions
+               });
+               return;
+          }
+          console.log(price);
+          if (price == 0) {
+               console.log('ran');
+               submitWithoutPaymentFree({
+                    name,
+                    email,
+                    phone,
+                    gender,
+                    experience,
+                    style,
+                    referral,
+                    conditions,
+                    courseName,
+                    courseId,
+                    price,
+                    duration
                });
                return;
           }
@@ -252,6 +271,63 @@ const Register = () => {
                referral,
                conditions,
                capitalizeFirstLetter(form)
+          )
+               .then((response) => {
+                    reset();
+                    toast({
+                         title: 'Successfully Submitted.',
+                         description: 'We will reach back to you soon :)',
+                         status: 'success',
+                         duration: 5000,
+                         isClosable: true
+                    });
+                    router.push('/');
+               })
+               .catch((error) => {
+                    setLoading(false);
+                    toast({
+                         title: 'An error occurred.',
+                         description: error.message,
+                         status: 'error',
+                         duration: 5000,
+                         isClosable: true
+                    });
+                    setLoading(false);
+                    reset();
+               });
+     };
+
+     const submitWithoutPaymentFree = async ({
+          name,
+          email,
+          phone,
+          gender,
+          experience,
+          style,
+          referral,
+          conditions,
+          courseName,
+          courseId,
+          price,
+          duration
+     }) => {
+          setLoading(true);
+          await registerFormFree(
+               user.uid,
+               name,
+               email,
+               phone,
+               gender,
+               experience,
+               style,
+               capitalizeFirstLetter(form),
+               referral,
+               conditions,
+               capitalizeFirstLetter(form),
+               courseName,
+               courseId,
+               price,
+               duration
           )
                .then((response) => {
                     reset();

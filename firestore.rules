@@ -1,9 +1,58 @@
 rules_version = '2';
 service cloud.firestore {
-  match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if
-          request.time < timestamp.date(2021, 2, 8);
+    match /databases/{database}/documents {
+      match /offerings/{offeringId} {
+        allow read;
+        allow write: if request.auth.uid != null;
+      }
+      match /users/{userId}{
+        allow read;
+        allow write: if request.auth.uid != null
+      }
+      match /adminUsers/{adminUserId}{
+        allow read;
+        allow write: if checkUser()
+      }
+      match /images/{imageId}{
+        allow read;
+        allow write;
+      }
+      match /enquiryForms/{enquiryFormId}{
+      	allow read, write;
+      }
+      match /forms/{formId}{
+        allow read;
+        allow write: if request.auth.uid != null;
+      }
+      match /offerings/{offeringId}{
+        allow read;
+        allow write: if checkUser()
+      }
+      match /testimonials/{testimonialsId}{
+        allow read;
+        allow write;
+      }
+      match /generalSchedule/{generalScheduleId}{
+        allow read;
+        allow write: if checkUser()
+      }
+      match /onlineSchedule/{onlineScheduleId}{
+        allow read;
+        allow write: if checkUser()
+      }
+      match /personalSchedule/{personalScheduleId}{
+        allow read;
+        allow write: if checkUser()
+      }
+      match /users/{userId}/payments/{paymentId} {
+      	allow read;
+        allow write: if request.auth.uid != null;
+      }
     }
-  }
 }
+
+function checkUser() {
+		return request.auth.uid != null && request.auth.token.email.matches('.*@athayogliving[.]com$')
+}
+
+
