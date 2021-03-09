@@ -9,9 +9,33 @@ import {
      Td,
      TableCaption,
      Flex,
-     Heading
+     Heading,
+     chakra
 } from '@chakra-ui/react';
 import React from 'react';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+
+const Star = ({ starNumber }) => {
+     const remaingStart = 5 - starNumber;
+     return (
+          <Flex>
+               {[...Array(starNumber)].map((e, i) => {
+                    return (
+                         <chakra.span mr={2}>
+                              <AiFillStar />
+                         </chakra.span>
+                    );
+               })}
+               {[...Array(remaingStart)].map((e, i) => {
+                    return (
+                         <chakra.span mr={2}>
+                              <AiOutlineStar />
+                         </chakra.span>
+                    );
+               })}
+          </Flex>
+     );
+};
 
 const IntensityTable = () => {
      return (
@@ -42,7 +66,6 @@ const IntensityTable = () => {
                          rounded="lg"
                          mt={10}
                     >
-                         {' '}
                          <Table
                               variant="simple"
                               size="md"
@@ -54,10 +77,10 @@ const IntensityTable = () => {
                                    <Tr>
                                         <Th bg="secondaryGreen">Class Name</Th>
                                         <Th bg="secondaryGreen">
-                                             Body Engagemen
+                                             Body Engagement
                                         </Th>
                                         <Th bg="secondaryGreen">
-                                             Mind Engagement{' '}
+                                             Mind Engagement
                                         </Th>
                                         <Th bg="secondaryGreen">
                                              Breath Engagement
@@ -69,41 +92,77 @@ const IntensityTable = () => {
                                         <Td bg="green.100">
                                              Universal Harmony
                                         </Td>
-                                        <Td>5 Stars</Td>
-                                        <Td>5 Stars</Td>
-                                        <Td>5 Stars</Td>
+                                        <Td>
+                                             <Star starNumber={5} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={5} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={5} />
+                                        </Td>
                                    </Tr>
                                    <Tr>
                                         <Td bg="green.100">
                                              Transcending Transitions
                                         </Td>
-                                        <Td>5 Stars</Td>
-                                        <Td>2 Stars</Td>
-                                        <Td>5 Stars</Td>
+                                        <Td>
+                                             <Star starNumber={5} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={2} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={5} />
+                                        </Td>
                                    </Tr>
                                    <Tr>
                                         <Td bg="green.100">Rhythm of Being</Td>
-                                        <Td>5 Stars</Td>
-                                        <Td>2 Stars</Td>
-                                        <Td>5 Stars</Td>
+                                        <Td>
+                                             <Star starNumber={5} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={2} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={5} />
+                                        </Td>
                                    </Tr>
                                    <Tr>
                                         <Td bg="green.100">Deep Space </Td>
-                                        <Td>2 Stars</Td>
-                                        <Td>5 Stars</Td>
-                                        <Td>5 Stars</Td>
+                                        <Td>
+                                             <Star starNumber={2} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={5} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={5} />
+                                        </Td>
                                    </Tr>
                                    <Tr>
                                         <Td bg="green.100">Little Star</Td>
-                                        <Td>3 Stars</Td>
-                                        <Td>5 Stars</Td>
-                                        <Td>3 Stars</Td>
+                                        <Td>
+                                             <Star starNumber={3} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={5} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={3} />
+                                        </Td>
                                    </Tr>
                                    <Tr>
                                         <Td bg="green.100">Inner World</Td>
-                                        <Td>2 Stars</Td>
-                                        <Td>5 Stars</Td>
-                                        <Td>4 Stars</Td>
+                                        <Td>
+                                             <Star starNumber={2} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={5} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={4} />
+                                        </Td>
                                    </Tr>
                               </Tbody>
                          </Table>
