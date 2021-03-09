@@ -38,7 +38,7 @@ function AdminTable({ admin }) {
      const color = useColorModeValue('white', 'gray.800');
      const { user } = useAuth();
 
-     const handleAdminAccess = async (id, name, permission) => {
+     const handleAdminAccess = async (token, id, name, permission) => {
           changeStatus(false);
 
           const roleType = {
@@ -65,10 +65,11 @@ function AdminTable({ admin }) {
                     });
                })
                .catch(function (error) {
+                    console.log(error);
                     changeAdmin(false);
                     toast({
                          title: 'An error occurred.',
-                         description: 'Email not verified',
+                         description: 'lol',
                          status: 'error',
                          duration: 5000,
                          isClosable: true
@@ -126,6 +127,7 @@ function AdminTable({ admin }) {
                                                        }
                                                        onChange={(e) =>
                                                             handleAdminAccess(
+                                                                 user.token,
                                                                  user.id,
                                                                  user.displayName,
                                                                  user.admin

@@ -54,6 +54,8 @@ const DashboardLayout = ({ children }) => {
           );
      }
 
+     console.log(user);
+
      if (user.admin === false) {
           const router = useRouter();
           router.push('/');

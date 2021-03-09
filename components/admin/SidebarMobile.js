@@ -33,6 +33,10 @@ const SidebarMobile = () => {
      const color = useColorModeValue('gray.100', 'gray.700');
      Router.events.on('routeChangeStart', () => onClose());
      const router = useRouter();
+
+     const signOutAdmin = (redirect) => {
+          signout(redirect);
+     };
      return (
           <>
                <Flex
