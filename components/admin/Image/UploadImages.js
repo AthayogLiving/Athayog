@@ -98,6 +98,7 @@ const UploadImages = ({ imageType, isMobile, isDisabled }) => {
                                    <Image
                                         src={image}
                                         height="400px"
+                                        alt={image.id}
                                         width="400px"
                                         mt={2}
                                         rounded="lg"

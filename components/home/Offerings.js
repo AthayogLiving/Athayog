@@ -62,6 +62,7 @@ const Offerings = () => {
                                                   >
                                                        <Image
                                                             src={offer.image}
+                                                            alt={offer.name}
                                                             layout="responsive"
                                                             objectFit="cover"
                                                             height="150px"

@@ -25,6 +25,7 @@ const SubEmployee = ({ name, image, visible, info, designation }) => {
                                    width="300px"
                                    objectFit="cover"
                                    layout="responsive"
+                                   alt={name}
                               />
                          ) : (
                               <Avatar

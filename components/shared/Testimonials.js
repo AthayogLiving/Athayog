@@ -62,7 +62,7 @@ const Testimonials = ({ testimonials }) => {
 
      return (
           <Flex
-               bg="primaryGreen"
+               bg="aygreen.700"
                justifyContent="center"
                alignItems="center"
                height={{ base: 'sm', md: 'md', lg: 'md' }}
