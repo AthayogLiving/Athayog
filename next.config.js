@@ -17,8 +17,7 @@ module.exports = withPlugins(
                {
                     pwa: {
                          dest: 'public',
-                         register: true,
-                         skipWaiting: true
+                         register: true
                     }
                }
           ]
