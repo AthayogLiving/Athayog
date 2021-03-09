@@ -6,6 +6,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import useSWR from 'swr';
 import Swiper from 'react-id-swiper';
 import 'swiper/swiper-bundle.css';
+import { v4 as uuidv4 } from 'uuid';
 
 const Stars = ({ totalStars, totalFilled }) =>
      [...Array(totalStars).keys()].map((key) => (
@@ -62,7 +63,7 @@ const Testimonials = ({ testimonials }) => {
 
      return (
           <Flex
-               bg="primaryGreen"
+               bg="aygreen.700"
                justifyContent="center"
                alignItems="center"
                height={{ base: 'sm', md: 'md', lg: 'md' }}
@@ -84,7 +85,7 @@ const Testimonials = ({ testimonials }) => {
                               alignItems="center"
                               width="100%"
                          >
-                              <Swiper {...params}>
+                              <Swiper {...params} key={uuidv4()}>
                                    {activeTestimonials.map((data) => {
                                         return (
                                              <Box

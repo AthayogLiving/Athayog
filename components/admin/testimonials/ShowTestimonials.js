@@ -89,7 +89,6 @@ const ShowTestimonials = () => {
           <>
                {isTabletOrMobile ? (
                     <>
-                         {' '}
                          {data.testimonials.map((data) => {
                               return (
                                    <Box

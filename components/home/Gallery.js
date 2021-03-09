@@ -7,6 +7,7 @@ import Swiper from 'react-id-swiper';
 import SwiperCore, { Navigation, Pagination, EffectFade } from 'swiper';
 import 'swiper/swiper-bundle.css';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { v4 as uuidv4 } from 'uuid';
 
 SwiperCore.use([Navigation, Pagination, EffectFade]);
 
@@ -117,7 +118,7 @@ const Gallery = ({ images }) => {
                >
                     Gallery
                </Heading>
-               <Swiper {...params}>
+               <Swiper {...params} key={uuidv4()}>
                     {activeImage.map((image) => {
                          return (
                               <Box

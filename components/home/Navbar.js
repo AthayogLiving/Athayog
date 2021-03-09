@@ -69,7 +69,7 @@ const Navbar = () => {
                          <Flex alignItems="center">
                               <Link href="/">
                                    <Text
-                                        color="primaryGreen"
+                                        color="#46563E"
                                         fontSize={{
                                              base: 'xl',
                                              md: '2xl',

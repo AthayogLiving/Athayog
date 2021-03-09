@@ -187,6 +187,7 @@ const ImageGrid = ({ imageType, isMobile }) => {
                                              src={image.imageUrl}
                                              key={image.id}
                                              height="250px"
+                                             alt={image.id}
                                              width="250px"
                                              objectFit="cover"
                                              border="none"

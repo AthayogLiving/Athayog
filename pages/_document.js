@@ -10,7 +10,7 @@ class RootDocument extends Document {
 
      render() {
           return (
-               <Html>
+               <Html lang="en">
                     <link rel="preconnect" href="https://fonts.gstatic.com" />
                     <link
                          rel="stylesheet"

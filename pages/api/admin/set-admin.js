@@ -49,7 +49,7 @@ export default async function handler(req, res) {
                                         .update(data);
                               })
                               .catch((error) => {
-                                   res.state(400).json({
+                                   res.status(400).json({
                                         message: 'Something happend try again'
                                    });
                               });
@@ -63,9 +63,7 @@ export default async function handler(req, res) {
                     message: 'Successfully given admin privilages'
                });
           } catch (error) {
-               return res.status(500).json({
-                    message: error
-               });
+               return res.status(500).json(error);
           }
      }
 }

@@ -17,37 +17,48 @@ export default async function handler(req, res) {
      await cors(req, res);
      switch (req.method) {
           case 'POST':
-               await auth
-                    .createUser({
-                         ...req.body
-                    })
-                    .then((userRecord) => {
-                         return res.status(200).json(userRecord);
-                    })
-                    .catch((error) => {
-                         return res.status(400).json(error);
-                    });
+               try {
+                    await auth
+                         .createUser({
+                              ...req.body
+                         })
+                         .then((userRecord) => {
+                              return res.status(200).json(userRecord);
+                         })
+                         .catch((error) => {
+                              return res.status(400).json(error);
+                         });
+               } catch (error) {
+                    res.status(500).json(error);
+               }
+
                break;
           case 'GET':
                const token = req.headers.token;
-               if (token) {
-                    await auth
-                         .verifyIdToken(token)
-                         .then((decodedToken) => {})
-                         .catch((error) => {
-                              return res.status(200).json(error);
-                         });
+               try {
+                    if (token) {
+                         await auth
+                              .verifyIdToken(token)
+                              .then((decodedToken) => {})
+                              .catch((error) => {
+                                   return res.status(200).json(error);
+                              });
 
-                    const snapshot = await db.collection('adminUsers').get();
-                    const users = [];
-                    snapshot.forEach((doc) => {
-                         users.push({ id: doc.id, ...doc.data() });
-                    });
-                    return res.status(200).json({ users });
-               } else {
-                    return res
-                         .status(401)
-                         .json({ message: 'Unauthorized Acess' });
+                         const snapshot = await db
+                              .collection('adminUsers')
+                              .get();
+                         const users = [];
+                         snapshot.forEach((doc) => {
+                              users.push({ id: doc.id, ...doc.data() });
+                         });
+                         return res.status(200).json({ users });
+                    } else {
+                         return res
+                              .status(401)
+                              .json({ message: 'Unauthorized Acess' });
+                    }
+               } catch (error) {
+                    res.status(500).json(error);
                }
 
                break;

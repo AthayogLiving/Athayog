@@ -7,6 +7,7 @@ import Register from '@/components/shared/Register';
 import InformationSplit from '@/components/shared/InformationSplit';
 import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';
+import Schedule from '@/components/shared/Schedule';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('personal');
@@ -57,6 +58,7 @@ const Personal = ({ offers, notFound }) => {
           >
                <Hero pageData={pageData} />
                <InformationSplit pageData={pageData} />
+               <Schedule schedule="personal" />
                <Pricing pricing={apiPricing} />
           </motion.div>
      );

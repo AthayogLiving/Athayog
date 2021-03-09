@@ -49,17 +49,21 @@ export default async function handler(req, res) {
           });
      }
      if (req.method === 'GET') {
-          const snapshot = await db
-               .collection('forms')
-               .orderBy('createdAt', 'desc')
-               .limit(20)
-               .get();
-          const submissions = [];
+          try {
+               const snapshot = await db
+                    .collection('forms')
+                    .orderBy('createdAt', 'desc')
+                    .limit(20)
+                    .get();
+               const submissions = [];
 
-          snapshot.forEach((doc) => {
-               submissions.push({ id: doc.id, ...doc.data() });
-          });
+               snapshot.forEach((doc) => {
+                    submissions.push({ id: doc.id, ...doc.data() });
+               });
 
-          res.status(200).json({ submissions });
+               res.status(200).json({ submissions });
+          } catch (error) {
+               res.status(500).json(error);
+          }
      }
 }

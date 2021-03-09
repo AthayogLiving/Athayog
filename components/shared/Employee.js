@@ -25,6 +25,7 @@ const Employee = ({ name, image, info, designation }) => {
                     >
                          <Image
                               src={image}
+                              alt={name}
                               height="300px"
                               width="300px"
                               objectFit="cover"
