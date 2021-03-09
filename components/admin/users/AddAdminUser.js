@@ -59,7 +59,7 @@ function AddAdminUser() {
                          uid,
                          email,
                          displayName,
-                         admin: true,
+                         admin: false,
                          metadata: {
                               role: 4,
                               roleName: 'admin'
