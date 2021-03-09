@@ -52,7 +52,7 @@ function AddAdminUser() {
                          isClosable: true
                     });
                     reset();
-                    console.log(response.data);
+
                     const { uid, email, displayName } = response.data;
 
                     updateAdmin({
@@ -82,7 +82,6 @@ function AddAdminUser() {
      };
 
      const updateAdmin = async (data) => {
-          console.log(data);
           await createAdminUser(data);
      };
 

@@ -119,9 +119,8 @@ const Register = () => {
                });
                return;
           }
-          console.log(price);
+
           if (price == 0) {
-               console.log('ran');
                submitWithoutPaymentFree({
                     name,
                     email,

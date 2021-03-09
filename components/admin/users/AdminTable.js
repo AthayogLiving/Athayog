@@ -65,7 +65,6 @@ function AdminTable({ admin }) {
                     });
                })
                .catch(function (error) {
-                    console.log(error);
                     changeAdmin(false);
                     toast({
                          title: 'An error occurred.',

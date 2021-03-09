@@ -37,7 +37,6 @@ export default async function handler(req, res) {
                          })
                               .then(function (user) {
                                    // Tell client to refresh token on user.
-                                   console.log(user);
                                    const data = {
                                         admin,
                                         metadata: {

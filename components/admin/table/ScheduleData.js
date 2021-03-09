@@ -263,7 +263,6 @@ const ScheduleData = ({ schedule, type }) => {
      const [skipPageReset, setSkipPageReset] = useState(false);
      const { user } = useAuth();
 
-     console.log(user);
      const bg = useColorModeValue('white', 'gray.800');
 
      const columns = useMemo(
