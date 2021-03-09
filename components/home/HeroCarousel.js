@@ -7,6 +7,7 @@ import Swiper from 'react-id-swiper';
 import 'swiper/swiper-bundle.css';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { isMobile } from 'react-device-detect';
+import { v4 as uuidv4 } from 'uuid';
 
 const HeroCarousel = ({ images }) => {
      const { data, error } = useSWR(`/api/images/carousel`, fetcher, {
@@ -81,7 +82,7 @@ const HeroCarousel = ({ images }) => {
 
      return (
           <Box height="100vh">
-               <Swiper {...params}>
+               <Swiper {...params} key={uuidv4()}>
                     {data.images
                          .filter(
                               (image) =>
