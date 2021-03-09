@@ -19,28 +19,32 @@ export default async function handler(req, res) {
      const latestDoc = req.query.latestUsers;
      const token = req.headers.token;
 
-     if (token) {
-          await auth
-               .verifyIdToken(token)
-               .then((decodedToken) => {})
-               .catch((error) => {
-                    return res.status(200).json(error);
-               });
+     try {
+          if (token) {
+               await auth
+                    .verifyIdToken(token)
+                    .then((decodedToken) => {})
+                    .catch((error) => {
+                         return res.status(200).json(error);
+                    });
 
-          if (req.method === 'GET') {
-               const snapshot = await db
-                    .collection('users')
-                    .orderBy('creationTime', 'desc')
-                    .startAfter(latestDoc)
-                    .limit(40)
-                    .get();
-               const users = [];
+               if (req.method === 'GET') {
+                    const snapshot = await db
+                         .collection('users')
+                         .orderBy('creationTime', 'desc')
+                         .startAfter(latestDoc)
+                         .limit(40)
+                         .get();
+                    const users = [];
 
-               snapshot.forEach((doc) => {
-                    users.push({ id: doc.id, ...doc.data() });
-               });
+                    snapshot.forEach((doc) => {
+                         users.push({ id: doc.id, ...doc.data() });
+                    });
 
-               res.status(200).json({ users });
+                    res.status(200).json({ users });
+               }
           }
+     } catch (error) {
+          res.status(500).json(error);
      }
 }

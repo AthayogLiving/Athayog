@@ -25,19 +25,23 @@ export default async function handler(req, res) {
           });
      }
      if (req.method === 'GET') {
-          const latestDoc = req.query.latestDoc;
+          try {
+               const latestDoc = req.query.latestDoc;
 
-          const snapshot = await db
-               .collection('enquiryForms')
-               .orderBy('createdAt', 'desc')
-               .limit(20)
-               .get();
-          const submissions = [];
+               const snapshot = await db
+                    .collection('enquiryForms')
+                    .orderBy('createdAt', 'desc')
+                    .limit(20)
+                    .get();
+               const submissions = [];
 
-          snapshot.forEach((doc) => {
-               submissions.push({ id: doc.id, ...doc.data() });
-          });
+               snapshot.forEach((doc) => {
+                    submissions.push({ id: doc.id, ...doc.data() });
+               });
 
-          res.status(200).json({ submissions });
+               res.status(200).json({ submissions });
+          } catch (error) {
+               res.status(500).json(error);
+          }
      }
 }

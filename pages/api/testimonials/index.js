@@ -18,25 +18,33 @@ export default async function handler(req, res) {
      // Run cors
      await cors(req, res);
      if (req.method === 'GET') {
-          const snapshot = await db
-               .collection('testimonials')
-               .orderBy('createdAt', 'desc')
-               .limit(5)
-               .get();
-          const testimonials = [];
+          try {
+               const snapshot = await db
+                    .collection('testimonials')
+                    .orderBy('createdAt', 'desc')
+                    .limit(5)
+                    .get();
+               const testimonials = [];
 
-          snapshot.forEach((doc) => {
-               testimonials.push({ id: doc.id, ...doc.data() });
-          });
+               snapshot.forEach((doc) => {
+                    testimonials.push({ id: doc.id, ...doc.data() });
+               });
 
-          res.status(200).json({ testimonials });
+               res.status(200).json({ testimonials });
+          } catch (error) {
+               res.status(500).json(error);
+          }
      }
 
      if (req.method === 'POST') {
-          const { name, review, rating, active } = req.body;
-          await createTestimonial(name, review, rating, active);
-          return res.status(200).json({
-               message: 'Updated Form'
-          });
+          try {
+               const { name, review, rating, active } = req.body;
+               await createTestimonial(name, review, rating, active);
+               return res.status(200).json({
+                    message: 'Updated Form'
+               });
+          } catch (error) {
+               res.status(500).json(error);
+          }
      }
 }
