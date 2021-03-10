@@ -1,7 +1,7 @@
 {
      "theme_color": "#84986D",
      "background_color": "#F3F3F5",
-     "display": "browser",
+     "display": "fullscreen",
      "scope": "/",
      "start_url": "/",
      "name": "Athayog Living",
