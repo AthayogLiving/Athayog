@@ -53,7 +53,7 @@ const Online = ({ offers, notFound }) => {
                animate={{ opacity: 1 }}
           >
                <Hero pageData={pageData} />
-               <Information pageData={pageData} />
+               {/* <Information pageData={pageData} /> */}
                <Schedule schedule="online" />
                <Pricing pricing={apiPricing} />
           </motion.div>

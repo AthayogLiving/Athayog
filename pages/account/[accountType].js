@@ -4,7 +4,7 @@ import React from 'react';
 
 import { useRouter } from 'next/router';
 import Login from '@/components/home/Login';
-import Singup from '@/components/home/Singup';
+import Signup from '@/components/home/Signup';
 import Head from 'next/head';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import LoginOtp from '@/components/home/LoginOtp';
@@ -34,7 +34,7 @@ const Account = () => {
                     />
                </Head>{' '}
                <NavbarHelper />
-               <Box height="100vh" bg="primaryWhite">
+               <Box minH="100%" bg="primaryWhite" padding="5rem 0">
                     <Flex
                          alignItems="center"
                          justifyContent="center"
@@ -46,12 +46,8 @@ const Account = () => {
                               bg="white"
                               rounded="lg"
                               boxShadow="base"
-                              marginTop={{
-                                   base: 0,
-                                   md: '-10rem',
-                                   lg: '-10rem'
-                              }}
                               padding={10}
+                              mt={{ base: '-5rem', md: '-5rem', lg: '0' }}
                               height={{ base: '100vh', md: 'auto', lg: 'auto' }}
                               width={{ base: '100%', md: 'auto', lg: 'auto' }}
                          >
@@ -60,7 +56,7 @@ const Account = () => {
                               ) : accountType === 'otp' ? (
                                    <LoginOtp />
                               ) : (
-                                   <Singup />
+                                   <Signup />
                               )}
                          </Box>
                     </Flex>

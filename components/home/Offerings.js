@@ -50,7 +50,7 @@ const Offerings = () => {
                                                        height="150px"
                                                        width="150px"
                                                        overflow="hidden"
-                                                       border="5px dotted"
+                                                       border="5px solid"
                                                        exit={{ opacity: 0 }}
                                                        initial={{ opacity: 0 }}
                                                        animate={{ opacity: 1 }}

@@ -104,8 +104,7 @@ const Footer = () => {
                     </Stack>
                     <Stack>
                          <iframe
-                              // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d485.9357581807971!2d77.71476799917869!3d13.00468935948864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae11291dc28c27%3A0xd39ba6332f2b865c!2sAtha%20Yog!5e0!3m2!1sen!2sin!4v1594150257983!5m2!1sen!2sin"
-                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.484273852193!2d77.7135324148223!3d13.004803690834144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDAwJzE3LjMiTiA3N8KwNDInNTYuNiJF!5e0!3m2!1sen!2sin!4v1601013691998!5m2!1sen!2sin"
+                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.4847988052406!2d77.71351501529448!3d13.004770190834247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae11291dc28c27%3A0xd39ba6332f2b865c!2sAthaYog%20Living!5e0!3m2!1sen!2sin!4v1615373298875!5m2!1sen!2sin"
                               width="600"
                               height="450"
                               title="Athayog Google Map"

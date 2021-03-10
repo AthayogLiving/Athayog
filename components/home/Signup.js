@@ -21,7 +21,7 @@ import firebase from '@/lib/firebase';
 import { MotionStack } from '../shared/MotionElements';
 import { CountryCode } from './ContentData';
 
-const Singup = () => {
+const Signup = () => {
      const { handleSubmit, register, errors, reset } = useForm();
      const { handleOTPUser } = useAuth();
      const [email, setEmail] = useState('');
@@ -156,7 +156,7 @@ const Singup = () => {
                     fontSize={['2xl', '2xl', '4xl']}
                     color="primaryDarkGray"
                >
-                    {useOtp ? 'Enter OTP' : 'Sing In'}
+                    {useOtp ? 'Enter OTP' : 'Join Us'}
                </Heading>
 
                {useOtp ? (
@@ -295,8 +295,12 @@ const Singup = () => {
                               Create
                          </Button>
                          <Link href="login">
-                              <Text textAlign="center" cursor="pointer">
-                                   Already have an account?
+                              <Text
+                                   textAlign="center"
+                                   textColor="aygreen.800"
+                                   cursor="pointer"
+                              >
+                                   Sign in instead?
                               </Text>
                          </Link>
                     </Stack>
@@ -306,4 +310,4 @@ const Singup = () => {
      );
 };
 
-export default Singup;
+export default Signup;

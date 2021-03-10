@@ -28,22 +28,8 @@ import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import { google, outlook, office365, yahoo, ics } from 'calendar-link';
 import { ImGoogle } from 'react-icons/im';
-import { SiMicrosoft, SiMicrosoftoutlook } from 'react-icons/si';
+import { SiMicrosoft } from 'react-icons/si';
 
-import {
-     isMonday,
-     isFriday,
-     isSaturday,
-     isSunday,
-     isThursday,
-     isTuesday,
-     isWednesday,
-     getMonth,
-     getDate,
-     getYear
-} from 'date-fns';
-import { isMobile } from 'react-device-detect';
-import { useRouter } from 'next/router';
 import {
      SetThisWeek,
      formatTimeForCalendar,
@@ -183,54 +169,51 @@ const Schedule = ({ schedule }) => {
                                    colorScheme="aygreen"
                                    className="scheduleTable"
                               >
-                                   <TableCaption
-                                        bg="secondaryGreen"
-                                        marginTop="0"
-                                   >
+                                   <TableCaption bg="aygreen.300" marginTop="0">
                                         Click on the program to add it your
                                         calendar
                                    </TableCaption>
                                    <Thead>
                                         <Tr>
-                                             <Th bg="secondaryGreen">Time</Th>
+                                             <Th bg="aygreen.200">Time</Th>
                                              <Th
-                                                  bg="secondaryGreen"
+                                                  bg="aygreen.200"
                                                   textAlign="center"
                                              >
                                                   Mon
                                              </Th>
                                              <Th
-                                                  bg="secondaryGreen"
+                                                  bg="aygreen.200"
                                                   textAlign="center"
                                              >
                                                   Tue
                                              </Th>
                                              <Th
-                                                  bg="secondaryGreen"
+                                                  bg="aygreen.200"
                                                   textAlign="center"
                                              >
                                                   Wed
                                              </Th>
                                              <Th
-                                                  bg="secondaryGreen"
+                                                  bg="aygreen.200"
                                                   textAlign="center"
                                              >
                                                   Thu
                                              </Th>
                                              <Th
-                                                  bg="secondaryGreen"
+                                                  bg="aygreen.200"
                                                   textAlign="center"
                                              >
                                                   Fri
                                              </Th>
                                              <Th
-                                                  bg="secondaryGreen"
+                                                  bg="aygreen.200"
                                                   textAlign="center"
                                              >
                                                   Sat
                                              </Th>
                                              <Th
-                                                  bg="secondaryGreen"
+                                                  bg="aygreen.200"
                                                   textAlign="center"
                                              >
                                                   Sun
@@ -260,7 +243,7 @@ const Schedule = ({ schedule }) => {
                                                             <Td
                                                                  width="200px"
                                                                  fontWeight="normal"
-                                                                 bg="green.100"
+                                                                 bg="aygreen.100"
                                                             >
                                                                  {fromHours}:
                                                                  {fromMinutes}{' '}
@@ -274,7 +257,7 @@ const Schedule = ({ schedule }) => {
                                                                  cursor="pointer"
                                                                  _hover={{
                                                                       background:
-                                                                           'green.50'
+                                                                           'ayaygreen.50'
                                                                  }}
                                                                  onClick={() =>
                                                                       addNow(
@@ -296,7 +279,7 @@ const Schedule = ({ schedule }) => {
                                                                  cursor="pointer"
                                                                  _hover={{
                                                                       background:
-                                                                           'green.50'
+                                                                           'aygreen.50'
                                                                  }}
                                                                  onClick={() =>
                                                                       addNow(
@@ -317,7 +300,7 @@ const Schedule = ({ schedule }) => {
                                                                  cursor="pointer"
                                                                  _hover={{
                                                                       background:
-                                                                           'green.50'
+                                                                           'aygreen.50'
                                                                  }}
                                                                  onClick={() =>
                                                                       addNow(
@@ -338,7 +321,7 @@ const Schedule = ({ schedule }) => {
                                                                  cursor="pointer"
                                                                  _hover={{
                                                                       background:
-                                                                           'green.50'
+                                                                           'aygreen.50'
                                                                  }}
                                                                  onClick={() =>
                                                                       addNow(
@@ -359,7 +342,7 @@ const Schedule = ({ schedule }) => {
                                                                  cursor="pointer"
                                                                  _hover={{
                                                                       background:
-                                                                           'green.50'
+                                                                           'aygreen.50'
                                                                  }}
                                                                  onClick={() =>
                                                                       addNow(
@@ -380,7 +363,7 @@ const Schedule = ({ schedule }) => {
                                                                  cursor="pointer"
                                                                  _hover={{
                                                                       background:
-                                                                           'green.50'
+                                                                           'aygreen.50'
                                                                  }}
                                                                  onClick={() =>
                                                                       addNow(
@@ -401,7 +384,7 @@ const Schedule = ({ schedule }) => {
                                                                  cursor="pointer"
                                                                  _hover={{
                                                                       background:
-                                                                           'green.50'
+                                                                           'aygreen.50'
                                                                  }}
                                                                  onClick={() =>
                                                                       addNow(

@@ -27,6 +27,8 @@ import { useRouter } from 'next/router';
 import { useAuth } from '@/lib/auth';
 import { MotionButton } from '../shared/MotionElements';
 import { HiMenu } from 'react-icons/hi';
+import Logo from 'public/Logo_FIlled_No_Text.png';
+import Image from 'next/image';
 
 const Navbar = () => {
      const { user, signout, loading } = useAuth();
@@ -68,20 +70,22 @@ const Navbar = () => {
                          </Flex>
                          <Flex alignItems="center">
                               <Link href="/">
-                                   <Text
-                                        color="#46563E"
-                                        fontSize={{
-                                             base: 'xl',
-                                             md: '2xl',
-                                             lg: '3xl'
-                                        }}
-                                        fontWeight="normal"
-                                        cursor="pointer"
-                                        letterSpacing="-2.5px"
-                                   >
-                                        Atha Yog
-                                   </Text>
+                                   <Image src={Logo} height={40} width={35} />
                               </Link>
+                              <Text
+                                   color="#46563E"
+                                   fontSize={{
+                                        base: 'xl',
+                                        md: '2xl',
+                                        lg: '3xl'
+                                   }}
+                                   ml={2}
+                                   fontWeight="normal"
+                                   cursor="pointer"
+                                   letterSpacing="-2.5px"
+                              >
+                                   Atha Yog
+                              </Text>
 
                               <HStack
                                    ml="5rem"
@@ -299,7 +303,7 @@ const Navbar = () => {
                                              px={8}
                                              py={4}
                                         >
-                                             Sign In
+                                             Join Us
                                         </Button>
                                    </Link>
                               )}
@@ -471,13 +475,6 @@ const Navbar = () => {
                               </DrawerBody>
 
                               <DrawerFooter>
-                                   <Button
-                                        variant="outline"
-                                        mr={3}
-                                        onClick={onClose}
-                                   >
-                                        Cancel
-                                   </Button>
                                    {user ? (
                                         <Menu>
                                              <MenuButton size="sm">
@@ -518,7 +515,7 @@ const Navbar = () => {
                                                   rounded="md"
                                                   onClick={onClose}
                                              >
-                                                  Sign In
+                                                  Join Us
                                              </Button>
                                         </Link>
                                    )}

@@ -22,7 +22,7 @@ body {
      position: -webkit-sticky;
      position: sticky;
      left: 0;
-     background: #addcbc;
+     background: 'aygreen.50';
      z-index: 2;
      min-width: max-content;
 }

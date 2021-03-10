@@ -19,7 +19,7 @@ const textVariants = {
 };
 
 const Hero = (props) => {
-     const { name, heroImage } = props.pageData;
+     const { name, heroImage, whatis } = props.pageData;
 
      if (!heroImage) {
           return <Skeleton height="100vh"></Skeleton>;
@@ -37,7 +37,7 @@ const Hero = (props) => {
                >
                     <Box
                          height="100%"
-                         bg="linear-gradient(to bottom, rgba(0,0,0,0) 50%,rgba(0,0,0,0.5) 100%)"
+                         bg="linear-gradient(to bottom, rgba(0,0,0,0) 50%,rgba(0,0,0,0.8) 100%)"
                          width="100%"
                          zIndex={1}
                     ></Box>
@@ -61,11 +61,19 @@ const Hero = (props) => {
                               </Text>
                               {name.toUpperCase()}
                          </Heading>
+                         <Text
+                              textColor="white"
+                              maxW="5xl"
+                              textAlign="center"
+                              mt={3}
+                         >
+                              {whatis}
+                         </Text>
                          <Divider
-                              width="80%"
+                              width="50%"
                               m="auto"
                               height="2px"
-                              mt={{ base: '1', md: '2', lg: '3' }}
+                              mt={{ base: '1', md: '2', lg: '5' }}
                               bg="#fff"
                               border="none"
                          />

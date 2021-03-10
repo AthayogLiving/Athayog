@@ -31,7 +31,7 @@ const Faq = () => {
                               fontSize={{ base: '2xl', md: '3xl' }}
                               color="primaryDarkGray"
                          >
-                              Faq
+                              FAQ
                          </Heading>
                          <Flex
                               justifyContent="space-around"

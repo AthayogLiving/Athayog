@@ -83,7 +83,7 @@ const Space = ({ offers, notFound }) => {
                animate={{ opacity: 1 }}
           >
                <Hero pageData={pageData} />
-               <Information pageData={pageData} />
+               {/* <Information pageData={pageData} /> */}
                <Classes classes={pageData.classes} />
                <IntensityTable />
                <Pricing

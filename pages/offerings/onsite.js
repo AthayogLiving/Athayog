@@ -28,7 +28,7 @@ const Onsite = () => {
                animate={{ opacity: 1 }}
           >
                <Hero pageData={pageData} />
-               <Information pageData={pageData} />
+               {/* <Information pageData={pageData} /> */}
 
                <Pricing pricing={pageData.pricing} toRegister={false} />
                <Register registerTo={pageData.name.toLocaleLowerCase()} />
