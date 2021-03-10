@@ -1,7 +1,6 @@
 const withPlugins = require('next-compose-plugins');
 const withImages = require('next-images');
 const withPWA = require('next-pwa');
-const withOffline = require('next-offline');
 
 module.exports = withPlugins(
      [
