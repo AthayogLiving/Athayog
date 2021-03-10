@@ -144,6 +144,8 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                </Flex>
           );
      }
+
+     console.log(pricing);
      return (
           <Flex
                margin="auto"
@@ -175,122 +177,220 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                          width="100%"
                          mt={10}
                     >
-                         {pricing.map((data, index) => {
-                              return (
-                                   <Box
-                                        bg={
-                                             index % 2 == 0
-                                                  ? 'aygreen.100'
-                                                  : 'aygreen.200'
-                                        }
-                                        height="auto"
-                                        rounded="lg"
-                                        padding={{
-                                             base: '6',
-                                             md: '8',
-                                             lg: '8'
-                                        }}
-                                        textAlign="center"
-                                        d="flex"
-                                        flexDirection="column"
-                                        key={data.id}
-                                        justifyContent="space-between"
-                                   >
-                                        <Box>
-                                             <Heading
-                                                  fontSize={{
-                                                       base: 'xl',
-                                                       md: 'xl',
-                                                       lg: '2xl'
-                                                  }}
-                                                  fontWeight="normal"
-                                                  textAlign="left"
-                                             >
-                                                  {capitalizeFirstLetter(
-                                                       data.courseName
-                                                  )}
-                                             </Heading>
-                                             <Text
-                                                  mt={5}
-                                                  fontWeight="light"
-                                                  textAlign="left"
-                                                  fontSize={{
-                                                       base: 'base',
-                                                       md: 'md',
-                                                       lg: 'lg'
-                                                  }}
-                                             >
-                                                  {data.description}
-                                             </Text>
-                                        </Box>
-                                        <Box>
-                                             <Flex
-                                                  justifyContent="space-between"
-                                                  align="center"
-                                                  mt={5}
-                                             >
-                                                  <Text
-                                                       fontSize={{
-                                                            base: 'md',
-                                                            md: 'lg',
-                                                            lg: 'xl'
-                                                       }}
-                                                  >
-                                                       {data.duration}
-                                                  </Text>
-                                                  <Text
+                         {pricing
+                              .filter((data) => data.isTrial == false)
+                              .map((data, index) => {
+                                   return (
+                                        <Box
+                                             bg={
+                                                  index % 2 == 0
+                                                       ? 'aygreen.100'
+                                                       : 'aygreen.200'
+                                             }
+                                             height="auto"
+                                             rounded="lg"
+                                             padding={{
+                                                  base: '6',
+                                                  md: '8',
+                                                  lg: '8'
+                                             }}
+                                             textAlign="center"
+                                             d="flex"
+                                             flexDirection="column"
+                                             key={data.id}
+                                             justifyContent="space-between"
+                                        >
+                                             <Box>
+                                                  <Heading
                                                        fontSize={{
                                                             base: 'xl',
-                                                            md: '2xl',
-                                                            lg: '3xl'
+                                                            md: 'xl',
+                                                            lg: '2xl'
+                                                       }}
+                                                       fontWeight="normal"
+                                                       textAlign="left"
+                                                  >
+                                                       {capitalizeFirstLetter(
+                                                            data.courseName
+                                                       )}
+                                                  </Heading>
+                                                  <Text
+                                                       mt={5}
+                                                       fontWeight="light"
+                                                       textAlign="left"
+                                                       fontSize={{
+                                                            base: 'base',
+                                                            md: 'md',
+                                                            lg: 'lg'
                                                        }}
                                                   >
-                                                       {toRegister !== false
-                                                            ? '₹'
-                                                            : null}{' '}
-                                                       {data.price}
+                                                       {data.description}
                                                   </Text>
-                                             </Flex>
-                                             {toRegister !== false ? (
-                                                  <Button
-                                                       colorScheme="aygreen"
-                                                       width="8rem"
-                                                       size="sm"
-                                                       mt={4}
-                                                       isDisabled={coursePurchased.find(
-                                                            (element) =>
-                                                                 element ==
-                                                                 data.id
-                                                       )}
-                                                       onClick={() =>
-                                                            handleUserPayment(
-                                                                 data.price,
-                                                                 data.durationNum,
-                                                                 data.description,
-                                                                 data.courseName,
-                                                                 data.id,
-                                                                 data.isTrial
-                                                            )
-                                                       }
-                                                       isLoading={
-                                                            buttonId === data.id
-                                                       }
+                                             </Box>
+                                             <Box>
+                                                  <Flex
+                                                       justifyContent="space-between"
+                                                       align="center"
+                                                       mt={5}
                                                   >
-                                                       {user
-                                                            ? coursePurchased.find(
-                                                                   (element) =>
-                                                                        element ==
-                                                                        data.id
-                                                              ) !== undefined
-                                                                 ? 'Purchased'
-                                                                 : 'Register'
-                                                            : 'Register'}
-                                                  </Button>
-                                             ) : null}
+                                                       <Text
+                                                            fontSize={{
+                                                                 base: 'md',
+                                                                 md: 'lg',
+                                                                 lg: 'xl'
+                                                            }}
+                                                       >
+                                                            {data.duration}
+                                                       </Text>
+                                                       <Text
+                                                            fontSize={{
+                                                                 base: 'xl',
+                                                                 md: '2xl',
+                                                                 lg: '3xl'
+                                                            }}
+                                                       >
+                                                            {toRegister !==
+                                                            false
+                                                                 ? '₹'
+                                                                 : null}{' '}
+                                                            {data.price}
+                                                       </Text>
+                                                  </Flex>
+                                                  {toRegister !== false ? (
+                                                       <Button
+                                                            colorScheme="aygreen"
+                                                            width="8rem"
+                                                            size="sm"
+                                                            mt={4}
+                                                            isDisabled={coursePurchased.find(
+                                                                 (element) =>
+                                                                      element ==
+                                                                      data.id
+                                                            )}
+                                                            onClick={() =>
+                                                                 handleUserPayment(
+                                                                      data.price,
+                                                                      data.durationNum,
+                                                                      data.description,
+                                                                      data.courseName,
+                                                                      data.id,
+                                                                      data.isTrial
+                                                                 )
+                                                            }
+                                                            isLoading={
+                                                                 buttonId ===
+                                                                 data.id
+                                                            }
+                                                       >
+                                                            {user
+                                                                 ? coursePurchased.find(
+                                                                        (
+                                                                             element
+                                                                        ) =>
+                                                                             element ==
+                                                                             data.id
+                                                                   ) !==
+                                                                   undefined
+                                                                      ? 'Purchased'
+                                                                      : 'Register'
+                                                                 : 'Register'}
+                                                       </Button>
+                                                  ) : null}
+                                             </Box>
                                         </Box>
-                                   </Box>
-                              );
-                         })}
+                                   );
+                              })}
+                    </SimpleGrid>
+
+                    <SimpleGrid
+                         minChildWidth={{
+                              base: '250px',
+                              md: '300px',
+                              lg: '350px'
+                         }}
+                         spacing="20px"
+                         width="100%"
+                         mt={10}
+                    >
+                         {pricing
+                              .filter((data) => data.isTrial == true)
+                              .map((data, index) => {
+                                   return (
+                                        <Box
+                                             bg={
+                                                  index % 2 == 0
+                                                       ? 'aygreen.100'
+                                                       : 'aygreen.200'
+                                             }
+                                             height="auto"
+                                             rounded="lg"
+                                             padding={{
+                                                  base: '6',
+                                                  md: '8',
+                                                  lg: '8'
+                                             }}
+                                             textAlign="center"
+                                             d="flex"
+                                             flexDirection="column"
+                                             key={data.id}
+                                             justifyContent="space-between"
+                                        >
+                                             <Box>
+                                                  <Heading
+                                                       fontSize={{
+                                                            base: 'xl',
+                                                            md: 'xl',
+                                                            lg: '2xl'
+                                                       }}
+                                                       fontWeight="normal"
+                                                       textAlign="left"
+                                                  >
+                                                       {capitalizeFirstLetter(
+                                                            data.courseName
+                                                       )}
+                                                  </Heading>
+                                                  <Text
+                                                       mt={5}
+                                                       fontWeight="light"
+                                                       textAlign="left"
+                                                       fontSize={{
+                                                            base: 'base',
+                                                            md: 'md',
+                                                            lg: 'lg'
+                                                       }}
+                                                  >
+                                                       {data.description}
+                                                  </Text>
+                                             </Box>
+                                             <Box>
+                                                  <Flex
+                                                       justifyContent="space-between"
+                                                       align="center"
+                                                       mt={5}
+                                                  >
+                                                       <Text
+                                                            fontSize={{
+                                                                 base: 'md',
+                                                                 md: 'lg',
+                                                                 lg: 'xl'
+                                                            }}
+                                                       >
+                                                            {data.duration}
+                                                       </Text>
+                                                       <Text
+                                                            fontSize={{
+                                                                 base: 'xl',
+                                                                 md: '2xl',
+                                                                 lg: '3xl'
+                                                            }}
+                                                       >
+                                                            Free
+                                                       </Text>
+                                                  </Flex>
+                                             </Box>
+                                        </Box>
+                                   );
+                              })}
                     </SimpleGrid>
                     <Text mt={8} fontSize="lg">
                          {registerTo == 'space'

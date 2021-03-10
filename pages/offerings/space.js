@@ -71,6 +71,7 @@ const Space = ({ offers, notFound }) => {
                          ? data.days + ' Days Trial'
                          : data.days + ' Days',
                     durationNum: data.days,
+                    isTrial: data.isTrial,
                     price: data.price
                });
           }

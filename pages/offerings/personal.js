@@ -47,6 +47,7 @@ const Personal = ({ offers, notFound }) => {
                     ? 'No Duration'
                     : data.days + ' Days',
                durationNum: data.days,
+               isTrial: data.isTrial,
                price: data.price
           });
      });
