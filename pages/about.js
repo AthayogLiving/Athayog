@@ -55,53 +55,42 @@ const About = () => {
                     width="100%"
                     direction="column"
                >
-                    <Box
-                         width={{ base: '90%', md: '80%', lg: '60%' }}
+                    <Flex
+                         width={{ base: '90%', md: '80%', lg: '80%' }}
                          textAlign="center"
                     >
-                         <Heading
-                              fontSize={{
-                                   base: '1.5rem',
-                                   md: '2rem',
-                                   lg: '2.2rem'
-                              }}
-                         >
-                              WHAT WE DO
-                         </Heading>
-                         <Text mt={10} fontWeight="light">
-                              At AthaYog Living, we educate and illuminate you
-                              with a clear direction by sharing transformational
-                              tools that allow you to reconnect with your true
-                              nature. Supported by the pillars of ancient Yogic
-                              knowledge, we encourage change towards higher
-                              living.
-                         </Text>
-                    </Box>
-               </Flex>
-
-               <Flex
-                    margin="auto"
-                    padding={{ base: '2rem 0', md: '3rem 0', lg: '5rem 0' }}
-                    justifyContent="center"
-                    alignItems="center"
-                    bg="white"
-                    width="100%"
-                    direction="column"
-               >
-                    <Box
-                         width={{ base: '90%', md: '80%', lg: '60%' }}
-                         textAlign="center"
-                    >
-                         <Heading>WHY US?</Heading>
-                         <Text mt={10} fontWeight="light">
-                              When you register with us, we offer free
-                              consultation by suggesting lifestyle changes to
-                              help you attain higher living, empowering you to
-                              progress on your journey by entrusting you to
-                              practice on your own. Embrace a complete, Yogic
-                              lifestyle with AthaYog Living.
-                         </Text>
-                    </Box>
+                         <Box>
+                              <Heading
+                                   fontSize={{
+                                        base: '1.5rem',
+                                        md: '2rem',
+                                        lg: '2.2rem'
+                                   }}
+                              >
+                                   WHAT WE DO
+                              </Heading>
+                              <Text mt={10} fontWeight="light">
+                                   At AthaYog Living, we educate and illuminate
+                                   you with a clear direction by sharing
+                                   transformational tools that allow you to
+                                   reconnect with your true nature. Supported by
+                                   the pillars of ancient Yogic knowledge, we
+                                   encourage change towards higher living.
+                              </Text>
+                         </Box>
+                         <Box>
+                              <Heading>WHY US?</Heading>
+                              <Text mt={10} fontWeight="light">
+                                   When you register with us, we offer free
+                                   consultation by suggesting lifestyle changes
+                                   to help you attain higher living, empowering
+                                   you to progress on your journey by entrusting
+                                   you to practice on your own. Embrace a
+                                   complete, Yogic lifestyle with AthaYog
+                                   Living.
+                              </Text>
+                         </Box>
+                    </Flex>
                </Flex>
 
                <Flex

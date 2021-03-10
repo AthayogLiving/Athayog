@@ -125,12 +125,6 @@ export const profileData = {
                     `,
                image: sharath,
                designation: 'Founder'
-          },
-          {
-               name: 'Neeraj Raju',
-               info: `Way before AthaYog became a reality, Neeraj was grounded with a strong sense of integrity to spread the ancient knowledge of Yog for what it is. It all started with the realization that he is connected to all beings around him; a humbling life lesson that stayed with him. This shift in perception and reality allowed him to rise beyond his capabilities and inhibitions, beginning his Yogic journey from the Akshar Power Yoga Academy.\n \nWith eternal gratitude to Grand Master Akshar, Master Bindhu Madhvi, Swami Prabhupada, and Maharishi Patanjali for their invaluable lessons, he intends to share ancient wisdom with the world. By aligning with the knowledge gained from his gurus and Yogic scriptures, he aspires to retain the true meaning of Yog without losing grip on its essence.`,
-               image: neeraj,
-               designation: 'Co-founder'
           }
      ]
 };
@@ -152,14 +146,7 @@ export const EmployeeData = {
                visible: true,
                designation: 'Teacher'
           },
-          {
-               name: 'Swathi KS',
 
-               info: `For a long time now, Yog has portrayed a vital role in Swathi’s existence, changing her perception of life by becoming a mirror to her true potential and helping her blossom into her higher self. She is of the opinion that each one of us carry this divinity within us and have the power to thrive if we can recognize and nurture it.\n \nWith her experience in the world of Yoga extending over various verticals, industries and multiple avenues Swathi brings years of expertise to the team. Having worked as Yoga therapist with institutions like Yogananda hospital and NIMHANS, in addition to her teaching experience in corporate giants like Dell and Goldman Sachs and service centres like Housejoy and Urban Clap, she holds a comprehensive teaching experience. She has completed 500 hours of Teachers’ Training Courses and hopes to continue fortifying her Yogic knowledge.\n \nIn the times to come, Swathi looks forward to seeing Yog become a part of every household. By making people aware and changing the way they perceive Yog, she wishes to take her cumulative learnings and share it for the better of mankind., helping everyone shine their inner light`,
-               image: swathi,
-               visible: true,
-               designation: 'Teacher'
-          },
           {
                name: 'Deepak Mani',
                info: `With rather early beginnings into the Yogic cosmos, Deepak was first introduced to Yog in middle school when he turned to it as a tool for self-help and growth. Over the years, he started to observe the change in his disposition and started to notice how his personality developed and how it affected his innate nature. What he witnessed reinforced his belief in the potential of Yoga. That is when he decided that he would dedicate his life to teaching the secrets of Yog.\n \nDeepak’s teaching experience has taken him places, entrusting him with a strong foundation in Ashtanga Yoga, Vinyasa and Hatha Yoga. His mantra is that “Yoga isn’t going to turn everyone's life around, but it has the potential to do so, you just need to be open to receiving it.”\n \nHe looks up to Swami Vivekananda, Paramahamsa Yogananda, Swami Shivananda and T Krishnamacharya for their teachings and discourses in Yoga and aspires to develop his teaching skills following in their footsteps.`,
