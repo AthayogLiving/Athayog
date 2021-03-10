@@ -59,7 +59,7 @@ const Personal = ({ offers, notFound }) => {
                <Hero pageData={pageData} />
                <InformationSplit pageData={pageData} />
                <Schedule schedule="personal" />
-               <Pricing pricing={apiPricing} />
+               <Pricing pricing={apiPricing} registerTo="personal" />
           </motion.div>
      );
 };

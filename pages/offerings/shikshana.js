@@ -31,15 +31,7 @@ const Shikshana = ({ offers, notFound }) => {
           heroImage: athayogShikshana,
           whatis: `Climb up the career ladder with the certificate programs and teachers’ training under AthaYog Shikshana Pada.`,
           secondBlock: `What you get`,
-          description: `A 300 hour teachers’ training course that spans across a two and a half month-duration to guide you as you imbibe a comprehensive understanding of Yogic principles and practices. Accredited by SVYASA and RYT200, the AthaYog teachers’ training course sheds light on Level 1 RYT 200 of the Yoga Teachers’ Training Course. During the course duration, you also get to experience a 2-day Yogic retreat with your accommodation and meals taken care of.* Upon completion of the course, you get RYT 200 and YIC certificates and an all-round, spiritually fulfilling experience with an added advantage of upskilling yourself.`,
-          pricing: [
-               {
-                    courseName: 'Shikshana Pada',
-                    description: `Shikshana Pada`,
-                    duration: `No Duration`,
-                    price: 63000
-               }
-          ]
+          description: `A 300 hour teachers’ training course that spans across a two and a half month-duration to guide you as you imbibe a comprehensive understanding of Yogic principles and practices. Accredited by SVYASA and RYT200, the AthaYog teachers’ training course sheds light on Level 1 RYT 200 of the Yoga Teachers’ Training Course. During the course duration, you also get to experience a 2-day Yogic retreat with your accommodation and meals taken care of.* Upon completion of the course, you get RYT 200 and YIC certificates and an all-round, spiritually fulfilling experience with an added advantage of upskilling yourself.`
      };
 
      const apiPricing = [];
@@ -67,7 +59,7 @@ const Shikshana = ({ offers, notFound }) => {
                <Hero pageData={pageData} />
                <InformationSplit pageData={pageData} />
                <ShikshanaTable />
-               <Pricing pricing={apiPricing} />
+               <Pricing pricing={apiPricing} registerTo="shikshana" />
           </motion.div>
      );
 };

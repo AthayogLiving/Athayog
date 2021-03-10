@@ -58,6 +58,11 @@ const About = () => {
                     <Flex
                          width={{ base: '90%', md: '80%', lg: '80%' }}
                          textAlign="center"
+                         flexDirection={{
+                              base: 'column',
+                              md: 'column',
+                              lg: 'row'
+                         }}
                     >
                          <Box>
                               <Heading
@@ -78,7 +83,13 @@ const About = () => {
                                    encourage change towards higher living.
                               </Text>
                          </Box>
-                         <Box>
+                         <Box
+                              mt={{
+                                   base: 10,
+                                   md: 10,
+                                   lg: 0
+                              }}
+                         >
                               <Heading>WHY US?</Heading>
                               <Text mt={10} fontWeight="light">
                                    When you register with us, we offer free

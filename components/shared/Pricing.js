@@ -110,6 +110,8 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
           });
      };
 
+     console.log(registerTo);
+
      if (pricing === 'Contact For More') {
           return (
                <Flex
@@ -290,6 +292,14 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                               );
                          })}
                     </SimpleGrid>
+                    <Text mt={8} fontSize="lg">
+                         {registerTo == 'space'
+                              ? ' *Connect with us to know more about our ongoing offers.'
+                              : null}
+                         {registerTo == 'shikshana'
+                              ? '*Get in touch with us for our early bird offer. Valid for a limited time only'
+                              : null}
+                    </Text>
                </Flex>
           </Flex>
      );

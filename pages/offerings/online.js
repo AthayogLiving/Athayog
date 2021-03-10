@@ -55,7 +55,10 @@ const Online = ({ offers, notFound }) => {
                <Hero pageData={pageData} />
                {/* <Information pageData={pageData} /> */}
                <Schedule schedule="online" />
-               <Pricing pricing={apiPricing} />
+               <Pricing
+                    pricing={apiPricing}
+                    registerTo={pageData.name.toLocaleLowerCase()}
+               />
           </motion.div>
      );
 };
