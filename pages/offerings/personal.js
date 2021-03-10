@@ -28,7 +28,7 @@ export async function getStaticProps(context) {
 
 const Personal = ({ offers, notFound }) => {
      const pageData = {
-          name: 'Personal',
+          name: 'Personal Sessions',
           heroImage: athayogPersonal,
           whatis: `Eliminate the distractions and keep your focus intact on your Yogic practice as you welcome change and break the patterns with AthaYog Personal Sessions. In the personal sessions, you can expect a more customized and structured approach to learning that suits your needs.`,
           secondBlock: `What you get`,

@@ -23,19 +23,25 @@ const Footer = () => {
                width="100%"
           >
                <Grid
-                    gridGap="5rem"
+                    gridGap="3rem"
                     width="100%"
                     gridTemplateColumns="repeat(auto-fit, minmax(200px, 1fr))"
                     alignItems="start"
                     padding={{
                          base: '3rem 2rem',
                          md: '2rem 4rem ',
-                         lg: '5rem'
+                         lg: '3rem 0'
                     }}
                     width={{ base: '100%', md: '90%', lg: '80%' }}
                >
                     <Stack spacing={4} color="white">
-                         <Text color="white">Site Links</Text>
+                         <Text
+                              color="white"
+                              fontWeight="medium"
+                              textTransform="uppercase"
+                         >
+                              Site Links
+                         </Text>
                          <Link href="/">
                               <Text cursor="pointer">Home</Text>
                          </Link>
@@ -44,7 +50,13 @@ const Footer = () => {
                          </Link>
                     </Stack>
                     <Stack spacing={4} color="white">
-                         <Text color="white">Offerings</Text>
+                         <Text
+                              color="white"
+                              fontWeight="medium"
+                              textTransform="uppercase"
+                         >
+                              Offerings
+                         </Text>
                          <Link href="/offerings/workshops">
                               <Text cursor="pointer">AthaYog Workshops</Text>
                          </Link>
@@ -71,7 +83,13 @@ const Footer = () => {
                     </Stack>
 
                     <Stack spacing={4} color="white">
-                         <Text color="white">Reach Us</Text>
+                         <Text
+                              color="white"
+                              fontWeight="medium"
+                              textTransform="uppercase"
+                         >
+                              Reach Us
+                         </Text>
                          <a href="tel:+919611771434">
                               <PhoneIcon mr={3} size="1.5rem" />
                               +91 9611771434

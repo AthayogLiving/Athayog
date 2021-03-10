@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { IconContext } from 'react-icons/lib';
 
 const Star = ({ starNumber }) => {
      const remaingStart = 5 - starNumber;
@@ -22,14 +23,27 @@ const Star = ({ starNumber }) => {
                {[...Array(starNumber)].map((e, i) => {
                     return (
                          <chakra.span mr={2}>
-                              <AiFillStar />
+                              <IconContext.Provider
+                                   value={{
+                                        color: '#FFD700'
+                                   }}
+                              >
+                                   {' '}
+                                   <AiFillStar />
+                              </IconContext.Provider>
                          </chakra.span>
                     );
                })}
                {[...Array(remaingStart)].map((e, i) => {
                     return (
                          <chakra.span mr={2}>
-                              <AiOutlineStar />
+                              <IconContext.Provider
+                                   value={{
+                                        color: '#CCC'
+                                   }}
+                              >
+                                   <AiFillStar />
+                              </IconContext.Provider>
                          </chakra.span>
                     );
                })}
@@ -75,21 +89,21 @@ const IntensityTable = () => {
                          >
                               <Thead>
                                    <Tr>
-                                        <Th bg="secondaryGreen">Class Name</Th>
-                                        <Th bg="secondaryGreen">
+                                        <Th bg="aygreen.200">Class Name</Th>
+                                        <Th bg="aygreen.200">
                                              Body Engagement
                                         </Th>
-                                        <Th bg="secondaryGreen">
+                                        <Th bg="aygreen.200">
                                              Mind Engagement
                                         </Th>
-                                        <Th bg="secondaryGreen">
+                                        <Th bg="aygreen.200">
                                              Breath Engagement
                                         </Th>
                                    </Tr>
                               </Thead>
                               <Tbody>
                                    <Tr>
-                                        <Td bg="green.100">
+                                        <Td bg="aygreen.100">
                                              Universal Harmony
                                         </Td>
                                         <Td>
@@ -103,7 +117,7 @@ const IntensityTable = () => {
                                         </Td>
                                    </Tr>
                                    <Tr>
-                                        <Td bg="green.100">
+                                        <Td bg="aygreen.100">
                                              Transcending Transitions
                                         </Td>
                                         <Td>
@@ -117,7 +131,9 @@ const IntensityTable = () => {
                                         </Td>
                                    </Tr>
                                    <Tr>
-                                        <Td bg="green.100">Rhythm of Being</Td>
+                                        <Td bg="aygreen.100">
+                                             Rhythm of Being
+                                        </Td>
                                         <Td>
                                              <Star starNumber={5} />
                                         </Td>
@@ -129,7 +145,7 @@ const IntensityTable = () => {
                                         </Td>
                                    </Tr>
                                    <Tr>
-                                        <Td bg="green.100">Deep Space </Td>
+                                        <Td bg="aygreen.100">Deep Space </Td>
                                         <Td>
                                              <Star starNumber={2} />
                                         </Td>
@@ -141,7 +157,7 @@ const IntensityTable = () => {
                                         </Td>
                                    </Tr>
                                    <Tr>
-                                        <Td bg="green.100">Little Star</Td>
+                                        <Td bg="aygreen.100">Little Star</Td>
                                         <Td>
                                              <Star starNumber={3} />
                                         </Td>
@@ -153,7 +169,7 @@ const IntensityTable = () => {
                                         </Td>
                                    </Tr>
                                    <Tr>
-                                        <Td bg="green.100">Inner World</Td>
+                                        <Td bg="aygreen.100">Inner World</Td>
                                         <Td>
                                              <Star starNumber={2} />
                                         </Td>

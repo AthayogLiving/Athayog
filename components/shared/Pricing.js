@@ -178,8 +178,8 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                                    <Box
                                         bg={
                                              index % 2 == 0
-                                                  ? '#DFF6E4'
-                                                  : '#D5FFE2'
+                                                  ? 'aygreen.100'
+                                                  : 'aygreen.200'
                                         }
                                         height="auto"
                                         rounded="lg"
@@ -251,7 +251,7 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                                              </Flex>
                                              {toRegister !== false ? (
                                                   <Button
-                                                       bg="#DBE6CF"
+                                                       colorScheme="aygreen"
                                                        width="8rem"
                                                        size="sm"
                                                        mt={4}
