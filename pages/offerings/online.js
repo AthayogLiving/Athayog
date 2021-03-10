@@ -7,6 +7,19 @@ import Pricing from '@/components/shared/Pricing';
 import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';
 import Schedule from '@/components/shared/Schedule';
+import {
+     Table,
+     Thead,
+     Tbody,
+     Tfoot,
+     Tr,
+     Th,
+     Td,
+     TableCaption,
+     Heading,
+     Flex,
+     Box
+} from '@chakra-ui/react';
 export async function getStaticProps(context) {
      const { offers } = await getOffer('online');
 
@@ -54,7 +67,69 @@ const Online = ({ offers, notFound }) => {
           >
                <Hero pageData={pageData} />
                {/* <Information pageData={pageData} /> */}
-               <Schedule schedule="online" />
+               <Flex
+                    margin="auto"
+                    padding={{ base: '2rem 0', md: '3rem 0', lg: '5rem 0' }}
+                    justifyContent="center"
+                    alignItems="center"
+                    width="100vw"
+                    bg="primaryWhite"
+               >
+                    <Flex
+                         justifyContent="center"
+                         direction="column"
+                         alignItems="center"
+                         width={{ base: '95%', md: '90%', lg: '80%' }}
+                    >
+                         <Heading
+                              fontWeight="normal"
+                              fontSize={{ base: '2xl', md: '3xl' }}
+                         >
+                              Schedule
+                         </Heading>
+                         <Box
+                              overflowX="auto"
+                              width="100%"
+                              boxShadow="base"
+                              rounded="lg"
+                              mt={10}
+                         >
+                              <Table
+                                   variant="simple"
+                                   size="md"
+                                   bg="white"
+                                   colorScheme="aygreen"
+                                   className="scheduleTable"
+                              >
+                                   <Thead>
+                                        <Tr>
+                                             <Th bg="aygreen.200">Time</Th>
+                                             <Th bg="aygreen.200">
+                                                  Class Name
+                                             </Th>
+                                             <Th bg="aygreen.200">Date</Th>
+                                        </Tr>
+                                   </Thead>
+                                   <Tbody>
+                                        <Tr>
+                                             <Td bg="aygreen.100">
+                                                  6.30 - 7.30 AM
+                                             </Td>
+                                             <Td>Online Group Class </Td>
+                                             <Td>Mon - Fri</Td>
+                                        </Tr>
+                                        <Tr>
+                                             <Td bg="aygreen.100">
+                                                  5.30 - 6.30 PM
+                                             </Td>
+                                             <Td>Online Personal Class</Td>
+                                             <Td>Mon - Fri</Td>
+                                        </Tr>
+                                   </Tbody>
+                              </Table>
+                         </Box>
+                    </Flex>
+               </Flex>
                <Pricing
                     pricing={apiPricing}
                     registerTo={pageData.name.toLocaleLowerCase()}
