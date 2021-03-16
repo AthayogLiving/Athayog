@@ -31,7 +31,7 @@ const Enquiry = () => {
                               lg: '1.5rem'
                          }}
                     >
-                         Having an Enquiry? Reach out to us.
+                         Have an Enquiry? Reach out to us.
                     </Heading>
                     <EnquiryModal />
                </Flex>
