@@ -52,6 +52,26 @@ const Register = () => {
           );
      }
 
+     if (form == 'trial') {
+          toast({
+               title: 'Login First',
+               description:
+                    'Create or Login to your account to continue payment',
+               status: 'warning',
+               duration: 5000,
+               isClosable: true
+          });
+          setButtonId('');
+
+          cookie.set('routeTo', `/register/trial`, {
+               expires: 1
+          });
+
+          router.push('/account/login');
+
+          return;
+     }
+
      if (!user) {
           return (
                <Grid height="100vh" placeItems="center ">
