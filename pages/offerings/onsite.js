@@ -21,6 +21,19 @@ const Onsite = () => {
                }
           ]
      };
+
+     const apiPricing = [
+          {
+               id: 1097283,
+               courseName: 'Onsite Group class',
+               description: `Number of Students: Depending on the space`,
+               duration: `As per your convenience`,
+               durationNum: 0,
+               isTrial: false,
+               price: 'Contact Us'
+          }
+     ];
+
      return (
           <motion.div
                exit={{ opacity: 0 }}
@@ -30,7 +43,7 @@ const Onsite = () => {
                <Hero pageData={pageData} />
                {/* <Information pageData={pageData} /> */}
 
-               <Pricing pricing={pageData.pricing} toRegister={false} />
+               <Pricing pricing={apiPricing} toRegister={false} />
                <Register registerTo={pageData.name.toLocaleLowerCase()} />
           </motion.div>
      );

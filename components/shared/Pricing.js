@@ -154,7 +154,7 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                justifyContent="center"
                alignItems="center"
                width="100vw"
-               bg="#fbfbfb"
+               bg="#fff"
           >
                <Flex
                     justifyContent="center"
