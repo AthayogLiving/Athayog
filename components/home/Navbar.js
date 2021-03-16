@@ -27,7 +27,7 @@ import { useRouter } from 'next/router';
 import { useAuth } from '@/lib/auth';
 import { MotionButton } from '../shared/MotionElements';
 import { HiMenu } from 'react-icons/hi';
-import Logo from 'public/Logo_FIlled_No_Text.png';
+import Logo from 'public/Logo_Filled.png';
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 
@@ -71,27 +71,30 @@ const Navbar = () => {
                               <HiMenu fontSize="1.2rem" onClick={onOpen} />
                          </Flex>
                          <Flex alignItems="center">
-                              <Link href="/">
-                                   <Image
-                                        src={Logo}
-                                        height={isTabletOrMobile ? 20 : 40}
-                                        width={isTabletOrMobile ? 25 : 35}
-                                   />
-                              </Link>
-                              <Text
-                                   color="#46563E"
-                                   fontSize={{
-                                        base: 'xl',
-                                        md: '2xl',
-                                        lg: '3xl'
-                                   }}
-                                   ml={2}
-                                   fontWeight="normal"
-                                   cursor="pointer"
-                                   letterSpacing="-2.5px"
-                              >
-                                   Atha Yog
-                              </Text>
+                              <Flex alignItems="center">
+                                   <Link href="/">
+                                        <Image
+                                             src={Logo}
+                                             style={{ marginTop: '-0.2rem' }}
+                                             height={isTabletOrMobile ? 25 : 35}
+                                             width={isTabletOrMobile ? 25 : 35}
+                                        />
+                                   </Link>
+                                   <Text
+                                        color="#46563E"
+                                        fontSize={{
+                                             base: 'xl',
+                                             md: '2xl',
+                                             lg: '3xl'
+                                        }}
+                                        ml={2}
+                                        fontWeight="normal"
+                                        cursor="pointer"
+                                        letterSpacing="-2.5px"
+                                   >
+                                        Atha Yog
+                                   </Text>
+                              </Flex>
 
                               <HStack
                                    ml="5rem"

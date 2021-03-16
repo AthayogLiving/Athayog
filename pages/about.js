@@ -5,7 +5,7 @@ import Employee from '@/components/shared/Employee';
 import Hero from '@/components/shared/Hero';
 import SubEmployee from '@/components/shared/SubEmployee';
 import { Box, Divider, Flex, Grid, Heading, Text } from '@chakra-ui/react';
-import athayogOnline from 'public/athayogOnline.jpg';
+import athayogAbout from 'public/athayogAbout.jpg';
 import React from 'react';
 
 const About = () => {
@@ -13,7 +13,7 @@ const About = () => {
      const { employees } = EmployeeData;
      const pageData = {
           name: 'About Us',
-          heroImage: athayogOnline,
+          heroImage: athayogAbout,
           whatis: `AthaYog Living is an institution of Yog (Yoga) devoted to preserving the long-standing legacy of Yog by propagating the true purpose, philosophies and practices associated with this Yogic wisdom into your daily lives and embedding this ancient knowledge into the modern-day reality.`
      };
      return (
@@ -24,7 +24,7 @@ const About = () => {
                     padding={{ base: '2rem 0', md: '3rem 0', lg: '5rem 0' }}
                     justifyContent="center"
                     alignItems="center"
-                    width="60vw"
+                    width={{ base: '85vw', md: '70vw', lg: '65vw' }}
                     direction="column"
                >
                     <Text fontWeight="normal">

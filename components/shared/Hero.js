@@ -6,6 +6,7 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 
 import { MotionBox } from './MotionElements';
 import NavbarHelper from './NavbarHelper';
+import { motion } from 'framer-motion';
 
 let easing = [0.175, 0.85, 0.42, 0.96];
 
@@ -73,6 +74,7 @@ const Hero = (props) => {
                               maxW="5xl"
                               textAlign="center"
                               mt={3}
+                              p="0 1rem"
                          >
                               {whatis}
                          </Text>
@@ -84,16 +86,23 @@ const Hero = (props) => {
                               bg="#fff"
                               border="none"
                          />
-                         <ChevronDownIcon
-                              color="white"
-                              fontSize={{
-                                   base: '1.5rem',
-                                   md: '2rem',
-                                   lg: '3rem'
-                              }}
-                              margin="1rem auto 0 auto"
-                              width="100%"
-                         />
+                         <motion.div
+                              initial={{ y: -100 }}
+                              style={{ cursor: 'pointer' }}
+                              animate={{ y: 0 }}
+                              transition={{ type: 'spring', stiffness: 100 }}
+                         >
+                              <ChevronDownIcon
+                                   color="white"
+                                   fontSize={{
+                                        base: '1.5rem',
+                                        md: '2rem',
+                                        lg: '3rem'
+                                   }}
+                                   margin="1rem auto 0 auto"
+                                   width="100%"
+                              />
+                         </motion.div>
                     </MotionBox>
 
                     <Image
