@@ -75,7 +75,7 @@ const Navbar = () => {
                                    <Link href="/">
                                         <Image
                                              src={Logo}
-                                             style={{ marginTop: '-0.2rem' }}
+                                             style={{ marginTop: '-1rem' }}
                                              height={isTabletOrMobile ? 25 : 35}
                                              width={isTabletOrMobile ? 25 : 35}
                                         />
