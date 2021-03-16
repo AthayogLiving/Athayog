@@ -319,7 +319,7 @@ const Signup = () => {
                                    textColor="aygreen.800"
                                    cursor="pointer"
                               >
-                                   Sign in instead?
+                                   Log in instead?
                               </Text>
                          </Link>
                     </Stack>

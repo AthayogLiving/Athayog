@@ -33,6 +33,7 @@ import axios from 'axios';
 import { logo } from 'public/og.png';
 import HomeLayout from '@/components/layout/HomeLayout';
 import { registerForm, registerFormFree } from '@/lib/db/forms';
+import cookie from 'js-cookie';
 
 const Register = () => {
      const router = useRouter();
@@ -52,7 +53,7 @@ const Register = () => {
           );
      }
 
-     if (form == 'trial') {
+     if (!user) {
           toast({
                title: 'Login First',
                description:
@@ -61,7 +62,6 @@ const Register = () => {
                duration: 5000,
                isClosable: true
           });
-          setButtonId('');
 
           cookie.set('routeTo', `/register/trial`, {
                expires: 1
@@ -69,10 +69,6 @@ const Register = () => {
 
           router.push('/account/login');
 
-          return;
-     }
-
-     if (!user) {
           return (
                <Grid height="100vh" placeItems="center ">
                     <Spinner />
@@ -89,7 +85,11 @@ const Register = () => {
                duration: 5000,
                isClosable: true
           });
-          return;
+          return (
+               <Grid height="100vh" placeItems="center ">
+                    <Spinner />
+               </Grid>
+          );
      }
 
      let ogData = {};

@@ -177,7 +177,7 @@ const Login = () => {
                     </Button>
                     <Link href="signup">
                          <Text textAlign="center" cursor="pointer">
-                              Don't have an account?
+                              Sign in instead?
                          </Text>
                     </Link>
                </Stack>

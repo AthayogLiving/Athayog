@@ -48,7 +48,8 @@ const Account = () => {
                               boxShadow="base"
                               padding={10}
                               mt={{ base: '-5rem', md: '-5rem', lg: '0' }}
-                              height={{ base: '100vh', md: 'auto', lg: 'auto' }}
+                              mb={20}
+                              height={{ base: '100%', md: 'auto', lg: 'auto' }}
                               width={{ base: '100%', md: 'auto', lg: 'auto' }}
                          >
                               {accountType === 'login' ? (
