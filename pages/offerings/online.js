@@ -123,8 +123,13 @@ const Online = ({ offers, notFound }) => {
                                              <Td bg="aygreen.100">
                                                   5.30 - 6.30 PM
                                              </Td>
-                                             <Td>Online Personal Class</Td>
+                                             <Td>Online Group Class </Td>
                                              <Td>Mon - Fri</Td>
+                                        </Tr>
+                                        <Tr>
+                                             <Td bg="aygreen.100">On Demand</Td>
+                                             <Td>Online Personal Class</Td>
+                                             <Td>On Demand</Td>
                                         </Tr>
                                    </Tbody>
                               </Table>

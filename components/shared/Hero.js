@@ -26,6 +26,10 @@ const Hero = (props) => {
           return <Skeleton height="100vh"></Skeleton>;
      }
 
+     const scrollDown = () => {
+          window.scrollTo({ top: '500', behavior: 'smooth' });
+     };
+
      return (
           <>
                <NavbarHelper />
@@ -91,6 +95,7 @@ const Hero = (props) => {
                               style={{ cursor: 'pointer' }}
                               animate={{ y: 0 }}
                               transition={{ type: 'spring', stiffness: 100 }}
+                              onClick={() => scrollDown()}
                          >
                               <ChevronDownIcon
                                    color="white"
