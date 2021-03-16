@@ -97,6 +97,18 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                return;
           }
 
+          if (/@athayogliving.com\s*$/.test(user.email)) {
+               setButtonId('');
+               toast({
+                    title: 'Admin Account',
+                    description: `Can't make purchases from admin account`,
+                    status: 'warning',
+                    duration: 5000,
+                    isClosable: true
+               });
+               return;
+          }
+
           router.push({
                pathname: `/register/${registerTo}`,
                query: {
