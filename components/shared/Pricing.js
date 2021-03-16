@@ -110,8 +110,6 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
           });
      };
 
-     console.log(registerTo);
-
      if (pricing === 'Contact For More') {
           return (
                <Flex
@@ -145,7 +143,6 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
           );
      }
 
-     console.log(pricing);
      return (
           <Flex
                margin="auto"

@@ -37,7 +37,14 @@ const Hero = (props) => {
                >
                     <Box
                          height="100%"
-                         bg="linear-gradient(to bottom, rgba(0,0,0,0) 50%,rgba(0,0,0,0.8) 100%)"
+                         bg={{
+                              sm:
+                                   'linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%)',
+                              base:
+                                   'linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%)',
+                              md:
+                                   'linear-gradient(to bottom, rgba(0,0,0,0) 50%,rgba(0,0,0,0.8) 100%)'
+                         }}
                          width="100%"
                          zIndex={1}
                     ></Box>

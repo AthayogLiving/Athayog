@@ -30,7 +30,7 @@ export default async function handler(req, res) {
                     claims.email.endsWith('@athayogliving.com')
                ) {
                     // Add custom claims for additional privileges.
-                    console.log(id);
+
                     auth.setCustomUserClaims(id, {
                          admin: admin,
                          role: role

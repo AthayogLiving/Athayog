@@ -29,11 +29,13 @@ import { MotionButton } from '../shared/MotionElements';
 import { HiMenu } from 'react-icons/hi';
 import Logo from 'public/Logo_FIlled_No_Text.png';
 import Image from 'next/image';
+import { useMediaQuery } from 'react-responsive';
 
 const Navbar = () => {
      const { user, signout, loading } = useAuth();
      const router = useRouter();
      const { isOpen, onOpen, onClose } = useDisclosure();
+     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
      const signOut = (redirect) => {
           onClose();
@@ -70,7 +72,11 @@ const Navbar = () => {
                          </Flex>
                          <Flex alignItems="center">
                               <Link href="/">
-                                   <Image src={Logo} height={40} width={35} />
+                                   <Image
+                                        src={Logo}
+                                        height={isTabletOrMobile ? 20 : 40}
+                                        width={isTabletOrMobile ? 25 : 35}
+                                   />
                               </Link>
                               <Text
                                    color="#46563E"
