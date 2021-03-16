@@ -2,6 +2,7 @@ import { Box, Flex, Grid, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import { motion } from 'framer-motion';
+import { MotionBox, MotionText } from '@/components/shared/MotionElements';
 
 const Classes = ({ classes }) => {
      return (
@@ -28,7 +29,8 @@ const Classes = ({ classes }) => {
                          animate={{ scale: 1, opacity: 1 }}
                          layoutId="title"
                     >
-                         <Text
+                         <MotionText
+                              cursor="pointer"
                               fontWeight="normal"
                               fontSize={{
                                    base: '3xl',
@@ -37,7 +39,7 @@ const Classes = ({ classes }) => {
                               }}
                          >
                               Classes
-                         </Text>
+                         </MotionText>
                     </motion.h1>
 
                     <SimpleGrid
@@ -52,7 +54,7 @@ const Classes = ({ classes }) => {
                     >
                          {classes.map((data, index) => {
                               return (
-                                   <Box
+                                   <MotionBox
                                         bg={
                                              index % 2 == 0
                                                   ? 'aygreen.100'
@@ -65,6 +67,8 @@ const Classes = ({ classes }) => {
                                              md: '8',
                                              lg: '10'
                                         }}
+                                        cursor="pointer"
+                                        boxShadow="base"
                                         textAlign="center"
                                         key={index}
                                    >
@@ -101,7 +105,7 @@ const Classes = ({ classes }) => {
                                                        </Text>
                                                   );
                                              })}
-                                   </Box>
+                                   </MotionBox>
                               );
                          })}
                     </SimpleGrid>

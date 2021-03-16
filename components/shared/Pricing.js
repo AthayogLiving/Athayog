@@ -193,6 +193,7 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                                              }}
                                              textAlign="center"
                                              d="flex"
+                                             boxShadow="base"
                                              flexDirection="column"
                                              key={data.id}
                                              justifyContent="space-between"
@@ -329,6 +330,7 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                                              textAlign="center"
                                              d="flex"
                                              flexDirection="column"
+                                             boxShadow="base"
                                              key={data.id}
                                              justifyContent="space-between"
                                         >

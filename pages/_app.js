@@ -18,7 +18,7 @@ import { Router } from 'next/router';
 import firebase from '@/lib/firebase';
 
 NProgress.configure({
-     showSpinner: false,
+     showSpinner: true,
      trickleRate: 0.1,
      trickleSpeed: 300
 });

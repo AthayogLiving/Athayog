@@ -71,30 +71,30 @@ const Navbar = () => {
                               <HiMenu fontSize="1.2rem" onClick={onOpen} />
                          </Flex>
                          <Flex alignItems="center">
-                              <Flex alignItems="center">
-                                   <Link href="/">
+                              <Link href="/">
+                                   <Flex alignItems="center" cursor="pointer">
                                         <Image
                                              src={Logo}
                                              style={{ marginTop: '-1rem' }}
                                              height={isTabletOrMobile ? 25 : 35}
                                              width={isTabletOrMobile ? 25 : 35}
                                         />
-                                   </Link>
-                                   <Text
-                                        color="#46563E"
-                                        fontSize={{
-                                             base: 'xl',
-                                             md: '2xl',
-                                             lg: '3xl'
-                                        }}
-                                        ml={2}
-                                        fontWeight="normal"
-                                        cursor="pointer"
-                                        letterSpacing="-2.5px"
-                                   >
-                                        Atha Yog
-                                   </Text>
-                              </Flex>
+                                        <Text
+                                             color="#46563E"
+                                             fontSize={{
+                                                  base: 'xl',
+                                                  md: '2xl',
+                                                  lg: '3xl'
+                                             }}
+                                             ml={2}
+                                             fontWeight="normal"
+                                             cursor="pointer"
+                                             letterSpacing="-2.5px"
+                                        >
+                                             Atha Yog
+                                        </Text>
+                                   </Flex>
+                              </Link>
 
                               <HStack
                                    ml="5rem"
