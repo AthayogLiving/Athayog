@@ -71,7 +71,7 @@ const IntensityTable = () => {
                          fontWeight="normal"
                          fontSize={{ base: '2xl', md: '3xl' }}
                     >
-                         Schedule
+                         Intensity Of Classes
                     </Heading>
                     <Box
                          overflowX="auto"

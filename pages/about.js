@@ -28,14 +28,6 @@ const About = () => {
                     direction="column"
                >
                     <Text fontWeight="normal">
-                         AthaYog Living is an institution of Yog (Yoga) devoted
-                         to preserving the long-standing legacy of Yog by
-                         propagating the true purpose, philosophies and
-                         practices associated with this Yogic wisdom into your
-                         daily lives and embedding this ancient knowledge into
-                         the modern-day reality.
-                    </Text>
-                    <Text mt={10} fontWeight="light">
                          At AthaYog, our Yog (Yoga) studio embodies a sacred
                          space; an oasis of knowledge and truth, where one can
                          experience transformation, and is in the pursuit for
