@@ -34,7 +34,11 @@ const Account = () => {
                     />
                </Head>{' '}
                <NavbarHelper />
-               <Box minH="100%" bg="primaryWhite" padding="5rem 0">
+               <Box
+                    minH="100%"
+                    bg="primaryWhite"
+                    padding={{ base: '0', md: '5rem 0', lg: '5rem 0' }}
+               >
                     <Flex
                          alignItems="center"
                          justifyContent="center"
@@ -44,11 +48,10 @@ const Account = () => {
                     >
                          <Box
                               bg="white"
-                              rounded="lg"
+                              rounded={{ base: 'none', md: 'lg', lg: 'lg' }}
                               boxShadow="base"
                               padding={10}
-                              mt={{ base: '-5rem', md: '-5rem', lg: '0' }}
-                              mb={20}
+                              mb={{ base: 0, md: 20, lg: 20 }}
                               height={{ base: '100%', md: 'auto', lg: 'auto' }}
                               width={{ base: '100%', md: 'auto', lg: 'auto' }}
                          >
