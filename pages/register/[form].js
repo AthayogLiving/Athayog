@@ -56,8 +56,7 @@ const Register = () => {
      if (!user) {
           toast({
                title: 'Login First',
-               description:
-                    'Create or Login to your account to continue payment',
+               description: 'Create or Login to your account to register',
                status: 'warning',
                duration: 5000,
                isClosable: true
