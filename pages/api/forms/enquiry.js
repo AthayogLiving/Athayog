@@ -19,10 +19,15 @@ export default async function handler(req, res) {
 
      if (req.method === 'POST') {
           const { name, email, phone, details, type } = req.body;
-          await enquiryForm(name, email, phone, details, type);
-          return res.status(200).json({
-               message: 'Updated Form'
-          });
+          await enquiryForm(name, email, phone, details, type)
+               .then((response) => {
+                    return res.status(200).json({
+                         message: 'Updated Form'
+                    });
+               })
+               .catch((error) => {
+                    return res.status(500).json(error);
+               });
      }
      if (req.method === 'GET') {
           try {
