@@ -80,6 +80,7 @@ const AddSchedule = ({ type }) => {
                toHours,
                toMinutes,
                toPeriod,
+               specialCase,
                monday,
                tuesday,
                wednesday,
@@ -101,6 +102,7 @@ const AddSchedule = ({ type }) => {
                toMinutes,
                toPeriod,
                firebaseTimeTrack,
+               specialCase,
                monday,
                tuesday,
                wednesday,
@@ -189,7 +191,7 @@ const AddSchedule = ({ type }) => {
                               </Select>
                          </HStack>
                     </FormControl>
-                    <FormControl>
+                    <FormControl mt={3}>
                          <FormLabel>To Time</FormLabel>
                          <HStack width={isCustomerQuery ? '100%' : 'sm'}>
                               <Select
@@ -228,7 +230,17 @@ const AddSchedule = ({ type }) => {
                          </HStack>
                     </FormControl>
                </Flex>
-
+               <HStack mt={3}>
+                    <FormControl>
+                         <FormLabel>Special Case</FormLabel>
+                         <Input
+                              type="text"
+                              name="specialCase"
+                              aria-label="specialCase"
+                              ref={register()}
+                         />
+                    </FormControl>
+               </HStack>
                <HStack
                     mt={3}
                     flexDirection={isCustomerQuery ? 'column' : 'row'}

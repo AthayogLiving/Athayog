@@ -37,6 +37,16 @@ const Login = () => {
           routeCookie == '' || routeCookie == undefined ? '/' : routeCookie;
 
      const onUserLogin = async ({ email, password }) => {
+          if (email.match(/^[a-zA-Z0-9+_.-]+@athayogliving.com/)) {
+               toast({
+                    title: `Can't use administrator account`,
+                    description: `Can't use this email as it already authorized`,
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true
+               });
+               return;
+          }
           setLoading(true);
           await signinWithEmail(email, password, isRoute).catch((error) => {
                setLoading(false);
@@ -111,9 +121,9 @@ const Login = () => {
                               aria-label="email"
                               name="email"
                               id="email"
-                              placeholder="something@athayog.com"
+                              placeholder="xyz@abc.com"
                               ref={register({
-                                   required: 'Please enter a password.'
+                                   required: 'Please enter a email.'
                               })}
                          />
                          <FormErrorMessage>

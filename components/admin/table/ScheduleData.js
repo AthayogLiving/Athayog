@@ -289,6 +289,10 @@ const ScheduleData = ({ schedule, type }) => {
                          {
                               Header: 'To Minutes',
                               accessor: 'toMinutes'
+                         },
+                         {
+                              Header: 'specialCase',
+                              accessor: 'specialCase'
                          }
                     ]
                },

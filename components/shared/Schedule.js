@@ -230,6 +230,7 @@ const Schedule = ({ schedule }) => {
                                                   toHours,
                                                   toMinutes,
                                                   toPeriod,
+                                                  specialCase,
                                                   monday,
                                                   tuesday,
                                                   wednesday,
@@ -250,7 +251,13 @@ const Schedule = ({ schedule }) => {
                                                                  {fromPeriod} -{' '}
                                                                  {toHours}:
                                                                  {toMinutes}{' '}
-                                                                 {toPeriod}
+                                                                 {toPeriod}{' '}
+                                                                 <br />
+                                                                 {specialCase
+                                                                      ? '(' +
+                                                                        specialCase +
+                                                                        ')'
+                                                                      : null}
                                                             </Td>
 
                                                             <Td
@@ -407,6 +414,14 @@ const Schedule = ({ schedule }) => {
                                         )}
                                    </Tbody>
                               </Table>
+                         </Box>
+                         <Box mt={3} textAlign="left" w="100%">
+                              <Text>Timings :* Weekdays:5:30am-9:30pm</Text>
+                              <Text>* Weekends: 7:00 am-08:00 pm</Text>
+                              <Text>
+                                   *We are closed every 2nd Saturday of the
+                                   Month.
+                              </Text>
                          </Box>
                     </Flex>
                </Flex>

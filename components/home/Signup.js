@@ -55,6 +55,7 @@ const Signup = () => {
           initiateRecaptha();
 
           const appVerifier = window.recaptchaVerifier;
+
           firebase
                .auth()
                .signInWithPhoneNumber(userPhone, appVerifier)
@@ -66,6 +67,7 @@ const Signup = () => {
                     // setLoading(false);
                })
                .catch((error) => {
+                    setLoading(false);
                     toast({
                          title: 'An error occurred.',
                          description: error.message,
@@ -74,7 +76,9 @@ const Signup = () => {
                          isClosable: true
                     });
 
-                    grecaptcha.reset(window.recaptchaWidgetId);
+                    window.recaptchaVerifier.render().then(function (widgetId) {
+                         grecaptcha.reset(widgetId);
+                    });
                });
      };
 
@@ -140,6 +144,16 @@ const Signup = () => {
           phone,
           countryCode
      }) => {
+          if (email.match(/^[a-zA-Z0-9+_.-]+@athayogliving.com/)) {
+               toast({
+                    title: `Can't use administrator account`,
+                    description: `Can't use this email as it already authorized`,
+                    status: 'error',
+                    duration: 5000,
+                    isClosable: true
+               });
+               return;
+          }
           setLoading(true);
           setEmail(email);
           setPassword(password);
@@ -264,7 +278,7 @@ const Signup = () => {
                                    aria-label="email"
                                    name="email"
                                    id="email"
-                                   placeholder="something@athayog.com"
+                                   placeholder="xyz@abc.com"
                                    ref={register({
                                         required: 'Please enter a password.'
                                    })}
