@@ -98,12 +98,18 @@ const Testimonials = ({ testimonials }) => {
                                                   width="100%"
                                              >
                                                   <Flex justifyContent="center">
-                                                       <Stars
-                                                            totalStars={
-                                                                 data.stars
-                                                            }
-                                                            totalFilled={5}
-                                                       />
+                                                       {[
+                                                            ...Array(
+                                                                 Number(
+                                                                      data.stars
+                                                                 )
+                                                            )
+                                                       ].map((el, index) => (
+                                                            <AiFillStar
+                                                                 fontSize="1.1rem"
+                                                                 key={index}
+                                                            />
+                                                       ))}
                                                   </Flex>
 
                                                   <Text
