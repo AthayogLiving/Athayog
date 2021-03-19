@@ -41,7 +41,7 @@ const Shikshana = ({ offers, notFound }) => {
           heroImage: athayogShikshana,
           whatis: `Climb up the career ladder with the certificate programs and teachers’ training under AthaYog Shikshana Pada.`,
           secondBlock: `What you get`,
-          description: `To be a good teacher, You have to first be a good student. Start your learning Journey with us and craft yourself into becoming a Yoga teacher. Build your own knowledge and practice and nurture others through learning the skills of being a good teacher. Athayog Shikshana Pada brings to you Yoga instructor Course (YIC) Affiliated to VYASA, Bengalurum, RYT 200 Affiliated to Yoga Alliance, USA`
+          description: `To be a good teacher, You have to first be a good student. Start your learning Journey with us and craft yourself into becoming a Yoga teacher. Build your own knowledge and practice and nurture others through learning the skills of being a good teacher. Athayog Shikshana Pada brings to you Yoga instructor Course (YIC) Affiliated to VYASA, Bengaluru, RYT 200 Affiliated to Yoga Alliance, USA`
      };
 
      const apiPricing = [];
