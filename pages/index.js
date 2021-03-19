@@ -1,7 +1,6 @@
 import Faq from '@/components/home/Faq';
 import Gallery from '@/components/home/Gallery';
 import Offerings from '@/components/home/Offerings';
-import Schedule from '@/components/shared/Schedule';
 import Enquiry from '@/components/home/Enquiry';
 import { motion } from 'framer-motion';
 import Testimonials from '@/components/shared/Testimonials';
@@ -36,7 +35,7 @@ export default function Home({ carousel, gallery, testimonials }) {
                <HeroCarousel images={carousel} />
                <Offerings />
                <Gallery images={gallery} />
-               <Schedule schedule="general" />
+
                <Testimonials testimonials={testimonials} />
                <Faq />
                <Enquiry />

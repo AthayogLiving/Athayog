@@ -5,8 +5,18 @@ import athayogShikshana from 'public/athayogShikshana.jpg';
 import Pricing from '@/components/shared/Pricing';
 import InformationSplit from '@/components/shared/InformationSplit';
 import ShikshanaTable from '@/components/shared/ShikshanaTable';
+import ShikshanaInformation from '@/components/shared/ShikshanaInformation';
 import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';
+import {
+     Box,
+     Flex,
+     Grid,
+     Heading,
+     ListItem,
+     Text,
+     UnorderedList
+} from '@chakra-ui/react';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('shikshana');
@@ -31,7 +41,7 @@ const Shikshana = ({ offers, notFound }) => {
           heroImage: athayogShikshana,
           whatis: `Climb up the career ladder with the certificate programs and teachers’ training under AthaYog Shikshana Pada.`,
           secondBlock: `What you get`,
-          description: `A 300 hour teachers’ training course that spans across a two and a half month-duration to guide you as you imbibe a comprehensive understanding of Yogic principles and practices. Accredited by SVYASA and RYT200, the AthaYog teachers’ training course sheds light on Level 1 RYT 200 of the Yoga Teachers’ Training Course. During the course duration, you also get to experience a 2-day Yogic retreat with your accommodation and meals taken care of.* Upon completion of the course, you get RYT 200 and YIC certificates and an all-round, spiritually fulfilling experience with an added advantage of upskilling yourself.`
+          description: `To be a good teacher, You have to first be a good student. Start your learning Journey with us and craft yourself into becoming a Yoga teacher. Build your own knowledge and practice and nurture others through learning the skills of being a good teacher. Athayog Shikshana Pada brings to you Yoga instructor Course (YIC) Affiliated to VYASA, Bengalurum, RYT 200 Affiliated to Yoga Alliance, USA`
      };
 
      const apiPricing = [];
@@ -58,9 +68,25 @@ const Shikshana = ({ offers, notFound }) => {
                animate={{ opacity: 1 }}
           >
                <Hero pageData={pageData} />
+
                <InformationSplit pageData={pageData} />
+               <ShikshanaInformation />
                <ShikshanaTable />
-               <Pricing pricing={apiPricing} registerTo="shikshana" />
+
+               <Grid
+                    bg="gray.50"
+                    placeItems="center"
+                    margin="auto"
+                    padding={{
+                         base: '2rem 0',
+                         md: '3rem 0',
+                         lg: '5rem 0'
+                    }}
+               >
+                    <Text fontWeight="normal" fontSize="xl" fontStyle="italic">
+                         Contact us for more Information
+                    </Text>
+               </Grid>
           </motion.div>
      );
 };

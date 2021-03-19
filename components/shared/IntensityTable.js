@@ -93,11 +93,12 @@ const IntensityTable = () => {
                                         <Th bg="aygreen.200">
                                              Body Engagement
                                         </Th>
-                                        <Th bg="aygreen.200">
-                                             Mind Engagement
-                                        </Th>
+
                                         <Th bg="aygreen.200">
                                              Breath Engagement
+                                        </Th>
+                                        <Th bg="aygreen.200">
+                                             Mind Engagement
                                         </Th>
                                    </Tr>
                               </Thead>
@@ -109,6 +110,7 @@ const IntensityTable = () => {
                                         <Td>
                                              <Star starNumber={5} />
                                         </Td>
+
                                         <Td>
                                              <Star starNumber={5} />
                                         </Td>
@@ -123,11 +125,12 @@ const IntensityTable = () => {
                                         <Td>
                                              <Star starNumber={5} />
                                         </Td>
-                                        <Td>
-                                             <Star starNumber={2} />
-                                        </Td>
+
                                         <Td>
                                              <Star starNumber={5} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={2} />
                                         </Td>
                                    </Tr>
                                    <Tr>
@@ -137,11 +140,12 @@ const IntensityTable = () => {
                                         <Td>
                                              <Star starNumber={5} />
                                         </Td>
-                                        <Td>
-                                             <Star starNumber={2} />
-                                        </Td>
+
                                         <Td>
                                              <Star starNumber={5} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={2} />
                                         </Td>
                                    </Tr>
                                    <Tr>
@@ -149,6 +153,7 @@ const IntensityTable = () => {
                                         <Td>
                                              <Star starNumber={2} />
                                         </Td>
+
                                         <Td>
                                              <Star starNumber={5} />
                                         </Td>
@@ -161,11 +166,12 @@ const IntensityTable = () => {
                                         <Td>
                                              <Star starNumber={3} />
                                         </Td>
-                                        <Td>
-                                             <Star starNumber={5} />
-                                        </Td>
+
                                         <Td>
                                              <Star starNumber={3} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={5} />
                                         </Td>
                                    </Tr>
                                    <Tr>
@@ -173,11 +179,12 @@ const IntensityTable = () => {
                                         <Td>
                                              <Star starNumber={2} />
                                         </Td>
-                                        <Td>
-                                             <Star starNumber={5} />
-                                        </Td>
+
                                         <Td>
                                              <Star starNumber={4} />
+                                        </Td>
+                                        <Td>
+                                             <Star starNumber={5} />
                                         </Td>
                                    </Tr>
                               </Tbody>

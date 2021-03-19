@@ -33,7 +33,7 @@ const ShikshanaTable = () => {
                          fontWeight="normal"
                          fontSize={{ base: '2xl', md: '3xl' }}
                     >
-                         Schedule
+                         Schedule 2021
                     </Heading>
                     <Box
                          overflowX="auto"

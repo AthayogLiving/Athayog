@@ -65,6 +65,23 @@ const Schedule = ({ schedule }) => {
           return null;
      }
 
+     const d = new Date();
+
+     const monthNames = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'
+     ];
+
      const addNow = (
           name,
           week,
@@ -155,7 +172,8 @@ const Schedule = ({ schedule }) => {
                               fontWeight="normal"
                               fontSize={{ base: '2xl', md: '3xl' }}
                          >
-                              Schedule
+                              Schedule For {monthNames[d.getMonth()]}{' '}
+                              {d.getFullYear()}
                          </Heading>
 
                          <Box
@@ -418,12 +436,21 @@ const Schedule = ({ schedule }) => {
                               </Table>
                          </Box>
                          <Box mt={3} textAlign="left" w="100%">
-                              <Text>Timings :* Weekdays:5:30am-9:30pm</Text>
-                              <Text>* Weekends: 7:00 am-08:00 pm</Text>
-                              <Text>
-                                   *We are closed every 2nd Saturday of the
-                                   Month.
-                              </Text>
+                              <Flex alignItems="flex-start">
+                                   <Box>Timings </Box>
+                                   <Box ml={2}>
+                                        <Text>
+                                             * Weekdays: 5:30 am - 9:30 pm
+                                        </Text>
+                                        <Text>
+                                             * Weekends: 7:00 am - 08:00 pm
+                                        </Text>
+                                        <Text>
+                                             * We are closed every 2nd Saturday
+                                             of the Month.
+                                        </Text>
+                                   </Box>
+                              </Flex>
                          </Box>
                     </Flex>
                </Flex>
