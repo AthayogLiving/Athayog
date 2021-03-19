@@ -60,6 +60,8 @@ const userId = () => {
      const customer = data.user;
      const payment = data.payment;
 
+     console.log(payment);
+
      return (
           <>
                <UsersHeader siteLink={customer.name} defaultName="Customers" />
@@ -184,22 +186,26 @@ const userId = () => {
                                                   overflow="hidden"
                                                   w="100%"
                                              >
-                                                  <Box
-                                                       textAlign="center"
-                                                       bg={color}
-                                                       padding={3}
-                                                  >
-                                                       Purchased On
-                                                  </Box>
-                                                  <Box
-                                                       textAlign="center"
-                                                       fontWeight="normal"
-                                                       padding={3}
-                                                  >
-                                                       {FirebaseToDate(
-                                                            data.createdAt
-                                                       )}
-                                                  </Box>{' '}
+                                                  {data.createdAt ? (
+                                                       <>
+                                                            <Box
+                                                                 textAlign="center"
+                                                                 bg={color}
+                                                                 padding={3}
+                                                            >
+                                                                 Purchased On
+                                                            </Box>
+                                                            <Box
+                                                                 textAlign="center"
+                                                                 fontWeight="normal"
+                                                                 padding={3}
+                                                            >
+                                                                 {FirebaseToDate(
+                                                                      data.createdAt
+                                                                 )}
+                                                            </Box>
+                                                       </>
+                                                  ) : null}
                                              </Box>
                                              <Box
                                                   fontWeight="medium"
