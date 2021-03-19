@@ -116,6 +116,8 @@ const Schedule = ({ schedule }) => {
                title: name,
                start: theStartDate,
                end: theEndDate,
+               location:
+                    'AthaYog Living, Devasandra Main Road, Kodigehalli, Krishnarajapura, Bengaluru, Karnataka',
                description: `Yoga class ${name}`
           });
      };
@@ -264,7 +266,7 @@ const Schedule = ({ schedule }) => {
                                                                  cursor="pointer"
                                                                  _hover={{
                                                                       background:
-                                                                           'ayaygreen.50'
+                                                                           'aygreen.50'
                                                                  }}
                                                                  onClick={() =>
                                                                       addNow(
