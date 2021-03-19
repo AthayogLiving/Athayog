@@ -95,7 +95,7 @@ define("./sw.js",['./workbox-3296d035'], function (workbox) { 'use strict';
   * See https://goo.gl/2aRDsh
   */
 
-  importScripts();
+  importScripts("worker-development.js");
   self.skipWaiting();
   workbox.clientsClaim();
   workbox.registerRoute(/.*/i, new workbox.NetworkOnly({
