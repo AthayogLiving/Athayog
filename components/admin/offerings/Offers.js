@@ -234,14 +234,14 @@ const Offers = ({ offerType }) => {
                                                        ogIsTrial={isTrial}
                                                        id={id}
                                                   />
-                                                  <Button
+                                                  {/* <Button
                                                        colorScheme="red"
                                                        onClick={() =>
                                                             setIsOpen(true)
                                                        }
                                                   >
                                                        Delete
-                                                  </Button>
+                                                  </Button> */}
                                              </ButtonGroup>
                                         </Box>
                                    );
@@ -339,7 +339,7 @@ const Offers = ({ offerType }) => {
                                                                       }
                                                                       id={id}
                                                                  />
-                                                                 <Button
+                                                                 {/* <Button
                                                                       colorScheme="red"
                                                                       onClick={() =>
                                                                            openModel(
@@ -348,7 +348,7 @@ const Offers = ({ offerType }) => {
                                                                       }
                                                                  >
                                                                       Delete
-                                                                 </Button>
+                                                                 </Button> */}
                                                             </ButtonGroup>
                                                        </Td>
                                                   </Tr>
