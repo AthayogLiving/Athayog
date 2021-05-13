@@ -21,6 +21,7 @@ import {
      Box,
      Text
 } from '@chakra-ui/react';
+import OnlineCourses from '@/components/shared/OnlineCourses';
 export async function getStaticProps(context) {
      const { offers } = await getOffer('online');
 
@@ -69,6 +70,7 @@ const Online = ({ offers, notFound }) => {
           >
                <Hero pageData={pageData} />
                {/* <Information pageData={pageData} /> */}
+               <OnlineCourses />
                <Flex
                     margin="auto"
                     padding={{ base: '2rem 0', md: '3rem 0', lg: '5rem 0' }}
@@ -179,43 +181,6 @@ const Online = ({ offers, notFound }) => {
                                    </Tbody>
                               </Table>
                          </Box>
-                    </Flex>
-               </Flex>
-               <Flex
-                    margin="auto"
-                    padding={{ base: '2rem 0', md: '3rem 0', lg: '5rem 0' }}
-                    justifyContent="center"
-                    alignItems="center"
-                    width="100vw"
-                    bg="white"
-               >
-                    <Flex
-                         justifyContent="center"
-                         direction="column"
-                         alignItems="center"
-                         width={{ base: '95%', md: '90%', lg: '80%' }}
-                    >
-                         <Heading
-                              fontWeight="normal"
-                              fontSize={{ base: '2xl', md: '3xl' }}
-                         >
-                              Children's Yoga Course
-                         </Heading>
-                         <Text mt={5}>
-                              Yoga helps children in numerous ways. It is known
-                              to strengthen bodies, improve flexibility and even
-                              reduce injury. Children tend to have a more
-                              disciplined lifestyle with reduced impulsivity.
-                              Yoga improves focus, memory, self-esteem,
-                              performance and classroom behaviour in the lives
-                              of young ones and assists them in having a calmer
-                              approach to their everyday life. Athayog offers an
-                              online Children’s Yoga Course for the age group of
-                              6-14 years. The course is exhilarating and
-                              interactive with convenient language to
-                              understand. It will include asanas, pranayama,
-                              yoga games and a few sessions of dance as well.
-                         </Text>
                     </Flex>
                </Flex>
 
