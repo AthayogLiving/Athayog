@@ -36,27 +36,27 @@ const Space = ({ offers, notFound }) => {
           classes: [
                {
                     className: 'Universal Harmony',
-                    classInfo: `This class is centered around grounding rituals, with an emphasis on asana practices, pranayama, dharana and relaxation practice. Inculcate balance as you harmonize a connection with the inner universe.\nA 75-minute class open to all levels of practitioners and all age groups.`
+                    classInfo: `A 75 minute class that revolves around grounding rituals, asana practices, pranayama, dharana and relaxation practice. This class helps with inculcating balance and harmonising with the inner universe.`
                },
                {
                     className: 'Transcending Transitions ',
-                    classInfo: `A practice that combines elements of Hatha and Vinyasa, starting with grounding rituals, moving on to Surya Namaskar and a sequence of classical asana postures, conforming to a more energetic and fluid vinyasa style. Explore transitional movements and transcend all physical limitations.\nA 75-minute class open to all levels of practitioners and all age groups.`
+                    classInfo: `A 75 minute class that combines Hatha and Vinayasa along with grounding rituals, Surya Namaskar and asanas in an energetic and fluid Vinayasa style.`
                },
                {
                     className: 'Rhythm of Being',
-                    classInfo: `Hatha Asana variations that bring attention to the breath using relaxation techniques, this class emphasizes on consequently shifting the focus to a more dynamic practice in sync with the traditional form of Hatha asanas. Tune into the rhythm of being.\nA 75-minute class open to all levels of practitioners and all age groups`
+                    classInfo: `A 75 minute class that prioritises relaxed breathing through Hatha Asana. This class helps focusing on a dynamic practice in sync with the traditional Hatha asanas.`
                },
                {
                     className: 'Inner World',
-                    classInfo: `This guided Yoga Nidra practice tunes the senses inwards and prepares for withdrawal from one state of consciousness to another, exploring the different states. Navigate the inner world.\nA 75-minute class open to all levels of practitioners and all age groups.`
+                    classInfo: `A 75 minute class that works on tuning your senses, withdrawing yourself from other states of consciousness and navigating through the inner world.`
                },
                {
                     className: 'Deep Space',
-                    classInfo: `A completely immersive session that teaches you to dissolve into the subtle aspects of breath using the mind as a key. Supported by dynamic breathing asanas and internalization techniques, this pranayama and meditation class stills the breath and steadies the mind. Enter the deep space.\nA 75-minute class open to all levels of practitioners and all age groups.`
+                    classInfo: `A 75 minute class that immerses you in subtle breathing with your mind being the key. It includes dynamic breathing, internalisation techniques, pranayama and meditation to guide you through your mind and body’s deep space.`
                },
                {
                     className: 'Little Star',
-                    classInfo: `This class works on empowering and nurturing young minds to instill the focus and awareness required to grow as individuals with the right guidance to gain composure.\nA 60-minute class open to age groups between 7-14 years.`
+                    classInfo: `A 60 minute class to empower and nurture young minds to improve their focus and awareness. This is for the age groups 7-14 years.`
                }
           ]
      };
