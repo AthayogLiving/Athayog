@@ -7,6 +7,7 @@ import InformationSplit from '@/components/shared/InformationSplit';
 import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';
 import WorkShopTable from '@/components/shared/WorkShopTable';
+import WorkShopCourse from '@/components/shared/WorkShopCourse';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('workshops');
@@ -59,6 +60,7 @@ const Workshops = ({ offers, notFound }) => {
           >
                <Hero pageData={pageData} />
                <InformationSplit pageData={pageData} />
+               <WorkShopCourse />
                <WorkShopTable />
                <Pricing
                     pricing={apiPricing}

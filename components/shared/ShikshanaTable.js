@@ -42,6 +42,43 @@ const ShikshanaTable = () => {
                          rounded="lg"
                          mt={10}
                     >
+                         <Table
+                              variant="simple"
+                              size="md"
+                              bg="white"
+                              colorScheme="aygreen"
+                              className="scheduleTable"
+                         >
+                              <TableCaption bg="white" mt="0">
+                                   Shikshana Pada - YIC (Online)
+                              </TableCaption>
+                              <Thead>
+                                   <Tr>
+                                        <Th bg="secondaryGreen">Course Name</Th>
+                                        <Th bg="secondaryGreen">Time</Th>
+                                        <Th bg="secondaryGreen">Date</Th>
+                                        <Th bg="secondaryGreen">Days</Th>
+                                   </Tr>
+                              </Thead>
+                              <Tbody>
+                                   <Tr>
+                                        <Td bg="green.100">
+                                             YIC Course (Online)
+                                        </Td>
+                                        <Td>10:00am - 12:30am</Td>
+                                        <Td>31st May - 20th August</Td>
+                                        <Td>Mon - Fri</Td>
+                                   </Tr>
+                              </Tbody>
+                         </Table>
+                    </Box>
+                    <Box
+                         overflowX="auto"
+                         width="100%"
+                         boxShadow="base"
+                         rounded="lg"
+                         mt={10}
+                    >
                          {' '}
                          <Table
                               variant="simple"
