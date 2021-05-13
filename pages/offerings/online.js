@@ -105,31 +105,75 @@ const Online = ({ offers, notFound }) => {
                                    <Thead>
                                         <Tr>
                                              <Th bg="aygreen.200">Time</Th>
-                                             <Th bg="aygreen.200">
-                                                  Class Name
-                                             </Th>
-                                             <Th bg="aygreen.200">Date</Th>
+                                             <Th bg="aygreen.200">Monday</Th>
+                                             <Th bg="aygreen.200">Tuesday</Th>
+                                             <Th bg="aygreen.200">Wednesday</Th>
+                                             <Th bg="aygreen.200">Thursday</Th>
+                                             <Th bg="aygreen.200">Friday</Th>
+                                             <Th bg="aygreen.200">Saturday</Th>
+                                             <Th bg="aygreen.200">Sunday</Th>
                                         </Tr>
                                    </Thead>
                                    <Tbody>
                                         <Tr>
                                              <Td bg="aygreen.100">
-                                                  6.30 - 7.30 AM
+                                                  6.00 AM - 7.15 AM
                                              </Td>
-                                             <Td>Online Group Class </Td>
-                                             <Td>Mon - Fri</Td>
+                                             <Td>Transcending Transition </Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition</Td>
+                                             <Td>Deep space</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
                                         </Tr>
                                         <Tr>
                                              <Td bg="aygreen.100">
-                                                  5.30 - 6.30 PM
+                                                  7.30 AM - 8.45 AM
                                              </Td>
-                                             <Td>Online Group Class </Td>
-                                             <Td>Mon - Fri</Td>
+                                             <Td>Rhythm of Being </Td>
+                                             <Td>Transcending Transition </Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
                                         </Tr>
                                         <Tr>
-                                             <Td bg="aygreen.100">On Demand</Td>
-                                             <Td>Online Personal Class</Td>
-                                             <Td>On Demand</Td>
+                                             <Td bg="aygreen.100">
+                                                  4:00 PM - 5:00 PM
+                                             </Td>
+                                             <Td>Kids Yoga</Td>
+                                             <Td>Kids Yoga</Td>
+                                             <Td>Kids Yoga</Td>
+                                             <Td>Kids Yoga</Td>
+                                             <Td>Kids Yoga</Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                        </Tr>
+                                        <Tr>
+                                             <Td bg="aygreen.100">
+                                                  5:00 PM - 6:15 PM
+                                             </Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Deep space</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Transcending Transition</Td>
+                                             <Td>Rhythm of Being </Td>
+                                             <Td>Universal Harmony</Td>
+                                        </Tr>
+                                        <Tr>
+                                             <Td bg="aygreen.100">
+                                                  6:30 PM - 7:45 PM
+                                             </Td>
+                                             <Td>Deep space</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony </Td>
+                                             <Td>Transcending Transition</Td>
                                         </Tr>
                                    </Tbody>
                               </Table>

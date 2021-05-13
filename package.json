@@ -53,6 +53,7 @@
           "react-table": "^7.6.3",
           "react-whatsapp-widget": "^1.2.1",
           "sass": "^1.32.7",
+          "sharp": "^0.26.3",
           "styled-components": "^5.2.1",
           "swiper": "^6.4.11",
           "swr": "^0.4.0",
