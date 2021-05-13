@@ -54,8 +54,8 @@ const WorkShopCourse = () => {
                          justifyContent="space-between"
                          direction="column"
                     >
-                         <Stack spacing={2}>
-                              <Text fontSize="xl">PRANAYAMA</Text>
+                         <Text fontSize="xl">PRANAYAMA</Text>
+                         <Stack spacing={2} mt={5}>
                               <Text
                                    fontWeight="light"
                                    textAlign="left"
@@ -69,7 +69,7 @@ const WorkShopCourse = () => {
                                         1. Yoga for immunity
                                    </chakra.span>{' '}
                               </Text>
-                              <Text>
+                              <Text textColor="gray.600">
                                    The immune system plays a vital role in
                                    keeping the body healthy by preventing
                                    infections. We cannot hide ourselves from not
@@ -89,7 +89,7 @@ const WorkShopCourse = () => {
                                    one’s immunity.
                               </Text>
                          </Stack>
-                         <Stack spacing={2} mt={5}>
+                         <Stack spacing={2} mt={10}>
                               <Text
                                    fontWeight="light"
                                    textAlign="left"
@@ -103,7 +103,7 @@ const WorkShopCourse = () => {
                                         2. Yoga Nidra
                                    </chakra.span>{' '}
                               </Text>
-                              <Text>
+                              <Text textColor="gray.600">
                                    Yoga nidra benefits all those who have sleep
                                    concerns and insomnia. It is known to unwind
                                    your mind and keep you stress free. This
@@ -112,7 +112,7 @@ const WorkShopCourse = () => {
                                    maintain an emotionally neutral life.
                               </Text>
                          </Stack>
-                         <Stack spacing={2} mt={5}>
+                         <Stack spacing={2} mt={10}>
                               <Text
                                    fontWeight="light"
                                    textAlign="left"
@@ -126,7 +126,7 @@ const WorkShopCourse = () => {
                                         3. Astanga Yoga
                                    </chakra.span>{' '}
                               </Text>
-                              <Text>
+                              <Text textColor="gray.600">
                                    ‘Astanga Yoga’ means ‘eight limbed yoga,’ and
                                    it is an authentic practice that can lead to
                                    liberation and greater awareness of our
@@ -154,7 +154,7 @@ const WorkShopCourse = () => {
                                    lead to the experience of ‘union.’
                               </Text>
                          </Stack>
-                         <Stack spacing={2} mt={5}>
+                         <Stack spacing={2} mt={10}>
                               <Text
                                    fontWeight="light"
                                    textAlign="left"
@@ -168,7 +168,7 @@ const WorkShopCourse = () => {
                                         4. Sivananda
                                    </chakra.span>{' '}
                               </Text>
-                              <Text>
+                              <Text textColor="gray.600">
                                    Sivananda yoga is a spiritual yoga system
                                    founded by Vishnudevananda. This system gets
                                    its name from his guru Swami Sivananda that
@@ -183,7 +183,7 @@ const WorkShopCourse = () => {
                                    of yoga as given by vishnudevananda.
                               </Text>
                          </Stack>
-                         <Stack spacing={2} mt={5}>
+                         <Stack spacing={2} mt={10}>
                               <Text
                                    fontWeight="light"
                                    textAlign="left"
@@ -197,7 +197,7 @@ const WorkShopCourse = () => {
                                         5. Yoga for covid
                                    </chakra.span>{' '}
                               </Text>
-                              <Text>
+                              <Text textColor="gray.600">
                                    The class will start from opening rituals and
                                    grounding practices moving to shivananda,
                                    surya namaskar and postures of forward and
@@ -212,7 +212,7 @@ const WorkShopCourse = () => {
                                    advisable for kids to participate in.
                               </Text>
                          </Stack>
-                         <Stack spacing={2} mt={5}>
+                         <Stack spacing={2} mt={10}>
                               <Text
                                    fontWeight="light"
                                    textAlign="left"
@@ -226,7 +226,7 @@ const WorkShopCourse = () => {
                                         6. Teaching Methodology
                                    </chakra.span>{' '}
                               </Text>
-                              <Text>
+                              <Text textColor="gray.600">
                                    This is for existing yoga teachers so that
                                    they can fine tune their teaching skills. One
                                    can learn how to teach online, structure
