@@ -67,7 +67,7 @@ const ShikshanaTable = () => {
                                         </Td>
                                         <Td>10:00am - 12:30am</Td>
                                         <Td>31st May - 20th August</Td>
-                                        <Td>Mon - Fri</Td>
+                                        <Td>Mon - Sat</Td>
                                    </Tr>
                               </Tbody>
                          </Table>

@@ -54,7 +54,7 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                               fontSize="xl"
                               fontStyle="italic"
                          >
-                              Plans coming soon :)
+                              Contact us for more information
                          </Heading>
                     </Flex>
                </Flex>
