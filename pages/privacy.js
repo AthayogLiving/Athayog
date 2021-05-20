@@ -112,7 +112,17 @@ function Privacy(props) {
                          <Text mb={5} fontSize="xl">
                               We may disclose your personal information if we
                               are required by law to do so or if you violate our
-                              Terms of Service.
+                              <Link href="/terms">
+                                   {' '}
+                                   <strong
+                                        style={{
+                                             cursor: 'pointer',
+                                             fontWeight: '500'
+                                        }}
+                                   >
+                                        Terms of Service.
+                                   </strong>
+                              </Link>
                          </Text>
                     </Box>
 
