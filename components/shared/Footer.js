@@ -48,6 +48,16 @@ const Footer = () => {
                          <Link href="/about">
                               <Text cursor="pointer">About</Text>
                          </Link>
+                         <Link href="/privacy">
+                              <Text cursor="pointer">Privacy Policy</Text>
+                         </Link>
+
+                         <Link href="/refund">
+                              <Text cursor="pointer">Refund Policy</Text>
+                         </Link>
+                         <Link href="/terms">
+                              <Text cursor="pointer">Terms & Conditions</Text>
+                         </Link>
                     </Stack>
                     <Stack spacing={4} color="white">
                          <Text
