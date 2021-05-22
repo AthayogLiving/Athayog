@@ -1,7 +1,7 @@
 import HomeLayout from '@/components/layout/HomeLayout';
 import { Box, Divider, Heading, Text, VStack } from '@chakra-ui/layout';
 import React from 'react';
-
+import Link from 'next/link'
 function Privacy(props) {
      return (
           <Box maxW="container.xl" margin="auto" py={20} mt={10} px={5}>
