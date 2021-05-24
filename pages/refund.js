@@ -61,20 +61,19 @@ function Refund(props) {
                          </Heading>
 
                          <Text mb={5} fontSize="xl">
-                              You may cancel your personal training or course at
-                              any time; however, there are no refunds for
-                              cancellation. In the event that Athayog Living
-                              suspends or terminates your account or this
-                              agreement, you understand and agree that you shall
-                              receive no refund or exchange for any unused time
-                              on a subscription, any license or subscription
-                              fees for any portion of the service, any content
-                              or data associated with your account, or for
-                              anything else.
+                              You may cancel your service or course at any time;
+                              however, there are no refunds for cancellation. In
+                              the event that Athayog Living suspends or
+                              terminates your account or this agreement, you
+                              understand and agree that you shall receive no
+                              refund or exchange for any unused time on a
+                              subscription, any license or subscription fees for
+                              any portion of the service, any content or data
+                              associated with your account, or for anything
+                              else.
                          </Text>
                          <OrderedList mt={3} fontSize="xl">
                               <ListItem>
-                                   {' '}
                                    At Athayog Living, we have a clear ‘No Refund
                                    Policy’. Once yoga centre membership/course
                                    is purchased online on our platform, there
@@ -83,12 +82,10 @@ function Refund(props) {
                                    purchase on our platform.
                               </ListItem>
                               <ListItem>
-                                   {' '}
                                    Membership once purchased is not transferable
                               </ListItem>
                               <ListItem>
-                                   {' '}
-                                   Please note that Athayog Living decision on
+                                   Please note that Athayog Living's decision on
                                    any refund & cancellation policy shall be
                                    final & binding.
                               </ListItem>

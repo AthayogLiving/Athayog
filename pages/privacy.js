@@ -1,7 +1,7 @@
 import HomeLayout from '@/components/layout/HomeLayout';
 import { Box, Divider, Heading, Text, VStack } from '@chakra-ui/layout';
 import React from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
 function Privacy(props) {
      return (
           <Box maxW="container.xl" margin="auto" py={20} mt={10} px={5}>
@@ -25,13 +25,13 @@ function Privacy(props) {
                               WHAT DO WE DO WITH YOUR INFORMATION?
                          </Heading>
                          <Text mb={5} fontSize="xl">
-                              When you purchase something from our store, as
-                              part of the buying and selling process, we collect
-                              the personal information you give us such as your
+                              When you purchase sevice from our firm, as part of
+                              the buying and selling process, we collect the
+                              personal information you give us such as your
                               name, address and email address.
                          </Text>
                          <Text mb={5} fontSize="xl">
-                              When you browse our store, we also automatically
+                              When you browse our website, we also automatically
                               receive your computer’s internet protocol (IP)
                               address in order to provide us with information
                               that helps us learn about your browser and
@@ -82,7 +82,7 @@ function Privacy(props) {
                               If after you opt-in, you change your mind, you may
                               withdraw your consent for us to contact you, for
                               the continued collection, use or disclosure of
-                              your information, at anytime, by contacting us at{' '}
+                              your information, at anytime, by contacting us at
                               <strong style={{ fontWeight: '500' }}>
                                    info@athayogliving.com
                               </strong>{' '}
@@ -112,17 +112,14 @@ function Privacy(props) {
                          <Text mb={5} fontSize="xl">
                               We may disclose your personal information if we
                               are required by law to do so or if you violate our
-                              <Link href="/terms">
-                                   {' '}
-                                   <strong
-                                        style={{
-                                             cursor: 'pointer',
-                                             fontWeight: '500'
-                                        }}
-                                   >
-                                        Terms of Service.
-                                   </strong>
-                              </Link>
+                              <strong
+                                   style={{
+                                        cursor: 'pointer',
+                                        fontWeight: '500'
+                                   }}
+                              >
+                                   <Link href="/terms"> Terms of Service</Link>
+                              </strong>
                          </Text>
                     </Box>
 
@@ -214,8 +211,8 @@ function Privacy(props) {
                          <Text mb={5} fontSize="xl">
                               In particular, remember that certain providers may
                               be located in or have facilities that are located
-                              a different jurisdiction than either you or us. So
-                              if you elect to proceed with a transaction that
+                              in a different jurisdiction than either you or us.
+                              So if you elect to proceed with a transaction that
                               involves the services of a third-party service
                               provider, then your information may become subject
                               to the laws of the jurisdiction(s) in which that
@@ -277,9 +274,9 @@ function Privacy(props) {
                               COOKIES
                          </Heading>
                          <Text mb={5} fontSize="xl">
-                              We use cookies to maintain session of your user.
-                              It is not used to personally identify you on other
-                              websites.
+                              We use cookies to maintain the session of your
+                              user. It is not used to personally identify you on
+                              other websites.
                          </Text>
                     </Box>
                     <Box width="100%" fontWeight="light" fontSize="lg">

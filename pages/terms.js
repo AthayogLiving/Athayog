@@ -319,7 +319,8 @@ function Terms(props) {
                               needed.
                          </Text>
                          <Text mb={5} fontSize="xl">
-                              For more detail, please review our Returns Policy.
+                              For more detail, please review our{' '}
+                              <Link href="/refund">Returns/Refund Policy.</Link>
                          </Text>
                     </Box>
                     <Box width="100%" fontWeight="light" fontSize="lg">
@@ -407,7 +408,7 @@ function Terms(props) {
                               before you engage in any transaction. Complaints,
                               claims, concerns, or questions regarding
                               third-party products should be directed to the
-                              third-party.
+                              third-party
                          </Text>
                     </Box>
                     <Box width="100%" fontWeight="light" fontSize="lg">
@@ -484,7 +485,7 @@ function Terms(props) {
                          </Heading>
                          <Text mb={5} fontSize="xl">
                               Your submission of personal information through
-                              the website is governed by our{' '}
+                              the store is governed by our{' '}
                               <Link href="/privacy">
                                    <strong
                                         style={{
@@ -628,7 +629,7 @@ function Terms(props) {
                               purpose, durability, title, and non-infringement.
                          </Text>
                          <Text mb={5} fontSize="xl">
-                              In no case shall<strong> Athayog Living</strong>,
+                              In no case shall<strong> Athayog Living</strong>
                               our directors, officers, employees, affiliates,
                               agents, contractors, interns, suppliers, service
                               providers or licensors be liable for any injury,
