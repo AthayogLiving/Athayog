@@ -120,63 +120,123 @@ const Online = ({ offers, notFound }) => {
                                    <Tbody>
                                         <Tr>
                                              <Td bg="aygreen.100">
-                                                  6.00 AM - 7.15 AM
+                                                  6.00 AM - 7.00 AM
                                              </Td>
                                              <Td>Transcending Transition </Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Transcending Transition</Td>
-                                             <Td>Deep space</Td>
+                                             <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
+                                             <Td>---</Td>
+                                             <Td>---</Td>
                                         </Tr>
                                         <Tr>
                                              <Td bg="aygreen.100">
-                                                  7.30 AM - 8.45 AM
+                                                  7.00 AM - 8.00 AM
                                              </Td>
                                              <Td>Rhythm of Being </Td>
                                              <Td>Transcending Transition </Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Deep Space</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
+                                        </Tr>
+                                        <Tr>
+                                             <Td bg="aygreen.100">
+                                                  8:00 AM - 9:00 AM
+                                             </Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony- </Td>
+                                        </Tr>
+                                        <Tr>
+                                             <Td bg="aygreen.100">
+                                                  10:00 AM - 12:30 PM
+                                             </Td>
+                                             <Td>Shikshana Pada - Sharath</Td>
+                                             <Td>Shikshana Pada - Sharath</Td>
+                                             <Td>Shikshana Pada - Sharath</Td>
+                                             <Td>Shikshana Pada - Sharath</Td>
+                                             <Td>Shikshana Pada - Sharath</Td>
+                                             <Td>---</Td>
+                                             <Td>---</Td>
                                         </Tr>
                                         <Tr>
                                              <Td bg="aygreen.100">
                                                   4:00 PM - 5:00 PM
                                              </Td>
-                                             <Td>Kids Yoga</Td>
-                                             <Td>Kids Yoga</Td>
-                                             <Td>Kids Yoga</Td>
-                                             <Td>Kids Yoga</Td>
-                                             <Td>Kids Yoga</Td>
-                                             <Td> - </Td>
-                                             <Td> - </Td>
+                                             <Td>Kids Yoga </Td>
+                                             <Td>Kids Yoga </Td>
+                                             <Td>Kids Yoga </Td>
+                                             <Td>Kids Yoga </Td>
+                                             <Td>Kids Yoga </Td>
+                                             <Td>---</Td>
+                                             <Td>---</Td>
                                         </Tr>
                                         <Tr>
                                              <Td bg="aygreen.100">
-                                                  5:00 PM - 6:15 PM
+                                                  5:00 PM - 6:00 PM
                                              </Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Deep space</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Rhythm of Being </Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Deep space</Td>
                                              <Td>Universal Harmony</Td>
                                         </Tr>
                                         <Tr>
                                              <Td bg="aygreen.100">
-                                                  6:30 PM - 7:45 PM
+                                                  6:00 PM - 7:00 PM
                                              </Td>
+                                             <Td>Transcending Transition</Td>
                                              <Td>Deep space</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony </Td>
                                              <Td>Transcending Transition</Td>
+                                        </Tr>
+                                        <Tr>
+                                             <Td bg="aygreen.100">
+                                                  7:00 PM - 8:00 PM
+                                             </Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition</Td>
+                                             <Td>Deep space</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>---</Td>
+                                             <Td>---</Td>
+                                        </Tr>
+                                        <Tr>
+                                             <Td bg="aygreen.100">
+                                                  6:00 AM - 7:30 AM
+                                             </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                        </Tr>
+                                        <Tr>
+                                             <Td bg="aygreen.100">
+                                                  6:00 PM - 7:30 PM
+                                             </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
                                         </Tr>
                                    </Tbody>
                               </Table>
