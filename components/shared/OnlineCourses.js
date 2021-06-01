@@ -65,25 +65,8 @@ const OnlineCourses = () => {
                                    }}
                               >
                                    <chakra.span fontWeight="medium">
-                                        1. Children's Yoga Course
+                                        Children's Yoga Course
                                    </chakra.span>{' '}
-                              </Text>
-                              <Text textColor="gray.600">
-                                   Yoga helps children in numerous ways. It is
-                                   known to strengthen bodies, improve
-                                   flexibility and even reduce injury. Children
-                                   tend to have a more disciplined lifestyle
-                                   with reduced impulsivity. Yoga improves
-                                   focus, memory, self-esteem, performance and
-                                   classroom behaviour in the lives of young
-                                   ones and assists them in having a calmer
-                                   approach to their everyday life. Athayog
-                                   offers an online Children’s Yoga Course for
-                                   the age group of 6-14 years. The course is
-                                   exhilarating and interactive with convenient
-                                   language to understand. It will include
-                                   asanas, pranayama, yoga games and a few
-                                   sessions of dance as well.
                               </Text>
                          </Stack>
                     </Flex>

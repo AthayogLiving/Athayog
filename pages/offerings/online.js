@@ -73,7 +73,7 @@ const Online = ({ offers, notFound }) => {
                <OnlineCourses />
                <Flex
                     margin="auto"
-                    padding={{ base: '2rem 0', md: '3rem 0', lg: '5rem 0' }}
+                    padding={{ base: '0rem 0', md: '0rem 0', lg: '0rem 0' }}
                     justifyContent="center"
                     alignItems="center"
                     width="100vw"
@@ -214,6 +214,61 @@ const Online = ({ offers, notFound }) => {
                                              <Td>---</Td>
                                              <Td>---</Td>
                                         </Tr>
+                                        <Tr>
+                                             <Td bg="aygreen.100">
+                                                  6:00 AM - 7:30 AM
+                                             </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                        </Tr>
+                                        <Tr>
+                                             <Td bg="aygreen.100">
+                                                  6:00 PM - 7:30 PM
+                                             </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                             <Td>Athayog sadhana </Td>
+                                        </Tr>
+                                   </Tbody>
+                              </Table>
+                         </Box>
+
+                         <Box
+                              overflowX="auto"
+                              width="100%"
+                              boxShadow="base"
+                              rounded="lg"
+                              mt={10}
+                         >
+                              <Table
+                                   variant="simple"
+                                   size="md"
+                                   bg="white"
+                                   colorScheme="aygreen"
+                                   className="scheduleTable"
+                              >
+                                   <Thead>
+                                        <Tr>
+                                             <Th bg="aygreen.200">Time</Th>
+                                             <Th bg="aygreen.200">Monday</Th>
+                                             <Th bg="aygreen.200">Tuesday</Th>
+                                             <Th bg="aygreen.200">Wednesday</Th>
+                                             <Th bg="aygreen.200">Thursday</Th>
+                                             <Th bg="aygreen.200">Friday</Th>
+                                             <Th bg="aygreen.200">Saturday</Th>
+                                             <Th bg="aygreen.200">Sunday</Th>
+                                        </Tr>
+                                   </Thead>
+                                   <Tbody>
                                         <Tr>
                                              <Td bg="aygreen.100">
                                                   6:00 AM - 7:30 AM
