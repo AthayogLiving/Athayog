@@ -70,10 +70,10 @@ const Online = ({ offers, notFound }) => {
           >
                <Hero pageData={pageData} />
                {/* <Information pageData={pageData} /> */}
-               <OnlineCourses />
+               {/* <OnlineCourses /> */}
                <Flex
                     margin="auto"
-                    padding={{ base: '0rem 0', md: '0rem 0', lg: '0rem 0' }}
+                    padding={{ base: '2rem 0', md: '3rem 0', lg: '5rem 0' }}
                     justifyContent="center"
                     alignItems="center"
                     width="100vw"
