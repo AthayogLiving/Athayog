@@ -1,4 +1,7 @@
-import { updateTestimonialsStatus } from '@/lib/db/testimonials';
+import {
+     deleteTestimonialsStatus,
+     updateTestimonialsStatus
+} from '@/lib/db/testimonials';
 import fetcher from '@/utils/fetcher';
 import {
      Box,
@@ -21,7 +24,8 @@ import {
      Text,
      toast,
      useToast,
-     Flex
+     Flex,
+     Button
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
@@ -30,6 +34,7 @@ import { useAuth } from '@/lib/auth';
 
 const ShowTestimonials = () => {
      const [status, setStatus] = useState(false);
+     const [delActive, setDelActive] = useState(false);
      const { user } = useAuth();
      const toast = useToast();
      const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
@@ -75,6 +80,32 @@ const ShowTestimonials = () => {
                })
                .catch((error) => {
                     setStatus(false);
+                    return toast({
+                         title: 'An error occurred.',
+                         description: error.message,
+                         status: 'error',
+                         duration: 5000,
+                         isClosable: true
+                    });
+               });
+     };
+
+     const deleteTestimonial = async (id) => {
+          setDelActive(true);
+          await deleteTestimonialsStatus(id)
+               .then((response) => {
+                    setDelActive(false);
+                    mutate([`/api/testimonials`, user.token]);
+                    return toast({
+                         title: 'Deleted.',
+                         description: "We'v deleted the testimonial.",
+                         status: 'success',
+                         duration: 9000,
+                         isClosable: true
+                    });
+               })
+               .catch((error) => {
+                    setDelActive(false);
                     return toast({
                          title: 'An error occurred.',
                          description: error.message,
@@ -142,6 +173,25 @@ const ShowTestimonials = () => {
                                                   defaultChecked={data.isActive}
                                              />
                                         </Flex>
+                                        <Flex
+                                             alignItems="center"
+                                             justifyContent="space-between"
+                                             w="100%"
+                                             mb={2}
+                                        >
+                                             <Button
+                                                  size="sm"
+                                                  colorScheme="red"
+                                                  isLoading={delActive}
+                                                  onClick={() =>
+                                                       deleteTestimonial(
+                                                            data.id
+                                                       )
+                                                  }
+                                             >
+                                                  Delete
+                                             </Button>
+                                        </Flex>
                                    </Box>
                               );
                          })}
@@ -155,6 +205,7 @@ const ShowTestimonials = () => {
                                    <Th>Review</Th>
                                    <Th>Rating</Th>
                                    <Th>Public</Th>
+                                   <Th>Delete</Th>
                               </Tr>
                          </Thead>
                          <Tbody>
@@ -183,6 +234,30 @@ const ShowTestimonials = () => {
                                                             }
                                                        />
                                                   </FormControl>
+                                             </Td>
+                                             <Td>
+                                                  {' '}
+                                                  <Flex
+                                                       alignItems="center"
+                                                       justifyContent="space-between"
+                                                       w="100%"
+                                                       mb={2}
+                                                  >
+                                                       <Button
+                                                            size="sm"
+                                                            colorScheme="red"
+                                                            isLoading={
+                                                                 delActive
+                                                            }
+                                                            onClick={() =>
+                                                                 deleteTestimonial(
+                                                                      data.id
+                                                                 )
+                                                            }
+                                                       >
+                                                            Delete
+                                                       </Button>
+                                                  </Flex>
                                              </Td>
                                         </Tr>
                                    );

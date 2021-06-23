@@ -22,7 +22,6 @@ export default async function handler(req, res) {
                const snapshot = await db
                     .collection('testimonials')
                     .orderBy('createdAt', 'desc')
-                    .limit(5)
                     .get();
                const testimonials = [];
 

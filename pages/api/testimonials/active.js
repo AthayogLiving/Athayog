@@ -20,7 +20,6 @@ export default async function handler(req, res) {
                const snapshot = await db
                     .collection('testimonials')
                     .where('isActive', '==', true)
-                    .limit(5)
                     .get();
                const testimonials = [];
 
