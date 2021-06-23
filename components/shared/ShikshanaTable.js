@@ -69,6 +69,14 @@ const ShikshanaTable = () => {
                                         <Td>31st May - 20th August</Td>
                                         <Td>Mon - Sat</Td>
                                    </Tr>
+                                   <Tr>
+                                        <Td bg="green.100">
+                                             YIC Course (Online)
+                                        </Td>
+                                        <Td>10:00am - 3:00pm</Td>
+                                        <Td>3rd July - 21st November</Td>
+                                        <Td>Sat - Sun</Td>
+                                   </Tr>
                               </Tbody>
                          </Table>
                     </Box>
