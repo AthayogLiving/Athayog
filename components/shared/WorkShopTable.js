@@ -63,46 +63,40 @@ const WorkShopTable = () => {
                               </Thead>
                               <Tbody>
                                    <Tr>
-                                        <Td bg="green.100">1st May</Td>
-                                        <Td>Pranayama Workshop</Td>
-                                        <Td>7:30 AM - 9:00 AM</Td>
-                                        <Td>Sharath</Td>
-                                   </Tr>
-                                   <Tr>
-                                        <Td bg="green.100">9th May</Td>
-                                        <Td>Yoga for immunity</Td>
+                                        <Td bg="green.100">3rd July</Td>
+                                        <Td>Universal Harmony </Td>
                                         <Td>7:30 AM - 9:00 AM</Td>
                                         <Td>Anjali</Td>
                                    </Tr>
                                    <Tr>
-                                        <Td bg="green.100">15th May</Td>
-                                        <Td>Yoga Nidra</Td>
+                                        <Td bg="green.100">4th July</Td>
+                                        <Td>Rhythm of Being</Td>
                                         <Td>7:30 AM - 9:00 AM</Td>
-                                        <Td>Kamaljeet </Td>
+                                        <Td>Prashanth</Td>
                                    </Tr>
                                    <Tr>
-                                        <Td bg="green.100">22nd May</Td>
-                                        <Td>Ashtanga</Td>
+                                        <Td bg="green.100">17th July</Td>
+                                        <Td> Transcending Transition </Td>
                                         <Td>7:30 AM - 9:00 AM</Td>
-                                        <Td>Deepak</Td>
+                                        <Td>Depak </Td>
                                    </Tr>
                                    <Tr>
-                                        <Td bg="green.100">23rd May</Td>
+                                        <Td bg="green.100">18th July</Td>
                                         <Td>Sivananda</Td>
                                         <Td>7:30 AM - 9:00 AM</Td>
                                         <Td>Spandana</Td>
                                    </Tr>
                                    <Tr>
-                                        <Td bg="green.100">29th May</Td>
-                                        <Td>Yoga for Covid,</Td>
+                                        <Td bg="green.100">24th July</Td>
+                                        <Td>Deep Space</Td>
                                         <Td>7:30 AM - 9:00 AM</Td>
-                                        <Td>Prashanth </Td>
+                                        <Td>Anjali</Td>
                                    </Tr>
                                    <Tr>
-                                        <Td bg="green.100">19th June</Td>
-                                        <Td>Teaching Methodology,</Td>
+                                        <Td bg="green.100">31st July</Td>
+                                        <Td>Cyclic Meditation</Td>
                                         <Td>7:30 AM - 9:00 AM</Td>
-                                        <Td>Sharath</Td>
+                                        <Td>Deepak </Td>
                                    </Tr>
                               </Tbody>
                          </Table>

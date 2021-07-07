@@ -50,6 +50,70 @@ const ShikshanaTable = () => {
                               className="scheduleTable"
                          >
                               <TableCaption bg="white" mt="0">
+                                   Shikshana Pada
+                              </TableCaption>
+                              <Thead>
+                                   <Tr>
+                                        <Th bg="secondaryGreen">Date</Th>
+                                        <Th bg="secondaryGreen">Class Name</Th>
+                                        <Th bg="secondaryGreen">Time</Th>
+                                        <Th bg="secondaryGreen">Teacher</Th>
+                                   </Tr>
+                              </Thead>
+                              <Tbody>
+                                   <Tr>
+                                        <Td bg="green.100"> 6am - 8:30am </Td>
+                                        <Td>Pranayama course</Td>
+                                        <Td>26th July - 30th July </Td>
+
+                                        <Td>Anjali</Td>
+                                   </Tr>
+                                   <Tr>
+                                        <Td bg="green.100"> 10am - 1pm </Td>
+                                        <Td>Cyclic Meditation</Td>
+                                        <Td> 2nd August - 6th August </Td>
+
+                                        <Td>Parsanth</Td>
+                                   </Tr>
+                                   <Tr>
+                                        <Td bg="green.100"> 10am - 1pm </Td>
+                                        <Td>Advance Hata course</Td>
+                                        <Td>9th August - 13th August </Td>
+
+                                        <Td>Deepak </Td>
+                                   </Tr>
+                                   <Tr>
+                                        <Td bg="green.100"> 10am - 1pm</Td>
+                                        <Td>YogaNidra</Td>
+                                        <Td>16th - 20th August </Td>
+
+                                        <Td>Kamaljeet</Td>
+                                   </Tr>
+                                   <Tr>
+                                        <Td bg="green.100"> 10am - 1pm</Td>
+                                        <Td>Advanced Meditation technique </Td>
+                                        <Td> 23rd - 27th August </Td>
+
+                                        <Td>Parshanth & Spandhana</Td>
+                                   </Tr>
+                              </Tbody>
+                         </Table>
+                    </Box>
+                    <Box
+                         overflowX="auto"
+                         width="100%"
+                         boxShadow="base"
+                         rounded="lg"
+                         mt={10}
+                    >
+                         <Table
+                              variant="simple"
+                              size="md"
+                              bg="white"
+                              colorScheme="aygreen"
+                              className="scheduleTable"
+                         >
+                              <TableCaption bg="white" mt="0">
                                    Shikshana Pada - YIC (Online)
                               </TableCaption>
                               <Thead>
@@ -76,6 +140,45 @@ const ShikshanaTable = () => {
                                         <Td>10:00am - 3:00pm</Td>
                                         <Td>3rd July - 21st November</Td>
                                         <Td>Sat - Sun</Td>
+                                   </Tr>
+                              </Tbody>
+                         </Table>
+                    </Box>
+                    <Box
+                         overflowX="auto"
+                         width="100%"
+                         boxShadow="base"
+                         rounded="lg"
+                         mt={10}
+                    >
+                         <Table
+                              variant="simple"
+                              size="md"
+                              bg="white"
+                              colorScheme="aygreen"
+                              className="scheduleTable"
+                         >
+                              <TableCaption bg="white" mt="0">
+                                   Shikshana Pada - YIC (Onsite)
+                              </TableCaption>
+                              <Thead>
+                                   <Tr>
+                                        <Th bg="secondaryGreen">Course Name</Th>
+                                        <Th bg="secondaryGreen">Time</Th>
+                                        <Th bg="secondaryGreen">Date</Th>
+                                        <Th bg="secondaryGreen">Days</Th>
+                                   </Tr>
+                              </Thead>
+                              <Tbody>
+                                   <Tr>
+                                        <Td bg="green.100">
+                                             YIC Course (Onsite)
+                                        </Td>
+                                        <Td> 6am - 8:30am </Td>
+                                        <Td>
+                                             2nd August - 10th November 2021{' '}
+                                        </Td>
+                                        <Td>Mon - Sat</Td>
                                    </Tr>
                               </Tbody>
                          </Table>
