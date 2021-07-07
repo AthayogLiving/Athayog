@@ -99,7 +99,6 @@ const ShikshanaTable = () => {
                               </Tbody>
                          </Table>
                     </Box>
-
                     <Box
                          overflowX="auto"
                          width="100%"
