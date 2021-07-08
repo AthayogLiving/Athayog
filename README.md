@@ -10,7 +10,7 @@ https://athayogliving.com/
 
 ### Tech Stack
 
--    NextJS
+-    Next JS
 -    FireBase
 -    Chakra-UI
 -    Razorpay
