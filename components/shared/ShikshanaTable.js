@@ -35,6 +35,13 @@ const ShikshanaTable = () => {
                     >
                          Schedule 2021
                     </Heading>
+                    <Heading
+                         fontWeight="normal"
+                         fontSize={{ base: 'xl', md: '2xl' }}
+                         mt={10}
+                    >
+                         Short Courses
+                    </Heading>
                     <Box
                          overflowX="auto"
                          width="100%"
@@ -62,7 +69,10 @@ const ShikshanaTable = () => {
                               </Thead>
                               <Tbody>
                                    <Tr>
-                                        <Td bg="green.100"> 6am - 8:30am </Td>
+                                        <Td bg="green.100">
+                                             {' '}
+                                             10:00am - 1:00pm{' '}
+                                        </Td>
                                         <Td>Pranayama course</Td>
                                         <Td>26th July - 30th July </Td>
 
@@ -99,15 +109,13 @@ const ShikshanaTable = () => {
                               </Tbody>
                          </Table>
                     </Box>
-
                     <Heading
                          fontWeight="normal"
-                         fontSize={{ base: '2xl', md: '3xl' }}
+                         fontSize={{ base: 'xl', md: '2xl' }}
                          mt={20}
                     >
-                         Short Courses
+                         Vyasa Yoga Instructor Course
                     </Heading>
-
                     <Box
                          overflowX="auto"
                          width="100%"
@@ -183,16 +191,6 @@ const ShikshanaTable = () => {
                                         <Td bg="green.100">
                                              YIC Course (Onsite)
                                         </Td>
-                                        <Td> 6am - 8:30am </Td>
-                                        <Td>
-                                             2nd August - 10th November 2021{' '}
-                                        </Td>
-                                        <Td>Mon - Fri</Td>
-                                   </Tr>
-                                   <Tr>
-                                        <Td bg="green.100">
-                                             YIC Course (Onsite)
-                                        </Td>
                                         <Td>6:00am - 8:30am</Td>
                                         <Td>5th April - 9th July</Td>
                                         <Td>Mon - Fri</Td>
@@ -209,8 +207,8 @@ const ShikshanaTable = () => {
                                         <Td bg="green.100">
                                              YIC Course (Onsite)
                                         </Td>
-                                        <Td>10:00am - 12:30pm</Td>
-                                        <Td>31st May - 6th Sep</Td>
+                                        <Td> 6am - 8:30am </Td>
+                                        <Td>2nd August - 10th November</Td>
                                         <Td>Mon - Fri</Td>
                                    </Tr>
                               </Tbody>
