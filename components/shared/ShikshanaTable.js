@@ -100,6 +100,14 @@ const ShikshanaTable = () => {
                          </Table>
                     </Box>
 
+                    <Heading
+                         fontWeight="normal"
+                         fontSize={{ base: '2xl', md: '3xl' }}
+                         mt={20}
+                    >
+                         Short Courses
+                    </Heading>
+
                     <Box
                          overflowX="auto"
                          width="100%"
@@ -160,7 +168,7 @@ const ShikshanaTable = () => {
                               className="scheduleTable"
                          >
                               <TableCaption bg="white" mt="0">
-                                   Shikshana Pada - YIC (Onsite)
+                                   Shikshana Pada - Level 1 course - Vyasa - YIC
                               </TableCaption>
                               <Thead>
                                    <Tr>
@@ -179,97 +187,31 @@ const ShikshanaTable = () => {
                                         <Td>
                                              2nd August - 10th November 2021{' '}
                                         </Td>
-                                        <Td>Mon - Sat</Td>
+                                        <Td>Mon - Fri</Td>
                                    </Tr>
-                              </Tbody>
-                         </Table>
-                    </Box>
-                    <Box
-                         overflowX="auto"
-                         width="100%"
-                         boxShadow="base"
-                         rounded="lg"
-                         mt={10}
-                    >
-                         {' '}
-                         <Table
-                              variant="simple"
-                              size="md"
-                              bg="white"
-                              colorScheme="aygreen"
-                              className="scheduleTable"
-                         >
-                              <TableCaption bg="white" mt="0">
-                                   Shikshana Pada - Level 1 course - RYT 200
-                              </TableCaption>
-                              <Thead>
                                    <Tr>
-                                        <Th bg="secondaryGreen">Course Name</Th>
-                                        <Th bg="secondaryGreen">Time</Th>
-                                        <Th bg="secondaryGreen">
-                                             Batch 1 - Weekday
-                                        </Th>
-                                        <Th bg="secondaryGreen">
-                                             Batch 2 - Weekday
-                                        </Th>
-                                        <Th bg="secondaryGreen">
-                                             Batch 3 - Weekday
-                                        </Th>
-                                   </Tr>
-                              </Thead>
-                              <Tbody>
-                                   <Tr>
-                                        <Td bg="green.100">RYT 200 Course</Td>
-                                        <Td>11:00am - 4:00pm</Td>
-                                        <Td>5th April - 2nd June</Td>
-                                        <Td>7th July - 4th August</Td>
-                                        <Td>4th October - 20th December</Td>
-                                   </Tr>
-                              </Tbody>
-                         </Table>
-                    </Box>
-
-                    <Box
-                         overflowX="auto"
-                         width="100%"
-                         boxShadow="base"
-                         rounded="lg"
-                         mt={10}
-                    >
-                         <Table
-                              variant="simple"
-                              size="md"
-                              bg="white"
-                              colorScheme="aygreen"
-                              className="scheduleTable"
-                         >
-                              <TableCaption bg="white" mt="0">
-                                   Shikshana Pada - Level 1 course - Vyasa - YIC
-                              </TableCaption>
-                              <Thead>
-                                   <Tr>
-                                        <Th bg="secondaryGreen">Course Name</Th>
-                                        <Th bg="secondaryGreen">Time</Th>
-                                        <Th bg="secondaryGreen">
-                                             Batch 1 - Weekday
-                                        </Th>
-                                        <Th bg="secondaryGreen">
-                                             Batch 2 - Weekday
-                                        </Th>
-                                   </Tr>
-                              </Thead>
-                              <Tbody>
-                                   <Tr>
-                                        <Td bg="green.100">YIC Course</Td>
+                                        <Td bg="green.100">
+                                             YIC Course (Onsite)
+                                        </Td>
                                         <Td>6:00am - 8:30am</Td>
                                         <Td>5th April - 9th July</Td>
-                                        <Td>2nd August - 9th November</Td>
+                                        <Td>Mon - Fri</Td>
                                    </Tr>
                                    <Tr>
-                                        <Td bg="green.100">YIC Course</Td>
+                                        <Td bg="green.100">
+                                             YIC Course (Onsite)
+                                        </Td>
                                         <Td>5:00pm - 7:30pm</Td>
                                         <Td>5th April - 9th July</Td>
-                                        <Td>2nd August - 9th November</Td>
+                                        <Td>Mon - Fri</Td>
+                                   </Tr>
+                                   <Tr>
+                                        <Td bg="green.100">
+                                             YIC Course (Onsite)
+                                        </Td>
+                                        <Td>10:00am - 12:30pm</Td>
+                                        <Td>31st May - 6th Sep</Td>
+                                        <Td>Mon - Fri</Td>
                                    </Tr>
                               </Tbody>
                          </Table>
