@@ -10,6 +10,9 @@ import athayogOnline from 'public/athayogOnline.jpg';
 import athayogShikshana from 'public/athayogShikshana.jpg';
 import athayogPersonal from 'public/athayogPersonal.jpeg';
 import athayogWorkshop from 'public/athayogWorkshop.jpg';
+import spandhana from 'public/spandhana.jpg';
+import prashant from 'public/prashant.jpg';
+import kamaljeet from 'public/kamaljeet.jpg';
 
 export const offeringsData = {
      offering: [
@@ -112,7 +115,7 @@ export const profileData = {
                info: `Even as an idea still shaping up, AthaYog’s purpose was clear. Sharath was certain that the faith in Yog had to be restored. As a young teenager, he was intrigued by his grandfather’s Sadhana. He found inspiration in his grandfather’s discipline and perseverance; traits that he would acquire himself in the years to come. \n \nHis initiation into the world of Yog led him under Swami Satyananda Saraswati's teachings from Bihar School of Yoga, and a formal Yogic education from Swami Vivekananda Yoga Anusandhana Samsthana. With the blessings of his gurus, his Yog practice evolved into a way of being. His intent is to share these learnings and guide people on their journey towards transformation with consistent, directed, and self-motivated effort.
                     `,
                image: sharath,
-               designation: 'Founder'
+               designation: 'CEO'
           }
      ]
 };
@@ -139,6 +142,28 @@ export const EmployeeData = {
                name: 'Deepak Mani',
                info: `With rather early beginnings into the Yogic cosmos, Deepak was first introduced to Yog in middle school when he turned to it as a tool for self-help and growth. Over the years, he started to observe the change in his disposition and started to notice how his personality developed and how it affected his innate nature. What he witnessed reinforced his belief in the potential of Yoga. That is when he decided that he would dedicate his life to teaching the secrets of Yog.\n \nDeepak’s teaching experience has taken him places, entrusting him with a strong foundation in Ashtanga Yoga, Vinyasa and Hatha Yoga. His mantra is that “Yoga isn’t going to turn everyone's life around, but it has the potential to do so, you just need to be open to receiving it.”\n \nHe looks up to Swami Vivekananda, Paramahamsa Yogananda, Swami Shivananda and T Krishnamacharya for their teachings and discourses in Yoga and aspires to develop his teaching skills following in their footsteps.`,
                image: deepak,
+               visible: true,
+               designation: 'Teacher'
+          },
+
+          {
+               name: 'Spandhana Motupalli',
+               info: `Yoga was introduced to Spandhana’s life back in her school days. It was during her schooling that she was formally introduced to Surya Namaskar, and that was yoga for her. She knew that her life would revolve around yoga. Spandhana has studied yoga and understood the deep essense of it under the guidance of his grace, Swami Vishnudevananda and Swami Sivananda from Sivananda yoga and vedanta ashram in Kerala.\n \nBeing a teacher was never on her cards, yet life comes to a full circle. Spandhana’s keen interest in healing techniques such as pranic healing and sound meditation has helped elevate her understanding of human mind, body and spirituality.`,
+               image: spandhana,
+               visible: true,
+               designation: 'Teacher'
+          },
+          {
+               name: 'Prashant Chahal',
+               info: `Prashant started his Yogic journey after visiting and experiencing a Yoga course at SVYASA. Practising yoga, chanting and studying ancient scriptures in a relaxing and chaos-free location is what led to him deciding that he wanted to do this for the rest of his life. Without looking back, he went on to further study BSc in yoga therapy, MSc in yoga and YTTC in ashtanga yoga.\n \nThroughout his journey, Prashant realised that yoga gave him immense bliss and he is forever happy to share this precious knowledge with the help of AthaYog Living.`,
+               image: prashant,
+               visible: true,
+               designation: 'Teacher'
+          },
+          {
+               name: 'Kamaljeet Mehla',
+               info: `Kamaljeet explored the world through yoga, fitness and art. He discovered immense healing powers of the body and mind. He has taught himself to be a healer. Though he had the love and support of a hard-working, kind and grounded family, at twenty he moved out to practice Sivananda yoga. He found solace in yoga nidra, in the simplicity of breathing and movement in the natural world.\n \nIn his own words, he is dorky, funny, difficult, moody, complex and creative. His highest purpose is to serve people with yoga, the same way he used the wisdom he found in depths and darkness to draw others out into light.`,
+               image: kamaljeet,
                visible: true,
                designation: 'Teacher'
           },
