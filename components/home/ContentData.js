@@ -111,7 +111,6 @@ export const profileData = {
      profiles: [
           {
                name: 'Sharath Basavaraju',
-
                info: `Even as an idea still shaping up, AthaYog’s purpose was clear. Sharath was certain that the faith in Yog had to be restored. As a young teenager, he was intrigued by his grandfather’s Sadhana. He found inspiration in his grandfather’s discipline and perseverance; traits that he would acquire himself in the years to come. \n \nHis initiation into the world of Yog led him under Swami Satyananda Saraswati's teachings from Bihar School of Yoga, and a formal Yogic education from Swami Vivekananda Yoga Anusandhana Samsthana. With the blessings of his gurus, his Yog practice evolved into a way of being. His intent is to share these learnings and guide people on their journey towards transformation with consistent, directed, and self-motivated effort.
                     `,
                image: sharath,
