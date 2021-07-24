@@ -114,7 +114,7 @@ export const profileData = {
                info: `Even as an idea still shaping up, AthaYog’s purpose was clear. Sharath was certain that the faith in Yog had to be restored. As a young teenager, he was intrigued by his grandfather’s Sadhana. He found inspiration in his grandfather’s discipline and perseverance; traits that he would acquire himself in the years to come. \n \nHis initiation into the world of Yog led him under Swami Satyananda Saraswati's teachings from Bihar School of Yoga, and a formal Yogic education from Swami Vivekananda Yoga Anusandhana Samsthana. With the blessings of his gurus, his Yog practice evolved into a way of being. His intent is to share these learnings and guide people on their journey towards transformation with consistent, directed, and self-motivated effort.
                     `,
                image: sharath,
-               designation: 'CEO'
+               designation: 'Founder'
           }
      ]
 };
@@ -127,7 +127,7 @@ export const EmployeeData = {
                info: `With a decade-long history of working in the Yoga industry, Kavitha has been determined to learn and educate herself in Yog and Ayurveda. She has always found herself to be driven towards the health industry. Having completed RYT200 and a course in Ayurveda therapy, she is well-versed with the various nuances in the world of Yog.\n \nShe maintains that one should include Yog practice into their routine and begin their Yogic journey at an early age.; by educating people on the importance of Yoga, this ancient knowledge can be preserved and passed on to the future generations. Her faith in the sanctity of Yog has stemmed from the inspiration that she draws from spiritual figures like the Buddha and Mother Teresa. Kavitha has a steadfast belief in the ability of Yoga to change one’s life and longs to guide people into welcoming these changes by espousing higher living.`,
                image: kavitha,
                visible: true,
-               designation: 'Senior Consultant'
+               designation: 'CEO'
           },
           {
                name: 'Anjali Prabhu',
