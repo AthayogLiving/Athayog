@@ -9,6 +9,7 @@ import WhatsAppWidget from 'react-whatsapp-widget';
 import 'react-whatsapp-widget/dist/index.css';
 import HomeLayout from '@/components/layout/HomeLayout';
 import { getImages, getTestimonials } from '@/lib/db/db-admin';
+import Certificate from '@/components/home/Certificate';
 
 export async function getStaticProps() {
      const reqCarousel = await getImages('carousel');
@@ -33,6 +34,7 @@ export default function Home({ carousel, gallery, testimonials }) {
                duration="400"
           >
                <HeroCarousel images={carousel} />
+               <Certificate />
                <Offerings />
                <Gallery images={gallery} />
 

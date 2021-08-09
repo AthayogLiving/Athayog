@@ -17,6 +17,7 @@ import {
      Text,
      UnorderedList
 } from '@chakra-ui/react';
+import Certificate from '@/components/home/Certificate';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('shikshana');
@@ -69,6 +70,7 @@ const Shikshana = ({ offers, notFound }) => {
           >
                <Hero pageData={pageData} />
 
+               <Certificate />
                <InformationSplit pageData={pageData} />
                <ShikshanaInformation />
                <ShikshanaTable />
