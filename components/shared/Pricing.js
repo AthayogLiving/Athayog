@@ -403,6 +403,12 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                                    );
                               })}
                     </SimpleGrid>
+                    <Text textAlign="left" mt={8} width="100%">
+                         *Terms and conditions apply
+                    </Text>
+                    <Text width="100%" textAlign="left">
+                         *All price inclusive of GST
+                    </Text>
                     <Text mt={8} fontSize="lg">
                          {registerTo == 'space'
                               ? ' *Connect with us to know more about our ongoing offers.'
