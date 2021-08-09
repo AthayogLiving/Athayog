@@ -73,7 +73,6 @@ const Shikshana = ({ offers, notFound }) => {
                <InformationSplit pageData={pageData} />
                <ShikshanaInformation />
                <ShikshanaTable />
-
                <Grid
                     bg="gray.50"
                     placeItems="center"
