@@ -62,6 +62,8 @@ const Online = ({ offers, notFound }) => {
                });
           }
      });
+     const d = new Date();
+
      const monthNames = [
           'January',
           'February',
@@ -228,30 +230,6 @@ const Online = ({ offers, notFound }) => {
                                              <Td>Rhythm of Being</Td>
                                              <Td>---</Td>
                                              <Td>---</Td>
-                                        </Tr>
-                                        <Tr>
-                                             <Td bg="aygreen.100">
-                                                  6:00 AM - 7:30 AM
-                                             </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                        </Tr>
-                                        <Tr>
-                                             <Td bg="aygreen.100">
-                                                  6:00 PM - 7:30 PM
-                                             </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
                                         </Tr>
                                    </Tbody>
                               </Table>

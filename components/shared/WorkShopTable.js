@@ -14,6 +14,8 @@ import {
 import React from 'react';
 
 const WorkShopTable = () => {
+     const d = new Date();
+
      const monthNames = [
           'January',
           'February',
