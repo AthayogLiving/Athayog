@@ -14,6 +14,20 @@ import {
 import React from 'react';
 
 const WorkShopTable = () => {
+     const monthNames = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'
+     ];
      return (
           <Flex
                margin="auto"
@@ -51,7 +65,8 @@ const WorkShopTable = () => {
                               className="scheduleTable"
                          >
                               <TableCaption bg="white" mt="0">
-                                   Workshop 2021
+                                   Schedule For {monthNames[d.getMonth()]}{' '}
+                                   {d.getFullYear()}
                               </TableCaption>
                               <Thead>
                                    <Tr>

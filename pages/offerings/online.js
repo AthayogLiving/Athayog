@@ -62,6 +62,20 @@ const Online = ({ offers, notFound }) => {
                });
           }
      });
+     const monthNames = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'
+     ];
      return (
           <motion.div
                exit={{ opacity: 0 }}
@@ -89,7 +103,8 @@ const Online = ({ offers, notFound }) => {
                               fontWeight="normal"
                               fontSize={{ base: '2xl', md: '3xl' }}
                          >
-                              Schedule
+                              Schedule For {monthNames[d.getMonth()]}{' '}
+                              {d.getFullYear()}
                          </Heading>
                          <Box
                               overflowX="auto"

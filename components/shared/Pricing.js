@@ -188,6 +188,7 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                     >
                          {pricing
                               .filter((data) => data.isTrial == false)
+                              .sort((a, b) => a.durationNum - b.durationNum)
                               .map((data, index) => {
                                    return (
                                         <Box
@@ -324,6 +325,7 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                     >
                          {pricing
                               .filter((data) => data.isTrial == true)
+                              .sort((a, b) => a.durationNum - b.durationNum)
                               .map((data, index) => {
                                    return (
                                         <Box

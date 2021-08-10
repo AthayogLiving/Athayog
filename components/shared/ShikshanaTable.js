@@ -14,6 +14,20 @@ import {
 import React from 'react';
 
 const ShikshanaTable = () => {
+     const monthNames = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'
+     ];
      return (
           <Flex
                margin="auto"
@@ -33,7 +47,8 @@ const ShikshanaTable = () => {
                          fontWeight="normal"
                          fontSize={{ base: '2xl', md: '3xl' }}
                     >
-                         Schedule 2021
+                         Schedule For {monthNames[d.getMonth()]}{' '}
+                         {d.getFullYear()}
                     </Heading>
                     <Heading
                          fontWeight="normal"
