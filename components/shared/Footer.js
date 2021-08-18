@@ -8,7 +8,11 @@ import {
      Link as ChakraLink,
      Grid
 } from '@chakra-ui/react';
-import { AiOutlineFacebook, AiOutlineInstagram } from 'react-icons/ai';
+import {
+     AiOutlineFacebook,
+     AiOutlineInstagram,
+     AiOutlineYoutube
+} from 'react-icons/ai';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import React from 'react';
 import Link from 'next/link';
@@ -122,6 +126,13 @@ const Footer = () => {
                                    aria-label="facebook"
                               >
                                    <AiOutlineFacebook size="1.5rem" />
+                              </ChakraLink>
+                              <ChakraLink
+                                   href="https://www.youtube.com/channel/UCrcAojiHuSq7YJulqRN8NBw"
+                                   isExternal
+                                   aria-label="facebook"
+                              >
+                                   <AiOutlineYoutube size="1.5rem" />
                               </ChakraLink>
                          </HStack>
                          <Text>
