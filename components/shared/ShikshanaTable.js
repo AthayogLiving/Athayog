@@ -57,7 +57,7 @@ const ShikshanaTable = () => {
                          fontSize={{ base: 'xl', md: '2xl' }}
                          mt={10}
                     >
-                         Short Courses
+                         RYT 200 Courses
                     </Heading>
                     <Box
                          overflowX="auto"
@@ -74,54 +74,40 @@ const ShikshanaTable = () => {
                               className="scheduleTable"
                          >
                               <TableCaption bg="white" mt="0">
-                                   Shikshana Pada
+                                   RYT 200 Courses
                               </TableCaption>
                               <Thead>
                                    <Tr>
                                         <Th bg="secondaryGreen">Date</Th>
-                                        <Th bg="secondaryGreen">Class Name</Th>
-                                        <Th bg="secondaryGreen">Time</Th>
-                                        <Th bg="secondaryGreen">Teacher</Th>
+                                        <Th bg="secondaryGreen">Timings</Th>
+                                        <Th bg="secondaryGreen">Days</Th>
                                    </Tr>
                               </Thead>
                               <Tbody>
                                    <Tr>
                                         <Td bg="green.100">
-                                             {' '}
-                                             10:00am - 1:00pm{' '}
+                                             4th Oct 2021 - 3rd Dec 2021
                                         </Td>
-                                        <Td>Pranayama course</Td>
-                                        <Td>26th July - 30th July </Td>
-
-                                        <Td>Anjali</Td>
+                                        <Td>11am - 4pm </Td>
+                                        <Td>Mon - Fri</Td>
                                    </Tr>
                                    <Tr>
-                                        <Td bg="green.100"> 10am - 1pm </Td>
-                                        <Td>Cyclic Meditation</Td>
-                                        <Td> 2nd August - 6th August </Td>
-
-                                        <Td>Parsanth</Td>
+                                        <Td bg="green.100">-</Td>
+                                        <Td>6am & 6pm</Td>
+                                        <Td>Mon - Fri</Td>
+                                   </Tr>
+                                   <Tr></Tr>
+                                   <Tr>
+                                        <Td bg="green.100">
+                                             3rd Jan 2022 - 28th Feb 2022
+                                        </Td>
+                                        <Td>11am - 4pm </Td>
+                                        <Td>Mon - Fri</Td>
                                    </Tr>
                                    <Tr>
-                                        <Td bg="green.100"> 10am - 1pm </Td>
-                                        <Td>Advance Hata course</Td>
-                                        <Td>9th August - 13th August </Td>
-
-                                        <Td>Deepak </Td>
-                                   </Tr>
-                                   <Tr>
-                                        <Td bg="green.100"> 10am - 1pm</Td>
-                                        <Td>YogaNidra</Td>
-                                        <Td>16th - 20th August </Td>
-
-                                        <Td>Kamaljeet</Td>
-                                   </Tr>
-                                   <Tr>
-                                        <Td bg="green.100"> 10am - 1pm</Td>
-                                        <Td>Advanced Meditation technique </Td>
-                                        <Td> 23rd - 27th August </Td>
-
-                                        <Td>Parshanth & Spandhana</Td>
+                                        <Td bg="green.100">-</Td>
+                                        <Td>6am & 6pm</Td>
+                                        <Td>Mon - Fri</Td>
                                    </Tr>
                               </Tbody>
                          </Table>
@@ -227,6 +213,80 @@ const ShikshanaTable = () => {
                                         <Td> 6am - 8:30am </Td>
                                         <Td>2nd August - 10th November</Td>
                                         <Td>Mon - Fri</Td>
+                                   </Tr>
+                              </Tbody>
+                         </Table>
+                    </Box>
+                    <Heading
+                         fontWeight="normal"
+                         fontSize={{ base: 'xl', md: '2xl' }}
+                         mt={20}
+                    >
+                         Short Courses
+                    </Heading>
+                    <Box
+                         overflowX="auto"
+                         width="100%"
+                         boxShadow="base"
+                         rounded="lg"
+                         mt={10}
+                    >
+                         <Table
+                              variant="simple"
+                              size="md"
+                              bg="white"
+                              colorScheme="aygreen"
+                              className="scheduleTable"
+                         >
+                              <TableCaption bg="white" mt="0">
+                                   Shikshana Pada
+                              </TableCaption>
+                              <Thead>
+                                   <Tr>
+                                        <Th bg="secondaryGreen">Date</Th>
+                                        <Th bg="secondaryGreen">Class Name</Th>
+                                        <Th bg="secondaryGreen">Time</Th>
+                                        <Th bg="secondaryGreen">Teacher</Th>
+                                   </Tr>
+                              </Thead>
+                              <Tbody>
+                                   <Tr>
+                                        <Td bg="green.100">
+                                             {' '}
+                                             10:00am - 1:00pm{' '}
+                                        </Td>
+                                        <Td>Pranayama course</Td>
+                                        <Td>26th July - 30th July </Td>
+
+                                        <Td>Anjali</Td>
+                                   </Tr>
+                                   <Tr>
+                                        <Td bg="green.100"> 10am - 1pm </Td>
+                                        <Td>Cyclic Meditation</Td>
+                                        <Td> 2nd August - 6th August </Td>
+
+                                        <Td>Parsanth</Td>
+                                   </Tr>
+                                   <Tr>
+                                        <Td bg="green.100"> 10am - 1pm </Td>
+                                        <Td>Advance Hata course</Td>
+                                        <Td>9th August - 13th August </Td>
+
+                                        <Td>Deepak </Td>
+                                   </Tr>
+                                   <Tr>
+                                        <Td bg="green.100"> 10am - 1pm</Td>
+                                        <Td>YogaNidra</Td>
+                                        <Td>16th - 20th August </Td>
+
+                                        <Td>Kamaljeet</Td>
+                                   </Tr>
+                                   <Tr>
+                                        <Td bg="green.100"> 10am - 1pm</Td>
+                                        <Td>Advanced Meditation technique </Td>
+                                        <Td> 23rd - 27th August </Td>
+
+                                        <Td>Parshanth & Spandhana</Td>
                                    </Tr>
                               </Tbody>
                          </Table>

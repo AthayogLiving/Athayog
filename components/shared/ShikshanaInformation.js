@@ -4,6 +4,7 @@ import {
      Box,
      Center,
      chakra,
+     Divider,
      Flex,
      Heading,
      HStack,
@@ -261,6 +262,81 @@ const ShikshanaInformation = () => {
                                         </Box>
                                    </HStack>
                               </OrderedList>
+                         </Flex>
+                         <Divider my={5} colorScheme="teal" />
+                         <Flex
+                              padding={{
+                                   base: '1rem 0',
+                                   md: '1rem 0',
+                                   lg: '2rem 0'
+                              }}
+                              justifyContent="space-between"
+                         >
+                              <Stack spacing={2}>
+                                   <Text
+                                        fontWeight="light"
+                                        textAlign="left"
+                                        fontSize={{
+                                             base: '1rem',
+                                             md: '1rem',
+                                             lg: '1.2rem'
+                                        }}
+                                   >
+                                        <chakra.span fontWeight="medium">
+                                             2. YIC
+                                        </chakra.span>{' '}
+                                        - RYT 200 course
+                                   </Text>
+                                   <Stack spacing={5}>
+                                        {' '}
+                                        <Text>
+                                             AthaYog Living is an institution of
+                                             Yoga devoted to preserving its
+                                             long-standing legacy by propagating
+                                             true purpose, philosophies and
+                                             practices. The name Athayog is
+                                             derived from the combination of two
+                                             Sanskrit words, ‘Atha’ which
+                                             translates to ‘now’ and ‘Yog’ than
+                                             means ‘to join’. Our deep-rooted
+                                             knowledge in this field comes from
+                                             age-old scriptures like the Vedas,
+                                             Sankhya Philosophy, Bhagwat Geeta,
+                                             Patanjali’s Yoga Sutras, Hatha Yoga
+                                             Pradipika and the teachings of all
+                                             our gurus. We also have a team of
+                                             young, energetic and dynamic
+                                             individuals who are constantly
+                                             enhancing their Yogic knowledge.
+                                        </Text>
+                                        <Text>
+                                             Registered Yoga Teacher (RYT) is a
+                                             distinction given to yoga teachers
+                                             whose training and teaching
+                                             experience meet Yoga Alliance
+                                             requirements. A registered Yoga
+                                             teacher must complete training with
+                                             a Registered Yoga School (RYS),
+                                             which is confirms by Yoga Alliance.
+                                             Teachers can register as an RYT 200
+                                             post completion of a 200 hours
+                                             teacher training program registered
+                                             with Yoga Alliance. All training
+                                             hours must come from the same
+                                             school.
+                                        </Text>
+                                        <Text>
+                                             The RYT 200 course at AthaYog is
+                                             taught by our Principal Teacher and
+                                             Founder, Sharath Basavaraju. His
+                                             teachings come from Swami
+                                             Satyananda Saraswati from Bihar
+                                             School of Yoga and formal Yogic
+                                             education from a Swami Vivekananda
+                                             Yoga Anusandhana Samsthana.
+                                        </Text>
+                                   </Stack>
+                              </Stack>
                          </Flex>
                     </Box>
                </Flex>
