@@ -440,7 +440,7 @@ const Schedule = ({ schedule }) => {
                                    <Box>Timings </Box>
                                    <Box ml={2}>
                                         <Text>
-                                             * Weekdays: 6:00 am - 9:00 pm
+                                             * Weekdays: 5:45 am - 9:00 pm
                                         </Text>
                                         <Text>
                                              * Weekends: 7:00 am - 08:00 pm
