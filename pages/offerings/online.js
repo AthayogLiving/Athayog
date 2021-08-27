@@ -139,11 +139,11 @@ const Online = ({ offers, notFound }) => {
                                              <Td bg="aygreen.100">
                                                   6.00 AM - 7.00 AM
                                              </Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition </Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition </Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
                                              <Td>---</Td>
                                              <Td>---</Td>
                                         </Tr>
@@ -152,24 +152,24 @@ const Online = ({ offers, notFound }) => {
                                                   7.00 AM - 8.00 AM
                                              </Td>
                                              <Td>Rhythm of Being </Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition </Td>
-                                             <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Deep Space</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Transcending Transition </Td>
+                                             <Td>Ashtanga</Td>
                                         </Tr>
                                         <Tr>
                                              <Td bg="aygreen.100">
                                                   8:00 AM - 9:00 AM
                                              </Td>
-                                             <Td>Universal Harmony</Td>
+                                             <Td>Deep space</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony- </Td>
+                                             <Td>Ashtanga</Td>
+                                             <Td>Transcending Transition </Td>
                                         </Tr>
                                         <Tr>
                                              <Td bg="aygreen.100">
@@ -199,25 +199,25 @@ const Online = ({ offers, notFound }) => {
                                              <Td bg="aygreen.100">
                                                   5:00 PM - 6:00 PM
                                              </Td>
+                                             <Td>Deep space</Td>
+                                             <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Deep space</Td>
-                                             <Td>Universal Harmony</Td>
+                                             <Td>Ashtanga</Td>
                                         </Tr>
                                         <Tr>
                                              <Td bg="aygreen.100">
                                                   6:00 PM - 7:00 PM
                                              </Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Deep space</Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Deep space</Td>
+                                             <Td>Sivananda</Td>
+                                             <Td>Ashtanga</Td>
                                         </Tr>
                                         <Tr>
                                              <Td bg="aygreen.100">
@@ -225,14 +225,26 @@ const Online = ({ offers, notFound }) => {
                                              </Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Deep space</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>---</Td>
-                                             <Td>---</Td>
+                                             <Td>Universal Harmony</Td>
                                         </Tr>
                                    </Tbody>
                               </Table>
+                         </Box>
+                         <Box mt={5} textAlign="left" width="100%">
+                              <Text fontWeight="medium">Working hours:</Text>
+                              <Text>
+                                   Monday to Friday (06:00 AM to 08:00 PM) and
+                                   Saturday
+                              </Text>
+                              <Text>Sunday (07:00 AM to 08:00 PM)</Text>
+                              <Text>
+                                   Athayog living will be closed on 2nd Saturday
+                                   of every Month.
+                              </Text>
                          </Box>
 
                          <Box
