@@ -414,7 +414,6 @@ export const CountryCode = {
      AU: '61',
      AT: '43',
      AW: '297',
-     AX: '+35818',
      AZ: '994',
      IE: '353',
      ID: '62',
