@@ -20,6 +20,7 @@ import Router, { useRouter } from 'next/router';
 import firebase from '@/lib/firebase';
 import { MotionStack } from '../shared/MotionElements';
 import { CountryCode } from './ContentData';
+import useSSR from 'use-ssr';
 
 const Signup = () => {
      const { handleSubmit, register, errors, reset } = useForm();
@@ -34,6 +35,7 @@ const Signup = () => {
      const toast = useToast();
      const router = useRouter();
      const auth = firebase.auth();
+     var { isBrowser, isServer, isNative } = useSSR();
 
      //
      const initiateRecaptha = () => {
@@ -91,10 +93,11 @@ const Signup = () => {
                .then((result) => {
                     // User signed in successfully.
                     const user = result.user;
-                    const credential = firebase.auth.EmailAuthProvider.credential(
-                         email,
-                         password
-                    );
+                    const credential =
+                         firebase.auth.EmailAuthProvider.credential(
+                              email,
+                              password
+                         );
                     auth.currentUser
                          .linkWithCredential(credential)
                          .then((usercred) => {
@@ -245,15 +248,21 @@ const Signup = () => {
                                         })}
                                    >
                                         {Object.keys(CountryCode).map(function (
-                                             key,
-                                             index
+                                             keyName,
+                                             keyIndex
                                         ) {
                                              return (
                                                   <option
-                                                       val={CountryCode[key]}
-                                                       key={index}
+                                                       val={keyIndex}
+                                                       key={
+                                                            CountryCode[keyName]
+                                                       }
                                                   >
-                                                       {CountryCode[key]}
+                                                       {keyName +
+                                                            ' ' +
+                                                            CountryCode[
+                                                                 keyName
+                                                            ]}
                                                   </option>
                                              );
                                         })}
@@ -338,7 +347,7 @@ const Signup = () => {
                          </Link>
                     </Stack>
                )}
-               <div id="recapctha-box"></div>
+               {isBrowser && <div id="recapctha-box"></div>}
           </>
      );
 };
