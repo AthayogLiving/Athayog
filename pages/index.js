@@ -34,7 +34,7 @@ export default function Home({ carousel, gallery, testimonials }) {
                duration="400"
           >
                <HeroCarousel images={carousel} />
-               {/* <Certificate /> */}
+               <Certificate />
                <Offerings />
                <Gallery images={gallery} />
 

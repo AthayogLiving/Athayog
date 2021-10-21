@@ -2,6 +2,7 @@ import { Box, Flex, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import React from 'react';
 import RYT_Logo from 'public/Rys_200_Logo.png';
+import Svyasa_Logo from 'public/svyasa.jpeg';
 
 export default function Certificate() {
      return (
@@ -12,6 +13,12 @@ export default function Certificate() {
                direction={['column', 'row']}
           >
                <Box>
+                    <Image
+                         height="100"
+                         width="100"
+                         src={Svyasa_Logo}
+                         layout="intrinsic"
+                    />
                     <Image
                          height="100"
                          width="100"
