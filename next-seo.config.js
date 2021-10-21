@@ -1,5 +1,5 @@
 const title = 'Athayog Living – A holistic yogic living';
-const description = 'A holistic yogic living.';
+const description = 'yoga studio in banglore';
 
 const SEO = {
      title,
