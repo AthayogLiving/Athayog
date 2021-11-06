@@ -178,7 +178,7 @@ const Navbar = () => {
                                    <SMenu
                                         menuButton={
                                              <SMenuButton>
-                                                  Offerings
+                                                  Offerings <ChevronDownIcon />
                                              </SMenuButton>
                                         }
                                         transition
