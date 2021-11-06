@@ -18,6 +18,7 @@ import {
      UnorderedList
 } from '@chakra-ui/react';
 import Certificate from '@/components/home/Certificate';
+import ShikshanaGraduates from '@/components/shared/ShikshanaGraduates';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('shikshana');
@@ -73,7 +74,7 @@ const Shikshana = ({ offers, notFound }) => {
                <InformationSplit pageData={pageData} />
                <ShikshanaInformation />
                <ShikshanaTable />
-
+               <ShikshanaGraduates />
                <Grid
                     bg="gray.50"
                     placeItems="center"
