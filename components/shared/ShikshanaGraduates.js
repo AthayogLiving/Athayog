@@ -1,4 +1,4 @@
-import { Box, Flex, Heading } from '@chakra-ui/layout';
+import { Box, Flex, Grid, Heading } from '@chakra-ui/layout';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 import React from 'react';
 
@@ -13,7 +13,7 @@ const ShikshanaGraduates = () => {
           { id: 7, reg_no: 'AY-YIC-010', name: 'Akhil S Nair' }
      ];
      return (
-          <Box>
+          <Grid placeItems="center">
                <Flex
                     margin="auto"
                     padding={{
@@ -87,7 +87,7 @@ const ShikshanaGraduates = () => {
                          </Box>
                     </Flex>
                </Flex>
-          </Box>
+          </Grid>
      );
 };
 

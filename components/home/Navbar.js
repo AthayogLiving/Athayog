@@ -18,11 +18,14 @@ import {
      DrawerContent,
      DrawerCloseButton,
      useDisclosure,
-     MenuOptionGroup,
-     MenuItemOption,
      VStack,
-     MenuDivider,
-     Text
+     Box,
+     Text,
+     Accordion,
+     AccordionItem,
+     AccordionButton,
+     AccordionPanel,
+     AccordionIcon
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
@@ -33,6 +36,14 @@ import { HiMenu } from 'react-icons/hi';
 import Logo from 'public/Logo_Filled.png';
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
+import {
+     Menu as SMenu,
+     MenuItem as SMenuItem,
+     MenuButton as SMenuButton,
+     SubMenu as SSubMenu
+} from '@szhsin/react-menu';
+import '@szhsin/react-menu/dist/index.css';
+import '@szhsin/react-menu/dist/transitions/slide.css';
 
 const Navbar = () => {
      const { user, signout, loading } = useAuth();
@@ -164,101 +175,91 @@ const Navbar = () => {
                                              About
                                         </Button>
                                    </Link>
-                              </HStack>
-                              <Menu matchWidth={true}>
-                                   <MenuButton
-                                        as={Button}
-                                        fontWeight="normal"
-                                        variat="ghost"
-                                        fontSize="md"
-                                        bg="primaryWhite"
-                                        _hover={{
-                                             bg: 'aygreen.100'
-                                        }}
-                                        _active={{
-                                             bg: 'aygreen.100',
-                                             transform: 'scale(0.98)',
-                                             borderColor: '#bec3c9'
-                                        }}
-                                        display={{
-                                             base: 'none',
-                                             md: 'none',
-                                             lg: 'block'
-                                        }}
-                                        rightIcon={<ChevronDownIcon />}
+                                   <SMenu
+                                        menuButton={
+                                             <SMenuButton>
+                                                  Offerings
+                                             </SMenuButton>
+                                        }
+                                        transition
                                    >
-                                        Offerings
-                                   </MenuButton>
-                                   <MenuList bg="aygreen.100">
-                                        <Link href="/offerings/space">
-                                             <MenuItem
-                                                  _hover={{ bg: 'aygreen.50' }}
-                                             >
-                                                  AthaYog Space
-                                             </MenuItem>
-                                        </Link>
+                                        <SMenuItem
+                                             onClick={() =>
+                                                  router.push(
+                                                       '/offerings/space'
+                                                  )
+                                             }
+                                        >
+                                             AthaYog Space
+                                        </SMenuItem>
 
-                                        <Link href="/offerings/online">
-                                             <MenuItem
-                                                  _hover={{ bg: 'aygreen.50' }}
+                                        <SMenuItem
+                                             onClick={() =>
+                                                  router.push(
+                                                       '/offerings/online'
+                                                  )
+                                             }
+                                        >
+                                             AthaYog Online
+                                        </SMenuItem>
+                                        <SMenuItem
+                                             onClick={() =>
+                                                  router.push(
+                                                       '/offerings/personal'
+                                                  )
+                                             }
+                                        >
+                                             AthaYog Personal
+                                        </SMenuItem>
+                                        <SMenuItem
+                                             onClick={() =>
+                                                  router.push(
+                                                       '/offerings/workshops'
+                                                  )
+                                             }
+                                        >
+                                             AthaYog Workshops
+                                        </SMenuItem>
+                                        <SMenuItem
+                                             onClick={() =>
+                                                  router.push(
+                                                       '/offerings/chikitsa'
+                                                  )
+                                             }
+                                        >
+                                             AthaYog Chikitsa
+                                        </SMenuItem>
+                                        <SMenuItem
+                                             onClick={() =>
+                                                  router.push(
+                                                       '/offerings/onsite'
+                                                  )
+                                             }
+                                        >
+                                             AthaYog Onsite
+                                        </SMenuItem>
+                                        <SSubMenu label="AthaYog Shikshana Pada">
+                                             <SMenuItem
+                                                  onClick={() =>
+                                                       router.push(
+                                                            '/offerings/shikshana'
+                                                       )
+                                                  }
                                              >
-                                                  AthaYog Online
-                                             </MenuItem>
-                                        </Link>
-                                        <Link href="/offerings/personal">
-                                             <MenuItem
-                                                  _hover={{ bg: 'aygreen.50' }}
+                                                  Shikshana Pada
+                                             </SMenuItem>
+                                             <SMenuItem
+                                                  onClick={() =>
+                                                       router.push(
+                                                            '/offerings/shikshana/graduates'
+                                                       )
+                                                  }
                                              >
-                                                  AthaYog Personal
-                                             </MenuItem>
-                                        </Link>
-                                        <Link href="/offerings/workshops">
-                                             <MenuItem
-                                                  _hover={{ bg: 'aygreen.50' }}
-                                             >
-                                                  AthaYog Workshops
-                                             </MenuItem>
-                                        </Link>
-                                        <Link href="/offerings/chikitsa">
-                                             <MenuItem
-                                                  _hover={{ bg: 'aygreen.50' }}
-                                             >
-                                                  AthaYog Chikitsa
-                                             </MenuItem>
-                                        </Link>
-                                        <Link href="/offerings/onsite">
-                                             <MenuItem
-                                                  _hover={{ bg: 'aygreen.50' }}
-                                             >
-                                                  AthaYog Onsite
-                                             </MenuItem>
-                                        </Link>
-                                        <MenuDivider borderColor="aygreen.600" />
-
-                                        <MenuOptionGroup title="AthaYog Shikshana Pada">
-                                             <Link href="/offerings/shikshana">
-                                                  <MenuItemOption
-                                                       value="shikshana_pada"
-                                                       _hover={{
-                                                            bg: 'aygreen.50'
-                                                       }}
-                                                  >
-                                                       Shikshana Pada
-                                                  </MenuItemOption>
-                                             </Link>
-                                             <Link href="/offerings/shikshana/graduates">
-                                                  <MenuItemOption
-                                                       value="graduates"
-                                                       _hover={{
-                                                            bg: 'aygreen.50'
-                                                       }}
-                                                  >
-                                                       RYT 200 Graduates
-                                                  </MenuItemOption>
-                                             </Link>
-                                        </MenuOptionGroup>
-                                   </MenuList>
-                              </Menu>
+                                                  RYT 200 Graduates
+                                             </SMenuItem>
+                                        </SSubMenu>
+                                   </SMenu>
+                              </HStack>
 
                               <HStack
                                    variant="ghost"
@@ -398,23 +399,75 @@ const Navbar = () => {
                                                   Athayog Space
                                              </Button>
                                         </Link>
-                                        <Link href="/offerings/shikshana">
-                                             <Button
-                                                  onClick={onClose}
-                                                  isActive={
-                                                       router.pathname ==
-                                                       '/offerings/shikshana'
-                                                            ? true
-                                                            : ''
-                                                  }
-                                                  rounded="md"
-                                                  variant="ghost"
-                                                  colorScheme="aygreen"
-                                                  justifyContent="left"
-                                             >
-                                                  Athayog Shikshana Pada
-                                             </Button>
-                                        </Link>
+
+                                        <Accordion
+                                             border="none"
+                                             borderColor="transparent"
+                                             colorScheme="aygreen"
+                                             allowToggle
+                                        >
+                                             <AccordionItem>
+                                                  <h2>
+                                                       <AccordionButton>
+                                                            <Box
+                                                                 flex="1"
+                                                                 textAlign="left"
+                                                                 color="aygreen.600"
+                                                            >
+                                                                 Athayog
+                                                                 Shikshana Pada
+                                                            </Box>
+                                                            <AccordionIcon />
+                                                       </AccordionButton>
+                                                  </h2>
+                                                  <AccordionPanel pb={4}>
+                                                       <VStack spacing="3">
+                                                            <Link href="/offerings/shikshana">
+                                                                 <Button
+                                                                      onClick={
+                                                                           onClose
+                                                                      }
+                                                                      isActive={
+                                                                           router.pathname ==
+                                                                           '/offerings/shikshana'
+                                                                                ? true
+                                                                                : ''
+                                                                      }
+                                                                      width="full"
+                                                                      rounded="md"
+                                                                      variant="ghost"
+                                                                      colorScheme="aygreen"
+                                                                      justifyContent="left"
+                                                                 >
+                                                                      Shikshana
+                                                                      Pada
+                                                                 </Button>
+                                                            </Link>
+                                                            <Link href="/offerings/shikshana/graduates">
+                                                                 <Button
+                                                                      onClick={
+                                                                           onClose
+                                                                      }
+                                                                      isActive={
+                                                                           router.pathname ==
+                                                                           '/offerings/shikshana/graduates'
+                                                                                ? true
+                                                                                : ''
+                                                                      }
+                                                                      rounded="md"
+                                                                      variant="ghost"
+                                                                      width="full"
+                                                                      colorScheme="aygreen"
+                                                                      justifyContent="left"
+                                                                 >
+                                                                      RYT 200
+                                                                      Graduates
+                                                                 </Button>
+                                                            </Link>
+                                                       </VStack>
+                                                  </AccordionPanel>
+                                             </AccordionItem>
+                                        </Accordion>
                                         <Link href="/offerings/online">
                                              <Button
                                                   onClick={onClose}
