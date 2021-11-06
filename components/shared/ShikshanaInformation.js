@@ -328,15 +328,6 @@ const ShikshanaInformation = () => {
                                    </HStack>
                               </OrderedList>
                          </Flex>
-                         <Divider my={5} colorScheme="teal" />
-                         <Flex
-                              padding={{
-                                   base: '1rem 0',
-                                   md: '1rem 0',
-                                   lg: '2rem 0'
-                              }}
-                              justifyContent="space-between"
-                         ></Flex>
                     </Box>
                </Flex>
           </Flex>
