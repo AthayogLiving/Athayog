@@ -13,7 +13,7 @@ const ShikshanaGraduates = () => {
           { id: 7, reg_no: 'AY-YIC-010', name: 'Akhil S Nair' }
      ];
      return (
-          <Box bg="primaryWhite">
+          <Box>
                <Flex
                     margin="auto"
                     padding={{
@@ -24,7 +24,6 @@ const ShikshanaGraduates = () => {
                     justifyContent="space-evenly"
                     alignItems="start"
                     width="100vw"
-                    bg="primaryWhite"
                     direction={{ base: 'column', md: 'row', lg: 'row' }}
                >
                     <Flex

@@ -18,7 +18,10 @@ import {
      DrawerContent,
      DrawerCloseButton,
      useDisclosure,
+     MenuOptionGroup,
+     MenuItemOption,
      VStack,
+     MenuDivider,
      Text
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
@@ -195,13 +198,6 @@ const Navbar = () => {
                                              </MenuItem>
                                         </Link>
 
-                                        <Link href="/offerings/shikshana">
-                                             <MenuItem
-                                                  _hover={{ bg: 'aygreen.50' }}
-                                             >
-                                                  AthaYog Shikshana Pada
-                                             </MenuItem>
-                                        </Link>
                                         <Link href="/offerings/online">
                                              <MenuItem
                                                   _hover={{ bg: 'aygreen.50' }}
@@ -237,6 +233,30 @@ const Navbar = () => {
                                                   AthaYog Onsite
                                              </MenuItem>
                                         </Link>
+                                        <MenuDivider borderColor="aygreen.600" />
+
+                                        <MenuOptionGroup title="AthaYog Shikshana Pada">
+                                             <Link href="/offerings/shikshana">
+                                                  <MenuItemOption
+                                                       value="shikshana_pada"
+                                                       _hover={{
+                                                            bg: 'aygreen.50'
+                                                       }}
+                                                  >
+                                                       Shikshana Pada
+                                                  </MenuItemOption>
+                                             </Link>
+                                             <Link href="/offerings/shikshana/graduates">
+                                                  <MenuItemOption
+                                                       value="graduates"
+                                                       _hover={{
+                                                            bg: 'aygreen.50'
+                                                       }}
+                                                  >
+                                                       RYT 200 Graduates
+                                                  </MenuItemOption>
+                                             </Link>
+                                        </MenuOptionGroup>
                                    </MenuList>
                               </Menu>
 
