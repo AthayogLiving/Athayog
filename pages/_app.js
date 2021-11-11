@@ -16,6 +16,8 @@ import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { Router } from 'next/router';
 import firebase from '@/lib/firebase';
+import * as gtag from '@/lib/gtag';
+import { useRouter } from 'next/router';
 
 NProgress.configure({
      showSpinner: true,
@@ -36,6 +38,17 @@ Router.events.on('routeChangeError', () => {
 });
 
 const GlobalStyle = ({ children }) => {
+     const router = useRouter();
+     useEffect(() => {
+          const handleRouteChange = (url) => {
+               gtag.pageview(url);
+          };
+          router.events.on('routeChangeComplete', handleRouteChange);
+          return () => {
+               router.events.off('routeChangeComplete', handleRouteChange);
+          };
+     }, [router.events]);
+
      return (
           <>
                <Head>

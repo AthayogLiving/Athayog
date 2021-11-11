@@ -1,6 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ColorModeScript } from '@chakra-ui/react';
 import theme from '@/styles/theme';
+import { GA_TRACKING_ID } from '@/lib/gtag';
 
 class RootDocument extends Document {
      static async getInitialProps(ctx) {
@@ -43,7 +44,32 @@ class RootDocument extends Document {
                     <link rel="apple-touch-icon" href="/apple-icon.png"></link>
                     <meta name="theme-color" content="#317EFB" />
 
-                    <Head />
+                    <Head>
+                         {/* Google Adsense */}
+                         <script
+                              data-ad-client="<Your value here>"
+                              async
+                              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+                         ></script>
+
+                         {/* Global Site Tag (gtag.js) - Google Analytics */}
+                         <script
+                              async
+                              src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+                         />
+                         <script
+                              dangerouslySetInnerHTML={{
+                                   __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `
+                              }}
+                         />
+                    </Head>
                     <body>
                          <ColorModeScript
                               initialColorMode={theme.config.initialColorMode}
