@@ -180,7 +180,7 @@ const Footer = () => {
                                    Indiranagar Branch
                               </chakra.span>
                               <iframe
-                                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.032668699712!2d77.63408811482198!3d12.969761390857137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae177de4e1e3e5%3A0x63f86d6810587dda!2sHumanscale%20(S%20Cube%20Ergonomics%20Private%20Limited)!5e0!3m2!1sen!2sin!4v1633764749592!5m2!1sen!2sin"
+                                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0327167179826!2d77.63410251527463!3d12.969758318426862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17beabf7494b%3A0x43f0a854e3d6096f!2sAthaYog%20Living!5e0!3m2!1sen!2sin!4v1636645641301!5m2!1sen!2sin"
                                    width="600"
                                    height="450"
                                    title="Athayog Google Map"
