@@ -24,7 +24,8 @@ const offerings = () => {
           'shikshana',
           'online',
           'personal',
-          'workshops'
+          'workshops',
+          'chikitsa'
      ];
 
      return (

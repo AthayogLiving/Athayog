@@ -6,8 +6,26 @@ import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
 import InformationSplit from '@/components/shared/InformationSplit';
 import HomeLayout from '@/components/layout/HomeLayout';
+import { getOffer } from '@/lib/db/offerings';
 
-const Chikitsa = () => {
+export async function getStaticProps(context) {
+     const { offers } = await getOffer('chikitsa');
+
+     if (!offers) {
+          return {
+               notFound: true
+          };
+     }
+     return {
+          props: {
+               offers: JSON.parse(JSON.stringify(offers)),
+               notFound: false
+          },
+          revalidate: 1
+     };
+}
+
+const Chikitsa = ({ offers }) => {
      const pageData = {
           name: 'Chikitsa',
           heroImage: athayogChikitsa,
@@ -16,6 +34,22 @@ const Chikitsa = () => {
           description: `We empower you to embrace the deepest, subtler levels that exist within you, and work together with you to open the door to your wellbeing. By reprogramming the Trigunas, or attributes inherent to you, and analysing your Doshas, we decode the Ayurvedic constitution of your body, enabling you to lead a wholesome life.`,
           pricing: 'Contact For More'
      };
+     const apiPricing = [];
+     offers.map((data) => {
+          apiPricing.push({
+               id: data.id,
+               courseName: data.name,
+               description: data.description,
+               duration: data.isTrial
+                    ? data.days + ' Trial'
+                    : data.days == 0
+                    ? 'No Duration'
+                    : data.days + ' Days',
+               durationNum: data.days,
+               isTrial: data.isTrial,
+               price: data.price
+          });
+     });
      return (
           <motion.div
                exit={{ opacity: 0 }}
@@ -24,7 +58,7 @@ const Chikitsa = () => {
           >
                <Hero pageData={pageData} />
                <InformationSplit pageData={pageData} />
-               <Pricing pricing={pageData.pricing} />
+               <Pricing pricing={apiPricing} />
                <Register registerTo={pageData.name.toLocaleLowerCase()} />
           </motion.div>
      );
