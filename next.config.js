@@ -25,6 +25,6 @@ module.exports = withPlugins(
           ]
      ],
      {
-          /* global config here ... */
+          experimental: { nftTracing: true }
      }
 );
