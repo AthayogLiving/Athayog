@@ -75,7 +75,14 @@ const Blog = ({ currentBlog }) => {
                               exit="exit"
                          >
                               {' '}
-                              <Heading color="white">
+                              <Heading
+                                   color="white"
+                                   fontSize={{
+                                        base: '2xl',
+                                        md: '3xl',
+                                        lg: '5xl'
+                                   }}
+                              >
                                    {currentBlog.title}
                               </Heading>
                          </MotionBox>
@@ -181,16 +188,18 @@ const Blog = ({ currentBlog }) => {
                                                   </Text>
                                              </Box>
                                              <Box
-                                                  width="50%"
-                                                  height="400px"
-                                                  rounded="lg"
+                                                  width="100%"
+                                                  maxHeight="400px"
                                                   overflow="hidden"
                                                   position="relative"
                                              >
                                                   {' '}
                                                   <Image
                                                        src={yogaKids}
-                                                       layout="fill"
+                                                       layout="intrinsic"
+                                                       objectFit="contain"
+                                                       width="600px"
+                                                       height="400px"
                                                   />
                                              </Box>
                                         </Box>
@@ -324,19 +333,20 @@ const Blog = ({ currentBlog }) => {
                                                        spiritual benefits.
                                                   </Text>
                                              </Box>
-                                             <Box
-                                                  width="40%"
-                                                  height="500px"
+                                             <Flex
+                                                  maxHeight="400px"
                                                   position="relative"
-                                                  rounded="lg"
+                                                  alignContent="start"
                                                   overflow="hidden"
                                              >
-                                                  {' '}
                                                   <Image
                                                        src={yogaPose}
-                                                       layout="fill"
+                                                       layout="intrinsic"
+                                                       objectFit="contain"
+                                                       width="400px"
+                                                       height="400px"
                                                   />
-                                             </Box>
+                                             </Flex>
                                         </Box>
                                         <Box>
                                              <Heading size="lg">
