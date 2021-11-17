@@ -22,11 +22,10 @@ our lifestyle and not just as something we practice on the mat for an hour.`
                },
                {
                     title: 'But what is Yoga therapy?',
-                    desc: `If you are wondering what it is, you are not alone. Even I did before joining M.Sc. Yoga
-therapy course.%
+                    desc: `
 It is an alternative system of medicine where techniques of yoga and principles of yoga are
 used to prevent, promote and cure physical, mental, and psychosomatic disorders.%
-Yoga and Ayurveda work together and according to Ayurveda, we have tridoshas such as
+Yoga and Ayurveda work together and according to Ayurveda, we have <a href="https://www.dabur.com/daburarogya/ayurveda/ayurveda-aur-hum/tridoshas-the-three-body-humors.aspx"> tridoshas </a> such as
 vata, pitta and kapha. Different techniques of yoga help balance the doshas in order to stay
 healthy. There are five sheaths of body and each one has a different function, also called as
 koshas - Annamayakosha, Pranamayakosha, Manomayakosha, Vijnanamayakosha and
