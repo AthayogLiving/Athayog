@@ -1,15 +1,11 @@
-import { Box, Divider, Flex, Grid, Heading, Text } from '@chakra-ui/layout';
-import React from 'react';
+import { Box, Divider, Flex, Grid, Heading } from '@chakra-ui/layout';
 import VideoOne from 'public/video_testimonials_1.mp4';
 import VideoTwo from 'public/video_testimonials_2.mp4';
 import VideoThree from 'public/video_testimonials_3.mp4';
 import VideoFour from 'public/video_testimonials_4.mp4';
-import ReactPlayer from 'react-player';
-import Swiper from 'react-id-swiper';
-import 'swiper/swiper-bundle.css';
-import FilePlayer from 'react-player/file';
-import { v4 as uuidv4 } from 'uuid';
+import React from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import 'swiper/swiper-bundle.css';
 
 const VideoTestimonials = () => {
      const params = {

@@ -2,6 +2,7 @@ const withPlugins = require('next-compose-plugins');
 const withImages = require('next-images');
 const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
+const withVideos = require('next-videos');
 
 module.exports = withPlugins(
      [
@@ -13,6 +14,7 @@ module.exports = withPlugins(
                     }
                }
           ],
+          [withVideos],
 
           [
                withPWA,
