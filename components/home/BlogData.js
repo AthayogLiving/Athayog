@@ -6,6 +6,9 @@ export const BlogData = [
           slug: 'a-guide-to-chikitsa-or-yoga-therapy',
           image: athayogPersonal,
           imageAlt: 'Yoga Teacher Helping Student',
+          published_at: '17 November 2021',
+          summaryText: `Whether you practice yoga or don’t, you would have atleast heard of the term ‘Yoga’. It's one
+                         of the oldest ways one can enhance their life.`,
           title: 'A GUIDE TO CHIKITSA OR YOGA THERAPY',
           titleContent: `Whether you practice yoga or don’t, you would have atleast heard of the term ‘Yoga’. It's one
                          of the oldest ways one can enhance their life. %

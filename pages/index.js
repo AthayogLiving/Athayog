@@ -11,6 +11,7 @@ import HomeLayout from '@/components/layout/HomeLayout';
 import { getImages, getTestimonials } from '@/lib/db/db-admin';
 import Certificate from '@/components/home/Certificate';
 import VideoTestimonials from '@/components/home/VideoTestimonials';
+import RecentBlogs from '@/components/home/RecentBlogs';
 
 export async function getStaticProps() {
      const reqCarousel = await getImages('carousel');
@@ -40,6 +41,7 @@ export default function Home({ carousel, gallery, testimonials }) {
                <Gallery images={gallery} />
                <VideoTestimonials />
                <Testimonials testimonials={testimonials} />
+               <RecentBlogs />
                <Faq />
                <Enquiry />
                <WhatsAppWidget
