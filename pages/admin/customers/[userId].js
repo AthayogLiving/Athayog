@@ -60,8 +60,6 @@ const userId = () => {
      const customer = data.user;
      const payment = data.payment;
 
-     console.log(payment);
-
      return (
           <>
                <UsersHeader siteLink={customer.name} defaultName="Customers" />

@@ -68,6 +68,22 @@ const forms = () => {
                                    </Link>
                               </Td>
                          </Tr>
+                         <Tr>
+                              <Td>
+                                   <Text>Leads</Text>
+                              </Td>
+                              <Td>
+                                   <Link href="forms/leads">
+                                        <a
+                                             style={{
+                                                  textDecoration: 'underline'
+                                             }}
+                                        >
+                                             Open
+                                        </a>
+                                   </Link>
+                              </Td>
+                         </Tr>
                     </Tbody>
                </Table>
           </>

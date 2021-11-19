@@ -1,6 +1,6 @@
 import Cors from 'cors';
 import initMiddleware from '@/lib/cors-middleware';
-import { registerForm } from '@/lib/db/forms';
+import { leadForm } from '@/lib/db/forms';
 import { db } from '@/lib/firebase-admin';
 
 // Initialize the cors middleware
@@ -16,16 +16,28 @@ const cors = initMiddleware(
 export default async function handler(req, res) {
      // Run cors
      await cors(req, res);
-     const latestDoc = req.query.latestDoc;
-     const type = req.query.type;
+
+     if (req.method === 'POST') {
+          const { name, email, phone } = req.body;
+          await leadForm(name, email, phone)
+               .then((response) => {
+                    return res.status(200).json({
+                         message: 'Updated Form'
+                    });
+               })
+               .catch((error) => {
+                    return res.status(500).json(error);
+               });
+     }
 
      if (req.method === 'GET') {
           try {
+               const latestDoc = req.query.latestDoc;
+
                const snapshot = await db
-                    .collection(type)
+                    .collection('leadForms')
                     .orderBy('createdAt', 'desc')
-                    .startAfter(latestDoc)
-                    .limit(40)
+                    .limit(20)
                     .get();
                const submissions = [];
 

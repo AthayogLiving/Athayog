@@ -5,10 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { MotionBox } from '../shared/MotionElements';
 import { Button } from '@chakra-ui/button';
+import { v4 as uuidv4 } from 'uuid';
 
 const RecentBlogs = () => {
      const Blogs = BlogData;
-     console.log(Blogs);
+
      return (
           <Box
                padding={{ base: '1rem', md: '2rem', lg: '5rem' }}
@@ -34,89 +35,92 @@ const RecentBlogs = () => {
                               summaryText,
                               published_at
                          }) => {
-                              console.log(seo_title);
                               return (
-                                   <Link href={'/blog/' + slug} passHref>
-                                        <MotionBox
-                                             bg="white"
-                                             shadow="md"
-                                             rounded="md"
-                                             cursor="pointer"
-                                             maxW="sm"
-                                             borderWidth="1px"
-                                        >
+                                   <React.Fragment key={uuidv4()}>
+                                        <Link href={'/blog/' + slug} passHref>
                                              <MotionBox
-                                                  height="200px"
-                                                  maxW="sm"
+                                                  bg="white"
+                                                  shadow="md"
                                                   rounded="md"
-                                                  overflow="hidden"
-                                                  exit={{ opacity: 0 }}
-                                                  initial={{ opacity: 0 }}
-                                                  animate={{ opacity: 1 }}
-                                                  borderColor="primaryGreen"
-                                                  position="relative"
+                                                  cursor="pointer"
+                                                  maxW="sm"
+                                                  borderWidth="1px"
                                              >
-                                                  <Image
-                                                       layout="responsive"
-                                                       objectFit="cover"
+                                                  <MotionBox
                                                        height="200px"
-                                                       width="250px"
-                                                       src={image}
-                                                  />
-                                             </MotionBox>
-                                             <Box p="6">
-                                                  <Box
-                                                       display="flex"
-                                                       alignItems="baseline"
+                                                       maxW="sm"
+                                                       rounded="md"
+                                                       overflow="hidden"
+                                                       exit={{ opacity: 0 }}
+                                                       initial={{ opacity: 0 }}
+                                                       animate={{ opacity: 1 }}
+                                                       borderColor="primaryGreen"
+                                                       position="relative"
                                                   >
-                                                       <Badge
-                                                            borderRadius="full"
-                                                            px="2"
-                                                            colorScheme="teal"
-                                                       >
-                                                            New
-                                                       </Badge>
+                                                       <Image
+                                                            layout="responsive"
+                                                            objectFit="cover"
+                                                            height="200px"
+                                                            width="250px"
+                                                            src={image}
+                                                       />
+                                                  </MotionBox>
+                                                  <Box p="6">
                                                        <Box
-                                                            color="gray.500"
-                                                            fontWeight="semibold"
-                                                            letterSpacing="wide"
-                                                            fontSize="xs"
-                                                            textTransform="uppercase"
-                                                            ml="2"
+                                                            display="flex"
+                                                            alignItems="baseline"
                                                        >
-                                                            {published_at}
+                                                            <Badge
+                                                                 borderRadius="full"
+                                                                 px="2"
+                                                                 colorScheme="teal"
+                                                            >
+                                                                 New
+                                                            </Badge>
+                                                            <Box
+                                                                 color="gray.500"
+                                                                 fontWeight="semibold"
+                                                                 letterSpacing="wide"
+                                                                 fontSize="xs"
+                                                                 textTransform="uppercase"
+                                                                 ml="2"
+                                                            >
+                                                                 {published_at}
+                                                            </Box>
                                                        </Box>
-                                                  </Box>
-                                                  <Box
-                                                       mt="3"
-                                                       fontWeight="semibold"
-                                                       as="h4"
-                                                       lineHeight="tight"
-                                                  >
-                                                       {seo_title}
-                                                  </Box>
-                                                  <Box
-                                                       mt="2"
-                                                       color="gray.600"
-                                                       fontSize="sm"
-                                                  >
-                                                       {summaryText}
-                                                  </Box>
-                                                  <Link
-                                                       href={'/blog/' + slug}
-                                                       passHref
-                                                  >
-                                                       <Button
-                                                            size="sm"
-                                                            mt={3}
-                                                            colorScheme="aygreen"
+                                                       <Box
+                                                            mt="3"
+                                                            fontWeight="semibold"
+                                                            as="h4"
+                                                            lineHeight="tight"
                                                        >
-                                                            Read More
-                                                       </Button>
-                                                  </Link>
-                                             </Box>
-                                        </MotionBox>
-                                   </Link>
+                                                            {seo_title}
+                                                       </Box>
+                                                       <Box
+                                                            mt="2"
+                                                            color="gray.600"
+                                                            fontSize="sm"
+                                                       >
+                                                            {summaryText}
+                                                       </Box>
+                                                       <Link
+                                                            href={
+                                                                 '/blog/' + slug
+                                                            }
+                                                            passHref
+                                                       >
+                                                            <Button
+                                                                 size="sm"
+                                                                 mt={3}
+                                                                 colorScheme="aygreen"
+                                                            >
+                                                                 Read More
+                                                            </Button>
+                                                       </Link>
+                                                  </Box>
+                                             </MotionBox>
+                                        </Link>
+                                   </React.Fragment>
                               );
                          }
                     )}

@@ -6,6 +6,7 @@ import VideoFour from 'public/video_testimonials_4.mp4';
 import React from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import 'swiper/swiper-bundle.css';
+import { v4 as uuidv4 } from 'uuid';
 
 const VideoTestimonials = () => {
      const params = {
@@ -91,6 +92,7 @@ const VideoTestimonials = () => {
                                              width="100%"
                                              height="100px"
                                              controls
+                                             key={uuidv4()}
                                              style={{
                                                   marginTop: '1rem',
                                                   borderRadius: '0.25rem',

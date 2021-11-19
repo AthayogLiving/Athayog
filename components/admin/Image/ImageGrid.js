@@ -88,7 +88,6 @@ const ImageGrid = ({ imageType, isMobile }) => {
           setIsLoading(true);
           const { imageId, imageType, imageName } = selectedImage;
 
-          console.log(selectedImage);
           await deleteImage(imageId, imageType, imageName, checkMobile)
                .then((response) => {
                     toast({

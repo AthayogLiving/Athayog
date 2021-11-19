@@ -45,27 +45,22 @@ const EnquiryModal = () => {
      }) => {
           setLoading(true);
           const fullName = firstName + ' ' + lastName;
-          console.log(firstName, lastName, email, phone, details);
 
-          //Send Email
-          await emailjs
-               .send(
-                    'service_2lph9sw',
-                    'template_co2qhns',
-                    { name: fullName, email, phone, details },
-                    'user_Zp6dTdYGxn4E5rxeiLLCh'
-               )
-               .catch((err) => {
-                    toast({
-                         title: 'An error occurred.',
-                         description: err.message,
-                         status: 'error',
-                         duration: 5000,
-                         isClosable: true
-                    });
-                    reset();
-                    return;
-               });
+          // Send Email
+          await fetch('https://formsubmit.co/ajax/info@athayogliving.com', {
+               method: 'POST',
+               headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json'
+               },
+               body: JSON.stringify({
+                    FormType: 'Enquiry Form',
+                    fullname: fullName,
+                    email: email,
+                    phone: phone,
+                    details: details
+               })
+          });
           //
           await axios
                .post(`/api/forms/enquiry`, {
