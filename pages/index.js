@@ -12,6 +12,7 @@ import { getImages, getTestimonials } from '@/lib/db/db-admin';
 import Certificate from '@/components/home/Certificate';
 import VideoTestimonials from '@/components/home/VideoTestimonials';
 import RecentBlogs from '@/components/home/RecentBlogs';
+import LeadModal from '@/components/home/LeadModal';
 
 export async function getStaticProps() {
      const reqCarousel = await getImages('carousel');
@@ -49,6 +50,7 @@ export default function Home({ carousel, gallery, testimonials }) {
                     companyName="Athayog"
                     style={{ zIndex: 10 }}
                />
+               <LeadModal />
           </motion.div>
      );
 }
