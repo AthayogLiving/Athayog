@@ -10,7 +10,10 @@ module.exports = withPlugins(
                withImages,
                {
                     images: {
-                         domains: ['firebasestorage.googleapis.com']
+                         domains: [
+                              'firebasestorage.googleapis.com',
+                              'images.unsplash.com'
+                         ]
                     }
                }
           ],
