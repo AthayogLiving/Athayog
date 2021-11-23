@@ -2,6 +2,7 @@ import Certificate from '@/components/home/Certificate';
 import Enquiry from '@/components/home/Enquiry';
 import Faq from '@/components/home/Faq';
 import Gallery from '@/components/home/Gallery';
+import GuideBook from '@/components/home/GuideBook';
 import HeroCarousel from '@/components/home/HeroCarousel';
 import Offerings from '@/components/home/Offerings';
 import RecentBlogs from '@/components/home/RecentBlogs';
@@ -41,6 +42,7 @@ export default function Home({ carousel, gallery, testimonials }) {
                <Gallery images={gallery} />
                <VideoTestimonials />
                <Testimonials testimonials={testimonials} />
+               <GuideBook />
                <RecentBlogs />
                <Faq />
                <Enquiry />
