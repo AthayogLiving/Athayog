@@ -89,7 +89,7 @@ const ShikshanaCourses = () => {
                          {courses.map(({ id, name, slug, desc, image }) => {
                               return (
                                    <Link
-                                        href={slug}
+                                        href={'shikshana/' + slug}
                                         passHref
                                         style={{ cursor: 'pointer' }}
                                    >

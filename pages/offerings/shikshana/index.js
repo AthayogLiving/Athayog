@@ -71,7 +71,6 @@ const Shikshana = ({ offers, notFound }) => {
                animate={{ opacity: 1 }}
           >
                <Hero pageData={pageData} />
-               {/* <Certificate /> */}
                <InformationSplit pageData={pageData} />
                {/* <ShikshanaInformation /> */}
                <ShikshanaCourses />
