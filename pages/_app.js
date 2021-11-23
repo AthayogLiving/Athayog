@@ -18,6 +18,7 @@ import { Router } from 'next/router';
 import firebase from '@/lib/firebase';
 import * as gtag from '@/lib/gtag';
 import { useRouter } from 'next/router';
+import Leads from '@/components/seo/Leads';
 
 NProgress.configure({
      showSpinner: true,
@@ -100,7 +101,7 @@ function App({ Component, pageProps }) {
                <AuthProvider>
                     <DefaultSeo {...SEO} />
                     <GlobalStyle />
-
+                    <Leads />
                     <AnimatePresence exitBeforeEnter>
                          <Layout>
                               <Component {...pageProps} />

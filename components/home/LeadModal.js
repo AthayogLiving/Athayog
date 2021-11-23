@@ -17,6 +17,7 @@ import { useAuth } from '@/lib/auth';
 import { useForm, useForms } from 'react-hook-form';
 import { useToast } from '@chakra-ui/toast';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const LeadModal = () => {
      const { user, signout } = useAuth();
@@ -79,6 +80,7 @@ const LeadModal = () => {
 
      useEffect(() => {
           const timeoutID = setTimeout(() => {
+               Cookies.set('isUniqueVisitor', 'true');
                onOpen();
           }, 15000);
 
