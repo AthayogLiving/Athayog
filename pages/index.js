@@ -1,18 +1,17 @@
+import Certificate from '@/components/home/Certificate';
+import Enquiry from '@/components/home/Enquiry';
 import Faq from '@/components/home/Faq';
 import Gallery from '@/components/home/Gallery';
-import Offerings from '@/components/home/Offerings';
-import Enquiry from '@/components/home/Enquiry';
-import { motion } from 'framer-motion';
-import Testimonials from '@/components/shared/Testimonials';
 import HeroCarousel from '@/components/home/HeroCarousel';
+import Offerings from '@/components/home/Offerings';
+import RecentBlogs from '@/components/home/RecentBlogs';
+import VideoTestimonials from '@/components/home/VideoTestimonials';
+import HomeLayout from '@/components/layout/HomeLayout';
+import Testimonials from '@/components/shared/Testimonials';
+import { getImages, getTestimonials } from '@/lib/db/db-admin';
+import { motion } from 'framer-motion';
 import WhatsAppWidget from 'react-whatsapp-widget';
 import 'react-whatsapp-widget/dist/index.css';
-import HomeLayout from '@/components/layout/HomeLayout';
-import { getImages, getTestimonials } from '@/lib/db/db-admin';
-import Certificate from '@/components/home/Certificate';
-import VideoTestimonials from '@/components/home/VideoTestimonials';
-import RecentBlogs from '@/components/home/RecentBlogs';
-import LeadModal from '@/components/home/LeadModal';
 
 export async function getStaticProps() {
      const reqCarousel = await getImages('carousel');
@@ -50,7 +49,6 @@ export default function Home({ carousel, gallery, testimonials }) {
                     companyName="Athayog"
                     style={{ zIndex: 10 }}
                />
-               <LeadModal />
           </motion.div>
      );
 }
