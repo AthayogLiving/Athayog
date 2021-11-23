@@ -93,7 +93,7 @@ const ShikshanaCourses = () => {
                                         passHref
                                         style={{ cursor: 'pointer' }}
                                    >
-                                        <>
+                                        <a>
                                              <MotionBox
                                                   position="relative"
                                                   height={{
@@ -156,7 +156,7 @@ const ShikshanaCourses = () => {
                                                        alt="space"
                                                   />
                                              </MotionBox>
-                                        </>
+                                        </a>
                                    </Link>
                               );
                          })}
