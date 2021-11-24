@@ -164,13 +164,7 @@ export const EmployeeData = {
                visible: true,
                designation: 'Teacher'
           },
-          {
-               name: 'Maniganandan Palluru',
-               info: `Without any formal, educational or professional background in Yog, Maniganandan still found himself engaging in it. He only began practicing Yog recently, but in this short span of time he has become an avid believer in its absolute power to transform and transcend all boundaries. Apart from recognizing how Yog plays a crucial part in improving one’s overall wellness and health, he has also started to feel the effects of the mental peace and clarity that comes with a consistent Yogic practice.\n \nHe has graduated with an M.tech, exhibiting a keen interest in Machine Design, Sales, Marketing and Design Engineering. Yog is the latest addition to his otherwise diversified portfolio. He now aspires to broaden his skillset and do so under the guidance of Yogic wisdom.\n \nManignandan draws inspiration from Sadhguru aka. Jaggi Vasudev, connecting with the grace in his spiritual teachings. He trusts in the immeasurable ability of Yog to change the way the world stands today, and enrich the quality of our lives as individuals.`,
-               image: manigandan,
-               visible: true,
-               designation: 'Operations Manager'
-          }
+         
      ]
 };
 
