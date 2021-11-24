@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
 import { MotionBox } from './MotionElements';
+import { Button } from '@chakra-ui/button';
 const ShikshanaCourses = () => {
      let easing = [0.175, 0.85, 0.42, 0.96];
 
@@ -61,9 +62,8 @@ const ShikshanaCourses = () => {
                }}
                justifyContent="center"
                alignItems="center"
-               width="80vw"
-               bg="white"
                height="100%"
+               bg="primaryWhite"
           >
                <Box
                     justifyContent="center"
@@ -88,76 +88,69 @@ const ShikshanaCourses = () => {
                     >
                          {courses.map(({ id, name, slug, desc, image }) => {
                               return (
-                                   <Link
-                                        href={'shikshana/' + slug}
-                                        passHref
-                                        style={{ cursor: 'pointer' }}
+                                   <Box
+                                        maxW="sm"
+                                        borderWidth="1px"
+                                        borderRadius="lg"
+                                        overflow="hidden"
+                                        bg="white"
+                                        boxShadow="sm"
                                    >
-                                        <a>
-                                             <MotionBox
-                                                  position="relative"
-                                                  height={{
-                                                       base: '40vh',
-                                                       md: '10rem',
-                                                       lg: '10rem'
+                                        <Box
+                                             position="relative"
+                                             height={{
+                                                  base: '40vh',
+                                                  md: '8rem',
+                                                  lg: '10rem'
+                                             }}
+                                             cursor="pointer"
+                                             width="18rem"
+                                             min-height="200px"
+                                             borderTopLeftRadius="lg"
+                                             borderTopRadius="lg"
+                                             overflow="hidden"
+                                        >
+                                             <Image
+                                                  layout="fill"
+                                                  objectFit="cover"
+                                                  priority={true}
+                                                  style={{
+                                                       overflow: 'hidden'
                                                   }}
-                                                  cursor="pointer"
-                                                  width="18rem"
-                                                  min-height="300px"
-                                                  boxShadow="md"
-                                                  rounded="lg"
-                                                  overflow="hidden"
-                                                  exit={{ opacity: 0 }}
-                                                  initial={{ opacity: 0 }}
-                                                  animate={{ opacity: 1 }}
-                                                  whileHover={{
-                                                       scale: 1.05
-                                                  }}
+                                                  key="1"
+                                                  className="object-center object-cover pointer-events-none"
+                                                  src={image}
+                                                  alt="space"
+                                             />
+                                        </Box>
+                                        <Box padding={6}>
+                                             <Text
+                                                  fontWeight="medium"
+                                                  as="h3"
+                                                  fontSize="lg"
+                                                  lineHeight="tight"
+                                                  textAlign="center"
                                              >
-                                                  <Box
-                                                       zIndex={2}
-                                                       position="absolute"
-                                                       bottom="0%"
-                                                       height="100%"
-                                                       bg={{
-                                                            sm: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%)',
-                                                            base: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%)',
-                                                            md: 'linear-gradient(to bottom, rgba(0,0,0,0) 50%,rgba(0,0,0,0.8) 100%)'
-                                                       }}
-                                                       width="100%"
-                                                  >
-                                                       <Text
-                                                            textColor="white"
-                                                            position="absolute"
-                                                            bottom="10%"
-                                                            maxW="5xl"
-                                                            textAlign="center"
-                                                            zIndex={2}
-                                                            mt={3}
-                                                            fontWeight="medium"
-                                                            fontSize="lg"
-                                                            p="0 1rem"
-                                                            width="100%"
+                                                  {name}
+                                             </Text>
+                                             <Link
+                                                  href={'shikshana/' + slug}
+                                                  passHref
+                                                  style={{ cursor: 'pointer' }}
+                                             >
+                                                  <a>
+                                                       <Button
+                                                            width="full"
+                                                            size="sm"
+                                                            mt="5"
+                                                            colorScheme="aygreen"
                                                        >
-                                                            {name}
-                                                       </Text>{' '}
-                                                  </Box>
-
-                                                  <Image
-                                                       layout="fill"
-                                                       objectFit="cover"
-                                                       priority={true}
-                                                       style={{
-                                                            overflow: 'hidden'
-                                                       }}
-                                                       key="1"
-                                                       className="object-center object-cover pointer-events-none"
-                                                       src={image}
-                                                       alt="space"
-                                                  />
-                                             </MotionBox>
-                                        </a>
-                                   </Link>
+                                                            Checkout
+                                                       </Button>
+                                                  </a>
+                                             </Link>
+                                        </Box>
+                                   </Box>
                               );
                          })}
                     </Grid>

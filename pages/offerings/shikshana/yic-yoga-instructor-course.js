@@ -1,7 +1,15 @@
 import HomeLayout from '@/components/layout/HomeLayout';
 import NavbarHelper from '@/components/shared/NavbarHelper';
 import ShikshanaInformation from '@/components/shared/ShikshanaInformation';
-import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/layout';
+import {
+     Badge,
+     Box,
+     Flex,
+     Heading,
+     HStack,
+     Stack,
+     Text
+} from '@chakra-ui/layout';
 import { chakra } from '@chakra-ui/system';
 import {
      Table,
@@ -13,8 +21,24 @@ import {
      Tr
 } from '@chakra-ui/table';
 import React from 'react';
-
+import { BiRightArrowAlt } from 'react-icons/bi';
+import { MdLocationOn } from 'react-icons/md';
 function YicYoga() {
+     const monthNames = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'
+     ];
+
      return (
           <Box>
                <NavbarHelper />
@@ -28,7 +52,7 @@ function YicYoga() {
                     justifyContent="center"
                     alignItems="center"
                     width="100vw"
-                    bg="primaryWhite"
+                    bg="white"
                >
                     <Flex
                          justifyContent="center"
@@ -82,113 +106,114 @@ function YicYoga() {
                                    </Text>
                               </Stack>
                          </Flex>
-                         <Heading
-                              fontWeight="normal"
-                              fontSize={{ base: 'xl', md: '2xl' }}
-                              mt={20}
-                              textAlign="center"
-                         >
-                              Vyasa Yoga Instructor Course
-                         </Heading>
-                         <Box
-                              overflowX="auto"
-                              width="100%"
-                              boxShadow="base"
-                              rounded="lg"
-                              mt={10}
-                         >
+
+                         <Box overflowX="auto" width="100%" mt={10}>
+                              <Flex fontWeight="medium">
+                                   <MdLocationOn
+                                        style={{
+                                             marginRight: '0.2rem'
+                                        }}
+                                   />
+                                   <Text>Location: KR Puram</Text>
+                              </Flex>
+                              <Text fontWeight="medium">
+                                   Time: 6 AM - 8:30 AM (Weekday, MonFri)
+                              </Text>
                               <Table
                                    variant="simple"
                                    size="md"
                                    bg="white"
-                                   colorScheme="aygreen"
-                                   className="scheduleTable"
+                                   colorScheme="gray"
+                                   borderWidth="1px"
                               >
-                                   <TableCaption bg="white" mt="0">
-                                        Shikshana Pada - YIC (Online)
-                                   </TableCaption>
                                    <Thead>
-                                        <Tr>
-                                             <Th bg="secondaryGreen">
-                                                  Course Name
-                                             </Th>
-                                             <Th bg="secondaryGreen">Time</Th>
-                                             <Th bg="secondaryGreen">Date</Th>
-                                             <Th bg="secondaryGreen">Days</Th>
+                                        <Tr fontWeight="medium">
+                                             <Th bg="gray.100">Location</Th>
+                                             <Th bg="gray.100">Time</Th>
+                                             <Th bg="gray.100">January</Th>
+                                             <Th bg="gray.100">May</Th>
+                                             <Th bg="gray.100">September</Th>
                                         </Tr>
                                    </Thead>
                                    <Tbody>
-                                        <Tr>
-                                             <Td bg="green.100">
-                                                  YIC Course (Online)
+                                        <Tr fontWeight="normal">
+                                             <Td>
+                                                  <Flex colorScheme="aygreen">
+                                                       <MdLocationOn
+                                                            style={{
+                                                                 marginRight:
+                                                                      '0.2rem'
+                                                            }}
+                                                       />
+                                                       KR Puram
+                                                  </Flex>
                                              </Td>
-                                             <Td>10:00am - 12:30am</Td>
-                                             <Td>31st May - 20th August</Td>
-                                             <Td>Mon - Sat</Td>
-                                        </Tr>
-                                        <Tr>
-                                             <Td bg="green.100">
-                                                  YIC Course (Online)
+                                             <Td>
+                                                  <Box>
+                                                       <Text>
+                                                            6 AM - 8:30 AM
+                                                            (Weekday, MonFri)
+                                                       </Text>
+                                                  </Box>
                                              </Td>
-                                             <Td>10:00am - 3:00pm</Td>
-                                             <Td>3rd July - 21st November</Td>
-                                             <Td>Sat - Sun</Td>
-                                        </Tr>
-                                   </Tbody>
-                              </Table>
-                         </Box>
-                         <Box
-                              overflowX="auto"
-                              width="100%"
-                              boxShadow="base"
-                              rounded="lg"
-                              mt={10}
-                         >
-                              <Table
-                                   variant="simple"
-                                   size="md"
-                                   bg="white"
-                                   colorScheme="aygreen"
-                                   className="scheduleTable"
-                              >
-                                   <TableCaption bg="white" mt="0">
-                                        Shikshana Pada - Level 1 course - Vyasa
-                                        - YIC
-                                   </TableCaption>
-                                   <Thead>
-                                        <Tr>
-                                             <Th bg="secondaryGreen">
-                                                  Course Name
-                                             </Th>
-                                             <Th bg="secondaryGreen">Time</Th>
-                                             <Th bg="secondaryGreen">Date</Th>
-                                             <Th bg="secondaryGreen">Days</Th>
-                                        </Tr>
-                                   </Thead>
-                                   <Tbody>
-                                        <Tr>
-                                             <Td bg="green.100">
-                                                  YIC Course (Onsite)
+
+                                             <Td>
+                                                  <HStack>
+                                                       <Badge
+                                                            rounded="sm"
+                                                            colorScheme="green"
+                                                            fontWeight="medium"
+                                                       >
+                                                            3rd January 2022
+                                                       </Badge>
+                                                       <BiRightArrowAlt />
+                                                       <Badge
+                                                            rounded="sm"
+                                                            fontWeight="medium"
+                                                            colorScheme="green"
+                                                       >
+                                                            12th April 2022
+                                                       </Badge>
+                                                  </HStack>
                                              </Td>
-                                             <Td>6:00am - 8:30am</Td>
-                                             <Td>5th April - 9th July</Td>
-                                             <Td>Mon - Fri</Td>
-                                        </Tr>
-                                        <Tr>
-                                             <Td bg="green.100">
-                                                  YIC Course (Onsite)
+                                             <Td>
+                                                  <HStack>
+                                                       <Badge
+                                                            rounded="sm"
+                                                            colorScheme="green"
+                                                            fontWeight="medium"
+                                                       >
+                                                            2nd May 2022
+                                                       </Badge>
+                                                       <BiRightArrowAlt />
+                                                       <Badge
+                                                            rounded="sm"
+                                                            fontWeight="medium"
+                                                            colorScheme="green"
+                                                       >
+                                                            5th August 2022
+                                                       </Badge>
+                                                  </HStack>
                                              </Td>
-                                             <Td>5:00pm - 7:30pm</Td>
-                                             <Td>5th April - 9th July</Td>
-                                             <Td>Mon - Fri</Td>
-                                        </Tr>
-                                        <Tr>
-                                             <Td bg="green.100">
-                                                  YIC Course (Onsite)
+                                             <Td>
+                                                  <HStack>
+                                                       <Badge
+                                                            rounded="sm"
+                                                            colorScheme="green"
+                                                            fontWeight="medium"
+                                                       >
+                                                            5th September 2022
+                                                       </Badge>
+                                                       <BiRightArrowAlt />
+                                                       <Badge
+                                                            rounded="sm"
+                                                            fontWeight="medium"
+                                                            colorScheme="green"
+                                                       >
+                                                            December 2022
+                                                       </Badge>
+                                                  </HStack>
                                              </Td>
-                                             <Td> 6am - 8:30am </Td>
-                                             <Td>2nd August - 10th November</Td>
-                                             <Td>Mon - Fri</Td>
                                         </Tr>
                                    </Tbody>
                               </Table>
