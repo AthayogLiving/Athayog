@@ -1,25 +1,12 @@
-import Hero from '@/components/shared/Hero';
-import { motion } from 'framer-motion';
-import React from 'react';
-import athayogShikshana from 'public/athayogShikshana.jpg';
-import Pricing from '@/components/shared/Pricing';
-import InformationSplit from '@/components/shared/InformationSplit';
-import ShikshanaTable from '@/components/shared/ShikshanaTable';
-import ShikshanaInformation from '@/components/shared/ShikshanaInformation';
-import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';
-import {
-     Box,
-     Flex,
-     Grid,
-     Heading,
-     ListItem,
-     Text,
-     UnorderedList
-} from '@chakra-ui/react';
-import Certificate from '@/components/home/Certificate';
-import ShikshanaGraduates from '@/components/shared/ShikshanaGraduates';
+import Hero from '@/components/shared/Hero';
+import InformationSplit from '@/components/shared/InformationSplit';
 import ShikshanaCourses from '@/components/shared/ShikshanaCourses';
+import { getOffer } from '@/lib/db/offerings';
+import { Grid, Text } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+import athayogShikshana from 'public/athayogShikshana.jpg';
+import React from 'react';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('shikshana');
@@ -72,9 +59,7 @@ const Shikshana = ({ offers, notFound }) => {
           >
                <Hero pageData={pageData} />
                <InformationSplit pageData={pageData} />
-               {/* <ShikshanaInformation /> */}
                <ShikshanaCourses />
-               {/* <ShikshanaTable /> */}
                <Grid
                     bg="gray.50"
                     placeItems="center"

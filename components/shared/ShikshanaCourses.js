@@ -1,9 +1,12 @@
 import { Box, Flex, Grid, Heading, Text } from '@chakra-ui/layout';
 import Link from 'next/link';
-import Image from 'next/image';
+import { Image } from '@chakra-ui/image';
 import React from 'react';
 import { MotionBox } from './MotionElements';
 import { Button } from '@chakra-ui/button';
+import sy1 from 'public/sy1.jpg';
+import sy2 from 'public/sy2.jpg';
+import mandala from 'public/mandala.svg';
 const ShikshanaCourses = () => {
      let easing = [0.175, 0.85, 0.42, 0.96];
 
@@ -25,13 +28,13 @@ const ShikshanaCourses = () => {
                id: '1ATH',
                name: 'YIC - Yoga Instructor course',
                slug: 'yic-yoga-instructor-course',
-               image: 'https://images.unsplash.com/photo-1624651208388-f8726eace8f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'
+               image: sy1
           },
           {
                id: '2ATH',
                name: 'RYT - 200 courses',
                slug: 'ryt-200-course',
-               image: 'https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80'
+               image: sy2
           },
           {
                id: '3ATH',
@@ -69,6 +72,7 @@ const ShikshanaCourses = () => {
                     justifyContent="center"
                     direction="column"
                     alignItems="center"
+                    width="100%"
                >
                     <Heading
                          fontWeight="normal"
@@ -82,8 +86,9 @@ const ShikshanaCourses = () => {
                          Shikshana Courses
                     </Heading>
                     <Grid
-                         gridTemplateColumns="repeat(5,1fr)"
+                         gridTemplateColumns="repeat(auto-fit, minmax(15rem, 1fr))"
                          gridGap="5"
+                         width="100%"
                          mt={10}
                     >
                          {courses.map(({ id, name, slug, desc, image }) => {
@@ -95,6 +100,7 @@ const ShikshanaCourses = () => {
                                         overflow="hidden"
                                         bg="white"
                                         boxShadow="sm"
+                                        padding={6}
                                    >
                                         <Box
                                              position="relative"
@@ -104,7 +110,7 @@ const ShikshanaCourses = () => {
                                                   lg: '10rem'
                                              }}
                                              cursor="pointer"
-                                             width="18rem"
+                                             width="20rem"
                                              min-height="200px"
                                              borderTopLeftRadius="lg"
                                              borderTopRadius="lg"
@@ -112,27 +118,24 @@ const ShikshanaCourses = () => {
                                         >
                                              <Image
                                                   layout="fill"
-                                                  objectFit="cover"
+                                                  objectFit="contain"
                                                   priority={true}
                                                   style={{
                                                        overflow: 'hidden'
                                                   }}
                                                   key="1"
                                                   className="object-center object-cover pointer-events-none"
-                                                  src={image}
+                                                  src={mandala}
                                                   alt="space"
                                              />
                                         </Box>
-                                        <Box padding={6}>
-                                             <Text
-                                                  fontWeight="medium"
-                                                  as="h3"
-                                                  fontSize="lg"
-                                                  lineHeight="tight"
+                                        <Box mt={6}>
+                                             <Heading
                                                   textAlign="center"
+                                                  fontSize="1.2rem"
                                              >
                                                   {name}
-                                             </Text>
+                                             </Heading>
                                              <Link
                                                   href={'shikshana/' + slug}
                                                   passHref
@@ -141,9 +144,9 @@ const ShikshanaCourses = () => {
                                                   <a>
                                                        <Button
                                                             width="full"
-                                                            size="sm"
                                                             mt="5"
-                                                            colorScheme="aygreen"
+                                                            variant="outline"
+                                                            colorScheme="blackAplha"
                                                        >
                                                             Checkout
                                                        </Button>
