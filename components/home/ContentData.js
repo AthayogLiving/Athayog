@@ -1,4 +1,4 @@
-import sharath from 'public/sharath.jpg';
+import sharath from 'public/sharath.jpeg';
 import neeraj from 'public/neeraj.jpg';
 import manigandan from 'public/manigandan.jpg';
 import kavitha from 'public/kavitha.jpg';
@@ -156,15 +156,7 @@ export const EmployeeData = {
                image: prashant,
                visible: true,
                designation: 'Teacher'
-          },
-          {
-               name: 'Kamaljeet Mehla',
-               info: `Kamaljeet explored the world through yoga, fitness and art. He discovered immense healing powers of the body and mind. He has taught himself to be a healer. Though he had the love and support of a hard-working, kind and grounded family, at twenty he moved out to practice Sivananda yoga. He found solace in yoga nidra, in the simplicity of breathing and movement in the natural world.\n \nIn his own words, he is dorky, funny, difficult, moody, complex and creative. His highest purpose is to serve people with yoga, the same way he used the wisdom he found in depths and darkness to draw others out into light.`,
-               image: kamaljeet,
-               visible: true,
-               designation: 'Teacher'
-          },
-         
+          }
      ]
 };
 
