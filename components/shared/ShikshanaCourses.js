@@ -61,7 +61,7 @@ const ShikshanaCourses = () => {
                padding={{
                     base: '2rem 0',
                     md: '3rem 0',
-                    lg: '3rem 0'
+                    lg: '3rem '
                }}
                justifyContent="center"
                alignItems="center"
@@ -72,7 +72,7 @@ const ShikshanaCourses = () => {
                     justifyContent="center"
                     direction="column"
                     alignItems="center"
-                    width="100%"
+                    width={['100%', '80vw']}
                >
                     <Heading
                          fontWeight="normal"
@@ -86,56 +86,48 @@ const ShikshanaCourses = () => {
                          Shikshana Courses
                     </Heading>
                     <Grid
-                         gridTemplateColumns="repeat(auto-fit, minmax(15rem, 1fr))"
+                         gridTemplateColumns="repeat(auto-fit, minmax(300px, 1fr))"
                          gridGap="5"
                          width="100%"
                          mt={10}
+                         alignItems="center"
+                         justifyContent="strech"
                     >
                          {courses.map(({ id, name, slug, desc, image }) => {
                               return (
                                    <Box
-                                        maxW="sm"
                                         borderWidth="1px"
                                         borderRadius="lg"
                                         overflow="hidden"
                                         bg="white"
                                         boxShadow="sm"
                                         padding={6}
+                                        height="100%"
+                                        width="100%"
                                    >
-                                        <Box
-                                             position="relative"
-                                             height={{
-                                                  base: '40vh',
-                                                  md: '8rem',
-                                                  lg: '10rem'
-                                             }}
-                                             cursor="pointer"
-                                             width="20rem"
-                                             min-height="200px"
-                                             borderTopLeftRadius="lg"
-                                             borderTopRadius="lg"
-                                             overflow="hidden"
+                                        <Heading
+                                             textAlign="center"
+                                             fontSize="1.3rem"
                                         >
-                                             <Image
-                                                  layout="fill"
-                                                  objectFit="contain"
-                                                  priority={true}
-                                                  style={{
-                                                       overflow: 'hidden'
-                                                  }}
-                                                  key="1"
-                                                  className="object-center object-cover pointer-events-none"
-                                                  src={mandala}
-                                                  alt="space"
-                                             />
-                                        </Box>
-                                        <Box mt={6}>
-                                             <Heading
-                                                  textAlign="center"
-                                                  fontSize="1.2rem"
-                                             >
-                                                  {name}
-                                             </Heading>
+                                             {name}
+                                        </Heading>
+                                        <Image
+                                             mt={6}
+                                             layout="fill"
+                                             objectFit="contain"
+                                             priority={true}
+                                             height="8rem"
+                                             width="100%"
+                                             style={{
+                                                  overflow: 'hidden'
+                                             }}
+                                             key="1"
+                                             className="object-center object-cover pointer-events-none"
+                                             src={mandala}
+                                             alt="space"
+                                        />
+
+                                        <Box mt={3}>
                                              <Link
                                                   href={'shikshana/' + slug}
                                                   passHref
@@ -145,8 +137,8 @@ const ShikshanaCourses = () => {
                                                        <Button
                                                             width="full"
                                                             mt="5"
-                                                            variant="outline"
-                                                            colorScheme="blackAplha"
+                                                            variant="solid"
+                                                            colorScheme="aygreen"
                                                        >
                                                             Checkout
                                                        </Button>

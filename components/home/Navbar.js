@@ -257,6 +257,51 @@ const Navbar = () => {
                                              >
                                                   RYT 200 Graduates
                                              </SMenuItem>
+                                             <SMenuItem
+                                                  onClick={() =>
+                                                       router.push(
+                                                            '/offerings/shikshana/yic-yoga-instructor-course'
+                                                       )
+                                                  }
+                                             >
+                                                  YIC - Yoga Instructor course
+                                             </SMenuItem>
+                                             <SMenuItem
+                                                  onClick={() =>
+                                                       router.push(
+                                                            '/offerings/shikshana/ryt-200-course'
+                                                       )
+                                                  }
+                                             >
+                                                  RYT - 200 courses
+                                             </SMenuItem>
+                                             <SMenuItem
+                                                  onClick={() =>
+                                                       router.push(
+                                                            '/offerings/shikshana/short-course'
+                                                       )
+                                                  }
+                                             >
+                                                  Short courses
+                                             </SMenuItem>
+                                             <SMenuItem
+                                                  onClick={() =>
+                                                       router.push(
+                                                            '/offerings/shikshana/special-events'
+                                                       )
+                                                  }
+                                             >
+                                                  Special Events
+                                             </SMenuItem>
+                                             <SMenuItem
+                                                  onClick={() =>
+                                                       router.push(
+                                                            '/offerings/shikshana/athayog-sadhana'
+                                                       )
+                                                  }
+                                             >
+                                                  Athayog Sadhana
+                                             </SMenuItem>
                                         </SSubMenu>
                                    </SMenu>
                               </HStack>
@@ -462,6 +507,112 @@ const Navbar = () => {
                                                                  >
                                                                       RYT 200
                                                                       Graduates
+                                                                 </Button>
+                                                            </Link>
+                                                            <Link href="/offerings/shikshana/yic-yoga-instructor-course">
+                                                                 <Button
+                                                                      onClick={
+                                                                           onClose
+                                                                      }
+                                                                      isActive={
+                                                                           router.pathname ==
+                                                                           '/offerings/shikshana/yic-yoga-instructor-course'
+                                                                                ? true
+                                                                                : ''
+                                                                      }
+                                                                      rounded="md"
+                                                                      variant="ghost"
+                                                                      width="full"
+                                                                      colorScheme="aygreen"
+                                                                      justifyContent="left"
+                                                                 >
+                                                                      YIC - Yoga
+                                                                      Instructor
+                                                                      course
+                                                                 </Button>
+                                                            </Link>
+                                                            <Link href="/offerings/shikshana/ryt-200-course">
+                                                                 <Button
+                                                                      onClick={
+                                                                           onClose
+                                                                      }
+                                                                      isActive={
+                                                                           router.pathname ==
+                                                                           '/offerings/shikshana/ryt-200-course'
+                                                                                ? true
+                                                                                : ''
+                                                                      }
+                                                                      rounded="md"
+                                                                      variant="ghost"
+                                                                      width="full"
+                                                                      colorScheme="aygreen"
+                                                                      justifyContent="left"
+                                                                 >
+                                                                      RYT - 200
+                                                                      courses
+                                                                 </Button>
+                                                            </Link>
+                                                            <Link href="/offerings/shikshana/short-course">
+                                                                 <Button
+                                                                      onClick={
+                                                                           onClose
+                                                                      }
+                                                                      isActive={
+                                                                           router.pathname ==
+                                                                           '/offerings/shikshana/short-course'
+                                                                                ? true
+                                                                                : ''
+                                                                      }
+                                                                      rounded="md"
+                                                                      variant="ghost"
+                                                                      width="full"
+                                                                      colorScheme="aygreen"
+                                                                      justifyContent="left"
+                                                                 >
+                                                                      Short
+                                                                      courses
+                                                                 </Button>
+                                                            </Link>
+                                                            <Link href="/offerings/shikshana/special-events">
+                                                                 <Button
+                                                                      onClick={
+                                                                           onClose
+                                                                      }
+                                                                      isActive={
+                                                                           router.pathname ==
+                                                                           '/offerings/shikshana/special-events'
+                                                                                ? true
+                                                                                : ''
+                                                                      }
+                                                                      rounded="md"
+                                                                      variant="ghost"
+                                                                      width="full"
+                                                                      colorScheme="aygreen"
+                                                                      justifyContent="left"
+                                                                 >
+                                                                      Special
+                                                                      Events
+                                                                 </Button>
+                                                            </Link>
+                                                            <Link href="/offerings/athayog-sadhana">
+                                                                 <Button
+                                                                      onClick={
+                                                                           onClose
+                                                                      }
+                                                                      isActive={
+                                                                           router.pathname ==
+                                                                           '/offerings/athayog-sadhana'
+                                                                                ? true
+                                                                                : ''
+                                                                      }
+                                                                      rounded="md"
+                                                                      variant="ghost"
+                                                                      width="full"
+                                                                      colorScheme="aygreen"
+                                                                      justifyContent="left"
+                                                                 >
+                                                                      Athayog
+                                                                      Sadhana
                                                                  </Button>
                                                             </Link>
                                                        </VStack>
