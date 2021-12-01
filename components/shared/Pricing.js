@@ -437,7 +437,7 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                          *Terms and conditions apply
                     </Text>
                     <Text width="100%" textAlign="left">
-                         *All price inclusive of GST
+                         *All price inclusive of 18% GST
                     </Text>
                     <Text mt={8} fontSize="lg">
                          {registerTo == 'space'

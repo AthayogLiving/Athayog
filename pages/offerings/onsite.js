@@ -6,33 +6,50 @@ import Information from '@/components/shared/Information';
 import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
 import HomeLayout from '@/components/layout/HomeLayout';
+import { getOffer } from '@/lib/db/offerings';
 
-const Onsite = () => {
+export async function getStaticProps(context) {
+     const { offers } = await getOffer('onsite');
+
+     if (!offers) {
+          return {
+               notFound: true
+          };
+     }
+     return {
+          props: {
+               offers: JSON.parse(JSON.stringify(offers)),
+               notFound: false
+          },
+          revalidate: 1
+     };
+}
+
+const Onsite = ({ offers, notFound }) => {
      const pageData = {
           name: 'Onsite',
           heroImage: athayogOnsite,
-          whatis: `AthaYog Onsite is for people seeking Yogic education on their own personal time, from the comfort of their space. And unsure about stepping out in the midst of pandemic. With Athayog Onsite you can continue your practice at your space by our teachers visiting you.`,
-          pricing: [
-               {
-                    courseName: 'Onsite Group class',
-                    description: `Number of Students: Depending on the space`,
-                    duration: `As per your convenience`,
-                    price: `Contact us`
-               }
-          ]
+          whatis: `AthaYog Onsite is for people seeking Yogic education on their own personal time, from the comfort of their space. And unsure about stepping out in the midst of pandemic. With Athayog Onsite you can continue your practice at your space by our teachers visiting you.`
      };
 
-     const apiPricing = [
-          {
-               id: 1097283,
-               courseName: 'Onsite Group class',
-               description: `Number of Students: Depending on the space`,
-               duration: `As per your convenience`,
-               durationNum: 0,
-               isTrial: false,
-               price: 'Contact Us'
+     const apiPricing = [];
+     offers.map((data) => {
+          if (data.isActive) {
+               apiPricing.push({
+                    id: data.id,
+                    courseName: data.name,
+                    description: data.description,
+                    duration: data.isTrial
+                         ? data.days + ' Days Trial'
+                         : data.days + ' Days',
+                    isTrial: data.isTrial,
+                    old_price: data.old_price,
+                    durationNum: data.days,
+                    price: data.price
+               });
           }
-     ];
+     });
+     const d = new Date();
 
      return (
           <motion.div
@@ -43,7 +60,7 @@ const Onsite = () => {
                <Hero pageData={pageData} />
                {/* <Information pageData={pageData} /> */}
 
-               <Pricing pricing={apiPricing} toRegister={false} />
+               <Pricing pricing={apiPricing} toRegister={true} />
                <Register registerTo={pageData.name.toLocaleLowerCase()} />
           </motion.div>
      );
