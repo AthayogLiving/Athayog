@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
+import { chakra } from '@chakra-ui/system';
 
 const Pricing = ({ pricing, registerTo, toRegister }) => {
      const { user, signout, loading } = useAuth();
@@ -253,19 +254,46 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                                                        >
                                                             {data.duration}
                                                        </Text>
-                                                       <Text
-                                                            fontSize={{
-                                                                 base: 'xl',
-                                                                 md: '2xl',
-                                                                 lg: '3xl'
-                                                            }}
-                                                       >
-                                                            {toRegister !==
-                                                            false
-                                                                 ? '₹'
-                                                                 : null}{' '}
-                                                            {data.price}
-                                                       </Text>
+                                                       <Flex>
+                                                            {data.old_price && (
+                                                                 <Text
+                                                                      fontSize={{
+                                                                           base: 'xl',
+                                                                           md: '2xl',
+                                                                           lg: '3xl'
+                                                                      }}
+                                                                      mr={3}
+                                                                      textColor="#555"
+                                                                      textDecoration="line-through"
+                                                                      style={{
+                                                                           textDecorationThickness:
+                                                                                '3px'
+                                                                      }}
+                                                                 >
+                                                                      {toRegister !==
+                                                                      false
+                                                                           ? '₹'
+                                                                           : null}{' '}
+                                                                      {
+                                                                           data.old_price
+                                                                      }
+                                                                 </Text>
+                                                            )}
+
+                                                            <Text
+                                                                 fontSize={{
+                                                                      base: 'xl',
+                                                                      md: '2xl',
+                                                                      lg: '3xl'
+                                                                 }}
+                                                            >
+                                                                 {toRegister !==
+                                                                 false
+                                                                      ? '₹'
+                                                                      : null}{' '}
+                                                                 {data.price}
+                                                            </Text>
+                                                       </Flex>
                                                   </Flex>
                                                   {toRegister !== false ? (
                                                        <Button
