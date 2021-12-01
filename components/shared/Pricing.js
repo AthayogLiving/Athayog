@@ -255,30 +255,34 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                                                             {data.duration}
                                                        </Text>
                                                        <Flex>
-                                                            {data.old_price && (
-                                                                 <Text
-                                                                      fontSize={{
-                                                                           base: 'xl',
-                                                                           md: '2xl',
-                                                                           lg: '3xl'
-                                                                      }}
-                                                                      mr={3}
-                                                                      textColor="#555"
-                                                                      textDecoration="line-through"
-                                                                      style={{
-                                                                           textDecorationThickness:
-                                                                                '3px'
-                                                                      }}
-                                                                 >
-                                                                      {toRegister !==
-                                                                      false
-                                                                           ? '₹'
-                                                                           : null}{' '}
-                                                                      {
-                                                                           data.old_price
-                                                                      }
-                                                                 </Text>
-                                                            )}
+                                                            {data.old_price &&
+                                                                 data?.old_price !==
+                                                                      '0' && (
+                                                                      <Text
+                                                                           fontSize={{
+                                                                                base: 'xl',
+                                                                                md: '2xl',
+                                                                                lg: '3xl'
+                                                                           }}
+                                                                           mr={
+                                                                                3
+                                                                           }
+                                                                           textColor="#555"
+                                                                           textDecoration="line-through"
+                                                                           style={{
+                                                                                textDecorationThickness:
+                                                                                     '3px'
+                                                                           }}
+                                                                      >
+                                                                           {toRegister !==
+                                                                           false
+                                                                                ? '₹'
+                                                                                : null}{' '}
+                                                                           {
+                                                                                data.old_price
+                                                                           }
+                                                                      </Text>
+                                                                 )}
 
                                                             <Text
                                                                  fontSize={{
