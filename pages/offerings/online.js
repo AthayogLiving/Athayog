@@ -58,6 +58,7 @@ const Online = ({ offers, notFound }) => {
                          : data.days + ' Days',
                     isTrial: data.isTrial,
                     old_price: data.old_price,
+                    isGeneral: data.isGeneral,
                     durationNum: data.days,
                     price: data.price
                });
