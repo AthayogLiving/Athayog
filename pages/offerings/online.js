@@ -22,6 +22,7 @@ import {
      Text
 } from '@chakra-ui/react';
 import OnlineCourses from '@/components/shared/OnlineCourses';
+import ProsAndCons from '@/components/shared/ProsAndCons';
 export async function getStaticProps(context) {
      const { offers } = await getOffer('online');
 
@@ -43,7 +44,23 @@ const Online = ({ offers, notFound }) => {
      const pageData = {
           name: 'Online',
           heroImage: athayogOnline,
-          whatis: `You may be looking to keep your practice going at a steady pace but are unsure about stepping out in the midst of the pandemic. With AthaYog Online, you can continue from the comfort of your own space.`
+          whatis: `You may be looking to keep your practice going at a steady pace but are unsure about stepping out in the midst of the pandemic. With AthaYog Online, you can continue from the comfort of your own space.`,
+          prosAndCons: [
+               [
+                    'Practise in the safety and comfort of your home',
+                    'Solitude - Practise behind closed doors and in your own company',
+                    'Beneficial for physically unfit people who can’t commute.',
+                    'Practise in your own time.',
+                    'Practise from anywhere around the globe.'
+               ],
+               [
+                    'Need a strong connection/ Technical issues',
+                    'Lack of teacher’s physical presence.',
+                    'Clarity of teacher’s demonstration, voice and screen display',
+                    'Lack of physical correction.',
+                    'Need for space and phone support for better angle/ visibility.'
+               ]
+          ]
      };
 
      const apiPricing = [];
@@ -310,6 +327,7 @@ const Online = ({ offers, notFound }) => {
                     pricing={apiPricing}
                     registerTo={pageData.name.toLocaleLowerCase()}
                />
+               <ProsAndCons data={pageData.prosAndCons} name="Online" />
           </motion.div>
      );
 };

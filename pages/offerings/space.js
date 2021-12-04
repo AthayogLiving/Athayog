@@ -9,6 +9,7 @@ import Pricing from '@/components/shared/Pricing';
 import IntensityTable from '@/components/shared/IntensityTable';
 import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';
+import ProsAndCons from '@/components/shared/ProsAndCons';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('space');
@@ -58,6 +59,22 @@ const Space = ({ offers, notFound }) => {
                     className: 'Little Star',
                     classInfo: `A 60 minute class to empower and nurture young minds to improve their focus and awareness. This is for the age groups 7-14 years.`
                }
+          ],
+          prosAndCons: [
+               [
+                    'Clarity of teacher’s demonstration and voice.',
+                    'Physical correction. ',
+                    'Experience of group energy as you practise with others.',
+                    'The advantage of physical space to practise.',
+                    'Teacher-Student connection/ bond Eg. Eye-eye contact with teacher and reassuring physical presence.'
+               ],
+               [
+                    'Travel to the studio.',
+                    'Fear of COVID-19 Safety among students.',
+                    'Need to allot time for both practise and travel',
+                    'During monsoon and winter weather, the student has to plan their time and commute.',
+                    'Being on time is crucial.'
+               ]
           ]
      };
 
@@ -95,6 +112,7 @@ const Space = ({ offers, notFound }) => {
                     registerTo={pageData.name.toLocaleLowerCase()}
                     pricing={apiPricing}
                />
+               <ProsAndCons data={pageData.prosAndCons} name="Space" />
           </motion.div>
      );
 };
