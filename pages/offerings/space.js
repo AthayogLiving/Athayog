@@ -36,23 +36,23 @@ const Space = ({ offers, notFound }) => {
           classes: [
                {
                     className: 'Universal Harmony',
-                    classInfo: `A 75 minute class that revolves around grounding rituals, asana practices, pranayama, dharana and relaxation practice. This class helps with inculcating balance and harmonising with the inner universe.`
+                    classInfo: `A 60 minute class that revolves around grounding rituals, asana practices, pranayama, dharana and relaxation practice. This class helps with inculcating balance and harmonising with the inner universe.`
                },
                {
                     className: 'Transcending Transitions ',
-                    classInfo: `A 75 minute class that combines Hatha and Vinayasa along with grounding rituals, Surya Namaskar and asanas in an energetic and fluid Vinayasa style.`
+                    classInfo: `A 60 minute class that combines Hatha and Vinayasa along with grounding rituals, Surya Namaskar and asanas in an energetic and fluid Vinayasa style.`
                },
                {
                     className: 'Rhythm of Being',
-                    classInfo: `A 75 minute class that prioritises relaxed breathing through Hatha Asana. This class helps focusing on a dynamic practice in sync with the traditional Hatha asanas.`
+                    classInfo: `A 60 minute class that prioritises relaxed breathing through Hatha Asana. This class helps focusing on a dynamic practice in sync with the traditional Hatha asanas.`
                },
                {
                     className: 'Inner World',
-                    classInfo: `A 75 minute class that works on tuning your senses, withdrawing yourself from other states of consciousness and navigating through the inner world.`
+                    classInfo: `A 60 minute class that works on tuning your senses, withdrawing yourself from other states of consciousness and navigating through the inner world.`
                },
                {
                     className: 'Deep Space',
-                    classInfo: `A 75 minute class that immerses you in subtle breathing with your mind being the key. It includes dynamic breathing, internalisation techniques, pranayama and meditation to guide you through your mind and body’s deep space.`
+                    classInfo: `A 60 minute class that immerses you in subtle breathing with your mind being the key. It includes dynamic breathing, internalisation techniques, pranayama and meditation to guide you through your mind and body’s deep space.`
                },
                {
                     className: 'Little Star',
