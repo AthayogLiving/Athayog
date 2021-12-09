@@ -107,8 +107,7 @@ const Online = ({ offers, notFound }) => {
                               fontWeight="normal"
                               fontSize={{ base: '2xl', md: '3xl' }}
                          >
-                              Schedule For {monthNames[d.getMonth()]}{' '}
-                              {d.getFullYear()}
+                              Online Schedule For Group Classes
                          </Heading>
                          <Box
                               overflowX="auto"
@@ -236,18 +235,14 @@ const Online = ({ offers, notFound }) => {
                                    </Tbody>
                               </Table>
                          </Box>
-                         <Box mt={5} textAlign="left" width="100%">
-                              <Text fontWeight="medium">Working hours:</Text>
-                              <Text>
-                                   Monday to Friday (06:00 AM to 08:00 PM) and
-                                   Saturday
-                              </Text>
-                              <Text>Sunday (07:00 AM to 08:00 PM)</Text>
-                              <Text>
-                                   Athayog living will be closed on 2nd Saturday
-                                   of every Month.
-                              </Text>
-                         </Box>
+
+                         <Heading
+                              fontWeight="normal"
+                              fontSize={{ base: '2xl', md: '3xl' }}
+                              mt={20}
+                         >
+                              Athayog Sadhana
+                         </Heading>
 
                          <Box
                               overflowX="auto"
@@ -302,6 +297,19 @@ const Online = ({ offers, notFound }) => {
                                         </Tr>
                                    </Tbody>
                               </Table>
+                         </Box>
+
+                         <Box mt={10} textAlign="left" width="100%">
+                              <Text fontWeight="medium">Working hours:</Text>
+                              <Text>
+                                   Monday to Friday (06:00 AM to 08:00 PM) and
+                                   Saturday
+                              </Text>
+                              <Text>Sunday (07:00 AM to 08:00 PM)</Text>
+                              <Text>
+                                   Athayog living will be closed on 2nd Saturday
+                                   of every Month.
+                              </Text>
                          </Box>
                     </Flex>
                </Flex>
