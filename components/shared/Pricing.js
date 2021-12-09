@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
+import { chakra } from '@chakra-ui/system';
 
 const Pricing = ({ pricing, registerTo, toRegister }) => {
      const { user, signout, loading } = useAuth();
@@ -188,6 +189,7 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                     >
                          {pricing
                               .filter((data) => data.isTrial == false)
+                              .filter((data) => data.isGeneral == true)
                               .sort((a, b) => a.durationNum - b.durationNum)
                               .map((data, index) => {
                                    return (
@@ -253,19 +255,50 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                                                        >
                                                             {data.duration}
                                                        </Text>
-                                                       <Text
-                                                            fontSize={{
-                                                                 base: 'xl',
-                                                                 md: '2xl',
-                                                                 lg: '3xl'
-                                                            }}
-                                                       >
-                                                            {toRegister !==
-                                                            false
-                                                                 ? '₹'
-                                                                 : null}{' '}
-                                                            {data.price}
-                                                       </Text>
+                                                       <Flex>
+                                                            {data.old_price &&
+                                                                 data?.old_price !==
+                                                                      '0' && (
+                                                                      <Text
+                                                                           fontSize={{
+                                                                                base: 'xl',
+                                                                                md: '2xl',
+                                                                                lg: '3xl'
+                                                                           }}
+                                                                           mr={
+                                                                                3
+                                                                           }
+                                                                           textColor="#555"
+                                                                           textDecoration="line-through"
+                                                                           style={{
+                                                                                textDecorationThickness:
+                                                                                     '3px'
+                                                                           }}
+                                                                      >
+                                                                           {toRegister !==
+                                                                           false
+                                                                                ? '₹'
+                                                                                : null}{' '}
+                                                                           {
+                                                                                data.old_price
+                                                                           }
+                                                                      </Text>
+                                                                 )}
+
+                                                            <Text
+                                                                 fontSize={{
+                                                                      base: 'xl',
+                                                                      md: '2xl',
+                                                                      lg: '3xl'
+                                                                 }}
+                                                            >
+                                                                 {toRegister !==
+                                                                 false
+                                                                      ? '₹'
+                                                                      : null}{' '}
+                                                                 {data.price}
+                                                            </Text>
+                                                       </Flex>
                                                   </Flex>
                                                   {toRegister !== false ? (
                                                        <Button
@@ -312,7 +345,6 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                                    );
                               })}
                     </SimpleGrid>
-
                     <SimpleGrid
                          minChildWidth={{
                               base: '250px',
@@ -321,7 +353,175 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                          }}
                          spacing="20px"
                          width="100%"
-                         mt={10}
+                         mt={20}
+                    >
+                         {pricing
+                              .filter((data) => data.isTrial == false)
+                              .filter((data) => data.isGeneral == false)
+                              .sort((a, b) => a.durationNum - b.durationNum)
+                              .map((data, index) => {
+                                   return (
+                                        <Box
+                                             bg={
+                                                  index % 2 == 0
+                                                       ? 'aygreen.100'
+                                                       : 'aygreen.200'
+                                             }
+                                             height="auto"
+                                             rounded="lg"
+                                             padding={{
+                                                  base: '6',
+                                                  md: '8',
+                                                  lg: '8'
+                                             }}
+                                             textAlign="center"
+                                             d="flex"
+                                             boxShadow="base"
+                                             flexDirection="column"
+                                             key={data.id}
+                                             justifyContent="space-between"
+                                        >
+                                             <Box>
+                                                  <Heading
+                                                       fontSize={{
+                                                            base: 'xl',
+                                                            md: 'xl',
+                                                            lg: '2xl'
+                                                       }}
+                                                       fontWeight="normal"
+                                                       textAlign="left"
+                                                  >
+                                                       {capitalizeFirstLetter(
+                                                            data.courseName
+                                                       )}
+                                                  </Heading>
+                                                  <Text
+                                                       mt={5}
+                                                       fontWeight="light"
+                                                       textAlign="left"
+                                                       fontSize={{
+                                                            base: 'base',
+                                                            md: 'md',
+                                                            lg: 'lg'
+                                                       }}
+                                                  >
+                                                       {data.description}
+                                                  </Text>
+                                             </Box>
+                                             <Box>
+                                                  <Flex
+                                                       justifyContent="space-between"
+                                                       align="center"
+                                                       mt={5}
+                                                  >
+                                                       <Text
+                                                            fontSize={{
+                                                                 base: 'md',
+                                                                 md: 'lg',
+                                                                 lg: 'xl'
+                                                            }}
+                                                       >
+                                                            {data.duration}
+                                                       </Text>
+                                                       <Flex>
+                                                            {data.old_price &&
+                                                                 data?.old_price !==
+                                                                      '0' && (
+                                                                      <Text
+                                                                           fontSize={{
+                                                                                base: 'xl',
+                                                                                md: '2xl',
+                                                                                lg: '3xl'
+                                                                           }}
+                                                                           mr={
+                                                                                3
+                                                                           }
+                                                                           textColor="#555"
+                                                                           textDecoration="line-through"
+                                                                           style={{
+                                                                                textDecorationThickness:
+                                                                                     '3px'
+                                                                           }}
+                                                                      >
+                                                                           {toRegister !==
+                                                                           false
+                                                                                ? '₹'
+                                                                                : null}{' '}
+                                                                           {
+                                                                                data.old_price
+                                                                           }
+                                                                      </Text>
+                                                                 )}
+
+                                                            <Text
+                                                                 fontSize={{
+                                                                      base: 'xl',
+                                                                      md: '2xl',
+                                                                      lg: '3xl'
+                                                                 }}
+                                                            >
+                                                                 {toRegister !==
+                                                                 false
+                                                                      ? '₹'
+                                                                      : null}{' '}
+                                                                 {data.price}
+                                                            </Text>
+                                                       </Flex>
+                                                  </Flex>
+                                                  {toRegister !== false ? (
+                                                       <Button
+                                                            colorScheme="aygreen"
+                                                            width="8rem"
+                                                            size="sm"
+                                                            mt={4}
+                                                            isDisabled={coursePurchased.find(
+                                                                 (element) =>
+                                                                      element ==
+                                                                      data.id
+                                                            )}
+                                                            onClick={() =>
+                                                                 handleUserPayment(
+                                                                      data.price,
+                                                                      data.durationNum,
+                                                                      data.description,
+                                                                      data.courseName,
+                                                                      data.id,
+                                                                      data.isTrial
+                                                                 )
+                                                            }
+                                                            isLoading={
+                                                                 buttonId ===
+                                                                 data.id
+                                                            }
+                                                       >
+                                                            {user
+                                                                 ? coursePurchased.find(
+                                                                        (
+                                                                             element
+                                                                        ) =>
+                                                                             element ==
+                                                                             data.id
+                                                                   ) !==
+                                                                   undefined
+                                                                      ? 'Purchased'
+                                                                      : 'Register'
+                                                                 : 'Register'}
+                                                       </Button>
+                                                  ) : null}
+                                             </Box>
+                                        </Box>
+                                   );
+                              })}
+                    </SimpleGrid>
+                    <SimpleGrid
+                         minChildWidth={{
+                              base: '250px',
+                              md: '300px',
+                              lg: '350px'
+                         }}
+                         spacing="20px"
+                         width="100%"
+                         mt={20}
                     >
                          {pricing
                               .filter((data) => data.isTrial == true)
@@ -409,7 +609,7 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                          *Terms and conditions apply
                     </Text>
                     <Text width="100%" textAlign="left">
-                         *All price inclusive of GST
+                         *All price inclusive of 18% GST
                     </Text>
                     <Text mt={8} fontSize="lg">
                          {registerTo == 'space'

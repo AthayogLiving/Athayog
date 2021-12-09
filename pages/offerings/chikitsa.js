@@ -47,6 +47,7 @@ const Chikitsa = ({ offers }) => {
                     : data.days + ' Days',
                durationNum: data.days,
                isTrial: data.isTrial,
+               isGeneral: data.isGeneral,
                price: data.price
           });
      });
