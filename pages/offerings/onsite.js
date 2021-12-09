@@ -45,6 +45,7 @@ const Onsite = ({ offers, notFound }) => {
                     isTrial: data.isTrial,
                     old_price: data.old_price,
                     durationNum: data.days,
+                    isGeneral: data.isGeneral,
                     price: data.price
                });
           }
