@@ -147,6 +147,7 @@ const ShikshanaCourses = () => {
                                              </Heading>
                                              <Link
                                                   href={'shikshana/' + slug}
+                                                  scroll={false}
                                                   passHref
                                                   style={{ cursor: 'pointer' }}
                                              >
