@@ -93,7 +93,7 @@ const ShikshanaCourses = () => {
                          Shikshana Courses
                     </Heading>
                     <Grid
-                         gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))"
+                         gridTemplateColumns="repeat(auto-fit, minmax(230px, 1fr))"
                          gridGap="10"
                          width="100%"
                          mt={10}
@@ -108,7 +108,7 @@ const ShikshanaCourses = () => {
                                         borderRadius="lg"
                                         overflow="hidden"
                                         bg="white"
-                                        width='xsm'
+                                      
                                         boxShadow="sm"
 
                                    >
