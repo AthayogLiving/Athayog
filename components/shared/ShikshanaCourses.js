@@ -151,7 +151,6 @@ const ShikshanaCourses = () => {
                                                   passHref
                                                   style={{ cursor: 'pointer' }}
                                              >
-
                                                   <a>
                                                        <Button
                                                             width="full"
