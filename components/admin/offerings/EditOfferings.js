@@ -23,6 +23,13 @@ import {
      NumberInputField,
      Checkbox,
      HStack,
+     Drawer,
+     DrawerBody,
+     DrawerFooter,
+     DrawerHeader,
+     DrawerOverlay,
+     DrawerContent,
+     DrawerCloseButton,
      Switch,
      RadioGroup,
      Radio,
@@ -39,6 +46,7 @@ const EditOfferings = ({
      ogDescription,
      ogDays,
      ogPrice,
+     ogOldPrice,
      ogIsTrial
 }) => {
      const { isOpen, onOpen, onClose } = useDisclosure();
@@ -48,15 +56,36 @@ const EditOfferings = ({
 
      const { handleSubmit, register, errors } = useForm();
      const bg = useColorModeValue('white', 'gray.800');
+     const btnRef = React.useRef();
 
      const setTrialChange = () => {
           setTrial(!trial);
      };
 
-     const onCreateOffering = async ({ name, description, days, price }) => {
+     const isDrawClose = (state) => {
+          setLoading(state);
+          if (!state) onClose();
+     };
+
+     const onCreateOffering = async ({
+          name,
+          description,
+          days,
+          old_price,
+          price
+     }) => {
           setLoading(true);
 
-          await updateOffering(id, name, description, days, price, trial, type)
+          await updateOffering(
+               id,
+               name,
+               description,
+               days,
+               old_price,
+               price,
+               trial,
+               type
+          )
                .then((response) => {
                     toast({
                          title: 'Offer Updated',
@@ -66,7 +95,7 @@ const EditOfferings = ({
                          duration: 9000,
                          isClosable: true
                     });
-                    setLoading(false);
+                    isDrawClose(false);
                })
                .catch((error) => {
                     toast({
@@ -76,7 +105,7 @@ const EditOfferings = ({
                          duration: 9000,
                          isClosable: true
                     });
-                    setLoading(false);
+                    isDrawClose(false);
                });
      };
 
@@ -85,55 +114,61 @@ const EditOfferings = ({
                <Button onClick={onOpen} size="sm" colorScheme="teal">
                     Edit
                </Button>
-
-               <Modal isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay />
-                    <ModalContent
+               <Drawer
+                    isOpen={isOpen}
+                    placement="right"
+                    onClose={onClose}
+                    finalFocusRef={btnRef}
+                    size={'md'}
+               >
+                    <DrawerOverlay />
+                    <Box
+                         as="form"
                          onSubmit={handleSubmit((data) =>
                               onCreateOffering(data)
                          )}
-                         as="form"
                     >
-                         <ModalHeader>Edit Offering</ModalHeader>
-                         <ModalCloseButton />
-                         <ModalBody>
-                              <Stack spacing={5}>
-                                   <FormControl id="name">
-                                        <FormLabel>Name</FormLabel>
-                                        <Input
-                                             type="text"
-                                             aria-label="name"
-                                             defaultValue={ogName}
-                                             name="name"
-                                             ref={register({
-                                                  required:
-                                                       'Please enter the name.'
-                                             })}
-                                        />
+                         <DrawerContent>
+                              <DrawerCloseButton />
+                              <DrawerHeader>Edit the offer</DrawerHeader>
 
-                                        <FormErrorMessage>
-                                             {errors.name &&
-                                                  errors.name.message}
-                                        </FormErrorMessage>
-                                   </FormControl>
-                                   <FormControl id="description">
-                                        <FormLabel>Description</FormLabel>
-                                        <Textarea
-                                             name="description"
-                                             defaultValue={ogDescription}
-                                             ref={register({
-                                                  required:
-                                                       'Please enter the description.'
-                                             })}
-                                        />
+                              <DrawerBody>
+                                   <Stack spacing={5}>
+                                        <FormControl id="name">
+                                             <FormLabel>Name</FormLabel>
+                                             <Input
+                                                  type="text"
+                                                  aria-label="name"
+                                                  defaultValue={ogName}
+                                                  name="name"
+                                                  ref={register({
+                                                       required:
+                                                            'Please enter the name.'
+                                                  })}
+                                             />
 
-                                        <FormErrorMessage>
-                                             {errors.description &&
-                                                  errors.description.message}
-                                        </FormErrorMessage>
-                                   </FormControl>
-                                   <HStack alignItems="start">
-                                        {' '}
+                                             <FormErrorMessage>
+                                                  {errors.name &&
+                                                       errors.name.message}
+                                             </FormErrorMessage>
+                                        </FormControl>
+                                        <FormControl id="description">
+                                             <FormLabel>Description</FormLabel>
+                                             <Textarea
+                                                  name="description"
+                                                  defaultValue={ogDescription}
+                                                  ref={register({
+                                                       required:
+                                                            'Please enter the description.'
+                                                  })}
+                                             />
+
+                                             <FormErrorMessage>
+                                                  {errors.description &&
+                                                       errors.description
+                                                            .message}
+                                             </FormErrorMessage>
+                                        </FormControl>
                                         <FormControl id="days">
                                              <FormLabel>Days</FormLabel>
                                              <NumberInput defaultValue={ogDays}>
@@ -151,56 +186,88 @@ const EditOfferings = ({
                                                        errors.days.message}
                                              </FormErrorMessage>
                                         </FormControl>
-                                        <FormControl id="price">
-                                             <FormLabel>Price</FormLabel>
-                                             <NumberInput
-                                                  defaultValue={Number(ogPrice)}
-                                             >
-                                                  <NumberInputField
-                                                       name="price"
-                                                       ref={register({
-                                                            required:
-                                                                 'Please enter the price.'
-                                                       })}
-                                                  />
-                                             </NumberInput>
+                                        <HStack alignItems="start">
+                                             {' '}
+                                             <FormControl id="old_price">
+                                                  <FormLabel>
+                                                       Old Price
+                                                  </FormLabel>
+                                                  <NumberInput
+                                                       defaultValue={Number(
+                                                            ogOldPrice
+                                                       )}
+                                                  >
+                                                       <NumberInputField
+                                                            name="old_price"
+                                                            ref={register({
+                                                                 required:
+                                                                      'Please enter the old_price.'
+                                                            })}
+                                                       />
+                                                  </NumberInput>
 
-                                             <FormErrorMessage>
-                                                  {errors.price &&
-                                                       errors.price.message}
-                                             </FormErrorMessage>
+                                                  <FormErrorMessage>
+                                                       {errors.old_price &&
+                                                            errors.old_price
+                                                                 .message}
+                                                  </FormErrorMessage>
+                                             </FormControl>
+                                             <FormControl id="price">
+                                                  <FormLabel>Price</FormLabel>
+                                                  <NumberInput
+                                                       defaultValue={Number(
+                                                            ogPrice
+                                                       )}
+                                                  >
+                                                       <NumberInputField
+                                                            name="price"
+                                                            ref={register({
+                                                                 required:
+                                                                      'Please enter the price.'
+                                                            })}
+                                                       />
+                                                  </NumberInput>
+
+                                                  <FormErrorMessage>
+                                                       {errors.price &&
+                                                            errors.price
+                                                                 .message}
+                                                  </FormErrorMessage>
+                                             </FormControl>
+                                        </HStack>
+                                        <FormControl id="isTrial">
+                                             <FormLabel>Is it Trial?</FormLabel>
+                                             <Switch
+                                                  name="isTrial"
+                                                  isChecked={trial}
+                                                  onChange={(e) =>
+                                                       setTrialChange()
+                                                  }
+                                             />
                                         </FormControl>
-                                   </HStack>
-                                   <FormControl id="isTrial">
-                                        <FormLabel>Is it Trial?</FormLabel>
-                                        <Switch
-                                             name="isTrial"
-                                             isChecked={trial}
-                                             onChange={(e) => setTrialChange()}
-                                        />
-                                   </FormControl>
-                              </Stack>
-                         </ModalBody>
+                                   </Stack>
+                              </DrawerBody>
 
-                         <ModalFooter>
-                              <Button
-                                   colorScheme="blue"
-                                   mr={3}
-                                   onClick={onClose}
-                              >
-                                   Close
-                              </Button>
-                              <Button
-                                   isLoading={loading}
-                                   variant="solid"
-                                   colorScheme="teal"
-                                   type="submit"
-                              >
-                                   Create
-                              </Button>
-                         </ModalFooter>
-                    </ModalContent>
-               </Modal>
+                              <DrawerFooter>
+                                   <Button
+                                        colorScheme="blue"
+                                        mr={3}
+                                        onClick={onClose}
+                                   >
+                                        Close
+                                   </Button>
+                                   <Button
+                                        isLoading={loading}
+                                        variant="solid"
+                                        colorScheme="teal"
+                                        type="submit"
+                                   >
+                                        Update
+                                   </Button>
+                              </DrawerFooter>
+                         </DrawerContent>
+                    </Box>
+               </Drawer>
           </>
      );
 };

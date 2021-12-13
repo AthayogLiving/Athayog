@@ -139,6 +139,7 @@ const Offers = ({ offerType }) => {
                                    days,
                                    isActive,
                                    description,
+                                   old_price,
                                    isTrial,
                                    id
                               }) => {
@@ -166,6 +167,14 @@ const Offers = ({ offerType }) => {
                                              >
                                                   <Text>Description:</Text>
                                                   <Text>{description}</Text>
+                                             </Flex>
+                                             <Flex
+                                                  alignItems="center"
+                                                  justifyContent="space-between"
+                                                  mb={2}
+                                             >
+                                                  <Text>Old Price:</Text>
+                                                  <Text>{old_price}</Text>
                                              </Flex>
                                              <Flex
                                                   alignItems="center"
@@ -228,6 +237,7 @@ const Offers = ({ offerType }) => {
                                                        ogDescription={
                                                             description
                                                        }
+                                                       ogOldPrice={old_price}
                                                        ogDays={days}
                                                        ogPrice={price}
                                                        ogIsActive={isActive}
@@ -256,6 +266,7 @@ const Offers = ({ offerType }) => {
                                         <Th>Name</Th>
                                         <Th>Description</Th>
                                         <Th>Days</Th>
+                                        <Th>Old Price</Th>
                                         <Th>Price</Th>
                                         <Th>Is Active</Th>
                                         <Th>Is Trial</Th>
@@ -266,6 +277,7 @@ const Offers = ({ offerType }) => {
                                    {data?.offers?.map(
                                         ({
                                              name,
+                                             old_price,
                                              price,
                                              days,
                                              isActive,
@@ -278,6 +290,7 @@ const Offers = ({ offerType }) => {
                                                        <Td>{name}</Td>
                                                        <Td>{description}</Td>
                                                        <Td>{days}</Td>
+                                                       <Td>{old_price}</Td>
                                                        <Td>{price}</Td>
                                                        <Td>
                                                             <Switch
@@ -327,6 +340,9 @@ const Offers = ({ offerType }) => {
                                                                       }
                                                                       ogDays={
                                                                            days
+                                                                      }
+                                                                      ogOldPrice={
+                                                                           old_price
                                                                       }
                                                                       ogPrice={
                                                                            price

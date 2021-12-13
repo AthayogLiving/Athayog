@@ -45,9 +45,23 @@ const AddOfferings = ({ type }) => {
           setTrial(!trial);
      };
 
-     const onCreateOffering = async ({ name, description, days, price }) => {
+     const onCreateOffering = async ({
+          name,
+          description,
+          days,
+          old_price,
+          price
+     }) => {
           setLoading(true);
-          await createOffering(name, description, days, price, trial, type)
+          await createOffering(
+               name,
+               description,
+               days,
+               old_price,
+               price,
+               trial,
+               type
+          )
                .then((response) => {
                     onClose();
                     reset();
@@ -125,23 +139,40 @@ const AddOfferings = ({ type }) => {
                                                   errors.description.message}
                                         </FormErrorMessage>
                                    </FormControl>
+                                   <FormControl id="days">
+                                        <FormLabel>Days</FormLabel>
+                                        <NumberInput>
+                                             <NumberInputField
+                                                  name="days"
+                                                  ref={register({
+                                                       required:
+                                                            'Please enter the days.'
+                                                  })}
+                                             />
+                                        </NumberInput>
+
+                                        <FormErrorMessage>
+                                             {errors.days &&
+                                                  errors.days.message}
+                                        </FormErrorMessage>
+                                   </FormControl>
                                    <HStack alignItems="start">
                                         {' '}
-                                        <FormControl id="days">
-                                             <FormLabel>Days</FormLabel>
+                                        <FormControl id="old_price">
+                                             <FormLabel>Old Price</FormLabel>
                                              <NumberInput>
                                                   <NumberInputField
-                                                       name="days"
+                                                       name="old_price"
                                                        ref={register({
                                                             required:
-                                                                 'Please enter the days.'
+                                                                 'Please enter the old price.'
                                                        })}
                                                   />
                                              </NumberInput>
 
                                              <FormErrorMessage>
-                                                  {errors.days &&
-                                                       errors.days.message}
+                                                  {errors.old_price &&
+                                                       errors.old_price.message}
                                              </FormErrorMessage>
                                         </FormControl>
                                         <FormControl id="price">

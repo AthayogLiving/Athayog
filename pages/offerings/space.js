@@ -9,6 +9,7 @@ import Pricing from '@/components/shared/Pricing';
 import IntensityTable from '@/components/shared/IntensityTable';
 import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';
+import ProsAndCons from '@/components/shared/ProsAndCons';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('space');
@@ -36,28 +37,44 @@ const Space = ({ offers, notFound }) => {
           classes: [
                {
                     className: 'Universal Harmony',
-                    classInfo: `A 75 minute class that revolves around grounding rituals, asana practices, pranayama, dharana and relaxation practice. This class helps with inculcating balance and harmonising with the inner universe.`
+                    classInfo: `A 60 minute class that revolves around grounding rituals, asana practices, pranayama, dharana and relaxation practice. This class helps with inculcating balance and harmonising with the inner universe.`
                },
                {
                     className: 'Transcending Transitions ',
-                    classInfo: `A 75 minute class that combines Hatha and Vinayasa along with grounding rituals, Surya Namaskar and asanas in an energetic and fluid Vinayasa style.`
+                    classInfo: `A 60 minute class that combines Hatha and Vinayasa along with grounding rituals, Surya Namaskar and asanas in an energetic and fluid Vinayasa style.`
                },
                {
                     className: 'Rhythm of Being',
-                    classInfo: `A 75 minute class that prioritises relaxed breathing through Hatha Asana. This class helps focusing on a dynamic practice in sync with the traditional Hatha asanas.`
+                    classInfo: `A 60 minute class that prioritises relaxed breathing through Hatha Asana. This class helps focusing on a dynamic practice in sync with the traditional Hatha asanas.`
                },
                {
                     className: 'Inner World',
-                    classInfo: `A 75 minute class that works on tuning your senses, withdrawing yourself from other states of consciousness and navigating through the inner world.`
+                    classInfo: `A 60 minute class that works on tuning your senses, withdrawing yourself from other states of consciousness and navigating through the inner world.`
                },
                {
                     className: 'Deep Space',
-                    classInfo: `A 75 minute class that immerses you in subtle breathing with your mind being the key. It includes dynamic breathing, internalisation techniques, pranayama and meditation to guide you through your mind and body’s deep space.`
+                    classInfo: `A 60 minute class that immerses you in subtle breathing with your mind being the key. It includes dynamic breathing, internalisation techniques, pranayama and meditation to guide you through your mind and body’s deep space.`
                },
                {
                     className: 'Little Star',
                     classInfo: `A 60 minute class to empower and nurture young minds to improve their focus and awareness. This is for the age groups 7-14 years.`
                }
+          ],
+          prosAndCons: [
+               [
+                    'Clarity of teacher’s demonstration and voice.',
+                    'Physical correction. ',
+                    'Experience of group energy as you practise with others.',
+                    'The advantage of physical space to practise.',
+                    'Teacher-Student connection/ bond Eg. Eye-eye contact with teacher and reassuring physical presence.'
+               ],
+               [
+                    'Travel to the studio.',
+                    'Fear of COVID-19 Safety among students.',
+                    'Need to allot time for both practise and travel',
+                    'During monsoon and winter weather, the student has to plan their time and commute.',
+                    'Being on time is crucial.'
+               ]
           ]
      };
 
@@ -73,6 +90,8 @@ const Space = ({ offers, notFound }) => {
                          : data.days + ' Days',
                     durationNum: data.days,
                     isTrial: data.isTrial,
+                    old_price: data.old_price,
+                    isGeneral: data.isGeneral,
                     price: data.price
                });
           }
@@ -93,6 +112,7 @@ const Space = ({ offers, notFound }) => {
                     registerTo={pageData.name.toLocaleLowerCase()}
                     pricing={apiPricing}
                />
+               <ProsAndCons data={pageData.prosAndCons} name="Space" />
           </motion.div>
      );
 };

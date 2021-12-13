@@ -1,18 +1,14 @@
-import sharath from 'public/sharath.jpg';
-import neeraj from 'public/neeraj.jpg';
-import manigandan from 'public/manigandan.jpg';
-import kavitha from 'public/kavitha.jpg';
 import anjali from 'public/anjali.jpg';
-import swathi from 'public/swathi.jpg';
-import deepak from 'public/deepak.jpg';
-import athayogSpace from 'public/athayogSpace.jpg';
 import athayogOnline from 'public/athayogOnline.jpg';
-import athayogShikshana from 'public/athayogShikshana.jpg';
 import athayogPersonal from 'public/athayogPersonal.jpeg';
+import athayogShikshana from 'public/athayogShikshana.jpg';
+import athayogSpace from 'public/athayogSpace.jpg';
 import athayogWorkshop from 'public/athayogWorkshop.jpg';
-import spandhana from 'public/spandhana.jpg';
+import deepak from 'public/deepak.jpg';
+import kavitha from 'public/kavitha.jpg';
 import prashant from 'public/prashant.jpg';
-import kamaljeet from 'public/kamaljeet.jpg';
+import sharath from 'public/sharath.jpeg';
+import spandhana from 'public/spandhana.jpg';
 
 export const offeringsData = {
      offering: [
@@ -156,20 +152,6 @@ export const EmployeeData = {
                image: prashant,
                visible: true,
                designation: 'Teacher'
-          },
-          {
-               name: 'Kamaljeet Mehla',
-               info: `Kamaljeet explored the world through yoga, fitness and art. He discovered immense healing powers of the body and mind. He has taught himself to be a healer. Though he had the love and support of a hard-working, kind and grounded family, at twenty he moved out to practice Sivananda yoga. He found solace in yoga nidra, in the simplicity of breathing and movement in the natural world.\n \nIn his own words, he is dorky, funny, difficult, moody, complex and creative. His highest purpose is to serve people with yoga, the same way he used the wisdom he found in depths and darkness to draw others out into light.`,
-               image: kamaljeet,
-               visible: true,
-               designation: 'Teacher'
-          },
-          {
-               name: 'Maniganandan Palluru',
-               info: `Without any formal, educational or professional background in Yog, Maniganandan still found himself engaging in it. He only began practicing Yog recently, but in this short span of time he has become an avid believer in its absolute power to transform and transcend all boundaries. Apart from recognizing how Yog plays a crucial part in improving one’s overall wellness and health, he has also started to feel the effects of the mental peace and clarity that comes with a consistent Yogic practice.\n \nHe has graduated with an M.tech, exhibiting a keen interest in Machine Design, Sales, Marketing and Design Engineering. Yog is the latest addition to his otherwise diversified portfolio. He now aspires to broaden his skillset and do so under the guidance of Yogic wisdom.\n \nManignandan draws inspiration from Sadhguru aka. Jaggi Vasudev, connecting with the grace in his spiritual teachings. He trusts in the immeasurable ability of Yog to change the way the world stands today, and enrich the quality of our lives as individuals.`,
-               image: manigandan,
-               visible: true,
-               designation: 'Operations Manager'
           }
      ]
 };
