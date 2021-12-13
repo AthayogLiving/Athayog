@@ -2,11 +2,16 @@ import { Box, Flex, Grid, Heading, Text } from '@chakra-ui/layout';
 import Link from 'next/link';
 import { Image } from '@chakra-ui/image';
 import React from 'react';
-import { MotionBox } from './MotionElements';
 import { Button } from '@chakra-ui/button';
 import sy1 from 'public/sy1.jpg';
 import sy2 from 'public/sy2.jpg';
 import mandala from 'public/mandala.svg';
+import imageOne from 'public/athayog_2021_6.jpg';
+import imageTwo from 'public/athayog_2021_2.jpg';
+import imageThree from 'public/athayog_2021_3.jpg';
+import imageFour from 'public/athayog_2021_4.jpg';
+import imageFive from 'public/athayog_2021_5.jpg';
+import imageSix from 'public/athayog_2021_6.jpg';
 const ShikshanaCourses = () => {
      let easing = [0.175, 0.85, 0.42, 0.96];
 
@@ -28,31 +33,31 @@ const ShikshanaCourses = () => {
                id: '1ATH',
                name: 'YIC - Yoga Instructor course',
                slug: 'yic-yoga-instructor-course',
-               image: sy1
+               image: imageOne
           },
           {
                id: '2ATH',
                name: 'RYT - 200 courses',
                slug: 'ryt-200-course',
-               image: sy2
+               image: imageTwo
           },
           {
                id: '3ATH',
                name: 'Short courses',
                slug: 'short-course',
-               image: 'https://images.unsplash.com/flagged/photo-1573556291531-a5d957d7e4e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+               image: imageThree
           },
           {
                id: '4ATH',
                name: 'Special Events',
                slug: 'special-events',
-               image: 'https://images.unsplash.com/photo-1597361767895-4c85305e54d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1182&q=80'
+               image: imageFour
           },
           {
                id: '5ATH',
                name: 'Athayog Sadhana',
                slug: 'athayog-sadhana',
-               image: 'https://images.unsplash.com/photo-1593810451410-8fbb422cc15e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80'
+               image: imageFive
           }
      ];
      return (
@@ -97,37 +102,42 @@ const ShikshanaCourses = () => {
                               return (
                                    <Box
                                         borderWidth="1px"
-                                        borderRadius="lg"
+                                        rounded="lg"
                                         overflow="hidden"
                                         bg="white"
                                         boxShadow="sm"
-                                        padding={6}
                                         height="100%"
                                         width="100%"
                                    >
-                                        <Heading
-                                             textAlign="center"
-                                             fontSize="1.3rem"
-                                        >
-                                             {name}
-                                        </Heading>
-                                        <Image
-                                             mt={6}
-                                             layout="fill"
-                                             objectFit="contain"
-                                             priority={true}
-                                             height="8rem"
-                                             width="100%"
-                                             style={{
-                                                  overflow: 'hidden'
-                                             }}
-                                             key="1"
-                                             className="object-center object-cover pointer-events-none"
-                                             src={mandala}
-                                             alt="space"
-                                        />
+                                        <Box position="relative">
+                                             <Image
+                                                  layout="fill"
+                                                  objectFit="contain"
+                                                  priority={true}
+                                                  width="100%"
+                                                  style={{
+                                                       overflow: 'hidden'
+                                                  }}
+                                                  key="1"
+                                                  className="object-center object-cover pointer-events-none"
+                                                  src={image}
+                                                  alt="space"
+                                             />
+                                             <Heading
+                                                  textAlign="center"
+                                                  fontSize="1.2rem"
+                                                  fontWeight="bold"
+                                                  position="absolute"
+                                             >
+                                                  {name}
+                                             </Heading>
+                                        </Box>
 
-                                        <Box mt={3}>
+                                        <Flex
+                                             p={6}
+                                             justifyContent="space-between"
+                                             alignItems="stretch"
+                                        >
                                              <Link
                                                   href={'shikshana/' + slug}
                                                   passHref
@@ -136,7 +146,6 @@ const ShikshanaCourses = () => {
                                                   <a>
                                                        <Button
                                                             width="full"
-                                                            mt="5"
                                                             variant="solid"
                                                             colorScheme="aygreen"
                                                        >
@@ -144,7 +153,7 @@ const ShikshanaCourses = () => {
                                                        </Button>
                                                   </a>
                                              </Link>
-                                        </Box>
+                                        </Flex>
                                    </Box>
                               );
                          })}

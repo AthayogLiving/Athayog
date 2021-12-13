@@ -1,18 +1,14 @@
-import sharath from 'public/sharath.jpeg';
-import neeraj from 'public/neeraj.jpg';
-import manigandan from 'public/manigandan.jpg';
-import kavitha from 'public/kavitha.jpg';
 import anjali from 'public/anjali.jpg';
-import swathi from 'public/swathi.jpg';
-import deepak from 'public/deepak.jpg';
-import athayogSpace from 'public/athayogSpace.jpg';
 import athayogOnline from 'public/athayogOnline.jpg';
-import athayogShikshana from 'public/athayogShikshana.jpg';
 import athayogPersonal from 'public/athayogPersonal.jpeg';
+import athayogShikshana from 'public/athayogShikshana.jpg';
+import athayogSpace from 'public/athayogSpace.jpg';
 import athayogWorkshop from 'public/athayogWorkshop.jpg';
-import spandhana from 'public/spandhana.jpg';
+import deepak from 'public/deepak.jpg';
+import kavitha from 'public/kavitha.jpg';
 import prashant from 'public/prashant.jpg';
-import kamaljeet from 'public/kamaljeet.jpg';
+import sharath from 'public/sharath.jpeg';
+import spandhana from 'public/spandhana.jpg';
 
 export const offeringsData = {
      offering: [
