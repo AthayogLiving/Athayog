@@ -44,7 +44,7 @@ function ShikshanaCalendarTable({ calendar }) {
                                              textTransform="uppercase"
                                              textDecoration="underline"
                                         >
-                                             {name} Calendar
+                                             {name} Calendar 2022
                                         </Heading>
                                         {data.map(
                                              ({

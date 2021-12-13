@@ -21,7 +21,7 @@ function SpecialEvent() {
                details: [
                     {
                          name: 'Swami Vivekananda Birthday',
-                         date: '12th Jan'
+                         date: '12th Jan 2022'
                     },
                     {
                          name: 'Maha Shivratri Homam',
@@ -29,15 +29,15 @@ function SpecialEvent() {
                     },
                     {
                          name: 'International Day of Yoga',
-                         date: '21st June'
+                         date: '21st June 2022'
                     },
                     {
                          name: 'Guru Purnima',
-                         date: '13th July'
+                         date: '13th July 2022'
                     },
                     {
                          name: 'Teachers Day',
-                         date: '5th Sep'
+                         date: '5th Sep 2022'
                     },
                     {
                          name: 'KR Puram 2nd Anniversary',

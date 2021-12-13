@@ -3,7 +3,9 @@ import NavbarHelper from '@/components/shared/NavbarHelper';
 import HeaderLayout from '@/components/shared/offerings/HeaderLayout';
 import ShikshanaCalendarTable from '@/components/shared/ShikshanaCalendarTable';
 import ShikshanaInformation from '@/components/shared/ShikshanaInformation';
-import { Box, Flex, Heading, HStack, Stack, Text } from '@chakra-ui/layout';
+import { Box, Flex, Heading, HStack, Stack, Text , ListItem,
+     OrderedList,} from '@chakra-ui/layout';
+
 import { chakra } from '@chakra-ui/system';
 import {
      Table,
@@ -11,6 +13,8 @@ import {
      Tbody,
      Td,
      Th,
+  
+    
      Thead,
      Tr
 } from '@chakra-ui/table';
@@ -21,7 +25,7 @@ import { MdLocationOn } from 'react-icons/md';
 function YicYoga() {
      const specialEvent = [
           {
-               time: '6am - 8:30am (Weekday, MonFri)',
+               time: '6am - 8:30am (Weekday, Mon-Fri)',
                location: 'KR Puram',
                months: ['January', 'May', 'September'],
                courseName: null,
@@ -38,7 +42,7 @@ function YicYoga() {
                ]
           },
           {
-               time: '11:00am - 4pm (Weekday, MonFri)',
+               time: '11:00am - 4pm (Weekday, Mon-Fri)',
                location: 'Indiranagar',
                months: ['January', 'April', 'July', 'October'],
                courseName: null,
@@ -58,27 +62,20 @@ function YicYoga() {
                ]
           },
           {
-               time: '11am - 4pm (Weekend, SatSun)',
+               time: '11am - 4pm (Weekend, Sat-Sun)',
                location: 'Indiranagar',
-               months: ['February'],
+               months: ['February','August'],
                courseName: null,
                details: [
                     {
-                         date: '5th February 2022 - 18th June 2022 '
+                         date: '5th February 2022 - 18th June 2022 (Indiranagar) '
+                    },
+                    {
+                         date: '6th August 2022 - 11th December 2022 (KR Puram)'
                     }
+                    
                ]
           },
-          {
-               time: '11am - 4pm (Weekend, SatSun)',
-               location: 'KR Puram',
-               months: ['February'],
-               courseName: null,
-               details: [
-                    {
-                         date: '6th August 2022 - 11th December 2022 '
-                    }
-               ]
-          }
      ];
      const events = [
           {
@@ -111,6 +108,141 @@ function YicYoga() {
                          Applications of Yoga.
                     </Text>
                </Stack>
+               <Box mt={10}>
+                         <Heading
+                              fontWeight="normal"
+                              fontSize={{
+                                   base: '1.5rem',
+                                   md: '2rem',
+                                   lg: '2rem'
+                              }}
+                         >
+                              The syllabus consists of topics like :
+                         </Heading>
+                         <Flex
+                              padding={{
+                                   base: '1rem 0',
+                                   md: '1rem 0',
+                                   lg: '2rem 0'
+                              }}
+                              justifyContent="space-between"
+                         >
+                              <OrderedList spacing={20}>
+                                   <HStack
+                                        justifyContent="space-between"
+                                        alignItems="flex-start"
+                                        spacing={{
+                                             base: 0,
+                                             md: 20,
+                                             lg: 20
+                                        }}
+                                        flexDirection={{
+                                             base: 'column',
+                                             md: 'row',
+                                             lg: 'row'
+                                        }}
+                                   >
+                                        <Box>
+                                             <ListItem>
+                                                  Introduction to Yoga and its
+                                                  Streams
+                                             </ListItem>
+                                             <ListItem>
+                                                  Life and Message of Spiritual
+                                                  Masters & Indian Culture
+                                             </ListItem>
+                                             <ListItem>
+                                                  Report Writing & Presentation
+                                             </ListItem>
+                                             <ListItem>
+                                                  Kriyā, Āsana, Prāṇāyāma,
+                                                  Dhyāna – Practice &
+                                                  Presentation
+                                             </ListItem>
+                                             <ListItem>
+                                                  Teaching Techniques -
+                                                  Worksheet Writing &
+                                                  Presentation
+                                             </ListItem>
+                                             <ListItem>
+                                                  Karma Yoga, Maitri Milana,
+                                                  Kīrtana, Krīḍa Yoga & Ānanda
+                                                  Sabhā
+                                             </ListItem>
+                                        </Box>
+                                   </HStack>
+                              </OrderedList>
+                         </Flex>
+                    </Box>
+                    <Box mt={10}>
+                         <Heading
+                              fontWeight="normal"
+                              fontSize={{
+                                   base: '1.5rem',
+                                   md: '2rem',
+                                   lg: '2rem'
+                              }}
+                         >
+                              Course Inclusion
+                         </Heading>
+                         <Flex
+                              padding={{
+                                   base: '1rem 0',
+                                   md: '1rem 0',
+                                   lg: '2rem 0'
+                              }}
+                              justifyContent="space-between"
+                         >
+                              <OrderedList spacing={20}>
+                                   <HStack
+                                        justifyContent="space-between"
+                                        alignItems="flex-start"
+                                        spacing={{
+                                             base: 0,
+                                             md: 20,
+                                             lg: 20
+                                        }}
+                                        flexDirection={{
+                                             base: 'column',
+                                             md: 'row',
+                                             lg: 'row'
+                                        }}
+                                   >
+                                        <Box>
+                                             <ListItem>
+                                                  Classical Asanas
+                                             </ListItem>
+                                             <ListItem>Pranayama</ListItem>
+                                             <ListItem>Yoga Nidra</ListItem>
+                                             <ListItem>
+                                                  Anatomy & Physiology
+                                             </ListItem>
+                                             <ListItem>Philosophy</ListItem>
+                                             <ListItem>
+                                                  Yoga Text / Yoga Sutra -
+                                                  Bhagvatgita
+                                             </ListItem>
+                                             <ListItem>Ayurveda</ListItem>
+                                        </Box>
+                                        <Box>
+                                             <ListItem>Shatkarma</ListItem>
+                                             <ListItem>Chanting</ListItem>
+                                             <ListItem>2 Days Retreat</ListItem>
+                                             <ListItem>
+                                                  Teaching Methodology
+                                             </ListItem>
+                                             <ListItem>
+                                                  Class Apprenticeship
+                                             </ListItem>
+                                             <ListItem>Internship</ListItem>
+                                             <ListItem>
+                                                  Career Opportunity
+                                             </ListItem>
+                                        </Box>
+                                   </HStack>
+                              </OrderedList>
+                         </Flex>
+                    </Box>
                <ShikshanaCalendarTable calendar={events} />
           </HeaderLayout>
      );

@@ -12,13 +12,13 @@ function AthayogSadhana() {
                courseName: 'AthaYog Sadhana Abhyasa - Asana ',
                details: [
                     {
-                         date: '5th Jan - 25th Jan'
+                         date: '5th Jan 2022 - 25th Jan 2022'
                     },
                     {
-                         date: '1st May - 21st May '
+                         date: '1st May 2022 - 21st May 2022'
                     },
                     {
-                         date: '1st May - 21st May'
+                         date: '1st May 2022 - 21st May 2022'
                     }
                ]
           },
@@ -28,13 +28,13 @@ function AthayogSadhana() {
                courseName: 'AthaYog Sadhana Abhyasa - Pranayama',
                details: [
                     {
-                         date: '1st Feb - 21st Feb'
+                         date: '1st Feb 2022 - 21st Feb 2022'
                     },
                     {
-                         date: '1st June - 21st June'
+                         date: '1st June 2022 - 21st June 2022'
                     },
                     {
-                         date: '1st Oct - 21st Oct'
+                         date: '1st Oct 2022 - 21st Oct 2022'
                     }
                ]
           },
@@ -44,13 +44,13 @@ function AthayogSadhana() {
                courseName: 'AthaYog Sadhana Manayog - Meditation',
                details: [
                     {
-                         date: '1st March - 21st March'
+                         date: '1st March 2022 - 21st March 2022'
                     },
                     {
-                         date: '1st July - 21st July'
+                         date: '1st July 2022 - 21st July 2022'
                     },
                     {
-                         date: '1st Nov - 21st Nov'
+                         date: '1st Nov 2022 - 21st Nov 2022'
                     }
                ]
           },
@@ -60,13 +60,13 @@ function AthayogSadhana() {
                courseName: 'AthaYog Sadhana Manayog - Kaivalya 1',
                details: [
                     {
-                         date: '1st April - 21st April'
+                         date: '1st April 2022 - 21st April 2022'
                     },
                     {
-                         date: '1st Aug - 21st Aug'
+                         date: '1st Aug 2022 - 21st Aug 2022'
                     },
                     {
-                         date: '1st Dec - 21st Dec'
+                         date: '1st Dec 2022 - 21st Dec 2022'
                     }
                ]
           }

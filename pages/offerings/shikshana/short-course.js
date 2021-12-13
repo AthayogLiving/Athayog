@@ -12,11 +12,11 @@ function ShortCourses() {
                details: [
                     {
                          name: 'Advance Hata',
-                         date: '4th April - 25th April '
+                         date: '4th April 2022 - 25th April 2022'
                     },
                     {
                          name: 'Ashtanga Vinyasa',
-                         date: '1st August - 22nd August'
+                         date: '1st August 2022 - 22nd August 2022'
                     }
                ]
           },
@@ -27,15 +27,15 @@ function ShortCourses() {
                details: [
                     {
                          name: 'Ashtanga Vinyasa',
-                         date: '2nd Feb - 22nd Feb '
+                         date: '2nd Feb 2022 - 22nd Feb 2022 '
                     },
                     {
                          name: 'Advance Hata',
-                         date: '6th June - 24th June'
+                         date: '6th June 2022 - 24th June 2022'
                     },
                     {
                          name: 'Ashtanga Vinyasa',
-                         date: '3rd Oct - 21st Oct'
+                         date: '3rd Oct 2022 - 21st Oct 2022'
                     }
                ]
           },
@@ -46,23 +46,23 @@ function ShortCourses() {
                details: [
                     {
                          name: 'Chakra Meditation',
-                         date: '7th March - 11th March '
+                         date: '7th March 2022 - 11th March 2022'
                     },
                     {
                          name: 'Kids Yoga Camp',
-                         date: '2nd May - 13th May'
+                         date: '2nd May 2022 - 13th May 2022'
                     },
                     {
                          name: 'Anatomy',
-                         date: '7th June - 25th June'
+                         date: '7th June 2022 - 25th June 2022'
                     },
                     {
                          name: 'Yoga Nidra',
-                         date: '5th Sep- 9th Sep'
+                         date: '5th Sep 2022 - 9th Sep 2022'
                     },
                     {
                          name: 'Chakra Meditation',
-                         date: '7th Nov - 11th Nov'
+                         date: '7th Nov 2022 - 11th Nov 2022'
                     }
                ]
           }
@@ -76,19 +76,19 @@ function ShortCourses() {
                details: [
                     {
                          name: 'Yoga spiritual retreat',
-                         date: ' 14th Jan(eve) - 17th Jan(Mng)'
+                         date: ' 14th Jan(eve) 2022 - 17th Jan(Mng) 2022'
                     },
                     {
                          name: 'Chaitra Navaratri Sadhana',
-                         date: '2nd April - 11th April (6pm - 7pm)'
+                         date: '2nd April 2022 - 11th April (6pm - 7pm) 2022'
                     },
                     {
                          name: 'Yoga spiritual retreat',
-                         date: '12th Aug(eve) - 15th Aug(Mng)'
+                         date: '12th Aug(eve) 2022 - 15th Aug(Mng) 2022'
                     },
                     {
                          name: 'Sharad Navaratri Sadhana',
-                         date: ' 26th Sep - 5th Oct (6pm - 7pm)'
+                         date: ' 26th Sep 2022 - 5th Oct 2022 (6pm - 7pm)'
                     }
                ]
           }

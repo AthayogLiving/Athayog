@@ -16,7 +16,7 @@ import React from 'react';
 function RYT200Courses() {
      const rytEvents = [
           {
-               time: '6am - 8:30am (Weekday, MonFri)',
+               time: '6am - 8:30am (Weekday, Mon-Fri)',
                location: 'KR Puram',
                months: ['January', 'May', 'September'],
                courseName: null,
@@ -33,7 +33,7 @@ function RYT200Courses() {
                ]
           },
           {
-               time: '11:00am - 4pm (Weekday, MonFri)',
+               time: '11:00am - 4pm (Weekday, Mon-Fri)',
                location: 'Indiranagar',
                months: ['January', 'April', 'July', 'October'],
                courseName: null,
@@ -53,27 +53,21 @@ function RYT200Courses() {
                ]
           },
           {
-               time: '11am - 4pm (Weekend, SatSun)',
+               time: '11am - 4pm (Weekend, Sat-Sun)',
                location: 'Indiranagar',
-               months: ['February'],
+               months: ['February','August'],
                courseName: null,
                details: [
                     {
-                         date: '5th February 2022 - 18th June 2022 '
+                         date: '5th February 2022 - 18th June 2022 (Indiranagar) '
+                    },
+                    {
+                         date: '6th August 2022 - 11th December 2022 (KR Puram)'
                     }
+                    
                ]
           },
-          {
-               time: '11am - 4pm (Weekend, SatSun)',
-               location: 'KR Puram',
-               months: ['February'],
-               courseName: null,
-               details: [
-                    {
-                         date: '6th August 2022 - 11th December 2022 '
-                    }
-               ]
-          }
+         
      ];
      const events = [
           {
