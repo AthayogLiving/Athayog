@@ -175,6 +175,7 @@ const Navbar = () => {
                                              About
                                         </Button>
                                    </Link>
+                                   
                                    <SMenu
                                         menuButton={
                                              <SMenuButton>
@@ -248,15 +249,7 @@ const Navbar = () => {
                                              >
                                                   Shikshana Pada
                                              </SMenuItem>
-                                             <SMenuItem
-                                                  onClick={() =>
-                                                       router.push(
-                                                            '/offerings/shikshana/graduates'
-                                                       )
-                                                  }
-                                             >
-                                                  RYT 200 Graduates
-                                             </SMenuItem>
+                                            
                                              <SMenuItem
                                                   onClick={() =>
                                                        router.push(
@@ -301,6 +294,15 @@ const Navbar = () => {
                                                   }
                                              >
                                                   Athayog Sadhana
+                                             </SMenuItem>
+                                             <SMenuItem
+                                                  onClick={() =>
+                                                       router.push(
+                                                            '/offerings/shikshana/graduates'
+                                                       )
+                                                  }
+                                             >
+                                                  RYT 200 Graduates
                                              </SMenuItem>
                                         </SSubMenu>
                                    </SMenu>

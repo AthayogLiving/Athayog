@@ -81,7 +81,7 @@ function AthayogSadhana() {
           <HeaderLayout>
                <Heading>Athayog Sadhana </Heading>
                <Stack spacing={2} my={5}>
-                    <Text>
+                    {/* <Text>
                          Lorem ipsum dolor sit amet consectetur adipisicing
                          elit. Reiciendis sint, eos delectus sed reprehenderit
                          itaque. Eveniet consequuntur nobis veniam debitis at,
@@ -103,7 +103,7 @@ function AthayogSadhana() {
                          animi ipsam hic totam. Dolorum quasi a recusandae minus
                          magni rerum, neque maiores, veniam deserunt aspernatur
                          porro ipsa enim modi nemo! Atque, architecto et.
-                    </Text>
+                    </Text> */}
                </Stack>
                <ShikshanaCalendarTable calendar={events} />
           </HeaderLayout>

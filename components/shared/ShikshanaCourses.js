@@ -6,6 +6,13 @@ import { MotionBox } from './MotionElements';
 import { Button } from '@chakra-ui/button';
 import sy1 from 'public/sy1.jpg';
 import sy2 from 'public/sy2.jpg';
+import s1 from 'public/shi_1-min.jpg';
+import s2 from 'public/shi_2-min.jpg';
+import s3 from 'public/shi_3-min.jpg';
+import s4 from 'public/shi_4-min.jpg';
+import s5 from 'public/shi_5-min.jpg';
+import s6 from 'public/shi_6-min.jpg';
+
 import mandala from 'public/mandala.svg';
 const ShikshanaCourses = () => {
      let easing = [0.175, 0.85, 0.42, 0.96];
@@ -28,31 +35,31 @@ const ShikshanaCourses = () => {
                id: '1ATH',
                name: 'YIC - Yoga Instructor course',
                slug: 'yic-yoga-instructor-course',
-               image: sy1
+               image: s6
           },
           {
                id: '2ATH',
                name: 'RYT - 200 courses',
                slug: 'ryt-200-course',
-               image: sy2
+               image: s2
           },
           {
                id: '3ATH',
                name: 'Short courses',
                slug: 'short-course',
-               image: 'https://images.unsplash.com/flagged/photo-1573556291531-a5d957d7e4e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+               image: s3
           },
           {
                id: '4ATH',
                name: 'Special Events',
                slug: 'special-events',
-               image: 'https://images.unsplash.com/photo-1597361767895-4c85305e54d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1182&q=80'
+               image: s4
           },
           {
                id: '5ATH',
                name: 'Athayog Sadhana',
                slug: 'athayog-sadhana',
-               image: 'https://images.unsplash.com/photo-1593810451410-8fbb422cc15e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80'
+               image: s5
           }
      ];
      return (
@@ -87,11 +94,12 @@ const ShikshanaCourses = () => {
                     </Heading>
                     <Grid
                          gridTemplateColumns="repeat(auto-fit, minmax(300px, 1fr))"
-                         gridGap="5"
+                         gridGap="10"
                          width="100%"
                          mt={10}
                          alignItems="center"
                          justifyContent="strech"
+                         padding='0 0.5rem'
                     >
                          {courses.map(({ id, name, slug, desc, image }) => {
                               return (
@@ -100,43 +108,54 @@ const ShikshanaCourses = () => {
                                         borderRadius="lg"
                                         overflow="hidden"
                                         bg="white"
+                                        width='xsm'
                                         boxShadow="sm"
-                                        padding={6}
-                                        height="100%"
-                                        width="100%"
+
                                    >
-                                        <Heading
-                                             textAlign="center"
-                                             fontSize="1.3rem"
-                                        >
-                                             {name}
-                                        </Heading>
+
                                         <Image
-                                             mt={6}
-                                             layout="fill"
-                                             objectFit="contain"
+
+                                             layout="instrinsic"
+
                                              priority={true}
-                                             height="8rem"
+                                             height="100%"
                                              width="100%"
                                              style={{
                                                   overflow: 'hidden'
                                              }}
                                              key="1"
-                                             className="object-center object-cover pointer-events-none"
-                                             src={mandala}
+
+                                             src={image}
                                              alt="space"
                                         />
 
-                                        <Box mt={3}>
+                                        <Box p={6} position='relative'>
+                                             <Heading
+                                                  textAlign="center"
+                                                  as='h5' size='md'
+                                                  position='absolute'
+                                                  top="-5"
+                                                  left="50%"
+                                                  width='100%'
+                                                  boxShadow='base'
+                                                  transform='translate(-50%,0)'
+                                                  bg='aygreen.200'
+                                                  padding="2"
+                                                  rounded='base'
+                                             >
+                                                  {name}
+                                             </Heading>
                                              <Link
                                                   href={'shikshana/' + slug}
                                                   passHref
                                                   style={{ cursor: 'pointer' }}
                                              >
+
                                                   <a>
                                                        <Button
                                                             width="full"
                                                             mt="5"
+                                                            size='sm'
                                                             variant="solid"
                                                             colorScheme="aygreen"
                                                        >
