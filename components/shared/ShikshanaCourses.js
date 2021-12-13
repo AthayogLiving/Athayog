@@ -93,13 +93,13 @@ const ShikshanaCourses = () => {
                          Shikshana Courses
                     </Heading>
                     <Grid
-                         gridTemplateColumns="repeat(auto-fit, minmax(300px, 1fr))"
+                         gridTemplateColumns="repeat(auto-fit, minmax(250px, 1fr))"
                          gridGap="10"
                          width="100%"
                          mt={10}
                          alignItems="center"
                          justifyContent="strech"
-                         padding='0 0.5rem'
+                         padding='0 2rem'
                     >
                          {courses.map(({ id, name, slug, desc, image }) => {
                               return (
@@ -129,32 +129,33 @@ const ShikshanaCourses = () => {
                                              alt="space"
                                         />
 
-                                        <Box p={6} position='relative'>
+                                        <Box  position='relative'  >
                                              <Heading
                                                   textAlign="center"
                                                   as='h5' size='md'
-                                                  position='absolute'
-                                                  top="-5"
-                                                  left="50%"
+                                                  
                                                   width='100%'
-                                                  boxShadow='base'
-                                                  transform='translate(-50%,0)'
-                                                  bg='aygreen.200'
+                                                
+                                                  borderBottom='1px'
+                                                  borderColor='gray.300'
+                                                  bg='white'
                                                   padding="2"
-                                                  rounded='base'
+                                                 
                                              >
                                                   {name}
                                              </Heading>
-                                             <Link
+                                             <Box padding="5"><Link
                                                   href={'shikshana/' + slug}
                                                   scroll={false}
+                                                 
                                                   passHref
                                                   style={{ cursor: 'pointer' }}
                                              >
                                                   <a>
                                                        <Button
+                                                     
                                                             width="full"
-                                                            mt="5"
+                                                           
                                                             size='sm'
                                                             variant="solid"
                                                             colorScheme="aygreen"
@@ -162,7 +163,8 @@ const ShikshanaCourses = () => {
                                                             Checkout
                                                        </Button>
                                                   </a>
-                                             </Link>
+                                             </Link></Box>
+                                             
                                         </Box>
                                    </Box>
                               );
