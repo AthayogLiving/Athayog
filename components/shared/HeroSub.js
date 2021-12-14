@@ -43,12 +43,9 @@ const HeroSub = (props) => {
                     <Box
                          height="100%"
                          bg={{
-                              sm:
-                                   'linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%)',
-                              base:
-                                   'linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%)',
-                              md:
-                                   'linear-gradient(to bottom, rgba(0,0,0,0) 50%,rgba(0,0,0,0.8) 100%)'
+                              sm: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%)',
+                              base: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%)',
+                              md: 'linear-gradient(to bottom, rgba(0,0,0,0) 50%,rgba(0,0,0,0.8) 100%)'
                          }}
                          width="100%"
                          zIndex={1}
@@ -117,7 +114,7 @@ const HeroSub = (props) => {
                          key="1"
                          className="object-center object-cover pointer-events-none"
                          src={heroImage}
-                         alt="space"
+                         alt="class"
                     />
                </Flex>
           </>

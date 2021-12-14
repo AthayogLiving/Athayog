@@ -253,69 +253,6 @@ const Online = ({ offers, notFound }) => {
                               </Table>
                          </Box>
 
-                         <Heading
-                              fontWeight="normal"
-                              fontSize={{ base: '2xl', md: '3xl' }}
-                              mt={20}
-                         >
-                              Athayog Sadhana
-                         </Heading>
-
-                         <Box
-                              overflowX="auto"
-                              width="100%"
-                              boxShadow="base"
-                              rounded="lg"
-                              mt={10}
-                         >
-                              <Table
-                                   variant="simple"
-                                   size="md"
-                                   bg="white"
-                                   colorScheme="aygreen"
-                                   className="scheduleTable"
-                              >
-                                   <Thead>
-                                        <Tr>
-                                             <Th bg="aygreen.200">Time</Th>
-                                             <Th bg="aygreen.200">Monday</Th>
-                                             <Th bg="aygreen.200">Tuesday</Th>
-                                             <Th bg="aygreen.200">Wednesday</Th>
-                                             <Th bg="aygreen.200">Thursday</Th>
-                                             <Th bg="aygreen.200">Friday</Th>
-                                             <Th bg="aygreen.200">Saturday</Th>
-                                             <Th bg="aygreen.200">Sunday</Th>
-                                        </Tr>
-                                   </Thead>
-                                   <Tbody>
-                                        <Tr>
-                                             <Td bg="aygreen.100">
-                                                  6:00 AM - 7:30 AM
-                                             </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                        </Tr>
-                                        <Tr>
-                                             <Td bg="aygreen.100">
-                                                  6:00 PM - 7:30 PM
-                                             </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                             <Td>Athayog sadhana </Td>
-                                        </Tr>
-                                   </Tbody>
-                              </Table>
-                         </Box>
-
                          <Box mt={10} textAlign="left" width="100%">
                               <Text fontWeight="medium">Working hours:</Text>
                               <Text>

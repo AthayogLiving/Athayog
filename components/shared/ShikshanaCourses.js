@@ -44,6 +44,12 @@ const ShikshanaCourses = () => {
                image: s2
           },
           {
+               id: '5ATH',
+               name: 'Athayog Sadhana',
+               slug: 'athayog-sadhana',
+               image: s5
+          },
+          {
                id: '3ATH',
                name: 'Short courses',
                slug: 'short-course',
@@ -54,12 +60,6 @@ const ShikshanaCourses = () => {
                name: 'Special Events',
                slug: 'special-events',
                image: s4
-          },
-          {
-               id: '5ATH',
-               name: 'Athayog Sadhana',
-               slug: 'athayog-sadhana',
-               image: s5
           }
      ];
      return (
@@ -90,7 +90,7 @@ const ShikshanaCourses = () => {
                               lg: '2rem'
                          }}
                     >
-                         Shikshana Courses
+                         Shikshana Pada
                     </Heading>
                     <Grid
                          gridTemplateColumns="repeat(auto-fit, minmax(230px, 1fr))"
@@ -99,7 +99,7 @@ const ShikshanaCourses = () => {
                          mt={10}
                          alignItems="center"
                          justifyContent="strech"
-                         padding='0 2rem'
+                         padding="0 2rem"
                     >
                          {courses.map(({ id, name, slug, desc, image }) => {
                               return (
@@ -108,15 +108,10 @@ const ShikshanaCourses = () => {
                                         borderRadius="lg"
                                         overflow="hidden"
                                         bg="white"
-                                      
                                         boxShadow="sm"
-
                                    >
-
                                         <Image
-
                                              layout="instrinsic"
-
                                              priority={true}
                                              height="100%"
                                              width="100%"
@@ -124,46 +119,46 @@ const ShikshanaCourses = () => {
                                                   overflow: 'hidden'
                                              }}
                                              key="1"
-
                                              src={image}
                                              alt="space"
                                         />
 
-                                        <Box  position='relative'  >
+                                        <Box position="relative">
                                              <Heading
                                                   textAlign="center"
-                                                  as='h5' size='md'
-                                                  
-                                                  width='100%'
-                                                
-                                                  borderBottom='1px'
-                                                  borderColor='gray.300'
-                                                  bg='white'
+                                                  as="h5"
+                                                  size="md"
+                                                  width="100%"
+                                                  borderBottom="1px"
+                                                  borderColor="gray.300"
+                                                  bg="white"
                                                   padding="2"
-                                                 
                                              >
                                                   {name}
                                              </Heading>
-                                             <Box padding="5"><Link
-                                                  href={'shikshana/' + slug}
-                                                  scroll={true}
-                                                  passHref
-                                                  style={{ cursor: 'pointer' }}
-                                             >
-                                                  <a>
-                                                       <Button
-                                                     
-                                                            width="full"
-                                                           
-                                                            size='sm'
-                                                            variant="solid"
-                                                            colorScheme="aygreen"
-                                                       >
-                                                            Checkout
-                                                       </Button>
-                                                  </a>
-                                             </Link></Box>
-                                             
+                                             <Box padding="5">
+                                                  <Link
+                                                       href={
+                                                            'shikshana/' + slug
+                                                       }
+                                                       scroll={true}
+                                                       passHref
+                                                       style={{
+                                                            cursor: 'pointer'
+                                                       }}
+                                                  >
+                                                       <a>
+                                                            <Button
+                                                                 width="full"
+                                                                 size="sm"
+                                                                 variant="solid"
+                                                                 colorScheme="aygreen"
+                                                            >
+                                                                 Checkout
+                                                            </Button>
+                                                       </a>
+                                                  </Link>
+                                             </Box>
                                         </Box>
                                    </Box>
                               );

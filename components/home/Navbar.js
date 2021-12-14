@@ -175,7 +175,7 @@ const Navbar = () => {
                                              About
                                         </Button>
                                    </Link>
-                                   <Link href="/classes" as="classes">
+                                   <Link href="/classes">
                                         <Button
                                              fontWeight="normal"
                                              fontSize="md"
@@ -198,7 +198,7 @@ const Navbar = () => {
                                              Classes
                                         </Button>
                                    </Link>
-                                   <Link href="/courses" as="courses">
+                                   <Link href="/courses">
                                         <Button
                                              fontWeight="normal"
                                              fontSize="md"
@@ -463,7 +463,7 @@ const Navbar = () => {
                                                   onClick={onClose}
                                                   isActive={
                                                        router.pathname ==
-                                                            '/about'
+                                                       '/about'
                                                             ? true
                                                             : ''
                                                   }
@@ -475,15 +475,13 @@ const Navbar = () => {
                                                   About Us
                                              </Button>
                                         </Link>
-                                       
 
-                                       
                                         <Link href="/classes">
                                              <Button
                                                   onClick={onClose}
                                                   isActive={
                                                        router.pathname ==
-                                                            '/classes'
+                                                       '/classes'
                                                             ? true
                                                             : ''
                                                   }
@@ -500,7 +498,7 @@ const Navbar = () => {
                                                   onClick={onClose}
                                                   isActive={
                                                        router.pathname ==
-                                                            '/courses'
+                                                       '/courses'
                                                             ? true
                                                             : ''
                                                   }
@@ -512,7 +510,6 @@ const Navbar = () => {
                                                   Athayog Courses
                                              </Button>
                                         </Link>
-                                      
                                    </VStack>
                               </DrawerBody>
 
