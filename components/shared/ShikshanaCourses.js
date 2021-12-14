@@ -127,12 +127,13 @@ const ShikshanaCourses = () => {
                                              <Heading
                                                   textAlign="center"
                                                   as="h5"
-                                                  size="md"
+                                                  size="sm"
                                                   width="100%"
                                                   borderBottom="1px"
-                                                  borderColor="gray.300"
-                                                  bg="white"
-                                                  padding="2"
+                                                  borderColor="gray.200"
+                                                  fontWeight="medium"
+                                                  bg="gray.50"
+                                                  padding="3"
                                              >
                                                   {name}
                                              </Heading>
