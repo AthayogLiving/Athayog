@@ -175,8 +175,54 @@ const Navbar = () => {
                                              About
                                         </Button>
                                    </Link>
-                                   
-                                   <SMenu
+                                   <Link href="/classes">
+                                        <Button
+                                             fontWeight="normal"
+                                             fontSize="md"
+                                             variant="ghost"
+                                             bg="transparent"
+                                             _hover={{
+                                                  bg: 'aygreen.100'
+                                             }}
+                                             _active={{
+                                                  bg: 'aygreen.100',
+                                                  transform: 'scale(0.98)',
+                                                  borderColor: '#bec3c9'
+                                             }}
+                                             isActive={
+                                                  router.pathname == '/classes'
+                                                       ? true
+                                                       : ''
+                                             }
+                                        >
+                                             Classes
+                                        </Button>
+                                   </Link>
+                                   <Link href="/courses">
+                                        <Button
+                                             fontWeight="normal"
+                                             fontSize="md"
+                                             variant="ghost"
+                                             bg="transparent"
+                                             _hover={{
+                                                  bg: 'aygreen.100'
+                                             }}
+                                             _active={{
+                                                  bg: 'aygreen.100',
+                                                  transform: 'scale(0.98)',
+                                                  borderColor: '#bec3c9'
+                                             }}
+                                             isActive={
+                                                  router.pathname == '/courses'
+                                                       ? true
+                                                       : ''
+                                             }
+                                        >
+                                             Courses
+                                        </Button>
+                                   </Link>
+
+                                   {/* <SMenu
                                         menuButton={
                                              <SMenuButton>
                                                   Offerings <ChevronDownIcon />
@@ -305,7 +351,7 @@ const Navbar = () => {
                                                   RYT 200 Graduates
                                              </SMenuItem>
                                         </SSubMenu>
-                                   </SMenu>
+                                   </SMenu> */}
                               </HStack>
 
                               <HStack
@@ -429,204 +475,13 @@ const Navbar = () => {
                                                   About Us
                                              </Button>
                                         </Link>
-                                        <Link href="/offerings/space">
-                                             <Button
-                                                  onClick={onClose}
-                                                  isActive={
-                                                       router.pathname ==
-                                                       '/offerings/space'
-                                                            ? true
-                                                            : ''
-                                                  }
-                                                  rounded="md"
-                                                  variant="ghost"
-                                                  colorScheme="aygreen"
-                                                  justifyContent="left"
-                                             >
-                                                  Athayog Space
-                                             </Button>
-                                        </Link>
 
-                                        <Accordion
-                                             border="none"
-                                             borderColor="transparent"
-                                             colorScheme="aygreen"
-                                             allowToggle
-                                        >
-                                             <AccordionItem>
-                                                  <h2>
-                                                       <AccordionButton>
-                                                            <Box
-                                                                 flex="1"
-                                                                 textAlign="left"
-                                                                 color="aygreen.600"
-                                                            >
-                                                                 Athayog
-                                                                 Shikshana Pada
-                                                            </Box>
-                                                            <AccordionIcon />
-                                                       </AccordionButton>
-                                                  </h2>
-                                                  <AccordionPanel pb={4}>
-                                                       <VStack spacing="3">
-                                                            <Link href="/offerings/shikshana">
-                                                                 <Button
-                                                                      onClick={
-                                                                           onClose
-                                                                      }
-                                                                      isActive={
-                                                                           router.pathname ==
-                                                                           '/offerings/shikshana'
-                                                                                ? true
-                                                                                : ''
-                                                                      }
-                                                                      width="full"
-                                                                      rounded="md"
-                                                                      variant="ghost"
-                                                                      colorScheme="aygreen"
-                                                                      justifyContent="left"
-                                                                 >
-                                                                      Shikshana
-                                                                      Pada
-                                                                 </Button>
-                                                            </Link>
-                                                            <Link href="/offerings/shikshana/graduates">
-                                                                 <Button
-                                                                      onClick={
-                                                                           onClose
-                                                                      }
-                                                                      isActive={
-                                                                           router.pathname ==
-                                                                           '/offerings/shikshana/graduates'
-                                                                                ? true
-                                                                                : ''
-                                                                      }
-                                                                      rounded="md"
-                                                                      variant="ghost"
-                                                                      width="full"
-                                                                      colorScheme="aygreen"
-                                                                      justifyContent="left"
-                                                                 >
-                                                                      RYT 200
-                                                                      Graduates
-                                                                 </Button>
-                                                            </Link>
-                                                            <Link href="/offerings/shikshana/yic-yoga-instructor-course">
-                                                                 <Button
-                                                                      onClick={
-                                                                           onClose
-                                                                      }
-                                                                      isActive={
-                                                                           router.pathname ==
-                                                                           '/offerings/shikshana/yic-yoga-instructor-course'
-                                                                                ? true
-                                                                                : ''
-                                                                      }
-                                                                      rounded="md"
-                                                                      variant="ghost"
-                                                                      width="full"
-                                                                      colorScheme="aygreen"
-                                                                      justifyContent="left"
-                                                                 >
-                                                                      YIC - Yoga
-                                                                      Instructor
-                                                                      course
-                                                                 </Button>
-                                                            </Link>
-                                                            <Link href="/offerings/shikshana/ryt-200-course">
-                                                                 <Button
-                                                                      onClick={
-                                                                           onClose
-                                                                      }
-                                                                      isActive={
-                                                                           router.pathname ==
-                                                                           '/offerings/shikshana/ryt-200-course'
-                                                                                ? true
-                                                                                : ''
-                                                                      }
-                                                                      rounded="md"
-                                                                      variant="ghost"
-                                                                      width="full"
-                                                                      colorScheme="aygreen"
-                                                                      justifyContent="left"
-                                                                 >
-                                                                      RYT - 200
-                                                                      courses
-                                                                 </Button>
-                                                            </Link>
-                                                            <Link href="/offerings/shikshana/short-course">
-                                                                 <Button
-                                                                      onClick={
-                                                                           onClose
-                                                                      }
-                                                                      isActive={
-                                                                           router.pathname ==
-                                                                           '/offerings/shikshana/short-course'
-                                                                                ? true
-                                                                                : ''
-                                                                      }
-                                                                      rounded="md"
-                                                                      variant="ghost"
-                                                                      width="full"
-                                                                      colorScheme="aygreen"
-                                                                      justifyContent="left"
-                                                                 >
-                                                                      Short
-                                                                      courses
-                                                                 </Button>
-                                                            </Link>
-                                                            <Link href="/offerings/shikshana/special-events">
-                                                                 <Button
-                                                                      onClick={
-                                                                           onClose
-                                                                      }
-                                                                      isActive={
-                                                                           router.pathname ==
-                                                                           '/offerings/shikshana/special-events'
-                                                                                ? true
-                                                                                : ''
-                                                                      }
-                                                                      rounded="md"
-                                                                      variant="ghost"
-                                                                      width="full"
-                                                                      colorScheme="aygreen"
-                                                                      justifyContent="left"
-                                                                 >
-                                                                      Special
-                                                                      Events
-                                                                 </Button>
-                                                            </Link>
-                                                            <Link href="/offerings/athayog-sadhana">
-                                                                 <Button
-                                                                      onClick={
-                                                                           onClose
-                                                                      }
-                                                                      isActive={
-                                                                           router.pathname ==
-                                                                           '/offerings/athayog-sadhana'
-                                                                                ? true
-                                                                                : ''
-                                                                      }
-                                                                      rounded="md"
-                                                                      variant="ghost"
-                                                                      width="full"
-                                                                      colorScheme="aygreen"
-                                                                      justifyContent="left"
-                                                                 >
-                                                                      Athayog
-                                                                      Sadhana
-                                                                 </Button>
-                                                            </Link>
-                                                       </VStack>
-                                                  </AccordionPanel>
-                                             </AccordionItem>
-                                        </Accordion>
-                                        <Link href="/offerings/online">
+                                        <Link href="/classes">
                                              <Button
                                                   onClick={onClose}
                                                   isActive={
                                                        router.pathname ==
-                                                       '/offerings/online'
+                                                       '/classes'
                                                             ? true
                                                             : ''
                                                   }
@@ -635,15 +490,15 @@ const Navbar = () => {
                                                   colorScheme="aygreen"
                                                   justifyContent="left"
                                              >
-                                                  Athayog Online
+                                                  Athayog Classes
                                              </Button>
                                         </Link>
-                                        <Link href="/offerings/personal">
+                                        <Link href="/courses">
                                              <Button
                                                   onClick={onClose}
                                                   isActive={
                                                        router.pathname ==
-                                                       '/offerings/personal'
+                                                       '/courses'
                                                             ? true
                                                             : ''
                                                   }
@@ -652,58 +507,7 @@ const Navbar = () => {
                                                   colorScheme="aygreen"
                                                   justifyContent="left"
                                              >
-                                                  Athayog Personal
-                                             </Button>
-                                        </Link>
-                                        <Link href="/offerings/workshops">
-                                             <Button
-                                                  onClick={onClose}
-                                                  isActive={
-                                                       router.pathname ==
-                                                       '/offerings/workshops'
-                                                            ? true
-                                                            : ''
-                                                  }
-                                                  rounded="md"
-                                                  variant="ghost"
-                                                  colorScheme="aygreen"
-                                                  justifyContent="left"
-                                             >
-                                                  Athayog Workshops
-                                             </Button>
-                                        </Link>
-                                        <Link href="/offerings/chikitsa">
-                                             <Button
-                                                  onClick={onClose}
-                                                  isActive={
-                                                       router.pathname ==
-                                                       '/offerings/chikitsa'
-                                                            ? true
-                                                            : ''
-                                                  }
-                                                  rounded="md"
-                                                  variant="ghost"
-                                                  colorScheme="aygreen"
-                                                  justifyContent="left"
-                                             >
-                                                  Athayog Chikitsa
-                                             </Button>
-                                        </Link>
-                                        <Link href="/offerings/onsite">
-                                             <Button
-                                                  onClick={onClose}
-                                                  isActive={
-                                                       router.pathname ==
-                                                       '/offerings/onsite'
-                                                            ? true
-                                                            : ''
-                                                  }
-                                                  rounded="md"
-                                                  variant="ghost"
-                                                  colorScheme="aygreen"
-                                                  justifyContent="left"
-                                             >
-                                                  Athayog Onsite
+                                                  Athayog Courses
                                              </Button>
                                         </Link>
                                    </VStack>

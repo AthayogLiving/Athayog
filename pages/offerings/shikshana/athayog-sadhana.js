@@ -39,7 +39,7 @@ function AthayogSadhana() {
                ]
           },
           {
-               time: null,
+               time: '6pm - 7:30pm',
                months: ['March  ', 'July', 'November'],
                courseName: 'AthaYog Sadhana Manayog - Meditation',
                details: [
@@ -81,29 +81,28 @@ function AthayogSadhana() {
           <HeaderLayout>
                <Heading>Athayog Sadhana </Heading>
                <Stack spacing={2} my={5}>
-                    {/* <Text>
-                         Lorem ipsum dolor sit amet consectetur adipisicing
-                         elit. Reiciendis sint, eos delectus sed reprehenderit
-                         itaque. Eveniet consequuntur nobis veniam debitis at,
-                         sit doloribus ipsum ea adipisci quos unde ad! Nihil.
-                         Excepturi quaerat eaque debitis tempore dolorum
-                         assumenda voluptatem modi quibusdam minima ipsum minus
-                         suscipit porro, ex sunt quas iusto? Possimus,
-                         recusandae labore? Dolorum corporis optio, earum totam
-                         nisi numquam ipsa. Tempora sed nam laborum consequuntur
-                         neque laboriosam est in totam officia veritatis ipsam
-                         doloribus accusamus nostrum iste aliquid adipisci,
-                         dolorum dolorem velit enim necessitatibus quaerat
-                         tenetur, excepturi repellendus numquam. Perferendis!
-                         Explicabo et similique officia ex eos, sit optio totam
-                         dolor voluptatum inventore. Id iusto nam accusantium,
-                         nesciunt aliquid doloribus eveniet quo laborum eligendi
-                         quos tempora provident vitae numquam voluptates modi?
-                         Magnam laudantium possimus, dignissimos quisquam cumque
-                         animi ipsam hic totam. Dolorum quasi a recusandae minus
-                         magni rerum, neque maiores, veniam deserunt aspernatur
-                         porro ipsa enim modi nemo! Atque, architecto et.
-                    </Text> */}
+                    <Heading size="sm" as="h4">
+                         BUILD YOUR SPIRITUAL PRACTISE
+                    </Heading>
+                    <Text>
+                         Yoga Sadhana is a methodical practice to build
+                         discipline inorder to attain your spiritual goals.
+                         Learn and experience Yoga through study, practice and
+                         self-reflection. The Sadhana practice helps develop
+                         your physical, mental, moral and spiritual self. Make
+                         spiritual development your priority and start your
+                         Sadhana by setting aside dedicated time.
+                    </Text>
+                    <Text>
+                         {' '}
+                         The Sadhana program is designed to evolve your current
+                         practice with dedicated hours of asana, pranayama,
+                         meditation, japa and study of scripture. Feel the
+                         experiential work of your spirit and incorporate the
+                         teachings in your daily lifestyle after the program.
+                         Reconnect with the true nature of your being and leave
+                         feeling transformed from within.
+                    </Text>
                </Stack>
                <ShikshanaCalendarTable calendar={events} />
           </HeaderLayout>
