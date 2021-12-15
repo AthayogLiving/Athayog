@@ -19,7 +19,7 @@ function AthayogSadhana() {
                          date: '1st May 2022 - 21st May 2022'
                     },
                     {
-                         date: '1st Sep 2022 - 21st May 2022'
+                         date: '1st Sep 2022 - 21st Sep 2022'
                     }
                ]
           },
