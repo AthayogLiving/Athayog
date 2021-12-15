@@ -266,12 +266,25 @@ const Schedule = ({ schedule }) => {
                                                                  fontWeight="normal"
                                                                  bg="aygreen.100"
                                                             >
-                                                                 {fromHours}:
-                                                                 {fromMinutes}{' '}
-                                                                 {fromPeriod} -{' '}
-                                                                 {toHours}:
-                                                                 {toMinutes}{' '}
-                                                                 {toPeriod}{' '}
+                                                                 <Text width="max-content">
+                                                                      {
+                                                                           fromHours
+                                                                      }
+                                                                      :
+                                                                      {
+                                                                           fromMinutes
+                                                                      }
+                                                                      {
+                                                                           fromPeriod
+                                                                      }{' '}
+                                                                      -{' '}
+                                                                      {toHours}:
+                                                                      {
+                                                                           toMinutes
+                                                                      }{' '}
+                                                                      {toPeriod}{' '}
+                                                                 </Text>
+                                                                 <Text></Text>
                                                                  <br />
                                                                  {specialCase
                                                                       ? '(' +

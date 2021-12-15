@@ -1,4 +1,5 @@
 import HomeLayout from '@/components/layout/HomeLayout';
+import ContactMore from '@/components/shared/ContactMore';
 import HeaderLayout from '@/components/shared/offerings/HeaderLayout';
 import ShikshanaCalendarTable from '@/components/shared/ShikshanaCalendarTable';
 import {
@@ -55,7 +56,7 @@ function RYT200Courses() {
           {
                time: '11am - 4pm (Weekend, Sat-Sun)',
                location: 'Indiranagar',
-               months: ['February','August'],
+               months: ['February', 'August'],
                courseName: null,
                details: [
                     {
@@ -64,10 +65,8 @@ function RYT200Courses() {
                     {
                          date: '6th August 2022 - 11th December 2022 (KR Puram)'
                     }
-                    
                ]
-          },
-         
+          }
      ];
      const events = [
           {
@@ -261,6 +260,7 @@ function RYT200Courses() {
                     </Box>
                     <ShikshanaCalendarTable calendar={events} />
                </HeaderLayout>
+               <ContactMore />
           </>
      );
 }

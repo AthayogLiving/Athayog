@@ -1,10 +1,19 @@
 import HomeLayout from '@/components/layout/HomeLayout';
+import ContactMore from '@/components/shared/ContactMore';
 import NavbarHelper from '@/components/shared/NavbarHelper';
 import HeaderLayout from '@/components/shared/offerings/HeaderLayout';
 import ShikshanaCalendarTable from '@/components/shared/ShikshanaCalendarTable';
 import ShikshanaInformation from '@/components/shared/ShikshanaInformation';
-import { Box, Flex, Heading, HStack, Stack, Text , ListItem,
-     OrderedList,} from '@chakra-ui/layout';
+import {
+     Box,
+     Flex,
+     Heading,
+     HStack,
+     Stack,
+     Text,
+     ListItem,
+     OrderedList
+} from '@chakra-ui/layout';
 
 import { chakra } from '@chakra-ui/system';
 import {
@@ -13,8 +22,6 @@ import {
      Tbody,
      Td,
      Th,
-  
-    
      Thead,
      Tr
 } from '@chakra-ui/table';
@@ -64,7 +71,7 @@ function YicYoga() {
           {
                time: '11am - 4pm (Weekend, Sat-Sun)',
                location: 'Indiranagar',
-               months: ['February','August'],
+               months: ['February', 'August'],
                courseName: null,
                details: [
                     {
@@ -73,9 +80,8 @@ function YicYoga() {
                     {
                          date: '6th August 2022 - 11th December 2022 (KR Puram)'
                     }
-                    
                ]
-          },
+          }
      ];
      const events = [
           {
@@ -85,30 +91,32 @@ function YicYoga() {
      ];
 
      return (
-          <HeaderLayout>
-               <Heading>YIC Yoga Instructor Course</Heading>
-               <Stack spacing={2} my={5}>
-                    <Text>
-                         The yoga instructor course is a one month course that
-                         helps an individual to shape their personality and
-                         transform their knowledge to teach yoga
-                         comprehensively. It is propounded by Swami Vivekananda,
-                         the Indian Hindu monk who was a key figure in the
-                         introduction of the Indian philosophies of Vedanta and
-                         Yoga. The objective of this course is to provide
-                         instructions, training, research and advancement of all
-                         the streams of yoga and its applications. Undertaking
-                         extra-mural studies and activities will help contribute
-                         to Peace, Poise, Harmony, Love, Health & Happiness. It
-                         brings together theory and practical subjects that
-                         cover breathing techniques, asanas, Sat Kriyas,
-                         Pranayama and meditation techniques. The theory would
-                         include an introduction to Patanjali and Hatha yoga
-                         along with studies of Spiritual Masters and
-                         Applications of Yoga.
-                    </Text>
-               </Stack>
-               <Box mt={10}>
+          <>
+               <HeaderLayout>
+                    <Heading>YIC Yoga Instructor Course</Heading>
+                    <Stack spacing={2} my={5}>
+                         <Text>
+                              The yoga instructor course is a one month course
+                              that helps an individual to shape their
+                              personality and transform their knowledge to teach
+                              yoga comprehensively. It is propounded by Swami
+                              Vivekananda, the Indian Hindu monk who was a key
+                              figure in the introduction of the Indian
+                              philosophies of Vedanta and Yoga. The objective of
+                              this course is to provide instructions, training,
+                              research and advancement of all the streams of
+                              yoga and its applications. Undertaking extra-mural
+                              studies and activities will help contribute to
+                              Peace, Poise, Harmony, Love, Health & Happiness.
+                              It brings together theory and practical subjects
+                              that cover breathing techniques, asanas, Sat
+                              Kriyas, Pranayama and meditation techniques. The
+                              theory would include an introduction to Patanjali
+                              and Hatha yoga along with studies of Spiritual
+                              Masters and Applications of Yoga.
+                         </Text>
+                    </Stack>
+                    <Box mt={10}>
                          <Heading
                               fontWeight="normal"
                               fontSize={{
@@ -243,8 +251,10 @@ function YicYoga() {
                               </OrderedList>
                          </Flex>
                     </Box>
-               <ShikshanaCalendarTable calendar={events} />
-          </HeaderLayout>
+                    <ShikshanaCalendarTable calendar={events} />
+               </HeaderLayout>
+               <ContactMore />
+          </>
      );
 }
 

@@ -1,4 +1,5 @@
 import HomeLayout from '@/components/layout/HomeLayout';
+import ContactMore from '@/components/shared/ContactMore';
 import HeaderLayout from '@/components/shared/offerings/HeaderLayout';
 import ShikshanaCalendarTable from '@/components/shared/ShikshanaCalendarTable';
 import { Heading, Stack, Text } from '@chakra-ui/layout';
@@ -18,7 +19,7 @@ function AthayogSadhana() {
                          date: '1st May 2022 - 21st May 2022'
                     },
                     {
-                         date: '1st May 2022 - 21st May 2022'
+                         date: '1st Sep 2022 - 21st May 2022'
                     }
                ]
           },
@@ -78,34 +79,40 @@ function AthayogSadhana() {
           }
      ];
      return (
-          <HeaderLayout>
-               <Heading>Athayog Sadhana </Heading>
-               <Stack spacing={2} my={5}>
-                    <Heading size="sm" as="h4">
-                         BUILD YOUR SPIRITUAL PRACTISE
-                    </Heading>
-                    <Text>
-                         Yoga Sadhana is a methodical practice to build
-                         discipline inorder to attain your spiritual goals.
-                         Learn and experience Yoga through study, practice and
-                         self-reflection. The Sadhana practice helps develop
-                         your physical, mental, moral and spiritual self. Make
-                         spiritual development your priority and start your
-                         Sadhana by setting aside dedicated time.
-                    </Text>
-                    <Text>
-                         {' '}
-                         The Sadhana program is designed to evolve your current
-                         practice with dedicated hours of asana, pranayama,
-                         meditation, japa and study of scripture. Feel the
-                         experiential work of your spirit and incorporate the
-                         teachings in your daily lifestyle after the program.
-                         Reconnect with the true nature of your being and leave
-                         feeling transformed from within.
-                    </Text>
-               </Stack>
-               <ShikshanaCalendarTable calendar={events} />
-          </HeaderLayout>
+          <>
+               {' '}
+               <HeaderLayout>
+                    <Heading>Athayog Sadhana </Heading>
+                    <Stack spacing={2} my={5}>
+                         <Heading size="sm" as="h4">
+                              BUILD YOUR SPIRITUAL PRACTISE
+                         </Heading>
+                         <Text>
+                              Yoga Sadhana is a methodical practice to build
+                              discipline inorder to attain your spiritual goals.
+                              Learn and experience Yoga through study, practice
+                              and self-reflection. The Sadhana practice helps
+                              develop your physical, mental, moral and spiritual
+                              self. Make spiritual development your priority and
+                              start your Sadhana by setting aside dedicated
+                              time.
+                         </Text>
+                         <Text>
+                              {' '}
+                              The Sadhana program is designed to evolve your
+                              current practice with dedicated hours of asana,
+                              pranayama, meditation, japa and study of
+                              scripture. Feel the experiential work of your
+                              spirit and incorporate the teachings in your daily
+                              lifestyle after the program. Reconnect with the
+                              true nature of your being and leave feeling
+                              transformed from within.
+                         </Text>
+                    </Stack>
+                    <ShikshanaCalendarTable calendar={events} />
+               </HeaderLayout>
+               <ContactMore />
+          </>
      );
 }
 

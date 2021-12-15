@@ -42,25 +42,25 @@ const ShikshanaCourses = () => {
                name: 'RYT - 200 courses',
                slug: 'ryt-200-course',
                image: s2
-          },
-          {
-               id: '5ATH',
-               name: 'Athayog Sadhana',
-               slug: 'athayog-sadhana',
-               image: s5
-          },
-          {
-               id: '3ATH',
-               name: 'Short courses',
-               slug: 'short-course',
-               image: s3
-          },
-          {
-               id: '4ATH',
-               name: 'Special Events',
-               slug: 'special-events',
-               image: s4
           }
+          // {
+          //      id: '5ATH',
+          //      name: 'Athayog Sadhana',
+          //      slug: 'athayog-sadhana',
+          //      image: s5
+          // },
+          // {
+          //      id: '3ATH',
+          //      name: 'Short courses',
+          //      slug: 'short-course',
+          //      image: s3
+          // },
+          // {
+          //      id: '4ATH',
+          //      name: 'Special Events',
+          //      slug: 'special-events',
+          //      image: s4
+          // }
      ];
      return (
           <Flex
@@ -93,12 +93,12 @@ const ShikshanaCourses = () => {
                          Shikshana Pada
                     </Heading>
                     <Grid
-                         gridTemplateColumns="repeat(auto-fit, minmax(230px, 1fr))"
+                         gridTemplateColumns="repeat(auto-fit, minmax(230px, 300px))"
                          gridGap="10"
                          width="100%"
                          mt={10}
                          alignItems="center"
-                         justifyContent="strech"
+                         justifyContent="center"
                          padding="0 2rem"
                     >
                          {courses.map(({ id, name, slug, desc, image }) => {

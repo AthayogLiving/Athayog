@@ -25,6 +25,11 @@ function Courses() {
                name: 'Athayog Chikitsa',
                desc: `If you’re seeking wellness and better health, AthaYog Chikitsa is designed to help you adapt into Yogic living as a medium of alternative healing and wellness.`,
                url: 'offerings/chikitsa'
+          },
+          {
+               name: 'Special Events',
+               desc: `Details of special events organized by Athayog Living throught the year`,
+               url: 'offerings/shikshana/special-events'
           }
      ];
      const pageData = {

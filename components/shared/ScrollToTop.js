@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { background, Box } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { FaArrowCircleUp } from 'react-icons/fa';
 
@@ -28,7 +28,7 @@ const ScrollToTop = () => {
           <Box
                style={{
                     position: 'fixed',
-                    fontSize: '1.2rem',
+                    fontSize: '1.5rem',
                     bottom: '40px',
                     left: '40px',
                     alignItems: 'center',
@@ -44,6 +44,7 @@ const ScrollToTop = () => {
                     onClick={scrollTop}
                     style={{
                          height: 40,
+                         color: 'green',
                          display: showScroll ? 'flex' : 'none'
                     }}
                />

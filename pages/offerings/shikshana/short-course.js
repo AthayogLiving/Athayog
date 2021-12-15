@@ -1,4 +1,5 @@
 import HomeLayout from '@/components/layout/HomeLayout';
+import ContactMore from '@/components/shared/ContactMore';
 import HeaderLayout from '@/components/shared/offerings/HeaderLayout';
 import ShikshanaCalendarTable from '@/components/shared/ShikshanaCalendarTable';
 import { Heading, Stack, Text } from '@chakra-ui/layout';
@@ -105,10 +106,11 @@ function ShortCourses() {
           }
      ];
      return (
-          <HeaderLayout>
-               <Heading>Short Courses</Heading>
-               <Stack spacing={2} my={5}>
-                    {/* <Text>
+          <>
+               <HeaderLayout>
+                    <Heading>Short Courses</Heading>
+                    <Stack spacing={2} my={5}>
+                         {/* <Text>
                          Lorem ipsum dolor sit amet consectetur adipisicing
                          elit. Reiciendis sint, eos delectus sed reprehenderit
                          itaque. Eveniet consequuntur nobis veniam debitis at,
@@ -131,9 +133,11 @@ function ShortCourses() {
                          magni rerum, neque maiores, veniam deserunt aspernatur
                          porro ipsa enim modi nemo! Atque, architecto et.
                     </Text> */}
-               </Stack>
-               <ShikshanaCalendarTable calendar={events} />
-          </HeaderLayout>
+                    </Stack>
+                    <ShikshanaCalendarTable calendar={events} />
+               </HeaderLayout>
+               <ContactMore />
+          </>
      );
 }
 
