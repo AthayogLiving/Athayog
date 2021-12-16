@@ -166,7 +166,7 @@ const Schedule = ({ schedule }) => {
                          justifyContent="center"
                          direction="column"
                          alignItems="center"
-                         width={{ base: '95%', md: '90%', lg: '80%' }}
+                         width={{ base: '95%', md: '90%', lg: '90%' }}
                     >
                          <Heading
                               fontWeight="normal"
@@ -185,7 +185,7 @@ const Schedule = ({ schedule }) => {
                          >
                               <Table
                                    variant="simple"
-                                   size="md"
+                                   size="sm"
                                    colorScheme="aygreen"
                                    className="scheduleTable"
                               >
@@ -265,6 +265,7 @@ const Schedule = ({ schedule }) => {
                                                                  width="200px"
                                                                  fontWeight="normal"
                                                                  bg="aygreen.100"
+                                                                 borderBottom="1px" borderColor="aygreen.200" textAlign='center' 
                                                             >
                                                                  <Text width="max-content">
                                                                       {

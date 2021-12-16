@@ -1,5 +1,6 @@
 import HomeLayout from '@/components/layout/HomeLayout';
 import ContactMore from '@/components/shared/ContactMore';
+import CoursesLayout from '@/components/shared/CoursesLayout';
 import HeaderLayout from '@/components/shared/offerings/HeaderLayout';
 import ShikshanaCalendarTable from '@/components/shared/ShikshanaCalendarTable';
 import { Heading, Stack, Text } from '@chakra-ui/layout';
@@ -81,7 +82,7 @@ function AthayogSadhana() {
      return (
           <>
                {' '}
-               <HeaderLayout>
+               <CoursesLayout>
                     <Heading>Athayog Sadhana </Heading>
                     <Stack spacing={2} my={5}>
                          <Heading size="sm" as="h4">
@@ -110,7 +111,7 @@ function AthayogSadhana() {
                          </Text>
                     </Stack>
                     <ShikshanaCalendarTable calendar={events} />
-               </HeaderLayout>
+               </CoursesLayout>
                <ContactMore />
           </>
      );

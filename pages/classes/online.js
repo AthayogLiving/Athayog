@@ -97,6 +97,8 @@ const Online = ({ offers, notFound }) => {
           'November',
           'December'
      ];
+
+   
      return (
           <motion.div
                exit={{ opacity: 0 }}
@@ -118,7 +120,7 @@ const Online = ({ offers, notFound }) => {
                          justifyContent="center"
                          direction="column"
                          alignItems="center"
-                         width={{ base: '95%', md: '90%', lg: '80%' }}
+                         width={{ base: '95%', md: '90%', lg: '90%' }}
                     >
                          <Heading
                               fontWeight="normal"
@@ -135,7 +137,7 @@ const Online = ({ offers, notFound }) => {
                          >
                               <Table
                                    variant="simple"
-                                   size="md"
+                                   size="sm"
                                    bg="white"
                                    colorScheme="aygreen"
                                    className="scheduleTable"
@@ -153,9 +155,9 @@ const Online = ({ offers, notFound }) => {
                                         </Tr>
                                    </Thead>
                                    <Tbody>
-                                        <Tr>
-                                             <Td bg="aygreen.100">
-                                                  6.00 AM - 7.00 AM
+                                        <Tr >
+                                             <Td bg="aygreen.100"  borderBottom="1px" borderColor="aygreen.200" padding='0px' textAlign='center'>
+                                                 <Text width="150px">6.00 AM - 7.00 AM</Text> 
                                              </Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition </Td>
@@ -166,7 +168,7 @@ const Online = ({ offers, notFound }) => {
                                              <Td>---</Td>
                                         </Tr>
                                         <Tr>
-                                             <Td bg="aygreen.100">
+                                             <Td bg="aygreen.100"  borderBottom="1px" borderColor="aygreen.200" padding='0px' textAlign='center' >
                                                   7.00 AM - 8.00 AM
                                              </Td>
                                              <Td>Rhythm of Being </Td>
@@ -178,7 +180,7 @@ const Online = ({ offers, notFound }) => {
                                              <Td>Ashtanga</Td>
                                         </Tr>
                                         <Tr>
-                                             <Td bg="aygreen.100">
+                                             <Td bg="aygreen.100"  borderBottom="1px" borderColor="aygreen.200"  padding='0px' textAlign='center'>
                                                   8:00 AM - 9:00 AM
                                              </Td>
                                              <Td>Deep space</Td>
@@ -190,7 +192,7 @@ const Online = ({ offers, notFound }) => {
                                              <Td>Transcending Transition </Td>
                                         </Tr>
                                         <Tr>
-                                             <Td bg="aygreen.100">
+                                             <Td bg="aygreen.100" borderBottom="1px" borderColor="aygreen.200" padding='0px' textAlign='center'>
                                                   10:00 AM - 12:30 PM
                                              </Td>
                                              <Td>Shikshana Pada - Sharath</Td>
@@ -202,7 +204,7 @@ const Online = ({ offers, notFound }) => {
                                              <Td>---</Td>
                                         </Tr>
                                         <Tr>
-                                             <Td bg="aygreen.100">
+                                             <Td bg="aygreen.100"  borderBottom="1px" borderColor="aygreen.200"  padding='0px' textAlign='center'>
                                                   4:00 PM - 5:00 PM
                                              </Td>
                                              <Td>Kids Yoga </Td>
@@ -214,7 +216,7 @@ const Online = ({ offers, notFound }) => {
                                              <Td>---</Td>
                                         </Tr>
                                         <Tr>
-                                             <Td bg="aygreen.100">
+                                             <Td bg="aygreen.100" borderBottom="1px" borderColor="aygreen.200" padding='0px' textAlign='center'  >
                                                   5:00 PM - 6:00 PM
                                              </Td>
                                              <Td>Deep space</Td>
@@ -226,7 +228,7 @@ const Online = ({ offers, notFound }) => {
                                              <Td>Ashtanga</Td>
                                         </Tr>
                                         <Tr>
-                                             <Td bg="aygreen.100">
+                                             <Td bg="aygreen.100"   borderBottom="1px" borderColor="aygreen.200" padding='0px' textAlign='center'>
                                                   6:00 PM - 7:00 PM
                                              </Td>
                                              <Td>Transcending Transition</Td>
@@ -238,7 +240,7 @@ const Online = ({ offers, notFound }) => {
                                              <Td>Ashtanga</Td>
                                         </Tr>
                                         <Tr>
-                                             <Td bg="aygreen.100">
+                                             <Td bg="aygreen.100"   borderBottom="1px" borderColor="aygreen.200"padding='0px' textAlign='center' >
                                                   7:00 PM - 8:00 PM
                                              </Td>
                                              <Td>Universal Harmony</Td>

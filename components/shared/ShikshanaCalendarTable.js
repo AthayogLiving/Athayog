@@ -32,17 +32,17 @@ function ShikshanaCalendarTable({ calendar }) {
                               alignItems="center"
                               bg="white"
                          >
-                              <Flex
-                                   justifyContent="flex-start"
-                                   direction="column"
-                                   alignItems="center"
+                              <Box
+                                 width='100%'
                               >
-                                   <Stack spacing={5}>
+                                  
                                         <Heading
                                              fontWeight="medium"
                                              fontSize="1.3rem"
                                              textTransform="uppercase"
                                              textDecoration="underline"
+                                             textAlign='center'
+                                             mb={5}
                                         >
                                              {name} Calendar 2022
                                         </Heading>
@@ -58,10 +58,14 @@ function ShikshanaCalendarTable({ calendar }) {
                                                             overflowX="auto"
                                                             boxShadow="sm"
                                                             rounded="sm"
+                                                           
+                                                            mb={5}
+                                                            width="100%"
                                                        >
                                                             <Table
                                                                  bg="white"
                                                                  borderWidth="1px"
+                                                               
                                                             >
                                                                  <Thead>
                                                                       <Tr bg="gray.200">
@@ -99,6 +103,7 @@ function ShikshanaCalendarTable({ calendar }) {
                                                                                           textColor="black"
                                                                                           fontSize="1rem"
                                                                                           fontWeight="normal"
+                                                                                          width='max-content'
                                                                                      >
                                                                                           {
                                                                                                time
@@ -113,6 +118,7 @@ function ShikshanaCalendarTable({ calendar }) {
                                                                                           fontSize="1rem"
                                                                                           fontWeight="normal"
                                                                                           textTransform="capitalize"
+                                                                                          width='200px'
                                                                                      >
                                                                                           {
                                                                                                courseName
@@ -127,7 +133,7 @@ function ShikshanaCalendarTable({ calendar }) {
                                                                                 }) => {
                                                                                      return (
                                                                                           <Td>
-                                                                                               <Box>
+                                                                                               <Box  width='max-content'>
                                                                                                     {name && (
                                                                                                          <Text fontWeight="bold">
                                                                                                               {
@@ -155,8 +161,8 @@ function ShikshanaCalendarTable({ calendar }) {
                                                   );
                                              }
                                         )}
-                                   </Stack>
-                              </Flex>
+                                  
+                              </Box>
                          </Flex>
                     );
                })}

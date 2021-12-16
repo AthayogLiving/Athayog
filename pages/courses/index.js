@@ -9,27 +9,27 @@ function Courses() {
           {
                name: 'Athayog Sadhana',
                desc: `Elevate your Yogic practice at the AthaYog Sadhana - a peaceful and hygienic environment to practice.`,
-               url: 'offerings/shikshana/athayog-sadhana'
+               url: 'courses/athayog-sadhana'
           },
           {
                name: 'Athayog Short Course',
                desc: `Short Courses From Athayog Living.`,
-               url: 'offerings/shikshana/short-course'
+               url: 'courses/short-course'
           },
           {
                name: 'Athayog Shikshanapada',
                desc: `Climb up the career ladder with the certificate programs and teacher's training under AthaYog Shikshana Pada.`,
-               url: 'offerings/shikshana'
+               url: 'courses/shikshana'
           },
           {
                name: 'Athayog Chikitsa',
                desc: `If you’re seeking wellness and better health, AthaYog Chikitsa is designed to help you adapt into Yogic living as a medium of alternative healing and wellness.`,
-               url: 'offerings/chikitsa'
+               url: 'courses/chikitsa'
           },
           {
                name: 'Special Events',
                desc: `Details of special events organized by Athayog Living throught the year`,
-               url: 'offerings/shikshana/special-events'
+               url: 'courses/special-events'
           }
      ];
      const pageData = {

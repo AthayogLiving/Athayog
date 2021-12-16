@@ -3,48 +3,41 @@ import { Button } from '@chakra-ui/button';
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import { Flex, Heading } from '@chakra-ui/layout';
 import { useRouter } from 'next/router';
+import {Box} from '@chakra-ui/react'
 
-function HeaderLayout({ children }) {
+function CoursesLayout({ children }) {
      const router = useRouter();
      return (
           <>
                {' '}
                <NavbarHelper />
-               <Flex
+               <Box
                     margin="auto"
                     padding={{
-                         base: '2rem 0',
-                         md: '3rem 0',
-                         lg: '3rem 0'
+                         base: '2rem',
+                         md: '3rem',
+                         lg: '3rem'
                     }}
-                    justifyContent="center"
-                    alignItems="center"
-                    width="100vw"
+                   
+                    width='100%'
                     bg="white"
                >
-                    <Flex
-                         justifyContent="center"
-                         direction="column"
-                         alignItems="flex-start"
-                         width="80vw"
-                    >
+                   
                          <Button
                               leftIcon={<ArrowBackIcon />}
                               size="md"
                               variant="outline"
                               mb={10}
                               onClick={() =>
-                                   router.push('/courses/shikshana/')
+                                   router.push('/courses')
                               }
                          >
-                              Back To Shikshana
+                              Back To Courses
                          </Button>
-
-                         {children}
-                    </Flex>
-               </Flex>
+                    {children}
+               </Box>
           </>
      );
 }
 
-export default HeaderLayout;
+export default CoursesLayout;
