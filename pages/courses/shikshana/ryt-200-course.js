@@ -258,7 +258,8 @@ function RYT200Courses() {
                               </OrderedList>
                          </Flex>
                     </Box>
-                    <ShikshanaCalendarTable calendar={events} />
+                    <Box width='100%'>  <ShikshanaCalendarTable calendar={events} /></Box>
+                  
                </HeaderLayout>
                <ContactMore />
           </>
