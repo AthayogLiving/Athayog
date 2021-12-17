@@ -32,5 +32,8 @@ module.exports = withPlugins(
      ],
      {
           experimental: { nftTracing: true }
+     },
+     {
+          swcMinify: true,
      }
 );
