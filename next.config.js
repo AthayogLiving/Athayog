@@ -13,7 +13,8 @@ module.exports = withPlugins(
                          domains: [
                               'firebasestorage.googleapis.com',
                               'images.unsplash.com'
-                         ]
+                         ],
+                         disableStaticImages: true
                     }
                }
           ],
