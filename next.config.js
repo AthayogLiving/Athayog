@@ -35,6 +35,5 @@ module.exports = withPlugins(
      },
      {
           swcMinify: true
-     },
-     { future: { webpack5: true } }
+     }
 );
