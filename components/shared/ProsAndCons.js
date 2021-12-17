@@ -4,17 +4,13 @@ import {
      Flex,
      Heading,
      StackDivider,
-     TableCaption,
      Text,
      VStack
 } from '@chakra-ui/layout';
 import { chakra } from '@chakra-ui/system';
-import { Table, Thead, Tbody, Tfoot, Tr, Th, Td } from '@chakra-ui/table';
-
 import React from 'react';
 
 const ProsAndCons = ({ data, name }) => {
-     console.log(data);
      return (
           <Flex
                margin="auto"

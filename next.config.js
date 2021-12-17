@@ -34,6 +34,7 @@ module.exports = withPlugins(
           experimental: { nftTracing: true }
      },
      {
-          swcMinify: true,
-     }
+          swcMinify: true
+     },
+     { future: { webpack5: true } }
 );
