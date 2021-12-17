@@ -1,19 +1,11 @@
-import { Box, Flex, Grid, Heading, Text } from '@chakra-ui/layout';
-import Link from 'next/link';
-import { Image } from '@chakra-ui/image';
-import React from 'react';
-import { MotionBox } from './MotionElements';
 import { Button } from '@chakra-ui/button';
-import sy1 from 'public/sy1.jpg';
-import sy2 from 'public/sy2.jpg';
-import s1 from 'public/shi_1-min.jpg';
+import { Image } from '@chakra-ui/image';
+import { Box, Flex, Grid, Heading } from '@chakra-ui/layout';
+import Link from 'next/link';
 import s2 from 'public/shi_2-min.jpg';
-import s3 from 'public/shi_3-min.jpg';
-import s4 from 'public/shi_4-min.jpg';
-import s5 from 'public/shi_5-min.jpg';
 import s6 from 'public/shi_6-min.jpg';
+import React from 'react';
 
-import mandala from 'public/mandala.svg';
 const ShikshanaCourses = () => {
      let easing = [0.175, 0.85, 0.42, 0.96];
 
