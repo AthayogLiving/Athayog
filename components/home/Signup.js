@@ -308,10 +308,7 @@ const Signup = () => {
                          </FormControl>
                          <Text textAlign="center" textColor="aygreen.800">
                               By submitting this form you agree to our{' '}
-                              <Link
-                                   href=" https://www.freeprivacypolicy.com/live/c0363502-9905-4232-80aa-4cba212626da"
-                                   target="_blank"
-                              >
+                              <Link href=" /privacy" target="_blank">
                                    <a
                                         target="_blank"
                                         style={{

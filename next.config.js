@@ -13,7 +13,8 @@ module.exports = withPlugins(
                          domains: [
                               'firebasestorage.googleapis.com',
                               'images.unsplash.com'
-                         ]
+                         ],
+                         disableStaticImages: true
                     }
                }
           ],
@@ -29,7 +30,10 @@ module.exports = withPlugins(
                }
           ]
      ],
+     // {
+     //      experimental: { nftTracing: true }
+     // },
      {
-          experimental: { nftTracing: true }
+          swcMinify: false
      }
 );
