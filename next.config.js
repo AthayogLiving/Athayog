@@ -30,9 +30,9 @@ module.exports = withPlugins(
                }
           ]
      ],
-     {
-          experimental: { nftTracing: true }
-     },
+     // {
+     //      experimental: { nftTracing: true }
+     // },
      {
           swcMinify: true
      }

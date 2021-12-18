@@ -35,7 +35,7 @@ const Hero = (props) => {
                <NavbarHelper />
                <Flex
                     position="relative"
-                    height={{ base: '40vh', md: '95vh', lg: '95vh' }}
+                    height={{ base: '40vh', md: '70vh', lg: '70vh' }}
                     min-height="300px"
                     justifyContent="center"
                     alignItems="center"
@@ -43,12 +43,9 @@ const Hero = (props) => {
                     <Box
                          height="100%"
                          bg={{
-                              sm:
-                                   'linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%)',
-                              base:
-                                   'linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%)',
-                              md:
-                                   'linear-gradient(to bottom, rgba(0,0,0,0) 50%,rgba(0,0,0,0.8) 100%)'
+                              sm: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.8) 100%)',
+                              base: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.8) 100%)',
+                              md: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.8) 100%)'
                          }}
                          width="100%"
                          zIndex={1}
@@ -56,7 +53,8 @@ const Hero = (props) => {
                     <MotionBox
                          zIndex={2}
                          position="absolute"
-                         bottom="5%"
+                         // bottom="5%"
+                         top="30%"
                          variants={textVariants}
                          initial="exit"
                          animate="enter"
