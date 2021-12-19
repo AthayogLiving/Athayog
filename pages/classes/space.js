@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import athayogSpace from 'public/athayogSpace.jpg';
 import Information from '@/components/shared/Information';
-import Schedule from '@/components/shared/Schedule';
 import Classes from '@/components/shared/Classes';
 import Pricing from '@/components/shared/Pricing';
 import IntensityTable from '@/components/shared/IntensityTable';
 import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';
 import ProsAndCons from '@/components/shared/ProsAndCons';
+import Schedule from '@/components/shared/classes/Schedule';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('space');
@@ -107,7 +107,8 @@ const Space = ({ offers, notFound }) => {
                {/* <Information pageData={pageData} /> */}
                <Classes classes={pageData.classes} />
                <IntensityTable />
-               <Schedule schedule="general" />
+               {/* <Schedule schedule="general" /> */}
+               <Schedule />
                <Pricing
                     registerTo={pageData.name.toLocaleLowerCase()}
                     pricing={apiPricing}
