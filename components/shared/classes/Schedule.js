@@ -301,7 +301,7 @@ function Schedule() {
                                              <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony </Td>
                                              <Td>Rhythm of Being </Td>
-                                             <Td>Universal Harmony </Td>x
+                                             <Td>Universal Harmony </Td>
                                              <Td>Sivananda</Td>
                                              <Td>---</Td>
                                              <Td>---</Td>
