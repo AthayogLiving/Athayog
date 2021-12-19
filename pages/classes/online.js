@@ -98,7 +98,6 @@ const Online = ({ offers, notFound }) => {
           'December'
      ];
 
-   
      return (
           <motion.div
                exit={{ opacity: 0 }}
@@ -155,56 +154,71 @@ const Online = ({ offers, notFound }) => {
                                         </Tr>
                                    </Thead>
                                    <Tbody>
-                                        <Tr >
-                                             <Td bg="aygreen.100"  borderBottom="1px" borderColor="aygreen.200" padding='0px' textAlign='center'>
-                                                 <Text width="150px">6.00 AM - 7.00 AM</Text> 
+                                        <Tr>
+                                             <Td
+                                                  bg="aygreen.100"
+                                                  borderBottom="1px"
+                                                  borderColor="aygreen.200"
+                                                  padding="0px"
+                                                  paddingLeft="10px"
+                                             >
+                                                  <Text width="150px">
+                                                       6.00 AM - 7.00 AM
+                                                  </Text>
                                              </Td>
+                                             <Td>Transcending Transition</Td>
+                                             <Td>Universal Harmony </Td>
+                                             <Td>Sivananda</Td>
+                                             <Td>Rhythm of Being </Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Transcending Transition </Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Transcending Transition </Td>
-                                             <Td>Rhythm of Being</Td>
                                              <Td>---</Td>
                                              <Td>---</Td>
                                         </Tr>
                                         <Tr>
-                                             <Td bg="aygreen.100"  borderBottom="1px" borderColor="aygreen.200" padding='0px' textAlign='center' >
+                                             <Td
+                                                  bg="aygreen.100"
+                                                  borderBottom="1px"
+                                                  borderColor="aygreen.200"
+                                                  padding="0px"
+                                                  paddingLeft="10px"
+                                             >
                                                   7.00 AM - 8.00 AM
                                              </Td>
                                              <Td>Rhythm of Being </Td>
+                                             <Td>Sivananda-Sherin</Td>
                                              <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition </Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition </Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Transcending Transition </Td>
-                                             <Td>Ashtanga</Td>
                                         </Tr>
                                         <Tr>
-                                             <Td bg="aygreen.100"  borderBottom="1px" borderColor="aygreen.200"  padding='0px' textAlign='center'>
+                                             <Td
+                                                  bg="aygreen.100"
+                                                  borderBottom="1px"
+                                                  borderColor="aygreen.200"
+                                                  padding="0px"
+                                                  paddingLeft="10px"
+                                             >
                                                   8:00 AM - 9:00 AM
                                              </Td>
-                                             <Td>Deep space</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Ashtanga</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition </Td>
                                         </Tr>
+
                                         <Tr>
-                                             <Td bg="aygreen.100" borderBottom="1px" borderColor="aygreen.200" padding='0px' textAlign='center'>
-                                                  10:00 AM - 12:30 PM
-                                             </Td>
-                                             <Td>Shikshana Pada - Sharath</Td>
-                                             <Td>Shikshana Pada - Sharath</Td>
-                                             <Td>Shikshana Pada - Sharath</Td>
-                                             <Td>Shikshana Pada - Sharath</Td>
-                                             <Td>Shikshana Pada - Sharath</Td>
-                                             <Td>---</Td>
-                                             <Td>---</Td>
-                                        </Tr>
-                                        <Tr>
-                                             <Td bg="aygreen.100"  borderBottom="1px" borderColor="aygreen.200"  padding='0px' textAlign='center'>
+                                             <Td
+                                                  bg="aygreen.100"
+                                                  borderBottom="1px"
+                                                  borderColor="aygreen.200"
+                                                  padding="0px"
+                                                  paddingLeft="10px"
+                                             >
                                                   4:00 PM - 5:00 PM
                                              </Td>
                                              <Td>Kids Yoga </Td>
@@ -216,40 +230,76 @@ const Online = ({ offers, notFound }) => {
                                              <Td>---</Td>
                                         </Tr>
                                         <Tr>
-                                             <Td bg="aygreen.100" borderBottom="1px" borderColor="aygreen.200" padding='0px' textAlign='center'  >
+                                             <Td
+                                                  bg="aygreen.100"
+                                                  borderBottom="1px"
+                                                  borderColor="aygreen.200"
+                                                  padding="0px"
+                                                  paddingLeft="10px"
+                                             >
                                                   5:00 PM - 6:00 PM
                                              </Td>
-                                             <Td>Deep space</Td>
-                                             <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Transcending Transition</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Rhythm of Being</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Ashtanga</Td>
+                                             <Td>Rhythm of Being</Td>
                                         </Tr>
                                         <Tr>
-                                             <Td bg="aygreen.100"   borderBottom="1px" borderColor="aygreen.200" padding='0px' textAlign='center'>
+                                             <Td
+                                                  bg="aygreen.100"
+                                                  borderBottom="1px"
+                                                  borderColor="aygreen.200"
+                                                  padding="0px"
+                                                  paddingLeft="10px"
+                                             >
                                                   6:00 PM - 7:00 PM
                                              </Td>
-                                             <Td>Transcending Transition</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Transcending Transition</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Deep space</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Sivananda</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Ashtanga</Td>
                                         </Tr>
                                         <Tr>
-                                             <Td bg="aygreen.100"   borderBottom="1px" borderColor="aygreen.200"padding='0px' textAlign='center' >
+                                             <Td
+                                                  bg="aygreen.100"
+                                                  borderBottom="1px"
+                                                  borderColor="aygreen.200"
+                                                  padding="0px"
+                                                  paddingLeft="10px"
+                                             >
                                                   7:00 PM - 8:00 PM
                                              </Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Transcending Transition</Td>
                                              <Td>Rhythm of Being</Td>
+                                             <Td>Deep Space</Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
+                                        </Tr>
+                                        <Tr>
+                                             <Td
+                                                  bg="aygreen.100"
+                                                  borderBottom="1px"
+                                                  borderColor="aygreen.200"
+                                                  padding="0px"
+                                                  paddingLeft="10px"
+                                             >
+                                                  8:00 PM - 9:00 PM
+                                             </Td>
+                                             <Td>-</Td>
+                                             <Td>-</Td>
+                                             <Td>-</Td>
+                                             <Td>-</Td>
+                                             <Td>-</Td>
+                                             <Td>-</Td>
+                                             <Td>-</Td>
                                         </Tr>
                                    </Tbody>
                               </Table>
