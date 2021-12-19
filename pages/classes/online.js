@@ -23,6 +23,7 @@ import {
 } from '@chakra-ui/react';
 import OnlineCourses from '@/components/shared/OnlineCourses';
 import ProsAndCons from '@/components/shared/ProsAndCons';
+import BreadCrumb from '@/components/shared/offerings/BreadCrumb';
 export async function getStaticProps(context) {
      const { offers } = await getOffer('online');
 
@@ -107,6 +108,7 @@ const Online = ({ offers, notFound }) => {
                <Hero pageData={pageData} />
                {/* <Information pageData={pageData} /> */}
                {/* <OnlineCourses /> */}
+               <BreadCrumb subLinks="classes" currentPage="Online" />
                <Flex
                     margin="auto"
                     padding={{ base: '2rem 0', md: '3rem 0', lg: '5rem 0' }}
