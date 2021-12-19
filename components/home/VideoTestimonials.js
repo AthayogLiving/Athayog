@@ -1,4 +1,8 @@
 import { Box, Divider, Flex, Grid, Heading } from '@chakra-ui/layout';
+import VideoOne from 'public/video_testimonials_1.mp4';
+import VideoTwo from 'public/video_testimonials_2.mp4';
+import VideoThree from 'public/video_testimonials_3.mp4';
+import VideoFour from 'public/video_testimonials_4.mp4';
 import React from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import 'swiper/swiper-bundle.css';
@@ -32,11 +36,7 @@ const VideoTestimonials = () => {
           )
      };
 
-     const videoSources = [
-          'https://firebasestorage.googleapis.com/v0/b/authentication-test-7c342.appspot.com/o/videos%2Fvideo_testimonials_1.mp4?alt=media&token=5eff437e-6974-49e5-b3dc-ae9ae7a7fe6d',
-          'https://firebasestorage.googleapis.com/v0/b/authentication-test-7c342.appspot.com/o/videos%2Fvideo_testimonials_4.mp4?alt=media&token=99108c88-f1c8-4597-a1ab-3b9384cdd028',
-          'https://firebasestorage.googleapis.com/v0/b/authentication-test-7c342.appspot.com/o/videos%2Fvideo_testimonials_3.mp4?alt=media&token=bcf1481f-6be6-4aa7-af76-29ade2f55a7b'
-     ];
+     const videoSources = [VideoOne, VideoThree, VideoFour];
      return (
           <Flex
                bg="white"
@@ -69,7 +69,7 @@ const VideoTestimonials = () => {
                                    }}
                               >
                                    <source
-                                        src="https://firebasestorage.googleapis.com/v0/b/authentication-test-7c342.appspot.com/o/videos%2Fvideo_testimonials_2.mp4?alt=media&token=5426d22b-6dff-4a26-b4f6-ffe220b7bf93"
+                                        src={VideoTwo}
                                         type="video/mp4"
                                    ></source>
                               </video>
