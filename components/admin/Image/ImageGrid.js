@@ -18,7 +18,14 @@ import {
      Spinner,
      useColorModeValue,
      Flex,
-     Grid
+     Grid,
+     NumberInput,
+     NumberInputField,
+     NumberInputStepper,
+     NumberIncrementStepper,
+     NumberDecrementStepper,
+     Select,
+     IconButton
 } from '@chakra-ui/react';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
@@ -32,6 +39,7 @@ import {
 } from 'react-icons/fi';
 import { useAuth } from '@/lib/auth';
 import { deleteImage, updateImageStatus } from '@/lib/db/images';
+import { TriangleUpIcon } from '@chakra-ui/icons';
 
 const ImageGrid = ({ imageType, isMobile }) => {
      // Authenticated User
@@ -70,6 +78,8 @@ const ImageGrid = ({ imageType, isMobile }) => {
           imageType: '',
           imageName: ''
      });
+     const [currentPosition, setCurrentPosition] = useState(-1);
+
      //  ----------------------
 
      //  Custom App Functions
@@ -126,6 +136,12 @@ const ImageGrid = ({ imageType, isMobile }) => {
                isClosable: true
           });
      };
+
+     const updatePosition = () => {
+          if (currentPosition != -1) {
+               console.log(currentPosition);
+          }
+     };
      //  ----------------------
 
      //  API Change State
@@ -170,6 +186,7 @@ const ImageGrid = ({ imageType, isMobile }) => {
                >
                     {data.images
                          .filter((image) => image.isMobile === checkMobile)
+                         .sort((a, b) => a.position - b.position)
                          .map((image) => {
                               return (
                                    <Box
@@ -204,6 +221,43 @@ const ImageGrid = ({ imageType, isMobile }) => {
                                                        </Badge>
                                                   )}
                                              </Stack>
+                                             <Flex alignContent="center" mt={5}>
+                                                  <NumberInput
+                                                       defaultValue={
+                                                            image.position
+                                                       }
+                                                       min={1}
+                                                       max={8}
+                                                       maxW={20}
+                                                       size="xs"
+                                                       mr={2}
+                                                       onChange={(
+                                                            valueString
+                                                       ) =>
+                                                            setCurrentPosition(
+                                                                 valueString
+                                                            )
+                                                       }
+                                                  >
+                                                       <NumberInputField />
+                                                       <NumberInputStepper>
+                                                            <NumberIncrementStepper />
+                                                            <NumberDecrementStepper />
+                                                       </NumberInputStepper>
+                                                  </NumberInput>
+                                                  <IconButton
+                                                       variant="outline"
+                                                       colorScheme="teal"
+                                                       size="xs"
+                                                       onClick={() =>
+                                                            updatePosition(
+                                                                 image.position
+                                                            )
+                                                       }
+                                                       aria-label="Send email"
+                                                       icon={<TriangleUpIcon />}
+                                                  />
+                                             </Flex>
 
                                              <ButtonGroup
                                                   size="sm"

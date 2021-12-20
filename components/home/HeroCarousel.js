@@ -89,6 +89,7 @@ const HeroCarousel = ({ images }) => {
                                    image.isMobile === isMobile &&
                                    image.isActive === true
                          )
+                         .sort((a, b) => a.position - b.position)
                          .map((image) => {
                               return (
                                    <Box key={image.id} height="100vh">
