@@ -119,24 +119,26 @@ const Gallery = ({ images }) => {
                     Gallery
                </Heading>
                <Swiper {...params} key={uuidv4()}>
-                    {activeImage.map((image) => {
-                         return (
-                              <Box
-                                   rounded="lg"
-                                   overflow="hidden"
-                                   key={image.id}
-                              >
-                                   <Image
-                                        layout="responsive"
-                                        height="150px"
-                                        width="300px"
-                                        objectFit="cover"
-                                        alt={image.alt}
-                                        src={image.imageUrl}
-                                   />
-                              </Box>
-                         );
-                    })}
+                    {activeImage
+                         .sort((a, b) => a.position - b.position)
+                         .map((image) => {
+                              return (
+                                   <Box
+                                        rounded="lg"
+                                        overflow="hidden"
+                                        key={image.id}
+                                   >
+                                        <Image
+                                             layout="responsive"
+                                             height="150px"
+                                             width="300px"
+                                             objectFit="cover"
+                                             alt={image.alt}
+                                             src={image.imageUrl}
+                                        />
+                                   </Box>
+                              );
+                         })}
                </Swiper>
           </Box>
      );

@@ -175,7 +175,7 @@ const userId = () => {
                                                        {data.price}
                                                   </Box>{' '}
                                              </Box>
-                                             <Box
+                                             {/* <Box
                                                   fontWeight="medium"
                                                   border="1px"
                                                   borderColor="gray.200"
@@ -204,7 +204,7 @@ const userId = () => {
                                                             </Box>
                                                        </>
                                                   ) : null}
-                                             </Box>
+                                             </Box> */}
                                              <Box
                                                   fontWeight="medium"
                                                   border="1px"
