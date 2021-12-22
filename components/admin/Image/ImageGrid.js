@@ -38,7 +38,11 @@ import {
      FiTrash2
 } from 'react-icons/fi';
 import { useAuth } from '@/lib/auth';
-import { deleteImage, updateImageStatus } from '@/lib/db/images';
+import {
+     deleteImage,
+     updateImagePosition,
+     updateImageStatus
+} from '@/lib/db/images';
 import { TriangleUpIcon } from '@chakra-ui/icons';
 
 const ImageGrid = ({ imageType, isMobile }) => {
@@ -79,6 +83,7 @@ const ImageGrid = ({ imageType, isMobile }) => {
           imageName: ''
      });
      const [currentPosition, setCurrentPosition] = useState(-1);
+     const [imageOrder, setImageOrder] = useState({});
 
      //  ----------------------
 
@@ -137,11 +142,40 @@ const ImageGrid = ({ imageType, isMobile }) => {
           });
      };
 
-     const updatePosition = () => {
-          if (currentPosition != -1) {
-               console.log(currentPosition);
-          }
+     const updatePosition = async () => {
+          console.log(imageOrder);
+          let key = Object.keys(imageOrder)[0];
+          let val = imageOrder[key];
+          setIsActiveLoading({ imageId: key, status: true });
+          await updateImagePosition(key, val)
+               .then((res) => {
+                    setIsActiveLoading({ imageId: key, status: false });
+                    toast({
+                         title: `Image Order Updated`,
+                         description: `Image is now at position ${val}`,
+                         status: 'success',
+                         duration: 9000,
+                         isClosable: true
+                    });
+               })
+               .catch((err) => {
+                    setIsActiveLoading({ imageId: key, status: false });
+                    toast({
+                         title: `Something Happend`,
+                         description: `Please try again`,
+                         status: 'failure',
+                         duration: 9000,
+                         isClosable: true
+                    });
+               });
      };
+
+     const updateImageOrder = (id, order) => {
+          setImageOrder((prevState) => ({
+               [id]: Number(order)
+          }));
+     };
+
      //  ----------------------
 
      //  API Change State
@@ -229,12 +263,19 @@ const ImageGrid = ({ imageType, isMobile }) => {
                                                        min={1}
                                                        max={8}
                                                        maxW={20}
+                                                       isLoading={
+                                                            isActiveLoading.imageId ===
+                                                            image.id
+                                                                 ? isActiveLoading.status
+                                                                 : false
+                                                       }
                                                        size="xs"
                                                        mr={2}
                                                        onChange={(
                                                             valueString
                                                        ) =>
-                                                            setCurrentPosition(
+                                                            updateImageOrder(
+                                                                 image.id,
                                                                  valueString
                                                             )
                                                        }
@@ -265,7 +306,7 @@ const ImageGrid = ({ imageType, isMobile }) => {
                                                   pt={2}
                                                   variant="solid"
                                              >
-                                                  <Button
+                                                  <IconButton
                                                        colorScheme="red"
                                                        mt={3}
                                                        onClick={() =>
@@ -275,10 +316,8 @@ const ImageGrid = ({ imageType, isMobile }) => {
                                                                  image.imageName
                                                             )
                                                        }
-                                                       leftIcon={<FiTrash2 />}
-                                                  >
-                                                       Delete
-                                                  </Button>
+                                                       icon={<FiTrash2 />}
+                                                  />
                                                   {image.isActive ? (
                                                        <Button
                                                             colorScheme="blue"
