@@ -8,6 +8,7 @@ import InformationSplit from '@/components/shared/InformationSplit';
 import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';
 import Schedule from '@/components/shared/Schedule';
+import BreadCrumb from '@/components/shared/offerings/BreadCrumb';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('personal');
@@ -59,6 +60,7 @@ const Personal = ({ offers, notFound }) => {
                animate={{ opacity: 1 }}
           >
                <Hero pageData={pageData} />
+               <BreadCrumb subLinks="classes" currentPage="Personal" />
                <InformationSplit pageData={pageData} />
                <Schedule schedule="personal" />
                <Pricing pricing={apiPricing} registerTo="personal" />

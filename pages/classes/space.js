@@ -10,6 +10,7 @@ import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';
 import ProsAndCons from '@/components/shared/ProsAndCons';
 import Schedule from '@/components/shared/classes/Schedule';
+import BreadCrumb from '@/components/shared/offerings/BreadCrumb';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('space');
@@ -105,6 +106,7 @@ const Space = ({ offers, notFound }) => {
           >
                <Hero pageData={pageData} />
                {/* <Information pageData={pageData} /> */}
+               <BreadCrumb subLinks="classes" currentPage="Space" />
                <Classes classes={pageData.classes} />
                <IntensityTable />
                {/* <Schedule schedule="general" /> */}

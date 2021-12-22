@@ -7,6 +7,7 @@ import Pricing from '@/components/shared/Pricing';
 import Register from '@/components/shared/Register';
 import HomeLayout from '@/components/layout/HomeLayout';
 import { getOffer } from '@/lib/db/offerings';
+import BreadCrumb from '@/components/shared/offerings/BreadCrumb';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('onsite');
@@ -59,6 +60,7 @@ const Onsite = ({ offers, notFound }) => {
                animate={{ opacity: 1 }}
           >
                <Hero pageData={pageData} />
+               <BreadCrumb subLinks="classes" currentPage="Onsite" />
                {/* <Information pageData={pageData} /> */}
 
                <Pricing pricing={apiPricing} toRegister={true} />
