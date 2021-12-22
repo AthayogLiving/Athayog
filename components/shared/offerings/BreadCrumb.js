@@ -9,6 +9,7 @@ import {
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 function BreadCrumb({ subLinks, currentPage }) {
+     return null;
      return (
           <div>
                <Flex
