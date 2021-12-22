@@ -82,7 +82,10 @@ const ImageGrid = ({ imageType, isMobile }) => {
           imageType: '',
           imageName: ''
      });
-     const [currentPosition, setCurrentPosition] = useState(-1);
+     const [isPositionChanged, setIsPositionChanged] = useState({
+          id: 'imageId',
+          status: true
+     });
      const [imageOrder, setImageOrder] = useState({});
 
      //  ----------------------
@@ -174,6 +177,7 @@ const ImageGrid = ({ imageType, isMobile }) => {
           setImageOrder((prevState) => ({
                [id]: Number(order)
           }));
+          setIsPositionChanged({ id: id, status: true });
      };
 
      //  ----------------------
@@ -289,6 +293,12 @@ const ImageGrid = ({ imageType, isMobile }) => {
                                                   <IconButton
                                                        variant="outline"
                                                        colorScheme="teal"
+                                                       isDisabled={
+                                                            isPositionChanged.id ===
+                                                            image.id
+                                                                 ? false
+                                                                 : true
+                                                       }
                                                        size="xs"
                                                        onClick={() =>
                                                             updatePosition(
