@@ -1,20 +1,6 @@
+import { chakra, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 
-import {
-     Box,
-     Center,
-     chakra,
-     Flex,
-     Heading,
-     HStack,
-     List,
-     ListIcon,
-     ListItem,
-     OrderedList,
-     Stack,
-     Text,
-     UnorderedList
-} from '@chakra-ui/react';
 const OnlineCourses = () => {
      return (
           <Flex
@@ -65,7 +51,7 @@ const OnlineCourses = () => {
                                    }}
                               >
                                    <chakra.span fontWeight="medium">
-                                        Children's Yoga Course
+                                        Children&apos;s Yoga Course
                                    </chakra.span>{' '}
                               </Text>
                          </Stack>

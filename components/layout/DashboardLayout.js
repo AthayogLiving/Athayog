@@ -1,5 +1,7 @@
-import { useAuth } from '@/lib/auth';
+import Home from '@/components/admin/Home';
 import Navbar from '@/components/admin/Navbar';
+import Sidebar from '@/components/admin/Sidebar';
+import { useAuth } from '@/lib/auth';
 import {
      Box,
      Grid,
@@ -7,14 +9,11 @@ import {
      Spinner,
      useColorModeValue
 } from '@chakra-ui/react';
-import Sidebar from '@/components/admin/Sidebar';
-import StickyBox from 'react-sticky-box';
-import Home from '@/components/admin/Home';
 import { useRouter } from 'next/router';
-import { useEffect, useRef } from 'react';
-import { isMobile } from 'react-device-detect';
-import SidebarMobile from '../admin/SidebarMobile';
+import { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import StickyBox from 'react-sticky-box';
+import SidebarMobile from '../admin/SidebarMobile';
 
 const DashboardLayout = ({ children }) => {
      const { user, signout, loading } = useAuth();
@@ -44,7 +43,7 @@ const DashboardLayout = ({ children }) => {
           if (!(user || loading)) {
                router.push('/');
           }
-     }, [user, loading]);
+     }, [user, loading, router]);
 
      if (!user) {
           return (

@@ -8,15 +8,17 @@ export default function Custom404() {
                <Box padding={5}>
                     <Image
                          src={notFound}
+                         alt="404 Page Not Found"
                          height="400px"
                          width="400px"
                          layout="responsive"
                     />
                     <Heading textAlign="center">404 Page Not Found</Heading>
                     <Text textAlign="center">
-                         Oops! This obviously isn't a page you were looking for.
+                         Oops! This obviously isn&apos;t a page you were looking
+                         for.
                     </Text>
-                    <Link href="/">
+                    <Link href="/" passHref={true}>
                          <Button
                               colorScheme="aygreen"
                               margin="auto"

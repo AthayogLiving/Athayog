@@ -70,6 +70,7 @@ const ProsAndCons = ({ data, name }) => {
                                                        md: '1rem',
                                                        lg: '1rem'
                                                   }}
+                                                  key={idx}
                                              >
                                                   {' '}
                                                   <chakra.span mr={1}>
@@ -99,6 +100,7 @@ const ProsAndCons = ({ data, name }) => {
                                                        md: '1rem',
                                                        lg: '1rem'
                                                   }}
+                                                  key={idx}
                                              >
                                                   <chakra.span mr={1}>
                                                        {idx + 1}.{' '}

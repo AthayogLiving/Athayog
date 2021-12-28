@@ -22,7 +22,7 @@ const Star = ({ starNumber }) => {
           <Flex>
                {[...Array(starNumber)].map((e, i) => {
                     return (
-                         <chakra.span mr={2}>
+                         <chakra.span mr={2} key={i}>
                               <IconContext.Provider
                                    value={{
                                         color: '#FFD700'
@@ -36,7 +36,7 @@ const Star = ({ starNumber }) => {
                })}
                {[...Array(remaingStart)].map((e, i) => {
                     return (
-                         <chakra.span mr={2}>
+                         <chakra.span mr={2} key={i}>
                               <IconContext.Provider
                                    value={{
                                         color: '#CCC'

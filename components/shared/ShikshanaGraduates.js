@@ -71,9 +71,9 @@ const ShikshanaGraduates = () => {
                                         </Tr>
                                    </Thead>
                                    <Tbody bg="white">
-                                        {graduates.map((grads) => {
+                                        {graduates.map((grads, idx) => {
                                              return (
-                                                  <Tr>
+                                                  <Tr key={idx}>
                                                        <Td bg="green.100">
                                                             {grads.id}
                                                        </Td>

@@ -12,7 +12,7 @@ const HomeLayout = ({ children }) => {
           if (colorMode === 'dark') {
                toggleColorMode('light');
           }
-     }, [colorMode]);
+     }, [colorMode, toggleColorMode]);
      return (
           <div>
                <Navbar />

@@ -113,7 +113,6 @@ const Testimonials = ({ testimonials }) => {
                                                   </Flex>
 
                                                   <Text
-                                                       fontSize="md"
                                                        mt={5}
                                                        fontSize={{
                                                             base: 'sm'
@@ -122,7 +121,6 @@ const Testimonials = ({ testimonials }) => {
                                                        {data.review}
                                                   </Text>
                                                   <Text
-                                                       fontSize="2xl"
                                                        fontWeight="medium"
                                                        mt={5}
                                                        fontSize={{

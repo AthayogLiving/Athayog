@@ -29,7 +29,6 @@ const Footer = () => {
           >
                <Grid
                     gridGap="3rem"
-                    width="100%"
                     gridTemplateColumns="repeat(auto-fit, minmax(200px, 1fr))"
                     alignItems="start"
                     padding={{
@@ -47,20 +46,20 @@ const Footer = () => {
                          >
                               Site Links
                          </Text>
-                         <Link href="/">
+                         <Link href="/" passHref>
                               <Text cursor="pointer">Home</Text>
                          </Link>
-                         <Link href="/about">
+                         <Link href="/about" passHref>
                               <Text cursor="pointer">About</Text>
                          </Link>
-                         <Link href="/privacy">
+                         <Link href="/privacy" passHref>
                               <Text cursor="pointer">Privacy Policy</Text>
                          </Link>
 
-                         <Link href="/refund">
+                         <Link href="/refund" passHref>
                               <Text cursor="pointer">Refund Policy</Text>
                          </Link>
-                         <Link href="/terms">
+                         <Link href="/terms" passHref>
                               <Text cursor="pointer">Terms & Conditions</Text>
                          </Link>
                     </Stack>
@@ -72,27 +71,27 @@ const Footer = () => {
                          >
                               Offerings
                          </Text>
-                         <Link href="/offerings/workshops">
+                         <Link href="/offerings/workshops" passHref>
                               <Text cursor="pointer">AthaYog Workshops</Text>
                          </Link>
-                         <Link href="/offerings/shikshana">
+                         <Link href="/offerings/shikshana" passHref>
                               <Text cursor="pointer">
                                    AthaYog Shikshana Pada
                               </Text>
                          </Link>
-                         <Link href="/offerings/space">
+                         <Link href="/offerings/space" passHref>
                               <Text cursor="pointer">AthaYog Space </Text>
                          </Link>
-                         <Link href="/offerings/online">
+                         <Link href="/offerings/online" passHref>
                               <Text cursor="pointer">AthaYog Online </Text>
                          </Link>
-                         <Link href="/offerings/personal">
+                         <Link href="/offerings/personal" passHref>
                               <Text cursor="pointer">AthaYog Personal</Text>
                          </Link>
-                         <Link href="/offerings/onsite">
+                         <Link href="/offerings/onsite" passHref>
                               <Text cursor="pointer">AthaYog Onsite</Text>
                          </Link>
-                         <Link href="/offerings/chikitsa">
+                         <Link href="/offerings/chikitsa" passHref>
                               <Text cursor="pointer">AthaYog Chikitsa</Text>
                          </Link>
                     </Stack>

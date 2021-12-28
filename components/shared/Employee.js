@@ -12,7 +12,6 @@ const Employee = ({ name, image, info, designation }) => {
                padding={5}
                flexDirection={{ base: 'column', md: 'row', lg: 'row' }}
                mt={{ base: 2, md: 10, lg: 10 }}
-               mt={{ base: 2, md: 10, lg: 10 }}
                key={uuidv4()}
           >
                <Box>

@@ -35,24 +35,6 @@ const ShikshanaCourses = () => {
                slug: 'ryt-200-course',
                image: s2
           }
-          // {
-          //      id: '5ATH',
-          //      name: 'Athayog Sadhana',
-          //      slug: 'athayog-sadhana',
-          //      image: s5
-          // },
-          // {
-          //      id: '3ATH',
-          //      name: 'Short courses',
-          //      slug: 'short-course',
-          //      image: s3
-          // },
-          // {
-          //      id: '4ATH',
-          //      name: 'Special Events',
-          //      slug: 'special-events',
-          //      image: s4
-          // }
      ];
      return (
           <Flex
@@ -101,6 +83,7 @@ const ShikshanaCourses = () => {
                                         overflow="hidden"
                                         bg="white"
                                         boxShadow="sm"
+                                        key={id}
                                    >
                                         <Image
                                              layout="instrinsic"
