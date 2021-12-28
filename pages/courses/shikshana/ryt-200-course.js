@@ -34,13 +34,16 @@ function RYT200Courses() {
                ]
           },
           {
-               time: '11:00am - 4pm (Weekday, Mon-Fri)',
+               time: '11am - 4pm (Weekday, Mon-Fri)',
                location: 'Indiranagar',
-               months: ['January', 'April', 'July', 'October'],
+               months: ['January', 'February', 'April', 'July', 'October'],
                courseName: null,
                details: [
                     {
                          date: '3rd January 2022 - 3rd March 2022'
+                    },
+                    {
+                         date: '7th February 2022 - 1st April 2022'
                     },
                     {
                          date: '4th April 2022 - 2nd June 2022'
@@ -258,8 +261,10 @@ function RYT200Courses() {
                               </OrderedList>
                          </Flex>
                     </Box>
-                    <Box width='100%'>  <ShikshanaCalendarTable calendar={events} /></Box>
-                  
+                    <Box width="100%">
+                         {' '}
+                         <ShikshanaCalendarTable calendar={events} />
+                    </Box>
                </HeaderLayout>
                <ContactMore />
           </>
