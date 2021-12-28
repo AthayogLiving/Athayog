@@ -1,4 +1,15 @@
-import { Box, Flex, Grid, Heading, SimpleGrid, Text } from '@chakra-ui/react';
+import {
+     Box,
+     Flex,
+     Grid,
+     Heading,
+     List,
+     ListItem,
+     OrderedList,
+     SimpleGrid,
+     Text,
+     UnorderedList
+} from '@chakra-ui/react';
 import React from 'react';
 import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import { motion } from 'framer-motion';
@@ -54,7 +65,9 @@ const Classes = ({ classes }) => {
                     >
                          {classes.map((data, index) => {
                               return (
-                                   <MotionBox
+                                   <Flex
+                                        direction="column"
+                                        justifyContent="flex-start"
                                         bg={
                                              index % 2 == 0
                                                   ? 'aygreen.100'
@@ -72,40 +85,73 @@ const Classes = ({ classes }) => {
                                         textAlign="center"
                                         key={index}
                                    >
-                                        <Text
-                                             fontSize={{
-                                                  base: 'xl',
-                                                  md: '2xl',
-                                                  lg: '2xl'
-                                             }}
-                                             fontWeight="normal"
-                                        >
-                                             {capitalizeFirstLetter(
-                                                  data.className
-                                             )}
-                                        </Text>
+                                        <Box>
+                                             {' '}
+                                             <Text
+                                                  fontSize={{
+                                                       base: 'xl',
+                                                       md: '2xl',
+                                                       lg: '2xl'
+                                                  }}
+                                                  fontWeight="normal"
+                                             >
+                                                  {capitalizeFirstLetter(
+                                                       data.className
+                                                  )}
+                                             </Text>
+                                             {data.classInfo
+                                                  .split('\n')
+                                                  .map((i, index) => {
+                                                       return (
+                                                            <Text
+                                                                 mt={5}
+                                                                 fontWeight="light"
+                                                                 textAlign="justify"
+                                                                 whiteSpace="pre-wrap"
+                                                                 key={index}
+                                                                 fontSize={{
+                                                                      base: 'base',
+                                                                      md: 'md',
+                                                                      lg: 'lg'
+                                                                 }}
+                                                            >
+                                                                 {i}{' '}
+                                                            </Text>
+                                                       );
+                                                  })}
+                                        </Box>
 
-                                        {data.classInfo
-                                             .split('\n')
-                                             .map((i, index) => {
-                                                  return (
-                                                       <Text
-                                                            mt={5}
-                                                            fontWeight="light"
-                                                            textAlign="justify"
-                                                            whiteSpace="pre-wrap"
-                                                            key={index}
-                                                            fontSize={{
-                                                                 base: 'base',
-                                                                 md: 'md',
-                                                                 lg: 'lg'
-                                                            }}
-                                                       >
-                                                            {i}{' '}
-                                                       </Text>
-                                                  );
-                                             })}
-                                   </MotionBox>
+                                        {data.structure && (
+                                             <Box>
+                                                  <Text
+                                                       textAlign=" left"
+                                                       mt={5}
+                                                       textTransform="uppercase"
+                                                  >
+                                                       Class structure
+                                                  </Text>
+                                                  <UnorderedList
+                                                       textAlign="left"
+                                                       mt={2}
+                                                  >
+                                                       {data.structure?.map(
+                                                            (i, idx) => {
+                                                                 return (
+                                                                      <ListItem
+                                                                           fontWeight="light"
+                                                                           key={
+                                                                                idx
+                                                                           }
+                                                                      >
+                                                                           {i}
+                                                                      </ListItem>
+                                                                 );
+                                                            }
+                                                       )}
+                                                  </UnorderedList>
+                                             </Box>
+                                        )}
+                                   </Flex>
                               );
                          })}
                     </SimpleGrid>

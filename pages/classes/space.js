@@ -38,27 +38,81 @@ const Space = ({ offers, notFound }) => {
           classes: [
                {
                     className: 'Universal Harmony',
-                    classInfo: `A 60 minute class that revolves around grounding rituals, asana practices, pranayama, dharana and relaxation practice. This class helps with inculcating balance and harmonising with the inner universe.`
+                    classInfo: `Find the harmony between your BODY, BREATH & MIND. Restore the balance and explore your inner universe in this hour-long journey!`,
+                    structure: [
+                         'Grounding',
+                         '35 minutes of Asana Practice',
+                         'Relaxation',
+                         'Breathing (Pranayama) & Meditation'
+                    ]
                },
                {
                     className: 'Transcending Transitions ',
-                    classInfo: `A 60 minute class that combines Hatha and Vinayasa along with grounding rituals, Surya Namaskar and asanas in an energetic and fluid Vinayasa style.`
+                    classInfo: `Find your flow in a class combining Hatha Yoga with Vinyasa flow that lasts 60 minutes. Transcend the body and mind as you transition from one pose to another with ease.`,
+                    structure: [
+                         'Grounding',
+                         '45 minutes of Hatha Vinyasa Flow',
+                         'Relaxation'
+                    ]
                },
                {
                     className: 'Rhythm of Being',
-                    classInfo: `A 60 minute class that prioritises relaxed breathing through Hatha Asana. This class helps focusing on a dynamic practice in sync with the traditional Hatha asanas.`
+                    classInfo: `Move to the rhythm of your breath for 60 minutes. Reconnect with your body with a dynamic Hatha yoga practice.`,
+                    structure: [
+                         'Grounding',
+                         '45 minutes of Asana Practice',
+                         'Relaxation'
+                    ]
                },
                {
                     className: 'Inner World',
-                    classInfo: `A 60 minute class that works on tuning your senses, withdrawing yourself from other states of consciousness and navigating through the inner world.`
+                    classInfo: `Slow down the inner chaos of your restless mind in the span of 60 minutes. Unwind and effortlessly rest your body and mind with the relaxation technique of Yoga Nidra or “Yogic Sleep”.`,
+                    structure: [
+                         'Grounding',
+                         'Yoga Nidra - 45 minutes of Guided Relaxation'
+                    ]
                },
                {
                     className: 'Deep Space',
-                    classInfo: `A 60 minute class that immerses you in subtle breathing with your mind being the key. It includes dynamic breathing, internalisation techniques, pranayama and meditation to guide you through your mind and body’s deep space.`
+                    classInfo: `Delve deeper into the space beyond your body and mind with this hour-long guided meditation class. Reconnect with your true self in the deep state of conscious relaxation.`,
+                    structure: [
+                         'Grounding',
+                         '15 minutes of Warm-Up & Surya Namaskar',
+                         'Guided Relaxation',
+                         'Breathing (Pranayama) & Meditation'
+                    ]
                },
                {
-                    className: 'Little Star',
-                    classInfo: `A 60 minute class to empower and nurture young minds to improve their focus and awareness. This is for the age groups 7-14 years.`
+                    className: 'Kids Yoga',
+                    classInfo: `Let the little ones start their Yoga practice when the mind is still fresh and young with this fun-filled and interactive 60 minutes class.`,
+                    structure: [
+                         'Grounding',
+                         'Warm Up - Engaging & Interactive Activities',
+                         'Asana Practice',
+                         'Relaxation'
+                    ]
+               },
+               {
+                    className: 'Ashtanga',
+                    classInfo: `This rigorous hour-long practice synchronizes breath with movement. Immerse and feel the body heat up with dynamic movement.`,
+                    structure: [
+                         'Grounding',
+                         'Ashtanga Surya Namaskar',
+                         'Ashtanga Primary Series Asanas',
+                         'Relaxation'
+                    ]
+               },
+               {
+                    className: 'Sivananda',
+                    classInfo: `In the span of 60 minutes, find a relaxed and meditative state of mind as you practise Hatha yoga in Sivananda style. Founded by Vishnudevananda, this deep Yogic breathing and relaxation-focused practice is fit for all levels.`,
+                    structure: [
+                         'Grounding',
+                         '15 minutes of Warm-Up',
+                         'Breathing (Pranayama)',
+                         'Surya Namaskar',
+                         'Asana Practice',
+                         'Guided Relaxation'
+                    ]
                }
           ],
           prosAndCons: [
