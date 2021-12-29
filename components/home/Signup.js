@@ -163,6 +163,24 @@ const Signup = () => {
           setName(displayName);
           setPhone(phone);
           onPhoneSignInSubmit(phone, countryCode);
+          try {
+               await fetch(
+                    'https://formsubmit.co/ajax/info@athayogliving.com',
+                    {
+                         method: 'POST',
+                         headers: {
+                              'Content-Type': 'application/json',
+                              Accept: 'application/json'
+                         },
+                         body: JSON.stringify({
+                              FormType: 'Signup Form',
+                              fullname: displayName,
+                              email: email,
+                              phone: phone
+                         })
+                    }
+               );
+          } catch (error) {}
      };
 
      return (
