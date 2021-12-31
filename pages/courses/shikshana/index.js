@@ -4,8 +4,10 @@ import Hero from '@/components/shared/Hero';
 import InformationSplit from '@/components/shared/InformationSplit';
 import ShikshanaCourses from '@/components/shared/ShikshanaCourses';
 import { getOffer } from '@/lib/db/offerings';
-import { Grid, Text } from '@chakra-ui/react';
+import { ArrowBackIcon } from '@chakra-ui/icons';
+import { Box, Button, Grid, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 import athayogShikshana from 'public/athayogShikshana.jpg';
 import React from 'react';
 
@@ -35,6 +37,8 @@ const Shikshana = ({ offers, notFound }) => {
           description: `To be a good teacher, You have to first be a good student. Start your learning Journey with us and craft yourself into becoming a Yoga teacher. Build your own knowledge and practice and nurture others through learning the skills of being a good teacher. Athayog Shikshana Pada brings to you Yoga instructor Course (YIC) Affiliated to VYASA, Bengaluru, RYT 200 Affiliated to Yoga Alliance, USA`
      };
 
+     const router = useRouter();
+
      const apiPricing = [];
      offers.map((data) => {
           apiPricing.push({
@@ -59,6 +63,26 @@ const Shikshana = ({ offers, notFound }) => {
                animate={{ opacity: 1 }}
           >
                <Hero pageData={pageData} />
+               <Box
+                    margin="auto"
+                    padding={{
+                         base: '2rem',
+                         md: '3rem',
+                         lg: '3rem'
+                    }}
+                    width="100%"
+               >
+                    <Button
+                         leftIcon={<ArrowBackIcon />}
+                         size="md"
+                         variant="outline"
+                         mb={10}
+                         onClick={() => router.push('/courses')}
+                    >
+                         Back To Courses
+                    </Button>
+               </Box>
+
                <InformationSplit pageData={pageData} />
                <ShikshanaCourses />
           </motion.div>

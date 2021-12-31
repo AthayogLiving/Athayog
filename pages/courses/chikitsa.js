@@ -7,6 +7,9 @@ import Register from '@/components/shared/Register';
 import InformationSplit from '@/components/shared/InformationSplit';
 import HomeLayout from '@/components/layout/HomeLayout';
 import { getOffer } from '@/lib/db/offerings';
+import { Box, Button } from '@chakra-ui/react';
+import { ArrowBackIcon } from '@chakra-ui/icons';
+import { useRouter } from 'next/router';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('chikitsa');
@@ -26,6 +29,7 @@ export async function getStaticProps(context) {
 }
 
 const Chikitsa = ({ offers }) => {
+     const router = useRouter();
      const pageData = {
           name: 'Chikitsa',
           heroImage: athayogChikitsa,
@@ -58,6 +62,25 @@ const Chikitsa = ({ offers }) => {
                animate={{ opacity: 1 }}
           >
                <Hero pageData={pageData} />
+               <Box
+                    margin="auto"
+                    padding={{
+                         base: '2rem',
+                         md: '3rem',
+                         lg: '3rem'
+                    }}
+                    width="100%"
+               >
+                    <Button
+                         leftIcon={<ArrowBackIcon />}
+                         size="md"
+                         variant="outline"
+                         mb={10}
+                         onClick={() => router.push('/courses')}
+                    >
+                         Back To Courses
+                    </Button>
+               </Box>
                <InformationSplit pageData={pageData} />
                <Pricing pricing={apiPricing} />
                <Register registerTo={pageData.name.toLocaleLowerCase()} />
