@@ -1,4 +1,5 @@
 import HomeLayout from '@/components/layout/HomeLayout';
+import CTA from '@/components/shared/CTA';
 import Hero from '@/components/shared/Hero';
 import InformationSplit from '@/components/shared/InformationSplit';
 import ShikshanaCourses from '@/components/shared/ShikshanaCourses';
@@ -60,20 +61,7 @@ const Shikshana = ({ offers, notFound }) => {
                <Hero pageData={pageData} />
                <InformationSplit pageData={pageData} />
                <ShikshanaCourses />
-               <Grid
-                    bg="gray.50"
-                    placeItems="center"
-                    margin="auto"
-                    padding={{
-                         base: '2rem 0',
-                         md: '3rem 0',
-                         lg: '5rem 0'
-                    }}
-               >
-                    <Text fontWeight="normal" fontSize="xl" fontStyle="italic">
-                         Contact us for more Information
-                    </Text>
-               </Grid>
+               <CTA registerTo="shikshana" />
           </motion.div>
      );
 };

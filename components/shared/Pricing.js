@@ -17,6 +17,7 @@ import cookie from 'js-cookie';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import { chakra } from '@chakra-ui/system';
+import CTA from './CTA';
 
 const Pricing = ({ pricing, registerTo, toRegister }) => {
      const { user, signout, loading } = useAuth();
@@ -50,13 +51,10 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                          alignItems="center"
                          width="60%"
                     >
-                         <Heading
-                              fontWeight="normal"
-                              fontSize="xl"
-                              fontStyle="italic"
-                         >
+                         <Text mb={3} fontSize="xl" fontWeight="semibold">
                               Contact us for more information
-                         </Heading>
+                         </Text>
+                         <CTA registerTo={registerTo} />
                     </Flex>
                </Flex>
           );

@@ -1,6 +1,7 @@
 import HomeLayout from '@/components/layout/HomeLayout';
 import ContactMore from '@/components/shared/ContactMore';
 import CoursesLayout from '@/components/shared/CoursesLayout';
+import CTA from '@/components/shared/CTA';
 import HeaderLayout from '@/components/shared/offerings/HeaderLayout';
 import ShikshanaCalendarTable from '@/components/shared/ShikshanaCalendarTable';
 import { Heading, Stack, Text } from '@chakra-ui/layout';
@@ -111,6 +112,7 @@ function AthayogSadhana() {
                          </Text>
                     </Stack>
                     <ShikshanaCalendarTable calendar={events} />
+                    <CTA registerTo="athayog_sadhana" />
                </CoursesLayout>
                <ContactMore />
           </>

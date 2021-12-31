@@ -8,6 +8,7 @@ import Register from '@/components/shared/Register';
 import HomeLayout from '@/components/layout/HomeLayout';
 import { getOffer } from '@/lib/db/offerings';
 import BreadCrumb from '@/components/shared/offerings/BreadCrumb';
+import CTA from '@/components/shared/CTA';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('onsite');
@@ -64,6 +65,7 @@ const Onsite = ({ offers, notFound }) => {
                {/* <Information pageData={pageData} /> */}
 
                <Pricing pricing={apiPricing} toRegister={true} />
+
                <Register registerTo={pageData.name.toLocaleLowerCase()} />
           </motion.div>
      );

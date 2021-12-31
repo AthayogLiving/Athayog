@@ -11,6 +11,7 @@ import HomeLayout from '@/components/layout/HomeLayout';
 import ProsAndCons from '@/components/shared/ProsAndCons';
 import Schedule from '@/components/shared/classes/Schedule';
 import BreadCrumb from '@/components/shared/offerings/BreadCrumb';
+import CTA from '@/components/shared/CTA';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('space');
@@ -169,6 +170,7 @@ const Space = ({ offers, notFound }) => {
                     registerTo={pageData.name.toLocaleLowerCase()}
                     pricing={apiPricing}
                />
+
                <ProsAndCons data={pageData.prosAndCons} name="Space" />
           </motion.div>
      );

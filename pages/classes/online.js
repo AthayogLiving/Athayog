@@ -24,6 +24,7 @@ import {
 import OnlineCourses from '@/components/shared/OnlineCourses';
 import ProsAndCons from '@/components/shared/ProsAndCons';
 import BreadCrumb from '@/components/shared/offerings/BreadCrumb';
+import CTA from '@/components/shared/CTA';
 export async function getStaticProps(context) {
      const { offers } = await getOffer('online');
 
@@ -326,6 +327,7 @@ const Online = ({ offers, notFound }) => {
                     pricing={apiPricing}
                     registerTo={pageData.name.toLocaleLowerCase()}
                />
+
                <ProsAndCons data={pageData.prosAndCons} name="Online" />
           </motion.div>
      );

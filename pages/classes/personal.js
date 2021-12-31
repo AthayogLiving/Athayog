@@ -9,6 +9,7 @@ import { getOffer } from '@/lib/db/offerings';
 import HomeLayout from '@/components/layout/HomeLayout';
 import Schedule from '@/components/shared/Schedule';
 import BreadCrumb from '@/components/shared/offerings/BreadCrumb';
+import CTA from '@/components/shared/CTA';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('personal');

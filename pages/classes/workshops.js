@@ -9,6 +9,7 @@ import HomeLayout from '@/components/layout/HomeLayout';
 import WorkShopTable from '@/components/shared/WorkShopTable';
 import WorkShopCourse from '@/components/shared/WorkShopCourse';
 import BreadCrumb from '@/components/shared/offerings/BreadCrumb';
+import CTA from '@/components/shared/CTA';
 
 export async function getStaticProps(context) {
      const { offers } = await getOffer('workshops');
