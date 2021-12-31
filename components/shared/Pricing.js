@@ -611,17 +611,19 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                          *All price inclusive of 18% GST
                     </Text>
 
-                    <Text mt={8} fontSize="lg" mb={3}>
+                    {/* <Text mt={8} fontSize="lg" mb={3}>
                          {registerTo == 'space'
                               ? ' *Connect with us to know more about our ongoing offers.'
                               : null}
                          {registerTo == 'shikshana'
                               ? '*Get in touch with us for our early bird offer. Valid for a limited time only'
                               : null}
-                    </Text>
+                    </Text> */}
                     {!toRegister && (
                          <>
-                              <Text>Contact us for more information</Text>
+                              <Text mb={3} fontSize="xl" fontWeight="semibold">
+                                   Contact us for more information
+                              </Text>
                               <CTA registerTo={registerTo} />
                          </>
                     )}
