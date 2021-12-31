@@ -614,13 +614,17 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                     <Text mt={8} fontSize="lg" mb={3}>
                          {registerTo == 'space'
                               ? ' *Connect with us to know more about our ongoing offers.'
-                              : 'Contact us for more information'}
+                              : null}
                          {registerTo == 'shikshana'
                               ? '*Get in touch with us for our early bird offer. Valid for a limited time only'
                               : null}
                     </Text>
-
-                    <CTA registerTo={registerTo} />
+                    {!toRegister && (
+                         <>
+                              <Text>Contact us for more information</Text>
+                              <CTA registerTo={registerTo} />
+                         </>
+                    )}
                </Flex>
           </Flex>
      );
