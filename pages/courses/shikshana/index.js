@@ -61,7 +61,6 @@ const Shikshana = ({ offers, notFound }) => {
                <Hero pageData={pageData} />
                <InformationSplit pageData={pageData} />
                <ShikshanaCourses />
-               <CTA registerTo="shikshana" />
           </motion.div>
      );
 };

@@ -1,7 +1,8 @@
 import { Flex, Heading } from '@chakra-ui/react';
 import React from 'react';
+import CTA from './CTA';
 
-function ContactMore() {
+function ContactMore({ registerTo }) {
      return (
           <Flex
                margin="auto"
@@ -25,9 +26,11 @@ function ContactMore() {
                          fontWeight="normal"
                          fontSize="xl"
                          fontStyle="italic"
+                         mb={3}
                     >
                          Contact us for more information
                     </Heading>
+                    <CTA registerTo={registerTo} />
                </Flex>
           </Flex>
      );

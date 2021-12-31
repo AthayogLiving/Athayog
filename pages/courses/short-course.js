@@ -137,9 +137,8 @@ function ShortCourses() {
                     </Text> */}
                     </Stack>
                     <ShikshanaCalendarTable calendar={events} />
-                    <CTA registerTo="short-course" />
                </CoursesLayout>
-               <ContactMore />
+               <ContactMore registerTo="short_course" />
           </>
      );
 }

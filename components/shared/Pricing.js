@@ -149,6 +149,7 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                               Contact us for more information on customized
                               plans.
                          </Heading>
+                         <CTA registerTo={registerTo} />
                     </Flex>
                </Flex>
           );
@@ -609,14 +610,17 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                     <Text width="100%" textAlign="left">
                          *All price inclusive of 18% GST
                     </Text>
-                    <Text mt={8} fontSize="lg">
+
+                    <Text mt={8} fontSize="lg" mb={3}>
                          {registerTo == 'space'
                               ? ' *Connect with us to know more about our ongoing offers.'
-                              : null}
+                              : 'Contact us for more information'}
                          {registerTo == 'shikshana'
                               ? '*Get in touch with us for our early bird offer. Valid for a limited time only'
                               : null}
                     </Text>
+
+                    <CTA registerTo={registerTo} />
                </Flex>
           </Flex>
      );

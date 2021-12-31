@@ -112,9 +112,8 @@ function AthayogSadhana() {
                          </Text>
                     </Stack>
                     <ShikshanaCalendarTable calendar={events} />
-                    <CTA registerTo="athayog_sadhana" />
                </CoursesLayout>
-               <ContactMore />
+               <ContactMore registerTo="athayog-sadhana" />
           </>
      );
 }

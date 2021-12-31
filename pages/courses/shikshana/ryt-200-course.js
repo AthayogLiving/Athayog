@@ -266,7 +266,7 @@ function RYT200Courses() {
                          <ShikshanaCalendarTable calendar={events} />
                     </Box>
                </HeaderLayout>
-               <ContactMore />
+               <ContactMore registerTo="ryt_200" />
           </>
      );
 }

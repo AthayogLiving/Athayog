@@ -259,7 +259,7 @@ function YicYoga() {
                          <ShikshanaCalendarTable calendar={events} />
                     </Box>
                </HeaderLayout>
-               <ContactMore />
+               <ContactMore registerTo="yic" />
           </>
      );
 }
