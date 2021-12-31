@@ -89,16 +89,7 @@ function SpecialEvent() {
                     </Text> */}
                     </Stack>
                     <ShikshanaCalendarTable calendar={events} />
-                    <Text
-                         mb={3}
-                         fontSize="xl"
-                         fontWeight="semibold"
-                         textAlign="center"
-                    >
-                         Contact us for more information
-                    </Text>
-                    <CTA />
-               
+               </CoursesLayout>
                <ContactMore registerTo="special_events" />
           </>
      );

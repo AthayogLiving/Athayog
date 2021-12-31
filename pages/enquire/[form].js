@@ -109,7 +109,7 @@ const Register = () => {
                     try {
                          let parsedCondition = conditions.toString();
                          fetch(
-                              'https://formsubmit.co/ajax/admin@athayogliving.com',
+                              'https://formsubmit.co/ajax/info@athayogliving.com',
                               {
                                    method: 'POST',
                                    headers: {
