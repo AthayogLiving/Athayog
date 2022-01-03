@@ -31,7 +31,7 @@ const leads = () => {
 
      return (
           <>
-               <FormHeader siteLink="Enquiry" />
+               <FormHeader siteLink="Leads" />
                <LeadsData
                     forms={data.submissions}
                     latestDoc={latestDoc}

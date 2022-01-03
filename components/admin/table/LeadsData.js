@@ -32,6 +32,7 @@ import firebase from '@/lib/firebase';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import { FirebaseToDate } from '@/components/helper/FirebaseToDate';
+import { v4 as uuidv4 } from 'uuid';
 import { Styles } from './Styles';
 const firestore = firebase.firestore();
 
@@ -64,6 +65,15 @@ const LeadsData = ({ forms, latestDoc, setDocs }) => {
                     Header: 'email',
                     accessor: 'email',
                     Filter: ColumnFilter
+               },
+               {
+                    Header: 'Submitted',
+                    accessor: 'createdAt',
+                    Cell: ({ cell: { value } }) => (
+                         <DateCreated values={value} key={uuidv4()} />
+                    ),
+                    Filter: ColumnFilter,
+                    disableFilters: true
                }
           ],
           []
