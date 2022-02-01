@@ -266,8 +266,7 @@ const Register = () => {
                     courseName: ogData.name,
                     duration: ogData.days,
                     price: ogData.price,
-                    address:
-                         '307, Athayog living, Sun Rise Arcade, Devasandra Main Rd, Kodigehalli, Krishnarajapura, Bengaluru, Karnataka 560036'
+                    address: '307, Athayog living, Sun Rise Arcade, Devasandra Main Rd, Kodigehalli, Krishnarajapura, Bengaluru, Karnataka 560036'
                },
                theme: {
                     color: '#84986D'
