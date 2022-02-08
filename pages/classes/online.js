@@ -169,10 +169,10 @@ const Online = ({ offers, notFound }) => {
                                                        6.00 AM - 7.00 AM
                                                   </Text>
                                              </Td>
-                                             <Td>Transcending Transition</Td>
+                                             <Td>Rhythm of Being </Td>
                                              <Td>Universal Harmony </Td>
                                              <Td>Sivananda</Td>
-                                             <Td>Rhythm of Being </Td>
+                                             <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>---</Td>
                                              <Td>---</Td>
@@ -187,13 +187,13 @@ const Online = ({ offers, notFound }) => {
                                              >
                                                   7.00 AM - 8.00 AM
                                              </Td>
-                                             <Td>Rhythm of Being </Td>
-                                             <Td>Sivananda-Sherin</Td>
-                                             <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition </Td>
+                                             <Td>Rhythm of Being </Td>
+                                             <Td>Rhythm of Being</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition </Td>
                                              <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -210,7 +210,7 @@ const Online = ({ offers, notFound }) => {
                                              <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition </Td>
                                         </Tr>
 
@@ -242,13 +242,13 @@ const Online = ({ offers, notFound }) => {
                                              >
                                                   5:00 PM - 6:00 PM
                                              </Td>
+                                             <Td>Transcending Transition</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Ashtanga</Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -261,12 +261,12 @@ const Online = ({ offers, notFound }) => {
                                                   6:00 PM - 7:00 PM
                                              </Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Sivananda</Td>
-                                             <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Ashtanga</Td>
+                                             <Td>Inner World</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -278,13 +278,14 @@ const Online = ({ offers, notFound }) => {
                                              >
                                                   7:00 PM - 8:00 PM
                                              </Td>
-                                             <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Deep Space</Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition</Td>
+                                             <Td>Sivananda</Td>
+
+                                             <Td> - </Td>
+                                             <Td> - </Td>
                                         </Tr>
                                         <Tr>
                                              <Td

@@ -97,7 +97,7 @@ function Schedule() {
                                              <Td>Sivananda</Td>
                                              <Td>Rhythm of Being </Td>
                                              <Td>Rhythm of Being </Td>
-                                             <Td>Transcending Transition</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>---</Td>
                                              <Td>---</Td>
                                         </Tr>
@@ -113,12 +113,13 @@ function Schedule() {
                                              </Td>
                                              <Td>Transcending Transition </Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being </Td>
-                                             <Td>Transcending Transition </Td>
-                                             <Td>Rhythm of Being</Td>
                                              <Td>Sivananda</Td>
-                                             <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition </Td>
+                                             <Td>Rhythm of Being </Td>
+                                             <Td>Sivananda</Td>
+                                             <Td>Rhythm of Being </Td>
                                         </Tr>
+
                                         <Tr>
                                              <Td
                                                   bg="aygreen.100"
@@ -131,13 +132,30 @@ function Schedule() {
                                              </Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition </Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition </Td>
                                         </Tr>
-
+                                        <Tr>
+                                             <Td
+                                                  bg="aygreen.100"
+                                                  borderBottom="1px"
+                                                  borderColor="aygreen.200"
+                                                  padding="0px"
+                                                  paddingLeft="10px"
+                                             >
+                                                  11:00 AM - 4:00 PM
+                                             </Td>
+                                             <Td>Shikdhanapada</Td>
+                                             <Td>Shikdhanapada</Td>
+                                             <Td>Shikdhanapada</Td>
+                                             <Td>Shikdhanapada</Td>
+                                             <Td>Shikdhanapada</Td>
+                                             <Td>Shikdhanapada</Td>
+                                             <Td>Shikdhanapada</Td>
+                                        </Tr>
                                         <Tr>
                                              <Td
                                                   bg="aygreen.100"
@@ -166,12 +184,12 @@ function Schedule() {
                                              >
                                                   5:00 PM - 6:00 PM
                                              </Td>
-                                             <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Transcending Transition</Td>
+                                             <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition</Td>
                                              <Td>Rhythm of Being</Td>
                                         </Tr>
                                         <Tr>
@@ -190,7 +208,7 @@ function Schedule() {
                                              <Td>Rhythm of Being</Td>
                                              <Td>Inner World</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Ashtanga</Td>
+                                             <Td>Sivananda</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -204,27 +222,9 @@ function Schedule() {
                                              </Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Transcending Transition</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>-</Td>
-                                             <Td>-</Td>
-                                        </Tr>
-                                        <Tr>
-                                             <Td
-                                                  bg="aygreen.100"
-                                                  borderBottom="1px"
-                                                  borderColor="aygreen.200"
-                                                  padding="0px"
-                                                  paddingLeft="10px"
-                                             >
-                                                  8:00 PM - 9:00 PM
-                                             </Td>
-                                             <Td>Universal Harmony </Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony </Td>
                                              <Td>Deep Space</Td>
                                              <Td>Transcending Transition</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>-</Td>
                                              <Td>-</Td>
                                         </Tr>
@@ -298,10 +298,10 @@ function Schedule() {
                                                        6.00 AM - 7.00 AM
                                                   </Text>
                                              </Td>
-                                             <Td>Transcending Transition</Td>
-                                             <Td>Universal Harmony </Td>
                                              <Td>Rhythm of Being </Td>
                                              <Td>Universal Harmony </Td>
+                                             <Td>Sivananda</Td>
+                                             <Td>Transcending Transition</Td>
                                              <Td>Sivananda</Td>
                                              <Td>---</Td>
                                              <Td>---</Td>
@@ -316,13 +316,13 @@ function Schedule() {
                                              >
                                                   7.00 AM - 8.00 AM
                                              </Td>
+                                             <Td>Transcending Transition </Td>
                                              <Td>Rhythm of Being </Td>
-                                             <Td>Universal Harmony</Td>
                                              <Td>Ashtanga </Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition </Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Ashtanga</Td>
+                                             <Td>Rhythm of Being </Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -335,12 +335,12 @@ function Schedule() {
                                                   8:00 AM - 9:00 AM
                                              </Td>
                                              <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition </Td>
+                                             <Td>Transcending Transition </Td>
+                                             <Td>Ashtanga</Td>
+                                             <Td>Rhythm of Being</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition </Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Rhythm of Being</Td>
                                         </Tr>
 
                                         <Tr>
@@ -373,11 +373,11 @@ function Schedule() {
                                              </Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Sivananda</Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Ashtanga</Td>
-                                             <Td>Sivananda</Td>
+                                             <Td>Transcending Transition</Td>
+                                             <Td>Universal Harmony</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -389,13 +389,13 @@ function Schedule() {
                                              >
                                                   6:00 PM - 7:00 PM
                                              </Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Inner World</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Ashtanga</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Transcending Transition</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -407,29 +407,12 @@ function Schedule() {
                                              >
                                                   7:00 PM - 8:00 PM
                                              </Td>
-                                             <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Deep Space</Td>
-                                             <Td>Sivananda</Td>
-                                             <Td>Inner World</Td>
-                                             <Td>-</Td>
-                                             <Td>-</Td>
-                                        </Tr>
-                                        <Tr>
-                                             <Td
-                                                  bg="aygreen.100"
-                                                  borderBottom="1px"
-                                                  borderColor="aygreen.200"
-                                                  padding="0px"
-                                                  paddingLeft="10px"
-                                             >
-                                                  8:00 PM - 9:00 PM
-                                             </Td>
-                                             <Td>Sivananda</Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Universal Harmony </Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony </Td>
+                                             <Td>Transcending Transition</Td>
+                                             <Td>Sivananda</Td>
+
                                              <Td>-</Td>
                                              <Td>-</Td>
                                         </Tr>
