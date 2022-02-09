@@ -4,6 +4,7 @@ import { Box, Flex, Grid, Heading } from '@chakra-ui/layout';
 import Link from 'next/link';
 import s2 from 'public/shi_2-min.jpg';
 import s6 from 'public/shi_6-min.jpg';
+import s3 from 'public/shi_3-min.jpg';
 import React from 'react';
 
 const ShikshanaCourses = () => {
@@ -34,6 +35,12 @@ const ShikshanaCourses = () => {
                name: 'RYT - 200 courses',
                slug: 'ryt-200-course',
                image: s2
+          },
+          {
+               id: '3ATH',
+               name: 'RPYT courses',
+               slug: 'rpyt-course',
+               image: s3
           }
      ];
      return (

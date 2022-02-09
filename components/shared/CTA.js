@@ -15,7 +15,7 @@ function CTA({ registerTo }) {
                <Button
                     margin="0 auto"
                     onClick={() => callAction()}
-                    colorScheme="teal"
+                    colorScheme="aygreen"
                     textTransform="uppercase"
                >
                     Enquire Now
