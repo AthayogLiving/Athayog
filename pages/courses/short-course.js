@@ -71,6 +71,43 @@ function ShortCourses() {
           }
      ];
 
+     const SummerCourse = [
+          {
+               time: '10am - 1:00pm',
+               courseName: null,
+               months: ['March', 'March', 'April', 'April'],
+               details: [
+                    {
+                         name: 'Rest & Repair ',
+                         date: '19th & 20th March'
+                    },
+                    {
+                         name: 'Fight and Flight',
+                         date: '26th & 27th March'
+                    },
+                    {
+                         name: 'Breath is the Key',
+                         date: '2nd & 3rd April'
+                    },
+                    {
+                         name: 'Action Relaxation',
+                         date: '9th & 10th April'
+                    }
+               ]
+          },
+          {
+               time: '9am - 1:00pm',
+               courseName: null,
+               months: ['February'],
+               details: [
+                    {
+                         name: 'YinYoga ',
+                         date: '26th Feb 2021'
+                    }
+               ]
+          }
+     ];
+
      const spiritualPractices = [
           {
                time: null,
@@ -102,6 +139,7 @@ function ShortCourses() {
                name: 'Short Courses',
                data: shortCourses
           },
+          { name: 'Short Courses Online Indiranagar', data: SummerCourse },
           {
                name: 'Spiritual Practices',
                data: spiritualPractices

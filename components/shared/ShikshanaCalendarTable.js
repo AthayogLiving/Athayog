@@ -22,7 +22,7 @@ function ShikshanaCalendarTable({ calendar }) {
                                         fontSize="1.3rem"
                                         textTransform="uppercase"
                                         textDecoration="underline"
-                                        textAlign="center"
+                                        textAlign="left"
                                         mb={5}
                                    >
                                         {name} Calendar 2022
@@ -37,15 +37,16 @@ function ShikshanaCalendarTable({ calendar }) {
                                              return (
                                                   <Box
                                                        overflowX="auto"
-                                                       boxShadow="sm"
-                                                       rounded="sm"
                                                        mb={5}
-                                                       width="100%"
+                                                       minWidth="min-content"
                                                        key={uuidv4()}
                                                   >
                                                        <Table
                                                             bg="white"
                                                             borderWidth="1px"
+                                                            width="min-content"
+                                                            boxShadow="sm"
+                                                            rounded="sm"
                                                        >
                                                             <Thead>
                                                                  <Tr bg="gray.200">
