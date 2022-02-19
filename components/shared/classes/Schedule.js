@@ -1,18 +1,17 @@
-import React from 'react';
 import {
-     Table,
-     Thead,
-     Tbody,
-     Tfoot,
-     Tr,
-     Th,
-     Td,
-     TableCaption,
-     Heading,
-     Flex,
      Box,
-     Text
+     Divider,
+     Flex,
+     Heading,
+     Table,
+     Tbody,
+     Td,
+     Text,
+     Th,
+     Thead,
+     Tr
 } from '@chakra-ui/react';
+import React from 'react';
 function Schedule() {
      const d = new Date();
 
@@ -427,9 +426,16 @@ function Schedule() {
                                    Saturday
                               </Text>
                               <Text>Sunday (07:00 AM to 08:00 PM)</Text>
+
                               <Text>
                                    Athayog living will be closed on 2nd Saturday
                                    of every Month.
+                              </Text>
+
+                              <Text fontWeight="medium" mt={2}>
+                                   Note: 108 Surya Namaskara will be practiced
+                                   on 1st Saturday of every month, 7am - 9am
+                                   batch.{' '}
                               </Text>
                          </Box>
                     </Flex>

@@ -320,6 +320,11 @@ const Online = ({ offers, notFound }) => {
                                    Athayog living will be closed on 2nd Saturday
                                    of every Month.
                               </Text>
+                              <Text fontWeight="medium" mt={2}>
+                                   Note: 108 Surya Namaskara will be practiced
+                                   on 1st Saturday of every month, 7am - 9am
+                                   batch.{' '}
+                              </Text>
                          </Box>
                     </Flex>
                </Flex>

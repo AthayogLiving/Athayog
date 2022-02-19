@@ -55,7 +55,7 @@ class RootDocument extends Document {
                          {/* Global Site Tag (gtag.js) - Google Analytics */}
                          <script
                               async
-                              src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+                              src={`https://www.googletagmanager.com/gtag/js?id=AW-527303866`}
                          />
                          <script
                               dangerouslySetInnerHTML={{
@@ -63,9 +63,19 @@ class RootDocument extends Document {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${GA_TRACKING_ID}', {
+            gtag('config', 'AW-527303866', {
               page_path: window.location.pathname,
             });
+          `
+                              }}
+                         />
+                         <script
+                              dangerouslySetInnerHTML={{
+                                   __html: `
+             gtag('event', 'conversion', {
+      'send_to': 'AW-527303866/3ewICPbt49ECELqJuPsB',
+      'transaction_id': ''
+  });
           `
                               }}
                          />

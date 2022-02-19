@@ -73,6 +73,17 @@ function ShortCourses() {
 
      const SummerCourse = [
           {
+               time: '9am - 1:00pm',
+               courseName: null,
+               months: ['February'],
+               details: [
+                    {
+                         name: 'YinYoga ',
+                         date: '26th Feb 2021'
+                    }
+               ]
+          },
+          {
                time: '10am - 1:00pm',
                courseName: null,
                months: ['March', 'March', 'April', 'April'],
@@ -92,17 +103,6 @@ function ShortCourses() {
                     {
                          name: 'Action Relaxation',
                          date: '9th & 10th April'
-                    }
-               ]
-          },
-          {
-               time: '9am - 1:00pm',
-               courseName: null,
-               months: ['February'],
-               details: [
-                    {
-                         name: 'YinYoga ',
-                         date: '26th Feb 2021'
                     }
                ]
           }
