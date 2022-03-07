@@ -24,8 +24,8 @@ function ShortCourses() {
                ]
           },
           {
-               time: '5pm - 6:30pm',
-               months: ['February', 'June', 'October'],
+               time: '6pm - 7:30pm',
+               months: ['February', 'June', 'June', 'October'],
                courseName: null,
                details: [
                     {
@@ -34,6 +34,10 @@ function ShortCourses() {
                     },
                     {
                          name: 'Advance Hata',
+                         date: '6th June 2022 - 24th June 2022'
+                    },
+                    {
+                         name: 'Yoga for Holistic Health',
                          date: '6th June 2022 - 24th June 2022'
                     },
                     {
