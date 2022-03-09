@@ -12,13 +12,12 @@ import {
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import HeroBg from 'public/hero.jpeg';
-import RYT_Logo from 'public/Rys_200_Logo.png';
-import Svyasa_Logo from 'public/svyasa.png';
 import React from 'react';
+import { BsArrowDownCircleFill } from 'react-icons/bs';
 
 function Hero() {
      return (
-          <Box height="90vh">
+          <Box height={{ base: '100vh', md: '100vh', lg: '90vh' }}>
                <Box position="relative">
                     <Box
                          height="100%"
@@ -48,12 +47,25 @@ function Hero() {
                     alignItems="center"
                     height="100%"
                     color="white"
-                    justifyContent="space-around"
+                    justifyContent={{
+                         base: 'center',
+                         md: 'center',
+                         lg: 'space-around'
+                    }}
+                    direction={{ base: 'column', md: 'column', lg: 'row' }}
                >
-                    <Box maxW="lg">
+                    <Box
+                         maxW="lg"
+                         textAlign={{
+                              base: 'center',
+                              md: 'center',
+                              lg: 'left'
+                         }}
+                         m={2}
+                    >
                          <Heading
                               as="h1"
-                              fontSize={{ base: '3xl', md: '4xl' }}
+                              fontSize={{ base: '4xl', md: '4xl' }}
                               fontWeight="bold"
                               lineHeight="shorter"
                          >
@@ -65,6 +77,7 @@ function Hero() {
                          <Text
                               as="h3"
                               mb={5}
+                              mt={3}
                               color="gray.200"
                               fontSize={{ md: 'lg' }}
                          >
@@ -73,29 +86,6 @@ function Hero() {
                               Certification and is recognized all over the
                               World.
                          </Text>
-                         <Flex
-                              justifySelf="center"
-                              mb={['1rem', '0', '0', '0']}
-                              bg="whiteAlpha.700"
-                              p={2}
-                              width="max-content"
-                              rounded="sm"
-                         >
-                              <Image
-                                   height="60"
-                                   width="130"
-                                   src={Svyasa_Logo}
-                                   layout="intrinsic"
-                                   alt="svyasa logo"
-                              />
-                              <Image
-                                   height="50"
-                                   width="60"
-                                   src={RYT_Logo}
-                                   layout="intrinsic"
-                                   alt="ryt logo"
-                              />
-                         </Flex>
                     </Box>
                     <Box>
                          <Box
@@ -103,9 +93,10 @@ function Hero() {
                               boxShadow="md"
                               rounded="md"
                               color="black"
-                              py={{ base: '0', sm: '8' }}
+                              py={{ base: '4', sm: '8' }}
                               px={{ base: '4', sm: '10' }}
                               maxW="md"
+                              m={2}
                          >
                               <Text fontWeight="bold" fontSize="2xl" mb={2}>
                                    Signup For A Free Class
@@ -172,6 +163,13 @@ function Hero() {
                                    </Button>
                               </Grid>
                          </Box>
+                    </Box>
+
+                    <Box
+                         mt={5}
+                         display={{ base: 'block', md: 'block', lg: 'none' }}
+                    >
+                         <BsArrowDownCircleFill fontSize="2rem" />
                     </Box>
                </Flex>
           </Box>

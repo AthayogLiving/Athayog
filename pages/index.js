@@ -18,12 +18,12 @@ import 'react-whatsapp-widget/dist/index.css';
 export async function getStaticProps() {
      const reqGallery = await getImages('gallery');
      const reqTestimonials = await getTestimonials();
-     const carousel = JSON.parse(JSON.stringify(reqCarousel));
+
      const gallery = JSON.parse(JSON.stringify(reqGallery));
      const testimonials = JSON.parse(JSON.stringify(reqTestimonials));
 
      return {
-          props: { carousel, gallery, testimonials },
+          props: { gallery, testimonials },
           revalidate: 60
      };
 }
