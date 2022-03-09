@@ -33,10 +33,6 @@ function ShortCourses() {
                          date: '2nd Feb 2022 - 22nd Feb 2022 '
                     },
                     {
-                         name: 'Advance Hata',
-                         date: '6th June 2022 - 24th June 2022'
-                    },
-                    {
                          name: 'Yoga for Holistic Health',
                          date: '6th June 2022 - 24th June 2022'
                     },
