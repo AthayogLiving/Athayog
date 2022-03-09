@@ -65,7 +65,6 @@ const Navbar = () => {
                     transform="initial"
                     style={{ backdropFilter: 'blur(5px)' }}
                     position="fixed"
-                    transition="ease-in-out"
                     zIndex={3}
                     width="100%"
                     height={{ base: '4rem', md: '4rem', lg: '4rem' }}
@@ -92,21 +91,8 @@ const Navbar = () => {
                                              style={{ marginTop: '-1rem' }}
                                              height={isTabletOrMobile ? 25 : 35}
                                              width={isTabletOrMobile ? 25 : 35}
+                                             alt="logo"
                                         />
-                                        <Text
-                                             color="#46563E"
-                                             fontSize={{
-                                                  base: 'xl',
-                                                  md: '2xl',
-                                                  lg: '3xl'
-                                             }}
-                                             ml={2}
-                                             fontWeight="normal"
-                                             cursor="pointer"
-                                             letterSpacing="-2.5px"
-                                        >
-                                             Atha Yog
-                                        </Text>
                                    </Flex>
                               </Link>
 

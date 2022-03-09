@@ -3,6 +3,7 @@ import Enquiry from '@/components/home/Enquiry';
 import Faq from '@/components/home/Faq';
 import Gallery from '@/components/home/Gallery';
 import GuideBook from '@/components/home/GuideBook';
+import Hero from '@/components/home/Hero';
 import HeroCarousel from '@/components/home/HeroCarousel';
 import Offerings from '@/components/home/Offerings';
 import RecentBlogs from '@/components/home/RecentBlogs';
@@ -15,7 +16,6 @@ import WhatsAppWidget from 'react-whatsapp-widget';
 import 'react-whatsapp-widget/dist/index.css';
 
 export async function getStaticProps() {
-     const reqCarousel = await getImages('carousel');
      const reqGallery = await getImages('gallery');
      const reqTestimonials = await getTestimonials();
      const carousel = JSON.parse(JSON.stringify(reqCarousel));
@@ -28,7 +28,7 @@ export async function getStaticProps() {
      };
 }
 
-export default function Home({ carousel, gallery, testimonials }) {
+export default function Home({ gallery, testimonials }) {
      return (
           <motion.div
                exit={{ opacity: 0 }}
@@ -36,8 +36,7 @@ export default function Home({ carousel, gallery, testimonials }) {
                animate={{ opacity: 1 }}
                duration="400"
           >
-               <HeroCarousel images={carousel} />
-               <Certificate />
+               <Hero />
                <Offerings />
                <Gallery images={gallery} />
                <VideoTestimonials />
