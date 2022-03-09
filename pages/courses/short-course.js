@@ -25,7 +25,7 @@ function ShortCourses() {
           },
           {
                time: '6pm - 7:30pm',
-               months: ['February', 'June', 'June', 'October'],
+               months: ['February', 'June', 'October'],
                courseName: null,
                details: [
                     {
