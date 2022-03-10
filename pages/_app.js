@@ -1,24 +1,22 @@
+import { AuthProvider } from '@/lib/auth';
+import firebase from '@/lib/firebase';
+import * as gtag from '@/lib/gtag';
+import '@/styles/globals.css';
+import theme from '@/styles/theme.js';
 import {
      ChakraProvider,
      CSSReset,
      localStorageManager
 } from '@chakra-ui/react';
-import { AuthProvider } from '@/lib/auth';
-import theme from '@/styles/theme.js';
-import { AnimatePresence } from 'framer-motion';
-import '@/styles/globals.css';
-import Head from 'next/head';
-import SEO from '../next-seo.config';
-import { DefaultSeo } from 'next-seo';
-import React, { useEffect } from 'react';
 import { css, Global } from '@emotion/react';
+import { AnimatePresence } from 'framer-motion';
+import { DefaultSeo } from 'next-seo';
+import Head from 'next/head';
+import { Router, useRouter } from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import { Router } from 'next/router';
-import firebase from '@/lib/firebase';
-import * as gtag from '@/lib/gtag';
-import { useRouter } from 'next/router';
-import Leads from '@/components/seo/Leads';
+import React, { useEffect } from 'react';
+import SEO from '../next-seo.config';
 
 NProgress.configure({
      showSpinner: true,
@@ -101,7 +99,7 @@ function App({ Component, pageProps }) {
                <AuthProvider>
                     <DefaultSeo {...SEO} />
                     <GlobalStyle />
-                    <Leads />
+
                     <AnimatePresence exitBeforeEnter>
                          <Layout>
                               <Component {...pageProps} />

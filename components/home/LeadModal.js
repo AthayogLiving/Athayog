@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import { useAuth } from '@/lib/auth';
+import { FormControl } from '@chakra-ui/form-control';
+import { useDisclosure } from '@chakra-ui/hooks';
+import { Input } from '@chakra-ui/input';
 import {
+     Button,
+     Grid,
      Modal,
-     ModalOverlay,
-     ModalContent,
-     ModalHeader,
-     ModalFooter,
      ModalBody,
      ModalCloseButton,
-     Button,
-     Grid
+     ModalContent,
+     ModalFooter,
+     ModalHeader,
+     ModalOverlay
 } from '@chakra-ui/react';
-import { useDisclosure } from '@chakra-ui/hooks';
-import { FormControl, FormLabel } from '@chakra-ui/form-control';
-import { Input, InputGroup } from '@chakra-ui/input';
-import { useAuth } from '@/lib/auth';
-import { useForm, useForms } from 'react-hook-form';
 import { useToast } from '@chakra-ui/toast';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 const LeadModal = () => {
      const { user, signout } = useAuth();

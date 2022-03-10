@@ -8,14 +8,68 @@ import {
      Heading,
      Input,
      Stack,
-     Text
+     Text,
+     useToast
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import HeroBg from 'public/hero.jpeg';
-import React from 'react';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { BsArrowDownCircleFill } from 'react-icons/bs';
 
 function Hero() {
+     const { handleSubmit, register, errors, reset } = useForm();
+     const toast = useToast();
+     const [loading, setLoading] = useState(false);
+     const onSubmit = async ({ name, email, phone }) => {
+          setLoading(true);
+          // Send Email
+          await fetch('https://formsubmit.co/ajax/info@athayogliving.com', {
+               method: 'POST',
+               headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json'
+               },
+               body: JSON.stringify({
+                    FormType: 'Leads Form',
+                    fullname: name,
+                    email: email,
+                    phone: phone
+               })
+          });
+
+          await axios
+               .post(`/api/forms/lead`, {
+                    name: name,
+                    email,
+                    phone,
+                    type: 'lead'
+               })
+               .then(function (response) {
+                    setLoading(false);
+                    toast({
+                         title: 'Request Submitted.',
+                         description: 'We will get back to you.',
+                         status: 'success',
+                         duration: 9000,
+                         isClosable: true
+                    });
+                    onClose();
+                    reset();
+               })
+               .catch(function (error) {
+                    setLoading(false);
+                    toast({
+                         title: 'An error occurred.',
+                         description: error.message,
+                         status: 'error',
+                         duration: 5000,
+                         isClosable: true
+                    });
+                    reset();
+               });
+     };
+
      return (
           <Box height={{ base: '100vh', md: '100vh', lg: '90vh' }}>
                <Box position="relative">
@@ -114,6 +168,10 @@ function Hero() {
                                    templateColumns="repeat(1, 1fr)"
                                    gap={6}
                                    mt={6}
+                                   as="form"
+                                   onSubmit={handleSubmit((data) =>
+                                        onSubmit(data)
+                                   )}
                               >
                                    <Stack spacing="5">
                                         <FormControl id="name">
@@ -123,10 +181,10 @@ function Hero() {
                                                   color="#000"
                                                   isRequired={true}
                                                   name="name"
-                                                  // ref={register({
-                                                  //      required:
-                                                  //           'Please enter your first name.'
-                                                  // })}
+                                                  ref={register({
+                                                       required:
+                                                            'Please enter your first name.'
+                                                  })}
                                              />
                                         </FormControl>
 
@@ -135,10 +193,10 @@ function Hero() {
                                                   type="email"
                                                   placeholder="Email *"
                                                   name="email"
-                                                  // ref={register({
-                                                  //      required:
-                                                  //           'Please enter your email.'
-                                                  // })}
+                                                  ref={register({
+                                                       required:
+                                                            'Please enter your email.'
+                                                  })}
                                              />
                                         </FormControl>
                                         <FormControl>
@@ -146,17 +204,17 @@ function Hero() {
                                                   type="tel"
                                                   placeholder="Phone Number *"
                                                   name="phone"
-                                                  // ref={register({
-                                                  //      required:
-                                                  //           'Please enter your phone.'
-                                                  // })}
+                                                  ref={register({
+                                                       required:
+                                                            'Please enter your phone.'
+                                                  })}
                                              />
                                         </FormControl>
                                    </Stack>
                                    <Button
                                         type="submit"
                                         colorScheme="aygreen"
-                                        // isLoading={loading}
+                                        isLoading={loading}
                                         loadingText="Submitting"
                                    >
                                         Register

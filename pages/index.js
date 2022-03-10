@@ -1,5 +1,6 @@
 import Certificate from '@/components/home/Certificate';
 import Enquiry from '@/components/home/Enquiry';
+import Events from '@/components/home/Events';
 import Faq from '@/components/home/Faq';
 import Gallery from '@/components/home/Gallery';
 import GuideBook from '@/components/home/GuideBook';
@@ -37,6 +38,7 @@ export default function Home({ gallery, testimonials }) {
                duration="400"
           >
                <Hero />
+               <Events />
                <Offerings />
                <Gallery images={gallery} />
                <VideoTestimonials />
