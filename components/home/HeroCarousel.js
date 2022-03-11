@@ -44,7 +44,7 @@ const HeroCarousel = ({ images }) => {
      }
 
      const params = {
-          slidesPerView: 1,
+          slidesPerView: 4,
           loop: false,
           autoplay: {
                delay: 2500,

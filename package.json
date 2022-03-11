@@ -51,7 +51,7 @@
           "react-whatsapp-widget": "^1.2.1",
           "sass": "^1.32.7",
           "styled-components": "^5.2.1",
-          "swiper": "^6.4.11",
+          "swiper": "^6.8.4",
           "swr": "^0.4.0",
           "use-ssr": "^1.0.24",
           "uuid": "^8.3.2",

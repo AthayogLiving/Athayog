@@ -104,42 +104,43 @@ const Gallery = ({ images }) => {
      };
 
      return (
-          <Box
-               padding={{ base: '1rem', md: '2rem', lg: '5rem' }}
-               height="100%"
-               margin="auto"
-               bg="gray.200"
-          >
-               <Heading
-                    fontWeight="normal"
-                    textAlign="center"
-                    fontSize={{ base: '2xl', md: '3xl' }}
-                    mb={{ base: '2', md: '5', lg: '10' }}
-               >
-                    Gallery
-               </Heading>
-               <Swiper {...params} key={uuidv4()}>
-                    {activeImage
-                         .sort((a, b) => a.position - b.position)
-                         .map((image) => {
-                              return (
-                                   <Box
-                                        rounded="lg"
-                                        overflow="hidden"
-                                        key={image.id}
-                                   >
-                                        <Image
-                                             layout="responsive"
-                                             height="150px"
-                                             width="300px"
-                                             objectFit="cover"
-                                             alt={image.alt}
-                                             src={image.imageUrl}
-                                        />
-                                   </Box>
-                              );
-                         })}
-               </Swiper>
+          <Box py={20} bg="gray.100" width="100%">
+               {' '}
+               <Box maxW="95vw" margin="0 auto">
+                    <Heading
+                         as="h3"
+                         marginBottom={{
+                              base: '8',
+                              md: '8',
+                              lg: '8'
+                         }}
+                    >
+                         Gallery
+                    </Heading>
+                    <Swiper {...params} key={uuidv4()}>
+                         {activeImage
+                              .sort((a, b) => a.position - b.position)
+                              .map((image) => {
+                                   return (
+                                        <Box
+                                             rounded="lg"
+                                             overflow="hidden"
+                                             key={image.id}
+                                             boxShadow="md"
+                                        >
+                                             <Image
+                                                  layout="responsive"
+                                                  height="150px"
+                                                  width="300px"
+                                                  objectFit="cover"
+                                                  alt={image.alt}
+                                                  src={image.imageUrl}
+                                             />
+                                        </Box>
+                                   );
+                              })}
+                    </Swiper>
+               </Box>
           </Box>
      );
 };

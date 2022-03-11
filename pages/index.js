@@ -16,7 +16,7 @@ import { motion } from 'framer-motion';
 import WhatsAppWidget from 'react-whatsapp-widget';
 import 'react-whatsapp-widget/dist/index.css';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
      const reqGallery = await getImages('gallery');
      const reqTestimonials = await getTestimonials();
 
@@ -24,8 +24,7 @@ export async function getStaticProps() {
      const testimonials = JSON.parse(JSON.stringify(reqTestimonials));
 
      return {
-          props: { gallery, testimonials },
-          revalidate: 60
+          props: { gallery, testimonials }
      };
 }
 
@@ -38,10 +37,11 @@ export default function Home({ gallery, testimonials }) {
                duration="400"
           >
                <Hero />
+               <Certificate />
                <Events />
                <Offerings />
-               <Gallery images={gallery} />
                <VideoTestimonials />
+               <Gallery images={gallery} />
                <Testimonials testimonials={testimonials} />
                <GuideBook />
                <RecentBlogs />

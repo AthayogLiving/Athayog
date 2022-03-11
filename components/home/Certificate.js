@@ -11,6 +11,7 @@ export default function Certificate() {
                justifyContent="center"
                alignItems="center"
                direction={['column', 'row']}
+               bg="white"
           >
                <Flex justifySelf="center" mb={['1rem', '0', '0', '0']}>
                     <Image

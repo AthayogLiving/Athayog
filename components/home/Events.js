@@ -1,16 +1,131 @@
-import { Box, Text } from '@chakra-ui/react';
+import fetcher from '@/utils/fetcher';
+import { Box, Button, Flex, Skeleton, Text } from '@chakra-ui/react';
+import Image from 'next/image';
 import React from 'react';
+import useSWR from 'swr';
+import { v4 as uuidv4 } from 'uuid';
+import {
+     Swiper,
+     SwiperSlide,
+     Pagination,
+     Navigation,
+     Lazy
+} from 'swiper/react';
+import 'swiper/swiper-bundle.min.css';
+import 'swiper/swiper.min.css';
 
-function Events() {
+function Events({ images }) {
+     const { data, error } = useSWR(`/api/images/carousel`, fetcher, {
+          initialData: images
+     });
+
+     if (error)
+          return (
+               <Box bg="white">
+                    <Skeleton bg="white" height="200px" width="100%"></Skeleton>
+               </Box>
+          );
+     if (!data) {
+          return (
+               <Box bg="white">
+                    <Skeleton bg="white" height="200px" width="100%"></Skeleton>
+               </Box>
+          );
+     }
+
+     if (data.images.length === 0) {
+          return (
+               <Box bg="white">
+                    <Skeleton bg="white" height="200px" width="100%"></Skeleton>
+               </Box>
+          );
+     }
+
      return (
-          <Box p={5} bg="white">
+          <Box py={20} px={10} bg="white" width="100%">
                <Text
-                    textAlign="center"
                     fontWeight="medium"
                     fontSize={{ base: 'xl', md: '3xl' }}
+                    mb={5}
                >
                     Our Live Events
                </Text>
+               <Swiper
+                    spaceBetween={10}
+                    slidesPerView={1}
+                    navigation={true}
+                    lazy={true}
+                    modules={[Lazy, Pagination, Navigation]}
+                    zoom={true}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+                    breakpoints={{
+                         640: {
+                              slidesPerView: 1,
+                              spaceBetween: 10
+                         },
+                         768: {
+                              slidesPerView: 4,
+                              spaceBetween: 10
+                         },
+                         1024: {
+                              slidesPerView: 4,
+                              spaceBetween: 10
+                         }
+                    }}
+               >
+                    {data.images
+                         .filter(
+                              (image) =>
+                                   image.isMobile === false &&
+                                   image.isActive === true
+                         )
+                         .sort((a, b) => a.position - b.position)
+                         .map((image) => {
+                              return (
+                                   <SwiperSlide key={image.id}>
+                                        <Flex
+                                             rounded="base"
+                                             overflow="hidden"
+                                             border="1px solid"
+                                             borderColor="gray.300"
+                                             height="100%"
+                                             width="100%"
+                                             direction="column"
+                                        >
+                                             <Image
+                                                  layout="intrinsic"
+                                                  width={320}
+                                                  height={220}
+                                                  objectFit="cover    "
+                                                  alt={image.alt}
+                                                  src={image.imageUrl}
+                                             />
+                                             <Button
+                                                  colorScheme="green"
+                                                  rounded="none"
+                                                  width="100%"
+                                                  onClick={() =>
+                                                       window.open(
+                                                            `${image.imageUrl}`,
+                                                            '_blank'
+                                                       )
+                                                  }
+                                             >
+                                                  Check {image.alt}
+                                             </Button>
+                                        </Flex>
+                                   </SwiperSlide>
+                              );
+                         })}
+               </Swiper>
+               <Flex
+                    justifyContent="center"
+                    gap={5}
+                    mt={5}
+                    flexWrap="wrap"
+                    w="100%"
+               ></Flex>
           </Box>
      );
 }

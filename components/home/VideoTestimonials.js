@@ -1,115 +1,145 @@
-import { Box, Divider, Flex, Grid, Heading } from '@chakra-ui/layout';
+import { Box, Divider, Flex, Grid, Heading, Text } from '@chakra-ui/layout';
 import VideoOne from 'public/video_testimonials_1.mp4';
 import VideoTwo from 'public/video_testimonials_2.mp4';
 import VideoThree from 'public/video_testimonials_3.mp4';
 import VideoFour from 'public/video_testimonials_4.mp4';
-import React from 'react';
+import React, { useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import 'swiper/swiper-bundle.css';
 import { v4 as uuidv4 } from 'uuid';
+import videoOneThumbnail from 'public/videoOne.png';
+import videoTwoThumbnail from 'public/videoTwoThumbnail.png';
+import Image from 'next/image';
 
 const VideoTestimonials = () => {
-     const params = {
-          slidesPerView: 1,
-          ContainerEl: 'section',
-          WrapperEl: 'section',
-          autoplay: {
-               delay: 2500,
-               disableOnInteraction: false
-          },
-
-          navigation: {
-               nextEl: '.swiper-button-next',
-               prevEl: '.swiper-button-prev'
-          },
-          renderPrevButton: () => (
-               <IoIosArrowBack
-                    className="swiper-button-prev"
-                    style={{ color: 'black' }}
-               />
-          ),
-          renderNextButton: () => (
-               <IoIosArrowForward
-                    className="swiper-button-next"
-                    style={{ color: 'black' }}
-               />
-          )
-     };
-
      const videoSources = [VideoOne, VideoThree, VideoFour];
+
+     const [mainPlayer, setMainPlayer] = useState('');
+     const [previewPlayer, setPreviewPlayer] = useState(VideoTwo);
+
+     const setThumbnailPlayer = (idx) => {
+          console.log('CLciked');
+          console.log();
+          setPreviewPlayer([videoSources[idx]]);
+     };
      return (
-          <Flex
-               bg="white"
-               justifyContent="center"
-               alignItems="center"
-               height="100%"
-          >
-               <Box
-                    width={{ base: '100vw', md: '80vw', lg: '60vw' }}
-                    padding={{ base: '2', md: '5', lg: '10' }}
-               >
-                    <Heading
-                         textAlign="center"
-                         color="black"
-                         fontWeight="normal"
-                         fontSize={{ base: '2xl', md: '3xl' }}
-                         mb={10}
+          <Box bg="white" py={20}>
+               <Box maxW="95vw" margin="0 auto">
+                    <Heading as="h3">Success Stories</Heading>
+                    <Flex
+                         marginTop={{
+                              base: '8',
+                              md: '8',
+                              lg: '8'
+                         }}
+                         justifyContent="space-between"
+                         gap={20}
+                         alignItems="stretch"
+                         direction="row"
                     >
-                         Video Testimonials
-                         <Grid margin="0 auto" placeItems="center">
-                              {' '}
+                         {' '}
+                         <Box
+                              boxShadow="base"
+                              rounded="md"
+                              overflow="hidden"
+                              height="auto"
+                              width="100%"
+                              bg="aygreen.50"
+                         >
                               <video
                                    width="100%"
-                                   height="320px"
-                                   controls
-                                   style={{
-                                        marginTop: '1rem',
-                                        borderRadius: '0.25rem',
-                                        overflow: 'hidden'
-                                   }}
-                              >
-                                   <source
-                                        src={VideoTwo}
-                                        type="video/mp4"
-                                   ></source>
-                              </video>
-                         </Grid>
-                         <Divider />
-                         <Grid
-                              mt={5}
-                              justifyContent="center"
-                              alignItems="center"
-                              height="100%"
-                              gridTemplateColumns="repeat(auto-fit, minmax(200px, 1fr))"
+                                   height="100%"
+                                   src={mainPlayer}
+                                   onClick={() => setMainPlayer(previewPlayer)}
+                                   poster={videoOneThumbnail}
+                                   controls="true"
+                              ></video>
+                              <Box py={5} px={5}>
+                                   <Heading
+                                        as="h4"
+                                        fontSize="2xl"
+                                        color="aygreen.900"
+                                   >
+                                        Tanisha
+                                   </Heading>
+                                   <Text
+                                        fontSize="md"
+                                        color="aygreen.700"
+                                        mt={3}
+                                   >
+                                        Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit. Integer aliquam lacinia
+                                        efficitur. Vestibulum semper iaculis
+                                        dictum. Integer ut lectus elit. Etiam
+                                        volutpat felis quam, vel tempus velit
+                                        lacinia quis. Nunc vel enim vel urna
+                                        convallis placerat sed ac
+                                   </Text>
+                              </Box>
+                         </Box>
+                         <Flex
+                              direction="column"
                               width="100%"
-                              flexWrap="wrap"
-                              gap="1rem"
-                              rounded="lg"
+                              gap={5}
+                              height="auto"
+                              alignItems="stretch"
+                              justifyContent="space-between"
                          >
-                              {videoSources.map((data) => {
+                              {videoSources.map((video, idx) => {
                                    return (
-                                        <video
+                                        <Flex
+                                             boxShadow="base"
+                                             rounded="md"
+                                             overflow="hidden"
+                                             height="100%"
                                              width="100%"
-                                             height="100px"
-                                             controls
-                                             key={uuidv4()}
-                                             style={{
-                                                  marginTop: '1rem',
-                                                  borderRadius: '0.25rem',
-                                                  overflow: 'hidden'
-                                             }}
+                                             key={idx}
+                                             bg="aygreen.50"
                                         >
-                                             <source
-                                                  src={data}
-                                                  type="video/mp4"
-                                             ></source>
-                                        </video>
+                                             <Box
+                                                  width="10rem"
+                                                  p={2}
+                                                  rounded="md"
+                                                  height="100%"
+                                                  overflow="hidden"
+                                             >
+                                                  <Image
+                                                       src={videoTwoThumbnail}
+                                                       layout="intrinsic"
+                                                       width="100%"
+                                                       objectFit="cover"
+                                                       height="100%"
+                                                       alt="Video"
+                                                  />
+                                             </Box>
+                                             <Box py={3} px={5}>
+                                                  {' '}
+                                                  <Heading
+                                                       as="h4"
+                                                       fontSize="2xl"
+                                                       color="aygreen.900"
+                                                  >
+                                                       Pradeep
+                                                  </Heading>
+                                                  <Text
+                                                       fontSize="md"
+                                                       color="aygreen.700"
+                                                       mt={3}
+                                                  >
+                                                       Lorem ipsum dolor sit
+                                                       amet, consectetur
+                                                       adipiscing elit. Integer
+                                                       aliquam lacinia
+                                                       efficitur. Vestibulum
+                                                  </Text>
+                                             </Box>
+                                        </Flex>
                                    );
                               })}
-                         </Grid>
-                    </Heading>
+                         </Flex>
+                    </Flex>
                </Box>
-          </Flex>
+          </Box>
      );
 };
 

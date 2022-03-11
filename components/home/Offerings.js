@@ -8,28 +8,16 @@ import { MotionBox } from '../shared/MotionElements';
 
 const Offerings = () => {
      return (
-          <Box height="100%" bg="primaryWhite" width="100%">
-               <Flex
-                    alignItems="center"
-                    justifyContent="center"
-                    direction="column"
-                    height="100%"
-                    width="100%"
-                    padding={{ base: '2rem 0', md: '5rem 0', lg: '5rem 0' }}
-               >
-                    <Heading
-                         textAlign="center"
-                         fontWeight="normal"
-                         color="primaryDarkGray"
-                    >
-                         Our Offerings
-                    </Heading>
-                    <Box width="95%" margin="auto">
+          <Box height="100%" bg="gray.100" width="100%">
+               <Box maxW="95vw" py={20} margin="0 auto">
+                    <Heading as="h3">Our Offerings</Heading>
+
+                    <Box width="100%" margin="auto">
                          <Grid
                               marginTop={{
-                                   base: '10',
-                                   md: '20',
-                                   lg: '20'
+                                   base: '8',
+                                   md: '8',
+                                   lg: '8'
                               }}
                               gridGap="1rem"
                               width="100%"
@@ -41,24 +29,21 @@ const Offerings = () => {
                                         <Link href={offer.link} key={uuidv4()}>
                                              <Flex
                                                   direction="column"
-                                                  justifyContent="center"
-                                                  alignItems="center"
+                                                  justifyContent="strech"
+                                                  alignItems="space-between"
                                                   cursor="pointer"
+                                                  boxShadow="md"
+                                                  height="100%"
+                                                  width="100%"
+                                                  bg="white"
+                                                  rounded="md"
+                                                  overflow="hidden"
                                              >
                                                   <MotionBox
-                                                       rounded="full"
                                                        height="150px"
-                                                       width="150px"
+                                                       width="100%"
                                                        overflow="hidden"
-                                                       border="5px solid"
-                                                       exit={{ opacity: 0 }}
-                                                       initial={{ opacity: 0 }}
-                                                       animate={{ opacity: 1 }}
                                                        borderColor="primaryGreen"
-                                                       whileHover={{
-                                                            scale: 1.1
-                                                       }}
-                                                       whileTap={{ scale: 0.9 }}
                                                   >
                                                        <Image
                                                             src={offer.image}
@@ -66,31 +51,31 @@ const Offerings = () => {
                                                             layout="responsive"
                                                             objectFit="cover"
                                                             height="150px"
-                                                            width="150px"
+                                                            width="250px"
                                                        />
                                                   </MotionBox>
-                                                  <Text
-                                                       mt={10}
-                                                       fontSize="lg"
-                                                       color="primaryDarkGray"
-                                                  >
-                                                       Athayog {offer.name}
-                                                  </Text>
-                                                  <Text
-                                                       mt={5}
-                                                       px="5"
-                                                       color="primaryDarkGray"
-                                                       textAlign="center"
-                                                  >
-                                                       {offer.information}
-                                                  </Text>
+                                                  <Box px={5} py={3}>
+                                                       <Text
+                                                            fontSize="lg"
+                                                            fontWeight="bold"
+                                                            color="gray.700"
+                                                       >
+                                                            Athayog {offer.name}
+                                                       </Text>
+                                                       <Text
+                                                            mt={2}
+                                                            color="primaryDarkGray"
+                                                       >
+                                                            {offer.information}
+                                                       </Text>
+                                                  </Box>
                                              </Flex>
                                         </Link>
                                    );
                               })}
                          </Grid>
                     </Box>
-               </Flex>
+               </Box>
           </Box>
      );
 };
