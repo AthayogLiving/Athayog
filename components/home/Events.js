@@ -1,5 +1,5 @@
 import fetcher from '@/utils/fetcher';
-import { Box, Button, Flex, Skeleton, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Skeleton, Heading } from '@chakra-ui/react';
 import Image from 'next/image';
 import React from 'react';
 import useSWR from 'swr';
@@ -13,6 +13,7 @@ import {
 } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
+import { IoIosArrowBack } from 'react-icons/io';
 
 function Events({ images }) {
      const { data, error } = useSWR(`/api/images/carousel`, fetcher, {
@@ -43,13 +44,17 @@ function Events({ images }) {
 
      return (
           <Box py={20} px={10} bg="white" width="100%">
-               <Text
-                    fontWeight="medium"
-                    fontSize={{ base: 'xl', md: '3xl' }}
-                    mb={5}
+               <Heading
+                    as="h3"
+                    marginBottom={{
+                         base: '8',
+                         md: '8',
+                         lg: '8'
+                    }}
+                    fontSize="3xl"
                >
-                    Our Live Events
-               </Text>
+                    Live Events
+               </Heading>
                <Swiper
                     spaceBetween={10}
                     slidesPerView={1}
@@ -73,6 +78,12 @@ function Events({ images }) {
                               spaceBetween: 10
                          }
                     }}
+                    renderPrevButton={() => (
+                         <IoIosArrowBack
+                              className="swiper-button-prev"
+                              style={{ color: 'black' }}
+                         />
+                    )}
                >
                     {data.images
                          .filter(
@@ -102,7 +113,7 @@ function Events({ images }) {
                                                   src={image.imageUrl}
                                              />
                                              <Button
-                                                  colorScheme="green"
+                                                  colorScheme="aygreen"
                                                   rounded="none"
                                                   width="100%"
                                                   onClick={() =>

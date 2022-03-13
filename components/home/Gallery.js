@@ -109,6 +109,7 @@ const Gallery = ({ images }) => {
                <Box maxW="95vw" margin="0 auto">
                     <Heading
                          as="h3"
+                         fontSize="3xl"
                          marginBottom={{
                               base: '8',
                               md: '8',

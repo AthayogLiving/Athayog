@@ -37,12 +37,12 @@ export default function Home({ gallery, testimonials }) {
                duration="400"
           >
                <Hero />
-               <Certificate />
+               {/* <Certificate /> */}
                <Events />
                <Offerings />
                <VideoTestimonials />
-               <Gallery images={gallery} />
                <Testimonials testimonials={testimonials} />
+               <Gallery images={gallery} />
                <GuideBook />
                <RecentBlogs />
                <Faq />

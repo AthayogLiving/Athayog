@@ -66,7 +66,7 @@ const Testimonials = ({ testimonials }) => {
                bg="aygreen.700"
                justifyContent="center"
                alignItems="center"
-               height={{ base: 'sm', md: 'md', lg: 'md' }}
+               py={10}
           >
                <Box
                     width={{ base: '100vw', md: '80vw', lg: '60vw' }}
