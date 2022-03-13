@@ -38,11 +38,11 @@ export default function Home({ gallery, testimonials }) {
           >
                <Hero />
                {/* <Certificate /> */}
-               <Events />
                <Offerings />
                <VideoTestimonials />
                <Testimonials testimonials={testimonials} />
                <Gallery images={gallery} />
+               <Events />
                <GuideBook />
                <RecentBlogs />
                <Faq />

@@ -76,7 +76,7 @@ const VideoTestimonials = () => {
      return (
           <Box bg="white" py={20}>
                <Box maxW="95vw" margin="0 auto">
-                    <Heading as="h3" fontSize="3xl">
+                    <Heading textAlign="center" as="h3" fontSize="3xl">
                          Success Stories
                     </Heading>
                     <Flex

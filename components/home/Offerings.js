@@ -10,7 +10,7 @@ const Offerings = () => {
      return (
           <Box height="100%" bg="gray.100" width="100%">
                <Box maxW="95vw" py={20} margin="0 auto">
-                    <Heading as="h3" fontSize="3xl">
+                    <Heading as="h3" fontSize="3xl" textAlign="center">
                          Our Offerings
                     </Heading>
 

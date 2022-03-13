@@ -115,6 +115,7 @@ const Gallery = ({ images }) => {
                               md: '8',
                               lg: '8'
                          }}
+                         textAlign="center"
                     >
                          Gallery
                     </Heading>

@@ -52,6 +52,7 @@ function Events({ images }) {
                          lg: '8'
                     }}
                     fontSize="3xl"
+                    textAlign="center"
                >
                     Live Events
                </Heading>
