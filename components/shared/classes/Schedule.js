@@ -148,13 +148,13 @@ function Schedule() {
                                              >
                                                   11:00 AM - 4:00 PM
                                              </Td>
-                                             <Td>Shikdhanapada</Td>
-                                             <Td>Shikdhanapada</Td>
-                                             <Td>Shikdhanapada</Td>
-                                             <Td>Shikdhanapada</Td>
-                                             <Td>Shikdhanapada</Td>
-                                             <Td>Shikdhanapada</Td>
-                                             <Td>Shikdhanapada</Td>
+                                             <Td>Shikshanapada</Td>
+                                             <Td>Shikshanapada</Td>
+                                             <Td>Shikshanapada</Td>
+                                             <Td>Shikshanapada</Td>
+                                             <Td>Shikshanapada</Td>
+                                             <Td>Shikshanapada</Td>
+                                             <Td>Shikshanapada</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
