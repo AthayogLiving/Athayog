@@ -24,6 +24,10 @@ class RootDocument extends Document {
                          name="viewport"
                          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
                     />
+                    <meta
+                         name="facebook-domain-verification"
+                         content="0n7p6scv2m1gid1itf943dhsifbypi"
+                    />
                     <meta name="description" content="Description" />
                     <meta name="keywords" content="Keywords" />
                     <title>Athayog Living</title>
