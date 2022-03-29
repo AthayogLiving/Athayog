@@ -81,6 +81,7 @@ s.parentNode.insertBefore(t,s)}(window,document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
  fbq('init', '1913291218871066'); 
 fbq('track', 'PageView');
+fbq('track', 'ViewContent');
           `
                               }}
                          />
