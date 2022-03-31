@@ -83,10 +83,8 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window,document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
- fbq('init', '1913291218871066'); 
-fbq('track', 'PageView');
-fbq('track', 'ViewContent');
-          `
+ fbq('init', '407786137819809'); 
+fbq('track', 'PageView');`
                               }}
                          />
                          <script
@@ -103,7 +101,7 @@ fbq('track', 'ViewContent');
                               dangerouslySetInnerHTML={{
                                    __html: `<noscript>
  <img height="1" width="1" 
-src="https://www.facebook.com/tr?id=1913291218871066&ev=PageView
+src="https://www.facebook.com/tr?id=407786137819809&ev=PageView
 &noscript=1"/>
 </noscript>`
                               }}
