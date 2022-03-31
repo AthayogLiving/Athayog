@@ -26,8 +26,9 @@ class RootDocument extends Document {
                     />
                     <meta
                          name="facebook-domain-verification"
-                         content="0n7p6scv2m1gid1itf943dhsifbypi"
+                         content="bw81gzyylakimr31tun0bxtc5pbop0"
                     />
+
                     <meta name="description" content="Description" />
                     <meta name="keywords" content="Keywords" />
                     <title>Athayog Living</title>
