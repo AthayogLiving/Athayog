@@ -171,7 +171,7 @@ const Online = ({ offers, notFound }) => {
                                              </Td>
                                              <Td>Rhythm of Being </Td>
                                              <Td>Universal Harmony </Td>
-                                             <Td>Sivananda</Td>
+                                             <Td>Rhythm of Being </Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>---</Td>
@@ -189,7 +189,7 @@ const Online = ({ offers, notFound }) => {
                                              </Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being </Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Ashtanga</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition </Td>
                                              <Td>Universal Harmony</Td>
@@ -243,10 +243,10 @@ const Online = ({ offers, notFound }) => {
                                                   5:00 PM - 6:00 PM
                                              </Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Transcending Transition</Td>
-                                             <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Transcending Transition</Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
                                         </Tr>
@@ -279,15 +279,15 @@ const Online = ({ offers, notFound }) => {
                                                   7:00 PM - 8:00 PM
                                              </Td>
                                              <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Deep Space</Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Sivananda</Td>
 
                                              <Td> - </Td>
                                              <Td> - </Td>
                                         </Tr>
-                                        <Tr>
+                                        {/* <Tr>
                                              <Td
                                                   bg="aygreen.100"
                                                   borderBottom="1px"
@@ -304,7 +304,7 @@ const Online = ({ offers, notFound }) => {
                                              <Td>-</Td>
                                              <Td>-</Td>
                                              <Td>-</Td>
-                                        </Tr>
+                                        </Tr> */}
                                    </Tbody>
                               </Table>
                          </Box>
@@ -319,6 +319,10 @@ const Online = ({ offers, notFound }) => {
                               <Text>
                                    Athayog living will be closed on 2nd Saturday
                                    of every Month.
+                              </Text>
+                              <Text fontWeight="medium" mt={2}>
+                                   2nd April - 11th April: Navratri Sadhana -
+                                   6:00 PM - 7:00 PM
                               </Text>
                               <Text fontWeight="medium" mt={2}>
                                    Note: 108 Surya Namaskara will be practiced

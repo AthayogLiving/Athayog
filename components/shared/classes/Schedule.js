@@ -52,7 +52,7 @@ function Schedule() {
                          >
                               {/* Schedule For {monthNames[d.getMonth()]}{' '}
                               {d.getFullYear()} (Indiranagar) */}
-                              Schedule For March 2022 (Indiranagar)
+                              Schedule For April 2022 (Indiranagar)
                          </Heading>
                          <Box
                               overflowX="auto"
@@ -97,7 +97,7 @@ function Schedule() {
                                              <Td>Sivananda</Td>
                                              <Td>Rhythm of Being </Td>
                                              <Td>Rhythm of Being </Td>
-                                             <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition </Td>
                                              <Td>---</Td>
                                              <Td>---</Td>
                                         </Tr>
@@ -113,7 +113,7 @@ function Schedule() {
                                              </Td>
                                              <Td>Transcending Transition </Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Sivananda</Td>
+                                             <Td>Rhythm of Being </Td>
                                              <Td>Transcending Transition </Td>
                                              <Td>Rhythm of Being </Td>
                                              <Td>Sivananda</Td>
@@ -133,9 +133,9 @@ function Schedule() {
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition </Td>
+                                             <Td>Sivananda</Td>
+                                             <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition </Td>
                                         </Tr>
                                         <Tr>
@@ -148,13 +148,13 @@ function Schedule() {
                                              >
                                                   11:00 AM - 4:00 PM
                                              </Td>
-                                             <Td>Shikshanapada</Td>
-                                             <Td>Shikshanapada</Td>
-                                             <Td>Shikshanapada</Td>
-                                             <Td>Shikshanapada</Td>
-                                             <Td>Shikshanapada</Td>
-                                             <Td>Shikshanapada</Td>
-                                             <Td>Shikshanapada</Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -187,8 +187,8 @@ function Schedule() {
                                              <Td>Transcending Transition</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Transcending Transition</Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Rhythm of Being</Td>
                                         </Tr>
@@ -205,8 +205,8 @@ function Schedule() {
                                              <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>YIN Yoga</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Inner World</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Sivananda</Td>
                                         </Tr>
@@ -222,9 +222,9 @@ function Schedule() {
                                              </Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Deep Space</Td>
-                                             <Td>Transcending Transition</Td>
+                                             <Td>Sivananda</Td>
                                              <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
                                              <Td>-</Td>
                                              <Td>-</Td>
                                         </Tr>
@@ -258,7 +258,7 @@ function Schedule() {
                          >
                               {/* Schedule For {monthNames[d.getMonth()]}{' '}
                               {d.getFullYear()} (KR Puram) */}
-                              Schedule For March 2022 (KR Puram)
+                              Schedule For April 2022 (KR Puram)
                          </Heading>
                          <Box
                               overflowX="auto"
@@ -301,7 +301,7 @@ function Schedule() {
                                              </Td>
                                              <Td>Rhythm of Being </Td>
                                              <Td>Universal Harmony </Td>
-                                             <Td>Sivananda</Td>
+                                             <Td>Rhythm of Being </Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Sivananda</Td>
                                              <Td>---</Td>
@@ -317,10 +317,10 @@ function Schedule() {
                                              >
                                                   7.00 AM - 8.00 AM
                                              </Td>
-                                             <Td>Universal Harmony</Td>
+                                             <Td>Sivananda</Td>
                                              <Td>Rhythm of Being </Td>
-                                             <Td>Ashtanga </Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Transcending Transition </Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition </Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
@@ -338,7 +338,7 @@ function Schedule() {
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition </Td>
-                                             <Td>Ashtanga</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition </Td>
@@ -373,9 +373,9 @@ function Schedule() {
                                                   5:00 PM - 6:00 PM
                                              </Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Transcending Transition</Td>
-                                             <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
@@ -393,7 +393,7 @@ function Schedule() {
                                              <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
+                                             <Td>Sivananda</Td>
                                              <Td>Inner World</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
@@ -409,12 +409,10 @@ function Schedule() {
                                                   7:00 PM - 8:00 PM
                                              </Td>
                                              <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Deep Space</Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Sivananda</Td>
-
-                                             <Td>-</Td>
+                                             <Td>Rhythm of Being</Td>
                                              <Td>-</Td>
                                         </Tr>
                                    </Tbody>
@@ -432,6 +430,11 @@ function Schedule() {
                               <Text>
                                    Athayog living will be closed on 2nd Saturday
                                    of every Month.
+                              </Text>
+
+                              <Text fontWeight="medium" mt={2}>
+                                   2nd April - 11th April: Navratri Sadhana -
+                                   6:00 PM - 7:00 PM
                               </Text>
 
                               <Text fontWeight="medium" mt={2}>
