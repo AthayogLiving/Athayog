@@ -24,13 +24,11 @@ import kids2 from 'public/kids-yoga-2.jpg';
 import kids3 from 'public/kids-yoga-3.jpg';
 import kids5 from 'public/kids-yoga-5.jpg';
 import kids6 from 'public/kids-yoga-6.jpg';
-import kids7 from 'public/kids-yoga-7.jpg';
 import React, { useState } from 'react';
 import { BsArrowRightCircleFill } from 'react-icons/bs';
 const MotionText = motion(Text);
 
 function KidsYogaCamp() {
-     const [isLoading, setLoading] = useState(true);
      const whyEnroll = [
           {
                id: 0,
