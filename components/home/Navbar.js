@@ -59,13 +59,12 @@ const Navbar = () => {
      return (
           <>
                <Center
-                    boxShadow="md"
+                    boxShadow="sm"
                     bg="primaryWhite"
                     transition="linear"
                     transform="initial"
                     style={{ backdropFilter: 'blur(5px)' }}
                     position="fixed"
-                    transition="ease-in-out"
                     zIndex={3}
                     width="100%"
                     height={{ base: '4rem', md: '4rem', lg: '4rem' }}
