@@ -1,40 +1,36 @@
-import React from 'react';
 import HomeLayout from '@/components/layout/HomeLayout';
+import KidsYogaForm from '@/components/shared/KidsYogaForm';
+import NavbarHelper from '@/components/shared/NavbarHelper';
 import {
      AspectRatio,
      Box,
      Button,
+     chakra,
+     Divider,
      Flex,
+     Grid,
      Heading,
-     HStack,
      List,
      ListIcon,
      ListItem,
-     OrderedList,
      Stack,
      StackDivider,
-     Text,
-     UnorderedList,
-     chakra,
-     VStack,
-     Grid,
-     Divider
+     Text
 } from '@chakra-ui/react';
-import NavbarHelper from '@/components/shared/NavbarHelper';
-import { MdCheckCircle } from 'react-icons/md';
-import { FaDotCircle } from 'react-icons/fa';
-import { BsArrowRightCircleFill, BsStack } from 'react-icons/bs';
-import KidsYogaForm from '@/components/shared/KidsYogaForm';
-import kids1 from 'public/kids-yoga-1.jpg';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import kids1 from 'public/kids-yoga-1.jpeg';
 import kids2 from 'public/kids-yoga-2.jpg';
 import kids3 from 'public/kids-yoga-3.jpg';
 import kids5 from 'public/kids-yoga-5.jpg';
 import kids6 from 'public/kids-yoga-6.jpg';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+import kids7 from 'public/kids-yoga-7.jpg';
+import React, { useState } from 'react';
+import { BsArrowRightCircleFill } from 'react-icons/bs';
 const MotionText = motion(Text);
 
 function KidsYogaCamp() {
+     const [isLoading, setLoading] = useState(true);
      const whyEnroll = [
           {
                id: 0,
@@ -114,12 +110,21 @@ function KidsYogaCamp() {
                     height="80vh"
                     justifyContent="center"
                     alignItems="center"
-                    bgImage="linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://images.unsplash.com/photo-1543858828-7cf1a9beb95c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')"
                     bgSize="cover"
                     bgPosition="center"
                     direction="column"
                     position="relative"
+                    background="linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7))"
                >
+                    <Box zIndex={-1}>
+                         <Image
+                              src={kids6}
+                              layout="fill"
+                              objectFit="cover"
+                              alt="hero"
+                              placeholder="blur"
+                         />
+                    </Box>
                     <Box width="container.lg" textAlign="center">
                          {' '}
                          <Heading
@@ -172,7 +177,11 @@ function KidsYogaCamp() {
                          direction={{ base: 'column', md: 'row' }}
                     >
                          <Flex direction="column" alignItems="center">
-                              <Button variant="solid" colorScheme="green">
+                              <Button
+                                   variant="solid"
+                                   colorScheme="green"
+                                   href=""
+                              >
                                    Register Now
                               </Button>
                          </Flex>
@@ -202,7 +211,7 @@ function KidsYogaCamp() {
                          </Flex>
                     </Stack>{' '}
                </Flex>
-               {/* Information */}
+
                <Box
                     margin="0 auto"
                     textColor="green.900"
@@ -352,6 +361,7 @@ function KidsYogaCamp() {
                                                   layout="fill"
                                                   objectFit="cover"
                                                   alt={alt}
+                                                  placeholder="blur"
                                              />
                                         </AspectRatio>
                                         <Text

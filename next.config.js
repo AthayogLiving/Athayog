@@ -6,18 +6,6 @@ const withVideos = require('next-videos');
 
 module.exports = withPlugins(
      [
-          [
-               withImages,
-               {
-                    images: {
-                         domains: [
-                              'firebasestorage.googleapis.com',
-                              'images.unsplash.com'
-                         ],
-                         disableStaticImages: true
-                    }
-               }
-          ],
           [withVideos],
 
           [
@@ -30,6 +18,14 @@ module.exports = withPlugins(
                }
           ]
      ],
+     {
+          images: {
+               domains: [
+                    'firebasestorage.googleapis.com',
+                    'images.unsplash.com'
+               ]
+          }
+     },
      {
           eslint: {
                // Warning: This allows production builds to successfully complete even if
