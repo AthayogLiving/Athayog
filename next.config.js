@@ -19,6 +19,11 @@ module.exports = withPlugins(
           ]
      ],
      {
+          eslint: {
+               // Warning: This allows production builds to successfully complete even if
+               // your project has ESLint errors.
+               ignoreDuringBuilds: true
+          },
           images: {
                domains: [
                     'firebasestorage.googleapis.com',
@@ -26,15 +31,13 @@ module.exports = withPlugins(
                ]
           }
      },
-
      {
+          images: {
+               domains: [
+                    'firebasestorage.googleapis.com',
+                    'images.unsplash.com'
+               ]
+          },
           swcMinify: true
-     },
-     {
-          eslint: {
-               // Warning: This allows production builds to successfully complete even if
-               // your project has ESLint errors.
-               ignoreDuringBuilds: true
-          }
      }
 );
