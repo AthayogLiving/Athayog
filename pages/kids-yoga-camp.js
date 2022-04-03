@@ -13,7 +13,7 @@ function KidsYogaCamp() {
           <>
                <NavbarHelper />
                <KidsHero />
-               <RegisterNow />
+               <RegisterNow pageType="base" />
                <BasicInfo />
                <EnrollKids />
                <KidsGallery />

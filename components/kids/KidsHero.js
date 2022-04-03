@@ -56,7 +56,7 @@ function KidsHero() {
                          to give you and your kids’ a break!
                     </Text>
                </Box>
-               <RegisterNow />
+               <RegisterNow pageType="hero" />
           </Flex>
      );
 }
