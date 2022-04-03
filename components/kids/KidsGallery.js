@@ -23,11 +23,16 @@ function KidsGallery() {
           >
                <Heading
                     fontSize={{ base: 'xl', md: '2xl', lg: '3xl' }}
-                    fontWeight="light"
+                    fontWeight="medium"
                >
                     Learn more about NATURE as you
                </Heading>
-               <Flex mt={8} justifyContent="center" gap={1} overflowX="scroll">
+               <Flex
+                    mt={8}
+                    justifyContent="center"
+                    gap={1}
+                    flexDirection={{ base: 'column', md: 'column', lg: 'row' }}
+               >
                     {imageCollection.map(({ id, image, alt }) => {
                          return (
                               <Box key={id} flex="1 1 auto" width="100%">
