@@ -34,6 +34,6 @@ module.exports = withPlugins(
           }
      },
      {
-          swcMinify: false
+          swcMinify: true
      }
 );
