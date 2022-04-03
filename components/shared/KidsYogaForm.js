@@ -14,24 +14,52 @@ import {
      Divider,
      Heading
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 function KidsYogaForm() {
      const { handleSubmit, register, errors, reset } = useForm();
-
+     const [loading, setLoading] = useState(false);
      const handleData = (data) => {
+          setLoading(true);
           console.log(data);
      };
+
+     useEffect(() => {
+          // call api or anything
+          (function () {
+               var d = document;
+               var x = !d.getElementById('razorpay-embed-btn-js');
+               if (x) {
+                    var s = d.createElement('script');
+                    s.defer = !0;
+                    s.id = 'razorpay-embed-btn-js';
+                    s.src =
+                         'https://cdn.razorpay.com/static/embed_btn/bundle.js';
+                    d.body.appendChild(s);
+               } else {
+                    var rzp = window['__rzp__'];
+                    rzp && rzp.init && rzp.init();
+               }
+          })();
+     });
      return (
-          <Box bg="green.50">
+          <Box bg="white">
                <Box
                     maxW="container.lg"
                     margin="0 auto"
                     py={{ base: '5', md: '10' }}
                     px="5"
                >
-                    <Box>
+                    <div
+                         className="razorpay-embed-btn"
+                         data-url="https://pages.razorpay.com/pl_JErS8rQFN4sbHl/view"
+                         data-text="Pay Now"
+                         data-color="#81A57C"
+                         data-size="large"
+                    ></div>
+
+                    {/* <Box>
                          <Heading
                               textTransform="uppercase"
                               fontSize="2xl"
@@ -71,6 +99,7 @@ function KidsYogaForm() {
                                              id="parentName"
                                              type="text"
                                              name="parentName"
+                                             isDisabled={loading}
                                              ref={register({
                                                   required:
                                                        'Please enter your gaurdian/parent name'
@@ -85,6 +114,7 @@ function KidsYogaForm() {
                                              id="parentPhone"
                                              name="parentPhone"
                                              type="number"
+                                             isDisabled={loading}
                                              ref={register({
                                                   required:
                                                        'Please enter your parent phone'
@@ -100,6 +130,7 @@ function KidsYogaForm() {
                                    <Input
                                         id="parentEmail"
                                         type="email"
+                                        isDisabled={loading}
                                         name="email"
                                         ref={register({
                                              required: 'Please enter your email'
@@ -127,6 +158,7 @@ function KidsYogaForm() {
                                         </FormLabel>
                                         <Input
                                              id="kidName"
+                                             isDisabled={loading}
                                              type="text"
                                              name="kidsName"
                                              ref={register({
@@ -142,6 +174,7 @@ function KidsYogaForm() {
                                         <Input
                                              id="kidDOB"
                                              type="date"
+                                             isDisabled={loading}
                                              name="date"
                                              ref={register({
                                                   required: 'Select a date'
@@ -154,7 +187,6 @@ function KidsYogaForm() {
                                    direction={['column', 'row']}
                                    spacing="24px"
                               >
-                                   {' '}
                                    <FormControl>
                                         <FormLabel htmlFor="published-date">
                                              Class
@@ -163,6 +195,7 @@ function KidsYogaForm() {
                                              id="kidClass"
                                              type="text"
                                              name="class"
+                                             isDisabled={loading}
                                              ref={register({
                                                   required:
                                                        'Please enter your class'
@@ -177,6 +210,7 @@ function KidsYogaForm() {
                                              id="school"
                                              type="text"
                                              name="school"
+                                             isDisabled={loading}
                                              ref={register({
                                                   required:
                                                        'Please enter your school'
@@ -190,6 +224,7 @@ function KidsYogaForm() {
                                    </FormLabel>
                                    <Select
                                         name="location"
+                                        isDisabled={loading}
                                         ref={register({
                                              required:
                                                   'Please select a location'
@@ -203,12 +238,17 @@ function KidsYogaForm() {
                               </FormControl>
 
                               <FormControl>
-                                   <Button type="submit" colorScheme="green">
+                                   <Button
+                                        type="submit"
+                                        colorScheme="green"
+                                        isLoading={loading}
+                                        loadingText="Submitting"
+                                   >
                                         Register
                                    </Button>
                               </FormControl>
                          </VStack>
-                    </Box>
+                    </Box> */}
                </Box>
           </Box>
      );

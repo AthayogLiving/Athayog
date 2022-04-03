@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Stack, StackDivider } from '@chakra-ui/react';
-import React from 'react';
+import Link from 'next/link';
+import React, { useEffect } from 'react';
 
 function RegisterNow({ pageType }) {
      const details = [
@@ -12,6 +13,26 @@ function RegisterNow({ pageType }) {
                secondColumn: ' Indiranagar / KR Puram / Online'
           }
      ];
+
+     useEffect(() => {
+          // call api or anything
+          (function () {
+               var d = document;
+               var x = !d.getElementById('razorpay-embed-btn-js');
+               if (x) {
+                    var s = d.createElement('script');
+                    s.defer = !0;
+                    s.id = 'razorpay-embed-btn-js';
+                    s.src =
+                         'https://cdn.razorpay.com/static/embed_btn/bundle.js';
+                    d.body.appendChild(s);
+               } else {
+                    var rzp = window['__rzp__'];
+                    rzp && rzp.init && rzp.init();
+               }
+          })();
+     });
+
      if (pageType == 'hero') {
           return (
                <>
@@ -25,7 +46,7 @@ function RegisterNow({ pageType }) {
                          display={{ base: 'none', md: 'none', lg: 'flex' }}
                          rounded="base"
                          spacing={{ base: '5', md: '8' }}
-                         width={{ base: '100%', lg: 'container.lg' }}
+                         width={{ base: '100%', lg: 'container.xl' }}
                          position={{ base: 'relative', md: 'absolute' }}
                          bottom={{ base: '0px', md: '-20px' }}
                          divider={<StackDivider borderColor="gray.300" />}
@@ -38,13 +59,18 @@ function RegisterNow({ pageType }) {
                          direction={{ base: 'column', md: 'row' }}
                     >
                          <Flex direction="column" alignItems="center">
-                              <Button
-                                   variant="solid"
-                                   colorScheme="green"
-                                   href=""
+                              <Link
+                                   href="https://rzp.io/l/y9lRXaC"
+                                   target="_blank"
+                                   passHref
                               >
-                                   Register Now
-                              </Button>
+                                   <a target="_blank">
+                                        <Button colorScheme="aygreen">
+                                             {' '}
+                                             Register Now
+                                        </Button>
+                                   </a>
+                              </Link>
                          </Flex>
                          {details.map(({ id, firstColumn, secondColumn }) => {
                               return (
@@ -85,15 +111,19 @@ function RegisterNow({ pageType }) {
                          }}
                          direction={{ base: 'column', md: 'row' }}
                     >
-                         <Flex direction="column" alignItems="center" w="100%">
-                              <Button
-                                   variant="solid"
-                                   colorScheme="green"
-                                   href=""
-                                   width="100%"
+                         <Flex direction="column" alignItems="center">
+                              <Link
+                                   href="https://rzp.io/l/y9lRXaC"
+                                   target="_blank"
+                                   passHref
                               >
-                                   Register Now
-                              </Button>
+                                   <a target="_blank">
+                                        <Button colorScheme="aygreen">
+                                             {' '}
+                                             Register Now
+                                        </Button>
+                                   </a>
+                              </Link>
                          </Flex>
                          {details.map(({ id, firstColumn, secondColumn }) => {
                               return (

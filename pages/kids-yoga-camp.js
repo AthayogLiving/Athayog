@@ -7,6 +7,7 @@ import RegisterNow from '@/components/kids/RegisterNow';
 import HomeLayout from '@/components/layout/HomeLayout';
 import KidsYogaForm from '@/components/shared/KidsYogaForm';
 import NavbarHelper from '@/components/shared/NavbarHelper';
+import { Button } from '@chakra-ui/react';
 import React from 'react';
 function KidsYogaCamp() {
      return (
@@ -18,7 +19,6 @@ function KidsYogaCamp() {
                <EnrollKids />
                <KidsGallery />
                <KidsInfo />
-               <KidsYogaForm />
           </>
      );
 }
