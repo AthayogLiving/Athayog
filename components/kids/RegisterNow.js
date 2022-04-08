@@ -10,7 +10,7 @@ function RegisterNow({ pageType }) {
           {
                id: 4,
                firstColumn: 'Location',
-               secondColumn: ' Indiranagar / KR Puram / Online'
+               secondColumn: ' Indiranagar / KR Puram'
           }
      ];
 
