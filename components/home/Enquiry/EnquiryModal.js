@@ -28,7 +28,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useMediaQuery } from 'react-responsive';
 
-const EnquiryModal = () => {
+const EnquiryModal = ({ size }) => {
      const { isOpen, onOpen, onClose } = useDisclosure();
      const { handleSubmit, register, errors, reset } = useForm();
      const toast = useToast();
@@ -98,23 +98,15 @@ const EnquiryModal = () => {
      return (
           <>
                <MotionButton
-                    bg="aygreen.700"
+                    colorScheme="aygreen"
                     color="white"
                     onClick={onOpen}
                     variant="solid"
-                    fontSize={{ base: 'sm', md: 'md' }}
-                    px={{ base: '3rem', md: 'md' }}
-                    py={{ base: '0.5rem', md: 'md' }}
-                    size={{ base: 'sm', md: 'md' }}
                     rounded="md"
                     mt={{ base: '5', md: '10' }}
-                    _hover={{
-                         bg: 'aygreen.600',
-                         color: 'white'
-                    }}
                     whileTap={{ scale: 0.9 }}
                >
-                    Enquiry
+                    Enquiry Now
                </MotionButton>
                <Modal
                     isCentered

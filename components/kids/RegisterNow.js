@@ -65,7 +65,10 @@ function RegisterNow({ pageType }) {
                                    passHref
                               >
                                    <a target="_blank">
-                                        <Button colorScheme="aygreen">
+                                        <Button
+                                             colorScheme="aygreen"
+                                             width="100%"
+                                        >
                                              {' '}
                                              Register Now
                                         </Button>
@@ -111,14 +114,21 @@ function RegisterNow({ pageType }) {
                          }}
                          direction={{ base: 'column', md: 'row' }}
                     >
-                         <Flex direction="column" alignItems="center">
+                         <Flex
+                              direction="column"
+                              alignItems="center"
+                              width="100%"
+                         >
                               <Link
                                    href="https://rzp.io/l/y9lRXaC"
                                    target="_blank"
                                    passHref
                               >
-                                   <a target="_blank">
-                                        <Button colorScheme="aygreen">
+                                   <a target="_blank" style={{ width: '100%' }}>
+                                        <Button
+                                             colorScheme="aygreen"
+                                             width="100%"
+                                        >
                                              {' '}
                                              Register Now
                                         </Button>

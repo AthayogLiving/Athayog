@@ -36,10 +36,15 @@ function KidsHero() {
                          fontWeight="light"
                          textColor="white"
                     >
-                         Unlock Your Little Ones Potential At AYL&#39;S
+                         Let your children discover themselves at
                          <br />
-                         <chakra.span textColor="aygreen.300" cursor="pointer">
-                              Kids Yoga Camp
+                         <chakra.span
+                              textColor="aygreen.300"
+                              cursor="pointer"
+                              borderBottom="1px solid"
+                              fontWeight="medium"
+                         >
+                              AYL&#39;S Kids Yoga Camp
                          </chakra.span>
                     </Heading>
                     <Text
@@ -48,8 +53,9 @@ function KidsHero() {
                          textColor="aygreen.50"
                          mt="16"
                     >
-                         It&apos;s that time of the year when the days are long
-                         and hot!{' '}
+                         Break the stressful summer holidays with a great
+                         physical outlet for your children that will also help
+                         them for life
                          <chakra.span fontWeight="medium">
                               AthaYog’s Summer Kid’s Camp{' '}
                          </chakra.span>

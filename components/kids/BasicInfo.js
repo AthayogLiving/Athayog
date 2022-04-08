@@ -26,11 +26,12 @@ function BasicInfo() {
                               margin="0 auto"
                               fontSize={{ base: '2xl', md: '4xl' }}
                          >
-                              This summer, let your kids chill out in their own
-                              zone engaged in fun activities and learning.
+                              Let your children, move, pose, breathe and chant
+                              their hearts out, they will come back to you as
+                              centred, mindful and happy beings.
                          </Text>
                     </Box>
-                    <Box width="100%" bg="white" py={{ base: '5', md: '20' }}>
+                    <Box width="100%" bg="white" py={{ base: '10', md: '20' }}>
                          <List
                               width={{ base: '95%', md: '80%' }}
                               spacing={3}
@@ -43,7 +44,8 @@ function BasicInfo() {
                                         as={BsArrowRightCircleFill}
                                         color="green.500"
                                    />
-                                   Move, Pose & Breathe in the Yoga Asana Class
+                                   Move, Pose &amp; Breathe in the Yoga Asana
+                                   Class
                               </ListItem>
                               <ListItem>
                                    <ListIcon
@@ -57,21 +59,23 @@ function BasicInfo() {
                                         as={BsArrowRightCircleFill}
                                         color="green.500"
                                    />
-                                   Learn through Play with Yoga games & more
+                                   Learn through Play with Yoga games &amp; more
                               </ListItem>
                               <ListItem>
                                    <ListIcon
                                         as={BsArrowRightCircleFill}
                                         color="green.500"
                                    />
-                                   Group activities to Nurture the Social skills
+                                   Group activities to Nurture their Social
+                                   skills
                               </ListItem>
                               <ListItem>
                                    <ListIcon
                                         as={BsArrowRightCircleFill}
                                         color="green.500"
                                    />
-                                   Sattvic snacks to Build Healthy Eating Habits
+                                   Sattvic snacks to help develop Healthy Eating
+                                   Habits
                               </ListItem>
                          </List>
                     </Box>
