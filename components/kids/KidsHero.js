@@ -55,7 +55,7 @@ function KidsHero() {
                     >
                          Break the stressful summer holidays with a great
                          physical outlet for your children that will also help
-                         them for life
+                         them for life{' '}
                          <chakra.span fontWeight="medium">
                               AthaYog’s Summer Kid’s Camp{' '}
                          </chakra.span>

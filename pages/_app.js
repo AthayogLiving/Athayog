@@ -87,6 +87,10 @@ const GlobalStyle = ({ children }) => {
 function App({ Component, pageProps }) {
      const Layout = Component.Layout ? Component.Layout : React.Fragment;
 
+     const router = useRouter();
+
+     const excludePath = ['/kids-yoga-camp', '/admin'];
+
      useEffect(() => {
           const analytics = firebase.analytics();
           analytics.logEvent('page_view');
@@ -101,7 +105,9 @@ function App({ Component, pageProps }) {
                <AuthProvider>
                     <DefaultSeo {...SEO} />
                     <GlobalStyle />
-                    <Leads />
+                    {router.pathname.includes(...excludePath) ? null : (
+                         <Leads />
+                    )}
                     <AnimatePresence exitBeforeEnter>
                          <Layout>
                               <Component {...pageProps} />
