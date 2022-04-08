@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Stack, StackDivider } from '@chakra-ui/react';
 import Link from 'next/link';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 function RegisterNow({ pageType }) {
      const details = [
@@ -13,25 +13,6 @@ function RegisterNow({ pageType }) {
                secondColumn: ' Indiranagar / KR Puram / Online'
           }
      ];
-
-     useEffect(() => {
-          // call api or anything
-          (function () {
-               var d = document;
-               var x = !d.getElementById('razorpay-embed-btn-js');
-               if (x) {
-                    var s = d.createElement('script');
-                    s.defer = !0;
-                    s.id = 'razorpay-embed-btn-js';
-                    s.src =
-                         'https://cdn.razorpay.com/static/embed_btn/bundle.js';
-                    d.body.appendChild(s);
-               } else {
-                    var rzp = window['__rzp__'];
-                    rzp && rzp.init && rzp.init();
-               }
-          })();
-     });
 
      if (pageType == 'hero') {
           return (
@@ -60,7 +41,7 @@ function RegisterNow({ pageType }) {
                     >
                          <Flex direction="column" alignItems="center">
                               <Link
-                                   href="https://rzp.io/l/y9lRXaC"
+                                   href="https://rzp.io/l/lS6proLJPJ"
                                    target="_blank"
                                    passHref
                               >
@@ -120,7 +101,7 @@ function RegisterNow({ pageType }) {
                               width="100%"
                          >
                               <Link
-                                   href="https://rzp.io/l/y9lRXaC"
+                                   href="https://rzp.io/l/lS6proLJPJ"
                                    target="_blank"
                                    passHref
                               >

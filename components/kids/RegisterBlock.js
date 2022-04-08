@@ -26,7 +26,7 @@ function RegisterBlock() {
                          Join The Camp!
                     </Heading>
                     <Link
-                         href="https://rzp.io/l/y9lRXaC"
+                         href="https://rzp.io/l/lS6proLJPJ"
                          target="_blank"
                          passHref
                     >
