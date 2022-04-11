@@ -18,7 +18,7 @@ function KidsGallery() {
           {
                id: 3,
                image: kids3,
-               alt: 'Stay strong n steady in Low Plank pose'
+               alt: 'Stay strong and steady in Low Plank pose'
           },
           { id: 4, image: kids5, alt: 'Lift your heart up in Cobra pose!' }
      ];
