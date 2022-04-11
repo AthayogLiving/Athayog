@@ -176,7 +176,7 @@ const Footer = () => {
                          </Box>
                          <Box>
                               <chakra.span textDecoration="underline">
-                                   Indiranagar Branch
+                                   KR Puram Branch
                               </chakra.span>
 
                               <iframe
