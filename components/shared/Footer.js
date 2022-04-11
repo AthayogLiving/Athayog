@@ -106,7 +106,7 @@ const Footer = () => {
                          </Text>
                          <a href="tel:+919611771434">
                               <PhoneIcon mr={3} size="1.5rem" />
-                              +91 9611771434
+                              +91 8690333111
                          </a>
                          <a href="mailto:info@athayogliving.com">
                               <EmailIcon mr={3} size="1.5rem" />
@@ -140,17 +140,17 @@ const Footer = () => {
                                    Head Branch
                               </chakra.span>{' '}
                               <br />
-                              307, Athayog living, Sun Rise Arcade, Devasandra
-                              Main Road, Kodigehalli, Krishnarajapura,
-                              Bengaluru, Karnataka 560036
+                              No.3293, 1st floor, 12th main, HAL 2nd stage,
+                              Indiranagar, Bangalore - 560038
                          </Text>
                          <Text>
                               <chakra.span textDecoration="underline">
-                                   Indiranagar Branch{' '}
+                                   KR Puram Branch{' '}
                               </chakra.span>{' '}
                               <br />
-                              No.3293, 1st floor, 12th main, HAL 2nd stage,
-                              Indiranagar, Bangalore - 560038
+                              307, Athayog living, Sun Rise Arcade, Devasandra
+                              Main Road, Kodigehalli, Krishnarajapura,
+                              Bengaluru, Karnataka 560036
                          </Text>
                     </Stack>
                     <Stack color="white" spacing={5}>
