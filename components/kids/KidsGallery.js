@@ -9,10 +9,18 @@ import Image from 'next/image';
 
 function KidsGallery() {
      const imageCollection = [
-          { id: 1, image: kids1, alt: 'Stand in tree pose' },
-          { id: 2, image: kids2, alt: 'Bend in mountain pose' },
-          { id: 3, image: kids3, alt: 'Hold in crow pose' },
-          { id: 4, image: kids5, alt: 'Breathe in fish pose!' }
+          { id: 1, image: kids1, alt: 'Bend back in Bow Pose' },
+          {
+               id: 2,
+               image: kids2,
+               alt: 'Lift your legs upside down in Plough pose'
+          },
+          {
+               id: 3,
+               image: kids3,
+               alt: 'Stay strong n steady in Low Plank pose'
+          },
+          { id: 4, image: kids5, alt: 'Lift your heart up in Cobra pose!' }
      ];
      return (
           <Box
