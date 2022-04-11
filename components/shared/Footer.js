@@ -159,7 +159,7 @@ const Footer = () => {
                                    Head Branch
                               </chakra.span>
                               <iframe
-                                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.4847988052406!2d77.71351501529448!3d13.004770190834247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae11291dc28c27%3A0xd39ba6332f2b865c!2sAthaYog%20Living!5e0!3m2!1sen!2sin!4v1615373298875!5m2!1sen!2sin"
+                                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0327167179826!2d77.63410251527463!3d12.969758318426862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17beabf7494b%3A0x43f0a854e3d6096f!2sAthaYog%20Living!5e0!3m2!1sen!2sin!4v1636645641301!5m2!1sen!2sin"
                                    width="600"
                                    height="450"
                                    title="Athayog Google Map"
@@ -178,8 +178,9 @@ const Footer = () => {
                               <chakra.span textDecoration="underline">
                                    Indiranagar Branch
                               </chakra.span>
+
                               <iframe
-                                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0327167179826!2d77.63410251527463!3d12.969758318426862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17beabf7494b%3A0x43f0a854e3d6096f!2sAthaYog%20Living!5e0!3m2!1sen!2sin!4v1636645641301!5m2!1sen!2sin"
+                                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.4847988052406!2d77.71351501529448!3d13.004770190834247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae11291dc28c27%3A0xd39ba6332f2b865c!2sAthaYog%20Living!5e0!3m2!1sen!2sin!4v1615373298875!5m2!1sen!2sin"
                                    width="600"
                                    height="450"
                                    title="Athayog Google Map"
