@@ -1,49 +1,38 @@
-import React from 'react';
+import { useAuth } from '@/lib/auth';
 import {
      Avatar,
+     Box,
      Button,
      Center,
+     chakra,
+     CloseButton,
+     Drawer,
+     DrawerBody,
+     DrawerCloseButton,
+     DrawerContent,
+     DrawerFooter,
+     DrawerHeader,
+     DrawerOverlay,
      Flex,
-     Heading,
      HStack,
      Menu,
      MenuButton,
      MenuItem,
      MenuList,
-     Drawer,
-     DrawerBody,
-     DrawerFooter,
-     DrawerHeader,
-     DrawerOverlay,
-     DrawerContent,
-     DrawerCloseButton,
-     useDisclosure,
-     VStack,
-     Box,
      Text,
-     Accordion,
-     AccordionItem,
-     AccordionButton,
-     AccordionPanel,
-     AccordionIcon
+     useDisclosure,
+     VStack
 } from '@chakra-ui/react';
-import { ChevronDownIcon } from '@chakra-ui/icons';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useAuth } from '@/lib/auth';
-import { MotionButton } from '../shared/MotionElements';
-import { HiMenu } from 'react-icons/hi';
-import Logo from 'public/Logo_Filled.png';
-import Image from 'next/image';
-import { useMediaQuery } from 'react-responsive';
-import {
-     Menu as SMenu,
-     MenuItem as SMenuItem,
-     MenuButton as SMenuButton,
-     SubMenu as SSubMenu
-} from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import Logo from 'public/Logo_Filled.png';
+import React, { useEffect, useState } from 'react';
+import { HiMenu } from 'react-icons/hi';
+import { useMediaQuery } from 'react-responsive';
+import { MotionButton } from '../shared/MotionElements';
 
 const Navbar = () => {
      const { user, signout, loading } = useAuth();
@@ -51,21 +40,52 @@ const Navbar = () => {
      const { isOpen, onOpen, onClose } = useDisclosure();
      const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
+     const [offer, showOffer] = useState(true);
      const signOut = (redirect) => {
           onClose();
           signout(redirect);
      };
 
+     console.log(router);
+
      return (
-          <>
+          <Box zIndex={3} position="fixed" width="100%">
+               {offer && router.asPath !== '/kids-yoga-camp' && (
+                    <Box
+                         textAlign="center"
+                         bg="black"
+                         textColor="white"
+                         width="100%"
+                    >
+                         <Text
+                              fontWeight="medium"
+                              fontSize="normal"
+                              padding="2"
+                         >
+                              Kids Yoga Camp Registration is LIVE!{' '}
+                              <chakra.span
+                                   borderBottom="1px"
+                                   textColor="green.500"
+                              >
+                                   <Link href="/kids-yoga-camp">Check Now</Link>
+                              </chakra.span>
+                         </Text>
+                         <CloseButton
+                              position="absolute"
+                              top="1"
+                              right="2"
+                              onClick={() => showOffer(false)}
+                         />
+                    </Box>
+               )}
+
                <Center
                     boxShadow="sm"
                     bg="primaryWhite"
+                    shadow="base"
                     transition="linear"
                     transform="initial"
                     style={{ backdropFilter: 'blur(5px)' }}
-                    position="fixed"
-                    zIndex={3}
                     width="100%"
                     height={{ base: '4rem', md: '4rem', lg: '4rem' }}
                >
@@ -561,7 +581,7 @@ const Navbar = () => {
                          </DrawerContent>
                     </DrawerOverlay>
                </Drawer>
-          </>
+          </Box>
      );
 };
 
