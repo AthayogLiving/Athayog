@@ -46,8 +46,6 @@ const Navbar = () => {
           signout(redirect);
      };
 
-     console.log(router);
-
      return (
           <Box zIndex={3} position="fixed" width="100%">
                {offer && router.asPath !== '/kids-yoga-camp' && (
@@ -59,7 +57,10 @@ const Navbar = () => {
                     >
                          <Text
                               fontWeight="medium"
-                              fontSize="normal"
+                              fontSize={{
+                                   base: 'sm',
+                                   md: 'normal'
+                              }}
                               padding="2"
                          >
                               Kids Yoga Camp Registration is LIVE!{' '}
@@ -72,7 +73,8 @@ const Navbar = () => {
                          </Text>
                          <CloseButton
                               position="absolute"
-                              top="1"
+                              display={{ base: 'none', md: 'block' }}
+                              top="0.5"
                               right="2"
                               onClick={() => showOffer(false)}
                          />
