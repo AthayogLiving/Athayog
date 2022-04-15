@@ -16,28 +16,10 @@ import StickyBox from 'react-sticky-box';
 import SidebarMobile from '../admin/SidebarMobile';
 
 const DashboardLayout = ({ children }) => {
-     const { user, signout, loading } = useAuth();
-
+     const { user, loading } = useAuth();
      const bg = useColorModeValue('gray.100', 'gray.700');
-     const color = useColorModeValue('gray.100', 'gray.700');
-
      const router = useRouter();
-
-     const isDesktopOrLaptop = useMediaQuery({
-          query: '(min-device-width: 1224px)'
-     });
-     const isBigScreen = useMediaQuery({
-          query: '(min-device-width: 1824px)'
-     });
-     const isCustomerQuery = useMediaQuery({
-          query: '(max-width: 750px)'
-     });
      const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
-     const isTabletOrMobileDevice = useMediaQuery({
-          query: '(max-device-width: 1224px)'
-     });
-     const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
-     const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
 
      useEffect(() => {
           if (!(user || loading)) {
@@ -54,7 +36,6 @@ const DashboardLayout = ({ children }) => {
      }
 
      if (user.admin === false) {
-          const router = useRouter();
           router.push('/');
           return (
                <Grid height="500px" placeItems="center">
