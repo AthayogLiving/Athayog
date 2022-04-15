@@ -1,29 +1,25 @@
-import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/lib/auth';
-import { useForm } from 'react-hook-form';
-import cookie from 'js-cookie';
-import Image from 'next/image';
+import { AtSignIcon, UnlockIcon } from '@chakra-ui/icons';
 import {
-     Input,
+     Box,
      Button,
      Flex,
-     Box,
      FormControl,
-     Heading,
-     FormLabel,
-     InputGroup,
-     useToast,
-     InputLeftElement,
-     Text,
      FormErrorMessage,
-     Spinner,
-     Link
+     FormLabel,
+     Heading,
+     Input,
+     InputGroup,
+     InputLeftElement,
+     Link,
+     Text,
+     useToast
 } from '@chakra-ui/react';
-import { AtSignIcon, UnlockIcon } from '@chakra-ui/icons';
 import Head from 'next/head';
+import Image from 'next/image';
 import BrandLogo from 'public/favicons/logo.png';
-import Router from 'next/router';
-import DashboardLayout from '@/components/layout/DashboardLayout';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 // import { checkUserType } from '@/lib/db';
 
 const index = () => {
