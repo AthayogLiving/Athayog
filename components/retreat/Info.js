@@ -14,6 +14,7 @@ import {
      Flex,
      Stack
 } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import React from 'react';
 
 function Info() {
@@ -76,8 +77,9 @@ function Info() {
                ]
           }
      ];
+
      return (
-          <Box px={10} py={20}>
+          <Box px={{ base: 5, md: 10 }} py={{ base: 10, md: 20 }}>
                <Heading
                     as="h3"
                     fontSize="xl"
@@ -93,17 +95,28 @@ function Info() {
 
                <Box>
                     <Grid
-                         gridTemplateColumns="repeat(2,1fr)"
-                         gridGap="10"
-                         mt={20}
+                         gridTemplateColumns={{
+                              base: 'repeat(1,1fr)',
+                              md: 'repeat(2,1fr)'
+                         }}
+                         gridGap={{ base: 5, md: 10 }}
+                         mt={{ base: 10, md: 20 }}
                     >
                          {information.map((list, idx) => {
                               return (
                                    <Flex
                                         key={idx}
+                                        as={motion.div}
                                         direction="column"
                                         bg="green.50"
                                         p={5}
+                                        whileHover={{
+                                             backgroundColor:
+                                                  'rgb(198, 246, 213)'
+                                        }}
+                                        transition={{ delay: 0.5 }}
+                                        initial="hidden"
+                                        animate="visible"
                                    >
                                         <Text fontSize="xl" fontWeight="bold">
                                              {list.id}. {list.title}

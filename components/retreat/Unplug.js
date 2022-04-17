@@ -14,16 +14,19 @@ import { MdCheckCircle } from 'react-icons/md';
 function Unplug() {
      return (
           <Grid
-               bg="yellow.50"
-               direction="row"
+               bg="yellow.100"
+               direction={{ base: 'column', md: 'row' }}
                justifyContent="center"
-               height="sm"
-               gridTemplateColumns="repeat(2,1fr)"
+               height={{ base: 'full', md: 'sm' }}
+               gridTemplateColumns={{
+                    base: 'repeat(1,1fr)',
+                    md: 'repeat(2,1fr)'
+               }}
           >
                <Stack
                     spacing={5}
                     fontSize="lg"
-                    p={10}
+                    p={{ base: 5, md: 10 }}
                     flex="1 1 auto"
                     alignSelf="center"
                >

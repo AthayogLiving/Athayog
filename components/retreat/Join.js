@@ -6,7 +6,8 @@ import {
      ListItem,
      Stack,
      Text,
-     chakra
+     chakra,
+     Box
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import React from 'react';
@@ -15,11 +16,14 @@ import { MdCheckCircle } from 'react-icons/md';
 function Join() {
      return (
           <Grid
-               bg="yellow.50"
-               direction="row"
+               bg="yellow.100"
+               direction={{ base: 'column', md: 'row' }}
                justifyContent="center"
-               height="sm"
-               gridTemplateColumns="repeat(2,1fr)"
+               height={{ base: 'full', md: 'sm' }}
+               gridTemplateColumns={{
+                    base: 'repeat(1,1fr)',
+                    md: 'repeat(2,1fr)'
+               }}
           >
                <AspectRatio
                     maxW="100%"
@@ -37,6 +41,7 @@ function Join() {
                          alt={'P'}
                     />
                </AspectRatio>
+
                <Stack
                     spacing={5}
                     fontSize="lg"
