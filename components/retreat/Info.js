@@ -77,20 +77,7 @@ function Info() {
           }
      ];
      return (
-          <Box px={10} py={6}>
-               {/* <Text fontSize="xl">
-                    Unplug from daily life, evolve your spiritual practice with
-                    Yoga, chanting, meditation, cleansing practices & more. Take
-                    a break to renew from the outer world and rebuild and
-                    reconnect with your inner life.
-               </Text>
-               <Text fontSize="xl">
-                    Join us for an enriching weekend of Yoga practices which
-                    include asana, pranayama, meditation, lectures on Yoga &
-                    more in the lush green haven of Karnataka at Fig & Lily,
-                    Kanakapura.
-               </Text> */}
-
+          <Box px={10} py={20}>
                <Heading
                     as="h3"
                     fontSize="xl"
@@ -142,8 +129,6 @@ function Info() {
                               );
                          })}
                     </Grid>
-                    <Text> </Text>
-                    <Text></Text>
                </Box>
           </Box>
      );

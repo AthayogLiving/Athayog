@@ -1,19 +1,29 @@
-import { Box, Flex, Heading, Text, chakra, Button } from '@chakra-ui/react';
+import {
+     Box,
+     Button,
+     chakra,
+     Divider,
+     Flex,
+     Heading,
+     Stack,
+     Text
+} from '@chakra-ui/react';
+import { motion, useAnimation, useInView } from 'framer-motion';
 import Image from 'next/image';
 import React from 'react';
-import kids6 from 'public/kids-yoga-6.jpg';
 
 function Hero() {
      return (
           <Flex
-               height={{ base: '100vh', md: '100vh' }}
+               height={{ base: '100vh', md: '10   0vh' }}
                justifyContent="center"
                alignItems="center"
                bgSize="cover"
                bgPosition="center"
                direction="column"
+               textColor="white"
                position="relative"
-               background="linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7))"
+               background="linear-gradient(to bottom,rgba(0,0,0,0.3) 10%,rgba(0,0,0,0.9))"
           >
                <Box zIndex={-1}>
                     <Image
@@ -29,29 +39,62 @@ function Hero() {
                <Box
                     width={{ base: '100%', lg: 'container.lg' }}
                     position={{ base: 'relative' }}
-                    textAlign="center"
+                    textAlign="left"
                     p={{ base: '5', md: '10' }}
+                    as={motion.div}
+                    initial={{ y: -100 }}
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    animate={{ y: 0 }}
+                    transition={{ ease: 'easeIn', duration: 5 }}
                >
-                    <Heading
-                         fontSize={{ base: '3xl', md: '5xl' }}
-                         fontWeight="bold"
-                         textColor="white"
+                    <Stack spacing={5}>
+                         <Heading
+                              fontSize={{ base: '3xl', md: '5xl' }}
+                              fontWeight="normal"
+                              textColor="white"
+                         >
+                              Free your mind, body and spirit at the <br />
+                              <chakra.span
+                                   fontSize={{ base: '3xl', md: '5xl' }}
+                                   fontWeight="bold"
+                                   textColor="white"
+                                   textTransform="uppercase"
+                              >
+                                   Mindful Nature Retreat
+                              </chakra.span>
+                         </Heading>
+
+                         <Text textColor="gray.300" fontSize="lg">
+                              Only limited spots available
+                         </Text>
+                         <Button
+                              colorScheme="yellow"
+                              variant="outline"
+                              rounded="none"
+                              maxW="max-content"
+                         >
+                              Register Now
+                         </Button>
+                    </Stack>
+
+                    <Divider mt={10} mb={5} />
+                    <Flex
+                         justifyContent="flex-start"
+                         gap={10}
+                         alignItems="center"
+                         fontSize="lg"
                     >
-                         Free your mind, body and spirit at the <br />
-                    </Heading>
-                    <chakra.span
-                         fontSize={{ base: '3xl', md: '5xl' }}
-                         fontWeight="bold"
-                         textColor="white"
-                         mt={2}
-                    >
-                         Mindful Nature Retreat
-                    </chakra.span>
+                         <Box textAlign="left">
+                              <Text textColor="gray.400">Dates</Text>
+                              <Box>May 14th, 6 am - May 15th 7 pm</Box>
+                         </Box>
+                         <Box textAlign="left">
+                              <Text textColor="gray.400">Location</Text>
+                              <Text>Fig & Lily, Kanakapura, Bangalore</Text>
+                         </Box>
+                    </Flex>
                </Box>
-               <Button colorScheme="green" rounded="full">
-                    {' '}
-                    Register Now
-               </Button>
           </Flex>
      );
 }
