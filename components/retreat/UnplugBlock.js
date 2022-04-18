@@ -13,6 +13,7 @@ import Image from 'next/image';
 import React from 'react';
 import { MdCheckCircle } from 'react-icons/md';
 import Register from './Register';
+import RetreatUnplug from 'public/retreat-join.jpg';
 
 function UnplugBlock({ imageProps }) {
      return (
@@ -35,16 +36,17 @@ function UnplugBlock({ imageProps }) {
                     position="relative"
                     background="linear-gradient(to bottom,rgba(0,0,0,0.6) ,rgba(0,0,0,0.6))"
                >
-                    <Box zIndex={-1}>
+                    <Box
+                         zIndex={-1}
+                         title={`Photo by <a href="https://unsplash.com/@simonmigaj?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">S Migaj</a> on <a href="https://unsplash.com/s/photos/yoga?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  `}
+                    >
                          <Image
-                              src={
-                                   'https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1219&q=80'
-                              }
+                              src={RetreatUnplug}
                               layout="fill"
                               objectFit="cover"
-                              alt="hero"
+                              alt="Hero"
                               placeholder="blur"
-                              blurDataURL={imageProps}
                          />
                     </Box>
 

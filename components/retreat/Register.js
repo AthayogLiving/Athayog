@@ -1,5 +1,5 @@
-import { Box, Button, Flex, Stack, Text } from '@chakra-ui/react';
-import Link from 'next/link';
+import { Button, Flex, Stack, Text, Link } from '@chakra-ui/react';
+
 import React from 'react';
 
 function Register() {

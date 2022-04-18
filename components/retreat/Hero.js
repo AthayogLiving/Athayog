@@ -9,12 +9,11 @@ import {
      Stack,
      Text
 } from '@chakra-ui/react';
-import { isValidMotionProp, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React from 'react';
-import { MotionBox } from '../shared/MotionElements';
 import NavbarHelper from '../shared/NavbarHelper';
-
+import RetreatHero from 'public/retreat-hero.jpg';
 function Hero() {
      let easing = [0.175, 0.85, 0.42, 0.96];
 
@@ -45,7 +44,6 @@ function Hero() {
      };
      return (
           <>
-               {' '}
                <NavbarHelper />
                <Flex
                     height={{ base: '100vh', md: '10   0vh' }}
@@ -60,13 +58,11 @@ function Hero() {
                >
                     <Box zIndex={-1}>
                          <Image
-                              src={
-                                   'https://images.unsplash.com/photo-1520769945061-0a448c463865?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
-                              }
+                              src={RetreatHero}
                               layout="fill"
                               objectFit="cover"
                               alt="hero"
-                              // placeholder="blur"
+                              placeholder="blur"
                          />
                     </Box>
 
