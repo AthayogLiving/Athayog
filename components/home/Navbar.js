@@ -106,14 +106,25 @@ const Navbar = () => {
                               <HiMenu fontSize="1.2rem" onClick={onOpen} />
                          </Flex>
                          <Flex alignItems="center">
-                              <Link href="/">
+                              <Link passHref href="/">
                                    <Flex alignItems="center" cursor="pointer">
-                                        <Image
-                                             src={Logo}
-                                             style={{ marginTop: '-1rem' }}
-                                             height={isTabletOrMobile ? 25 : 35}
-                                             width={isTabletOrMobile ? 25 : 35}
-                                        />
+                                        <Box>
+                                             <Image
+                                                  src={Logo}
+                                                  alt="logo"
+                                                  height={
+                                                       isTabletOrMobile
+                                                            ? 25
+                                                            : 35
+                                                  }
+                                                  width={
+                                                       isTabletOrMobile
+                                                            ? 25
+                                                            : 35
+                                                  }
+                                             />
+                                        </Box>
+
                                         <Text
                                              color="#46563E"
                                              fontSize={{
@@ -419,7 +430,7 @@ const Navbar = () => {
                                              fontSize="md"
                                              bg="aygreen.100"
                                         >
-                                             <Link href="/account">
+                                             <Link passHref href="/account">
                                                   <MenuItem>
                                                        My Account
                                                   </MenuItem>
@@ -434,6 +445,7 @@ const Navbar = () => {
                                    </Menu>
                               ) : (
                                    <Link
+                                        passHref
                                         href="/account/[signup]"
                                         as="/account/signup"
                                    >
@@ -463,7 +475,7 @@ const Navbar = () => {
 
                               <DrawerBody>
                                    <VStack spacing={5} align="stretch">
-                                        <Link href="/">
+                                        <Link passHref href="/">
                                              <Button
                                                   isActive={
                                                        router.pathname == '/'
@@ -479,7 +491,7 @@ const Navbar = () => {
                                                   Home
                                              </Button>
                                         </Link>
-                                        <Link href="/about">
+                                        <Link passHref href="/about">
                                              <Button
                                                   onClick={onClose}
                                                   isActive={
@@ -497,7 +509,7 @@ const Navbar = () => {
                                              </Button>
                                         </Link>
 
-                                        <Link href="/classes">
+                                        <Link passHref href="/classes">
                                              <Button
                                                   onClick={onClose}
                                                   isActive={
@@ -514,7 +526,7 @@ const Navbar = () => {
                                                   Athayog Classes
                                              </Button>
                                         </Link>
-                                        <Link href="/courses">
+                                        <Link passHref href="/courses">
                                              <Button
                                                   onClick={onClose}
                                                   isActive={
@@ -547,7 +559,10 @@ const Navbar = () => {
                                                   fontSize="md"
                                                   bg="aygreen.100"
                                              >
-                                                  <Link href="/account">
+                                                  <Link
+                                                       passHref
+                                                       href="/account"
+                                                  >
                                                        <MenuItem
                                                             onClick={onClose}
                                                        >
@@ -566,6 +581,7 @@ const Navbar = () => {
                                         </Menu>
                                    ) : (
                                         <Link
+                                             passHref
                                              href="/account/[signup]"
                                              as="/account/signup"
                                         >

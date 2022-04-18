@@ -13,7 +13,7 @@ function Register() {
                flex="1 1 0"
                textColor="white"
           >
-               <Stack spacing={5}>
+               <Stack spacing={5} alignItems="center">
                     <Text fontSize="xl">Only limited spots available</Text>
                     <Link
                          passHref
