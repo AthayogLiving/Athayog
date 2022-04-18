@@ -5,6 +5,7 @@ import {
      Divider,
      Flex,
      Heading,
+     Link,
      Stack,
      Text
 } from '@chakra-ui/react';
@@ -110,14 +111,24 @@ function Hero() {
                               <Text textColor="gray.300" fontSize="lg">
                                    Only limited spots available
                               </Text>
-                              <Button
-                                   colorScheme="yellow"
-                                   variant="outline"
-                                   rounded="none"
-                                   maxW={{ base: 'full', md: 'max-content' }}
+                              <Link
+                                   passHref
+                                   href="https://rzp.io/l/tDvi8Ww9z"
+                                   target="_blank"
                               >
-                                   Register Now
-                              </Button>
+                                   {' '}
+                                   <Button
+                                        colorScheme="yellow"
+                                        variant="outline"
+                                        rounded="none"
+                                        maxW={{
+                                             base: 'full',
+                                             md: 'max-content'
+                                        }}
+                                   >
+                                        Register Now
+                                   </Button>
+                              </Link>
                          </Stack>
 
                          <Divider mt={10} mb={5} />

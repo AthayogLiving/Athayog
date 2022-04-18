@@ -30,8 +30,8 @@ function Info() {
                id: 2,
                title: 'Pranayama & Meditation',
                description: [
-                    'Enhance your spiritual experience and mindfulness with Pranayama or breathing techniques. Steady your mind-body and learn to tap into your breath. Pranayama is the classical practice of controlling the breath, which in turn is the source of Prana (life force). Return to the quality of your natural breath through various breathing practices and restore your bodily health and calm your mind. ',
-                    'Meditate with the deep awareness gained through Pranayama.Enhance your emotional and mental well-being as you learn to cope with everyday stress through meditation, Dhyana'
+                    'Enhance your spiritual experience and mindfulness with Pranayama or breathing techniques. Steady your mind-body and learn to tap into your breath. Pranayama is the classical practice of controlling the breath, which in turn is the source of Prana (life force). Return to the quality of your natural breath through various breathing practices and restore your bodily health and calm your mind.',
+                    'Meditate with the deep awareness gained through Pranayama.Enhance your emotional and mental well-being as you learn to cope with everyday stress through meditation, Dhyana.'
                ]
           },
           {

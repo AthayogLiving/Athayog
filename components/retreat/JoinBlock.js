@@ -70,7 +70,14 @@ function JoinBlock() {
                                              as={MdCheckCircle}
                                              color="green.500"
                                         />
-                                        Meditation lectures on Yoga
+                                        Meditation
+                                   </ListItem>
+                                   <ListItem>
+                                        <ListIcon
+                                             as={MdCheckCircle}
+                                             color="green.500"
+                                        />
+                                        Lectures on Yoga
                                    </ListItem>
                                    <ListItem>
                                         <ListIcon

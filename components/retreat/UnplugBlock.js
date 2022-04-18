@@ -13,7 +13,8 @@ import Image from 'next/image';
 import React from 'react';
 import { MdCheckCircle } from 'react-icons/md';
 import Register from './Register';
-function UnplugBlock() {
+
+function UnplugBlock({ imageProps }) {
      return (
           <Grid
                gridTemplateColumns={{
@@ -42,7 +43,8 @@ function UnplugBlock() {
                               layout="fill"
                               objectFit="cover"
                               alt="hero"
-                              // placeholder="blur"
+                              placeholder="blur"
+                              blurDataURL={imageProps}
                          />
                     </Box>
 

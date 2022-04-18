@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Stack, Text } from '@chakra-ui/react';
+import Link from 'next/link';
 import React from 'react';
 
 function Register() {
@@ -14,14 +15,20 @@ function Register() {
           >
                <Stack spacing={5}>
                     <Text fontSize="xl">Only limited spots available</Text>
-                    <Button
-                         colorScheme="whiteAlpha"
-                         variant="outline"
-                         margin="0 auto"
-                         rounded="none"
+                    <Link
+                         passHref
+                         href="https://rzp.io/l/tDvi8Ww9z"
+                         target="_blank"
                     >
-                         Register Now
-                    </Button>
+                         <Button
+                              colorScheme="whiteAlpha"
+                              variant="outline"
+                              margin="0 auto"
+                              rounded="none"
+                         >
+                              Register Now
+                         </Button>
+                    </Link>
                </Stack>
           </Flex>
      );
