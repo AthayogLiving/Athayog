@@ -146,7 +146,8 @@ function Hero() {
                               <Box textAlign="left">
                                    <Text textColor="gray.400">Location</Text>
                                    <Text>
-                                        Fig & Lily, Kanakapura, Bangalore
+                                        Fig & Lily, Karenahalli, off Kanakpura
+                                        Road, Bangalore
                                    </Text>
                               </Box>
                          </Flex>

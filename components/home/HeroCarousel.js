@@ -47,7 +47,7 @@ const HeroCarousel = ({ images }) => {
           slidesPerView: 1,
           loop: false,
           autoplay: {
-               delay: 2500,
+               delay: 5000,
                disableOnInteraction: false
           },
           pagination: {
@@ -55,10 +55,7 @@ const HeroCarousel = ({ images }) => {
                clickable: true,
                type: 'fraction'
           },
-          autoplay: {
-               delay: 2500,
-               disableOnInteraction: false
-          },
+
           navigation: {
                nextEl: '.swiper-button-next',
                prevEl: '.swiper-button-prev'
@@ -82,7 +79,14 @@ const HeroCarousel = ({ images }) => {
 
      return (
           <Box height="100vh">
-               <Swiper {...params} key={uuidv4()}>
+               <Swiper
+                    {...params}
+                    key={uuidv4()}
+                    autoplay={{
+                         delay: 8000,
+                         disableOnInteraction: false
+                    }}
+               >
                     {data.images
                          .filter(
                               (image) =>

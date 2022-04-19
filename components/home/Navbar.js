@@ -25,14 +25,18 @@ import {
 } from '@chakra-ui/react';
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Logo from 'public/Logo_Filled.png';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { HiMenu } from 'react-icons/hi';
 import { useMediaQuery } from 'react-responsive';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper.min.css';
 import { MotionButton } from '../shared/MotionElements';
+import SwiperCore, { Autoplay } from 'swiper';
 
 const Navbar = () => {
      const { user, signout, loading } = useAuth();
@@ -45,32 +49,83 @@ const Navbar = () => {
           onClose();
           signout(redirect);
      };
+     SwiperCore.use([Autoplay]);
+     const announcements = [
+          {
+               id: 1,
+               text: 'Kids Yoga Camp Registration is LIVE!',
+               url: '/kids-yoga-camp',
+               color: 'purple.100'
+          },
+          {
+               id: 2,
+               text: 'Yoga Retreat Registration is LIVE!',
+               url: '/yoga-retreat',
+               color: 'pink.100'
+          }
+     ];
+
+     const announcementsURLS = ['/kids-yoga-camp', '/yoga-retreat'];
 
      return (
           <Box zIndex={3} position="fixed" width="100%">
-               {offer && router.asPath !== '/kids-yoga-camp' && (
+               {offer && !announcementsURLS.includes(router.asPath) && (
                     <Box
                          textAlign="center"
                          bg="black"
                          textColor="white"
                          width="100%"
                     >
-                         <Text
-                              fontWeight="medium"
-                              fontSize={{
-                                   base: 'sm',
-                                   md: 'normal'
+                         <Swiper
+                              spaceBetween={30}
+                              centeredSlides={true}
+                              autoplay={{
+                                   delay: 5000,
+                                   disableOnInteraction: true
                               }}
-                              padding="2"
+                              loop={true}
                          >
-                              Kids Yoga Camp Registration is LIVE!{' '}
-                              <chakra.span
-                                   borderBottom="1px"
-                                   textColor="green.500"
-                              >
-                                   <Link href="/kids-yoga-camp">Check Now</Link>
-                              </chakra.span>
-                         </Text>
+                              {announcements.map((content) => {
+                                   return (
+                                        <SwiperSlide
+                                             key={content.id}
+                                             style={{ padding: '6px' }}
+                                        >
+                                             <Text
+                                                  fontWeight="medium"
+                                                  fontSize={{
+                                                       base: 'sm',
+                                                       md: 'normal'
+                                                  }}
+                                                  initial={{ opacity: 0 }}
+                                                  animate={{ opacity: 1 }}
+                                                  exit={{ opacity: 0 }}
+                                                  as={motion.text}
+                                                  textColor="white"
+                                             >
+                                                  {content.text}{' '}
+                                                  <Button
+                                                       size="xs"
+                                                       colorScheme="green"
+                                                       fontWeight="medium"
+                                                       fontSize={{
+                                                            base: 'sm',
+                                                            md: 'normal'
+                                                       }}
+                                                       ml={1}
+                                                       variant="link"
+                                                       rounded="none"
+                                                  >
+                                                       <Link href={content.url}>
+                                                            Check Now
+                                                       </Link>
+                                                  </Button>
+                                             </Text>
+                                        </SwiperSlide>
+                                   );
+                              })}
+                         </Swiper>
+
                          <CloseButton
                               position="absolute"
                               display={{ base: 'none', md: 'block' }}

@@ -89,7 +89,8 @@ function JoinBlock() {
                               </List>
                               <Text fontStyle="">
                                    In the lush green haven of Karnataka at Fig &
-                                   Lily, Kanakapura.
+                                   Lily, Karenahalli, off Kanakpura Road,
+                                   Bangalore.
                               </Text>
                          </Stack>
                     </Box>
