@@ -1,102 +1,75 @@
-import fetcher from '@/utils/fetcher';
-import { Box, Skeleton } from '@chakra-ui/react';
-import React from 'react';
-import useSWR from 'swr';
+import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
-import Swiper from 'react-id-swiper';
-import 'swiper/swiper-bundle.css';
+import React, { useRef, useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { isMobile } from 'react-device-detect';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation, Pagination } from 'swiper';
+import 'swiper/swiper.min.css';
 import { v4 as uuidv4 } from 'uuid';
+import kidsDesktop from 'public/kids-summer-desktop.png';
+import kidsMobile from 'public/kids-summer-mobile.png';
+import retreatDesktop from 'public/retreat-dekstop.png';
+import retreatMobile from 'public/retreat-mobile.png';
+import { useRouter } from 'next/router';
+SwiperCore.use([Navigation, Pagination]);
 
-const HeroCarousel = ({ images }) => {
-     const { data, error } = useSWR(`/api/images/carousel`, fetcher, {
-          initialData: images
-     });
+const HeroCarousel = () => {
+     const router = useRouter();
+     const prevRef = useRef(null);
+     const nextRef = useRef(null);
 
-     if (error)
-          return (
-               <Skeleton
-                    startColor="pink.500"
-                    endColor="orange.500"
-                    height="100vh"
-               ></Skeleton>
-          );
-
-     if (!data) {
-          return (
-               <Skeleton
-                    startColor="pink.500"
-                    endColor="orange.500"
-                    height="100vh"
-               ></Skeleton>
-          );
-     }
-
-     if (data.images.length === 0) {
-          return (
-               <Skeleton
-                    height="100vh"
-                    startColor="pink.500"
-                    endColor="orange.500"
-               />
-          );
-     }
-
-     const params = {
-          slidesPerView: 1,
-          loop: false,
-          autoplay: {
-               delay: 5000,
-               disableOnInteraction: false
+     const images = [
+          {
+               id: 1,
+               alt: 'kids yoga camp',
+               imageUrl: kidsDesktop,
+               url: '/kids-yoga-camp'
           },
-          pagination: {
-               el: '.swiper-pagination',
-               clickable: true,
-               type: 'fraction'
+          {
+               id: 2,
+               alt: 'kids yoga camp',
+               imageUrl: kidsMobile,
+               url: '/kids-yoga-camp'
           },
-
-          navigation: {
-               nextEl: '.swiper-button-next',
-               prevEl: '.swiper-button-prev'
+          {
+               id: 3,
+               alt: 'Yoga retreat',
+               imageUrl: retreatDesktop,
+               url: '/yoga-retreat'
           },
-
-          renderPrevButton: () => (
-               <IoIosArrowBack
-                    className="swiper-button-prev"
-                    style={{ color: 'white' }}
-               />
-          ),
-          renderNextButton: () => (
-               <IoIosArrowForward
-                    className="swiper-button-next"
-                    style={{ color: 'white' }}
-               />
-          )
-     };
-
-     const activeCarousel = [];
+          {
+               id: 4,
+               alt: 'Yoga retreat',
+               imageUrl: retreatMobile,
+               url: '/yoga-retreat'
+          }
+     ];
 
      return (
           <Box height="100vh">
                <Swiper
-                    {...params}
                     key={uuidv4()}
                     autoplay={{
                          delay: 8000,
                          disableOnInteraction: false
                     }}
+                    navigation={{
+                         prevEl: prevRef.current ? prevRef.current : undefined,
+                         nextEl: nextRef.current ? nextRef.current : undefined
+                    }}
+                    onInit={(swiper) => {
+                         swiper.params.navigation.prevEl = prevRef.current;
+                         swiper.params.navigation.nextEl = nextRef.current;
+                         swiper.navigation.update();
+                    }}
                >
-                    {data.images
-                         .filter(
-                              (image) =>
-                                   image.isMobile === isMobile &&
-                                   image.isActive === true
-                         )
-                         .sort((a, b) => a.position - b.position)
-                         .map((image) => {
-                              return (
-                                   <Box key={image.id} height="100vh">
+                    {images.map((image) => {
+                         return (
+                              <SwiperSlide
+                                   key={image.id}
+                                   onClick={() => router.push(image.url)}
+                              >
+                                   <Box height="100vh">
                                         <Image
                                              layout="fill"
                                              alt={image.alt}
@@ -104,8 +77,12 @@ const HeroCarousel = ({ images }) => {
                                              src={image.imageUrl}
                                         />
                                    </Box>
-                              );
-                         })}
+                              </SwiperSlide>
+                         );
+                    })}
+
+                    <IoIosArrowBack ref={prevRef} />
+                    <IoIosArrowForward ref={nextRef} />
                </Swiper>
           </Box>
      );

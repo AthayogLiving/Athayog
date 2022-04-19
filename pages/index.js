@@ -15,20 +15,20 @@ import WhatsAppWidget from 'react-whatsapp-widget';
 import 'react-whatsapp-widget/dist/index.css';
 
 export async function getStaticProps() {
-     const reqCarousel = await getImages('carousel');
+     // const reqCarousel = await getImages('carousel');
      const reqGallery = await getImages('gallery');
      const reqTestimonials = await getTestimonials();
-     const carousel = JSON.parse(JSON.stringify(reqCarousel));
+     // const carousel = JSON.parse(JSON.stringify(reqCarousel));
      const gallery = JSON.parse(JSON.stringify(reqGallery));
      const testimonials = JSON.parse(JSON.stringify(reqTestimonials));
 
      return {
-          props: { carousel, gallery, testimonials },
+          props: { gallery, testimonials },
           revalidate: 60
      };
 }
 
-export default function Home({ carousel, gallery, testimonials }) {
+export default function Home({ gallery, testimonials }) {
      return (
           <motion.div
                exit={{ opacity: 0 }}
@@ -36,7 +36,7 @@ export default function Home({ carousel, gallery, testimonials }) {
                animate={{ opacity: 1 }}
                duration="400"
           >
-               <HeroCarousel images={carousel} />
+               <HeroCarousel />
                <Certificate />
                <Offerings />
                <Gallery images={gallery} />
