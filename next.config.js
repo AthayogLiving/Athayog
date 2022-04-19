@@ -3,12 +3,10 @@ const withImages = require('next-images');
 const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
 const withVideos = require('next-videos');
-const { withPlaiceholder } = require('@plaiceholder/next');
 
 module.exports = withPlugins(
      [
           [withVideos],
-          [withPlaiceholder],
           [
                (withPWA,
                {
