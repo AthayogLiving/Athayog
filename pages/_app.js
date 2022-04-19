@@ -89,7 +89,7 @@ function App({ Component, pageProps }) {
 
      const router = useRouter();
 
-     const excludePath = ['/kids-yoga-camp', '/admin'];
+     const excludePath = ['/kids-yoga-camp', '/yoga-retreat', '/admin'];
 
      useEffect(() => {
           const analytics = firebase.analytics();
