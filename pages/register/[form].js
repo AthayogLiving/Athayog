@@ -30,7 +30,6 @@ import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import { useAuth } from '@/lib/auth';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import { logo } from 'public/favicons/logo.png';
 import HomeLayout from '@/components/layout/HomeLayout';
 import { registerForm, registerFormFree } from '@/lib/db/forms';
 import cookie from 'js-cookie';
@@ -209,7 +208,7 @@ const Register = () => {
                currency: 'INR',
                name: ogData.name,
                description: ogData.days,
-               image: { logo },
+
                order_id: order_id,
                handler: async function (response) {
                     const data = {
