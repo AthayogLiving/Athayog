@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
@@ -12,11 +12,11 @@ import retreatDesktop from 'public/retreat-dekstop.png';
 import retreatMobile from 'public/retreat-mobile.png';
 import { useRouter } from 'next/router';
 SwiperCore.use([Navigation, Pagination]);
+import { isMobile } from 'react-device-detect';
 
 const HeroCarousel = () => {
      const router = useRouter();
-     const prevRef = useRef(null);
-     const nextRef = useRef(null);
+     const [collection, setCollection] = useState([]);
 
      const images = [
           {
@@ -25,17 +25,21 @@ const HeroCarousel = () => {
                imageUrl: kidsDesktop,
                url: '/kids-yoga-camp'
           },
-          {
-               id: 2,
-               alt: 'kids yoga camp',
-               imageUrl: kidsMobile,
-               url: '/kids-yoga-camp'
-          },
+
           {
                id: 3,
                alt: 'Yoga retreat',
                imageUrl: retreatDesktop,
                url: '/yoga-retreat'
+          }
+     ];
+
+     const imagesMobile = [
+          {
+               id: 2,
+               alt: 'kids yoga camp',
+               imageUrl: kidsMobile,
+               url: '/kids-yoga-camp'
           },
           {
                id: 4,
@@ -45,25 +49,26 @@ const HeroCarousel = () => {
           }
      ];
 
+     useEffect(() => {
+          if (isMobile) {
+               setCollection(imagesMobile);
+          } else {
+               setCollection(images);
+          }
+          return () => {};
+     }, []);
+
      return (
           <Box height="100vh">
                <Swiper
                     key={uuidv4()}
+                    navigation={true}
                     autoplay={{
                          delay: 8000,
                          disableOnInteraction: false
                     }}
-                    navigation={{
-                         prevEl: prevRef.current ? prevRef.current : undefined,
-                         nextEl: nextRef.current ? nextRef.current : undefined
-                    }}
-                    onInit={(swiper) => {
-                         swiper.params.navigation.prevEl = prevRef.current;
-                         swiper.params.navigation.nextEl = nextRef.current;
-                         swiper.navigation.update();
-                    }}
                >
-                    {images.map((image) => {
+                    {collection?.map((image) => {
                          return (
                               <SwiperSlide
                                    key={image.id}
@@ -75,14 +80,12 @@ const HeroCarousel = () => {
                                              alt={image.alt}
                                              objectFit="cover"
                                              src={image.imageUrl}
+                                             placeholder="blur"
                                         />
                                    </Box>
                               </SwiperSlide>
                          );
                     })}
-
-                    <IoIosArrowBack ref={prevRef} />
-                    <IoIosArrowForward ref={nextRef} />
                </Swiper>
           </Box>
      );

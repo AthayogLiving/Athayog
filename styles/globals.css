@@ -54,3 +54,9 @@ body {
      z-index: 2;
      min-width: max-content;
 }
+.swiper-button-prev {
+     color: white !important;
+}
+.swiper-button-next {
+     color: white !important;
+}
