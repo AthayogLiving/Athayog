@@ -160,7 +160,7 @@ const Space = ({ offers, notFound }) => {
                animate={{ opacity: 1 }}
           >
                <Hero pageData={pageData} />
-               {/* <Information pageData={pageData} /> */}
+
                <BreadCrumb subLinks="classes" currentPage="Space" />
                <Classes classes={pageData.classes} />
                <IntensityTable />
