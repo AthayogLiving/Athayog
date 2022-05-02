@@ -288,7 +288,7 @@ const Online = ({ offers, notFound }) => {
                                              <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Transcending Transition</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                         </Tr>
                                         <Tr>
