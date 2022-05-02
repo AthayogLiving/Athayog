@@ -175,10 +175,10 @@ const Online = ({ offers, notFound }) => {
                                                   </Text>
                                              </Td>
                                              <Td>Rhythm of Being </Td>
-                                             <Td>Universal Harmony </Td>
-                                             <Td>Rhythm of Being </Td>
-                                             <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being </Td>
+                                             <Td>Transcending Transition </Td>
+                                             <Td>Sivananda</Td>
                                              <Td>---</Td>
                                              <Td>---</Td>
                                         </Tr>
@@ -194,12 +194,13 @@ const Online = ({ offers, notFound }) => {
                                              </Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being </Td>
-                                             <Td>Ashtanga</Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Transcending Transition </Td>
+                                             <Td>Rhythm of Being </Td>
                                              <Td>Transcending Transition </Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Rhythm of Being </Td>
                                         </Tr>
+
                                         <Tr>
                                              <Td
                                                   bg="aygreen.100"
@@ -212,13 +213,30 @@ const Online = ({ offers, notFound }) => {
                                              </Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Transcending Transition</Td>
+                                             <Td>Transcending Transition </Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition </Td>
                                         </Tr>
-
+                                        <Tr>
+                                             <Td
+                                                  bg="aygreen.100"
+                                                  borderBottom="1px"
+                                                  borderColor="aygreen.200"
+                                                  padding="0px"
+                                                  paddingLeft="10px"
+                                             >
+                                                  11:00 AM - 4:00 PM
+                                             </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                        </Tr>
                                         <Tr>
                                              <Td
                                                   bg="aygreen.100"
@@ -251,7 +269,7 @@ const Online = ({ offers, notFound }) => {
                                              <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Transcending Transition</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
                                         </Tr>
@@ -265,12 +283,12 @@ const Online = ({ offers, notFound }) => {
                                              >
                                                   6:00 PM - 7:00 PM
                                              </Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Inner World</Td>
-                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Transcending Transition</Td>
                                              <Td>Rhythm of Being</Td>
                                         </Tr>
                                         <Tr>
@@ -287,10 +305,9 @@ const Online = ({ offers, notFound }) => {
                                              <Td>Universal Harmony</Td>
                                              <Td>Deep Space</Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Universal Harmony</Td>
-
-                                             <Td> - </Td>
-                                             <Td> - </Td>
+                                             <Td>Inner World</Td>
+                                             <Td>-</Td>
+                                             <Td>-</Td>
                                         </Tr>
                                    </Tbody>
                               </Table>
