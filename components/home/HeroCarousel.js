@@ -10,6 +10,8 @@ import kidsDesktop from 'public/kids-summer-desktop.png';
 import kidsMobile from 'public/kids-summer-mobile.png';
 import retreatDesktop from 'public/retreat-dekstop.png';
 import retreatMobile from 'public/retreat-mobile.png';
+import heroDesktop from 'public/hero_desk_1.jpg';
+import heroMobile from 'public/hero_mobile_1.jpg';
 import { useRouter } from 'next/router';
 SwiperCore.use([Navigation, Pagination]);
 import { isMobile } from 'react-device-detect';
@@ -18,7 +20,17 @@ const HeroCarousel = () => {
      const router = useRouter();
      const [collection, setCollection] = useState([]);
 
+     const pushToLink = (url) => {
+          if (url !== null) router.push(url);
+     };
+
      const images = [
+          {
+               id: 0,
+               alt: 'Athayog Living',
+               imageUrl: heroDesktop,
+               url: null
+          },
           {
                id: 1,
                alt: 'kids yoga camp',
@@ -35,6 +47,12 @@ const HeroCarousel = () => {
      ];
 
      const imagesMobile = [
+          {
+               id: 0,
+               alt: 'Athayog Living',
+               imageUrl: heroMobile,
+               url: '#'
+          },
           {
                id: 2,
                alt: 'kids yoga camp',
@@ -72,7 +90,7 @@ const HeroCarousel = () => {
                          return (
                               <SwiperSlide
                                    key={image.id}
-                                   onClick={() => router.push(image.url)}
+                                   onClick={() => pushToLink(image.url)}
                               >
                                    <Box height="100vh">
                                         <Image

@@ -189,6 +189,11 @@ const Pricing = ({ pricing, registerTo, toRegister }) => {
                          {pricing
                               .filter((data) => data.isTrial == false)
                               .filter((data) => data.isGeneral == true)
+                              .sort(
+                                   (a, b) =>
+                                        a.description.length -
+                                        b.description.length
+                              )
                               .sort((a, b) => a.durationNum - b.durationNum)
                               .map((data, index) => {
                                    return (
