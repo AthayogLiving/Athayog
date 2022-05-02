@@ -9,8 +9,15 @@ import {
      Text,
      Th,
      Thead,
-     Tr
+     HStack,
+     Badge,
+     TableContainer,
+     Tr,
+     ListIcon,
+     ListItem,
+     List
 } from '@chakra-ui/react';
+import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import React from 'react';
 function Schedule() {
      const d = new Date();
@@ -94,10 +101,10 @@ function Schedule() {
                                                   </Text>
                                              </Td>
                                              <Td>Rhythm of Being </Td>
-                                             <Td>Sivananda</Td>
-                                             <Td>Rhythm of Being </Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being </Td>
                                              <Td>Transcending Transition </Td>
+                                             <Td>Sivananda</Td>
                                              <Td>---</Td>
                                              <Td>---</Td>
                                         </Tr>
@@ -111,12 +118,12 @@ function Schedule() {
                                              >
                                                   7.00 AM - 8.00 AM
                                              </Td>
-                                             <Td>Transcending Transition </Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being </Td>
                                              <Td>Transcending Transition </Td>
                                              <Td>Rhythm of Being </Td>
-                                             <Td>Sivananda</Td>
+                                             <Td>Transcending Transition </Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being </Td>
                                         </Tr>
 
@@ -133,7 +140,7 @@ function Schedule() {
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Transcending Transition </Td>
-                                             <Td>Sivananda</Td>
+                                             <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition </Td>
@@ -190,7 +197,7 @@ function Schedule() {
                                              <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -202,13 +209,13 @@ function Schedule() {
                                              >
                                                   6:00 PM - 7:00 PM
                                              </Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>YIN Yoga</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Sivananda</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Rhythm of Being</Td>
+                                             <Td>Transcending Transition</Td>
+                                             <Td>Rhythm of Being</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -220,30 +227,17 @@ function Schedule() {
                                              >
                                                   7:00 PM - 8:00 PM
                                              </Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Transcending Transition</Td>
-                                             <Td>Sivananda</Td>
-                                             <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
+                                             <Td>Universal Harmony</Td>
+                                             <Td>Deep Space</Td>
+                                             <Td>Transcending Transition</Td>
+                                             <Td>Inner World</Td>
                                              <Td>-</Td>
                                              <Td>-</Td>
                                         </Tr>
                                    </Tbody>
                               </Table>
                          </Box>
-
-                         {/* <Box mt={10} textAlign="left" width="100%">
-                              <Text fontWeight="medium">Working hours:</Text>
-                              <Text>
-                                   Monday to Friday (06:00 AM to 08:00 PM) and
-                                   Saturday
-                              </Text>
-                              <Text>Sunday (07:00 AM to 08:00 PM)</Text>
-                              <Text>
-                                   Athayog living will be closed on 2nd Saturday
-                                   of every Month.
-                              </Text>
-                         </Box> */}
                     </Flex>
                     <Flex
                          justifyContent="center"
@@ -301,9 +295,9 @@ function Schedule() {
                                              </Td>
                                              <Td>Rhythm of Being </Td>
                                              <Td>Universal Harmony </Td>
-                                             <Td>Rhythm of Being </Td>
+                                             <Td>Ashtanga </Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Sivananda</Td>
+                                             <Td>Universal Harmony </Td>
                                              <Td>---</Td>
                                              <Td>---</Td>
                                         </Tr>
@@ -318,12 +312,12 @@ function Schedule() {
                                                   7.00 AM - 8.00 AM
                                              </Td>
                                              <Td>Sivananda</Td>
+                                             <Td>Ashtanga </Td>
                                              <Td>Rhythm of Being </Td>
-                                             <Td>Transcending Transition </Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Transcending Transition </Td>
+                                             <Td>Rhythm of Being </Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Rhythm of Being </Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -340,7 +334,7 @@ function Schedule() {
                                              <Td>Transcending Transition </Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Ashtanga</Td>
                                              <Td>Transcending Transition </Td>
                                         </Tr>
 
@@ -377,7 +371,7 @@ function Schedule() {
                                              <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
                                              <Td>Universal Harmony</Td>
-                                             <Td>Transcending Transition</Td>
+                                             <Td>Sivananda</Td>
                                              <Td>Universal Harmony</Td>
                                         </Tr>
                                         <Tr>
@@ -392,9 +386,9 @@ function Schedule() {
                                              </Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Ashtanga</Td>
                                              <Td>Sivananda</Td>
-                                             <Td>Inner World</Td>
+                                             <Td>Rhythm of Being</Td>
                                              <Td>Universal Harmony</Td>
                                              <Td>Rhythm of Being</Td>
                                         </Tr>
@@ -412,36 +406,69 @@ function Schedule() {
                                              <Td>Universal Harmony</Td>
                                              <Td>Deep Space</Td>
                                              <Td>Transcending Transition</Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Inner World</Td>
                                              <Td>-</Td>
                                         </Tr>
                                    </Tbody>
                               </Table>
                          </Box>
 
-                         <Box mt={10} textAlign="left" width="100%">
-                              <Text fontWeight="medium">Working hours:</Text>
-                              <Text>
-                                   Monday to Friday (06:00 AM to 08:00 PM) and
-                                   Saturday
-                              </Text>
-                              <Text>Sunday (07:00 AM to 08:00 PM)</Text>
+                         <Box
+                              mt={10}
+                              textAlign="left"
+                              width="100%"
+                              boxShadow="base"
+                              bg="white"
+                              rounded="md"
+                              p={3}
+                         >
+                              <Box>
+                                   <Text
+                                        fontWeight="medium"
+                                        textTransform="uppercase"
+                                   >
+                                        Timings Information
+                                   </Text>
 
-                              <Text>
-                                   Athayog living will be closed on 2nd Saturday
-                                   of every Month.
-                              </Text>
+                                   <Flex gap={10} my={2} direction="row">
+                                        <Flex direction="column" gap={1}>
+                                             <Box>Monday - Friday</Box>
+                                             <Box>Saturday - Sunday</Box>
+                                        </Flex>
+                                        <Flex direction="column" gap={1}>
+                                             <Box>06:00 AM - 08:00 PM</Box>
+                                             <Box>07:00 AM - 08:00 PM</Box>
+                                        </Flex>
+                                   </Flex>
+                              </Box>
+                              <List mt={3}>
+                                   <ListItem>
+                                        <ListIcon
+                                             as={BsFillArrowRightCircleFill}
+                                             color="green.500"
+                                        />
+                                        Athayog living will be closed on 2nd
+                                        Saturday of every Month.
+                                   </ListItem>
+                                   <ListItem>
+                                        <ListIcon
+                                             as={BsFillArrowRightCircleFill}
+                                             color="green.500"
+                                        />
+                                        2nd May - 13th May: Kids Yoga Camp -
+                                        11:00 AM - 1:00 PM
+                                   </ListItem>
+                              </List>
 
-                              <Text fontWeight="medium" mt={2}>
-                                   2nd April - 11th April: Navratri Sadhana -
-                                   6:00 PM - 7:00 PM
-                              </Text>
-
-                              <Text fontWeight="medium" mt={2}>
+                              <Badge
+                                   whiteSpace="pre-wrap"
+                                   fontWeight="medium"
+                                   mt={3}
+                              >
                                    Note: 108 Surya Namaskara will be practiced
                                    on 1st Saturday of every month, 7am - 9am
                                    batch.{' '}
-                              </Text>
+                              </Badge>
                          </Box>
                     </Flex>
                </Flex>
