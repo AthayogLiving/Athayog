@@ -9,39 +9,11 @@ import {
      Stack,
      Text
 } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
+import RetreatHero from 'public/retreat-hero.jpg';
 import React from 'react';
 import NavbarHelper from '../shared/NavbarHelper';
-import RetreatHero from 'public/retreat-hero.jpg';
 function Hero() {
-     let easing = [0.175, 0.85, 0.42, 0.96];
-
-     const textVariantsUp = {
-          exit: {
-               y: 100,
-               opacity: 0,
-               transition: { duration: 1, ease: easing }
-          },
-          enter: {
-               y: 0,
-               opacity: 1,
-               transition: { duration: 1, ease: easing }
-          }
-     };
-
-     const textVariantsDown = {
-          exit: {
-               y: -100,
-               opacity: 0,
-               transition: { duration: 1, ease: easing }
-          },
-          enter: {
-               y: 0,
-               opacity: 1,
-               transition: { duration: 1, ease: easing }
-          }
-     };
      return (
           <>
                <NavbarHelper />
@@ -72,14 +44,7 @@ function Hero() {
                          textAlign="left"
                          p={{ base: '5', md: '10' }}
                     >
-                         <Stack
-                              spacing={5}
-                              as={motion.div}
-                              variants={textVariantsUp}
-                              initial="exit"
-                              animate="enter"
-                              exit="exit"
-                         >
+                         <Stack spacing={5}>
                               <Heading
                                    fontSize={{
                                         base: '2xl',
@@ -133,11 +98,6 @@ function Hero() {
                               gap={{ base: 5, md: 10 }}
                               alignItems="center"
                               fontSize={{ base: 'md', md: 'lg' }}
-                              as={motion.div}
-                              variants={textVariantsDown}
-                              initial="exit"
-                              animate="enter"
-                              exit="exit"
                          >
                               <Box textAlign="left">
                                    <Text textColor="gray.400">Dates</Text>
