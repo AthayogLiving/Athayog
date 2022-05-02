@@ -130,6 +130,7 @@ const Navbar = () => {
                               position="absolute"
                               display={{ base: 'none', md: 'block' }}
                               top="0.5"
+                              zIndex={10}
                               right="2"
                               onClick={() => showOffer(false)}
                          />
