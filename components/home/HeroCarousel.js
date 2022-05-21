@@ -31,12 +31,6 @@ const HeroCarousel = () => {
                imageUrl: heroDesktop,
                url: null
           },
-          {
-               id: 1,
-               alt: 'kids yoga camp',
-               imageUrl: kidsDesktop,
-               url: '/kids-yoga-camp'
-          },
 
           {
                id: 3,
@@ -53,12 +47,7 @@ const HeroCarousel = () => {
                imageUrl: heroMobile,
                url: '#'
           },
-          {
-               id: 2,
-               alt: 'kids yoga camp',
-               imageUrl: kidsMobile,
-               url: '/kids-yoga-camp'
-          },
+
           {
                id: 4,
                alt: 'Yoga retreat',

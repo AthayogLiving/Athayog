@@ -52,12 +52,6 @@ const Navbar = () => {
      SwiperCore.use([Autoplay]);
      const announcements = [
           {
-               id: 1,
-               text: 'Kids Yoga Camp Registration is LIVE!',
-               url: '/kids-yoga-camp',
-               color: 'purple.100'
-          },
-          {
                id: 2,
                text: 'Yoga Retreat Registration is LIVE!',
                url: '/yoga-retreat',
@@ -79,11 +73,7 @@ const Navbar = () => {
                          <Swiper
                               spaceBetween={30}
                               centeredSlides={true}
-                              autoplay={{
-                                   delay: 5000,
-                                   disableOnInteraction: true
-                              }}
-                              loop={true}
+                              loop={false}
                          >
                               {announcements.map((content) => {
                                    return (
