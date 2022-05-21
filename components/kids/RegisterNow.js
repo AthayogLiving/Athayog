@@ -40,21 +40,15 @@ function RegisterNow({ pageType }) {
                          direction={{ base: 'column', md: 'row' }}
                     >
                          <Flex direction="column" alignItems="center">
-                              <Link
-                                   href="https://rzp.io/l/lS6proLJPJ"
-                                   target="_blank"
-                                   passHref
+                              <Button
+                                   colorScheme="aygreen"
+                                   width="100%"
+                                   title="Event is expired"
+                                   disabled={true}
                               >
-                                   <a target="_blank">
-                                        <Button
-                                             colorScheme="aygreen"
-                                             width="100%"
-                                        >
-                                             {' '}
-                                             Register Now
-                                        </Button>
-                                   </a>
-                              </Link>
+                                   {' '}
+                                   Register
+                              </Button>
                          </Flex>
                          {details.map(({ id, firstColumn, secondColumn }) => {
                               return (
@@ -109,6 +103,8 @@ function RegisterNow({ pageType }) {
                                         <Button
                                              colorScheme="aygreen"
                                              width="100%"
+                                             title="Event is expired"
+                                             disabled={true}
                                         >
                                              {' '}
                                              Register Now

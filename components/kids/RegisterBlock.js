@@ -36,6 +36,8 @@ function RegisterBlock() {
                                    mt={{ base: '5', md: '10' }}
                                    colorScheme="aygreen"
                                    size="md"
+                                   title="Event is expired"
+                                   disabled={true}
                               >
                                    Register Now
                               </Button>
