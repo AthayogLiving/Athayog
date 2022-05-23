@@ -53,8 +53,8 @@ const Navbar = () => {
      const announcements = [
           {
                id: 2,
-               text: 'Yoga Retreat Registration is LIVE!',
-               url: '/yoga-retreat',
+               text: 'Register for Yoga Arambha Sadhana!',
+               url: 'https://forms.gle/DTbHoXQEsob4gnCn8',
                color: 'pink.100'
           }
      ];

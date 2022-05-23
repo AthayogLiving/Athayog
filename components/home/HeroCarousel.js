@@ -30,14 +30,14 @@ const HeroCarousel = () => {
                alt: 'Athayog Living',
                imageUrl: heroDesktop,
                url: null
-          },
-
-          {
-               id: 3,
-               alt: 'Yoga retreat',
-               imageUrl: retreatDesktop,
-               url: '/yoga-retreat'
           }
+
+          // {
+          //      id: 3,
+          //      alt: 'Yoga retreat',
+          //      imageUrl: retreatDesktop,
+          //      url: '/yoga-retreat'
+          // }
      ];
 
      const imagesMobile = [
@@ -46,14 +46,14 @@ const HeroCarousel = () => {
                alt: 'Athayog Living',
                imageUrl: heroMobile,
                url: '#'
-          },
-
-          {
-               id: 4,
-               alt: 'Yoga retreat',
-               imageUrl: retreatMobile,
-               url: '/yoga-retreat'
           }
+
+          // {
+          //      id: 4,
+          //      alt: 'Yoga retreat',
+          //      imageUrl: retreatMobile,
+          //      url: '/yoga-retreat'
+          // }
      ];
 
      useEffect(() => {

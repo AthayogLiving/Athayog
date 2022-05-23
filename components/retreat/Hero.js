@@ -74,7 +74,7 @@ function Hero() {
                               </Text>
                               <Link
                                    passHref
-                                   href="https://rzp.io/l/tDvi8Ww9z"
+                                   // href="https://rzp.io/l/tDvi8Ww9z"
                                    target="_blank"
                               >
                                    {' '}
@@ -82,12 +82,13 @@ function Hero() {
                                         colorScheme="yellow"
                                         variant="outline"
                                         rounded="none"
+                                        disabled={true}
                                         maxW={{
                                              base: 'full',
                                              md: 'max-content'
                                         }}
                                    >
-                                        Register Now
+                                        TBA
                                    </Button>
                               </Link>
                          </Stack>
@@ -101,7 +102,7 @@ function Hero() {
                          >
                               <Box textAlign="left">
                                    <Text textColor="gray.400">Dates</Text>
-                                   <Box>May 14th, 6 am - May 15th 7 pm</Box>
+                                   <Box>To Be Announced</Box>
                               </Box>
                               <Box textAlign="left">
                                    <Text textColor="gray.400">Location</Text>
