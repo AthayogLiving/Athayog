@@ -52,8 +52,8 @@ const Navbar = () => {
      SwiperCore.use([Autoplay]);
      const announcements = [
           {
-               id: 2,
-               text: 'Register for Yoga Arambha Sadhana!',
+               id: 1,
+               text: 'Yoga Arambha Sadhana - June 1st to June 21st Register Now',
                url: 'https://forms.gle/DTbHoXQEsob4gnCn8',
                color: 'pink.100'
           }
