@@ -59,7 +59,7 @@ function Schedule() {
                          >
                               {/* Schedule For {monthNames[d.getMonth()]}{' '}
                               {d.getFullYear()} (Indiranagar) */}
-                              Schedule For April 2022 (Indiranagar)
+                              Schedule For May 2022 (Indiranagar)
                          </Heading>
                          <Box
                               overflowX="auto"
@@ -252,7 +252,7 @@ function Schedule() {
                          >
                               {/* Schedule For {monthNames[d.getMonth()]}{' '}
                               {d.getFullYear()} (KR Puram) */}
-                              Schedule For April 2022 (KR Puram)
+                              Schedule For May 2022 (KR Puram)
                          </Heading>
                          <Box
                               overflowX="auto"
