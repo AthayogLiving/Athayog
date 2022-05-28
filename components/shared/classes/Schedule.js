@@ -59,7 +59,7 @@ function Schedule() {
                          >
                               {/* Schedule For {monthNames[d.getMonth()]}{' '}
                               {d.getFullYear()} (Indiranagar) */}
-                              Schedule For Arambha Sadhana (Indiranagar)
+                              Schedule For Yoga Arambha Sadhana (Indiranagar)
                          </Heading>
                          <Box
                               overflowX="auto"
@@ -105,8 +105,8 @@ function Schedule() {
                                              <Td>Sadhana </Td>
                                              <Td>Sadhana </Td>
                                              <Td>Sadhana</Td>
-                                             <Td>---</Td>
-                                             <Td>---</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -173,13 +173,13 @@ function Schedule() {
                                              >
                                                   4:00 PM - 5:00 PM
                                              </Td>
-                                             <Td>Sadhana </Td>
-                                             <Td>Sadhana </Td>
-                                             <Td>Sadhana </Td>
-                                             <Td>Sadhana </Td>
-                                             <Td>Sadhana </Td>
-                                             <Td>---</Td>
-                                             <Td>---</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -232,8 +232,8 @@ function Schedule() {
                                              <Td>Sadhana</Td>
                                              <Td>Sadhana</Td>
                                              <Td>Sadhana</Td>
-                                             <Td>-</Td>
-                                             <Td>-</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
                                         </Tr>
                                    </Tbody>
                               </Table>
@@ -252,7 +252,7 @@ function Schedule() {
                          >
                               {/* Schedule For {monthNames[d.getMonth()]}{' '}
                               {d.getFullYear()} (KR Puram) */}
-                              Schedule For Arambha Sadhana (KR Puram)
+                              Schedule For Yoga Arambha Sadhana (KR Puram)
                          </Heading>
                          <Box
                               overflowX="auto"
@@ -298,8 +298,8 @@ function Schedule() {
                                              <Td>Sadhana </Td>
                                              <Td>Sadhana</Td>
                                              <Td>Sadhana </Td>
-                                             <Td>---</Td>
-                                             <Td>---</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -337,7 +337,24 @@ function Schedule() {
                                              <Td>Sadhana</Td>
                                              <Td>Sadhana </Td>
                                         </Tr>
-
+                                        <Tr>
+                                             <Td
+                                                  bg="aygreen.100"
+                                                  borderBottom="1px"
+                                                  borderColor="aygreen.200"
+                                                  padding="0px"
+                                                  paddingLeft="10px"
+                                             >
+                                                  11:00 AM - 4:00 PM
+                                             </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                             <Td> - </Td>
+                                        </Tr>
                                         <Tr>
                                              <Td
                                                   bg="aygreen.100"
@@ -353,8 +370,8 @@ function Schedule() {
                                              <Td>Sadhana </Td>
                                              <Td>Sadhana </Td>
                                              <Td>Sadhana </Td>
-                                             <Td>---</Td>
-                                             <Td>---</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -407,7 +424,8 @@ function Schedule() {
                                              <Td>Sadhana</Td>
                                              <Td>Sadhana</Td>
                                              <Td>Sadhana</Td>
-                                             <Td>-</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
                                         </Tr>
                                    </Tbody>
                               </Table>

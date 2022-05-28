@@ -133,7 +133,7 @@ const Online = ({ offers, notFound }) => {
                               fontWeight="normal"
                               fontSize={{ base: '2xl', md: '3xl' }}
                          >
-                              Online Schedule For Arambha Sadhana
+                              Online Schedule For Yoga Arambha Sadhana
                          </Heading>
                          <Box
                               overflowX="auto"
@@ -179,8 +179,8 @@ const Online = ({ offers, notFound }) => {
                                              <Td>Sadhana </Td>
                                              <Td>Sadhana </Td>
                                              <Td>Sadhana</Td>
-                                             <Td>---</Td>
-                                             <Td>---</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -252,8 +252,8 @@ const Online = ({ offers, notFound }) => {
                                              <Td>Sadhana </Td>
                                              <Td>Sadhana </Td>
                                              <Td>Sadhana </Td>
-                                             <Td>---</Td>
-                                             <Td>---</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -306,8 +306,8 @@ const Online = ({ offers, notFound }) => {
                                              <Td>Sadhana</Td>
                                              <Td>Sadhana</Td>
                                              <Td>Sadhana</Td>
-                                             <Td>-</Td>
-                                             <Td>-</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
                                         </Tr>
                                    </Tbody>
                               </Table>
