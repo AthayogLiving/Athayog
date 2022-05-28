@@ -133,7 +133,7 @@ const Online = ({ offers, notFound }) => {
                               fontWeight="normal"
                               fontSize={{ base: '2xl', md: '3xl' }}
                          >
-                              Online Schedule For Group Classes
+                              Online Schedule For Arambha Sadhana
                          </Heading>
                          <Box
                               overflowX="auto"
@@ -174,11 +174,11 @@ const Online = ({ offers, notFound }) => {
                                                        6.00 AM - 7.00 AM
                                                   </Text>
                                              </Td>
-                                             <Td>Rhythm of Being </Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being </Td>
-                                             <Td>Transcending Transition </Td>
-                                             <Td>Sivananda</Td>
+                                             <Td>Sadhana </Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana </Td>
+                                             <Td>Sadhana </Td>
+                                             <Td>Sadhana</Td>
                                              <Td>---</Td>
                                              <Td>---</Td>
                                         </Tr>
@@ -192,13 +192,13 @@ const Online = ({ offers, notFound }) => {
                                              >
                                                   7.00 AM - 8.00 AM
                                              </Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being </Td>
-                                             <Td>Transcending Transition </Td>
-                                             <Td>Rhythm of Being </Td>
-                                             <Td>Transcending Transition </Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being </Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana </Td>
+                                             <Td>Sadhana </Td>
+                                             <Td>Sadhana </Td>
+                                             <Td>Sadhana </Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana </Td>
                                         </Tr>
 
                                         <Tr>
@@ -211,13 +211,13 @@ const Online = ({ offers, notFound }) => {
                                              >
                                                   8:00 AM - 9:00 AM
                                              </Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Transcending Transition </Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Transcending Transition </Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana </Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana </Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -247,11 +247,11 @@ const Online = ({ offers, notFound }) => {
                                              >
                                                   4:00 PM - 5:00 PM
                                              </Td>
-                                             <Td>Kids Yoga </Td>
-                                             <Td>Kids Yoga </Td>
-                                             <Td>Kids Yoga </Td>
-                                             <Td>Kids Yoga </Td>
-                                             <Td>Kids Yoga </Td>
+                                             <Td>Sadhana </Td>
+                                             <Td>Sadhana </Td>
+                                             <Td>Sadhana </Td>
+                                             <Td>Sadhana </Td>
+                                             <Td>Sadhana </Td>
                                              <Td>---</Td>
                                              <Td>---</Td>
                                         </Tr>
@@ -265,13 +265,13 @@ const Online = ({ offers, notFound }) => {
                                              >
                                                   5:00 PM - 6:00 PM
                                              </Td>
-                                             <Td>Transcending Transition</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Transcending Transition</Td>
-                                             <Td>Universal Harmony</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -283,13 +283,13 @@ const Online = ({ offers, notFound }) => {
                                              >
                                                   6:00 PM - 7:00 PM
                                              </Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Transcending Transition</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Rhythm of Being</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
                                         </Tr>
                                         <Tr>
                                              <Td
@@ -301,11 +301,11 @@ const Online = ({ offers, notFound }) => {
                                              >
                                                   7:00 PM - 8:00 PM
                                              </Td>
-                                             <Td>Rhythm of Being</Td>
-                                             <Td>Universal Harmony</Td>
-                                             <Td>Deep Space</Td>
-                                             <Td>Transcending Transition</Td>
-                                             <Td>Inner World</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
+                                             <Td>Sadhana</Td>
                                              <Td>-</Td>
                                              <Td>-</Td>
                                         </Tr>
@@ -332,16 +332,16 @@ const Online = ({ offers, notFound }) => {
 
                                    <Flex gap={10} my={2} direction="row">
                                         <Flex direction="column" gap={1}>
-                                             <Box>Monday - Friday</Box>
-                                             <Box>Saturday - Sunday</Box>
+                                             <Box>Monday - Sunday</Box>
+                                             {/* <Box>Saturday - Sunday</Box> */}
                                         </Flex>
                                         <Flex direction="column" gap={1}>
                                              <Box>06:00 AM - 08:00 PM</Box>
-                                             <Box>07:00 AM - 08:00 PM</Box>
+                                             {/* <Box>07:00 AM - 08:00 PM</Box> */}
                                         </Flex>
                                    </Flex>
                               </Box>
-                              <List mt={3}>
+                              {/* <List mt={3}>
                                    <ListItem>
                                         <ListIcon
                                              as={BsFillArrowRightCircleFill}
@@ -355,8 +355,8 @@ const Online = ({ offers, notFound }) => {
                                              as={BsFillArrowRightCircleFill}
                                              color="green.500"
                                         />
-                                        2nd May - 13th May: Kids Yoga Camp -
-                                        11:00 AM - 1:00 PM
+                                        2nd May - 13th May: Sadhana Camp - 11:00
+                                        AM - 1:00 PM
                                    </ListItem>
                               </List>
 
@@ -368,7 +368,7 @@ const Online = ({ offers, notFound }) => {
                                    Note: 108 Surya Namaskara will be practiced
                                    on 1st Saturday of every month, 7am - 9am
                                    batch.{' '}
-                              </Badge>
+                              </Badge> */}
                          </Box>
                     </Flex>
                </Flex>
