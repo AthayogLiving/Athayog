@@ -77,7 +77,17 @@ function Register() {
           await registerForArambha(name, email, phone, ticketID)
                .then((response) => {
                     setLoading(false);
+                    console.log(ticketID);
                     setUser({ name, email, phone, ticketID });
+                    setUser((prevState) => {
+                         return {
+                              ...prevState,
+                              name,
+                              email,
+                              phone,
+                              ticketID
+                         };
+                    });
                     setEvent(true);
                     toast({
                          title: 'Success',
@@ -131,7 +141,7 @@ function Register() {
                                              TickedID:
                                         </Text>{' '}
                                         <Text fontWeight="medium">
-                                             {user.tickedID}
+                                             {user.ticketID}
                                         </Text>
                                    </Box>
 
