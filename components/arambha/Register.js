@@ -102,69 +102,91 @@ function Register() {
 
      const Ticket = () => {
           return (
-               <Flex rounded="md" direction="column">
-                    <Stack
-                         textAlign="left"
-                         spacing={10}
-                         ref={componentRef}
-                         py={5}
-                         px={6}
-                    >
-                         <Text fontSize="xl">ATHAYOG YOGA ARAMBHA</Text>
-                         <Grid templateColumns="repeat(2,1fr)" gap={10}>
-                              <Box>
-                                   <Text
-                                        fontWeight="normal"
-                                        textColor="gray.700"
-                                   >
-                                        TickedID:
-                                   </Text>{' '}
-                                   <Text fontWeight="medium">
-                                        {user.tickedID}
-                                   </Text>
-                              </Box>
+               <Flex
+                    rounded="md"
+                    direction="column"
+                    justifyContent="center"
+                    alignItems="center"
+               >
+                    <Box maxW="md">
+                         <Stack
+                              textAlign="left"
+                              spacing={10}
+                              ref={componentRef}
+                              py={5}
+                              px={6}
+                              width="full"
+                         >
+                              <Text fontSize="xl">ATHAYOG YOGA ARAMBHA</Text>
+                              <Grid
+                                   templateColumns="repeat(2,1fr)"
+                                   gap={10}
+                                   width="full"
+                              >
+                                   <Box>
+                                        <Text
+                                             fontWeight="normal"
+                                             textColor="gray.700"
+                                        >
+                                             TickedID:
+                                        </Text>{' '}
+                                        <Text fontWeight="medium">
+                                             {user.tickedID}
+                                        </Text>
+                                   </Box>
 
-                              <Box>
-                                   {' '}
-                                   <Text
-                                        fontWeight="normal"
-                                        textColor="gray.700"
-                                   >
-                                        Name:
-                                   </Text>{' '}
-                                   <Text fontWeight="medium">{user.name}</Text>
-                              </Box>
-                              <Box>
-                                   {' '}
-                                   <Text
-                                        fontWeight="normal"
-                                        textColor="gray.700"
-                                   >
-                                        Email:
-                                   </Text>{' '}
-                                   <Text fontWeight="medium">{user.email}</Text>
-                              </Box>
-                              <Box>
-                                   {' '}
-                                   <Text
-                                        fontWeight="normal"
-                                        textColor="gray.700"
-                                   >
-                                        Phone:
-                                   </Text>{' '}
-                                   <Text fontWeight="medium">{user.phone}</Text>
-                              </Box>
-                         </Grid>
-                    </Stack>
-                    <Button
-                         colorScheme="green"
-                         size="md"
-                         width="full"
-                         onClick={handlePrint}
-                         rounded="sm"
-                    >
-                         Download Ticket
-                    </Button>
+                                   <Box>
+                                        {' '}
+                                        <Text
+                                             fontWeight="normal"
+                                             textColor="gray.700"
+                                        >
+                                             Name:
+                                        </Text>{' '}
+                                        <Text fontWeight="medium">
+                                             {user.name}
+                                        </Text>
+                                   </Box>
+                                   <Box>
+                                        {' '}
+                                        <Text
+                                             fontWeight="normal"
+                                             textColor="gray.700"
+                                        >
+                                             Email:
+                                        </Text>{' '}
+                                        <Text fontWeight="medium">
+                                             {user.email}
+                                        </Text>
+                                   </Box>
+                                   <Box>
+                                        {' '}
+                                        <Text
+                                             fontWeight="normal"
+                                             textColor="gray.700"
+                                        >
+                                             Phone:
+                                        </Text>{' '}
+                                        <Text fontWeight="medium">
+                                             {user.phone}
+                                        </Text>
+                                   </Box>
+                              </Grid>
+                         </Stack>
+                         <Button
+                              colorScheme="green"
+                              size="md"
+                              width="full"
+                              onClick={handlePrint}
+                              rounded="sm"
+                              mt={10}
+                         >
+                              Download Ticket
+                         </Button>
+                         <Text textAlign="center" mt={5} fontSize="md">
+                              Ticket also sent to your email{' '}
+                         </Text>
+                    </Box>
                </Flex>
           );
      };
@@ -228,12 +250,12 @@ function Register() {
                               />
                          </FormControl>
                          <Button
-                              rounded="none"
+                              rounded="sm"
                               colorScheme="green"
                               type="submit"
                               isLoading={loading}
                          >
-                              Register Now
+                              Submit
                          </Button>
                     </Flex>
                </form>
@@ -244,11 +266,16 @@ function Register() {
                maxW="100%"
                boxShadow="md"
                justifySelf="right"
-               bg="gray.50"
                textColor="black"
                rounded="none"
                overflow="hidden"
+               p={10}
           >
+               {!event && (
+                    <Heading textAlign="center" fontSize="3xl">
+                         Register Now
+                    </Heading>
+               )}
                {event ? <Ticket /> : <Form />}
           </Container>
      );

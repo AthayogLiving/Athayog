@@ -14,9 +14,9 @@ function YogaDay() {
                </Head>
 
                <Hero />
-               <Register />
                <Welcome />
                <Info />
+               <Register />
           </div>
      );
 }

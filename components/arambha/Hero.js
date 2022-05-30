@@ -19,7 +19,7 @@ function Hero() {
           <>
                <NavbarHelper />
                <Flex
-                    height={{ base: '80vh', md: '80vh' }}
+                    height={{ base: '95vh', md: '95vh' }}
                     justifyContent="space-between"
                     alignItems="center"
                     bgSize="cover"
