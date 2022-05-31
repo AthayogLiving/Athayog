@@ -221,7 +221,7 @@ function EventRegister() {
                );
 
           // Send Email
-          await fetch('https://formsubmit.co/ajax/admin@athayogliving.com', {
+          await fetch('https://formsubmit.co/ajax/info@athayogliving.com', {
                method: 'POST',
                headers: {
                     'Content-Type': 'application/json',
