@@ -7,7 +7,6 @@ import {
      Container,
      Flex,
      FormControl,
-     FormErrorMessage,
      FormLabel,
      Heading,
      Input,
@@ -28,7 +27,6 @@ import Image from 'next/image';
 import Logo from 'public/Logo_Filled.png';
 import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import nextId from 'react-id-generator';
 import { useReactToPrint } from 'react-to-print';
 import { v4 as uuidv4 } from 'uuid';
 import NavbarHelper from '../shared/NavbarHelper';
@@ -36,7 +34,7 @@ import NavbarHelper from '../shared/NavbarHelper';
 function EventRegister() {
      const toast = useToast();
      const [loading, setLoading] = useState(false);
-     const [event, setEvent] = useState(true);
+     const [event, setEvent] = useState(false);
      const form = useRef();
 
      const [user, setUser] = useState({
