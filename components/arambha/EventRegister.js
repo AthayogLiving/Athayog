@@ -212,12 +212,35 @@ function EventRegister() {
                               duration: 9000,
                               isClosable: true
                          });
+                         if (!event) {
+                              sendToAthayog(
+                                   name,
+                                   email,
+                                   phone,
+                                   age,
+                                   aadhar,
+                                   tshirt,
+                                   gender,
+                                   ticketID
+                              );
+                         }
                     },
                     (error) => {
                          console.log(error.text);
                     }
                );
+     };
 
+     const sendToAthayog = async (
+          name,
+          email,
+          phone,
+          age,
+          aadhar,
+          tshirt,
+          gender,
+          ticketID
+     ) => {
           // Send Email
           await fetch('https://formsubmit.co/ajax/info@athayogliving.com', {
                method: 'POST',
