@@ -242,6 +242,7 @@ function EventRegister() {
           ticketID
      ) => {
           // Send Email
+
           await fetch('https://formsubmit.co/ajax/info@athayogliving.com', {
                method: 'POST',
                headers: {
@@ -378,7 +379,7 @@ function EventRegister() {
 
      const Form = () => {
           return (
-               <form ref={form} onSubmit={handleSubmit(onSubmit)}>
+               <Box as="form" onSubmit={handleSubmit(onSubmit)}>
                     <Heading fontSize="3xl">Register Now</Heading>
                     <Flex
                          gap={10}
@@ -406,11 +407,12 @@ function EventRegister() {
                                    bg="white"
                                    name="name"
                                    id="name"
+                                   required
                                    variant="outline"
                                    disabled={loading}
                                    placeholder="Your Name"
                                    ref={register({
-                                        required: true
+                                        required: 'Please enter your name.'
                                    })}
                               />
                          </FormControl>
@@ -427,6 +429,7 @@ function EventRegister() {
                                         type="email"
                                         name="email"
                                         bg="white"
+                                        required
                                         id="email"
                                         variant="outline"
                                         disabled={loading}
@@ -447,6 +450,7 @@ function EventRegister() {
                                         type="tel"
                                         placeholder="Phone Number"
                                         id="phone"
+                                        required
                                         variant="outline"
                                         disabled={loading}
                                         bg="white"
@@ -469,6 +473,7 @@ function EventRegister() {
                                         type="number"
                                         placeholder="Your Age"
                                         id="age"
+                                        required
                                         variant="outline"
                                         disabled={loading}
                                         bg="white"
@@ -488,6 +493,7 @@ function EventRegister() {
                                    <Select
                                         placeholder="Select option"
                                         name="gender"
+                                        required
                                         disabled={loading}
                                         ref={register({
                                              required: true
@@ -530,6 +536,7 @@ function EventRegister() {
                               <Select
                                    placeholder="Select option"
                                    disabled={loading}
+                                   required
                                    name="tshirt"
                                    ref={register({
                                         required: true
@@ -554,7 +561,7 @@ function EventRegister() {
                               Submit
                          </Button>
                     </Flex>
-               </form>
+               </Box>
           );
      };
      return (
