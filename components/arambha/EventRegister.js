@@ -352,6 +352,11 @@ function EventRegister() {
                                    sendEmail(
                                         user.name,
                                         user.email,
+                                        user.phone,
+                                        user.age,
+                                        user.aadhar,
+                                        user.tshirt,
+                                        user.gender,
                                         user.ticketID
                                    )
                               }
