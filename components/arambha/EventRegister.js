@@ -36,7 +36,7 @@ import NavbarHelper from '../shared/NavbarHelper';
 function EventRegister() {
      const toast = useToast();
      const [loading, setLoading] = useState(false);
-     const [event, setEvent] = useState(false);
+     const [event, setEvent] = useState(true);
      const form = useRef();
 
      const [user, setUser] = useState({
@@ -345,6 +345,22 @@ function EventRegister() {
                     <Badge mt={5} width="max-content" whiteSpace="pre-wrap">
                          A copy of ticket has been sent to your email
                     </Badge>
+                    <Text mt={5}>
+                         Didn&apos;t receive your mail?{' '}
+                         <chakra.span
+                              textDecor="underline"
+                              cursor="pointer"
+                              onClick={() =>
+                                   sendEmail(
+                                        user.name,
+                                        user.email,
+                                        user.ticketID
+                                   )
+                              }
+                         >
+                              Click Here
+                         </chakra.span>{' '}
+                    </Text>
                </Flex>
           );
      };
