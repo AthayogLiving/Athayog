@@ -84,6 +84,22 @@ const forms = () => {
                                    </Link>
                               </Td>
                          </Tr>
+                         <Tr>
+                              <Td>
+                                   <Text>YogaDay</Text>
+                              </Td>
+                              <Td>
+                                   <Link href="forms/yogaday">
+                                        <a
+                                             style={{
+                                                  textDecoration: 'underline'
+                                             }}
+                                        >
+                                             Open
+                                        </a>
+                                   </Link>
+                              </Td>
+                         </Tr>
                     </Tbody>
                </Table>
           </>
