@@ -72,6 +72,7 @@ function EventRegister() {
           setLoading(true);
           const ticketID =
                nextId('ATHAYOG-') +
+               name.substring(0, 3) +
                uuidv4().toString().substring(0, 5).toUpperCase();
           await checkForArambha(email)
                .then((res) => {
