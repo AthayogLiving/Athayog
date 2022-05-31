@@ -10,7 +10,7 @@ function YogaDay() {
      return (
           <div>
                <Head>
-                    <title>Yoga Day - Sadhana</title>
+                    <title>Yoga Day - Arambha</title>
                </Head>
                <Hero />
                <Info />

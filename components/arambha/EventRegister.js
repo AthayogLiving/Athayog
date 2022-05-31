@@ -1,51 +1,52 @@
 import { checkForArambha, registerForArambha } from '@/lib/db/forms';
-import { ArrowBackIcon } from '@chakra-ui/icons';
 import {
+     Badge,
      Box,
      Button,
+     chakra,
      Container,
      Flex,
      FormControl,
+     FormErrorMessage,
      FormLabel,
-     Grid,
      Heading,
      Input,
+     Select,
      Stack,
-     Text,
-     chakra,
-     useToast,
-     FormErrorMessage,
-     Badge,
-     SimpleGrid,
-     Divider,
      Table,
-     Thead,
+     TableContainer,
      Tbody,
-     Tfoot,
-     Tr,
-     Th,
      Td,
-     TableCaption,
-     TableContainer
+     Text,
+     Th,
+     Thead,
+     Tr,
+     useToast
 } from '@chakra-ui/react';
+import emailjs from '@emailjs/browser';
 import Image from 'next/image';
+import Logo from 'public/Logo_Filled.png';
 import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import nextId from 'react-id-generator';
 import { useReactToPrint } from 'react-to-print';
 import { v4 as uuidv4 } from 'uuid';
-import Logo from 'public/Logo_Filled.png';
 import NavbarHelper from '../shared/NavbarHelper';
 
 function EventRegister() {
      const toast = useToast();
      const [loading, setLoading] = useState(false);
      const [event, setEvent] = useState(false);
+     const form = useRef();
+
      const [user, setUser] = useState({
-          name: 'Harsimran',
-          email: 'harsimansinghbarki@gmail.com',
-          phone: '8971613155',
-          ticketID: 'ATHAYOG-qwes'
+          name: '',
+          email: '',
+          phone: '',
+          age: '',
+          aadhar: '',
+          tshirt: '',
+          gender: ''
      });
 
      const componentRef = useRef();
@@ -59,14 +60,32 @@ function EventRegister() {
           watch,
           formState: { errors }
      } = useForm();
-     const onSubmit = async ({ name, email, phone }) => {
+     const onSubmit = async ({
+          name,
+          email,
+          phone,
+          age,
+          aadhar,
+          tshirt,
+          gender
+     }) => {
           setLoading(true);
           const ticketID =
-               nextId('ATHAYOG-') + uuidv4().toString().substring(0, 5);
+               nextId('ATHAYOG-') +
+               uuidv4().toString().substring(0, 5).toUpperCase();
           await checkForArambha(email)
                .then((res) => {
                     if (res.code == 200) {
-                         generateTicket(name, email, phone, ticketID);
+                         generateTicket(
+                              name,
+                              email,
+                              phone,
+                              age,
+                              aadhar,
+                              tshirt,
+                              gender,
+                              ticketID
+                         );
                     } else {
                          setLoading(false);
                          toast({
@@ -90,30 +109,42 @@ function EventRegister() {
                });
      };
 
-     const generateTicket = async (name, email, phone, ticketID) => {
+     const generateTicket = async (
+          name,
+          email,
+          phone,
+          age,
+          aadhar,
+          tshirt,
+          gender,
+          ticketID
+     ) => {
           setLoading(true);
-          await registerForArambha(name, email, phone, ticketID)
+          await registerForArambha(
+               name,
+               email,
+               phone,
+               age,
+               aadhar,
+               tshirt,
+               gender,
+               ticketID
+          )
                .then((response) => {
                     setLoading(false);
-                    console.log(ticketID);
-                    setUser({ name, email, phone, ticketID });
                     setUser((prevState) => {
                          return {
                               ...prevState,
                               name,
                               email,
                               phone,
-                              ticketID
+                              age,
+                              aadhar,
+                              tshirt,
+                              gender
                          };
                     });
-                    setEvent(true);
-                    toast({
-                         title: 'Success',
-                         description: 'A ticket has been sent to your email',
-                         status: 'success',
-                         duration: 9000,
-                         isClosable: true
-                    });
+                    sendEmail(name, email, ticketID);
                })
                .catch((error) => {
                     setLoading(false);
@@ -126,6 +157,33 @@ function EventRegister() {
                          isClosable: true
                     });
                });
+     };
+
+     const sendEmail = async (name, email, ticketID) => {
+          await emailjs
+               .send(
+                    'service_5d1bzlp',
+                    'template_yk6wzra',
+                    { name: name, email: email, ticketID: ticketID },
+                    'user_Zp6dTdYGxn4E5rxeiLLCh'
+               )
+               .then(
+                    (result) => {
+                         setEvent(true);
+                         toast({
+                              title: 'Success',
+                              description:
+                                   'A ticket has been sent to your email',
+                              status: 'success',
+                              duration: 9000,
+                              isClosable: true
+                         });
+                    },
+                    (error) => {
+                         console.log(error.text);
+                    }
+               );
+          return;
      };
 
      const Ticket = () => {
@@ -194,10 +252,8 @@ function EventRegister() {
                          justifyContent="space-between"
                          width="full"
                          alignItems="center"
+                         gap={5}
                     >
-                         <Badge mt={5}>
-                              A copy of ticket has been sent to your email
-                         </Badge>
                          <Button
                               colorScheme="green"
                               size="sm"
@@ -208,13 +264,16 @@ function EventRegister() {
                               Print Ticket
                          </Button>
                     </Flex>
+                    <Badge mt={5} width="max-content" whiteSpace="pre-wrap">
+                         A copy of ticket has been sent to your email
+                    </Badge>
                </Flex>
           );
      };
 
      const Form = () => {
           return (
-               <form onSubmit={handleSubmit(onSubmit)}>
+               <form ref={form} onSubmit={handleSubmit(onSubmit)}>
                     <Heading fontSize="3xl">Register Now</Heading>
                     <Flex
                          gap={10}
@@ -251,57 +310,152 @@ function EventRegister() {
                               />
                               <FormErrorMessage>{errors.name}</FormErrorMessage>
                          </FormControl>
+                         <Flex gap={5}>
+                              {' '}
+                              <FormControl>
+                                   <FormLabel>
+                                        Email
+                                        <chakra.span textColor="red.500">
+                                             *
+                                        </chakra.span>
+                                   </FormLabel>
+                                   <Input
+                                        type="email"
+                                        name="email"
+                                        bg="white"
+                                        id="email"
+                                        variant="outline"
+                                        disabled={loading}
+                                        placeholder="Your Email"
+                                        ref={register({
+                                             required: true
+                                        })}
+                                   />
+                                   <FormErrorMessage>
+                                        {errors.email}
+                                   </FormErrorMessage>
+                              </FormControl>
+                              <FormControl>
+                                   <FormLabel>
+                                        Phone{' '}
+                                        <chakra.span textColor="red.500">
+                                             *
+                                        </chakra.span>
+                                   </FormLabel>
+                                   <Input
+                                        type="number"
+                                        placeholder="Phone Number"
+                                        id="phone"
+                                        variant="outline"
+                                        disabled={loading}
+                                        bg="white"
+                                        name="phone"
+                                        ref={register({
+                                             required: true
+                                        })}
+                                   />
+                                   <FormErrorMessage>
+                                        {errors.phone}
+                                   </FormErrorMessage>
+                              </FormControl>
+                         </Flex>
+                         <Flex gap={5}>
+                              <FormControl>
+                                   <FormLabel>
+                                        Age{' '}
+                                        <chakra.span textColor="red.500">
+                                             *
+                                        </chakra.span>
+                                   </FormLabel>
+                                   <Input
+                                        type="number"
+                                        placeholder="Your Age"
+                                        id="age"
+                                        variant="outline"
+                                        disabled={loading}
+                                        bg="white"
+                                        name="age"
+                                        ref={register({
+                                             required: true
+                                        })}
+                                   />
+                                   <FormErrorMessage>
+                                        {errors.age}
+                                   </FormErrorMessage>
+                              </FormControl>
+                              <FormControl>
+                                   <FormLabel>
+                                        Gender{' '}
+                                        <chakra.span textColor="red.500">
+                                             *
+                                        </chakra.span>
+                                   </FormLabel>
+                                   <Select
+                                        placeholder="Select option"
+                                        name="gender"
+                                        ref={register({
+                                             required: true
+                                        })}
+                                   >
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                   </Select>
+                                   <FormErrorMessage>
+                                        {errors.age}
+                                   </FormErrorMessage>
+                              </FormControl>
+                         </Flex>
+
                          <FormControl>
                               <FormLabel>
-                                   Email
-                                   <chakra.span textColor="red.500">
-                                        *
-                                   </chakra.span>
-                              </FormLabel>
-                              <Input
-                                   type="email"
-                                   name="email"
-                                   bg="white"
-                                   id="email"
-                                   variant="outline"
-                                   disabled={loading}
-                                   placeholder="Your Email"
-                                   ref={register({
-                                        required: true
-                                   })}
-                              />
-                              <FormErrorMessage>
-                                   {errors.email}
-                              </FormErrorMessage>
-                         </FormControl>
-                         <FormControl>
-                              <FormLabel>
-                                   Phone{' '}
-                                   <chakra.span textColor="red.500">
-                                        *
+                                   Adhaar Number{' '}
+                                   <chakra.span textColor="green.500">
+                                        (optional)
                                    </chakra.span>
                               </FormLabel>
                               <Input
                                    type="number"
-                                   placeholder="Phone Number"
-                                   id="phone"
+                                   placeholder="Aadhar Number"
+                                   id="aadhar"
                                    variant="outline"
                                    disabled={loading}
                                    bg="white"
-                                   name="phone"
+                                   name="aadhar"
+                                   ref={register({
+                                        required: false
+                                   })}
+                              />
+                              <FormErrorMessage>{errors.age}</FormErrorMessage>
+                         </FormControl>
+                         <FormControl>
+                              <FormLabel>
+                                   T Shirt Size{' '}
+                                   <chakra.span textColor="red.500">
+                                        *
+                                   </chakra.span>
+                              </FormLabel>
+                              <Select
+                                   placeholder="Select option"
+                                   name="tshirt"
                                    ref={register({
                                         required: true
                                    })}
-                              />
-                              <FormErrorMessage>
-                                   {errors.phone}
-                              </FormErrorMessage>
+                              >
+                                   <option value="S">S</option>
+                                   <option value="M">M</option>
+                                   <option value="L">L</option>
+                                   <option value="XL">XL</option>
+                              </Select>
+                              <FormErrorMessage>{errors.age}</FormErrorMessage>
                          </FormControl>
+
                          <Button
                               rounded="md"
-                              colorScheme="yellow"
+                              colorScheme="green"
                               type="submit"
                               isLoading={loading}
+                              loadingText="submitting.."
                               width="xs"
                               alignSelf="flex-end"
                          >
@@ -323,14 +477,6 @@ function EventRegister() {
                     minH="100vw"
                     py={20}
                >
-                    <Button
-                         mb={16}
-                         colorScheme="blackAlpha"
-                         size="sm"
-                         leftIcon={<ArrowBackIcon />}
-                    >
-                         Back To Yoga Day
-                    </Button>
                     {event ? <Ticket /> : <Form />}
                </Container>
           </Box>
