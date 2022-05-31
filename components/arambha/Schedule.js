@@ -59,8 +59,9 @@ function Schedule() {
                                         <Tr>
                                              <Td>7:00 AM - 8:30 AM </Td>
                                              <Td>
-                                                  Special Yoga Session by
-                                                  Sharath Basavaraju & Team
+                                                  Special Yoga session by the
+                                                  Founder Sharath Basavaraju and
+                                                  the Team
                                              </Td>
                                         </Tr>
                                         <Tr>

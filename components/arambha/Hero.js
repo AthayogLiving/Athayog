@@ -4,12 +4,14 @@ import HeroDesktop from 'public/arambha_desktop.png';
 import HeroMobile from 'public/arambha_mobile.png';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+import NavbarHelper from '../shared/NavbarHelper';
 
 function Hero() {
      const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
      return (
           <>
+               <NavbarHelper />
                <Flex
                     height={{ base: '100vh', md: '100vh' }}
                     justifyContent="space-between"

@@ -62,7 +62,7 @@ function Welcome() {
                     textColor="black"
                >
                     <Text textAlign="left">
-                         We at AthaYog Living is celebrating Yoga with a grand
+                         We at AthaYog Living are celebrating Yoga with a grand
                          festival and we cordially invite each and every one of
                          you to celebrate the Yogic way of life.
                     </Text>
@@ -100,8 +100,8 @@ function Welcome() {
                          >
                               <Text fontWeight="medium">Who Can Join?</Text>
                               <Text>
-                                   We values the importance of community and
-                                   Yoga helps rebuild this sense of community by
+                                   We value the importance of community and Yoga
+                                   helps rebuild this sense of community by
                                    allowing people of different backgrounds,
                                    ages, and interests to share the experience.
                               </Text>

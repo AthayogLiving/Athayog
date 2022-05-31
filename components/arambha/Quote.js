@@ -13,11 +13,11 @@ function Quote() {
                direction="column"
                fontSize={{ base: 'xl', md: 'xl', lg: '2xl' }}
           >
-               <Text maxW="container.lg">
+               <Text maxW="container.md">
                     “Through practice comes Yoga, through Yoga comes knowledge,
                     through knowledge love and through love bliss.”
                </Text>
-               <Text maxW="container.lg" width="full" textAlign="right">
+               <Text maxW="container.md" width="full" textAlign="right">
                     Swami Vivekananda
                </Text>
           </Flex>

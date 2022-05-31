@@ -260,32 +260,15 @@ function EventRegister() {
                               px={2}
                               width="full"
                          >
-                              <Flex gap={5} alignItems="center">
-                                   <Image
-                                        src={Logo}
-                                        height={30}
-                                        width={30}
-                                        alt="logo"
-                                   />
-                                   <Text fontSize="xl">
-                                        INTERNATIONAL DAY OF YOGA - YOGA ARAMBHA
-                                   </Text>
-                              </Flex>
-                              <Text>Namaste {user.name}. Congratulations,</Text>
+                              <Text>Namaste {user.name}</Text>
                               <Text>
-                                   Your Yoga Arambha Event Ticket is ready.
+                                   Congratulations, Your Yoga Arambha Event
+                                   Registration is confirmed.
                               </Text>
                               <Text>
-                                   We are extremely excited to invite you to
-                                   Join us at this Yoga Arambha Event on
-                                   International Day of Yoga! This is a grand
-                                   initiative to celebrate the Yog way of life.
-                              </Text>
-                              <Text>
-                                   {' '}
-                                   Please show this ticket at the venue
-                                   registration destination and collect your
-                                   pass
+                                   We are extremely excited to have you as a
+                                   part of this event on International Day of
+                                   Yoga
                               </Text>
 
                               <TableContainer
@@ -319,13 +302,15 @@ function EventRegister() {
                                    </Table>
                               </TableContainer>
                               <Text>
-                                   All the best for your Yoga Arambha Sadhana.
+                                   {' '}
+                                   Please show this ticket at the venue -
+                                   registration desk to avail your pass.
                               </Text>
-                              <Text> From Athayog Living. </Text>
+                              <Text>From Athayog Living.</Text>
                          </Stack>
                     </Box>
                     <Flex
-                         justifyContent="space-between"
+                         justifyContent="center"
                          width="full"
                          alignItems="center"
                          gap={5}
@@ -334,10 +319,10 @@ function EventRegister() {
                               colorScheme="green"
                               size="sm"
                               onClick={handlePrint}
-                              rounded="sm"
+                              rounded="base"
                               mt={5}
                          >
-                              Print Ticket
+                              PRINT TICKET
                          </Button>
                     </Flex>
                     <Badge mt={5} width="max-content" whiteSpace="pre-wrap">

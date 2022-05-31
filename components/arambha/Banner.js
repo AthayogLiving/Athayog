@@ -6,27 +6,14 @@ import React from 'react';
 function Banner() {
      return (
           <>
-               <Flex
-                    height={{ base: '30vh', md: '50vh', lg: '70vh' }}
-                    justifyContent="space-between"
-                    alignItems="center"
-                    bgSize="cover"
-                    bgPosition="center"
-                    textColor="white"
-                    flexWrap="wrap"
-                    width="full"
-                    position="relative"
-               >
-                    <Box zIndex={-1}>
-                         <Image
-                              src={arise}
-                              layout="fill"
-                              objectFit="cover"
-                              alt="hero"
-                              placeholder="blur"
-                         />
-                    </Box>
-               </Flex>
+               <Image
+                    src={arise}
+                    layout="responsive"
+                    width={700}
+                    height={475}
+                    alt="arise"
+                    placeholder="blur"
+               />
           </>
      );
 }
