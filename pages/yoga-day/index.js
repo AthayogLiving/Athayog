@@ -1,9 +1,12 @@
+import Banner from '@/components/arambha/Banner';
 import Hero from '@/components/arambha/Hero';
 import Info from '@/components/arambha/Info';
+import Quote from '@/components/arambha/Quote';
+import RegisterButton from '@/components/arambha/RegisterButton';
+import Schedule from '@/components/arambha/Schedule';
+import Welcome from '@/components/arambha/Welcome';
 import HomeLayout from '@/components/layout/HomeLayout';
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
 import Head from 'next/head';
-import Link from 'next/link';
 import React from 'react';
 
 function YogaDay() {
@@ -13,31 +16,11 @@ function YogaDay() {
                     <title>Yoga Day - Arambha</title>
                </Head>
                <Hero />
-               <Info />
-               <Flex
-                    justifyContent="center"
-                    bg="green.900"
-                    textColor="green.50"
-                    p={10}
-                    direction="column"
-                    alignItems="center"
-                    gap={6}
-               >
-                    <Text fontSize="xl">
-                         Register now and celebrate International Day of Yoga
-                         with us!
-                    </Text>
-                    <Link href="/yoga-day/register" passHref>
-                         <Button
-                              variant="outline"
-                              maxW="xs"
-                              colorScheme="whiteAplha"
-                              rounded="none"
-                         >
-                              Register Now
-                         </Button>
-                    </Link>
-               </Flex>
+               <Welcome />
+               <Banner />
+               <Quote />
+               <Schedule />
+               <RegisterButton />
           </div>
      );
 }
