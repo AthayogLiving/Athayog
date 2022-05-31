@@ -299,6 +299,29 @@ const Navbar = () => {
                                              Courses
                                         </Button>
                                    </Link>
+                                   <Link href="/yoga-day">
+                                        <Button
+                                             fontWeight="normal"
+                                             fontSize="md"
+                                             variant="ghost"
+                                             bg="transparent"
+                                             _hover={{
+                                                  bg: 'aygreen.100'
+                                             }}
+                                             _active={{
+                                                  bg: 'aygreen.100',
+                                                  transform: 'scale(0.98)',
+                                                  borderColor: '#bec3c9'
+                                             }}
+                                             isActive={
+                                                  router.pathname == '/yoga-day'
+                                                       ? true
+                                                       : ''
+                                             }
+                                        >
+                                             Yoga Day
+                                        </Button>
+                                   </Link>
 
                                    {/* <SMenu
                                         menuButton={
