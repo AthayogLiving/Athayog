@@ -46,7 +46,8 @@ function EventRegister() {
           age: '',
           aadhar: '',
           tshirt: '',
-          gender: ''
+          gender: '',
+          ticketID: ''
      });
 
      const componentRef = useRef();
@@ -70,11 +71,25 @@ function EventRegister() {
           gender
      }) => {
           setLoading(true);
+          setUser((prevState) => {
+               return {
+                    name,
+                    email,
+                    phone,
+                    age,
+                    aadhar,
+                    tshirt,
+                    gender,
+                    ticketID
+               };
+          });
+
           const ticketID =
-               nextId('ATHAYOG-') +
+               'ATHAYOG-' +
                (
-                    name.substring(0, 3) + uuidv4().toString().substring(0, 3)
+                    name.substring(0, 2) + uuidv4().toString().substring(0, 5)
                ).toUpperCase();
+
           await checkForArambha(email)
                .then((res) => {
                     if (res.code == 200) {
@@ -133,20 +148,28 @@ function EventRegister() {
                ticketID
           )
                .then((response) => {
-                    setLoading(false);
                     setUser((prevState) => {
                          return {
-                              ...prevState,
                               name,
                               email,
                               phone,
                               age,
                               aadhar,
                               tshirt,
-                              gender
+                              gender,
+                              ticketID
                          };
                     });
-                    sendEmail(name, email, ticketID);
+                    sendEmail(
+                         name,
+                         email,
+                         phone,
+                         age,
+                         aadhar,
+                         tshirt,
+                         gender,
+                         ticketID
+                    );
                })
                .catch((error) => {
                     setLoading(false);
@@ -161,7 +184,17 @@ function EventRegister() {
                });
      };
 
-     const sendEmail = async (name, email, ticketID) => {
+     const sendEmail = async (
+          name,
+          email,
+          phone,
+          age,
+          aadhar,
+          tshirt,
+          gender,
+          ticketID
+     ) => {
+          setEvent(true);
           await emailjs
                .send(
                     'service_5d1bzlp',
@@ -172,6 +205,7 @@ function EventRegister() {
                .then(
                     (result) => {
                          setEvent(true);
+                         setLoading(false);
                          toast({
                               title: 'Success',
                               description:
@@ -195,13 +229,14 @@ function EventRegister() {
                },
                body: JSON.stringify({
                     FormType: 'Registration For Arambha',
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    age: age,
-                    gender: gender,
-                    tshirt: tshirt,
-                    aadhar: aadhar
+                    name,
+                    email,
+                    phone,
+                    age,
+                    aadhar,
+                    tshirt,
+                    gender,
+                    ticketID
                })
           });
      };
@@ -238,8 +273,27 @@ function EventRegister() {
                                         INTERNATIONAL DAY OF YOGA - YOGA ARAMBHA
                                    </Text>
                               </Flex>
+                              <Text>Namaste {user.name}. Congratulations,</Text>
+                              <Text>
+                                   Your Yoga Arambha Event Ticket is ready.
+                              </Text>
+                              <Text>
+                                   We are extremely excited to invite you to
+                                   Join us at this Yoga Arambha Event on
+                                   International Day of Yoga! This is a grand
+                                   initiative to celebrate the Yog way of life.
+                              </Text>
+                              <Text>
+                                   {' '}
+                                   Please show this ticket at the venue
+                                   registration destination and collect your
+                                   pass
+                              </Text>
 
-                              <TableContainer>
+                              <TableContainer
+                                   border="1px solid"
+                                   borderColor="gray.100"
+                              >
                                    <Table variant="simple" size="sm">
                                         <Thead>
                                              <Tr>
@@ -266,6 +320,10 @@ function EventRegister() {
                                         </Tbody>
                                    </Table>
                               </TableContainer>
+                              <Text>
+                                   All the best for your Yoga Arambha Sadhana.
+                              </Text>
+                              <Text> From Athayog Living. </Text>
                          </Stack>
                     </Box>
                     <Flex
@@ -328,7 +386,6 @@ function EventRegister() {
                                         required: true
                                    })}
                               />
-                              <FormErrorMessage>{errors.name}</FormErrorMessage>
                          </FormControl>
                          <Flex gap={5}>
                               {' '}
@@ -351,9 +408,6 @@ function EventRegister() {
                                              required: true
                                         })}
                                    />
-                                   <FormErrorMessage>
-                                        {errors.email}
-                                   </FormErrorMessage>
                               </FormControl>
                               <FormControl>
                                    <FormLabel>
@@ -363,7 +417,7 @@ function EventRegister() {
                                         </chakra.span>
                                    </FormLabel>
                                    <Input
-                                        type="number"
+                                        type="tel"
                                         placeholder="Phone Number"
                                         id="phone"
                                         variant="outline"
@@ -374,9 +428,6 @@ function EventRegister() {
                                              required: true
                                         })}
                                    />
-                                   <FormErrorMessage>
-                                        {errors.phone}
-                                   </FormErrorMessage>
                               </FormControl>
                          </Flex>
                          <Flex gap={5}>
@@ -399,9 +450,6 @@ function EventRegister() {
                                              required: true
                                         })}
                                    />
-                                   <FormErrorMessage>
-                                        {errors.age}
-                                   </FormErrorMessage>
                               </FormControl>
                               <FormControl>
                                    <FormLabel>
@@ -413,6 +461,7 @@ function EventRegister() {
                                    <Select
                                         placeholder="Select option"
                                         name="gender"
+                                        disabled={loading}
                                         ref={register({
                                              required: true
                                         })}
@@ -421,9 +470,6 @@ function EventRegister() {
                                         <option value="female">Female</option>
                                         <option value="other">Other</option>
                                    </Select>
-                                   <FormErrorMessage>
-                                        {errors.age}
-                                   </FormErrorMessage>
                               </FormControl>
                          </Flex>
 
@@ -446,7 +492,6 @@ function EventRegister() {
                                         required: false
                                    })}
                               />
-                              <FormErrorMessage>{errors.age}</FormErrorMessage>
                          </FormControl>
                          <FormControl>
                               <FormLabel>
@@ -457,6 +502,7 @@ function EventRegister() {
                               </FormLabel>
                               <Select
                                    placeholder="Select option"
+                                   disabled={loading}
                                    name="tshirt"
                                    ref={register({
                                         required: true
@@ -467,7 +513,6 @@ function EventRegister() {
                                    <option value="L">L</option>
                                    <option value="XL">XL</option>
                               </Select>
-                              <FormErrorMessage>{errors.age}</FormErrorMessage>
                          </FormControl>
 
                          <Button

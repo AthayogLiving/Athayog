@@ -93,7 +93,8 @@ function App({ Component, pageProps }) {
           '/kids-yoga-camp',
           '/yoga-retreat',
           '/admin',
-          '/yoga-day'
+          '/yoga-day',
+          '/yoga-day/register'
      ];
 
      useEffect(() => {
