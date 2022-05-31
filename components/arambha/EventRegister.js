@@ -184,7 +184,25 @@ function EventRegister() {
                          console.log(error.text);
                     }
                );
-          return;
+
+          // Send Email
+          await fetch('https://formsubmit.co/ajax/admin@athayogliving.com', {
+               method: 'POST',
+               headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json'
+               },
+               body: JSON.stringify({
+                    FormType: 'Registration For Arambha',
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    age: age,
+                    gender: gender,
+                    tshirt: tshirt,
+                    aadhar: aadhar
+               })
+          });
      };
 
      const Ticket = () => {
