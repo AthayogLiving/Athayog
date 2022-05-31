@@ -9,8 +9,8 @@ function Banner() {
                <Image
                     src={arise}
                     layout="responsive"
-                    width={700}
-                    height={475}
+                    width={1818}
+                    height={979}
                     alt="arise"
                     placeholder="blur"
                />

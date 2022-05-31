@@ -1,6 +1,5 @@
 import Banner from '@/components/arambha/Banner';
 import Hero from '@/components/arambha/Hero';
-import Info from '@/components/arambha/Info';
 import Quote from '@/components/arambha/Quote';
 import RegisterButton from '@/components/arambha/RegisterButton';
 import Schedule from '@/components/arambha/Schedule';
