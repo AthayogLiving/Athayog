@@ -2,24 +2,21 @@ import {
      Box,
      Button,
      chakra,
-     Divider,
      Flex,
      Heading,
-     Link,
      Stack,
      Text
 } from '@chakra-ui/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import RetreatHero from 'public/sadhana.jpg';
 import React from 'react';
-import NavbarHelper from '../shared/NavbarHelper';
-import Register from './Register';
+import Welcome from './Welcome';
 function Hero() {
      return (
           <>
-               <NavbarHelper />
                <Flex
-                    height={{ base: '95vh', md: '95vh' }}
+                    height={{ base: '100vh', md: '100vh' }}
                     justifyContent="space-between"
                     alignItems="center"
                     bgSize="cover"
@@ -45,7 +42,12 @@ function Hero() {
                          textAlign="center"
                          p={{ base: '5', md: '10' }}
                     >
-                         <Stack spacing={5} width="100%">
+                         <Stack
+                              spacing={6}
+                              width="100%"
+                              justifyContent="center"
+                              alignItems="center"
+                         >
                               <Box>
                                    <Heading
                                         fontSize={{
@@ -72,13 +74,24 @@ function Hero() {
                                    </chakra.span>
                               </Box>
 
-                              <Text textColor="gray.300" fontSize="lg">
+                              <Text textColor="gray.300" fontSize="xl">
                                    “Through practice comes Yoga, through Yoga
                                    comes knowledge, through knowledge love and
-                                   through love bliss.” Swami Vivekananda
+                                   through love bliss.” <br /> Swami Vivekananda
                               </Text>
+                              <Link href="/yoga-day/register" passHref>
+                                   <Button
+                                        variant="outline"
+                                        maxW="xs"
+                                        colorScheme="yellow"
+                                        rounded="none"
+                                   >
+                                        Register Now
+                                   </Button>
+                              </Link>
                          </Stack>
                     </Box>
+                    <Welcome />
                </Flex>
           </>
      );

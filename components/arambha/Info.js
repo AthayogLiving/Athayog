@@ -13,7 +13,10 @@ import {
      Td,
      TableCaption,
      TableContainer,
-     Divider
+     Divider,
+     Flex,
+     Grid,
+     chakra
 } from '@chakra-ui/react';
 import Head from 'next/head';
 
@@ -22,47 +25,61 @@ import React from 'react';
 function Info() {
      return (
           <Box bg="gray.50">
+               <Grid>
+                    <Stack
+                         spacing={6}
+                         textColor="gray.800"
+                         bg="yellow.50"
+                         p={10}
+                    >
+                         <Heading
+                              as="h4"
+                              fontSize="2xl"
+                              textAlign="center"
+                              textColor="yellow.900"
+                              textTransform="uppercase"
+                         >
+                              Yoga as an ‘innercise’
+                         </Heading>
+                         <Text fontSize="xl">
+                              One of our main goals is to help individuals
+                              cultivate and enrich their inner self as much as
+                              they work on their external needs like career,
+                              physical fitness, entertainment and leisure. In
+                              this way, Yoga is not just an exercise for the
+                              physical body but also a means to build resilience
+                              for dealing with life’s challenges.
+                         </Text>
+                         <Text fontSize="xl">
+                              <chakra.span fontWeight="medium">
+                                   Last year, we celebrated International Day of
+                                   Yoga with a 12-hour Yogathon celebration{' '}
+                              </chakra.span>
+                              and our members joined the asana, pranayama,
+                              meditation, lecture, chanting and satsang session
+                              with great joy. This year we are taking it forward
+                              with a grand initiative beyond our studio to an
+                              outdoor space open to everyone in Bengaluru.
+                         </Text>
+                         <Text fontSize="xl">
+                              <chakra.span fontWeight="medium">
+                                   {' '}
+                                   This year{' '}
+                              </chakra.span>
+                              we are taking it forward with{' '}
+                              <chakra.span fontWeight="medium">
+                                   a grand initiative beyond our studio{' '}
+                              </chakra.span>
+                              to an outdoor space open to everyone in Bengaluru.
+                         </Text>
+                         <Text fontSize="xl" fontStyle="italic">
+                              Meet people from all walks of life united through
+                              Yoga.
+                         </Text>
+                    </Stack>
+               </Grid>
                <Container maxW="90vw" py={10}>
                     <Stack spacing={10} divider={<Divider />}>
-                         <Stack spacing={6} textColor="gray.800">
-                              <Heading
-                                   as="h4"
-                                   fontSize="2xl"
-                                   textColor="black"
-                                   textDecor="underline"
-                              >
-                                   Yoga as an ‘innercise’
-                              </Heading>
-                              <Text fontSize="xl">
-                                   One of our main goals is to help individuals
-                                   cultivate and enrich their inner self as much
-                                   as they work on their external needs like
-                                   career, physical fitness, entertainment and
-                                   leisure. In this way, Yoga is not just an
-                                   exercise for the physical body but also a
-                                   means to build resilience for dealing with
-                                   life’s challenges.
-                              </Text>
-                              <Text fontSize="xl">
-                                   Last year, we celebrated International Day of
-                                   Yoga with a 12-hour Yogathon celebration and
-                                   our members joined the asana, pranayama,
-                                   meditation, lecture, chanting and satsang
-                                   session with great joy. This year we are
-                                   taking it forward with a grand initiative
-                                   beyond our studio to an outdoor space open to
-                                   everyone in Bengaluru.
-                              </Text>
-                              <Text fontSize="xl">
-                                   This year we are taking it forward with a
-                                   grand initiative beyond our studio to an
-                                   outdoor space open to everyone in Bengaluru.
-                              </Text>
-                              <Text fontSize="xl" fontStyle="italic">
-                                   Meet people from all walks of life united
-                                   through Yoga.
-                              </Text>
-                         </Stack>
                          <Stack spacing={6} textColor="gray.800">
                               <Heading
                                    as="h4"
@@ -106,6 +123,7 @@ function Info() {
                                         border="1px solid"
                                         borderColor="gray.200"
                                         boxShadow="sm"
+                                        bg="white"
                                    >
                                         <Table
                                              variant="striped"
@@ -147,19 +165,15 @@ function Info() {
                                                        </Td>
                                                   </Tr>
                                                   <Tr>
-                                                       <Td>8:30 AM - 8:45 </Td>
                                                        <Td>
-                                                            AM Closing Ceremony
+                                                            8:30 AM - 8:45 AM{' '}
                                                        </Td>
+                                                       <Td>Closing Ceremony</Td>
                                                   </Tr>
                                              </Tbody>
                                         </Table>
                                    </TableContainer>
                               </Box>
-                              <Text fontSize="xl">
-                                   Register now and celebrate International Day
-                                   of Yoga with us!
-                              </Text>
                          </Stack>
                     </Stack>
                </Container>

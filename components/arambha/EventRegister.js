@@ -1,4 +1,5 @@
 import { checkForArambha, registerForArambha } from '@/lib/db/forms';
+import { ArrowBackIcon } from '@chakra-ui/icons';
 import {
      Box,
      Button,
@@ -11,15 +12,32 @@ import {
      Input,
      Stack,
      Text,
-     useToast
+     chakra,
+     useToast,
+     FormErrorMessage,
+     Badge,
+     SimpleGrid,
+     Divider,
+     Table,
+     Thead,
+     Tbody,
+     Tfoot,
+     Tr,
+     Th,
+     Td,
+     TableCaption,
+     TableContainer
 } from '@chakra-ui/react';
+import Image from 'next/image';
 import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import nextId from 'react-id-generator';
 import { useReactToPrint } from 'react-to-print';
 import { v4 as uuidv4 } from 'uuid';
+import Logo from 'public/Logo_Filled.png';
+import NavbarHelper from '../shared/NavbarHelper';
 
-function Register() {
+function EventRegister() {
      const toast = useToast();
      const [loading, setLoading] = useState(false);
      const [event, setEvent] = useState(false);
@@ -117,86 +135,79 @@ function Register() {
                     direction="column"
                     justifyContent="center"
                     alignItems="center"
+                    bg="white"
+                    boxShadow="base"
+                    py={6}
+                    px={6}
                >
-                    <Box maxW="md">
+                    <Box width="full">
                          <Stack
                               textAlign="left"
-                              spacing={10}
+                              spacing={6}
                               ref={componentRef}
-                              py={5}
-                              px={6}
+                              py={2}
+                              px={2}
                               width="full"
                          >
-                              <Text fontSize="xl">ATHAYOG YOGA ARAMBHA</Text>
-                              <Grid
-                                   templateColumns="repeat(2,1fr)"
-                                   gap={10}
-                                   width="full"
-                              >
-                                   <Box>
-                                        <Text
-                                             fontWeight="normal"
-                                             textColor="gray.700"
-                                        >
-                                             TickedID:
-                                        </Text>{' '}
-                                        <Text fontWeight="medium">
-                                             {user.ticketID}
-                                        </Text>
-                                   </Box>
+                              <Flex gap={5} alignItems="center">
+                                   <Image
+                                        src={Logo}
+                                        height={30}
+                                        width={30}
+                                        alt="logo"
+                                   />
+                                   <Text fontSize="xl">
+                                        INTERNATIONAL DAY OF YOGA - YOGA ARAMBHA
+                                   </Text>
+                              </Flex>
 
-                                   <Box>
-                                        {' '}
-                                        <Text
-                                             fontWeight="normal"
-                                             textColor="gray.700"
-                                        >
-                                             Name:
-                                        </Text>{' '}
-                                        <Text fontWeight="medium">
-                                             {user.name}
-                                        </Text>
-                                   </Box>
-                                   <Box>
-                                        {' '}
-                                        <Text
-                                             fontWeight="normal"
-                                             textColor="gray.700"
-                                        >
-                                             Email:
-                                        </Text>{' '}
-                                        <Text fontWeight="medium">
-                                             {user.email}
-                                        </Text>
-                                   </Box>
-                                   <Box>
-                                        {' '}
-                                        <Text
-                                             fontWeight="normal"
-                                             textColor="gray.700"
-                                        >
-                                             Phone:
-                                        </Text>{' '}
-                                        <Text fontWeight="medium">
-                                             {user.phone}
-                                        </Text>
-                                   </Box>
-                              </Grid>
+                              <TableContainer>
+                                   <Table variant="simple" size="sm">
+                                        <Thead>
+                                             <Tr>
+                                                  <Th>TickedID</Th>
+                                                  <Th>Name</Th>
+                                                  <Th>Location</Th>
+                                                  <Th>Date</Th>
+                                             </Tr>
+                                        </Thead>
+                                        <Tbody>
+                                             <Tr>
+                                                  <Td>{user.ticketID}</Td>
+                                                  <Td>{user.name}</Td>
+                                                  <Td>
+                                                       Kittur Rani Chennamma{' '}
+                                                       <br />
+                                                       Stadium, Bengaluru
+                                                  </Td>
+                                                  <Td>
+                                                       Tuesday, <br />
+                                                       June 21, 2022
+                                                  </Td>
+                                             </Tr>
+                                        </Tbody>
+                                   </Table>
+                              </TableContainer>
                          </Stack>
+                    </Box>
+                    <Flex
+                         justifyContent="space-between"
+                         width="full"
+                         alignItems="center"
+                    >
+                         <Badge mt={5}>
+                              A copy of ticket has been sent to your email
+                         </Badge>
                          <Button
                               colorScheme="green"
-                              size="md"
-                              width="full"
+                              size="sm"
                               onClick={handlePrint}
                               rounded="sm"
-                              mt={10}
+                              mt={5}
                          >
-                              Download Ticket
+                              Print Ticket
                          </Button>
-                         <Text textAlign="center" mt={5} fontSize="md">
-                              Ticket also sent to your email{' '}
-                         </Text>
-                    </Box>
+                    </Flex>
                </Flex>
           );
      };
@@ -204,18 +215,28 @@ function Register() {
      const Form = () => {
           return (
                <form onSubmit={handleSubmit(onSubmit)}>
+                    <Heading fontSize="3xl">Register Now</Heading>
                     <Flex
                          gap={10}
                          flexWrap="wrap"
                          rounded="md"
-                         py={6}
+                         py={8}
                          width="full"
                          justifyContent="center"
                          textColor="black"
-                         alignItems="flex-end"
+                         direction="column"
+                         bg="white"
+                         boxShadow="base"
+                         px={5}
+                         mt={6}
                     >
-                         <FormControl maxW="md">
-                              <FormLabel>Name</FormLabel>
+                         <FormControl>
+                              <FormLabel>
+                                   Name{' '}
+                                   <chakra.span textColor="red.500">
+                                        *
+                                   </chakra.span>
+                              </FormLabel>
                               <Input
                                    type="text"
                                    bg="white"
@@ -228,9 +249,15 @@ function Register() {
                                         required: true
                                    })}
                               />
+                              <FormErrorMessage>{errors.name}</FormErrorMessage>
                          </FormControl>
-                         <FormControl maxW="md">
-                              <FormLabel>Email</FormLabel>
+                         <FormControl>
+                              <FormLabel>
+                                   Email
+                                   <chakra.span textColor="red.500">
+                                        *
+                                   </chakra.span>
+                              </FormLabel>
                               <Input
                                    type="email"
                                    name="email"
@@ -243,9 +270,17 @@ function Register() {
                                         required: true
                                    })}
                               />
+                              <FormErrorMessage>
+                                   {errors.email}
+                              </FormErrorMessage>
                          </FormControl>
-                         <FormControl maxW="md">
-                              <FormLabel>Phone</FormLabel>
+                         <FormControl>
+                              <FormLabel>
+                                   Phone{' '}
+                                   <chakra.span textColor="red.500">
+                                        *
+                                   </chakra.span>
+                              </FormLabel>
                               <Input
                                    type="number"
                                    placeholder="Phone Number"
@@ -258,12 +293,17 @@ function Register() {
                                         required: true
                                    })}
                               />
+                              <FormErrorMessage>
+                                   {errors.phone}
+                              </FormErrorMessage>
                          </FormControl>
                          <Button
-                              rounded="sm"
-                              colorScheme="green"
+                              rounded="md"
+                              colorScheme="yellow"
                               type="submit"
                               isLoading={loading}
+                              width="xs"
+                              alignSelf="flex-end"
                          >
                               Submit
                          </Button>
@@ -272,23 +312,29 @@ function Register() {
           );
      };
      return (
-          <Container
-               maxW="100%"
-               boxShadow="md"
-               justifySelf="right"
-               textColor="black"
-               rounded="none"
-               overflow="hidden"
-               p={10}
-          >
-               {!event && (
-                    <Heading textAlign="center" fontSize="3xl">
-                         Register Now
-                    </Heading>
-               )}
-               {event ? <Ticket /> : <Form />}
-          </Container>
+          <Box bg="gray.50">
+               <NavbarHelper />
+               <Container
+                    maxW="container.lg"
+                    justifySelf="right"
+                    textColor="black"
+                    rounded="none"
+                    overflow="hidden"
+                    minH="100vw"
+                    py={20}
+               >
+                    <Button
+                         mb={16}
+                         colorScheme="blackAlpha"
+                         size="sm"
+                         leftIcon={<ArrowBackIcon />}
+                    >
+                         Back To Yoga Day
+                    </Button>
+                    {event ? <Ticket /> : <Form />}
+               </Container>
+          </Box>
      );
 }
 
-export default Register;
+export default EventRegister;
