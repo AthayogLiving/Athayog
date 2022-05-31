@@ -28,7 +28,6 @@ function Navbar({ isTabletOrMobile }) {
      if (!user) {
           return (
                <Flex
-                    justifyContent="column"
                     justifyContent="space-between"
                     padding="1rem"
                     alignItems="center"
