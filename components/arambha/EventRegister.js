@@ -337,7 +337,7 @@ function EventRegister() {
                                    <Table variant="simple" size="sm">
                                         <Thead>
                                              <Tr>
-                                                  <Th>TickedID</Th>
+                                                  <Th>TicketID</Th>
                                                   <Th>Name</Th>
                                                   <Th>Location</Th>
                                                   <Th>Date</Th>
@@ -353,8 +353,9 @@ function EventRegister() {
                                                        Stadium, Bengaluru
                                                   </Td>
                                                   <Td>
-                                                       Tuesday, <br />
-                                                       June 21, 2022
+                                                       June 21st, 2022 Tuesday -{' '}
+                                                       <br />
+                                                       5:30AM - 8:45AM,
                                                   </Td>
                                              </Tr>
                                         </Tbody>
