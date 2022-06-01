@@ -15,6 +15,7 @@ import heroMobile from 'public/arambha_mobile.png';
 import { useRouter } from 'next/router';
 SwiperCore.use([Navigation, Pagination]);
 import { isMobile } from 'react-device-detect';
+import NavbarHelper from '../shared/NavbarHelper';
 
 const HeroCarousel = () => {
      const router = useRouter();
@@ -67,6 +68,7 @@ const HeroCarousel = () => {
 
      return (
           <Box height="100vh">
+               <NavbarHelper />
                <Swiper
                     key={uuidv4()}
                     navigation={true}
