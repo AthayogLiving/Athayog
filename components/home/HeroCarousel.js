@@ -67,7 +67,7 @@ const HeroCarousel = () => {
      }, []);
 
      return (
-          <Box height="100vh">
+          <Box height="105vh">
                <NavbarHelper />
                <Swiper
                     key={uuidv4()}
