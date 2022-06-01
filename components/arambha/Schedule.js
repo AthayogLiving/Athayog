@@ -23,7 +23,7 @@ function Schedule() {
                          Programme Schedule
                     </Heading>
                     <Box fontSize="xl">
-                         <Text>Date: Tuesday, June 21, 2022</Text>
+                         <Text>Date: Tuesday, June 21st, 2022 </Text>
                          <Text>Time: 5.30 AM - 8.45 AM</Text>
                          <Text>
                               Location: Kittur Rani Chennamma Stadium, Bengaluru

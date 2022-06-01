@@ -7,7 +7,8 @@ import {
      Heading,
      Stack,
      Text,
-     useBreakpointValue
+     useBreakpointValue,
+     chakra
 } from '@chakra-ui/react';
 import Link from 'next/link';
 
@@ -28,13 +29,26 @@ function Welcome() {
                >
                     <Heading
                          textAlign="center"
-                         fontSize={{ base: '2xl', md: '4xl', lg: '5xl' }}
+                         fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}
+                         display={{ base: 'none', md: 'block' }}
                          fontWeight="normal"
                     >
-                         Namaskara Bengaluru, Arise & Awake.
+                         <chakra.span>Namaskara Bengaluru, </chakra.span>
+                         <chakra.span> Arise & Awake.</chakra.span>
                          <br />
                          Join us this International Day of Yoga!
                     </Heading>
+                    <Box
+                         textAlign="center"
+                         fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}
+                         fontWeight="normal"
+                         display={{ base: 'block', md: 'none' }}
+                    >
+                         <Text>Namaskara Bengaluru, </Text>
+                         <Text> Arise & Awake.</Text>
+                         <br />
+                         Join us this International Day of Yoga!
+                    </Box>
                     <Text
                          fontSize={{ base: 'xl', md: '3xl', lg: '3xl' }}
                          fontWeight="normal"

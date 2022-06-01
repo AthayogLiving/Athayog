@@ -66,7 +66,9 @@ function EventRegister() {
           age,
           aadhar,
           tshirt,
-          gender
+          gender,
+          location,
+          member
      }) => {
           setLoading(true);
           setUser((prevState) => {
@@ -78,7 +80,9 @@ function EventRegister() {
                     aadhar,
                     tshirt,
                     gender,
-                    ticketID
+                    ticketID,
+                    location,
+                    member
                };
           });
 
@@ -99,7 +103,9 @@ function EventRegister() {
                               aadhar,
                               tshirt,
                               gender,
-                              ticketID
+                              ticketID,
+                              location,
+                              member
                          );
                     } else {
                          setLoading(false);
@@ -132,7 +138,9 @@ function EventRegister() {
           aadhar,
           tshirt,
           gender,
-          ticketID
+          ticketID,
+          location,
+          member
      ) => {
           setLoading(true);
           await registerForArambha(
@@ -143,7 +151,9 @@ function EventRegister() {
                aadhar,
                tshirt,
                gender,
-               ticketID
+               ticketID,
+               location,
+               member
           )
                .then((response) => {
                     setUser((prevState) => {
@@ -155,7 +165,9 @@ function EventRegister() {
                               aadhar,
                               tshirt,
                               gender,
-                              ticketID
+                              ticketID,
+                              location,
+                              member
                          };
                     });
                     sendEmail(
@@ -166,7 +178,9 @@ function EventRegister() {
                          aadhar,
                          tshirt,
                          gender,
-                         ticketID
+                         ticketID,
+                         location,
+                         member
                     );
                })
                .catch((error) => {
@@ -190,7 +204,9 @@ function EventRegister() {
           aadhar,
           tshirt,
           gender,
-          ticketID
+          ticketID,
+          location,
+          member
      ) => {
           setEvent(true);
           await emailjs
@@ -221,7 +237,9 @@ function EventRegister() {
                                    aadhar,
                                    tshirt,
                                    gender,
-                                   ticketID
+                                   ticketID,
+                                   location,
+                                   member
                               );
                          }
                     },
@@ -239,7 +257,9 @@ function EventRegister() {
           aadhar,
           tshirt,
           gender,
-          ticketID
+          ticketID,
+          location,
+          member
      ) => {
           // Send Email
 
@@ -258,7 +278,9 @@ function EventRegister() {
                     aadhar,
                     tshirt,
                     gender,
-                    ticketID
+                    ticketID,
+                    location,
+                    member
                })
           });
      };
@@ -416,7 +438,7 @@ function EventRegister() {
                                    })}
                               />
                          </FormControl>
-                         <Flex gap={5}>
+                         <Flex gap={5} direction={['column', 'row']}>
                               {' '}
                               <FormControl>
                                    <FormLabel>
@@ -461,7 +483,27 @@ function EventRegister() {
                                    />
                               </FormControl>
                          </Flex>
-                         <Flex gap={5}>
+                         <FormControl>
+                              <FormLabel>
+                                   Location{' '}
+                                   <chakra.span textColor="red.500">
+                                        *
+                                   </chakra.span>
+                              </FormLabel>
+                              <Input
+                                   type="text"
+                                   placeholder="Location"
+                                   id="location"
+                                   variant="outline"
+                                   disabled={loading}
+                                   bg="white"
+                                   name="location"
+                                   ref={register({
+                                        required: false
+                                   })}
+                              />
+                         </FormControl>
+                         <Flex gap={5} direction={['column', 'row']}>
                               <FormControl>
                                    <FormLabel>
                                         Age{' '}
@@ -526,28 +568,51 @@ function EventRegister() {
                                    })}
                               />
                          </FormControl>
-                         <FormControl>
-                              <FormLabel>
-                                   T Shirt Size{' '}
-                                   <chakra.span textColor="red.500">
-                                        *
-                                   </chakra.span>
-                              </FormLabel>
-                              <Select
-                                   placeholder="Select option"
-                                   disabled={loading}
-                                   required
-                                   name="tshirt"
-                                   ref={register({
-                                        required: true
-                                   })}
-                              >
-                                   <option value="S">S</option>
-                                   <option value="M">M</option>
-                                   <option value="L">L</option>
-                                   <option value="XL">XL</option>
-                              </Select>
-                         </FormControl>
+                         <Flex gap={5} direction={['column', 'row']}>
+                              {' '}
+                              <FormControl>
+                                   <FormLabel>
+                                        T Shirt Size{' '}
+                                        <chakra.span textColor="red.500">
+                                             *
+                                        </chakra.span>
+                                   </FormLabel>
+                                   <Select
+                                        placeholder="Select option"
+                                        disabled={loading}
+                                        required
+                                        name="tshirt"
+                                        ref={register({
+                                             required: true
+                                        })}
+                                   >
+                                        <option value="S">S</option>
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                        <option value="XL">XL</option>
+                                   </Select>
+                              </FormControl>
+                              <FormControl>
+                                   <FormLabel>
+                                        Member Of Athayog?
+                                        <chakra.span textColor="red.500">
+                                             *
+                                        </chakra.span>
+                                   </FormLabel>
+                                   <Select
+                                        placeholder="Select option"
+                                        disabled={loading}
+                                        required
+                                        name="member"
+                                        ref={register({
+                                             required: true
+                                        })}
+                                   >
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                   </Select>
+                              </FormControl>
+                         </Flex>
 
                          <Button
                               rounded="md"
