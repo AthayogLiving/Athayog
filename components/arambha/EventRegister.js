@@ -57,7 +57,7 @@ function EventRegister() {
      const {
           register,
           handleSubmit,
-          watch,
+
           formState: { errors }
      } = useForm();
 
