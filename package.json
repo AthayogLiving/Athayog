@@ -2,6 +2,9 @@
      "name": "athayog",
      "version": "0.1.0",
      "private": true,
+     "engines": {
+          "node": "16.x"
+     },
      "proxy": "https://cat-fact.herokuapp.com/facts",
      "scripts": {
           "dev": "next dev",
