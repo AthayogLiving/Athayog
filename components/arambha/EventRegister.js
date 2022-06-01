@@ -398,7 +398,6 @@ function EventRegister() {
                                         user.email,
                                         user.phone,
                                         user.age,
-
                                         user.tshirt,
                                         user.gender,
                                         user.ticketID,

@@ -88,8 +88,18 @@ const YogaDayData = ({ forms, latestDoc, setDocs }) => {
                     Filter: ColumnFilter
                },
                {
-                    Header: 'aadhar',
-                    accessor: 'aadhar',
+                    Header: 'id_proof',
+                    accessor: 'id_proof',
+                    Filter: ColumnFilter
+               },
+               {
+                    Header: 'id_detail',
+                    accessor: 'id_detail',
+                    Filter: ColumnFilter
+               },
+               {
+                    Header: 'member',
+                    accessor: 'member',
                     Filter: ColumnFilter
                },
                {
