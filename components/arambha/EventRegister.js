@@ -42,7 +42,8 @@ function EventRegister() {
           email: '',
           phone: '',
           age: '',
-          aadhar: '',
+          id_proof: '',
+          id_detail: '',
           tshirt: '',
           gender: '',
           ticketID: ''
@@ -59,16 +60,18 @@ function EventRegister() {
           watch,
           formState: { errors }
      } = useForm();
+
      const onSubmit = async ({
           name,
           email,
           phone,
           age,
-          aadhar,
+          id_proof,
           tshirt,
           gender,
           location,
-          member
+          member,
+          id_detail
      }) => {
           setLoading(true);
           setUser((prevState) => {
@@ -77,12 +80,13 @@ function EventRegister() {
                     email,
                     phone,
                     age,
-                    aadhar,
+                    id_proof,
                     tshirt,
                     gender,
                     ticketID,
                     location,
-                    member
+                    member,
+                    id_detail
                };
           });
 
@@ -100,12 +104,13 @@ function EventRegister() {
                               email,
                               phone,
                               age,
-                              aadhar,
+                              id_proof,
                               tshirt,
                               gender,
                               ticketID,
                               location,
-                              member
+                              member,
+                              id_detail
                          );
                     } else {
                          setLoading(false);
@@ -135,12 +140,13 @@ function EventRegister() {
           email,
           phone,
           age,
-          aadhar,
+          id_proof,
           tshirt,
           gender,
           ticketID,
           location,
-          member
+          member,
+          id_detail
      ) => {
           setLoading(true);
           await registerForArambha(
@@ -148,12 +154,13 @@ function EventRegister() {
                email,
                phone,
                age,
-               aadhar,
+               id_proof,
                tshirt,
                gender,
                ticketID,
                location,
-               member
+               member,
+               id_detail
           )
                .then((response) => {
                     setUser((prevState) => {
@@ -162,12 +169,13 @@ function EventRegister() {
                               email,
                               phone,
                               age,
-                              aadhar,
+                              id_proof,
                               tshirt,
                               gender,
                               ticketID,
                               location,
-                              member
+                              member,
+                              id_detail
                          };
                     });
                     sendEmail(
@@ -175,12 +183,13 @@ function EventRegister() {
                          email,
                          phone,
                          age,
-                         aadhar,
+                         id_proof,
                          tshirt,
                          gender,
                          ticketID,
                          location,
-                         member
+                         member,
+                         id_detail
                     );
                })
                .catch((error) => {
@@ -201,12 +210,13 @@ function EventRegister() {
           email,
           phone,
           age,
-          aadhar,
+          id_proof,
           tshirt,
           gender,
           ticketID,
           location,
-          member
+          member,
+          id_detail
      ) => {
           setEvent(true);
           await emailjs
@@ -234,12 +244,13 @@ function EventRegister() {
                                    email,
                                    phone,
                                    age,
-                                   aadhar,
+                                   id_proof,
                                    tshirt,
                                    gender,
                                    ticketID,
                                    location,
-                                   member
+                                   member,
+                                   id_detail
                               );
                          }
                     },
@@ -254,12 +265,13 @@ function EventRegister() {
           email,
           phone,
           age,
-          aadhar,
+          id_proof,
           tshirt,
           gender,
           ticketID,
           location,
-          member
+          member,
+          id_detail
      ) => {
           // Send Email
 
@@ -275,12 +287,13 @@ function EventRegister() {
                     email,
                     phone,
                     age,
-                    aadhar,
+                    id_proof,
                     tshirt,
                     gender,
                     ticketID,
                     location,
-                    member
+                    member,
+                    id_detail
                })
           });
      };
@@ -385,10 +398,12 @@ function EventRegister() {
                                         user.email,
                                         user.phone,
                                         user.age,
-                                        user.aadhar,
+
                                         user.tshirt,
                                         user.gender,
-                                        user.ticketID
+                                        user.ticketID,
+                                        user.id_proof,
+                                        user.id_detail
                                    )
                               }
                          >
@@ -485,21 +500,22 @@ function EventRegister() {
                          </Flex>
                          <FormControl>
                               <FormLabel>
-                                   Location{' '}
+                                   Where are you from?{' '}
                                    <chakra.span textColor="red.500">
                                         *
                                    </chakra.span>
                               </FormLabel>
                               <Input
                                    type="text"
-                                   placeholder="Location"
+                                   placeholder="Area/City"
                                    id="location"
                                    variant="outline"
+                                   required
                                    disabled={loading}
                                    bg="white"
                                    name="location"
                                    ref={register({
-                                        required: false
+                                        required: true
                                    })}
                               />
                          </FormControl>
@@ -550,23 +566,50 @@ function EventRegister() {
 
                          <FormControl>
                               <FormLabel>
-                                   Adhaar Number{' '}
-                                   <chakra.span textColor="green.500">
-                                        (optional)
+                                   ID Proof
+                                   <chakra.span textColor="red.500">
+                                        *
                                    </chakra.span>
                               </FormLabel>
-                              <Input
-                                   type="number"
-                                   placeholder="Aadhar Number"
-                                   id="aadhar"
-                                   variant="outline"
-                                   disabled={loading}
-                                   bg="white"
-                                   name="aadhar"
-                                   ref={register({
-                                        required: false
-                                   })}
-                              />
+                              <Flex gap={5} direction={['column', 'row']}>
+                                   <Select
+                                        placeholder="Select option"
+                                        disabled={loading}
+                                        required
+                                        name="id_proof"
+                                        ref={register({
+                                             required: true
+                                        })}
+                                   >
+                                        <option value="aadhar">
+                                             Aadhaar card
+                                        </option>
+                                        <option value="driving license">
+                                             {' '}
+                                             Driving License
+                                        </option>
+                                        <option value="election card">
+                                             {' '}
+                                             Election Card
+                                        </option>
+                                        <option value="passport">
+                                             Passport
+                                        </option>
+                                   </Select>
+                                   <Input
+                                        type="number"
+                                        placeholder="Number"
+                                        id="id_detail"
+                                        variant="outline"
+                                        disabled={loading}
+                                        bg="white"
+                                        required
+                                        name="id_detail"
+                                        ref={register({
+                                             required: true
+                                        })}
+                                   />
+                              </Flex>
                          </FormControl>
                          <Flex gap={5} direction={['column', 'row']}>
                               {' '}
@@ -586,10 +629,13 @@ function EventRegister() {
                                              required: true
                                         })}
                                    >
+                                        <option value="XS">XS</option>
                                         <option value="S">S</option>
                                         <option value="M">M</option>
                                         <option value="L">L</option>
                                         <option value="XL">XL</option>
+                                        <option value="XXL">XXL</option>
+                                        <option value="XXXL">XXXL</option>
                                    </Select>
                               </FormControl>
                               <FormControl>
