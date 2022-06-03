@@ -4,6 +4,7 @@ import Quote from '@/components/arambha/Quote';
 import RegisterButton from '@/components/arambha/RegisterButton';
 import Schedule from '@/components/arambha/Schedule';
 import Welcome from '@/components/arambha/Welcome';
+import Youtube from '@/components/arambha/Youtube';
 import HomeLayout from '@/components/layout/HomeLayout';
 import Head from 'next/head';
 import React from 'react';
@@ -16,6 +17,7 @@ function YogaDay() {
                </Head>
                <Hero />
                <Welcome />
+               <Youtube />
                <Banner />
                <Quote />
                <Schedule />
