@@ -42,8 +42,7 @@ function EventRegister() {
           email: '',
           phone: '',
           age: '',
-          id_proof: '',
-          id_detail: '',
+
           tshirt: '',
           gender: '',
           ticketID: ''
@@ -66,12 +65,11 @@ function EventRegister() {
           email,
           phone,
           age,
-          id_proof,
+
           tshirt,
           gender,
           location,
-          member,
-          id_detail
+          member
      }) => {
           setLoading(true);
           setUser((prevState) => {
@@ -80,20 +78,19 @@ function EventRegister() {
                     email,
                     phone,
                     age,
-                    id_proof,
+
                     tshirt,
                     gender,
                     ticketID,
                     location,
-                    member,
-                    id_detail
+                    member
                };
           });
 
           const ticketID =
                'ATHAYOG-' +
                (
-                    name.substring(0, 2) + uuidv4().toString().substring(0, 5)
+                    name.substring(0, 1) + uuidv4().toString().substring(0, 6)
                ).toUpperCase();
 
           await checkForArambha(email)
@@ -104,13 +101,12 @@ function EventRegister() {
                               email,
                               phone,
                               age,
-                              id_proof,
+
                               tshirt,
                               gender,
                               ticketID,
                               location,
-                              member,
-                              id_detail
+                              member
                          );
                     } else {
                          setLoading(false);
@@ -140,13 +136,11 @@ function EventRegister() {
           email,
           phone,
           age,
-          id_proof,
           tshirt,
           gender,
           ticketID,
           location,
-          member,
-          id_detail
+          member
      ) => {
           setLoading(true);
           await registerForArambha(
@@ -154,13 +148,12 @@ function EventRegister() {
                email,
                phone,
                age,
-               id_proof,
+
                tshirt,
                gender,
                ticketID,
                location,
-               member,
-               id_detail
+               member
           )
                .then((response) => {
                     setUser((prevState) => {
@@ -169,13 +162,12 @@ function EventRegister() {
                               email,
                               phone,
                               age,
-                              id_proof,
+
                               tshirt,
                               gender,
                               ticketID,
                               location,
-                              member,
-                              id_detail
+                              member
                          };
                     });
                     sendEmail(
@@ -183,13 +175,12 @@ function EventRegister() {
                          email,
                          phone,
                          age,
-                         id_proof,
+
                          tshirt,
                          gender,
                          ticketID,
                          location,
-                         member,
-                         id_detail
+                         member
                     );
                })
                .catch((error) => {
@@ -210,15 +201,15 @@ function EventRegister() {
           email,
           phone,
           age,
-          id_proof,
+
           tshirt,
           gender,
           ticketID,
           location,
-          member,
-          id_detail
+          member
      ) => {
           setEvent(true);
+
           await emailjs
                .send(
                     'service_5d1bzlp',
@@ -244,13 +235,12 @@ function EventRegister() {
                                    email,
                                    phone,
                                    age,
-                                   id_proof,
+
                                    tshirt,
                                    gender,
                                    ticketID,
                                    location,
-                                   member,
-                                   id_detail
+                                   member
                               );
                          }
                     },
@@ -265,13 +255,12 @@ function EventRegister() {
           email,
           phone,
           age,
-          id_proof,
+
           tshirt,
           gender,
           ticketID,
           location,
-          member,
-          id_detail
+          member
      ) => {
           // Send Email
 
@@ -287,13 +276,12 @@ function EventRegister() {
                     email,
                     phone,
                     age,
-                    id_proof,
+
                     tshirt,
                     gender,
                     ticketID,
                     location,
-                    member,
-                    id_detail
+                    member
                })
           });
      };
@@ -401,9 +389,7 @@ function EventRegister() {
                                         user.age,
                                         user.tshirt,
                                         user.gender,
-                                        user.ticketID,
-                                        user.id_proof,
-                                        user.id_detail
+                                        user.ticketID
                                    )
                               }
                          >
@@ -564,53 +550,6 @@ function EventRegister() {
                               </FormControl>
                          </Flex>
 
-                         <FormControl>
-                              <FormLabel>
-                                   ID Proof
-                                   <chakra.span textColor="red.500">
-                                        *
-                                   </chakra.span>
-                              </FormLabel>
-                              <Flex gap={5} direction={['column', 'row']}>
-                                   <Select
-                                        placeholder="Select option"
-                                        disabled={loading}
-                                        required
-                                        name="id_proof"
-                                        ref={register({
-                                             required: true
-                                        })}
-                                   >
-                                        <option value="aadhar">
-                                             Aadhaar card
-                                        </option>
-                                        <option value="driving license">
-                                             {' '}
-                                             Driving License
-                                        </option>
-                                        <option value="election card">
-                                             {' '}
-                                             Election Card
-                                        </option>
-                                        <option value="passport">
-                                             Passport
-                                        </option>
-                                   </Select>
-                                   <Input
-                                        type="number"
-                                        placeholder="Number"
-                                        id="id_detail"
-                                        variant="outline"
-                                        disabled={loading}
-                                        bg="white"
-                                        required
-                                        name="id_detail"
-                                        ref={register({
-                                             required: true
-                                        })}
-                                   />
-                              </Flex>
-                         </FormControl>
                          <Flex gap={5} direction={['column', 'row']}>
                               {' '}
                               <FormControl>
