@@ -664,6 +664,7 @@ function EventRegister() {
                               rounded="md"
                               colorScheme="green"
                               type="submit"
+                              id="submitButton"
                               isLoading={loading}
                               loadingText="submitting.."
                               width="xs"
