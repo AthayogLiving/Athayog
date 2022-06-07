@@ -57,7 +57,6 @@ function Navbar({ isTabletOrMobile }) {
      };
      return (
           <Flex
-               justifyContent="column"
                justifyContent="space-between"
                padding="1rem"
                alignItems="center"
@@ -100,7 +99,7 @@ function Navbar({ isTabletOrMobile }) {
                                    <Avatar name={user?.name} size="sm" />
                               </MenuButton>
                               <MenuList size="sm">
-                                   <Link href="/admin/account">
+                                   <Link href="/admin/account" passHref>
                                         <MenuItem>Account</MenuItem>
                                    </Link>
 

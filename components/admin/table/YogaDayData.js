@@ -141,7 +141,8 @@ const YogaDayData = ({ forms, latestDoc, setDocs }) => {
      const { pageIndex } = state;
 
      const loadMoreDoc = () => {
-          setDocs(forms[forms.length - 1]);
+          console.log(forms[forms.length - 1]);
+          setDocs(JSON.stringify(forms[forms.length - 1]));
      };
 
      return (

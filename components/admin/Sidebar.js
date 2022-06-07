@@ -41,21 +41,76 @@ function Sidebar() {
                gap={10}
                width="100%"
           >
-               <Link href="/admin/dashboard" width="100%" passHref>
+               <Link href="/admin/dashboard" passHref>
                     <Button
                          width="100%"
                          fontSize="sm"
                          d="flex"
                          variant="ghost"
                          colorScheme="teal"
+                         maxW="max-content"
                          isActive={
                               router.pathname == '/admin/dashboard' ? true : ''
                          }
                          leftIcon={<FiHome />}
-                         rounded="lg"
+                         rounded="base"
                          justifyContent="flex-start"
                     >
                          Dashboard
+                    </Button>
+               </Link>
+               <Link href="/admin/forms" passHref>
+                    <Button
+                         isActive={
+                              router.pathname == '/admin/forms' ? true : ''
+                         }
+                         width="100%"
+                         fontSize="sm"
+                         rounded="base"
+                         maxW="max-content"
+                         colorScheme="teal"
+                         variant="ghost"
+                         d="flex"
+                         justifyContent="flex-start"
+                         leftIcon={<FiFileText />}
+                    >
+                         Forms
+                    </Button>
+               </Link>
+               <Link href="/admin/customers" passHref>
+                    <Button
+                         colorScheme="teal"
+                         variant="ghost"
+                         isActive={
+                              router.pathname == '/admin/customers' ? true : ''
+                         }
+                         maxW="max-content"
+                         width="100%"
+                         fontSize="sm"
+                         rounded="base"
+                         d="flex"
+                         justifyContent="flex-start"
+                         leftIcon={<FiUsers />}
+                    >
+                         Customers
+                    </Button>
+               </Link>
+               <Link href="/admin/users" width="100%" passHref>
+                    <Button
+                         colorScheme="teal"
+                         variant="ghost"
+                         isActive={
+                              router.pathname == '/admin/users' ? true : ''
+                         }
+                         width="100%"
+                         fontSize="sm"
+                         maxW="max-content"
+                         rounded="base"
+                         d="flex"
+                         justifyContent="flex-start"
+                         leftIcon={<FiGithub />}
+                    >
+                         Admins
                     </Button>
                </Link>
 
@@ -65,89 +120,8 @@ function Sidebar() {
                          rightIcon={<ChevronDownIcon />}
                          size="sm"
                          variant="ghost"
-                         width="max-content"
-                    >
-                         Account
-                    </MenuButton>
-                    <MenuList>
-                         <MenuItem>
-                              <Link
-                                   href="/admin/customers"
-                                   width="100%"
-                                   passHref
-                              >
-                                   <Button
-                                        colorScheme="teal"
-                                        variant="ghost"
-                                        isActive={
-                                             router.pathname ==
-                                             '/admin/customers'
-                                                  ? true
-                                                  : ''
-                                        }
-                                        width="100%"
-                                        fontSize="sm"
-                                        rounded="lg"
-                                        d="flex"
-                                        justifyContent="flex-start"
-                                        leftIcon={<FiUsers />}
-                                   >
-                                        Customers
-                                   </Button>
-                              </Link>
-                         </MenuItem>
-
-                         <MenuItem>
-                              <Link href="/admin/users" width="100%" passHref>
-                                   <Button
-                                        colorScheme="teal"
-                                        variant="ghost"
-                                        isActive={
-                                             router.pathname == '/admin/users'
-                                                  ? true
-                                                  : ''
-                                        }
-                                        width="100%"
-                                        fontSize="sm"
-                                        rounded="lg"
-                                        d="flex"
-                                        justifyContent="flex-start"
-                                        leftIcon={<FiGithub />}
-                                   >
-                                        Admins
-                                   </Button>
-                              </Link>
-                         </MenuItem>
-                         <MenuItem>
-                              {' '}
-                              <Link href="/admin/forms" width="100%" passHref>
-                                   <Button
-                                        isActive={
-                                             router.pathname == '/admin/forms'
-                                                  ? true
-                                                  : ''
-                                        }
-                                        width="100%"
-                                        fontSize="sm"
-                                        rounded="lg"
-                                        colorScheme="teal"
-                                        variant="ghost"
-                                        d="flex"
-                                        justifyContent="flex-start"
-                                        leftIcon={<FiFileText />}
-                                   >
-                                        Forms
-                                   </Button>
-                              </Link>
-                         </MenuItem>
-                    </MenuList>
-               </Menu>
-               <Menu>
-                    <MenuButton
-                         as={Button}
-                         rightIcon={<ChevronDownIcon />}
-                         size="sm"
-                         variant="ghost"
+                         rounded="base"
+                         colorScheme="teal"
                     >
                          Resources
                     </MenuButton>
@@ -170,8 +144,9 @@ function Sidebar() {
                                         variant="ghost"
                                         justifyContent="flex-start"
                                         width="100%"
+                                        maxW="max-content"
                                         fontSize="sm"
-                                        rounded="lg"
+                                        rounded="base"
                                         leftIcon={<FiCalendar />}
                                    >
                                         Schedule
@@ -191,7 +166,7 @@ function Sidebar() {
                                         }
                                         width="100%"
                                         fontSize="sm"
-                                        rounded="lg"
+                                        rounded="base"
                                         d="flex"
                                         justifyContent="flex-start"
                                         leftIcon={<FiImage />}
@@ -218,7 +193,7 @@ function Sidebar() {
                                         }
                                         width="100%"
                                         fontSize="sm"
-                                        rounded="lg"
+                                        rounded="base"
                                         d="flex"
                                         justifyContent="flex-start"
                                         leftIcon={<VscFeedback />}
@@ -245,7 +220,7 @@ function Sidebar() {
                                         }
                                         width="100%"
                                         fontSize="sm"
-                                        rounded="lg"
+                                        rounded="base"
                                         d="flex"
                                         justifyContent="flex-start"
                                         leftIcon={<VscPreview />}
