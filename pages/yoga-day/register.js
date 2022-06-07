@@ -11,7 +11,7 @@ function Register() {
                     <title>Register | Yoga Arambha</title>
                </Head>
                <Script
-                    src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"
+                    src="https://www.googletagmanager.com/gtag/js?id=AW-616323515"
                     strategy="beforeInteractive"
                ></Script>
                <Script id="google-analytics" strategy="afterInteractive">
