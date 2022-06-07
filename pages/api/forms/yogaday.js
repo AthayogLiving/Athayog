@@ -37,7 +37,6 @@ export default async function handler(req, res) {
                const snapshot = await db
                     .collection('arambhaForm')
                     .orderBy('createdAt', 'desc')
-                    .limit(20)
                     .get();
                const submissions = [];
 
