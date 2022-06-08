@@ -209,7 +209,7 @@ const Register = () => {
                currency: 'INR',
                name: ogData.name,
                description: ogData.days,
-               image: { logo },
+               image: logo,
                order_id: order_id,
                handler: async function (response) {
                     const data = {

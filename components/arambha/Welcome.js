@@ -125,7 +125,7 @@ function Welcome() {
                               </Text>
                          </Stack>
                     </Grid>
-                    <Flex
+                    {/* <Flex
                          borderTop="4px solid"
                          borderBottom="4px solid"
                          borderColor="orange.300"
@@ -154,7 +154,7 @@ function Welcome() {
                               </chakra.strong>
                               for everyone attending the event.
                          </Text>
-                    </Flex>
+                    </Flex> */}
                </Stack>
           </Container>
      );
