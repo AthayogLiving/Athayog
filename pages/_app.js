@@ -101,7 +101,7 @@ function App({ Component, pageProps }) {
           const analytics = firebase.analytics();
           analytics.logEvent('page_view');
      }, []);
-     console.log(router.pathname);
+
      return (
           <ChakraProvider
                resetCSS={true}
@@ -111,9 +111,7 @@ function App({ Component, pageProps }) {
                <AuthProvider>
                     <DefaultSeo {...SEO} />
                     <GlobalStyle />
-                    {/* {router.pathname.includes(...excludePath) ? null : (
-                         <Leads />
-                    )} */}
+                    {excludePath.includes(router.pathname) ? null : <Leads />}
                     <AnimatePresence exitBeforeEnter>
                          <Layout>
                               <Component {...pageProps} />

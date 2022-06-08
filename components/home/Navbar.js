@@ -50,83 +50,12 @@ const Navbar = () => {
           signout(redirect);
      };
      SwiperCore.use([Autoplay]);
-     const announcements = [
-          {
-               id: 1,
-               text: 'Yoga Arambha Sadhana - June 1st to June 21st Register Now',
-               url: 'https://forms.gle/DTbHoXQEsob4gnCn8',
-               color: 'pink.100'
-          }
-     ];
+     const announcements = null;
 
      const announcementsURLS = ['/kids-yoga-camp', '/yoga-retreat'];
 
      return (
           <Box zIndex={3} position="fixed" width="100%">
-               {offer && !announcementsURLS.includes(router.asPath) && (
-                    <Box
-                         textAlign="center"
-                         bg="black"
-                         textColor="white"
-                         width="100%"
-                    >
-                         <Swiper
-                              spaceBetween={30}
-                              centeredSlides={true}
-                              loop={false}
-                         >
-                              {announcements.map((content) => {
-                                   return (
-                                        <SwiperSlide
-                                             key={content.id}
-                                             style={{ padding: '6px' }}
-                                        >
-                                             <Text
-                                                  fontWeight="medium"
-                                                  fontSize={{
-                                                       base: 'sm',
-                                                       md: 'normal'
-                                                  }}
-                                                  initial={{ opacity: 0 }}
-                                                  animate={{ opacity: 1 }}
-                                                  exit={{ opacity: 0 }}
-                                                  as={motion.text}
-                                                  textColor="white"
-                                             >
-                                                  {content.text}{' '}
-                                                  <Button
-                                                       size="xs"
-                                                       colorScheme="green"
-                                                       fontWeight="medium"
-                                                       fontSize={{
-                                                            base: 'sm',
-                                                            md: 'normal'
-                                                       }}
-                                                       ml={1}
-                                                       variant="link"
-                                                       rounded="none"
-                                                  >
-                                                       <Link href={content.url}>
-                                                            Check Now
-                                                       </Link>
-                                                  </Button>
-                                             </Text>
-                                        </SwiperSlide>
-                                   );
-                              })}
-                         </Swiper>
-
-                         <CloseButton
-                              position="absolute"
-                              display={{ base: 'none', md: 'block' }}
-                              top="0.5"
-                              zIndex={10}
-                              right="2"
-                              onClick={() => showOffer(false)}
-                         />
-                    </Box>
-               )}
-
                <Center
                     boxShadow="sm"
                     bg="primaryWhite"

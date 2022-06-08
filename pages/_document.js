@@ -2,6 +2,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ColorModeScript } from '@chakra-ui/react';
 import theme from '@/styles/theme';
 import { GA_TRACKING_ID } from '@/lib/gtag';
+import Script from 'next/script';
 
 class RootDocument extends Document {
      static async getInitialProps(ctx) {
@@ -49,70 +50,56 @@ class RootDocument extends Document {
                     <link rel="apple-touch-icon" href="/apple-icon.png"></link>
                     <meta name="theme-color" content="#317EFB" />
 
-                    <Head>
-                         {/* Google Adsense */}
-                         <script
-                              data-ad-client="<Your value here>"
-                              async
-                              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-                         ></script>
-
-                         {/* Global Site Tag (gtag.js) - Google Analytics */}
-                         <script
-                              async
-                              src={`https://www.googletagmanager.com/gtag/js?id=AW-527303866`}
-                         />
-                         <script
-                              dangerouslySetInnerHTML={{
-                                   __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-527303866', {
-              page_path: window.location.pathname,
-            });
-          `
-                              }}
-                         />
-                         <script
-                              dangerouslySetInnerHTML={{
-                                   __html: `!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window,document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
- fbq('init', '407786137819809'); 
-fbq('track', 'PageView');`
-                              }}
-                         />
-                         <script
-                              dangerouslySetInnerHTML={{
-                                   __html: `
-             gtag('event', 'conversion', {
-      'send_to': 'AW-527303866/3ewICPbt49ECELqJuPsB',
-      'transaction_id': ''
-  });
-          `
-                              }}
-                         />
-                         <script
-                              dangerouslySetInnerHTML={{
-                                   __html: `<noscript>
- <img height="1" width="1" 
-src="https://www.facebook.com/tr?id=407786137819809&ev=PageView
-&noscript=1"/>
-</noscript>`
-                              }}
-                         />
-                    </Head>
+                    <Head></Head>
                     <body>
                          <ColorModeScript
                               initialColorMode={theme.config.initialColorMode}
                          />
                          <Main />
+                         <Script
+                              src="https://www.googletagmanager.com/gtag/js?id=AW-527303866"
+                              strategy="afterInteractive"
+                         ></Script>
+                         <Script
+                              data-ad-client="AW-527303866"
+                              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+                              strategy="afterInteractive"
+                         ></Script>
+                         <Script
+                              id="load-gtag"
+                              strategy="afterInteractive"
+                         >{`window.dataLayer = window.dataLayer || [];
+                              function gtag(){dataLayer.push(arguments);}
+                              gtag('js', new Date());
+                              gtag('config', 'AW-527303866', {
+                              page_path: window.location.pathname,
+                         });`}</Script>
+                         <Script id="page-view">
+                              {`!function(f,b,e,v,n,t,s)
+                              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                              n.queue=[];t=b.createElement(e);t.async=!0;
+                              t.src=v;s=b.getElementsByTagName(e)[0];
+                              s.parentNode.insertBefore(t,s)}(window,document,'script',
+                              'https://connect.facebook.net/en_US/fbevents.js');
+                              fbq('init', '407786137819809'); 
+                              fbq('track', 'PageView');`}
+                         </Script>
+                         <Script id="gtag-conversion">
+                              {`
+                               gtag('event', 'conversion', {
+                                   'send_to': 'AW-527303866/3ewICPbt49ECELqJuPsB',
+                                   'transaction_id': ''
+                              });`}
+                         </Script>
+                         <Script id="facebook">
+                              {`<noscript>
+                                   <img height="1" width="1" 
+                                   src="https://www.facebook.com/tr?id=407786137819809&ev=PageView
+                                   &noscript=1"/>
+                              </noscript>`}{' '}
+                         </Script>
                          <NextScript />
                     </body>
                </Html>

@@ -125,6 +125,36 @@ function Welcome() {
                               </Text>
                          </Stack>
                     </Grid>
+                    <Flex
+                         borderTop="4px solid"
+                         borderBottom="4px solid"
+                         borderColor="orange.300"
+                         py={5}
+                         gap={5}
+                         px={3}
+                    >
+                         <Text
+                              textColor="teal.500"
+                              fontWeight="bold"
+                              fontSize="2xl"
+                              width="max-content"
+                         >
+                              Special Day
+                         </Text>
+                         <Text textColor="green.900" fontWeight="normal">
+                              Get absorbed in{' '}
+                              <chakra.strong>
+                                   transcendental music
+                              </chakra.strong>{' '}
+                              and Immersive{' '}
+                              <chakra.strong>AR experience</chakra.strong> at
+                              the venue!{' '}
+                              <chakra.strong>
+                                   Gratitude Goodie Bags{' '}
+                              </chakra.strong>
+                              for everyone attending the event.
+                         </Text>
+                    </Flex>
                </Stack>
           </Container>
      );

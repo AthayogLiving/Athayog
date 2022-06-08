@@ -30,7 +30,7 @@ import { capitalizeFirstLetter } from '@/components/helper/Capitalize';
 import { useAuth } from '@/lib/auth';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import { logo } from 'public/og.png';
+import logo from 'public/og.png';
 import HomeLayout from '@/components/layout/HomeLayout';
 import { registerForm, registerFormFree } from '@/lib/db/forms';
 import cookie from 'js-cookie';
