@@ -1,40 +1,35 @@
+import { FirebaseToDate } from '@/components/helper/FirebaseToDate';
+import firebase from '@/lib/firebase';
+import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
 import {
-     Table,
-     Thead,
-     Tbody,
-     Tr,
-     Th,
-     Td,
-     Input,
-     chakra,
      Box,
      Button,
-     useColorModeValue,
-     Badge,
      ButtonGroup,
-     Text,
+     chakra,
      Flex,
+     Input,
      Select,
-     Grid,
-     useColorMode
+     Table,
+     Tbody,
+     Td,
+     Text,
+     Th,
+     Thead,
+     Tr,
+     useColorModeValue
 } from '@chakra-ui/react';
-import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
-import { useTable, useSortBy, useFilters, usePagination } from 'react-table';
 import { useMemo } from 'react';
-
-import ColumnFilter from './Filters/ColumnFilter';
-import SelectColumnFilter from './Filters/SelectColumnFilter';
-import NumberFilter from './Filters/NumberFilter';
-import { IoMdArrowRoundBack, IoMdArrowRoundForward } from 'react-icons/io';
+import { CSVLink } from 'react-csv';
 import { ImBackward2, ImForward2 } from 'react-icons/im';
+import { IoMdArrowRoundBack, IoMdArrowRoundForward } from 'react-icons/io';
 import { RiLoader3Fill } from 'react-icons/ri';
-import firebase from '@/lib/firebase';
 import { useMediaQuery } from 'react-responsive';
-import styled from 'styled-components';
-import { FirebaseToDate } from '@/components/helper/FirebaseToDate';
+import { useFilters, usePagination, useSortBy, useTable } from 'react-table';
 import { v4 as uuidv4 } from 'uuid';
+import ColumnFilter from './Filters/ColumnFilter';
+import NumberFilter from './Filters/NumberFilter';
 import { Styles } from './Styles';
-import YogaDay from 'pages/yoga-day';
+
 const firestore = firebase.firestore();
 
 export const DateCreated = ({ values }) => {
@@ -47,6 +42,37 @@ const YogaDayData = ({ forms, latestDoc, setDocs }) => {
      const data = useMemo(() => forms, []);
      const bg = useColorModeValue('white', 'gray.800');
      const color = useColorModeValue('gray.200', 'gray.700');
+
+     const fieldTypes = [
+          'ticketID',
+          'name',
+          'phone',
+          'email',
+          'age',
+          'gender',
+          'tshirt',
+          'member',
+          'location',
+          'createdAt'
+     ];
+     const dataCSV = useMemo(() => {
+          return forms.map((fields) => {
+               let values = new Array(10);
+
+               Object.entries(fields).forEach(([key, value]) => {
+                    let index = fieldTypes.indexOf(key);
+                    console.log(key, index);
+                    if (index != -1) {
+                         values[index] = value;
+                    }
+                    if (typeof value == 'object') {
+                         values[index] = FirebaseToDate(value);
+                    }
+               });
+
+               return values;
+          });
+     }, []);
 
      const columns = useMemo(
           () => [
@@ -130,18 +156,11 @@ const YogaDayData = ({ forms, latestDoc, setDocs }) => {
           gotoPage,
           setPageSize,
           pageSize
-     } = useTable(
-          { columns, data },
-          useFilters,
-
-          useSortBy,
-          usePagination
-     );
+     } = useTable({ columns, data }, useFilters, useSortBy, usePagination);
 
      const { pageIndex } = state;
 
      const loadMoreDoc = () => {
-          console.log(forms[forms.length - 1]);
           setDocs(JSON.stringify(forms[forms.length - 1]));
      };
 
@@ -157,13 +176,15 @@ const YogaDayData = ({ forms, latestDoc, setDocs }) => {
                          padding={5}
                          mt={3}
                          colorScheme="green"
+                         overflow="hidden"
                     >
                          <Thead>
                               {headerGroups.map((headerGroup) => (
                                    <Tr {...headerGroup.getHeaderGroupProps()}>
-                                        {headerGroup.headers.map((column) => (
-                                             <>
+                                        {headerGroup.headers.map(
+                                             (column, idx) => (
                                                   <Th
+                                                       key={idx}
                                                        {...column.getHeaderProps()}
                                                   >
                                                        {column.render('Header')}
@@ -188,8 +209,8 @@ const YogaDayData = ({ forms, latestDoc, setDocs }) => {
                                                             )}
                                                        </div>
                                                   </Th>
-                                             </>
-                                        ))}
+                                             )
+                                        )}
                                    </Tr>
                               ))}
                          </Thead>
@@ -265,6 +286,15 @@ const YogaDayData = ({ forms, latestDoc, setDocs }) => {
                               margin={2}
                          >
                               Load More
+                         </Button>
+                         <Button colorScheme="telegram" margin={2}>
+                              <CSVLink
+                                   headers={fieldTypes}
+                                   filename={Date.now() + '.csv'}
+                                   data={dataCSV}
+                              >
+                                   Download To CSV
+                              </CSVLink>
                          </Button>
                     </ButtonGroup>
 
