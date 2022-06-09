@@ -16,6 +16,69 @@ import React from 'react';
 
 function Welcome() {
      const buttonSize = useBreakpointValue(['sm', 'md']);
+
+     function shareNative() {
+          return new Promise(async (resolve) => {
+               const shareUrl = `${window.location.protocol}//${window.location.host}`;
+
+               await navigator.share({
+                    text: 'How to implement the Web Share API and a fallback',
+                    url: shareUrl
+               });
+
+               resolve();
+          });
+     }
+
+     function shareFallback() {
+          return new Promise(async (resolve) => {
+               const webSocialShare =
+                    document.querySelector('web-social-share');
+
+               if (!webSocialShare || !window) {
+                    return;
+               }
+
+               const shareUrl = `${window.location.protocol}//${window.location.host}`;
+
+               const share = {
+                    displayNames: true,
+                    config: [
+                         {
+                              twitter: {
+                                   socialShareUrl: shareUrl,
+                                   socialSharePopupWidth: 300,
+                                   socialSharePopupHeight: 400
+                              }
+                         },
+                         {
+                              email: {
+                                   socialShareBody: shareUrl
+                              }
+                         },
+                         {
+                              whatsapp: {
+                                   socialShareUrl: shareUrl
+                              }
+                         }
+                    ]
+               };
+               // The configuration, set the share options
+               webSocialShare.share = share;
+               // Show/open the share actions
+               webSocialShare.show = true;
+
+               resolve();
+          });
+     }
+
+     const onWebShare = async () => {
+          if (navigator && navigator.share) {
+               await shareNative();
+          } else {
+               await shareFallback();
+          }
+     };
      return (
           <Container maxW="container.xl">
                <Stack
@@ -57,16 +120,28 @@ function Welcome() {
                          <br />
                          Kittur Rani Chennamma Stadium, Bengaluru
                     </Text>
-                    <Link href="/yoga-day/register" passHref>
+
+                    <Flex alignItems="center" gap={5}>
+                         {' '}
+                         <Link href="/yoga-day/register" passHref>
+                              <Button
+                                   size={buttonSize}
+                                   colorScheme="aygreen"
+                                   rounded="none"
+                                   maxW="max-content"
+                              >
+                                   REGISTER NOW! - FREE AND OPEN TO ALL
+                              </Button>
+                         </Link>
                          <Button
-                              size={buttonSize}
-                              colorScheme="aygreen"
+                              colorScheme="red"
+                              variant="outline"
+                              onClick={() => onWebShare()}
                               rounded="none"
-                              maxW="max-content"
                          >
-                              REGISTER NOW! - FREE AND OPEN TO ALL
+                              SHARE
                          </Button>
-                    </Link>
+                    </Flex>
                </Stack>
                <Stack
                     spacing={10}

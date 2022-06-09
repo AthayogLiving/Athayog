@@ -141,7 +141,7 @@ const Footer = () => {
                               </chakra.span>{' '}
                               <br />
                               No.3293, 1st floor, 12th main, HAL 2nd stage,
-                              Indiranagar, Bangalore - 560038
+                              Indiranagar, Bengaluru, Karnataka - 560038
                          </Text>
                          <Text>
                               <chakra.span textDecoration="underline">
@@ -150,7 +150,7 @@ const Footer = () => {
                               <br />
                               307, Athayog living, Sun Rise Arcade, Devasandra
                               Main Road, Kodigehalli, Krishnarajapura,
-                              Bengaluru, Karnataka 560036
+                              Bengaluru, Karnataka - 560036
                          </Text>
                     </Stack>
                     <Stack color="white" spacing={5}>
