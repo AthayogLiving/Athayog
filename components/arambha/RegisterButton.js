@@ -16,7 +16,7 @@ function RegisterButton() {
 
      function shareNative() {
           return new Promise(async (resolve) => {
-               const shareUrl = `${window.location.protocol}//${window.location.host}`;
+               const shareUrl = `${window.location.href}`;
 
                await navigator.share({
                     text: 'Athayog Yoga Day - Arambha',
@@ -29,7 +29,7 @@ function RegisterButton() {
 
      function shareFallback() {
           return new Promise(async (resolve) => {
-               const shareUrl = `${window.location.protocol}//${window.location.host}`;
+               const shareUrl = `${window.location.href}`;
                navigator.clipboard.writeText(shareUrl);
                toast({
                     title: 'Copied',
