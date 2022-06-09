@@ -100,7 +100,7 @@ function Welcome() {
                     <Flex
                          alignItems="center"
                          gap={5}
-                         direction={['column', 'row']}
+                         direction={['column', 'column']}
                     >
                          <Link href="/yoga-day/register" passHref>
                               <Button
@@ -112,15 +112,26 @@ function Welcome() {
                                    REGISTER NOW! - FREE AND OPEN TO ALL
                               </Button>
                          </Link>
-                         <Button
-                              colorScheme="red"
-                              size={buttonSize}
-                              variant="outline"
-                              onClick={() => onWebShare()}
-                              rounded="none"
+                         <Flex
+                              alignItems="center"
+                              borderColor="gray.200"
+                              maxW="md"
+                              direction="column"
+                              gap={3}
                          >
-                              SHARE
-                         </Button>
+                              <Text>
+                                   Celebrate with your Friends and Family
+                              </Text>
+                              <Button
+                                   colorScheme="red"
+                                   size={buttonSize}
+                                   variant="outline"
+                                   onClick={() => onWebShare()}
+                                   rounded="none"
+                              >
+                                   SHARE
+                              </Button>
+                         </Flex>
                     </Flex>
                </Stack>
                <Stack

@@ -3,6 +3,7 @@ import {
      Button,
      Container,
      Flex,
+     Text,
      useBreakpointValue,
      useToast
 } from '@chakra-ui/react';
@@ -53,7 +54,7 @@ function RegisterButton() {
                <Flex
                     alignItems="center"
                     gap={5}
-                    direction={['column', 'row']}
+                    direction={['column', 'column']}
                     justifyContent="center"
                >
                     <Link href="/yoga-day/register" passHref>
@@ -66,15 +67,24 @@ function RegisterButton() {
                               REGISTER NOW! - FREE AND OPEN TO ALL
                          </Button>
                     </Link>
-                    <Button
-                         colorScheme="red"
-                         size={buttonSize}
-                         variant="outline"
-                         onClick={() => onWebShare()}
-                         rounded="none"
+                    <Flex
+                         alignItems="center"
+                         borderColor="gray.200"
+                         maxW="md"
+                         direction="column"
+                         gap={3}
                     >
-                         SHARE
-                    </Button>
+                         <Text>Celebrate with your Friends and Family</Text>
+                         <Button
+                              colorScheme="red"
+                              size={buttonSize}
+                              variant="outline"
+                              onClick={() => onWebShare()}
+                              rounded="none"
+                         >
+                              SHARE
+                         </Button>
+                    </Flex>
                </Flex>
           </Box>
      );

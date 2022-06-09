@@ -464,7 +464,7 @@ function EventRegister() {
                               </FormControl>
                               <FormControl>
                                    <FormLabel>
-                                        Phone{' '}
+                                        Phone (Whatsapp)
                                         <chakra.span textColor="red.500">
                                              *
                                         </chakra.span>
