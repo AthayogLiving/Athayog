@@ -8,7 +8,8 @@ import {
      Stack,
      Text,
      useBreakpointValue,
-     chakra
+     chakra,
+     useToast
 } from '@chakra-ui/react';
 import Link from 'next/link';
 
@@ -17,12 +18,14 @@ import React from 'react';
 function Welcome() {
      const buttonSize = useBreakpointValue(['sm', 'md']);
 
+     const toast = new useToast();
+
      function shareNative() {
           return new Promise(async (resolve) => {
                const shareUrl = `${window.location.protocol}//${window.location.host}`;
 
                await navigator.share({
-                    text: 'How to implement the Web Share API and a fallback',
+                    text: 'Athayog Yoga Day - Arambha',
                     url: shareUrl
                });
 
@@ -32,42 +35,15 @@ function Welcome() {
 
      function shareFallback() {
           return new Promise(async (resolve) => {
-               const webSocialShare =
-                    document.querySelector('web-social-share');
-
-               if (!webSocialShare || !window) {
-                    return;
-               }
-
                const shareUrl = `${window.location.protocol}//${window.location.host}`;
-
-               const share = {
-                    displayNames: true,
-                    config: [
-                         {
-                              twitter: {
-                                   socialShareUrl: shareUrl,
-                                   socialSharePopupWidth: 300,
-                                   socialSharePopupHeight: 400
-                              }
-                         },
-                         {
-                              email: {
-                                   socialShareBody: shareUrl
-                              }
-                         },
-                         {
-                              whatsapp: {
-                                   socialShareUrl: shareUrl
-                              }
-                         }
-                    ]
-               };
-               // The configuration, set the share options
-               webSocialShare.share = share;
-               // Show/open the share actions
-               webSocialShare.show = true;
-
+               navigator.clipboard.writeText(shareUrl);
+               toast({
+                    title: 'Copied',
+                    description: 'URL has been copied to url',
+                    status: 'success',
+                    duration: 9000,
+                    isClosable: true
+               });
                resolve();
           });
      }
@@ -121,8 +97,11 @@ function Welcome() {
                          Kittur Rani Chennamma Stadium, Bengaluru
                     </Text>
 
-                    <Flex alignItems="center" gap={5}>
-                         {' '}
+                    <Flex
+                         alignItems="center"
+                         gap={5}
+                         direction={['column', 'row']}
+                    >
                          <Link href="/yoga-day/register" passHref>
                               <Button
                                    size={buttonSize}
@@ -135,6 +114,7 @@ function Welcome() {
                          </Link>
                          <Button
                               colorScheme="red"
+                              size={buttonSize}
                               variant="outline"
                               onClick={() => onWebShare()}
                               rounded="none"

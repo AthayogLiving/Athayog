@@ -3,22 +3,59 @@ import {
      Button,
      Container,
      Flex,
-     useBreakpointValue
+     useBreakpointValue,
+     useToast
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import React from 'react';
 
 function RegisterButton() {
      const buttonSize = useBreakpointValue(['sm', 'md']);
+     const toast = new useToast();
+
+     function shareNative() {
+          return new Promise(async (resolve) => {
+               const shareUrl = `${window.location.protocol}//${window.location.host}`;
+
+               await navigator.share({
+                    text: 'Athayog Yoga Day - Arambha',
+                    url: shareUrl
+               });
+
+               resolve();
+          });
+     }
+
+     function shareFallback() {
+          return new Promise(async (resolve) => {
+               const shareUrl = `${window.location.protocol}//${window.location.host}`;
+               navigator.clipboard.writeText(shareUrl);
+               toast({
+                    title: 'Copied',
+                    description: 'URL has been copied to url',
+                    status: 'success',
+                    duration: 9000,
+                    isClosable: true
+               });
+               resolve();
+          });
+     }
+
+     const onWebShare = async () => {
+          if (navigator && navigator.share) {
+               await shareNative();
+          } else {
+               await shareFallback();
+          }
+     };
      return (
-          <Box bg="gray.50" width="full">
+          <Box bg="gray.50" width="full" py={5}>
                <Flex
-                    p={{ base: '5', md: '5', lg: '10' }}
-                    justifyContent="center"
-                    width="full"
                     alignItems="center"
+                    gap={5}
+                    direction={['column', 'row']}
+                    justifyContent="center"
                >
-                    {' '}
                     <Link href="/yoga-day/register" passHref>
                          <Button
                               size={buttonSize}
@@ -29,6 +66,15 @@ function RegisterButton() {
                               REGISTER NOW! - FREE AND OPEN TO ALL
                          </Button>
                     </Link>
+                    <Button
+                         colorScheme="red"
+                         size={buttonSize}
+                         variant="outline"
+                         onClick={() => onWebShare()}
+                         rounded="none"
+                    >
+                         SHARE
+                    </Button>
                </Flex>
           </Box>
      );
