@@ -134,6 +134,7 @@ function Welcome() {
                     <Flex
                          fontSize={{ base: 'xl', md: 'xl', lg: '2xl' }}
                          gap={3}
+                         display={{ base: 'none', md: 'flex' }}
                     >
                          <Box
                               rounded="full"
@@ -178,6 +179,43 @@ function Welcome() {
                          <br />
                          Join us this International Day of Yoga!
                     </Box>
+                    <Flex
+                         fontSize={{ base: 'xl', md: 'xl', lg: '2xl' }}
+                         gap={3}
+                         display={{ base: 'flex', md: 'none' }}
+                    >
+                         <Box
+                              rounded="full"
+                              overflow="hidden"
+                              height="3.5rem"
+                              width="3.5rem"
+                              position="relative"
+                         >
+                              <Image
+                                   src={tejasvi}
+                                   alt="azadi logo"
+                                   objectFit="cover"
+                                   layout="fill"
+                              />
+                         </Box>
+                         <Box>
+                              <Text
+                                   textColor="gray.600"
+                                   fontWeight="normal"
+                                   fontSize="lg"
+                              >
+                                   In association with Office of
+                              </Text>
+
+                              <Text
+                                   textTransform="uppercase"
+                                   fontWeight="bold"
+                                   fontSize="xl"
+                              >
+                                   TEJASVI SURYA
+                              </Text>
+                         </Box>
+                    </Flex>
                     <Text
                          fontSize={{ base: 'xl', md: '3xl', lg: '3xl' }}
                          fontWeight="normal"
