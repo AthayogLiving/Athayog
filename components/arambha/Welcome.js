@@ -9,10 +9,15 @@ import {
      Text,
      useBreakpointValue,
      chakra,
-     useToast
+     useToast,
+     HStack
 } from '@chakra-ui/react';
+import Image from 'next/image';
 import Link from 'next/link';
-
+import idy from 'public/idy.png';
+import azadi from 'public/amrit.png';
+import modi from 'public/modi.png';
+import tejasvi from 'public/tejasvi.jpg';
 import React from 'react';
 
 function Welcome() {
@@ -62,10 +67,59 @@ function Welcome() {
                     bottom="0"
                     width="100%"
                     textAlign="center"
-                    py={16}
+                    py={20}
                     justifyContent="center"
                     alignItems="center"
+                    position="relative"
                >
+                    <Flex
+                         gap={5}
+                         spacing={10}
+                         position="absolute"
+                         top="5"
+                         left="10"
+                    >
+                         {' '}
+                         <Box
+                              overflow="hidden"
+                              height="4rem"
+                              width="4rem"
+                              position="relative"
+                         >
+                              <Image
+                                   src={idy}
+                                   alt="azadi logo"
+                                   objectFit="contain"
+                                   layout="fill"
+                              />
+                         </Box>
+                         <Box
+                              overflow="hidden"
+                              height="5rem"
+                              width="5rem"
+                              position="relative"
+                         >
+                              <Image
+                                   src={azadi}
+                                   alt="azadi logo"
+                                   objectFit="contain"
+                                   layout="fill"
+                              />
+                         </Box>
+                         <Box
+                              overflow="hidden"
+                              height="4rem"
+                              width="4rem"
+                              position="relative"
+                         >
+                              <Image
+                                   src={modi}
+                                   alt="azadi logo"
+                                   objectFit="contain"
+                                   layout="fill"
+                              />
+                         </Box>
+                    </Flex>
                     <Heading
                          textAlign="center"
                          fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}
@@ -77,6 +131,42 @@ function Welcome() {
                          <br />
                          Join us this International Day of Yoga!
                     </Heading>
+                    <Flex
+                         fontSize={{ base: 'xl', md: 'xl', lg: '2xl' }}
+                         gap={3}
+                    >
+                         <Box
+                              rounded="full"
+                              overflow="hidden"
+                              height="4rem"
+                              width="4rem"
+                              position="relative"
+                         >
+                              <Image
+                                   src={tejasvi}
+                                   alt="azadi logo"
+                                   objectFit="cover"
+                                   layout="fill"
+                              />
+                         </Box>
+                         <Box>
+                              <Text
+                                   textColor="gray.600"
+                                   fontWeight="normal"
+                                   fontSize="xl"
+                              >
+                                   In association with Office of
+                              </Text>
+
+                              <Text
+                                   textTransform="uppercase"
+                                   fontWeight="bold"
+                                   fontSize="2xl"
+                              >
+                                   TEJASVI SURYA
+                              </Text>
+                         </Box>
+                    </Flex>
                     <Box
                          textAlign="center"
                          fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}
