@@ -79,7 +79,6 @@ function Welcome() {
                          top="5"
                          left="10"
                     >
-                         {' '}
                          <Box
                               overflow="hidden"
                               height="4rem"
