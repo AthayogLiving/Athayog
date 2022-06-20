@@ -230,15 +230,20 @@ function Welcome() {
                          gap={5}
                          direction={['column', 'column']}
                     >
-                         <Link href="/yoga-day/register" passHref>
-                              <Button
-                                   size={buttonSize}
-                                   colorScheme="aygreen"
-                                   rounded="none"
-                                   maxW="max-content"
-                              >
-                                   REGISTER NOW! - FREE AND OPEN TO ALL
-                              </Button>
+                         <Link
+                              href="https://forms.gle/3nLbjhEYi2CqcxMKA"
+                              passHref
+                         >
+                              <a target="_blank">
+                                   <Button
+                                        size={buttonSize}
+                                        colorScheme="aygreen"
+                                        rounded="none"
+                                        maxW="max-content"
+                                   >
+                                        REGISTER NOW! - FREE AND OPEN TO ALL
+                                   </Button>
+                              </a>
                          </Link>
                          <Flex
                               alignItems="center"
